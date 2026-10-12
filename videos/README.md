@@ -51,3 +51,5 @@ Hugging Face is blocked, but GitHub release downloads work, so sherpa-onnx model
   `python3 build.py`, then `npm run render`.
 - `ad-2-edit/` — ABCT with AI new ad 2 (free GFS masterclass): same treatment as ad 4, with the
   caption gradient and the logo for the spoken "ABCT with AI".
+- `cashtag-vbm-ad-2/` — Cashtag VBM ad 2 (#Cashtags 2.0 book + free 3-hour Intensive workshop):
+  same treatment in the book's navy/orange palette, with title and Hindi + English overlays.
