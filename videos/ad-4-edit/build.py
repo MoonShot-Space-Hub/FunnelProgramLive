@@ -8,11 +8,11 @@ pass + Parakeet word onsets for timing, hand-corrected).
 import html, json, pathlib
 
 DUR = 44.5
+INTRO_END = 1.30  # opening logo while he says "Anybody Can Trade"
 MUSIC = 0.08  # bed level; the automation lane is absolute, so it carries this value too
 
 # (start, end, text, indices of highlighted words)
 CAPTIONS = [
-    (0.20, 1.30, "Anybody Can Trade", [2]),
     (1.30, 3.36, "Have you attended it before?", [2]),
     (3.36, 4.60, "3 years ago, 2 years ago,", []),
     (4.60, 5.65, "or 6 months ago?", [1, 2]),
@@ -234,6 +234,10 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b102
 .ripple { position: absolute; left: 70%; top: 60%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; background: rgba(255,255,255,.7); }
 .cursor { position: absolute; left: 800px; top: 690px; }
 
+/* Opening logo */
+#intro-logo { position: absolute; left: 0; right: 0; top: 1190px; height: 440px; display: flex; align-items: center; justify-content: center; }
+#intro-logo-img { display: block; width: 820px; filter: drop-shadow(0 10px 40px rgba(0,0,0,.6)); }
+
 /* Captions */
 #cap-shade { position: absolute; left: 0; right: 0; bottom: 0; height: 1000px; }
 #cap-shade-in { position: absolute; inset: 0;
@@ -269,6 +273,11 @@ const PUNCHES = __PUNCHES__;
 PUNCHES.forEach(([s, e, k]) => { tl.set("#aroll-zoom", { scale: k }, s); tl.set("#aroll-zoom", { scale: 1 }, e); });
 
 tl.fromTo("#cap-shade-in", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, __CAP0__);
+
+// Opening logo
+tl.fromTo("#intro-logo-img", { scale: 0.5, rotation: -8, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.45, ease: "back.out(1.8)" }, 0.05);
+tl.to("#intro-logo-img", { scale: 1.05, duration: 0.6, ease: "sine.out" }, 0.5);
+tl.to("#intro-logo-img", { opacity: 0, y: -30, duration: 0.2, ease: "power1.in" }, __INTRO_END__ - 0.2);
 
 // Captions pop
 CAPS.forEach(([s], i) => {
@@ -333,14 +342,15 @@ def build():
     music_auto = {"version": 1, "lanes": [{"target": "volume", "points": [
         {"t": 0, "v": 0}, {"t": 1.0, "v": MUSIC}, {"t": DUR - 2.5, "v": MUSIC}, {"t": DUR, "v": 0}]}]}
     js = (JS.replace("__BROLL__", json.dumps(BROLL)).replace("__CAPS__", json.dumps([c[:2] for c in CAPTIONS]))
-          .replace("__PUNCHES__", json.dumps(PUNCHES)).replace("__DUR__", str(DUR)).replace("__CAP0__", str(CAPTIONS[0][0])))
+          .replace("__PUNCHES__", json.dumps(PUNCHES)).replace("__DUR__", str(DUR)).replace("__CAP0__", "0").replace("__INTRO_END__", str(INTRO_END)))
     body = "\n".join([
         '      <div id="aroll-zoom">',
         f'        <video id="aroll" class="clip" src="assets/ad4.mp4" playsinline data-has-audio="true" data-start="0" '
         f'data-duration="{DUR}" data-track-index="0" data-volume="1"></video>',
         '      </div>',
         *[broll_html(*b) for b in BROLL],
-        f'      <div id="cap-shade" class="clip" data-start="{CAPTIONS[0][0]}" data-duration="{round(DUR - CAPTIONS[0][0], 2)}" data-track-index="2"><div id="cap-shade-in"></div></div>',
+        f'      <div id="cap-shade" class="clip" data-start="0" data-duration="{DUR}" data-track-index="2"><div id="cap-shade-in"></div></div>',
+        f'      <div id="intro-logo" class="clip" data-start="0" data-duration="{INTRO_END}" data-track-index="4"><img id="intro-logo-img" src="assets/brand/abct-ai-logo-light.png" alt="Anybody Can Trade with AI" /></div>',
         *[caption_html(i, c) for i, c in enumerate(CAPTIONS)],
         f'      <audio id="music" src="assets/audio/music-bed.m4a" data-start="0" data-duration="{DUR}" data-track-index="5" '
         f"data-volume=\"{MUSIC}\" data-automation='{json.dumps(music_auto)}'></audio>",
