@@ -19,8 +19,7 @@ CAPTIONS = [
     (5.65, 8.20, "I have a special invitation", [3, 4]),
     (8.20, 9.80, "because we're bringing ABCT back", [3]),
     (9.80, 11.50, "in a whole new way.", [2, 3]),
-    (11.50, 13.10, "This time, it's", [1]),
-    (13.10, 14.40, "ABCT with AI.", [0, 2]),
+    (11.50, 14.40, "This time, it's", [1]),
     (14.40, 16.30, "In the age of AI,", [4]),
     (16.30, 17.80, "ABCT's mindset & strategies", [1, 3]),
     (17.80, 19.66, "how to use them, which prompts to use", [5]),
@@ -39,8 +38,7 @@ CAPTIONS = [
     (38.60, 40.20, "you've done ABCT once.", [2]),
     (40.20, 41.60, "This time, do it with AI.", [5]),
     (41.60, 42.50, "So click the link", [3]),
-    (42.50, 43.35, "and book your seat", [1, 3]),
-    (43.35, DUR, "for ABCT with AI.", [1, 3]),
+    (42.50, DUR, "and book your seat", [1, 3]),
 ]
 
 # B-roll cutaways: (id, start, end). Bodies are defined in BROLL_HTML.
@@ -87,10 +85,10 @@ BROLL_HTML = {
       <div class="stage">
         <div class="ticket" id="ticket">
           <div class="t-label">Special Invitation</div>
-          <div class="t-title">ABCT</div>
+          <img class="t-logo" src="assets/brand/abct-ai-logo-light.png" alt="Anybody Can Trade with AI" />
           <div class="t-sub">Alumni Edition</div>
           <div class="t-tear"></div>
-          <div class="t-foot">Admit one &middot; Anybody Can Trade</div>
+          <div class="t-foot">Admit one &middot; Alumni only</div>
           <div class="shine" id="ticket-shine" data-layout-allow-overflow></div>
         </div>
       </div>""",
@@ -98,11 +96,7 @@ BROLL_HTML = {
       <div class="stage">
         <div class="orbit o1" id="orb-1"></div>
         <div class="orbit o2" id="orb-2"></div>
-        <div class="lockup">
-          <span class="l-abct" id="lk-abct">ABCT</span>
-          <span class="l-x" id="lk-x">&times;</span>
-          <span class="l-ai" id="lk-ai">AI</span>
-        </div>
+        <div class="lockup"><img class="logo-big" id="lk-logo" src="assets/brand/abct-ai-logo-light.png" alt="Anybody Can Trade with AI" /></div>
         <div class="kicker under" id="lk-sub">Trading in the age of AI</div>
       </div>""",
     "b-prompt": f"""
@@ -129,7 +123,7 @@ BROLL_HTML = {
       <div class="stage">
         <div class="kicker">What you get</div>
         <div class="list">
-          <div class="item" id="of-1"><span class="tick">&#10003;</span><div><b>ABCT with AI</b><small>4 &middot; 5 &middot; 6 September</small></div></div>
+          <div class="item" id="of-1"><span class="tick">&#10003;</span><div><img class="item-logo" src="assets/brand/abct-ai-logo-light.png" alt="Anybody Can Trade with AI" /><small>4 &middot; 5 &middot; 6 September</small></div></div>
           <div class="item" id="of-2"><span class="tick">&#10003;</span><div><b>AI Implementation Day</b><small>Put it into practice</small></div></div>
           <div class="item" id="of-3"><span class="tick">&#10003;</span><div><b>3-Day Happiness Course</b><small>Included</small></div></div>
         </div>
@@ -141,7 +135,7 @@ BROLL_HTML = {
       </div>""",
     "b-cta": """
       <div class="stage">
-        <div class="cta-title" id="cta-title">ABCT <em>with AI</em></div>
+        <img class="cta-logo" id="cta-title" src="assets/brand/abct-ai-logo-light.png" alt="Anybody Can Trade with AI" />
         <div class="btn" id="cta-btn">Book your seat<div class="ripple" id="cta-ripple"></div></div>
         <div class="kicker under" id="cta-sub">Click the link below</div>
         <svg class="cursor" id="cta-cursor" viewBox="0 0 24 24" width="96" height="96"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#0b1020" stroke-width="1.5" stroke-linejoin="round"/></svg>
@@ -182,7 +176,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b102
 .ticket { position: relative; width: 820px; padding: 64px 60px 50px; border-radius: 40px; overflow: hidden; text-align: center;
   background: linear-gradient(150deg, #20295a, #121838); border: 5px solid var(--gold); box-shadow: 0 40px 120px rgba(0,0,0,.55); }
 .t-label { font-weight: 800; font-size: 40px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
-.t-title { font-weight: 900; font-size: 210px; line-height: 1; margin-top: 18px; }
+.t-logo { display: block; width: 600px; margin: 26px auto 10px; }
 .t-sub { font-weight: 800; font-size: 50px; text-transform: uppercase; letter-spacing: .08em; color: #c9d2ff; }
 .t-tear { margin: 44px -60px 30px; border-top: 5px dashed rgba(255,200,61,.6); }
 .t-foot { font-weight: 600; font-size: 34px; color: #c9d2ff; }
@@ -192,7 +186,8 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b102
 .orbit { position: absolute; left: 50%; top: 36%; border-radius: 50%; border: 3px solid rgba(57,213,255,.35); }
 .o1 { width: 900px; height: 900px; margin: -450px 0 0 -450px; border-style: dashed; }
 .o2 { width: 640px; height: 640px; margin: -320px 0 0 -320px; border-color: rgba(255,200,61,.35); }
-.lockup { position: relative; display: flex; align-items: baseline; gap: 26px; font-weight: 900; font-size: 190px; line-height: 1; }
+.lockup { position: relative; display: flex; justify-content: center; }
+.logo-big { display: block; width: 900px; filter: drop-shadow(0 0 50px rgba(57,213,255,.45)); }
 .l-abct, .l-x, .l-ai { display: inline-block; }
 .l-x { color: var(--gold); font-size: 140px; }
 .l-ai { color: var(--cyan); text-shadow: 0 0 60px rgba(57,213,255,.8); }
@@ -224,12 +219,14 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b102
 .item { display: flex; align-items: center; gap: 34px; padding: 34px 40px; border-radius: 32px; background: rgba(255,255,255,.08);
   border: 3px solid rgba(255,255,255,.2); }
 .item b { display: block; font-weight: 900; font-size: 52px; }
+.item-logo { display: block; width: 300px; }
 .item small { display: block; font-weight: 600; font-size: 32px; color: #c9d2ff; margin-top: 6px; }
 .tick { flex: none; width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   background: var(--gold); color: #121838; font-size: 54px; font-weight: 900; }
 
 .price { position: relative; font-weight: 900; font-size: 330px; line-height: 1; color: var(--gold); text-shadow: 0 20px 80px rgba(255,200,61,.45); }
 
+.cta-logo { position: relative; display: block; width: 780px; }
 .cta-title { position: relative; white-space: nowrap; font-weight: 900; font-size: 112px; line-height: 1; }
 .cta-title em { font-style: normal; color: var(--cyan); }
 .btn { position: relative; overflow: hidden; padding: 48px 90px; border-radius: 999px; background: var(--gold); color: #121838;
@@ -238,6 +235,9 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b102
 .cursor { position: absolute; left: 800px; top: 690px; }
 
 /* Captions */
+#cap-shade { position: absolute; left: 0; right: 0; bottom: 0; height: 1000px; }
+#cap-shade-in { position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 38%, rgba(0,0,0,.82) 70%, rgba(0,0,0,.9) 100%); }
 .cap { position: absolute; left: 60px; right: 60px; top: 1290px; height: 320px; display: flex; align-items: center; justify-content: center; }
 .cap-inner { display: block; max-width: 960px; text-align: center; font-weight: 900; font-size: 84px; line-height: 1.12;
   text-transform: uppercase; color: #fff; -webkit-text-stroke: 14px #000; paint-order: stroke fill;
@@ -268,6 +268,8 @@ const PUNCHES = __PUNCHES__;
 // A-roll punch-ins (hard cut in, hard cut out)
 PUNCHES.forEach(([s, e, k]) => { tl.set("#aroll-zoom", { scale: k }, s); tl.set("#aroll-zoom", { scale: 1 }, e); });
 
+tl.fromTo("#cap-shade-in", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, __CAP0__);
+
 // Captions pop
 CAPS.forEach(([s], i) => {
   tl.fromTo(`#cap-${i}-in`, { scale: 0.82, y: 24, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.18, ease: "back.out(2.2)" }, s);
@@ -289,9 +291,8 @@ tl.fromTo("#ticket", { y: 220, rotation: -8, opacity: 0 }, { y: 0, rotation: -3,
 tl.fromTo("#ticket-shine", { x: -260 }, { x: 1100, duration: 0.9, ease: "power2.inOut" }, 6.5);
 
 // b-ai
-tl.fromTo("#lk-abct", { x: -120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 13.15);
-tl.fromTo("#lk-x", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2)" }, 13.4);
-tl.fromTo("#lk-ai", { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 13.55);
+tl.fromTo("#lk-logo", { scale: 0.6, rotation: -6, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.55, ease: "back.out(1.7)" }, 13.15);
+tl.to("#lk-logo", { scale: 1.06, duration: 2.4, ease: "sine.inOut" }, 13.75);
 tl.fromTo("#lk-sub", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 14.4);
 tl.fromTo("#orb-1", { rotation: 0 }, { rotation: 60, duration: 3.2, ease: "none" }, 13.1);
 tl.fromTo("#orb-2", { rotation: 0, scale: 0.9 }, { rotation: -80, scale: 1.05, duration: 3.2, ease: "none" }, 13.1);
@@ -312,7 +313,7 @@ tl.fromTo("#ai-bubble .bar", { scaleY: 0 }, { scaleY: 1, duration: 0.35, stagger
 
 // b-price
 tl.fromTo("#price", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power4.out" }, 35.75);
-tl.fromTo("#price", { rotation: 0 }, { rotation: -3, duration: 0.08, yoyo: true, repeat: 3, ease: "sine.inOut" }, 36.1);
+tl.to("#price", { rotation: -3, duration: 0.08, yoyo: true, repeat: 3, ease: "sine.inOut" }, 36.1);
 
 // b-cta: cursor moves to the button and clicks
 tl.fromTo("#cta-title", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 41.65);
@@ -332,13 +333,14 @@ def build():
     music_auto = {"version": 1, "lanes": [{"target": "volume", "points": [
         {"t": 0, "v": 0}, {"t": 1.0, "v": MUSIC}, {"t": DUR - 2.5, "v": MUSIC}, {"t": DUR, "v": 0}]}]}
     js = (JS.replace("__BROLL__", json.dumps(BROLL)).replace("__CAPS__", json.dumps([c[:2] for c in CAPTIONS]))
-          .replace("__PUNCHES__", json.dumps(PUNCHES)).replace("__DUR__", str(DUR)))
+          .replace("__PUNCHES__", json.dumps(PUNCHES)).replace("__DUR__", str(DUR)).replace("__CAP0__", str(CAPTIONS[0][0])))
     body = "\n".join([
         '      <div id="aroll-zoom">',
         f'        <video id="aroll" class="clip" src="assets/ad4.mp4" playsinline data-has-audio="true" data-start="0" '
         f'data-duration="{DUR}" data-track-index="0" data-volume="1"></video>',
         '      </div>',
         *[broll_html(*b) for b in BROLL],
+        f'      <div id="cap-shade" class="clip" data-start="{CAPTIONS[0][0]}" data-duration="{round(DUR - CAPTIONS[0][0], 2)}" data-track-index="2"><div id="cap-shade-in"></div></div>',
         *[caption_html(i, c) for i, c in enumerate(CAPTIONS)],
         f'      <audio id="music" src="assets/audio/music-bed.m4a" data-start="0" data-duration="{DUR}" data-track-index="5" '
         f"data-volume=\"{MUSIC}\" data-automation='{json.dumps(music_auto)}'></audio>",
