@@ -1,0 +1,37 @@
+# Videos (HyperFrames)
+
+Video editing in this repo uses [HyperFrames](https://github.com/heygen-com/hyperframes):
+compositions are HTML + CSS + GSAP, rendered to MP4 with headless Chrome + FFmpeg.
+
+## With Claude Code
+
+HyperFrames skills are installed in `.claude/skills/`. Start any request with `/hyperframes`, e.g.
+
+- "Using /hyperframes, add captions to `videos/raw/talk.mp4`" (`/embedded-captions`)
+- "Using /hyperframes, add lower-thirds and callouts to this interview" (`/talking-head-recut`)
+- "Using /hyperframes, make a 30s promo for the 10x coaching page" (`/general-video`)
+
+Need another workflow later (e.g. `product-launch-video`, `music-to-video`)?
+`npx hyperframes skills update <name>`.
+
+## Manual CLI
+
+```bash
+npx hyperframes init videos/my-video --non-interactive   # new project
+npx hyperframes init videos/my-edit -v path/to/clip.mp4  # start from footage (+ transcription)
+cd videos/my-video
+npm run dev      # browser preview with live reload
+npm run check    # lint + validate
+npm run render   # -> renders/*.mp4
+```
+
+Requirements: Node 22+, FFmpeg. `npx hyperframes doctor` checks everything.
+
+## Notes for Claude Code cloud sessions
+
+- A SessionStart hook (`.claude/hooks/hyperframes-setup.sh`) downloads the Chrome Headless Shell.
+- `cdn.jsdelivr.net` is blocked by the cloud egress policy, so load libraries from local files
+  (see `videos/starter/assets/vendor/gsap.min.js`) instead of CDN `<script>` tags.
+- Whisper (transcription for captions) isn't installed in the cloud image; bring an existing
+  transcript or install whisper.cpp locally.
+- `videos/*/renders/` is gitignored.

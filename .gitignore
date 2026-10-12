@@ -1,0 +1,3 @@
+# HyperFrames render output
+videos/*/renders/
+node_modules/
