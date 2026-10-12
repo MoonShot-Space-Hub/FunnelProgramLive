@@ -18,7 +18,8 @@
         }
         #root .bld-grid {
           position: absolute;
-          inset: 0;
+          /* taller than the frame so the y:-60 drift never exposes a gridless band at the bottom */
+          inset: -100px 0;
           background-image:
             linear-gradient(rgba(255, 201, 60, 0.07) 2px, transparent 2px),
             linear-gradient(90deg, rgba(255, 201, 60, 0.07) 2px, transparent 2px);
@@ -276,74 +277,7 @@
             <ellipse id="bld-ellipse" cx="480" cy="320" rx="400" ry="250" fill="none" stroke="rgba(255,201,60,0.55)" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 20" />
           </svg>
 
-          <div class="bld-code" id="bld-code">
-            <div class="bld-head">
-              <div class="bld-dot" style="background: #e8402f"></div>
-              <div class="bld-dot" style="background: #f2b33d"></div>
-              <div class="bld-dot" style="background: #4fbf6a"></div>
-              <div class="bld-file">my_app.jsx</div>
-            </div>
-            <div class="bld-body">
-              <div class="bld-line" id="bld-l1"><div class="bld-hl" id="bld-h1"></div><i>&lt;</i><b>Header</b><i> /&gt;</i></div>
-              <div class="bld-line" id="bld-l2"><div class="bld-hl" id="bld-h2"></div><i>&lt;</i><b>Photo</b><i> /&gt;</i></div>
-              <div class="bld-line" id="bld-l3"><div class="bld-hl" id="bld-h3"></div><i>&lt;</i><b>List</b><i> /&gt;</i></div>
-              <div class="bld-line" id="bld-l4"><div class="bld-hl" id="bld-h4"></div><i>&lt;</i><b>Button</b><i> /&gt;</i></div>
-            </div>
-          </div>
-
-          <div class="bld-phone" id="bld-phone">
-            <div class="bld-glow" id="bld-glow"></div>
-            <div class="bld-body-phone">
-              <div class="bld-screen">
-                <div class="bld-notch"></div>
-                <div class="bld-blk" id="bld-hdr">
-                  <svg viewBox="0 0 316 70" aria-hidden="true">
-                    <circle cx="38" cy="35" r="18" fill="#16110a" />
-                    <rect x="70" y="27" width="120" height="16" rx="8" fill="#16110a" />
-                    <rect x="246" y="25" width="40" height="5" rx="2.5" fill="#16110a" />
-                    <rect x="246" y="33" width="40" height="5" rx="2.5" fill="#16110a" />
-                    <rect x="246" y="41" width="40" height="5" rx="2.5" fill="#16110a" />
-                  </svg>
-                  <div class="bld-snap" id="bld-s1"></div>
-                </div>
-                <div class="bld-blk" id="bld-photo">
-                  <svg viewBox="0 0 310 144" preserveAspectRatio="none" aria-hidden="true">
-                    <circle cx="236" cy="44" r="20" fill="#ffc93c" />
-                    <path d="M0 144 L84 62 L140 112 L186 76 L310 144 Z" fill="#9fe0b0" opacity="0.85" />
-                    <path d="M0 144 L60 104 L118 144 Z" fill="#6fbf86" />
-                  </svg>
-                  <div class="bld-snap" id="bld-s2"></div>
-                </div>
-                <div class="bld-blk bld-row" id="bld-r1">
-                  <svg viewBox="0 0 316 60" aria-hidden="true">
-                    <circle cx="32" cy="30" r="15" fill="#9fe0b0" />
-                    <rect x="62" y="18" width="150" height="10" rx="5" fill="#fff8ec" />
-                    <rect x="62" y="35" width="96" height="8" rx="4" fill="#6e685f" />
-                  </svg>
-                  <div class="bld-snap" id="bld-s3"></div>
-                </div>
-                <div class="bld-blk bld-row" id="bld-r2">
-                  <svg viewBox="0 0 316 60" aria-hidden="true">
-                    <circle cx="32" cy="30" r="15" fill="#e8402f" />
-                    <rect x="62" y="18" width="130" height="10" rx="5" fill="#fff8ec" />
-                    <rect x="62" y="35" width="110" height="8" rx="4" fill="#6e685f" />
-                  </svg>
-                  <div class="bld-snap" id="bld-s4"></div>
-                </div>
-                <div class="bld-blk" id="bld-btn">
-                  <svg viewBox="0 0 316 76" aria-hidden="true">
-                    <path d="M138 38h40M164 24l14 14-14 14" fill="none" stroke="#16110a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  <div class="bld-snap" id="bld-s5"></div>
-                </div>
-              </div>
-            </div>
-            <div class="bld-check" id="bld-check">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#16110a" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </div>
-          </div>
-
-          <!-- other builds orbiting the finished app -->
+          <!-- other builds: they sit behind the phone so they pop out from behind the finished app -->
           <div class="bld-orb" id="bld-o1">
             <div class="bld-tile" id="bld-t1">
               <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -397,6 +331,79 @@
               </svg>
             </div>
           </div>
+
+          <div class="bld-code" id="bld-code">
+            <div class="bld-head">
+              <div class="bld-dot" style="background: #e8402f"></div>
+              <div class="bld-dot" style="background: #f2b33d"></div>
+              <div class="bld-dot" style="background: #4fbf6a"></div>
+              <div class="bld-file">my_app.jsx</div>
+            </div>
+            <div class="bld-body">
+              <div class="bld-line" id="bld-l1"><div class="bld-hl" id="bld-h1"></div><i>&lt;</i><b>Header</b><i> /&gt;</i></div>
+              <div class="bld-line" id="bld-l2"><div class="bld-hl" id="bld-h2"></div><i>&lt;</i><b>Photo</b><i> /&gt;</i></div>
+              <div class="bld-line" id="bld-l3"><div class="bld-hl" id="bld-h3"></div><i>&lt;</i><b>List</b><i> /&gt;</i></div>
+              <div class="bld-line" id="bld-l4"><div class="bld-hl" id="bld-h4"></div><i>&lt;</i><b>Button</b><i> /&gt;</i></div>
+            </div>
+          </div>
+
+          <div class="bld-phone" id="bld-phone">
+            <div class="bld-glow" id="bld-glow"></div>
+            <div class="bld-body-phone">
+              <div class="bld-screen">
+                <div class="bld-notch"></div>
+                <div class="bld-blk" id="bld-hdr">
+                  <svg viewBox="0 0 316 70" aria-hidden="true">
+                    <circle cx="38" cy="35" r="18" fill="#16110a" />
+                    <rect x="70" y="27" width="120" height="16" rx="8" fill="#16110a" />
+                    <rect x="246" y="25" width="40" height="5" rx="2.5" fill="#16110a" />
+                    <rect x="246" y="33" width="40" height="5" rx="2.5" fill="#16110a" />
+                    <rect x="246" y="41" width="40" height="5" rx="2.5" fill="#16110a" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s1"></div>
+                </div>
+                <div class="bld-blk" id="bld-photo">
+                  <svg viewBox="0 0 310 144" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <clipPath id="bld-photo-clip"><rect x="0" y="0" width="310" height="144" rx="19" ry="18" /></clipPath>
+                    </defs>
+                    <g clip-path="url(#bld-photo-clip)">
+                      <circle cx="236" cy="44" r="20" fill="#ffc93c" />
+                      <path d="M0 144 L84 62 L140 112 L186 76 L310 144 Z" fill="#9fe0b0" opacity="0.85" />
+                      <path d="M0 144 L60 104 L118 144 Z" fill="#6fbf86" />
+                    </g>
+                  </svg>
+                  <div class="bld-snap" id="bld-s2"></div>
+                </div>
+                <div class="bld-blk bld-row" id="bld-r1">
+                  <svg viewBox="0 0 316 60" aria-hidden="true">
+                    <circle cx="32" cy="30" r="15" fill="#9fe0b0" />
+                    <rect x="62" y="18" width="150" height="10" rx="5" fill="#fff8ec" />
+                    <rect x="62" y="35" width="96" height="8" rx="4" fill="#6e685f" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s3"></div>
+                </div>
+                <div class="bld-blk bld-row" id="bld-r2">
+                  <svg viewBox="0 0 316 60" aria-hidden="true">
+                    <circle cx="32" cy="30" r="15" fill="#e8402f" />
+                    <rect x="62" y="18" width="130" height="10" rx="5" fill="#fff8ec" />
+                    <rect x="62" y="35" width="110" height="8" rx="4" fill="#6e685f" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s4"></div>
+                </div>
+                <div class="bld-blk" id="bld-btn">
+                  <svg viewBox="0 0 316 76" aria-hidden="true">
+                    <path d="M138 38h40M164 24l14 14-14 14" fill="none" stroke="#16110a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s5"></div>
+                </div>
+              </div>
+            </div>
+            <div class="bld-check" id="bld-check">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#16110a" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -455,24 +462,21 @@
             { orb: "#bld-o3", tile: "#bld-t3", a0: 145, t: 1.46 },
             { orb: "#bld-o4", tile: "#bld-t4", a0: 35, t: 1.58 },
           ];
-          function place(p) {
-            orbs.forEach(function (o) {
-              var a = ((o.a0 + DRIFT * p) * Math.PI) / 180;
-              gsap.set(o.orb, { x: CX + RX * Math.cos(a) - SIZE / 2, y: CY + RY * Math.sin(a) - SIZE / 2 });
-            });
+          function pos(deg) {
+            var a = (deg * Math.PI) / 180;
+            return { x: CX + RX * Math.cos(a) - SIZE / 2, y: CY + RY * Math.sin(a) - SIZE / 2 };
           }
-          place(0);
           orbs.forEach(function (o) {
+            // Slow drift along the ellipse: a plain x/y tween per tile (pure function of time,
+            // no callbacks). Over 8 degrees the straight chord stays within ~1px of the arc.
+            var p0 = pos(o.a0), p1 = pos(o.a0 + DRIFT);
+            tl.fromTo(o.orb, { x: p0.x, y: p0.y }, { x: p1.x, y: p1.y, duration: 1.42, ease: "none", immediateRender: true }, 1.22);
+            // Pop out from behind the finished app to its orbit slot.
             var a = (o.a0 * Math.PI) / 180;
             var dx = -RX * Math.cos(a) * 0.6;
             var dy = -RY * Math.sin(a) * 0.6;
             tl.fromTo(o.tile, { x: dx, y: dy, scale: 0.3, opacity: 0, rotation: -20 }, { x: 0, y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.36, ease: "power3.out", immediateRender: true }, o.t);
           });
-          var orbit = { p: 0 };
-          tl.fromTo(orbit, { p: 0 }, {
-            p: 1, duration: 1.42, ease: "none", immediateRender: true,
-            onUpdate: function () { place(orbit.p); },
-          }, 1.22);
 
           tl.seek(0);
           window.__timelines["broll-build"] = tl;

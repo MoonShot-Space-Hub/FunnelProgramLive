@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>B-roll 4 — masterclass ticket</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: radial-gradient(115% 62% at 50% 38%, #3a2a0c 0%, #17110a 48%, #0e0a06 100%);
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .bmc-grid {
+          position: absolute;
+          inset: -60px -60px -140px -60px;
+          background-image:
+            linear-gradient(rgba(255, 201, 60, 0.07) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(255, 201, 60, 0.07) 2px, transparent 2px);
+          background-size: 90px 90px;
+          transform-origin: 50% 40%;
+        }
+        #root .bmc-world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 36%;
+        }
+        #root .bmc-lift {
+          position: absolute;
+          inset: 0;
+        }
+        #root .bmc-ticket {
+          position: absolute;
+          left: 80px;
+          top: 320px;
+          width: 920px;
+          height: 770px;
+        }
+        /* Soft yellow glow around the ticket, animated by opacity only. */
+        #root .bmc-halo {
+          position: absolute;
+          inset: 0;
+          border-radius: 34px;
+          box-shadow: 0 0 110px rgba(255, 201, 60, 0.32), 0 40px 80px rgba(0, 0, 0, 0.55);
+        }
+        #root .bmc-shape {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 920px;
+          height: 770px;
+          overflow: visible;
+        }
+        #root .bmc-row {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        #root #bmc-free-row {
+          top: 44px;
+        }
+        #root .bmc-free {
+          display: inline-block;
+          padding: 14px 42px;
+          border-radius: 22px;
+          background: #ffc93c;
+          color: #16110a;
+          font-weight: 900;
+          font-size: 64px;
+          line-height: 1;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          box-shadow: 0 0 50px rgba(255, 201, 60, 0.5);
+          transform-origin: 50% 50%;
+        }
+        #root .bmc-spark {
+          position: absolute;
+          display: block;
+          transform-origin: 50% 50%;
+        }
+        #root #bmc-spark-l {
+          left: 168px;
+          top: 62px;
+          width: 64px;
+          height: 64px;
+        }
+        #root #bmc-spark-r {
+          left: 690px;
+          top: 34px;
+          width: 92px;
+          height: 92px;
+        }
+        #root #bmc-spark-s {
+          left: 792px;
+          top: 122px;
+          width: 40px;
+          height: 40px;
+        }
+        #root .bmc-burst {
+          position: absolute;
+          left: 160px;
+          top: 110px;
+          width: 600px;
+          height: 240px;
+          border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(255, 201, 60, 0.32) 0%, rgba(255, 201, 60, 0) 100%);
+          transform-origin: 50% 50%;
+        }
+        #root #bmc-ai-row {
+          top: 150px;
+          gap: 30px;
+        }
+        #root .bmc-ai {
+          display: inline-block;
+          font-weight: 900;
+          font-size: 140px;
+          line-height: 1;
+          letter-spacing: 0.01em;
+          color: #ffc93c;
+          text-shadow: 0 0 36px rgba(255, 201, 60, 0.55), 0 0 90px rgba(255, 201, 60, 0.3);
+          transform-origin: 50% 60%;
+        }
+        #root .bmc-bolt {
+          display: block;
+          width: 96px;
+          height: 116px;
+          filter: drop-shadow(0 0 18px rgba(255, 201, 60, 0.6));
+          transform-origin: 50% 50%;
+        }
+        #root .bmc-word {
+          display: inline-block;
+          font-weight: 900;
+          line-height: 1;
+          text-transform: uppercase;
+          white-space: nowrap;
+          transform-origin: 50% 60%;
+        }
+        #root #bmc-super-row {
+          top: 300px;
+        }
+        #root #bmc-super {
+          font-size: 100px;
+          letter-spacing: -0.005em;
+          color: #fff8ec;
+        }
+        #root #bmc-teens-row {
+          top: 410px;
+          gap: 26px;
+        }
+        #root #bmc-for {
+          font-size: 80px;
+          letter-spacing: 0.02em;
+          color: #b9b2a6;
+        }
+        #root #bmc-teens {
+          font-size: 80px;
+          letter-spacing: 0.02em;
+          color: #fff8ec;
+        }
+        #root #bmc-master-row {
+          top: 566px;
+        }
+        #root #bmc-master {
+          font-size: 84px;
+          letter-spacing: 0.02em;
+          color: #16110a;
+        }
+        #root #bmc-session-row {
+          top: 668px;
+        }
+        #root .bmc-session {
+          display: inline-flex;
+          align-items: center;
+          gap: 14px;
+          padding: 10px 30px;
+          border-radius: 999px;
+          background: #16110a;
+          color: #ffc93c;
+          font-family: "JetBrains Mono", monospace;
+          font-weight: 700;
+          font-size: 40px;
+          line-height: 1;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          white-space: nowrap;
+          transform-origin: 50% 50%;
+        }
+        #root .bmc-session svg {
+          display: block;
+          width: 34px;
+          height: 34px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="broll-masterclass" data-start="0" data-duration="3" data-width="1080" data-height="1920">
+        <div class="bmc-grid" id="bmc-grid" data-layout-allow-overflow></div>
+        <div class="bmc-world" id="bmc-world" data-layout-allow-overflow>
+          <div class="bmc-lift" id="bmc-lift">
+            <div class="bmc-ticket" id="bmc-ticket">
+              <div class="bmc-halo" id="bmc-halo"></div>
+
+              <!-- Ticket body with side notches at the tear line (y 540). -->
+              <svg class="bmc-shape" viewBox="0 0 920 770" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bmc-body-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#2b210f" />
+                    <stop offset="1" stop-color="#1a140b" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M34 0H886A34 34 0 0 1 920 34V502A38 38 0 0 0 920 578V736A34 34 0 0 1 886 770H34A34 34 0 0 1 0 736V578A38 38 0 0 0 0 502V34A34 34 0 0 1 34 0Z"
+                  fill="url(#bmc-body-grad)"
+                />
+                <path
+                  id="bmc-stub"
+                  d="M38 540H882A38 38 0 0 0 920 578V736A34 34 0 0 1 886 770H34A34 34 0 0 1 0 736V578A38 38 0 0 0 38 540Z"
+                  fill="#ffc93c"
+                />
+                <path
+                  d="M34 0H886A34 34 0 0 1 920 34V502A38 38 0 0 0 920 578V736A34 34 0 0 1 886 770H34A34 34 0 0 1 0 736V578A38 38 0 0 0 0 502V34A34 34 0 0 1 34 0Z"
+                  fill="none"
+                  stroke="#ffc93c"
+                  stroke-width="5"
+                />
+                <line id="bmc-perf" x1="62" y1="540" x2="858" y2="540" stroke="#ffc93c" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 18" opacity="0.75" />
+              </svg>
+
+              <!-- Sparkle accents around the FREE tag. -->
+              <svg class="bmc-spark" id="bmc-spark-l" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 1.5l2.6 7.9 7.9 2.6-7.9 2.6L12 22.5l-2.6-7.9L1.5 12l7.9-2.6z" fill="#ffc93c" />
+              </svg>
+              <svg class="bmc-spark" id="bmc-spark-r" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 1.5l2.6 7.9 7.9 2.6-7.9 2.6L12 22.5l-2.6-7.9L1.5 12l7.9-2.6z" fill="#ffc93c" />
+              </svg>
+              <svg class="bmc-spark" id="bmc-spark-s" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 1.5l2.6 7.9 7.9 2.6-7.9 2.6L12 22.5l-2.6-7.9L1.5 12l7.9-2.6z" fill="#fff8ec" />
+              </svg>
+
+              <div class="bmc-row" id="bmc-free-row">
+                <div class="bmc-free" id="bmc-free">Free</div>
+              </div>
+
+              <div class="bmc-burst" id="bmc-burst"></div>
+
+              <div class="bmc-row" id="bmc-ai-row">
+                <svg class="bmc-bolt" id="bmc-bolt-l" viewBox="0 0 24 24" aria-hidden="true">
+                  <g transform="translate(24 0) scale(-1 1)">
+                    <path d="M13.6 1.8L4.2 13.4h6.4l-1.6 8.8 9.8-12.4h-6.6z" fill="#ffc93c" stroke="#ffc93c" stroke-width="1" stroke-linejoin="round" />
+                  </g>
+                </svg>
+                <div class="bmc-ai" id="bmc-ai">AI</div>
+                <svg class="bmc-bolt" id="bmc-bolt-r" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13.6 1.8L4.2 13.4h6.4l-1.6 8.8 9.8-12.4h-6.6z" fill="#ffc93c" stroke="#ffc93c" stroke-width="1" stroke-linejoin="round" />
+                </svg>
+              </div>
+
+              <div class="bmc-row" id="bmc-super-row">
+                <div class="bmc-word" id="bmc-super">Superpowers</div>
+              </div>
+
+              <div class="bmc-row" id="bmc-teens-row">
+                <div class="bmc-word" id="bmc-for">For</div>
+                <div class="bmc-word" id="bmc-teens">Teens</div>
+              </div>
+
+              <div class="bmc-row" id="bmc-master-row">
+                <div class="bmc-word" id="bmc-master">Masterclass</div>
+              </div>
+
+              <div class="bmc-row" id="bmc-session-row">
+                <div class="bmc-session" id="bmc-session">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9.5" fill="none" stroke="#ffc93c" stroke-width="2.6" />
+                    <path d="M12 6.8v5.6l3.6 2.2" fill="none" stroke="#ffc93c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  1 Session
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+
+          // Camera settle, then a slow living push so the hold never freezes.
+          tl.fromTo("#bmc-world", { scale: 1.14 }, { scale: 1, duration: 0.55, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bmc-world", { scale: 1 }, { scale: 1.015, duration: 2.45, ease: "sine.inOut", immediateRender: false }, 0.55);
+          tl.fromTo("#bmc-grid", { scale: 1.08, y: 0 }, { scale: 1, y: -50, duration: 3, ease: "none", immediateRender: true }, 0);
+
+          // Ticket rises in; tear line draws across.
+          // Opacity resolves fast (solid before any text shows) while the lift keeps easing.
+          tl.fromTo("#bmc-lift", { y: 90 }, { y: 0, duration: 0.4, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bmc-ticket", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out", immediateRender: true }, 0);
+          tl.fromTo("#bmc-halo", { opacity: 0 }, { opacity: 0.75, duration: 0.4, ease: "power2.out", immediateRender: true }, 0.1);
+          tl.fromTo("#bmc-perf", { scaleX: 0, transformOrigin: "50% 50%" }, { scaleX: 1, transformOrigin: "50% 50%", duration: 0.4, ease: "power3.out", immediateRender: true }, 0.12);
+          tl.fromTo("#bmc-stub", { opacity: 0 }, { opacity: 0.1, duration: 0.4, ease: "power2.out", immediateRender: true }, 0.2);
+
+          // "free" (0.15): stamp slams in a beat early (solid by the word), sparkles pop.
+          // Stamp is fully opaque the instant it appears (ink on yellow never sits half-faded), then slams down.
+          tl.fromTo("#bmc-free-row", { opacity: 0 }, { opacity: 1, duration: 0.001, ease: "none", immediateRender: true }, 0.14);
+          tl.fromTo("#bmc-free", { scale: 1.7, rotation: -16 }, { scale: 1, rotation: -4, duration: 0.32, ease: "power3.out", immediateRender: true }, 0.14);
+          ["#bmc-spark-l", "#bmc-spark-r", "#bmc-spark-s"].forEach(function (id, i) {
+            tl.fromTo(id, { scale: 0, rotation: -90, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.34, ease: "power3.out", immediateRender: true }, 0.24 + i * 0.06);
+            tl.fromTo(id, { rotation: 0 }, { rotation: i === 1 ? -35 : 35, duration: 2.3, ease: "sine.inOut", immediateRender: false }, 0.7);
+          });
+
+          // "AI" (0.66).
+          tl.fromTo("#bmc-ai", { y: 50, scale: 0.86, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.32, ease: "power3.out", immediateRender: true }, 0.66);
+
+          // "Superpowers" (1.20): bolts strike either side of AI, glow blooms, word rises.
+          tl.fromTo("#bmc-bolt-l", { scale: 0, rotation: 25, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 1.2);
+          tl.fromTo("#bmc-bolt-r", { scale: 0, rotation: -25, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 1.24);
+          tl.fromTo("#bmc-burst", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power2.out", immediateRender: true }, 1.2);
+          tl.fromTo("#bmc-super", { y: 50, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.34, ease: "power3.out", immediateRender: true }, 1.22);
+
+          // "for Teens" (1.95-2.43).
+          tl.fromTo("#bmc-for", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.28, ease: "power3.out", immediateRender: true }, 1.95);
+          tl.fromTo("#bmc-teens", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 2.05);
+
+          // "masterclass" (2.43): stub lights up yellow, title rises, then the 1 SESSION detail.
+          tl.fromTo("#bmc-stub", { opacity: 0.1 }, { opacity: 1, duration: 0.14, ease: "power2.out", immediateRender: false }, 2.38);
+          tl.fromTo("#bmc-halo", { opacity: 0.75 }, { opacity: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, 2.4);
+          tl.fromTo("#bmc-master", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 2.46);
+          tl.fromTo("#bmc-session", { scale: 0 }, { scale: 1, duration: 0.28, ease: "power3.out", immediateRender: true }, 2.64);
+
+          tl.seek(0);
+          window.__timelines["broll-masterclass"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
