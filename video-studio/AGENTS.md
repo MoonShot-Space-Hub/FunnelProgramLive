@@ -107,6 +107,7 @@ Fix all errors before presenting the result. Warnings should be reviewed before 
 4. A video with sound keeps it on the `<video>` (`data-has-audio="true"`, no `muted`). Use a separate `<audio>` for music, voiceover, replacement audio, J/L cuts, or audio detached in Studio. Silent footage and b-roll: `muted`.
 5. Sub-compositions use `data-composition-src="compositions/file.html"` to reference other HTML files
 6. Only deterministic logic — no `Date.now()`, no `Math.random()`, no network fetches
+
 ## This repo's setup (cloud sessions)
 
 - CLI is pinned to `hyperframes@0.8.149` via `npx` in `package.json`; nothing to install.
