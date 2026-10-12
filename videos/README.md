@@ -35,3 +35,17 @@ Requirements: Node 22+, FFmpeg. `npx hyperframes doctor` checks everything.
 - Whisper (transcription for captions) isn't installed in the cloud image; bring an existing
   transcript or install whisper.cpp locally.
 - `videos/*/renders/` is gitignored.
+
+## Transcription in cloud sessions
+
+Hugging Face is blocked, but GitHub release downloads work, so sherpa-onnx models can be used:
+`pip install sherpa-onnx soundfile` and download e.g.
+`https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-large-v3.tar.bz2`
+(multilingual; `task="translate"` gives English) or `sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8.tar.bz2`
+(English, word timestamps). Feed Whisper chunks under 30s.
+
+## Projects
+
+- `ad-4-edit/` — Ad 4 (ABCT with AI): English captions translated from the Hinglish voiceover,
+  motion-graphic B-roll cutaways, original synthesized music bed. Edit `build.py`, run
+  `python3 build.py`, then `npm run render`.
