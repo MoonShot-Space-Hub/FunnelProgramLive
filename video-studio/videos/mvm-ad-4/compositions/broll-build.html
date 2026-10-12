@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>B-roll — they build things</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: radial-gradient(120% 70% at 50% 40%, #3a2a0c 0%, #17110a 48%, #0e0a06 100%);
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .bld-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(255, 201, 60, 0.07) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(255, 201, 60, 0.07) 2px, transparent 2px);
+          background-size: 90px 90px;
+          transform-origin: 50% 40%;
+        }
+        #root .bld-world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 40%;
+        }
+
+        /* ---------- headline ---------- */
+        #root .bld-title {
+          position: absolute;
+          left: 60px;
+          top: 316px;
+          width: 960px;
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          font-weight: 900;
+          font-size: 96px;
+          line-height: 1;
+          letter-spacing: 0.01em;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+        #root .bld-word {
+          display: inline-block;
+        }
+        #root #bld-w1 {
+          color: #fff8ec;
+        }
+        #root #bld-w2 {
+          color: #ffc93c;
+        }
+
+        /* ---------- code card ---------- */
+        #root .bld-code {
+          box-sizing: border-box;
+          position: absolute;
+          left: 70px;
+          top: 556px;
+          width: 470px;
+          border-radius: 28px;
+          background: #14100b;
+          border: 4px solid #3b352b;
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+          overflow: hidden;
+        }
+        #root .bld-head {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 20px 24px;
+          background: #1d1912;
+          border-bottom: 2px solid #2c261d;
+        }
+        #root .bld-dot {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+        }
+        #root .bld-file {
+          margin-left: 12px;
+          color: #d8cfbf;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 28px;
+        }
+        #root .bld-body {
+          padding: 22px 20px 26px;
+          font-family: "JetBrains Mono", monospace;
+          font-weight: 700;
+          font-size: 42px;
+          line-height: 1;
+        }
+        #root .bld-line {
+          position: relative;
+          display: block;
+          padding: 14px 16px;
+          white-space: nowrap;
+          color: #b9b2a6;
+        }
+        #root .bld-line b {
+          position: relative;
+          color: #ffc93c;
+        }
+        #root .bld-line i {
+          position: relative;
+          font-style: normal;
+        }
+        #root .bld-hl {
+          position: absolute;
+          inset: 0;
+          border-radius: 12px;
+          background: rgba(255, 201, 60, 0.18);
+          border: 3px solid rgba(255, 201, 60, 0.75);
+          opacity: 0;
+        }
+
+        /* ---------- phone ---------- */
+        #root .bld-phone {
+          position: absolute;
+          left: 580px;
+          top: 446px;
+          width: 400px;
+          height: 640px;
+        }
+        #root .bld-glow {
+          position: absolute;
+          inset: -80px;
+          border-radius: 120px;
+          background: radial-gradient(closest-side, rgba(255, 201, 60, 0.42), rgba(255, 201, 60, 0) 100%);
+          opacity: 0.55;
+        }
+        #root .bld-body-phone {
+          box-sizing: border-box;
+          position: absolute;
+          inset: 0;
+          border-radius: 60px;
+          background: #0f0c08;
+          border: 6px solid #ffc93c;
+          box-shadow: 0 0 80px rgba(255, 201, 60, 0.35), 0 40px 80px rgba(0, 0, 0, 0.6);
+          padding: 14px;
+        }
+        #root .bld-screen {
+          box-sizing: border-box;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 44px;
+          background: #1c1710;
+          padding: 58px 22px 22px;
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+        }
+        #root .bld-notch {
+          position: absolute;
+          left: 50%;
+          top: 18px;
+          width: 110px;
+          height: 24px;
+          margin-left: -55px;
+          border-radius: 12px;
+          background: #0f0c08;
+        }
+        #root .bld-blk {
+          position: relative;
+          display: block;
+          flex: 0 0 auto;
+          transform-origin: 50% 50%;
+        }
+        #root .bld-snap {
+          position: absolute;
+          inset: -7px;
+          border-radius: 24px;
+          border: 4px solid #fff8ec;
+          opacity: 0;
+        }
+        #root #bld-hdr {
+          height: 70px;
+          border-radius: 18px;
+          background: #ffc93c;
+        }
+        #root #bld-photo {
+          height: 150px;
+          border-radius: 22px;
+          background: linear-gradient(160deg, #4a3913 0%, #2a2114 100%);
+          border: 3px solid rgba(255, 201, 60, 0.45);
+          overflow: visible;
+        }
+        #root .bld-row {
+          height: 60px;
+          border-radius: 16px;
+          background: #2a2318;
+        }
+        #root #bld-btn {
+          height: 76px;
+          border-radius: 38px;
+          background: #ffc93c;
+        }
+        #root .bld-blk svg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+        }
+        #root .bld-check {
+          box-sizing: border-box;
+          position: absolute;
+          right: -30px;
+          top: -30px;
+          width: 104px;
+          height: 104px;
+          border-radius: 50%;
+          background: #9fe0b0;
+          border: 6px solid #0f0c08;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform-origin: 50% 50%;
+        }
+        #root .bld-check svg {
+          width: 58px;
+          height: 58px;
+        }
+
+        /* ---------- orbit + other builds ---------- */
+        #root .bld-ring {
+          position: absolute;
+          left: 60px;
+          top: 440px;
+          width: 960px;
+          height: 640px;
+          transform-origin: 50% 50%;
+        }
+        #root .bld-orb {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 150px;
+          height: 150px;
+        }
+        #root .bld-tile {
+          box-sizing: border-box;
+          position: absolute;
+          inset: 0;
+          border-radius: 32px;
+          background: linear-gradient(180deg, #2b210f 0%, #1a140b 100%);
+          border: 5px solid #ffc93c;
+          box-shadow: 0 0 40px rgba(255, 201, 60, 0.28), 0 20px 40px rgba(0, 0, 0, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform-origin: 50% 50%;
+        }
+        #root .bld-tile svg {
+          width: 92px;
+          height: 92px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="broll-build" data-start="0" data-duration="2.64" data-width="1080" data-height="1920">
+        <div class="bld-grid" id="bld-grid"></div>
+        <div class="bld-world" id="bld-world">
+          <div class="bld-title" id="bld-title">
+            <span class="bld-word" id="bld-w1">Build</span>
+            <span class="bld-word" id="bld-w2">Things</span>
+          </div>
+
+          <!-- orbit ring sits behind the phone -->
+          <svg class="bld-ring" id="bld-ring" viewBox="0 0 960 640" aria-hidden="true">
+            <ellipse id="bld-ellipse" cx="480" cy="320" rx="400" ry="250" fill="none" stroke="rgba(255,201,60,0.55)" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 20" />
+          </svg>
+
+          <div class="bld-code" id="bld-code">
+            <div class="bld-head">
+              <div class="bld-dot" style="background: #e8402f"></div>
+              <div class="bld-dot" style="background: #f2b33d"></div>
+              <div class="bld-dot" style="background: #4fbf6a"></div>
+              <div class="bld-file">my_app.jsx</div>
+            </div>
+            <div class="bld-body">
+              <div class="bld-line" id="bld-l1"><div class="bld-hl" id="bld-h1"></div><i>&lt;</i><b>Header</b><i> /&gt;</i></div>
+              <div class="bld-line" id="bld-l2"><div class="bld-hl" id="bld-h2"></div><i>&lt;</i><b>Photo</b><i> /&gt;</i></div>
+              <div class="bld-line" id="bld-l3"><div class="bld-hl" id="bld-h3"></div><i>&lt;</i><b>List</b><i> /&gt;</i></div>
+              <div class="bld-line" id="bld-l4"><div class="bld-hl" id="bld-h4"></div><i>&lt;</i><b>Button</b><i> /&gt;</i></div>
+            </div>
+          </div>
+
+          <div class="bld-phone" id="bld-phone">
+            <div class="bld-glow" id="bld-glow"></div>
+            <div class="bld-body-phone">
+              <div class="bld-screen">
+                <div class="bld-notch"></div>
+                <div class="bld-blk" id="bld-hdr">
+                  <svg viewBox="0 0 316 70" aria-hidden="true">
+                    <circle cx="38" cy="35" r="18" fill="#16110a" />
+                    <rect x="70" y="27" width="120" height="16" rx="8" fill="#16110a" />
+                    <rect x="246" y="25" width="40" height="5" rx="2.5" fill="#16110a" />
+                    <rect x="246" y="33" width="40" height="5" rx="2.5" fill="#16110a" />
+                    <rect x="246" y="41" width="40" height="5" rx="2.5" fill="#16110a" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s1"></div>
+                </div>
+                <div class="bld-blk" id="bld-photo">
+                  <svg viewBox="0 0 310 144" preserveAspectRatio="none" aria-hidden="true">
+                    <circle cx="236" cy="44" r="20" fill="#ffc93c" />
+                    <path d="M0 144 L84 62 L140 112 L186 76 L310 144 Z" fill="#9fe0b0" opacity="0.85" />
+                    <path d="M0 144 L60 104 L118 144 Z" fill="#6fbf86" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s2"></div>
+                </div>
+                <div class="bld-blk bld-row" id="bld-r1">
+                  <svg viewBox="0 0 316 60" aria-hidden="true">
+                    <circle cx="32" cy="30" r="15" fill="#9fe0b0" />
+                    <rect x="62" y="18" width="150" height="10" rx="5" fill="#fff8ec" />
+                    <rect x="62" y="35" width="96" height="8" rx="4" fill="#6e685f" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s3"></div>
+                </div>
+                <div class="bld-blk bld-row" id="bld-r2">
+                  <svg viewBox="0 0 316 60" aria-hidden="true">
+                    <circle cx="32" cy="30" r="15" fill="#e8402f" />
+                    <rect x="62" y="18" width="130" height="10" rx="5" fill="#fff8ec" />
+                    <rect x="62" y="35" width="110" height="8" rx="4" fill="#6e685f" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s4"></div>
+                </div>
+                <div class="bld-blk" id="bld-btn">
+                  <svg viewBox="0 0 316 76" aria-hidden="true">
+                    <path d="M138 38h40M164 24l14 14-14 14" fill="none" stroke="#16110a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <div class="bld-snap" id="bld-s5"></div>
+                </div>
+              </div>
+            </div>
+            <div class="bld-check" id="bld-check">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#16110a" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </div>
+          </div>
+
+          <!-- other builds orbiting the finished app -->
+          <div class="bld-orb" id="bld-o1">
+            <div class="bld-tile" id="bld-t1">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <line x1="32" y1="6" x2="32" y2="15" stroke="#ffc93c" stroke-width="4" stroke-linecap="round" />
+                <circle cx="32" cy="6" r="4.5" fill="#ffc93c" />
+                <rect x="5" y="25" width="6" height="14" rx="3" fill="#ffc93c" />
+                <rect x="53" y="25" width="6" height="14" rx="3" fill="#ffc93c" />
+                <rect x="11" y="15" width="42" height="34" rx="10" fill="#ffc93c" />
+                <circle cx="24" cy="30" r="5" fill="#16110a" />
+                <circle cx="40" cy="30" r="5" fill="#16110a" />
+                <rect x="24" y="39" width="16" height="4" rx="2" fill="#16110a" />
+                <rect x="20" y="52" width="24" height="8" rx="4" fill="#ffc93c" />
+              </svg>
+            </div>
+          </div>
+          <div class="bld-orb" id="bld-o2">
+            <div class="bld-tile" id="bld-t2">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M18 18h28c8 0 13 6 14 14l2 12c1 7-6 11-11 6l-7-6H22l-7 6c-5 5-12 1-11-6l2-12c1-8 6-14 12-14z" fill="#9fe0b0" />
+                <rect x="15" y="29" width="14" height="5" rx="2" fill="#16110a" />
+                <rect x="19.5" y="24.5" width="5" height="14" rx="2" fill="#16110a" />
+                <circle cx="43" cy="27" r="3.6" fill="#16110a" />
+                <circle cx="49" cy="34" r="3.6" fill="#16110a" />
+              </svg>
+            </div>
+          </div>
+          <div class="bld-orb" id="bld-o3">
+            <div class="bld-tile" id="bld-t3">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <rect x="5" y="10" width="54" height="44" rx="8" fill="#fff8ec" />
+                <path d="M5 18a8 8 0 0 1 8-8h38a8 8 0 0 1 8 8v4H5z" fill="#b9b2a6" />
+                <circle cx="12" cy="16" r="2.2" fill="#e8402f" />
+                <circle cx="19" cy="16" r="2.2" fill="#ffc93c" />
+                <circle cx="26" cy="16" r="2.2" fill="#9fe0b0" />
+                <rect x="11" y="28" width="20" height="18" rx="3" fill="#ffc93c" />
+                <rect x="35" y="29" width="18" height="4" rx="2" fill="#16110a" />
+                <rect x="35" y="36" width="14" height="4" rx="2" fill="#6e685f" />
+                <rect x="35" y="43" width="16" height="4" rx="2" fill="#6e685f" />
+              </svg>
+            </div>
+          </div>
+          <div class="bld-orb" id="bld-o4">
+            <div class="bld-tile" id="bld-t4">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M26 46h12l-6 14z" fill="#e8402f" />
+                <path d="M29 46h6l-3 8z" fill="#ffc93c" />
+                <path d="M22 34l-9 12h11z" fill="#ffc93c" />
+                <path d="M42 34l9 12H40z" fill="#ffc93c" />
+                <path d="M32 4c10 7 13 20 10 34l-4 8H26l-4-8C19 24 22 11 32 4z" fill="#fff8ec" />
+                <circle cx="32" cy="22" r="5.5" fill="#16110a" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+
+          // Camera settle, then a slow push that keeps the frame alive to the end.
+          tl.fromTo("#bld-world", { scale: 1.14 }, { scale: 1, duration: 0.55, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bld-world", { scale: 1 }, { scale: 1.03, duration: 2.0, ease: "sine.inOut", immediateRender: false }, 0.64);
+          tl.fromTo("#bld-grid", { scale: 1.08, y: 0 }, { scale: 1, y: -60, duration: 2.64, ease: "none", immediateRender: true }, 0);
+
+          // "They build" — headline word one, code card + phone arrive.
+          tl.fromTo("#bld-w1", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bld-w2", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.72);
+          tl.fromTo("#bld-code", { x: -90, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bld-phone", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 0.34, ease: "power3.out", immediateRender: true }, 0.04);
+
+          // Each code line appears, lights up, and its UI block snaps into the phone.
+          var steps = [
+            { line: "#bld-l1", hl: "#bld-h1", blk: "#bld-hdr", snap: "#bld-s1", t: 0.1 },
+            { line: "#bld-l2", hl: "#bld-h2", blk: "#bld-photo", snap: "#bld-s2", t: 0.3 },
+            { line: "#bld-l3", hl: "#bld-h3", blk: "#bld-r1", snap: "#bld-s3", t: 0.5 },
+            { line: "#bld-l4", hl: "#bld-h4", blk: "#bld-btn", snap: "#bld-s5", t: 0.74 },
+          ];
+          steps.forEach(function (s) {
+            tl.fromTo(s.line, { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.16, ease: "power3.out", immediateRender: true }, s.t);
+            tl.fromTo(s.hl, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out", immediateRender: true }, s.t + 0.06);
+            tl.fromTo(s.hl, { opacity: 1 }, { opacity: 0.25, duration: 0.3, ease: "power2.out", immediateRender: false }, s.t + 0.26);
+            tl.fromTo(s.blk, { x: -170, y: -10, scale: 0.86, opacity: 0 }, { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.24, ease: "power3.out", immediateRender: true }, s.t + 0.06);
+            tl.fromTo(s.snap, { opacity: 0, scale: 1 }, { opacity: 1, duration: 0.03, ease: "none", immediateRender: true }, s.t + 0.2);
+            tl.fromTo(s.snap, { opacity: 1, scale: 1 }, { opacity: 0, scale: 1.08, duration: 0.24, ease: "power2.out", immediateRender: false }, s.t + 0.23);
+          });
+          // The second list row rides in with the first (one <List /> line, two rows).
+          tl.fromTo("#bld-r2", { x: -170, y: -10, scale: 0.86, opacity: 0 }, { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.24, ease: "power3.out", immediateRender: true }, 0.64);
+          tl.fromTo("#bld-s4", { opacity: 0, scale: 1 }, { opacity: 1, duration: 0.03, ease: "none", immediateRender: true }, 0.78);
+          tl.fromTo("#bld-s4", { opacity: 1, scale: 1 }, { opacity: 0, scale: 1.08, duration: 0.24, ease: "power2.out", immediateRender: false }, 0.81);
+
+          // App finished: check badge + glow swell.
+          tl.fromTo("#bld-check", { scale: 0, rotation: -70 }, { scale: 1, rotation: 0, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.98);
+          tl.fromTo("#bld-glow", { opacity: 0.55, scale: 1 }, { opacity: 1, scale: 1.06, duration: 0.3, ease: "power2.out", immediateRender: true }, 0.98);
+          tl.fromTo("#bld-glow", { opacity: 1, scale: 1.06 }, { opacity: 0.7, scale: 1, duration: 0.6, ease: "sine.inOut", immediateRender: false }, 1.3);
+
+          // Code card steps aside; finished app glides to centre stage.
+          tl.fromTo("#bld-code", { x: 0, opacity: 1 }, { x: -160, opacity: 0, duration: 0.3, ease: "power2.in", immediateRender: false }, 1.08);
+          tl.fromTo("#bld-phone", { x: 0 }, { x: -240, duration: 0.46, ease: "power3.inOut", immediateRender: false }, 1.08);
+
+          // "other kids their age" — orbit ring opens and other builds pop out around the app.
+          tl.fromTo("#bld-ring", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: "power3.out", immediateRender: true }, 1.16);
+          tl.fromTo("#bld-ellipse", { strokeDashoffset: 0 }, { strokeDashoffset: -240, duration: 1.48, ease: "none", immediateRender: true }, 1.16);
+
+          var CX = 540, CY = 760, RX = 400, RY = 250, SIZE = 150, DRIFT = 8;
+          var orbs = [
+            { orb: "#bld-o1", tile: "#bld-t1", a0: 215, t: 1.22 },
+            { orb: "#bld-o2", tile: "#bld-t2", a0: -35, t: 1.34 },
+            { orb: "#bld-o3", tile: "#bld-t3", a0: 145, t: 1.46 },
+            { orb: "#bld-o4", tile: "#bld-t4", a0: 35, t: 1.58 },
+          ];
+          function place(p) {
+            orbs.forEach(function (o) {
+              var a = ((o.a0 + DRIFT * p) * Math.PI) / 180;
+              gsap.set(o.orb, { x: CX + RX * Math.cos(a) - SIZE / 2, y: CY + RY * Math.sin(a) - SIZE / 2 });
+            });
+          }
+          place(0);
+          orbs.forEach(function (o) {
+            var a = (o.a0 * Math.PI) / 180;
+            var dx = -RX * Math.cos(a) * 0.6;
+            var dy = -RY * Math.sin(a) * 0.6;
+            tl.fromTo(o.tile, { x: dx, y: dy, scale: 0.3, opacity: 0, rotation: -20 }, { x: 0, y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.36, ease: "power3.out", immediateRender: true }, o.t);
+          });
+          var orbit = { p: 0 };
+          tl.fromTo(orbit, { p: 0 }, {
+            p: 1, duration: 1.42, ease: "none", immediateRender: true,
+            onUpdate: function () { place(orbit.p); },
+          }, 1.22);
+
+          tl.seek(0);
+          window.__timelines["broll-build"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

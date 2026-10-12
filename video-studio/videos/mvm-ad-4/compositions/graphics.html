@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Keyword graphics</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .g-row {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          gap: 24px;
+        }
+        #root .chip {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 16px;
+          padding: 18px 32px 20px;
+          border-radius: 18px;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: 0.01em;
+          line-height: 1;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+          box-shadow: 0 14px 34px rgba(12, 9, 4, 0.45);
+        }
+        #root .chip svg {
+          width: 1em;
+          height: 1em;
+          flex: none;
+        }
+        #root .chip-yellow {
+          background: #ffc93c;
+          color: #16110a;
+        }
+        #root .chip-ink {
+          background: rgba(22, 17, 10, 0.88);
+          color: #fff8ec;
+          border: 3px solid rgba(255, 201, 60, 0.85);
+        }
+        #root .strike {
+          position: absolute;
+          left: 18px;
+          right: 18px;
+          top: 50%;
+          height: 9px;
+          margin-top: -4px;
+          border-radius: 5px;
+          background: #e8402f;
+          transform-origin: 0% 50%;
+          transform: scaleX(0);
+        }
+        #root #g-hook {
+          font-size: 58px;
+        }
+        #root #g-think,
+        #root #g-faster {
+          font-size: 54px;
+        }
+        #root #g-nextyear,
+        #root #g-boards {
+          font-size: 46px;
+        }
+        #root #g-now {
+          font-size: 150px;
+          padding: 14px 64px 22px;
+          border-radius: 26px;
+        }
+        #root #g-session {
+          font-size: 50px;
+        }
+        #root #g-free {
+          font-size: 96px;
+          padding: 14px 46px 20px;
+          border-radius: 22px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="graphics" data-start="0" data-duration="36.36" data-width="1080" data-height="1920">
+        <!-- 0.08-2.80 hook -->
+        <div class="g-row" style="top: 210px"><div class="chip chip-yellow" id="g-hook">This generation of teens</div></div>
+
+        <!-- 6.75-9.10 "They think differently. They move faster." -->
+        <div class="g-row" style="top: 200px">
+          <div class="chip chip-ink" id="g-think">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-3.6 10.8V17h7.2v-3.2A6 6 0 0 0 12 3zM9.5 20h5" fill="none" stroke="#ffc93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <span>Think differently</span>
+          </div>
+        </div>
+        <div class="g-row" style="top: 318px">
+          <div class="chip chip-ink" id="g-faster">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="#ffc93c" /></svg>
+            <span>Move faster</span>
+          </div>
+        </div>
+
+        <!-- 15.99-18.60 "Not next year. Not after boards. Now." -->
+        <div class="g-row" style="top: 220px">
+          <div class="chip chip-ink" id="g-nextyear"><span>Next year</span><div class="strike" id="g-strike1"></div></div>
+          <div class="chip chip-ink" id="g-boards"><span>After boards</span><div class="strike" id="g-strike2"></div></div>
+        </div>
+        <div class="g-row" style="top: 160px"><div class="chip chip-yellow" id="g-now">Now</div></div>
+
+        <!-- 31.05-34.46 "It's just one session, and it's free" -->
+        <div class="g-row" style="top: 190px; align-items: center">
+          <div class="chip chip-ink" id="g-session">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#ffc93c" stroke-width="2.4" /><path d="M12 7v5l3 2" fill="none" stroke="#ffc93c" stroke-width="2.4" stroke-linecap="round" /></svg>
+            <span>1 session</span>
+          </div>
+          <div class="chip chip-yellow" id="g-free">Free</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          function pop(sel, at, from) {
+            tl.fromTo(sel, Object.assign({ scale: 0.5, opacity: 0 }, from || {}), { scale: 1, opacity: 1, x: 0, y: 0, rotation: (from && from.rest) || 0, duration: 0.36, ease: "power3.out", immediateRender: true }, at);
+          }
+          function out(sels, at) {
+            tl.to(sels, { opacity: 0, y: -14, duration: 0.12, ease: "power2.in" }, at);
+          }
+
+          // Hook (spring-pop-entrance, smooth settle)
+          tl.fromTo("#g-hook", { scale: 0.4, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.42, ease: "power3.out", immediateRender: true }, 0.08);
+          out("#g-hook", 2.66);
+
+          // Think differently / Move faster
+          pop("#g-think", 6.75, { x: -60 });
+          pop("#g-faster", 8.07, { x: 60 });
+          out(["#g-think", "#g-faster"], 8.98);
+
+          // Not next year / not after boards -> NOW (strike-throughs, then kinetic-beat-slam)
+          pop("#g-nextyear", 15.99, { y: 20 });
+          tl.fromTo("#g-strike1", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out", immediateRender: true }, 16.62);
+          pop("#g-boards", 16.95, { y: 20 });
+          tl.fromTo("#g-strike2", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out", immediateRender: true }, 17.62);
+          out(["#g-nextyear", "#g-boards"], 18.0);
+          tl.fromTo("#g-now", { scale: 2.6, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -4, duration: 0.2, ease: "power4.out", immediateRender: true }, 18.12);
+          out("#g-now", 18.7);
+
+          // 1 session + FREE
+          pop("#g-session", 31.47, { x: -50 });
+          tl.fromTo("#g-free", { scale: 2.4, opacity: 0, rotation: 14 }, { scale: 1, opacity: 1, rotation: 5, duration: 0.2, ease: "power4.out", immediateRender: true }, 32.84);
+          out(["#g-session", "#g-free"], 34.42);
+
+          tl.seek(0);
+          window.__timelines["graphics"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

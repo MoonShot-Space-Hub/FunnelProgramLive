@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>B-roll — better in school</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: radial-gradient(120% 70% at 50% 40%, #3a2a0c 0%, #17110a 46%, #0e0a06 100%);
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .bsch-grid {
+          position: absolute;
+          inset: -60px -60px -140px -60px;
+          background-image:
+            linear-gradient(rgba(255, 201, 60, 0.07) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(255, 201, 60, 0.07) 2px, transparent 2px);
+          background-size: 90px 90px;
+          transform-origin: 50% 40%;
+        }
+        #root .bsch-world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 36%;
+        }
+        #root .bsch-card {
+          position: absolute;
+          left: 60px;
+          top: 330px;
+          width: 960px;
+          height: 740px;
+          box-sizing: border-box;
+          border-radius: 36px;
+          border: 5px solid #3b352b;
+          background: linear-gradient(180deg, #211a10 0%, #15100a 100%);
+          box-shadow: 0 0 90px rgba(255, 201, 60, 0.2), 0 40px 80px rgba(0, 0, 0, 0.6);
+        }
+        #root .bsch-head {
+          position: absolute;
+          left: 44px;
+          top: 30px;
+          width: 862px;
+          height: 92px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        #root .bsch-title {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          color: #fff8ec;
+          font-weight: 900;
+          font-size: 46px;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          line-height: 1;
+        }
+        #root .bsch-title svg {
+          width: 58px;
+          height: 58px;
+        }
+        #root .bsch-ai {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 14px;
+          height: 92px;
+          box-sizing: border-box;
+          padding: 0 34px 0 26px;
+          border-radius: 999px;
+          border: 4px solid #5d5850;
+          background-color: #1d1912;
+          color: #b9b2a6;
+          font-weight: 900;
+          font-size: 52px;
+          letter-spacing: 0.04em;
+          line-height: 1;
+        }
+        #root .bsch-ai svg {
+          width: 52px;
+          height: 52px;
+        }
+        #root .bsch-ai-glow {
+          position: absolute;
+          inset: 0;
+          border-radius: 999px;
+          box-shadow: 0 0 70px 14px rgba(255, 201, 60, 0.5);
+          opacity: 0;
+        }
+        #root .bsch-ai-ring {
+          position: absolute;
+          inset: -8px;
+          border-radius: 999px;
+          border: 4px solid #ffc93c;
+          opacity: 0;
+        }
+        #root .bsch-rule {
+          position: absolute;
+          left: 44px;
+          top: 140px;
+          width: 862px;
+          height: 3px;
+          background: #2c261d;
+        }
+        #root .bsch-row {
+          position: absolute;
+          left: 44px;
+          width: 862px;
+          height: 122px;
+        }
+        #root .bsch-icon {
+          position: absolute;
+          left: 0;
+          top: 13px;
+          width: 96px;
+          height: 96px;
+          box-sizing: border-box;
+          border-radius: 26px;
+          background: #2a2114;
+          border: 3px solid #4a3c1e;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #root .bsch-icon svg {
+          width: 58px;
+          height: 58px;
+        }
+        #root .bsch-name {
+          position: absolute;
+          left: 128px;
+          top: 10px;
+          color: #fff8ec;
+          font-weight: 700;
+          font-size: 46px;
+          line-height: 1;
+        }
+        #root .bsch-track {
+          position: absolute;
+          left: 128px;
+          top: 80px;
+          width: 520px;
+          height: 24px;
+          border-radius: 12px;
+          background: #2c261d;
+          overflow: hidden;
+        }
+        #root .bsch-fill {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 12px;
+          background: linear-gradient(90deg, #c98f1a 0%, #ffc93c 100%);
+          transform-origin: 0% 50%;
+        }
+        #root .bsch-grade {
+          position: absolute;
+          right: 0;
+          top: 1px;
+          width: 180px;
+          height: 120px;
+          box-sizing: border-box;
+          border-radius: 28px;
+          border: 4px solid #4a4236;
+          background-color: #241c10;
+          color: #b9b2a6;
+          overflow: hidden;
+          box-shadow: 0 0 0px rgba(255, 201, 60, 0);
+        }
+        #root .bsch-strip {
+          display: block;
+          width: 100%;
+        }
+        #root .bsch-letter {
+          display: block;
+          height: 112px;
+          line-height: 112px;
+          text-align: center;
+          font-weight: 900;
+          font-size: 84px;
+          letter-spacing: 0.01em;
+        }
+        #root .bsch-prog {
+          position: absolute;
+          left: 44px;
+          top: 594px;
+          width: 862px;
+          height: 108px;
+          box-sizing: border-box;
+          border-radius: 30px;
+          border: 3px solid #3b352b;
+          background: #1d1912;
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          padding: 0 36px;
+        }
+        #root .bsch-prog-label {
+          color: #b9b2a6;
+          font-weight: 900;
+          font-size: 40px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          line-height: 1;
+        }
+        #root .bsch-prog-track {
+          position: relative;
+          flex: 1;
+          height: 28px;
+          border-radius: 14px;
+          background: #2c261d;
+          overflow: hidden;
+        }
+        #root .bsch-prog-fill {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 14px;
+          background: linear-gradient(90deg, #c98f1a 0%, #ffc93c 100%);
+          transform-origin: 0% 50%;
+        }
+        #root .bsch-banner {
+          position: absolute;
+          left: 44px;
+          top: 594px;
+          width: 862px;
+          height: 108px;
+          border-radius: 30px;
+          background: #ffc93c;
+          color: #16110a;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 22px;
+          font-weight: 900;
+          font-size: 64px;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          line-height: 1;
+          box-shadow: 0 0 80px rgba(255, 201, 60, 0.45);
+        }
+        #root .bsch-banner svg {
+          display: block;
+          width: 70px;
+          height: 70px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="broll-school" data-start="0" data-duration="2.61" data-width="1080" data-height="1920">
+        <div class="bsch-grid" id="bsch-grid"></div>
+        <div class="bsch-world" id="bsch-world">
+          <div class="bsch-card" id="bsch-card">
+            <div class="bsch-head">
+              <div class="bsch-title" id="bsch-title">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 2.5h9l4 4v15H6z" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linejoin="round" />
+                  <path d="M15 2.5v4h4M9 11.5h7M9 15h7M9 18.5h4.5" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Report Card</span>
+              </div>
+              <div class="bsch-ai" id="bsch-ai">
+                <div class="bsch-ai-glow" id="bsch-ai-glow"></div>
+                <div class="bsch-ai-ring" id="bsch-ai-ring"></div>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="6.5" y="6.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2.2" />
+                  <path d="M10 3v3M14 3v3M10 18v3M14 18v3M3 10h3M3 14h3M18 10h3M18 14h3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                  <path d="M12 9.2l0.9 2 2 0.8-2 0.8-0.9 2-0.9-2-2-0.8 2-0.8z" fill="currentColor" />
+                </svg>
+                <span>AI</span>
+              </div>
+            </div>
+            <div class="bsch-rule"></div>
+
+            <div class="bsch-row" id="bsch-r1" style="top: 164px">
+              <div class="bsch-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 7h6M7 4v6M14 7h6M4.8 14.8l4.4 4.4M9.2 14.8l-4.4 4.4M14 15.3h6M14 18.7h6" fill="none" stroke="#ffc93c" stroke-width="2.2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="bsch-name">Math</div>
+              <div class="bsch-track"><span class="bsch-fill" id="bsch-f1"></span></div>
+              <div class="bsch-grade" id="bsch-g1">
+                <span class="bsch-strip" id="bsch-s1">
+                  <span class="bsch-letter">C</span>
+                  <span class="bsch-letter">B</span>
+                  <span class="bsch-letter">A</span>
+                  <span class="bsch-letter">A+</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="bsch-row" id="bsch-r2" style="top: 304px">
+              <div class="bsch-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 3h6M10 3v6.2L4.9 18.4A1.8 1.8 0 0 0 6.5 21h11a1.8 1.8 0 0 0 1.6-2.6L14 9.2V3" fill="none" stroke="#ffc93c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M7.2 15h9.6" fill="none" stroke="#ffc93c" stroke-width="2.2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="bsch-name">Science</div>
+              <div class="bsch-track"><span class="bsch-fill" id="bsch-f2"></span></div>
+              <div class="bsch-grade" id="bsch-g2">
+                <span class="bsch-strip" id="bsch-s2">
+                  <span class="bsch-letter">C</span>
+                  <span class="bsch-letter">B</span>
+                  <span class="bsch-letter">B+</span>
+                  <span class="bsch-letter">A</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="bsch-row" id="bsch-r3" style="top: 444px">
+              <div class="bsch-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.6 4.5l-3.2 15" fill="none" stroke="#ffc93c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="bsch-name">Coding</div>
+              <div class="bsch-track"><span class="bsch-fill" id="bsch-f3"></span></div>
+              <div class="bsch-grade" id="bsch-g3">
+                <span class="bsch-strip" id="bsch-s3">
+                  <span class="bsch-letter">C</span>
+                  <span class="bsch-letter">B</span>
+                  <span class="bsch-letter">A</span>
+                  <span class="bsch-letter">A+</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="bsch-prog" id="bsch-prog">
+              <div class="bsch-prog-label">Progress</div>
+              <div class="bsch-prog-track"><span class="bsch-prog-fill" id="bsch-pf"></span></div>
+            </div>
+
+            <div class="bsch-banner" id="bsch-banner">
+              <svg id="bsch-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 17.5l6-6 4 4 8-8M14.5 7.5H21V14" fill="none" stroke="#16110a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>Better in school</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          var STEP = 112; // one grade letter cell height
+
+          // Camera settle + slow grid drift.
+          tl.fromTo("#bsch-world", { scale: 1.14 }, { scale: 1, duration: 0.42, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bsch-grid", { scale: 1.08, y: 0 }, { scale: 1, y: -60, duration: 2.61, ease: "none", immediateRender: true }, 0);
+
+          // Report card arrives, header and rows stagger in.
+          tl.fromTo("#bsch-card", { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.34, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bsch-title", { x: -36, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.1);
+          tl.fromTo("#bsch-ai", { x: 36, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.16);
+          ["#bsch-r1", "#bsch-r2", "#bsch-r3"].forEach(function (id, i) {
+            tl.fromTo(id, { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.2 + i * 0.07);
+          });
+          tl.fromTo("#bsch-prog", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.41);
+          tl.fromTo("#bsch-pf", { scaleX: 0 }, { scaleX: 0.22, duration: 0.36, ease: "power3.out", immediateRender: true }, 0.47);
+          // Starting (low) bar levels.
+          tl.fromTo("#bsch-f1", { scaleX: 0 }, { scaleX: 0.24, duration: 0.36, ease: "power3.out", immediateRender: true }, 0.26);
+          tl.fromTo("#bsch-f2", { scaleX: 0 }, { scaleX: 0.28, duration: 0.36, ease: "power3.out", immediateRender: true }, 0.33);
+          tl.fromTo("#bsch-f3", { scaleX: 0 }, { scaleX: 0.2, duration: 0.36, ease: "power3.out", immediateRender: true }, 0.4);
+
+          // "AI" (0.66): the assistant badge powers on.
+          tl.fromTo("#bsch-ai",
+            { backgroundColor: "#1d1912", borderColor: "#5d5850", color: "#b9b2a6" },
+            { backgroundColor: "#ffc93c", borderColor: "#ffc93c", color: "#16110a", duration: 0.16, ease: "power2.out", immediateRender: false }, 0.66);
+          tl.fromTo("#bsch-ai", { scale: 1 }, { scale: 1.1, duration: 0.1, ease: "power2.out", immediateRender: false }, 0.66);
+          tl.fromTo("#bsch-ai", { scale: 1.1 }, { scale: 1, duration: 0.34, ease: "power3.out", immediateRender: false }, 0.76);
+          tl.fromTo("#bsch-ai-glow", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", immediateRender: true }, 0.66);
+          tl.fromTo("#bsch-ai-ring", { opacity: 0, scale: 1 }, { opacity: 0.9, scale: 1.04, duration: 0.04, ease: "none", immediateRender: true }, 0.66);
+          tl.fromTo("#bsch-ai-ring", { opacity: 0.9, scale: 1.04 }, { opacity: 0, scale: 1.45, duration: 0.46, ease: "power2.out", immediateRender: false }, 0.72);
+
+          // "early" -> "do better in school": grades climb row by row and land on A / A+.
+          var rows = [
+            { s: "#bsch-s1", f: "#bsch-f1", g: "#bsch-g1", t0: 1.04, bars: [0.24, 0.5, 0.76, 0.96] },
+            { s: "#bsch-s2", f: "#bsch-f2", g: "#bsch-g2", t0: 1.22, bars: [0.28, 0.52, 0.7, 0.9] },
+            { s: "#bsch-s3", f: "#bsch-f3", g: "#bsch-g3", t0: 1.4, bars: [0.2, 0.48, 0.76, 0.98] },
+          ];
+          rows.forEach(function (r) {
+            for (var k = 0; k < 3; k++) {
+              var at = r.t0 + k * 0.26;
+              tl.fromTo(r.s, { y: -k * STEP }, { y: -(k + 1) * STEP, duration: 0.24, ease: "power3.out", immediateRender: k === 0 }, at);
+              tl.fromTo(r.f, { scaleX: r.bars[k] }, { scaleX: r.bars[k + 1], duration: 0.24, ease: "power3.out", immediateRender: false }, at);
+            }
+            var land = r.t0 + 2 * 0.26 + 0.12;
+            tl.fromTo(r.g,
+              { backgroundColor: "#241c10", borderColor: "#4a4236", color: "#b9b2a6", boxShadow: "0 0 0px rgba(255, 201, 60, 0)" },
+              { backgroundColor: "#ffc93c", borderColor: "#ffc93c", color: "#16110a", boxShadow: "0 0 46px rgba(255, 201, 60, 0.55)", duration: 0.16, ease: "power2.out", immediateRender: true }, land);
+            tl.fromTo(r.g, { scale: 1 }, { scale: 1.1, duration: 0.1, ease: "power2.out", immediateRender: false }, land);
+            tl.fromTo(r.g, { scale: 1.1 }, { scale: 1, duration: 0.32, ease: "power3.out", immediateRender: false }, land + 0.1);
+          });
+
+          // Overall progress rises with the grades, then hands off to the label.
+          tl.fromTo("#bsch-pf", { scaleX: 0.22 }, { scaleX: 0.94, duration: 1.0, ease: "power1.inOut", immediateRender: false }, 1.04);
+          tl.fromTo("#bsch-prog", { opacity: 1 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 2.06);
+
+          // "do better in school" (2.10): the label lands.
+          tl.fromTo("#bsch-banner", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "power3.out", immediateRender: true }, 2.04);
+          tl.fromTo("#bsch-arrow", { x: -16, y: 16 }, { x: 0, y: 0, duration: 0.36, ease: "power3.out", immediateRender: true }, 2.12);
+
+          tl.seek(0);
+          window.__timelines["broll-school"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

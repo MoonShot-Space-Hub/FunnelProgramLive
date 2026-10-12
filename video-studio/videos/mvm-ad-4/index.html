@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0e0a06;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0e0a06;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* Camera rig (coordinate-target-zoom): shake translates, outer scales, inner counter-translates. */
+      #cam-shake,
+      #cam-outer,
+      #cam-inner {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 50%;
+        will-change: transform;
+      }
+      #aroll {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Black gradient behind the captions. */
+      #scrim-fill {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1080px;
+        background: linear-gradient(
+          180deg,
+          rgba(14, 10, 6, 0) 0%,
+          rgba(14, 10, 6, 0.4) 28%,
+          rgba(14, 10, 6, 0.76) 60%,
+          rgba(14, 10, 6, 0.9) 100%
+        );
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="36.36" data-width="1080" data-height="1920">
+      <!-- A-roll: the user's take (audio loudness-normalised to -16 LUFS, video stream untouched). -->
+      <div id="cam-shake">
+        <div id="cam-outer">
+          <div id="cam-inner">
+            <video
+              id="aroll"
+              class="clip"
+              src="assets/footage/mvm4-voice-norm.mp4"
+              playsinline
+              data-has-audio="true"
+              data-volume="1"
+              data-audio-group="voice"
+              data-start="0"
+              data-duration="36.36"
+              data-track-index="0"
+            ></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- B-roll cutaways (original animated inserts; above the A-roll, below gradient/captions/graphics) -->
+      <div id="broll-1" data-composition-id="broll-school" data-composition-src="compositions/broll-school.html" data-start="3.63" data-duration="2.61" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="broll-2" data-composition-id="broll-build" data-composition-src="compositions/broll-build.html" data-start="9.18" data-duration="2.64" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="broll-3" data-composition-id="broll-superpower" data-composition-src="compositions/broll-superpower.html" data-start="21.6" data-duration="3.66" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="broll-4" data-composition-id="broll-masterclass" data-composition-src="compositions/broll-masterclass.html" data-start="27.9" data-duration="3" data-track-index="1" data-width="1080" data-height="1920"></div>
+
+      <!-- Black gradient: fades in with the first caption and holds while captions run. -->
+      <div id="scrim-fill" class="clip" data-start="0.06" data-duration="36.3" data-track-index="2"></div>
+
+      <!-- Keyword graphics (sub-composition) -->
+      <div id="graphics" data-composition-id="graphics" data-composition-src="compositions/graphics.html" data-start="0" data-duration="36.36" data-track-index="3" data-width="1080" data-height="1920"></div>
+
+      <!-- Captions (sub-composition) -->
+      <div
+        id="captions"
+        data-composition-id="captions"
+        data-composition-src="compositions/captions.html"
+        data-track-kind="captions"
+        data-start="0"
+        data-duration="36.36"
+        data-track-index="4"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- Call to action (sub-composition) -->
+      <div id="cta" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="34.55" data-duration="1.81" data-track-index="5" data-width="1080" data-height="1920"></div>
+
+      <!-- Music: original bed (tools/compose_music_arranged.py + assets/music/arrangement.json). -->
+      <audio
+        id="music"
+        src="assets/music/original-bed.mp3"
+        data-start="0"
+        data-duration="36.36"
+        data-track-index="10"
+        data-volume="1"
+        data-audio-group="music"
+        data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0.42},{"t":36.0,"v":0.42},{"t":36.36,"v":0.2}]}]}'
+      ></audio>
+
+      <!-- SFX: bundled Pixabay-licensed library. Starts are offset by each file's transient peak. -->
+      <audio id="sfx-hook" src="assets/sfx/pop.mp3" data-start="0" data-duration="0.72" data-track-index="11" data-volume="0.26"></audio>
+      <audio id="sfx-b1-in" src="assets/sfx/whoosh.mp3" data-start="3.47" data-duration="0.57" data-track-index="12" data-volume="0.28"></audio>
+      <audio id="sfx-b1-out" src="assets/sfx/whoosh-short.mp3" data-start="6.08" data-duration="0.57" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sfx-think" src="assets/sfx/pop.mp3" data-start="6.63" data-duration="0.72" data-track-index="11" data-volume="0.28"></audio>
+      <audio id="sfx-faster" src="assets/sfx/pop.mp3" data-start="7.95" data-duration="0.72" data-track-index="11" data-volume="0.28"></audio>
+      <audio id="sfx-b2-in" src="assets/sfx/whoosh.mp3" data-start="9.02" data-duration="0.57" data-track-index="12" data-volume="0.28"></audio>
+      <audio id="sfx-b2-out" src="assets/sfx/whoosh-short.mp3" data-start="11.66" data-duration="0.57" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sfx-nextyear" src="assets/sfx/pop.mp3" data-start="15.87" data-duration="0.72" data-track-index="11" data-volume="0.24"></audio>
+      <audio id="sfx-strike-1" src="assets/sfx/click-soft.mp3" data-start="16.55" data-duration="0.37" data-track-index="12" data-volume="0.5"></audio>
+      <audio id="sfx-boards" src="assets/sfx/pop.mp3" data-start="16.83" data-duration="0.72" data-track-index="11" data-volume="0.24"></audio>
+      <audio id="sfx-strike-2" src="assets/sfx/click-soft.mp3" data-start="17.55" data-duration="0.37" data-track-index="12" data-volume="0.5"></audio>
+      <audio id="sfx-now" src="assets/sfx/impact-bass-1.mp3" data-start="17.98" data-duration="1.4" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="sfx-b3-in" src="assets/sfx/whoosh.mp3" data-start="21.44" data-duration="0.57" data-track-index="12" data-volume="0.28"></audio>
+      <audio id="sfx-b3-out" src="assets/sfx/whoosh-short.mp3" data-start="25.1" data-duration="0.57" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sfx-b4-in" src="assets/sfx/whoosh.mp3" data-start="27.74" data-duration="0.57" data-track-index="12" data-volume="0.28"></audio>
+      <audio id="sfx-b4-out" src="assets/sfx/whoosh-short.mp3" data-start="30.74" data-duration="0.57" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sfx-session" src="assets/sfx/pop.mp3" data-start="31.35" data-duration="0.72" data-track-index="13" data-volume="0.28"></audio>
+      <audio id="sfx-free" src="assets/sfx/impact-bass-1.mp3" data-start="32.7" data-duration="1.4" data-track-index="12" data-volume="0.34"></audio>
+      <audio id="sfx-arrow" src="assets/sfx/whoosh-short.mp3" data-start="34.66" data-duration="0.57" data-track-index="11" data-volume="0.22"></audio>
+      <audio id="sfx-button" src="assets/sfx/pop.mp3" data-start="35.42" data-duration="0.72" data-track-index="13" data-volume="0.32"></audio>
+      <audio id="sfx-press" src="assets/sfx/click.mp3" data-start="35.98" data-duration="0.37" data-track-index="12" data-volume="0.5"></audio>
+    </div>
+
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+
+        // ---- Camera: face-anchored punch-ins (coordinate-target-zoom, nested wrappers) ----
+        // Inner translate T places the face (offset from frame centre, pre-scale) at screen y = py:
+        //   T = (P - C) / S - offset, clamped so the scaled footage always covers the frame.
+        function cam(S, faceX, faceY, py) {
+          var ox = faceX - 540, oy = faceY - 960;
+          var tx = -ox, ty = (py - 960) / S - oy;
+          var mx = 540 * (1 - 1 / S), my = 960 * (1 - 1 / S);
+          return { s: S, x: Math.max(-mx, Math.min(mx, tx)), y: Math.max(-my, Math.min(my, ty)) };
+        }
+        function setCam(t, c) {
+          tl.set("#cam-outer", { scale: c.s }, t);
+          tl.set("#cam-inner", { x: c.x, y: c.y }, t);
+        }
+        function moveCam(t, dur, ease, from, to) {
+          tl.fromTo("#cam-outer", { scale: from.s }, { scale: to.s, duration: dur, ease: ease, immediateRender: false }, t);
+          tl.fromTo("#cam-inner", { x: from.x, y: from.y }, { x: to.x, y: to.y, duration: dur, ease: ease, immediateRender: false }, t);
+        }
+        function hold(t0, t1, a, b) {
+          setCam(t0, a);
+          moveCam(t0, t1 - t0, "none", a, b);
+        }
+        var WIDE = { s: 1, x: 0, y: 0 };
+
+        // Hook: slow push through the question.
+        setCam(0, WIDE);
+        moveCam(0.06, 2.74, "sine.inOut", WIDE, cam(1.08, 507, 552, 600));
+        // "The ones who" — punch (B-roll 1 takes over at 3.63).
+        hold(2.88, 3.63, cam(1.25, 507, 552, 640), cam(1.28, 507, 552, 640));
+        // "They think differently / move faster" — face low to leave room for the list chips.
+        hold(6.24, 9.18, cam(1.15, 476, 542, 720), cam(1.19, 476, 542, 720));
+        // "can't even imagine" — tight punch.
+        hold(11.82, 12.96, cam(1.3, 492, 558, 700), cam(1.33, 492, 558, 700));
+        // "And the window ... right now" — back wide, slow push.
+        setCam(12.96, WIDE);
+        moveCam(12.96, 3.03, "sine.inOut", WIDE, cam(1.06, 474, 566, 600));
+        // "Not next year. Not after boards." — face low under the strike chips.
+        hold(15.99, 18.12, cam(1.12, 481, 544, 720), cam(1.15, 481, 544, 720));
+        // "Now." — slam punch.
+        var nowCam = cam(1.35, 481, 544, 700);
+        moveCam(18.12, 0.12, "power2.out", cam(1.15, 481, 544, 720), nowCam);
+        hold(18.24, 18.84, nowCam, cam(1.37, 481, 544, 700));
+        // "Because the teens who learn this today" (B-roll 3 from 21.6).
+        hold(18.84, 21.6, cam(1.05, 521, 558, 600), cam(1.1, 521, 558, 600));
+        // "I don't want your teen to miss this." — intimate close push.
+        hold(25.26, 27.48, cam(1.32, 517, 548, 640), cam(1.4, 517, 548, 640));
+        // "Come to our" — wide beat before B-roll 4 (27.9).
+        setCam(27.48, WIDE);
+        // "It's just one session, and it's free" — face low under the chips.
+        hold(30.9, 33.6, cam(1.12, 499, 537, 720), cam(1.16, 499, 537, 720));
+        // "could change everything" — punch.
+        var chg = cam(1.28, 501, 540, 700);
+        moveCam(33.6, 0.15, "power2.out", cam(1.16, 499, 537, 720), chg);
+        hold(33.75, 34.55, chg, cam(1.31, 501, 540, 700));
+        // CTA — wide, drift; punch on "I'll see you out there".
+        setCam(34.55, WIDE);
+        var cta1 = cam(1.06, 501, 540, 600);
+        moveCam(34.55, 0.97, "sine.inOut", WIDE, cta1);
+        var cta2 = cam(1.18, 564, 550, 640);
+        moveCam(35.52, 0.15, "power2.out", cta1, cta2);
+        hold(35.67, 36.36, cta2, cam(1.2, 564, 550, 640));
+
+        // Impact shakes — baked, deterministic decaying wobble on the outermost wrapper.
+        function shake(t0, amp, dur) {
+          var steps = Math.round(dur * 30), prev = { x: 0, y: 0 };
+          tl.set("#cam-shake", { x: 0, y: 0 }, t0);
+          for (var i = 1; i <= steps; i++) {
+            var u = i / steps, k = Math.exp(-3.2 * u) * (1 - u);
+            var next = { x: amp * k * Math.sin(i * 2.1), y: amp * k * Math.cos(i * 1.7) };
+            tl.fromTo("#cam-shake", { x: prev.x, y: prev.y }, { x: next.x, y: next.y, duration: dur / steps, ease: "none", immediateRender: false }, t0 + (i - 1) * (dur / steps));
+            prev = next;
+          }
+          tl.set("#cam-shake", { x: 0, y: 0 }, t0 + dur);
+        }
+        shake(18.16, 12, 0.36);
+        shake(32.88, 9, 0.26);
+
+        // ---- Black gradient behind captions ----
+        tl.fromTo("#scrim-fill", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", immediateRender: true }, 0.06);
+
+        tl.seek(0);
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>
