@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>B-roll 1 — two types of students</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: radial-gradient(120% 70% at 30% 38%, #3a2a0c 0%, #17110a 46%, #0e0a06 100%);
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .b1-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(255, 201, 60, 0.07) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(255, 201, 60, 0.07) 2px, transparent 2px);
+          background-size: 90px 90px;
+          transform-origin: 50% 40%;
+        }
+        #root .b1-world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 42%;
+        }
+        #root .b1-card {
+          position: absolute;
+          top: 360px;
+          width: 440px;
+          height: 700px;
+          border-radius: 36px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 70px;
+          gap: 34px;
+        }
+        #root #b1-yes {
+          left: 70px;
+          background: linear-gradient(180deg, #2b210f 0%, #1a140b 100%);
+          border: 5px solid #ffc93c;
+          box-shadow: 0 0 80px rgba(255, 201, 60, 0.35), 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+        #root #b1-no {
+          right: 70px;
+          background: linear-gradient(180deg, #23201c 0%, #171513 100%);
+          border: 5px solid #5d5850;
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+        #root .b1-person {
+          width: 230px;
+          height: 250px;
+        }
+        #root .b1-label {
+          font-weight: 900;
+          font-size: 50px;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          line-height: 1;
+        }
+        #root #b1-yes .b1-label {
+          color: #ffc93c;
+        }
+        #root #b1-no .b1-label {
+          color: #b9b2a6;
+        }
+        #root .b1-chart {
+          width: 300px;
+          height: 170px;
+        }
+        #root .b1-bar {
+          transform-box: fill-box;
+          transform-origin: 50% 100%;
+        }
+        #root .b1-spark {
+          position: absolute;
+          width: 70px;
+          height: 70px;
+          top: 50px;
+          right: 46px;
+          transform-origin: 50% 50%;
+        }
+      </style>
+
+      <div id="root" data-composition-id="broll-students" data-start="0" data-duration="1.15" data-width="1080" data-height="1920">
+        <div class="b1-grid" id="b1-grid"></div>
+        <div class="b1-world" id="b1-world">
+          <div class="b1-card" id="b1-yes">
+            <svg class="b1-spark" id="b1-spark" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 1.5l2.6 7.9 7.9 2.6-7.9 2.6L12 22.5l-2.6-7.9L1.5 12l7.9-2.6z" fill="#ffc93c" />
+            </svg>
+            <svg class="b1-person" viewBox="0 0 230 250" aria-hidden="true">
+              <circle cx="115" cy="70" r="52" fill="#ffc93c" />
+              <path d="M22 238c0-62 42-104 93-104s93 42 93 104z" fill="#ffc93c" />
+              <rect x="40" y="168" width="150" height="70" rx="10" fill="#16110a" />
+              <rect x="52" y="178" width="126" height="48" rx="6" fill="#ffe08a" />
+            </svg>
+            <div class="b1-label">With AI</div>
+            <svg class="b1-chart" viewBox="0 0 300 170" aria-hidden="true">
+              <rect class="b1-bar b1-bar-yes" x="10" y="120" width="56" height="50" rx="8" fill="#ffc93c" opacity="0.55" />
+              <rect class="b1-bar b1-bar-yes" x="84" y="86" width="56" height="84" rx="8" fill="#ffc93c" opacity="0.7" />
+              <rect class="b1-bar b1-bar-yes" x="158" y="46" width="56" height="124" rx="8" fill="#ffc93c" opacity="0.85" />
+              <rect class="b1-bar b1-bar-yes" x="232" y="4" width="56" height="166" rx="8" fill="#ffc93c" />
+            </svg>
+          </div>
+          <div class="b1-card" id="b1-no">
+            <svg class="b1-person" viewBox="0 0 230 250" aria-hidden="true">
+              <circle cx="115" cy="70" r="52" fill="#6e685f" />
+              <path d="M22 238c0-62 42-104 93-104s93 42 93 104z" fill="#6e685f" />
+              <rect x="40" y="168" width="150" height="70" rx="10" fill="#16110a" />
+              <rect x="52" y="178" width="126" height="48" rx="6" fill="#3a3631" />
+            </svg>
+            <div class="b1-label">Without AI</div>
+            <svg class="b1-chart" viewBox="0 0 300 170" aria-hidden="true">
+              <rect class="b1-bar b1-bar-no" x="10" y="130" width="56" height="40" rx="8" fill="#6e685f" />
+              <rect class="b1-bar b1-bar-no" x="84" y="128" width="56" height="42" rx="8" fill="#6e685f" />
+              <rect class="b1-bar b1-bar-no" x="158" y="131" width="56" height="39" rx="8" fill="#6e685f" />
+              <rect class="b1-bar b1-bar-no" x="232" y="127" width="56" height="43" rx="8" fill="#6e685f" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          // Camera settle on the cutaway (scale-in), cards slide in from their own sides.
+          tl.fromTo("#b1-world", { scale: 1.14 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#b1-grid", { scale: 1.08, y: 0 }, { scale: 1, y: -40, duration: 1.15, ease: "none", immediateRender: true }, 0);
+          tl.fromTo("#b1-yes", { x: -140, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#b1-no", { x: 140, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.08);
+          // "With AI" grows; "without" stays flat.
+          gsap.utils.toArray("#root .b1-bar-yes").forEach(function (el, i) {
+            tl.fromTo(el, { scaleY: 0.15 }, { scaleY: 1, duration: 0.4, ease: "power3.out", immediateRender: true }, 0.25 + i * 0.07);
+          });
+          tl.fromTo("#b1-spark", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.35, ease: "power3.out", immediateRender: true }, 0.4);
+          tl.fromTo("#b1-no", { opacity: 1 }, { opacity: 0.72, duration: 0.4, ease: "power2.out", immediateRender: false }, 0.55);
+          tl.seek(0);
+          window.__timelines["broll-students"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

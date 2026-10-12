@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>B-roll 3 — learn AI practically</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: radial-gradient(110% 60% at 60% 45%, #33260c 0%, #17110a 50%, #0e0a06 100%);
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .b3-world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 45%;
+        }
+        #root .b3-editor {
+          position: absolute;
+          left: 60px;
+          top: 470px;
+          width: 960px;
+          height: 610px;
+          border-radius: 28px;
+          background: #14100b;
+          border: 4px solid #3b352b;
+          box-shadow: 0 0 90px rgba(255, 201, 60, 0.22), 0 40px 80px rgba(0, 0, 0, 0.6);
+          overflow: hidden;
+        }
+        #root .b3-head {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 20px 26px;
+          background: #1d1912;
+          border-bottom: 2px solid #2c261d;
+        }
+        #root .b3-dot {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+        }
+        #root .b3-file {
+          margin-left: 14px;
+          color: #d8cfbf;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 28px;
+        }
+        #root .b3-body {
+          padding: 28px 34px;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 34px;
+          line-height: 1.55;
+          color: #fff8ec;
+        }
+        #root .b3-prompt {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding: 16px 22px;
+          margin-bottom: 18px;
+          border-radius: 16px;
+          background: #2a2114;
+          border: 3px solid #ffc93c;
+          color: #ffe7a8;
+          font-size: 32px;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        #root .b3-prompt b {
+          color: #ffc93c;
+        }
+        #root .b3-caret {
+          display: inline-block;
+          width: 16px;
+          height: 38px;
+          background: #ffc93c;
+        }
+        #root .b3-line {
+          white-space: nowrap;
+        }
+        #root .k { color: #ffc93c; }
+        #root .s { color: #9fe0b0; }
+        #root .c { color: #a49a88; }
+        #root .b3-ok {
+          position: absolute;
+          right: 34px;
+          bottom: 30px;
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          padding: 14px 24px;
+          border-radius: 999px;
+          background: #ffc93c;
+          color: #16110a;
+          font-weight: 900;
+          font-size: 30px;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          transform-origin: 100% 100%;
+        }
+        #root .b3-ok svg {
+          width: 34px;
+          height: 34px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="broll-ai-practice" data-start="0" data-duration="1.24" data-width="1080" data-height="1920">
+        <div class="b3-world" id="b3-world">
+          <div class="b3-editor" id="b3-editor">
+            <div class="b3-head">
+              <div class="b3-dot" style="background: #e8402f"></div>
+              <div class="b3-dot" style="background: #f2b33d"></div>
+              <div class="b3-dot" style="background: #4fbf6a"></div>
+              <div class="b3-file">my_first_ai.py</div>
+            </div>
+            <div class="b3-body">
+              <div class="b3-prompt"><b>&gt;</b><span id="b3-typed"></span><span class="b3-caret" id="b3-caret"></span></div>
+              <div class="b3-line" id="b3-l1"><span class="k">from</span> ai <span class="k">import</span> Model</div>
+              <div class="b3-line" id="b3-l2">model = Model(<span class="s">"my-first-app"</span>)</div>
+              <div class="b3-line" id="b3-l3">model.train(data)</div>
+              <div class="b3-line" id="b3-l4"><span class="c"># hands-on, step by step</span></div>
+            </div>
+            <div class="b3-ok" id="b3-ok">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#16110a" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              Model trained
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          tl.fromTo("#b3-world", { scale: 1.15 }, { scale: 1.02, duration: 1.24, ease: "power2.out", immediateRender: true }, 0);
+          tl.fromTo("#b3-editor", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.28, ease: "power3.out", immediateRender: true }, 0);
+
+          // Prompt types itself (discrete-text-sequence: text state is a pure function of time).
+          var PROMPT = "build my first AI app";
+          var typed = document.getElementById("b3-typed");
+          var typer = { n: 0 };
+          tl.fromTo(typer, { n: 0 }, {
+            n: PROMPT.length, duration: 0.36, ease: "none", immediateRender: true,
+            onUpdate: function () { typed.textContent = PROMPT.slice(0, Math.round(typer.n)); },
+          }, 0.1);
+
+          ["#b3-l1", "#b3-l2", "#b3-l3", "#b3-l4"].forEach(function (id, i) {
+            tl.fromTo(id, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.16, ease: "power3.out", immediateRender: true }, 0.5 + i * 0.08);
+          });
+          tl.fromTo("#b3-caret", { opacity: 1 }, { opacity: 0, duration: 0.01, ease: "none", immediateRender: false }, 0.5);
+          tl.fromTo("#b3-ok", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power3.out", immediateRender: true }, 0.84);
+          tl.seek(0);
+          window.__timelines["broll-ai-practice"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

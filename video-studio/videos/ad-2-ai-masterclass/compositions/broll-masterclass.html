@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>B-roll 2 — live masterclass</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: radial-gradient(110% 60% at 50% 52%, #3b2a0b 0%, #18120a 48%, #0e0a06 100%);
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .b2-world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 50%;
+        }
+        #root .b2-laptop {
+          position: absolute;
+          left: 70px;
+          top: 520px;
+          width: 940px;
+          height: 640px;
+        }
+        #root .b2-lid {
+          position: absolute;
+          left: 30px;
+          top: 0;
+          width: 880px;
+          height: 580px;
+          border-radius: 30px 30px 10px 10px;
+          background: #1d1912;
+          border: 6px solid #3b352b;
+          box-shadow: 0 0 90px rgba(255, 201, 60, 0.25), 0 40px 80px rgba(0, 0, 0, 0.6);
+          padding: 26px;
+        }
+        #root .b2-base {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 940px;
+          height: 46px;
+          border-radius: 6px 6px 28px 28px;
+          background: linear-gradient(180deg, #4a4337 0%, #2b2620 100%);
+        }
+        #root .b2-screen {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 14px;
+          background: #110d08;
+          overflow: hidden;
+        }
+        #root .b2-bar {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          padding: 18px 22px;
+          border-bottom: 2px solid #2c261d;
+        }
+        #root .b2-live {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px 16px;
+          border-radius: 999px;
+          background: #e8402f;
+          color: #fff8ec;
+          font-weight: 900;
+          font-size: 26px;
+          letter-spacing: 0.06em;
+        }
+        #root .b2-dot {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #fff8ec;
+        }
+        #root .b2-title {
+          color: #fff8ec;
+          font-weight: 900;
+          font-size: 30px;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+        }
+        #root .b2-timer {
+          margin-left: auto;
+          color: #ffc93c;
+          font-family: "JetBrains Mono", monospace;
+          font-weight: 700;
+          font-size: 30px;
+        }
+        #root .b2-tiles {
+          display: grid;
+          grid-template-columns: 1.6fr 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          gap: 14px;
+          padding: 18px;
+          height: calc(100% - 80px);
+        }
+        #root .b2-tile {
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 900;
+          font-size: 40px;
+          color: #16110a;
+          transform-origin: 50% 50%;
+        }
+        #root .b2-host {
+          grid-row: span 2;
+          background: linear-gradient(160deg, #ffd56b 0%, #f2a91e 100%);
+          flex-direction: column;
+          gap: 16px;
+        }
+        #root .b2-host svg {
+          width: 150px;
+          height: 160px;
+        }
+        #root .b2-host span {
+          font-size: 30px;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+        }
+        #root .b2-t1 { background: #3a3226; color: #ffe2a0; }
+        #root .b2-t2 { background: #2f3a33; color: #c9f0d6; }
+        #root .b2-t3 { background: #3a2e33; color: #f6cfe0; }
+        #root .b2-t4 { background: #2e3340; color: #cfdaf6; }
+      </style>
+
+      <div id="root" data-composition-id="broll-masterclass" data-start="0" data-duration="1.11" data-width="1080" data-height="1920">
+        <div class="b2-world" id="b2-world">
+          <div class="b2-laptop" id="b2-laptop">
+            <div class="b2-lid">
+              <div class="b2-screen">
+                <div class="b2-bar">
+                  <div class="b2-live"><div class="b2-dot" id="b2-dot"></div>LIVE</div>
+                  <div class="b2-title">AI Masterclass</div>
+                  <div class="b2-timer">3:00:00</div>
+                </div>
+                <div class="b2-tiles">
+                  <div class="b2-tile b2-host" id="b2-host">
+                    <svg viewBox="0 0 150 160" aria-hidden="true">
+                      <circle cx="75" cy="48" r="38" fill="#16110a" />
+                      <path d="M8 160c0-46 30-76 67-76s67 30 67 76z" fill="#16110a" />
+                    </svg>
+                    <span>Mentor</span>
+                  </div>
+                  <div class="b2-tile b2-t1">AK</div>
+                  <div class="b2-tile b2-t2">PS</div>
+                  <div class="b2-tile b2-t3">RM</div>
+                  <div class="b2-tile b2-t4">NJ</div>
+                </div>
+              </div>
+            </div>
+            <div class="b2-base"></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          tl.fromTo("#b2-world", { scale: 1.16 }, { scale: 1.02, duration: 1.11, ease: "power2.out", immediateRender: true }, 0);
+          tl.fromTo("#b2-laptop", { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#b2-host", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.12);
+          gsap.utils.toArray("#root .b2-t1, #root .b2-t2, #root .b2-t3, #root .b2-t4").forEach(function (el, i) {
+            tl.fromTo(el, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power3.out", immediateRender: true }, 0.2 + i * 0.06);
+          });
+          // LIVE dot blink, two finite pulses.
+          tl.fromTo("#b2-dot", { opacity: 1 }, { opacity: 0.2, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 0.1);
+          tl.seek(0);
+          window.__timelines["broll-masterclass"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
