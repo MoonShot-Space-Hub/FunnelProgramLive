@@ -49,3 +49,5 @@ Hugging Face is blocked, but GitHub release downloads work, so sherpa-onnx model
 - `ad-4-edit/` — Ad 4 (ABCT with AI): English captions translated from the Hinglish voiceover,
   motion-graphic B-roll cutaways, original synthesized music bed. Edit `build.py`, run
   `python3 build.py`, then `npm run render`.
+- `ad-2-edit/` — ABCT with AI new ad 2 (free GFS masterclass): same treatment as ad 4, with the
+  caption gradient and the logo for the spoken "ABCT with AI".
