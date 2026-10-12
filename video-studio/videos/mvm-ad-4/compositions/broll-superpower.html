@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>B-roll — superpower vs competition</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: radial-gradient(120% 70% at 50% 36%, #3a2a0c 0%, #17110a 46%, #0e0a06 100%);
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .bsp-grid {
+          position: absolute;
+          inset: -60px -60px -140px -60px;
+          background-image:
+            linear-gradient(rgba(255, 201, 60, 0.07) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(255, 201, 60, 0.07) 2px, transparent 2px);
+          background-size: 90px 90px;
+          transform-origin: 50% 40%;
+        }
+        #root .bsp-world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 36%;
+        }
+        #root .bsp-panel {
+          position: absolute;
+          left: 60px;
+          width: 960px;
+          height: 360px;
+          box-sizing: border-box;
+          border-radius: 36px;
+        }
+        #root #bsp-top {
+          top: 320px;
+          background: linear-gradient(180deg, #2b210f 0%, #1a140b 100%);
+          border: 5px solid #ffc93c;
+          box-shadow: 0 0 80px rgba(255, 201, 60, 0.3), 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+        #root #bsp-bot {
+          top: 720px;
+          background: linear-gradient(180deg, #23201c 0%, #171513 100%);
+          border: 5px solid #5d5850;
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+        /* Extra glow layer on the hero panel, animated by opacity only. */
+        #root .bsp-halo {
+          position: absolute;
+          inset: -5px;
+          border-radius: 36px;
+          box-shadow: 0 0 120px rgba(255, 201, 60, 0.55), inset 0 0 60px rgba(255, 201, 60, 0.12);
+          pointer-events: none;
+        }
+        /* Red state of the bottom panel: border + soft red glow, faded in by opacity. */
+        #root .bsp-redline {
+          position: absolute;
+          inset: -5px;
+          border-radius: 36px;
+          border: 5px solid #e8402f;
+          box-shadow: 0 0 70px rgba(232, 64, 47, 0.28), inset 0 0 50px rgba(232, 64, 47, 0.1);
+          pointer-events: none;
+        }
+        #root .bsp-head {
+          position: absolute;
+          left: 44px;
+          top: 40px;
+          height: 100px;
+          display: flex;
+          align-items: center;
+          gap: 26px;
+        }
+        #root .bsp-badge {
+          position: relative;
+          display: block;
+          width: 100px;
+          height: 100px;
+          border-radius: 28px;
+          box-sizing: border-box;
+        }
+        #root #bsp-bolt-badge {
+          background: #ffc93c;
+          box-shadow: 0 0 50px rgba(255, 201, 60, 0.55);
+        }
+        #root #bsp-bot-badge {
+          background: #2c2823;
+          border: 4px solid #5d5850;
+        }
+        #root .bsp-badge-red {
+          position: absolute;
+          inset: -4px;
+          border-radius: 28px;
+          border: 4px solid #e8402f;
+          background: #3a1712;
+          box-shadow: 0 0 36px rgba(232, 64, 47, 0.4);
+        }
+        #root .bsp-badge svg {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 66px;
+          height: 66px;
+          margin: -33px 0 0 -33px;
+          display: block;
+          transform-origin: 50% 50%;
+        }
+        #root .bsp-label {
+          font-weight: 900;
+          font-size: 50px;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          line-height: 1;
+          white-space: nowrap;
+        }
+        #root #bsp-top-label {
+          color: #fff8ec;
+        }
+        #root #bsp-bot-label {
+          color: #d6cfc3;
+        }
+        #root .bsp-hero {
+          position: absolute;
+          left: 44px;
+          top: 178px;
+          display: block;
+          font-weight: 900;
+          font-size: 112px;
+          line-height: 1;
+          letter-spacing: -0.005em;
+          text-transform: uppercase;
+          white-space: nowrap;
+          transform-origin: 0% 50%;
+        }
+        #root #bsp-super {
+          color: #ffc93c;
+          text-shadow: 0 0 36px rgba(255, 201, 60, 0.55), 0 0 90px rgba(255, 201, 60, 0.3);
+        }
+        #root #bsp-comp {
+          color: #f05a46;
+          text-shadow: 0 0 30px rgba(232, 64, 47, 0.35);
+        }
+        #root .bsp-dots {
+          position: absolute;
+          left: 50px;
+          top: 214px;
+          display: flex;
+          gap: 30px;
+        }
+        #root .bsp-dot {
+          display: block;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #8a8378;
+        }
+        #root .bsp-underline {
+          position: absolute;
+          left: 48px;
+          top: 304px;
+          width: 340px;
+          height: 10px;
+          border-radius: 6px;
+          display: block;
+          transform-origin: 0% 50%;
+        }
+        #root #bsp-uline-top {
+          background: #ffc93c;
+          box-shadow: 0 0 24px rgba(255, 201, 60, 0.6);
+        }
+        #root #bsp-uline-bot {
+          background: #e8402f;
+        }
+      </style>
+
+      <div id="root" data-composition-id="broll-superpower" data-start="0" data-duration="3.66" data-width="1080" data-height="1920">
+        <div class="bsp-grid" id="bsp-grid" data-layout-allow-overflow></div>
+        <div class="bsp-world" id="bsp-world" data-layout-allow-overflow>
+          <!-- Top: learn today -> superpower -->
+          <div class="bsp-panel" id="bsp-top">
+            <div class="bsp-halo" id="bsp-halo"></div>
+            <div class="bsp-head">
+              <div class="bsp-badge" id="bsp-bolt-badge">
+                <svg id="bsp-bolt" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13.6 1.8L4.2 13.4h6.4l-1.6 8.8 9.8-12.4h-6.6z" fill="#16110a" stroke="#16110a" stroke-width="1" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="bsp-label" id="bsp-top-label">Learn today</div>
+            </div>
+            <div class="bsp-hero" id="bsp-super">Superpower</div>
+            <div class="bsp-underline" id="bsp-uline-top"></div>
+          </div>
+
+          <!-- Bottom: wait -> competition -->
+          <div class="bsp-panel" id="bsp-bot">
+            <div class="bsp-redline" id="bsp-redline"></div>
+            <div class="bsp-head">
+              <div class="bsp-badge" id="bsp-bot-badge">
+                <svg id="bsp-glass" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 2.5h12M6 21.5h12M7.5 2.5c0 5 4.5 6.5 4.5 9.5s-4.5 4.5-4.5 9.5M16.5 2.5c0 5-4.5 6.5-4.5 9.5s4.5 4.5 4.5 9.5" fill="none" stroke="#d6cfc3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M9.6 19.6c0.6-1.8 1.6-2.6 2.4-3.1 0.8 0.5 1.8 1.3 2.4 3.1z" fill="#d6cfc3" />
+                </svg>
+                <div class="bsp-badge-red" id="bsp-badge-red"></div>
+                <svg id="bsp-swords" viewBox="0 0 24 24" aria-hidden="true">
+                  <g fill="none" stroke="#f05a46" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.5 17.5L3 6V3h3l11.5 11.5" />
+                    <path d="M13 19l6-6M16 16l4 4M19 21l2-2" />
+                    <path d="M14.5 6.5L18 3h3v3l-3.5 3.5" />
+                    <path d="M5 14l4 4M7 17l-3 3M3 19l2 2" />
+                  </g>
+                </svg>
+              </div>
+              <div class="bsp-label" id="bsp-bot-label">Wait</div>
+            </div>
+            <div class="bsp-dots" id="bsp-dots">
+              <span class="bsp-dot" id="bsp-d1"></span>
+              <span class="bsp-dot" id="bsp-d2"></span>
+              <span class="bsp-dot" id="bsp-d3"></span>
+            </div>
+            <div class="bsp-hero" id="bsp-comp">Competition</div>
+            <div class="bsp-underline" id="bsp-uline-bot"></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+
+          // Camera settle + slow living drift so the hold never reads as a freeze.
+          tl.fromTo("#bsp-world", { scale: 1.14 }, { scale: 1, duration: 0.5, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bsp-world", { scale: 1 }, { scale: 1.025, duration: 3.16, ease: "sine.inOut", immediateRender: false }, 0.5);
+          tl.fromTo("#bsp-grid", { scale: 1.08, y: 0 }, { scale: 1, y: -60, duration: 3.66, ease: "none", immediateRender: true }, 0);
+
+          // Panels enter: top lit, bottom dim.
+          tl.fromTo("#bsp-top", { y: -70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.34, ease: "power3.out", immediateRender: true }, 0);
+          tl.fromTo("#bsp-bot", { y: 70, opacity: 0 }, { y: 0, opacity: 0.42, duration: 0.34, ease: "power3.out", immediateRender: true }, 0.06);
+
+          // "becomes their superpower" (0.06-1.30): bolt, label, hero lands by ~0.6.
+          tl.fromTo("#bsp-bolt-badge", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.1);
+          tl.fromTo("#bsp-bolt", { scale: 0.5, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.34, ease: "power3.out", immediateRender: true }, 0.14);
+          tl.fromTo("#bsp-top-label", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.28, ease: "power3.out", immediateRender: true }, 0.16);
+          tl.fromTo("#bsp-super", { y: 40, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.36, ease: "power3.out", immediateRender: true }, 0.26);
+          tl.fromTo("#bsp-uline-top", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power3.out", immediateRender: true }, 0.46);
+          // Glow swells as the word lands, then settles to a calm hold.
+          tl.fromTo("#bsp-halo", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", immediateRender: true }, 0.5);
+          tl.fromTo("#bsp-halo", { opacity: 1 }, { opacity: 0.55, duration: 0.7, ease: "sine.inOut", immediateRender: false }, 1.2);
+
+          // Bottom dim placeholder: waiting dots, quiet.
+          tl.fromTo("#bsp-bot-badge", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: true }, 0.2);
+          tl.fromTo("#bsp-bot-label", { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.28, ease: "power3.out", immediateRender: true }, 0.24);
+          ["#bsp-d1", "#bsp-d2", "#bsp-d3"].forEach(function (id, i) {
+            tl.fromTo(id, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power3.out", immediateRender: true }, 0.3 + i * 0.06);
+          });
+          tl.fromTo("#bsp-comp", { opacity: 0, x: 0, scale: 1 }, { opacity: 0, x: 0, scale: 1, duration: 0.01, ease: "none", immediateRender: true }, 0);
+          tl.fromTo("#bsp-redline", { opacity: 0 }, { opacity: 0, duration: 0.01, ease: "none", immediateRender: true }, 0);
+          tl.fromTo("#bsp-swords", { opacity: 0, scale: 0.5, rotation: -40 }, { opacity: 0, scale: 0.5, rotation: -40, duration: 0.01, ease: "none", immediateRender: true }, 0);
+          tl.fromTo("#bsp-uline-bot", { scaleX: 0 }, { scaleX: 0, duration: 0.01, ease: "none", immediateRender: true }, 0);
+          tl.fromTo("#bsp-badge-red", { opacity: 0 }, { opacity: 0, duration: 0.01, ease: "none", immediateRender: true }, 0);
+
+          // "The ones who wait" (1.29-2.04): bottom wakes up, hourglass flips, dots tick.
+          tl.fromTo("#bsp-bot", { opacity: 0.42 }, { opacity: 1, duration: 0.36, ease: "power2.out", immediateRender: false }, 1.29);
+          tl.fromTo("#bsp-glass", { rotation: 0 }, { rotation: 180, duration: 0.6, ease: "power3.inOut", immediateRender: true }, 1.36);
+          ["#bsp-d1", "#bsp-d2", "#bsp-d3"].forEach(function (id, i) {
+            tl.fromTo(id, { y: 0 }, { y: -18, duration: 0.18, ease: "sine.out", yoyo: true, repeat: 1, immediateRender: true }, 1.5 + i * 0.12);
+          });
+
+          // "it becomes their competition" (2.40-3.66): dots out, hero in red, swords replace hourglass.
+          tl.fromTo("#bsp-dots", { opacity: 1, x: 0 }, { opacity: 0, x: 40, duration: 0.18, ease: "power2.in", immediateRender: true }, 2.34);
+          tl.fromTo("#bsp-glass", { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.5, duration: 0.2, ease: "power2.in", immediateRender: false }, 2.36);
+          tl.fromTo("#bsp-badge-red", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, 2.42);
+          tl.fromTo("#bsp-swords", { opacity: 0, scale: 0.5, rotation: -40 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.34, ease: "power3.out", immediateRender: false }, 2.46);
+          tl.fromTo("#bsp-comp", { opacity: 0, x: 60, scale: 1 }, { opacity: 1, x: 0, scale: 1, duration: 0.38, ease: "power3.out", immediateRender: false }, 2.42);
+          tl.fromTo("#bsp-redline", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out", immediateRender: false }, 2.44);
+          tl.fromTo("#bsp-bot-label", { opacity: 1 }, { opacity: 0.8, duration: 0.3, ease: "power2.out", immediateRender: false }, 2.5);
+          tl.fromTo("#bsp-uline-bot", { scaleX: 0 }, { scaleX: 1, duration: 0.36, ease: "power3.out", immediateRender: false }, 2.66);
+          // Top keeps a calm, steady glow while the bottom turns.
+          tl.fromTo("#bsp-top", { opacity: 1 }, { opacity: 0.9, duration: 0.5, ease: "sine.inOut", immediateRender: false }, 2.5);
+
+          tl.seek(0);
+          window.__timelines["broll-superpower"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
