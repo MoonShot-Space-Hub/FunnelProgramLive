@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0e0a06;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0e0a06;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* Camera rig (coordinate-target-zoom): shake translates, outer scales, inner counter-translates. */
+      #cam-shake,
+      #cam-outer,
+      #cam-inner {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 50%;
+        will-change: transform;
+      }
+      #aroll {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Black gradient behind the captions. */
+      #scrim-fill {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1080px;
+        background: linear-gradient(
+          180deg,
+          rgba(14, 10, 6, 0) 0%,
+          rgba(14, 10, 6, 0.4) 28%,
+          rgba(14, 10, 6, 0.76) 60%,
+          rgba(14, 10, 6, 0.9) 100%
+        );
+        opacity: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15.05" data-width="1080" data-height="1920">
+      <!-- A-roll: the user's full take; its own sound stays on the clip. -->
+      <div id="cam-shake">
+        <div id="cam-outer">
+          <div id="cam-inner">
+            <video
+              id="aroll"
+              class="clip"
+              src="assets/footage/ad2-raw.mp4"
+              playsinline
+              data-has-audio="true"
+              data-volume="1"
+              data-start="0"
+              data-duration="15.05"
+              data-track-index="0"
+            ></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Black gradient: fades in with the first caption and holds while captions run. -->
+      <div id="scrim-fill" class="clip" data-start="0.7" data-duration="14.35" data-track-index="2"></div>
+
+      <!-- Keyword graphics (sub-composition) -->
+      <div
+        id="graphics"
+        data-composition-id="graphics"
+        data-composition-src="compositions/graphics.html"
+        data-start="0"
+        data-duration="15.05"
+        data-track-index="3"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- Captions (sub-composition) -->
+      <div
+        id="captions"
+        data-composition-id="captions"
+        data-composition-src="compositions/captions.html"
+        data-track-kind="captions"
+        data-start="0"
+        data-duration="15.05"
+        data-track-index="4"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- Call to action (sub-composition) -->
+      <div
+        id="cta"
+        data-composition-id="cta"
+        data-composition-src="compositions/cta.html"
+        data-start="12.55"
+        data-duration="2.5"
+        data-track-index="5"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- SFX: bundled Pixabay-licensed library. Starts are offset by each file's transient peak. -->
+      <audio id="sfx-hook" src="assets/sfx/pop.mp3" data-start="0" data-duration="0.72" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-whip-1" src="assets/sfx/whoosh.mp3" data-start="3.507" data-duration="0.57" data-track-index="11" data-volume="0.32"></audio>
+      <audio id="sfx-yes" src="assets/sfx/pop.mp3" data-start="4.11" data-duration="0.72" data-track-index="12" data-volume="0.32"></audio>
+      <audio id="sfx-no" src="assets/sfx/click-soft.mp3" data-start="5.33" data-duration="0.37" data-track-index="12" data-volume="0.5"></audio>
+      <audio id="sfx-massive" src="assets/sfx/impact-bass-1.mp3" data-start="7.09" data-duration="1.4" data-track-index="13" data-volume="0.42"></audio>
+      <audio id="sfx-whip-2" src="assets/sfx/whoosh.mp3" data-start="7.857" data-duration="0.57" data-track-index="11" data-volume="0.32"></audio>
+      <audio id="sfx-free" src="assets/sfx/impact-bass-1.mp3" data-start="8.68" data-duration="1.4" data-track-index="13" data-volume="0.36"></audio>
+      <audio id="sfx-3h" src="assets/sfx/pop.mp3" data-start="9.15" data-duration="0.72" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="sfx-reframe" src="assets/sfx/whoosh-short.mp3" data-start="10.22" data-duration="0.57" data-track-index="11" data-volume="0.16"></audio>
+      <audio id="sfx-punch" src="assets/sfx/whoosh-short.mp3" data-start="11.15" data-duration="0.57" data-track-index="12" data-volume="0.18"></audio>
+      <audio id="sfx-whip-3" src="assets/sfx/whoosh.mp3" data-start="12.39" data-duration="0.57" data-track-index="11" data-volume="0.32"></audio>
+      <audio id="sfx-arrow" src="assets/sfx/whoosh-short.mp3" data-start="12.62" data-duration="0.57" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sfx-button" src="assets/sfx/pop.mp3" data-start="13.8" data-duration="0.72" data-track-index="13" data-volume="0.36"></audio>
+      <audio id="sfx-press" src="assets/sfx/click.mp3" data-start="14.66" data-duration="0.37" data-track-index="12" data-volume="0.55"></audio>
+    </div>
+
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+
+        // ---- Camera: face-anchored punch-ins (coordinate-target-zoom, nested wrappers) ----
+        // Inner translate T places the face (offset from frame centre, pre-scale) at screen y = py:
+        //   T = (P - C) / S - offset, clamped so the scaled footage always covers the frame.
+        function cam(S, faceX, faceY, py) {
+          var ox = faceX - 540, oy = faceY - 960;
+          var tx = 0 / S - ox, ty = (py - 960) / S - oy;
+          var mx = 540 * (1 - 1 / S), my = 960 * (1 - 1 / S);
+          return { s: S, x: Math.max(-mx, Math.min(mx, tx)), y: Math.max(-my, Math.min(my, ty)) };
+        }
+        function setCam(t, c) {
+          tl.set("#cam-outer", { scale: c.s }, t);
+          tl.set("#cam-inner", { x: c.x, y: c.y }, t);
+        }
+        function moveCam(t, dur, ease, from, to) {
+          tl.fromTo("#cam-outer", { scale: from.s }, { scale: to.s, duration: dur, ease: ease, immediateRender: false }, t);
+          tl.fromTo("#cam-inner", { x: from.x, y: from.y }, { x: to.x, y: to.y, duration: dur, ease: ease, immediateRender: false }, t);
+        }
+        var WIDE = { s: 1, x: 0, y: 0 };
+
+        // Scene 1 — desk (face ~ 455,866): slow push through the hook.
+        setCam(0, WIDE);
+        moveCam(0.75, 2.75, "sine.inOut", WIDE, cam(1.1, 455, 866, 820));
+        // Scene 2 — floor, phones (face ~ 513,676): gentle push.
+        setCam(3.667, WIDE);
+        moveCam(3.8, 2.3, "sine.inOut", WIDE, cam(1.06, 513, 676, 676));
+        // Scene 3 — namaste pull-back already moves in camera; headroom for the "massive" shake.
+        setCam(6.167, WIDE);
+        setCam(7.2, cam(1.06, 474, 692, 692));
+        // Scene 4 — window (face ~ 565,675): punch on "free", reframe on "where", punch on "learn".
+        setCam(8.017, WIDE);
+        var p1 = cam(1.28, 565, 675, 720), p1d = cam(1.33, 565, 675, 720);
+        moveCam(8.82, 0.15, "power2.out", WIDE, p1);
+        moveCam(8.97, 1.41, "none", p1, p1d);
+        var r1 = cam(1.12, 610, 669, 660), r1d = cam(1.16, 610, 669, 660);
+        setCam(10.38, r1);
+        moveCam(10.38, 0.93, "none", r1, r1d);
+        var p2 = cam(1.32, 610, 669, 680), p2d = cam(1.36, 610, 669, 680);
+        moveCam(11.31, 0.15, "power2.out", r1d, p2);
+        moveCam(11.46, 1.09, "none", p2, p2d);
+        // Scene 5 — CTA (face ~ 552,663): drift, then punch on "register".
+        setCam(12.55, WIDE);
+        var c1 = cam(1.06, 552, 663, 663);
+        moveCam(12.6, 1.53, "sine.inOut", WIDE, c1);
+        var p3 = cam(1.22, 552, 663, 640), p3d = cam(1.25, 552, 663, 640);
+        moveCam(14.13, 0.15, "power2.out", c1, p3);
+        moveCam(14.28, 0.77, "none", p3, p3d);
+
+        // Impact shakes — baked, deterministic decaying wobble on the outermost wrapper.
+        function shake(t0, amp, dur) {
+          var steps = Math.round(dur * 30), prev = { x: 0, y: 0 };
+          tl.set("#cam-shake", { x: 0, y: 0 }, t0);
+          for (var i = 1; i <= steps; i++) {
+            var u = i / steps, k = Math.exp(-3.2 * u) * (1 - u);
+            var next = { x: amp * k * Math.sin(i * 2.1), y: amp * k * Math.cos(i * 1.7) };
+            tl.fromTo("#cam-shake", { x: prev.x, y: prev.y }, { x: next.x, y: next.y, duration: dur / steps, ease: "none", immediateRender: false }, t0 + (i - 1) * (dur / steps));
+            prev = next;
+          }
+          tl.set("#cam-shake", { x: 0, y: 0 }, t0 + dur);
+        }
+        shake(7.23, 14, 0.42);
+        shake(8.86, 9, 0.24);
+
+        // ---- Black gradient behind captions ----
+        tl.fromTo("#scrim-fill", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out", immediateRender: true }, 0.7);
+
+        tl.seek(0);
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>

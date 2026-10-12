@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Captions</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+          pointer-events: none;
+        }
+        #root .cap-group {
+          position: absolute;
+          top: 1150px;
+          left: 0;
+          width: 100%;
+          padding: 0 70px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 4px 20px;
+          opacity: 0;
+          visibility: hidden;
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+        #root .cap-word {
+          position: relative;
+          display: inline-block;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 900;
+          font-size: 80px;
+          line-height: 1.12;
+          letter-spacing: 0.01em;
+          text-transform: uppercase;
+          color: #fff8ec;
+          padding: 2px 14px 6px;
+          border-radius: 14px;
+          background-color: rgba(255, 201, 60, 0);
+          transform-origin: 50% 60%;
+          text-shadow:
+            0 4px 0 rgba(12, 9, 4, 0.55),
+            0 8px 24px rgba(12, 9, 4, 0.7);
+          will-change: transform;
+        }
+        #root .cap-text {
+          position: relative;
+          z-index: 1;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions" data-start="0" data-duration="15.05" data-width="1080" data-height="1920"></div>
+
+      <script>
+        (function () {
+          // Word timings: Whisper-small text aligned to Vosk word timestamps (see transcript.json).
+          var WORDS = [
+            ["In", 0.75, 0.93], ["the", 0.93, 1.02], ["next", 1.02, 1.26], ["few", 1.26, 1.56], ["years,", 1.56, 1.92],
+            ["there", 1.95, 2.19], ["will", 2.2, 2.37], ["be", 2.37, 2.52],
+            ["two", 2.52, 2.79], ["types", 2.79, 3.06], ["of", 3.06, 3.18], ["students.", 3.18, 3.69],
+            ["One", 3.72, 4.08], ["who", 4.08, 4.23], ["understands", 4.23, 4.77], ["AI", 4.77, 5.1],
+            ["and", 5.1, 5.34], ["the", 5.34, 5.4], ["one", 5.4, 5.67], ["who", 5.67, 5.79], ["doesn't.", 5.79, 6.18],
+            ["And", 6.18, 6.38], ["the", 6.43, 6.51], ["gap", 6.51, 6.84],
+            ["will", 6.9, 7.11], ["be", 7.11, 7.23], ["massive.", 7.23, 7.95],
+            ["We're", 8.01, 8.31], ["hosting", 8.31, 8.76], ["a", 8.76, 8.82], ["free", 8.82, 9.21],
+            ["3-hour", 9.27, 9.72], ["masterclass", 9.72, 10.38],
+            ["where", 10.38, 10.74], ["they", 10.8, 11.04], ["will", 11.04, 11.31],
+            ["learn", 11.31, 11.61], ["AI", 11.61, 11.85], ["practically.", 11.91, 12.51],
+            ["Click", 12.57, 12.84], ["on", 12.84, 12.99], ["the", 12.99, 13.11], ["link", 13.11, 13.41], ["below", 13.41, 13.86],
+            ["and", 13.92, 14.13], ["register", 14.13, 14.73], ["now.", 14.73, 15.05]
+          ];
+          // [firstWord, lastWord] per caption group; emphasis words get the yellow box sweep.
+          var GROUPS = [[0, 4], [5, 7], [8, 11], [12, 15], [16, 20], [21, 23], [24, 26], [27, 30], [31, 32], [33, 35], [36, 38], [39, 43], [44, 46]];
+          var EMPHASIS = { 8: 1, 9: 1, 15: 1, 20: 1, 23: 1, 26: 1, 30: 1, 31: 1, 32: 1, 37: 1, 38: 1, 42: 1, 45: 1, 46: 1 };
+          var END = 15.05;
+          var WHITE = "#fff8ec", YELLOW = "#ffc93c", INK = "#16110a";
+
+          var root = document.getElementById("root");
+          var tl = gsap.timeline({ paused: true });
+
+          GROUPS.forEach(function (g, gi) {
+            var start = WORDS[g[0]][1];
+            var end = gi + 1 < GROUPS.length ? WORDS[GROUPS[gi + 1][0]][1] : END;
+            var grp = document.createElement("div");
+            grp.className = "cap-group";
+            grp.id = "cap-g" + gi;
+            for (var wi = g[0]; wi <= g[1]; wi++) {
+              var w = document.createElement("span");
+              w.className = "cap-word";
+              w.id = "cap-w" + wi;
+              var t = document.createElement("span");
+              t.className = "cap-text";
+              t.id = "cap-t" + wi;
+              t.textContent = WORDS[wi][0];
+              w.appendChild(t);
+              grp.appendChild(w);
+            }
+            root.appendChild(grp);
+
+            // Group entrance: smooth settle (spring-pop-entrance, power3.out), hard kill at group end.
+            tl.set(grp, { visibility: "visible" }, start);
+            tl.fromTo(grp, { opacity: 0, y: 26, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: "power3.out", immediateRender: false }, start);
+            tl.set(grp, { opacity: 0, visibility: "hidden" }, end);
+
+            // Karaoke: the spoken word turns yellow and lifts; emphasis words get a box sweep that holds.
+            for (var k = g[0]; k <= g[1]; k++) {
+              var ws = WORDS[k][1], we = Math.min(WORDS[k][2], end);
+              var wordEl = "#cap-w" + k, textEl = "#cap-t" + k;
+              if (EMPHASIS[k]) {
+                // Emphasis: flips to ink-on-yellow in one frame (no low-contrast crossfade), then pops.
+                var tilt = k % 2 ? 2 : -2;
+                tl.set(wordEl, { backgroundColor: "rgba(255, 201, 60, 1)", textShadow: "none" }, ws);
+                tl.set(textEl, { color: INK }, ws);
+                tl.fromTo(wordEl, { scale: 0.92, rotation: 0 }, { scale: 1.12, rotation: tilt, duration: 0.12, ease: "power3.out", immediateRender: false }, ws);
+                tl.fromTo(wordEl, { scale: 1.12, rotation: tilt }, { scale: 1.04, rotation: tilt, duration: 0.2, ease: "power2.out", immediateRender: false }, ws + 0.12);
+              } else {
+                tl.fromTo(textEl, { color: WHITE }, { color: YELLOW, duration: 0.06, ease: "none", immediateRender: false }, ws);
+                tl.fromTo(wordEl, { scale: 1 }, { scale: 1.08, duration: 0.1, ease: "power3.out", immediateRender: false }, ws);
+                if (we < end - 0.02) {
+                  tl.fromTo(textEl, { color: YELLOW }, { color: WHITE, duration: 0.12, ease: "none", immediateRender: false }, we);
+                  tl.fromTo(wordEl, { scale: 1.08 }, { scale: 1, duration: 0.12, ease: "power2.out", immediateRender: false }, we);
+                }
+              }
+            }
+          });
+
+          tl.seek(0);
+          window.__timelines["captions"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

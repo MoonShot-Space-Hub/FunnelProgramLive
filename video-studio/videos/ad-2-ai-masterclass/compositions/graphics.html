@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Keyword graphics</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          font-family: "Montserrat", sans-serif;
+        }
+        #root .g-layer {
+          position: absolute;
+          inset: 0;
+        }
+          #root .chip-row {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+          #root .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 18px;
+        padding: 18px 34px 20px;
+        border-radius: 18px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.01em;
+        line-height: 1;
+        transform-origin: 50% 50%;
+        will-change: transform, opacity;
+        box-shadow: 0 14px 34px rgba(12, 9, 4, 0.45);
+      }
+          #root .chip svg {
+        width: 1em;
+        height: 1em;
+        flex: none;
+      }
+          #root .chip-yellow {
+        background: #ffc93c;
+        color: #16110a;
+      }
+          #root .chip-ink {
+        background: rgba(22, 17, 10, 0.88);
+        color: #fff8ec;
+        border: 3px solid rgba(255, 201, 60, 0.85);
+      }
+          #root .chip-paper {
+        background: #fff8ec;
+        color: #16110a;
+      }
+        #root #hook-chip {
+        font-size: 66px;
+      }
+        #root #chip-yes,
+        #root #chip-no {
+        font-size: 52px;
+      }
+        #root #stamp-free {
+        font-size: 112px;
+        padding: 16px 50px 20px;
+        border-radius: 22px;
+      }
+        #root #chip-3h {
+        font-size: 50px;
+      }
+      </style>
+
+      <div id="root" data-composition-id="graphics" data-start="0" data-duration="15.05" data-width="1080" data-height="1920">
+      <!-- Hook title -->
+      <div id="hook" class="g-layer">
+        <div class="chip-row" style="top: 250px">
+          <div class="chip chip-yellow" id="hook-chip">2 types of students</div>
+        </div>
+      </div>
+
+      <!-- "One who understands AI / and the one who doesn't" -->
+      <div id="two-types" class="g-layer">
+        <div class="chip-row" style="top: 250px">
+          <div class="chip chip-ink" id="chip-yes">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#ffc93c" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <span>Understands AI</span>
+          </div>
+        </div>
+        <div class="chip-row" style="top: 372px">
+          <div class="chip chip-ink" id="chip-no">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="#ff5a4a" stroke-width="3.6" stroke-linecap="round" /></svg>
+            <span>Doesn't</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FREE stamp + 3-hour masterclass -->
+      <div id="offer" class="g-layer">
+        <div class="chip-row" style="top: 180px">
+          <div class="chip chip-yellow" id="stamp-free">Free</div>
+        </div>
+        <div class="chip-row" style="top: 365px">
+          <div class="chip chip-paper" id="chip-3h">3-hour AI masterclass</div>
+        </div>
+      </div>
+
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+        // ---- Hook title (spring-pop-entrance, smooth settle) ----
+        tl.fromTo("#hook-chip", { scale: 0.4, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.42, ease: "power3.out", immediateRender: true }, 0.1);
+        tl.to("#hook-chip", { scale: 0.85, opacity: 0, duration: 0.14, ease: "power2.in" }, 2.32);
+
+        // ---- Two types chips ----
+        tl.fromTo("#chip-yes", { scale: 0.5, opacity: 0, x: -60 }, { scale: 1, opacity: 1, x: 0, duration: 0.38, ease: "power3.out", immediateRender: true }, 4.23);
+        tl.fromTo("#chip-no", { scale: 0.5, opacity: 0, x: 60 }, { scale: 1, opacity: 1, x: 0, duration: 0.38, ease: "power3.out", immediateRender: true }, 5.4);
+        tl.to(["#chip-yes", "#chip-no"], { opacity: 0, y: -16, duration: 0.12, ease: "power2.in" }, 6.0);
+
+        // ---- FREE stamp (kinetic-beat-slam: scale-slam) + masterclass chip ----
+        tl.fromTo("#stamp-free", { scale: 2.6, opacity: 0, rotation: -16 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.2, ease: "power4.out", immediateRender: true }, 8.82);
+        tl.fromTo("#chip-3h", { scale: 0.5, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.36, ease: "power3.out", immediateRender: true }, 9.27);
+        tl.to(["#stamp-free", "#chip-3h"], { opacity: 0, scale: 0.9, duration: 0.12, ease: "power2.in" }, 10.22);
+
+          tl.seek(0);
+          window.__timelines["graphics"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
