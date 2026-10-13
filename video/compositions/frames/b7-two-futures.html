@@ -359,7 +359,7 @@
       const UP = new THREE.Vector3(0, 1, 0);
 
       // sun: low on the horizon, just right of the CHANGE road's heading
-      const PHI_SUN = 12 * D2R, EL_SUN = 3.5 * D2R;
+      const PHI_SUN = 12 * D2R, EL_SUN = 2.4 * D2R;
       const SUN_DIR = new THREE.Vector3(Math.sin(PHI_SUN) * Math.cos(EL_SUN), Math.sin(EL_SUN), -Math.cos(PHI_SUN) * Math.cos(EL_SUN));
 
       // ================= shared sky / fog uniforms =================
@@ -382,14 +382,14 @@
           float az = atan(d.x, -d.z);
           float rw = smoothstep(-0.32, 0.30, az);
           vec3 hor = mix(uB7HorL, uB7HorR, rw);
-          vec3 c = mix(hor, uB7Mid, smoothstep(0.0, 0.30, el));
-          c = mix(c, uB7Top, smoothstep(0.22, 0.85, el));
+          vec3 c = mix(hor, uB7Mid, smoothstep(0.0, 0.2, el));
+          c = mix(c, uB7Top, smoothstep(0.1, 0.48, el));
           vec2 hd = normalize(d.xz + vec2(1e-5, 0.0));
           vec2 sh = normalize(uB7SunDir.xz);
           float sa = max(dot(hd, sh), 0.0);
           float band = exp(-max(el, 0.0) * 15.0) * (pow(sa, 6.0) * 0.7 + pow(sa, 60.0) * 1.1);
           float sd = max(dot(d, uB7SunDir), 0.0);
-          c += uB7Sun * (band * 0.5 + pow(sd, 10.0) * 0.2 + pow(sd, 120.0) * 0.8 * sunK) * uB7Boost * mix(0.55, 1.0, sunK);
+          c += uB7Sun * (band * 0.5 + pow(sd, 28.0) * 0.14 + pow(sd, 120.0) * 0.8 * sunK) * uB7Boost * mix(0.55, 1.0, sunK);
           return c;
         }
       `;
@@ -406,7 +406,7 @@
           float b7ff = smoothstep(fogNear, fogFar, vFogDepth);
           float b7a = atan(b7wp.x, -b7wp.z);
           float b7lw = (1.0 - smoothstep(-0.17, -0.03, b7a)) * smoothstep(0.0, 22.0, -b7wp.z);
-          float b7lf = smoothstep(2.0, 95.0, vFogDepth) * 0.97;
+          float b7lf = smoothstep(0.0, 62.0, vFogDepth) * 0.98;
           b7ff = mix(b7ff, max(b7ff, b7lf), b7lw);
           b7fc = mix(b7fc, uB7FogL, b7lw * 0.85);
           gl_FragColor.rgb = mix(gl_FragColor.rgb, b7fc, b7ff);
@@ -608,7 +608,10 @@
         map: stripTex, color: new THREE.Color(0xff9a1f).multiplyScalar(0.55), vertexColors: true, transparent: true,
         blending: THREE.AdditiveBlending, depthWrite: false, fog: false, side: THREE.DoubleSide,
       });
-      const glowR = [ribbon(RB, 0, 700, EO, 1.7, 0.08, { fade: glowFade }), ribbon(RB, crotch, 700, -EO, 1.7, 0.08, { fade: glowFade })];
+      const glowR = [
+        ribbon(RB, 0, 700, EO, 1.7, 0.08, { fade: (s) => glowFade(s) * sstep(0, 14, s) }),
+        ribbon(RB, crotch, 700, -EO, 1.7, 0.08, { fade: (s) => glowFade(s) * sstep(crotch, crotch + 14, s) }),
+      ];
       glowR.forEach((g) => addMesh(g, matGlowR, 5));
       const revealable = edgeR.concat(glowR);
       function setReveal(sMax) {
@@ -852,8 +855,8 @@
         return s;
       };
       const SUN_C = new THREE.Color(5.2, 3.5, 1.6);
-      const HALO_C = new THREE.Color(0.5, 0.2, 0.035);
-      const WIDE_C = new THREE.Color(0.17, 0.035, 0.09);
+      const HALO_C = new THREE.Color(0.42, 0.17, 0.03);
+      const WIDE_C = new THREE.Color(0.075, 0.016, 0.04);
       const STREAK_C = new THREE.Color(0.7, 0.4, 0.12);
       const haloWide = spr(glowTex, WIDE_C.clone(), true, false);
       const halo = spr(glowTex, HALO_C.clone(), true, false);
@@ -870,7 +873,7 @@
         ([s, lat, y, sc], i) => {
           const p = pathAt(LB, s), r = rightOf(p.h);
           const sp = new THREE.Sprite(
-            new THREE.SpriteMaterial({ map: puffTex, color: 0x6e6990, transparent: true, opacity: 0.34, depthWrite: false, fog: false }),
+            new THREE.SpriteMaterial({ map: puffTex, color: 0x6e6990, transparent: true, opacity: 0.34, depthWrite: false, depthTest: false, fog: false }),
           );
           sp.position.set(p.x + r.x * lat, y, p.z + r.z * lat);
           sp.scale.set(sc * 1.6, sc * 0.55, 1);
@@ -929,10 +932,10 @@
       function glance(t) {
         let g = 0;
         if (t < CUE.towards) g = 0;
-        else if (t < 1.34) g = lerp(0, -6.5, E.sio((t - CUE.towards) / 0.22));
-        else if (t < 1.66) g = lerp(-6.5, 4.5, E.sio((t - 1.34) / 0.32));
-        else if (t < 2.05) g = lerp(4.5, 2.0, E.sio((t - 1.66) / 0.39));
-        else g = 2.0;
+        else if (t < 1.34) g = lerp(0, -4.0, E.sio((t - CUE.towards) / 0.22));
+        else if (t < 1.66) g = lerp(-4.0, 4.0, E.sio((t - 1.34) / 0.32));
+        else if (t < 2.05) g = lerp(4.0, 1.0, E.sio((t - 1.66) / 0.39));
+        else g = 1.0;
         return g * D2R * (1 - E.io2(clamp01((t - CUE.start) / 0.42)));
       }
       function headBase(t) {
@@ -940,7 +943,7 @@
         const sc = camS(tt);
         const v = vel(Math.min(Math.max(tt, 0), DUR));
         const p = pathAt(CP, sc), a = pathAt(CP, sc + 1 + 0.35 * v);
-        const base = Math.atan2(a.x - p.x, -(a.z - p.z));
+        const base = Math.atan2(a.x - p.x, -(a.z - p.z)) + 2 * D2R;
         const b = E.io2(clamp01((tt - 2.38) / 0.8));
         return base + (PHI_SUN - base) * 0.8 * b;
       }
@@ -1092,7 +1095,7 @@
       const shakebox = $("shakebox"), shock = $("shock"), flash = $("flash"), line2 = $("line2");
       const ANCH_L = new THREE.Vector3(), ANCH_R = new THREE.Vector3();
       {
-        const a = pathAt(LB, 60), b = pathAt(RB, 60);
+        const a = pathAt(LB, 55), b = pathAt(RB, 48);
         ANCH_L.set(a.x, 0.1, a.z);
         ANCH_R.set(b.x, 0.1, b.z);
       }
@@ -1129,7 +1132,7 @@
         sunDisc.scale.setScalar(210 * (1 + 0.06 * acc + 0.1 * pulse));
         halo.scale.setScalar(430 * (1 + 0.35 * acc + 0.9 * pulse + 0.15 * settle));
         halo.material.color.copy(HALO_C).multiplyScalar(0.7 + 0.45 * boost);
-        haloWide.scale.setScalar(1050 * (1 + 0.25 * acc + 0.5 * pulse));
+        haloWide.scale.setScalar(900 * (1 + 0.25 * acc + 0.5 * pulse));
         haloWide.material.color.copy(WIDE_C).multiplyScalar(0.6 + 0.4 * boost);
         streak.scale.set(1900 * (1 + 0.5 * pulse + 0.2 * acc), 34 * (1 + 0.6 * pulse), 1);
         streak.material.color.copy(STREAK_C).multiplyScalar(0.25 + 0.35 * acc + 0.9 * pulse);
@@ -1156,6 +1159,7 @@
         // fog banks drift
         fogBanks.forEach((fb) => {
           fb.sp.position.x = fb.x + Math.sin(t * 0.6 + fb.ph) * 1.5;
+          fb.sp.material.opacity = 0.44 * sstep(18, 45, fb.sp.position.distanceTo(camera.position));
         });
 
         // particle bursts

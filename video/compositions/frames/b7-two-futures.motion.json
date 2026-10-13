@@ -1,13 +1,13 @@
 {
   "scene": "b7-two-futures",
   "duration_s": 3.6,
-  "rules": ["svg-path-draw", "kinetic-beat-slam", "particle-burst", "motion-blur-streak"],
+  "rules": ["kinetic-beat-slam", "particle-burst", "motion-blur-streak"],
   "exit": {
-    "vector": "radial outward camera push from (540,1000): linear scale 1.00->1.04 over 3.6s (0.0111/s), about 10 px/s at the stage top, 12 px/s at the top corners; vanishing-point rays rotating 14 deg/s; ground grid lines drifting down toward the camera; centre marks streaming toward the vanishing points; the stamp is at rest",
+    "vector": "3D camera rushing forward down the amber road toward the centred sunrise at ~61 m/s (still accelerating), FOV ~65 deg; screen flow is radial outward from the vanishing point (~540,760): ~0 px/s at the horizon, ~2300 px/s downward at y~1070, lane-dash streaks at full stretch and speed lines streaming outward; sun halo still swelling after the 'change' flare; DON'T WAIT stamp and CHANGE chip at rest (stamp push eases to rest at scale 1.03)",
     "still_moving": true
   },
   "entry": {
-    "vector": "radial outward camera push from (540,1000) already at its constant rate (about 10 px/s at the stage top); ground grid drifting down; paths start drawing at 0.08s",
+    "vector": "3D camera already dollying forward at a steady 18 m/s along the road toward the fork with a slight bob; screen flow radial outward from the vanishing point (~540,720): ~0 px/s at the horizon, ~1000 px/s downward at the stage bottom (y~1120); amber road edges ignite outward from the fork at 0.08s",
     "from_rest": false
   }
 }
