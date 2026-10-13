@@ -2,3 +2,4 @@ renders/
 assets/footage/
 ae/Footage/
 .hyperframes/
+__pycache__/
