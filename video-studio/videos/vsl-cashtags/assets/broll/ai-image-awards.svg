@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1250" viewBox="0 0 1000 1250">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0" stop-color="#2b2140"/>
+      <stop offset="0.45" stop-color="#140f22"/>
+      <stop offset="1" stop-color="#05040a"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6d8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#fff6d8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffe9a8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7a5212"/>
+      <stop offset="0.22" stop-color="#f7d774"/>
+      <stop offset="0.5" stop-color="#fff3c4"/>
+      <stop offset="0.72" stop-color="#e2ad3a"/>
+      <stop offset="1" stop-color="#6b4510"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#55606e"/>
+      <stop offset="0.25" stop-color="#dfe6ef"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="0.75" stop-color="#b8c2ce"/>
+      <stop offset="1" stop-color="#4a5360"/>
+    </linearGradient>
+    <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5a2f14"/>
+      <stop offset="0.25" stop-color="#e3a271"/>
+      <stop offset="0.5" stop-color="#ffd9b8"/>
+      <stop offset="0.75" stop-color="#c47a45"/>
+      <stop offset="1" stop-color="#4f2810"/>
+    </linearGradient>
+    <linearGradient id="step" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2733"/>
+      <stop offset="1" stop-color="#121018"/>
+    </linearGradient>
+    <linearGradient id="stepTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a4558"/>
+      <stop offset="1" stop-color="#2a2733"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1524"/>
+      <stop offset="1" stop-color="#050408"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <!-- one trophy, origin at base centre, height ~300 -->
+    <g id="cup">
+      <path d="M-70 -300 h140 c0 70 -22 118 -56 136 v26 h-28 v-26 c-34 -18 -56 -66 -56 -136z"/>
+      <path d="M-70 -286 c-46 0 -58 54 -16 78" fill="none" stroke-width="12" stroke-linecap="round"/>
+      <path d="M70 -286 c46 0 58 54 16 78" fill="none" stroke-width="12" stroke-linecap="round"/>
+      <rect x="-14" y="-138" width="28" height="56" rx="4"/>
+      <path d="M-52 -82 h104 l14 34 h-132z"/>
+      <rect x="-74" y="-48" width="148" height="48" rx="8"/>
+    </g>
+  </defs>
+
+  <rect width="1000" height="1250" fill="url(#bg)"/>
+
+  <!-- spotlight beams -->
+  <g opacity="0.9">
+    <path d="M150 0 L60 0 L330 900 L470 900 Z" fill="url(#beam)" opacity="0.45"/>
+    <path d="M540 0 L460 0 L380 900 L620 900 Z" fill="url(#beam)" opacity="0.6"/>
+    <path d="M940 0 L850 0 L530 900 L670 900 Z" fill="url(#beam)" opacity="0.45"/>
+  </g>
+
+  <!-- floor -->
+  <rect y="900" width="1000" height="350" fill="url(#floor)"/>
+  <ellipse cx="500" cy="955" rx="430" ry="70" fill="url(#pool)"/>
+
+  <!-- podium steps: 7-FIGURE (left), 8-FIGURE (centre, top), 6-FIGURE (right) -->
+  <g>
+    <rect x="95" y="760" width="270" height="200" fill="url(#step)"/>
+    <rect x="95" y="760" width="270" height="18" fill="url(#stepTop)"/>
+    <rect x="365" y="690" width="270" height="270" fill="url(#step)"/>
+    <rect x="365" y="690" width="270" height="18" fill="url(#stepTop)"/>
+    <rect x="635" y="800" width="270" height="160" fill="url(#step)"/>
+    <rect x="635" y="800" width="270" height="18" fill="url(#stepTop)"/>
+    <g font-family="Inter, Helvetica, Arial, sans-serif" font-weight="900" text-anchor="middle" fill="#f5f5f7">
+      <text x="230" y="880" font-size="44">2</text>
+      <text x="500" y="835" font-size="54">1</text>
+      <text x="770" y="900" font-size="38">3</text>
+    </g>
+  </g>
+
+  <!-- trophy glows -->
+  <g filter="url(#glow)" opacity="0.75">
+    <ellipse cx="500" cy="520" rx="120" ry="150" fill="#ffd56b"/>
+    <ellipse cx="230" cy="615" rx="95" ry="120" fill="#cfd8e4" opacity="0.6"/>
+    <ellipse cx="770" cy="680" rx="85" ry="105" fill="#e8a070" opacity="0.6"/>
+  </g>
+
+  <!-- trophies -->
+  <g transform="translate(500 690) scale(1.05)" fill="url(#gold)" stroke="url(#gold)"><use href="#cup"/></g>
+  <g transform="translate(230 760) scale(0.86)" fill="url(#silver)" stroke="url(#silver)"><use href="#cup"/></g>
+  <g transform="translate(770 800) scale(0.76)" fill="url(#bronze)" stroke="url(#bronze)"><use href="#cup"/></g>
+
+  <!-- specular highlights -->
+  <g fill="#ffffff" opacity="0.55" filter="url(#soft)">
+    <path d="M462 383 c6 52 18 88 34 106 c-22 -6 -40 -50 -42 -106z"/>
+    <path d="M200 513 c5 44 15 75 29 90 c-19 -5 -34 -42 -36 -90z"/>
+    <path d="M744 579 c4 39 13 66 25 79 c-16 -4 -30 -37 -32 -79z"/>
+  </g>
+
+  <!-- plaques on the trophy bases -->
+  <g font-family="Inter, Helvetica, Arial, sans-serif" font-weight="900" text-anchor="middle" letter-spacing="1">
+    <rect x="410" y="642" width="180" height="40" rx="8" fill="#16110a" opacity="0.85"/>
+    <text x="500" y="671" font-size="26" fill="#ffd56b">8-FIGURE</text>
+    <rect x="156" y="723" width="148" height="34" rx="7" fill="#16110a" opacity="0.85"/>
+    <text x="230" y="747" font-size="22" fill="#e6edf5">7-FIGURE</text>
+    <rect x="705" y="768" width="130" height="30" rx="6" fill="#16110a" opacity="0.85"/>
+    <text x="770" y="790" font-size="19" fill="#f2b68a">6-FIGURE</text>
+  </g>
+
+  <!-- reflections -->
+  <g opacity="0.16" transform="translate(0 1920) scale(1 -1)">
+    <g transform="translate(500 960) scale(1.05)" fill="url(#gold)" stroke="url(#gold)"><use href="#cup"/></g>
+  </g>
+
+  <!-- confetti (fixed positions) -->
+  <g>
+    <rect x="120" y="140" width="14" height="26" rx="3" fill="#ffd56b" transform="rotate(24 127 153)"/>
+    <rect x="300" y="90" width="12" height="22" rx="3" fill="#0071e3" transform="rotate(-30 306 101)"/>
+    <rect x="420" y="230" width="12" height="24" rx="3" fill="#ff9f0a" transform="rotate(48 426 242)"/>
+    <rect x="610" y="120" width="14" height="26" rx="3" fill="#34c759" transform="rotate(-18 617 133)"/>
+    <rect x="760" y="210" width="12" height="22" rx="3" fill="#ffd56b" transform="rotate(64 766 221)"/>
+    <rect x="880" y="110" width="14" height="24" rx="3" fill="#ff375f" transform="rotate(12 887 122)"/>
+    <rect x="70" y="330" width="12" height="22" rx="3" fill="#bf5af2" transform="rotate(-40 76 341)"/>
+    <rect x="900" y="360" width="12" height="24" rx="3" fill="#0071e3" transform="rotate(36 906 372)"/>
+    <rect x="250" y="300" width="10" height="20" rx="3" fill="#ffffff" transform="rotate(-60 255 310)"/>
+    <rect x="700" y="330" width="10" height="20" rx="3" fill="#ffffff" transform="rotate(22 705 340)"/>
+    <circle cx="190" cy="230" r="6" fill="#ffd56b"/>
+    <circle cx="540" cy="160" r="5" fill="#ffffff"/>
+    <circle cx="830" cy="280" r="6" fill="#ff9f0a"/>
+    <circle cx="360" cy="380" r="5" fill="#34c759"/>
+    <circle cx="640" cy="420" r="5" fill="#ffd56b"/>
+  </g>
+
+  <!-- title -->
+  <g font-family="Inter, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="500" y="1080" font-size="30" font-weight="700" fill="#a1a1aa" letter-spacing="8">AWARDS NIGHT</text>
+    <text x="500" y="1140" font-size="44" font-weight="900" fill="#f5f5f7">6 · 7 · 8-figure milestones</text>
+  </g>
+</svg>
