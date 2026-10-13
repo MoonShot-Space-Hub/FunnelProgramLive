@@ -401,8 +401,9 @@
               <stop offset="1" stop-color="#d9c2f2" stop-opacity="0.85" />
             </linearGradient>
             <linearGradient id="b7-two-futures-g-left" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
-              <stop offset="0" stop-color="#9a96b2" stop-opacity="0.2" />
-              <stop offset="0.55" stop-color="#9a96b2" stop-opacity="0.09" />
+              <stop offset="0" stop-color="#c9a6ee" stop-opacity="0.22" />
+              <stop offset="0.24" stop-color="#9a96b2" stop-opacity="0.18" />
+              <stop offset="0.6" stop-color="#9a96b2" stop-opacity="0.08" />
               <stop offset="1" stop-color="#9a96b2" stop-opacity="0" />
             </linearGradient>
             <linearGradient id="b7-two-futures-g-leftedge" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
@@ -411,12 +412,14 @@
               <stop offset="1" stop-color="#9a96b2" stop-opacity="0" />
             </linearGradient>
             <linearGradient id="b7-two-futures-g-right" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
-              <stop offset="0" stop-color="#feb022" stop-opacity="0.16" />
-              <stop offset="0.6" stop-color="#feb022" stop-opacity="0.24" />
+              <stop offset="0" stop-color="#c9a6ee" stop-opacity="0.22" />
+              <stop offset="0.26" stop-color="#feb022" stop-opacity="0.17" />
+              <stop offset="0.62" stop-color="#feb022" stop-opacity="0.25" />
               <stop offset="1" stop-color="#ffd27a" stop-opacity="0.5" />
             </linearGradient>
             <linearGradient id="b7-two-futures-g-flare" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
-              <stop offset="0" stop-color="#feb022" stop-opacity="0.22" />
+              <stop offset="0" stop-color="#feb022" stop-opacity="0" />
+              <stop offset="0.22" stop-color="#feb022" stop-opacity="0.26" />
               <stop offset="0.6" stop-color="#ffd27a" stop-opacity="0.42" />
               <stop offset="1" stop-color="#fff3da" stop-opacity="0.8" />
             </linearGradient>
@@ -1016,7 +1019,7 @@
       tl.fromTo($("haze"), { x: -30, opacity: 0.8 }, { x: 30, opacity: 1, duration: DUR, ease: "sine.inOut" }, 0);
       tl.fromTo($("fog"), { x: -20, scale: 1 }, { x: 26, scale: 1.08, duration: DUR, ease: "sine.inOut" }, 0);
       tl.fromTo($("glow-amber"), { x: 0, scale: 0.9 }, { x: -24, scale: 1, duration: DUR, ease: "sine.inOut" }, 0);
-      tl.fromTo($("glow-amber"), { opacity: 0.16 }, { opacity: 0.38, duration: 0.5, ease: "power2.out", immediateRender: false }, CUE.change);
+      tl.fromTo($("glow-amber"), { opacity: 0.16 }, { opacity: 0.38, duration: 0.45, ease: "power2.out", immediateRender: false }, CUE.change);
       tl.fromTo($("gridwrap"), { opacity: 0.4 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
 
       // ---- Scene 1: the fork draws (svg-path-draw) ----
