@@ -1,4 +1,5 @@
 <template id="b7-two-futures-template">
+  <script src="vendor/three/three.min.js"></script>
   <style>
     #root {
       position: absolute;
@@ -9,301 +10,160 @@
       font-family: "Montserrat", sans-serif;
       color: #fdf2e0;
     }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-gl {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #0b0820;
+    }
     [data-composition-id="b7-two-futures"] .b7-two-futures-layer {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       overflow: hidden;
+      pointer-events: none;
     }
-    /* ---------- ground ---------- */
-    [data-composition-id="b7-two-futures"] .b7-two-futures-ground {
-      background-color: #0b0820;
-      background-image: radial-gradient(circle at 540px 620px, #221a52 0%, #0b0820 70%);
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-glow {
-      position: absolute;
-      border-radius: 50%;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-glow-violet {
-      left: 90px;
-      top: -70px;
-      width: 900px;
-      height: 900px;
-      background: radial-gradient(circle, rgba(140, 47, 194, 0.95) 0%, rgba(140, 47, 194, 0.45) 35%, rgba(140, 47, 194, 0) 70%);
-      opacity: 0.35;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-glow-amber {
-      left: 620px;
-      top: 70px;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, rgba(254, 176, 34, 0.9) 0%, rgba(254, 176, 34, 0.35) 38%, rgba(254, 176, 34, 0) 70%);
-      opacity: 0.16;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-haze {
-      left: -110px;
-      top: 150px;
-      width: 1300px;
-      height: 260px;
-      background: radial-gradient(ellipse, rgba(178, 107, 232, 0.2) 0%, rgba(178, 107, 232, 0.06) 45%, rgba(178, 107, 232, 0) 70%);
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-gridwrap {
-      position: absolute;
-      inset: 0;
-      transform-origin: 540px 1000px;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-gridsvg {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 1080px;
-      height: 1920px;
-      overflow: visible;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-stars {
-      position: absolute;
-      inset: 0;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-star {
-      position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 50%;
-      background: #fdf2e0;
-      opacity: 0;
+    [data-composition-id="b7-two-futures"] .b7-two-futures-vignette {
+      background: radial-gradient(ellipse 82% 64% at 50% 40%, rgba(5, 3, 16, 0) 52%, rgba(5, 3, 16, 0.55) 100%);
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-grain {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.07;
+      opacity: 0.06;
     }
-    /* ---------- stage ---------- */
-    [data-composition-id="b7-two-futures"] .b7-two-futures-world {
-      position: absolute;
-      inset: 0;
-      transform-origin: 540px 1000px;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-roads {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 1080px;
-      height: 1920px;
-      overflow: visible;
-      z-index: 1;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-fog {
-      position: absolute;
-      left: -60px;
-      top: 120px;
-      width: 620px;
-      height: 340px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(154, 150, 178, 0.34) 0%, rgba(154, 150, 178, 0.12) 45%, rgba(154, 150, 178, 0) 70%);
-      z-index: 2;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-vp {
-      position: absolute;
-      width: 0;
-      height: 0;
-      z-index: 2;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-vp-l {
-      left: 250px;
-      top: 280px;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-vp-r {
-      left: 830px;
-      top: 280px;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-centered {
-      position: absolute;
-      border-radius: 50%;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-vpstar-l {
-      left: -30px;
-      top: -30px;
-      width: 60px;
-      height: 60px;
-      background: radial-gradient(circle, rgba(253, 242, 224, 0.7) 0%, rgba(154, 150, 178, 0.35) 30%, rgba(154, 150, 178, 0) 70%);
-      opacity: 0;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-bloom {
-      left: -160px;
-      top: -160px;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(255, 246, 226, 1) 0%, rgba(255, 210, 122, 0.85) 10%, rgba(254, 176, 34, 0.42) 30%, rgba(254, 176, 34, 0.1) 52%, rgba(254, 176, 34, 0) 70%);
-      mix-blend-mode: screen;
-      opacity: 0;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-rays {
+    /* ---------- projected road tags ---------- */
+    [data-composition-id="b7-two-futures"] .b7-two-futures-tag {
       position: absolute;
       left: 0;
       top: 0;
       width: 0;
       height: 0;
     }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-ray {
+    [data-composition-id="b7-two-futures"] .b7-two-futures-tagbody {
       position: absolute;
       left: 0;
-      top: -1.5px;
-      height: 3px;
-      border-radius: 2px;
-      background: linear-gradient(90deg, rgba(255, 226, 160, 0.95), rgba(254, 176, 34, 0));
-      transform-origin: 0% 50%;
-      mix-blend-mode: screen;
+      top: 0;
+      width: 0;
+      height: 0;
     }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-vpring {
-      left: -60px;
-      top: -60px;
-      width: 120px;
-      height: 120px;
-      border: 3px solid rgba(255, 210, 122, 0.95);
-      opacity: 0;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-label {
+    [data-composition-id="b7-two-futures"] .b7-two-futures-pill {
       position: absolute;
-      top: 164px;
-      width: 300px;
-      text-align: center;
+      top: -98px;
+      height: 58px;
+      border-radius: 999px;
+      border: 2px solid;
+      background: rgba(11, 8, 32, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: "JetBrains Mono", monospace;
       font-weight: 700;
-      font-size: 34px;
-      line-height: 44px;
+      font-size: 30px;
+      line-height: 1;
       letter-spacing: 0.22em;
       white-space: nowrap;
-      z-index: 3;
+      overflow: hidden;
+      transform-origin: 50% 100%;
     }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-label span {
+    [data-composition-id="b7-two-futures"] .b7-two-futures-pill-l {
+      left: -98px;
+      width: 196px;
+      color: #9a96b2;
+      border-color: rgba(154, 150, 178, 0.6);
+    }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-pill-r {
+      left: -130px;
+      width: 260px;
+      color: #feb022;
+      border-color: rgba(254, 176, 34, 0.95);
+      box-shadow: 0 0 26px rgba(254, 176, 34, 0.35);
+      text-shadow: 0 0 18px rgba(254, 176, 34, 0.55);
+    }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-word {
+      position: relative;
+      z-index: 2;
+      padding-left: 0.22em;
+    }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-word span {
       display: inline-block;
     }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-label-l {
-      left: 100px;
-      color: #9a96b2;
-      transform-origin: 50% 50%;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-label-r {
-      left: 680px;
-      color: #feb022;
-      text-shadow: 0 0 22px rgba(254, 176, 34, 0.55);
-      transform-origin: 50% 60%;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-tick {
-      position: absolute;
-      left: 149px;
-      top: 52px;
-      width: 2px;
-      height: 52px;
-      transform-origin: 50% 0%;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-label-l .b7-two-futures-tick {
-      background: rgba(154, 150, 178, 0.7);
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-label-r .b7-two-futures-tick {
-      background: rgba(254, 176, 34, 0.9);
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-chip,
-    [data-composition-id="b7-two-futures"] .b7-two-futures-sheenclip {
-      position: absolute;
-      left: 22px;
-      top: -6px;
-      width: 256px;
-      height: 56px;
-      border-radius: 999px;
-    }
     [data-composition-id="b7-two-futures"] .b7-two-futures-chip {
-      z-index: -1;
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
       background: #feb022;
-      box-shadow: 0 0 30px rgba(254, 176, 34, 0.65), 0 0 70px rgba(254, 176, 34, 0.3);
       opacity: 0;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-sheenclip {
-      overflow: hidden;
+      z-index: 1;
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-labelsheen {
       position: absolute;
       left: 0;
       top: -10px;
       width: 60px;
-      height: 76px;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 244, 222, 0.75), rgba(255, 255, 255, 0));
-      mix-blend-mode: screen;
+      height: 80px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 246, 226, 0.8), rgba(255, 255, 255, 0));
       opacity: 0;
+      z-index: 3;
     }
-    /* the dot ("you") */
-    [data-composition-id="b7-two-futures"] .b7-two-futures-dot,
-    [data-composition-id="b7-two-futures"] .b7-two-futures-ghost {
+    [data-composition-id="b7-two-futures"] .b7-two-futures-tick {
       position: absolute;
-      left: 0;
-      top: 0;
-      width: 0;
-      height: 0;
-      z-index: 4;
+      left: -1px;
+      top: -40px;
+      width: 2px;
+      height: 34px;
+      transform-origin: 50% 100%;
     }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-dothalo {
-      left: -70px;
-      top: -70px;
-      width: 140px;
-      height: 140px;
-      background: radial-gradient(circle, rgba(255, 210, 122, 0.75) 0%, rgba(254, 176, 34, 0.28) 32%, rgba(254, 176, 34, 0) 70%);
-      mix-blend-mode: screen;
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-dotcore {
-      left: -13px;
-      top: -13px;
-      width: 26px;
-      height: 26px;
-      background: radial-gradient(circle, #ffffff 0%, #fff3da 45%, #ffd27a 100%);
-      box-shadow: 0 0 18px rgba(255, 210, 122, 0.95), 0 0 42px rgba(254, 176, 34, 0.6);
-    }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-ghostcore {
-      left: -12px;
-      top: -12px;
-      width: 24px;
-      height: 24px;
-      background: rgba(255, 210, 122, 0.9);
-      box-shadow: 0 0 16px rgba(254, 176, 34, 0.7);
-    }
-    /* particles */
-    [data-composition-id="b7-two-futures"] .b7-two-futures-burst {
+    [data-composition-id="b7-two-futures"] .b7-two-futures-pin {
       position: absolute;
-      left: 540px;
-      top: 560px;
-      width: 0;
-      height: 0;
-      z-index: 5;
+      left: -6px;
+      top: -6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
     }
-    [data-composition-id="b7-two-futures"] .b7-two-futures-particle {
+    [data-composition-id="b7-two-futures"] .b7-two-futures-tick-l {
+      background: rgba(154, 150, 178, 0.7);
+    }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-pin-l {
+      background: #9a96b2;
+      box-shadow: 0 0 10px rgba(154, 150, 178, 0.6);
+    }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-tick-r {
+      background: rgba(254, 176, 34, 0.9);
+    }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-pin-r {
+      background: #ffd27a;
+      box-shadow: 0 0 14px rgba(254, 176, 34, 0.9);
+    }
+    /* ---------- stamp + impact fx ---------- */
+    [data-composition-id="b7-two-futures"] .b7-two-futures-shakebox {
       position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0;
+      inset: 0;
+      transform-origin: 540px 340px;
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-shock {
       position: absolute;
       left: 180px;
-      top: 360px;
+      top: 140px;
       width: 720px;
       height: 400px;
       border-radius: 50%;
       border: 5px solid rgba(255, 210, 122, 0.95);
       box-shadow: 0 0 30px rgba(254, 176, 34, 0.5), inset 0 0 30px rgba(254, 176, 34, 0.35);
       opacity: 0;
-      z-index: 5;
     }
-    /* stamp */
     [data-composition-id="b7-two-futures"] .b7-two-futures-stamp {
       position: absolute;
       left: 190px;
-      top: 370px;
+      top: 150px;
       width: 700px;
       height: 380px;
       transform-origin: 50% 50%;
-      z-index: 6;
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-stampsvg {
       position: absolute;
@@ -322,14 +182,13 @@
     [data-composition-id="b7-two-futures"] .b7-two-futures-flash {
       position: absolute;
       left: -160px;
-      top: -140px;
+      top: -360px;
       width: 1400px;
       height: 1400px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(255, 226, 160, 0.9) 0%, rgba(254, 176, 34, 0.3) 30%, rgba(254, 176, 34, 0) 62%);
       mix-blend-mode: screen;
       opacity: 0;
-      z-index: 7;
     }
   </style>
 
@@ -337,193 +196,70 @@
     id="root"
     data-composition-id="b7-two-futures"
     data-start="0"
-    data-duration="3.6"
+    data-duration="3.60"
     data-width="1080"
     data-height="1920"
   >
-    <!-- Full-bleed ground: lowest track, full duration -->
-    <div
-      id="b7-two-futures-ground"
-      class="clip b7-two-futures-layer b7-two-futures-ground"
+    <!-- 3D world (full-bleed ground): Three.js canvas, lowest track -->
+    <canvas
+      id="b7-two-futures-gl"
+      class="clip b7-two-futures-gl"
+      width="1080"
+      height="1920"
       data-start="0"
-      data-duration="3.6"
+      data-duration="3.60"
       data-track-index="0"
-    >
-      <div id="b7-two-futures-glow-violet" class="b7-two-futures-glow b7-two-futures-glow-violet"></div>
-      <div id="b7-two-futures-glow-amber" class="b7-two-futures-glow b7-two-futures-glow-amber"></div>
-      <div id="b7-two-futures-haze" class="b7-two-futures-glow b7-two-futures-haze"></div>
-      <div id="b7-two-futures-gridwrap" class="b7-two-futures-gridwrap">
-        <svg class="b7-two-futures-gridsvg" viewBox="0 0 1080 1920" aria-hidden="true">
-          <defs>
-            <linearGradient id="b7-two-futures-gridgrad" gradientUnits="userSpaceOnUse" x1="0" y1="280" x2="0" y2="1920">
-              <stop offset="0" stop-color="#b26be8" stop-opacity="0" />
-              <stop offset="0.16" stop-color="#b26be8" stop-opacity="0.13" />
-              <stop offset="0.55" stop-color="#b26be8" stop-opacity="0.12" />
-              <stop offset="1" stop-color="#b26be8" stop-opacity="0.06" />
-            </linearGradient>
-          </defs>
-          <g id="b7-two-futures-gridrays" stroke="url(#b7-two-futures-gridgrad)" stroke-width="1.5" fill="none"></g>
-          <g id="b7-two-futures-gridlines" stroke="url(#b7-two-futures-gridgrad)" stroke-width="1.5" fill="none"></g>
-        </svg>
-      </div>
-      <div id="b7-two-futures-stars" class="b7-two-futures-stars"></div>
-      <svg class="b7-two-futures-grain" viewBox="0 0 1080 1920" preserveAspectRatio="none" aria-hidden="true">
-        <filter id="b7-two-futures-grainfx" x="0" y="0" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="11" stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="1080" height="1920" filter="url(#b7-two-futures-grainfx)" />
-      </svg>
-    </div>
+    ></canvas>
 
-    <!-- Scene content: inside the stage (x 60-1020, y 120-1120) -->
+    <!-- lens vignette -->
     <div
-      id="b7-two-futures-scene"
+      id="b7-two-futures-vignette"
+      class="clip b7-two-futures-layer b7-two-futures-vignette"
+      data-start="0"
+      data-duration="3.60"
+      data-track-index="1"
+    ></div>
+
+    <!-- road tags, positioned every frame from projected 3D anchors -->
+    <div
+      id="b7-two-futures-tags"
       class="clip b7-two-futures-layer"
       data-start="0"
-      data-duration="3.6"
-      data-track-index="1"
+      data-duration="3.60"
+      data-track-index="2"
     >
-      <div id="b7-two-futures-world" class="b7-two-futures-world">
-        <svg id="b7-two-futures-roads" class="b7-two-futures-roads" viewBox="0 0 1080 1920" aria-hidden="true">
-          <defs>
-            <linearGradient id="b7-two-futures-g-stem" gradientUnits="userSpaceOnUse" x1="0" y1="1100" x2="0" y2="900">
-              <stop offset="0" stop-color="#b26be8" stop-opacity="0" />
-              <stop offset="0.45" stop-color="#b26be8" stop-opacity="0.2" />
-              <stop offset="1" stop-color="#c9a6ee" stop-opacity="0.22" />
-            </linearGradient>
-            <linearGradient id="b7-two-futures-g-stemedge" gradientUnits="userSpaceOnUse" x1="0" y1="1100" x2="0" y2="900">
-              <stop offset="0" stop-color="#d9c2f2" stop-opacity="0" />
-              <stop offset="0.5" stop-color="#d9c2f2" stop-opacity="0.75" />
-              <stop offset="1" stop-color="#d9c2f2" stop-opacity="0.85" />
-            </linearGradient>
-            <linearGradient id="b7-two-futures-g-left" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
-              <stop offset="0" stop-color="#c9a6ee" stop-opacity="0.22" />
-              <stop id="b7-two-futures-sl1" offset="0.24" stop-color="#9a96b2" stop-opacity="0.18" />
-              <stop id="b7-two-futures-sl2" offset="0.6" stop-color="#9a96b2" stop-opacity="0.08" />
-              <stop offset="1" stop-color="#9a96b2" stop-opacity="0" />
-            </linearGradient>
-            <linearGradient id="b7-two-futures-g-leftedge" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
-              <stop offset="0" stop-color="#b4b0c8" stop-opacity="0.75" />
-              <stop id="b7-two-futures-se1" offset="0.22" stop-color="#b4b0c8" stop-opacity="0.66" />
-              <stop id="b7-two-futures-se2" offset="0.6" stop-color="#9a96b2" stop-opacity="0.32" />
-              <stop offset="1" stop-color="#9a96b2" stop-opacity="0" />
-            </linearGradient>
-            <linearGradient id="b7-two-futures-g-right" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
-              <stop offset="0" stop-color="#c9a6ee" stop-opacity="0.22" />
-              <stop offset="0.26" stop-color="#feb022" stop-opacity="0.17" />
-              <stop offset="0.62" stop-color="#feb022" stop-opacity="0.25" />
-              <stop offset="1" stop-color="#ffd27a" stop-opacity="0.5" />
-            </linearGradient>
-            <linearGradient id="b7-two-futures-g-flare" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
-              <stop offset="0" stop-color="#feb022" stop-opacity="0" />
-              <stop offset="0.22" stop-color="#feb022" stop-opacity="0.26" />
-              <stop offset="0.6" stop-color="#ffd27a" stop-opacity="0.42" />
-              <stop offset="1" stop-color="#fff3da" stop-opacity="0.8" />
-            </linearGradient>
-            <mask id="b7-two-futures-m-stem" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
-              <path id="b7-two-futures-mp-stem" d="" fill="none" stroke="#fff" stroke-width="320" />
-            </mask>
-            <mask id="b7-two-futures-m-left" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
-              <path id="b7-two-futures-mp-left" d="" fill="none" stroke="#fff" stroke-width="300" />
-            </mask>
-            <mask id="b7-two-futures-m-right" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
-              <path id="b7-two-futures-mp-right" d="" fill="none" stroke="#fff" stroke-width="300" />
-            </mask>
-            <mask id="b7-two-futures-m-flare" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
-              <path id="b7-two-futures-mp-flare" d="" fill="none" stroke="#fff" stroke-width="300" />
-            </mask>
-            <clipPath id="b7-two-futures-clip-left" clipPathUnits="userSpaceOnUse">
-              <path id="b7-two-futures-cp-left" d="" />
-            </clipPath>
-            <clipPath id="b7-two-futures-clip-right" clipPathUnits="userSpaceOnUse">
-              <path id="b7-two-futures-cp-right" d="" />
-            </clipPath>
-            <filter id="b7-two-futures-f-glow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="5" result="b" />
-              <feMerge>
-                <feMergeNode in="b" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            <filter id="b7-two-futures-f-soft" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="9" />
-            </filter>
-          </defs>
-
-          <!-- SAME: grey-violet path into fog -->
-          <g id="b7-two-futures-left">
-            <g clip-path="url(#b7-two-futures-clip-left)">
-              <path id="b7-two-futures-fill-left" d="" fill="url(#b7-two-futures-g-left)" mask="url(#b7-two-futures-m-left)" />
-            </g>
-            <path id="b7-two-futures-e-lo" class="b7-two-futures-edge" d="" fill="none" stroke="url(#b7-two-futures-g-leftedge)" stroke-width="3" stroke-linecap="round" />
-            <path id="b7-two-futures-e-li" class="b7-two-futures-edge" d="" fill="none" stroke="url(#b7-two-futures-g-leftedge)" stroke-width="3" stroke-linecap="round" />
-            <g id="b7-two-futures-marks-left" stroke="#b4b0c8" stroke-linecap="round"></g>
-          </g>
-
-          <!-- CHANGE: amber glowing path -->
-          <g id="b7-two-futures-right">
-            <g clip-path="url(#b7-two-futures-clip-right)">
-              <path id="b7-two-futures-fill-right" d="" fill="url(#b7-two-futures-g-right)" mask="url(#b7-two-futures-m-right)" />
-            </g>
-            <g clip-path="url(#b7-two-futures-clip-right)" style="mix-blend-mode: screen">
-              <path id="b7-two-futures-flare" d="" fill="url(#b7-two-futures-g-flare)" mask="url(#b7-two-futures-m-flare)" />
-            </g>
-            <g id="b7-two-futures-rglow" filter="url(#b7-two-futures-f-soft)" opacity="0">
-              <path id="b7-two-futures-eg-ro" d="" fill="none" stroke="#feb022" stroke-width="9" />
-              <path id="b7-two-futures-eg-ri" d="" fill="none" stroke="#feb022" stroke-width="9" />
-            </g>
-            <g filter="url(#b7-two-futures-f-glow)">
-              <path id="b7-two-futures-e-ro" class="b7-two-futures-edge" d="" fill="none" stroke="#feb022" stroke-width="3.5" stroke-linecap="round" />
-              <path id="b7-two-futures-e-ri" class="b7-two-futures-edge" d="" fill="none" stroke="#feb022" stroke-width="3.5" stroke-linecap="round" />
-            </g>
-            <g id="b7-two-futures-marks-right" stroke="#ffd27a" stroke-linecap="round" filter="url(#b7-two-futures-f-glow)"></g>
-            <g id="b7-two-futures-chevrons" fill="none" stroke="#fff0cf" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#b7-two-futures-f-glow)"></g>
-          </g>
-
-          <!-- shared stem -->
-          <g id="b7-two-futures-stem">
-            <path id="b7-two-futures-fill-stem" d="" fill="url(#b7-two-futures-g-stem)" mask="url(#b7-two-futures-m-stem)" />
-            <path id="b7-two-futures-e-sl" class="b7-two-futures-edge" d="" fill="none" stroke="url(#b7-two-futures-g-stemedge)" stroke-width="3" stroke-linecap="round" />
-            <path id="b7-two-futures-e-sr" class="b7-two-futures-edge" d="" fill="none" stroke="url(#b7-two-futures-g-stemedge)" stroke-width="3" stroke-linecap="round" />
-          </g>
-
-          <!-- velocity streak behind the dot (motion-blur-streak, driven form) -->
-          <path id="b7-two-futures-streakglow" d="" fill="none" stroke="#feb022" stroke-linecap="round" stroke-linejoin="round" filter="url(#b7-two-futures-f-soft)" opacity="0" />
-          <path id="b7-two-futures-streak" d="" fill="none" stroke="#ffe3a6" stroke-linecap="round" stroke-linejoin="round" opacity="0" />
-        </svg>
-
-        <div id="b7-two-futures-fog" class="b7-two-futures-fog"></div>
-
-        <div class="b7-two-futures-vp b7-two-futures-vp-l">
-          <div id="b7-two-futures-vpstar-l" class="b7-two-futures-centered b7-two-futures-vpstar-l"></div>
+      <div id="b7-two-futures-tag-l" class="b7-two-futures-tag">
+        <div id="b7-two-futures-tagbody-l" class="b7-two-futures-tagbody">
+          <div id="b7-two-futures-pin-l" class="b7-two-futures-pin b7-two-futures-pin-l"></div>
+          <div id="b7-two-futures-tick-l" class="b7-two-futures-tick b7-two-futures-tick-l"></div>
+          <div id="b7-two-futures-pill-l" class="b7-two-futures-pill b7-two-futures-pill-l">
+            <div id="b7-two-futures-word-l" class="b7-two-futures-word"><span>S</span><span>A</span><span>M</span><span>E</span></div>
+          </div>
         </div>
-        <div class="b7-two-futures-vp b7-two-futures-vp-r">
-          <div id="b7-two-futures-rays" class="b7-two-futures-rays"></div>
-          <div id="b7-two-futures-bloom" class="b7-two-futures-centered b7-two-futures-bloom"></div>
-          <div id="b7-two-futures-vpring" class="b7-two-futures-centered b7-two-futures-vpring"></div>
+      </div>
+      <div id="b7-two-futures-tag-r" class="b7-two-futures-tag">
+        <div id="b7-two-futures-tagbody-r" class="b7-two-futures-tagbody">
+          <div id="b7-two-futures-pin-r" class="b7-two-futures-pin b7-two-futures-pin-r"></div>
+          <div id="b7-two-futures-tick-r" class="b7-two-futures-tick b7-two-futures-tick-r"></div>
+          <div id="b7-two-futures-pill-r" class="b7-two-futures-pill b7-two-futures-pill-r">
+            <div id="b7-two-futures-chip" class="b7-two-futures-chip"></div>
+            <div id="b7-two-futures-word-r" class="b7-two-futures-word"><span>C</span><span>H</span><span>A</span><span>N</span><span>G</span><span>E</span></div>
+            <div id="b7-two-futures-labelsheen" class="b7-two-futures-labelsheen"></div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div id="b7-two-futures-label-l" class="b7-two-futures-label b7-two-futures-label-l">
-          <span>S</span><span>A</span><span>M</span><span>E</span>
-          <div id="b7-two-futures-tick-l" class="b7-two-futures-tick"></div>
-        </div>
-        <div id="b7-two-futures-label-r" class="b7-two-futures-label b7-two-futures-label-r">
-          <span>C</span><span>H</span><span>A</span><span>N</span><span>G</span><span>E</span>
-          <div id="b7-two-futures-chip" class="b7-two-futures-chip"></div>
-          <div id="b7-two-futures-tick-r" class="b7-two-futures-tick"></div>
-          <div class="b7-two-futures-sheenclip"><div id="b7-two-futures-labelsheen" class="b7-two-futures-labelsheen"></div></div>
-        </div>
-
-        <div id="b7-two-futures-ghosts"></div>
-        <div id="b7-two-futures-dot" class="b7-two-futures-dot">
-          <div id="b7-two-futures-dothalo" class="b7-two-futures-centered b7-two-futures-dothalo"></div>
-          <div class="b7-two-futures-centered b7-two-futures-dotcore"></div>
-        </div>
-
-        <div id="b7-two-futures-burst" class="b7-two-futures-burst"></div>
+    <!-- DON'T WAIT stamp + impact fx (upper stage) -->
+    <div
+      id="b7-two-futures-fx"
+      class="clip b7-two-futures-layer"
+      data-start="0"
+      data-duration="3.60"
+      data-track-index="3"
+    >
+      <div id="b7-two-futures-shakebox" class="b7-two-futures-shakebox">
         <div id="b7-two-futures-shock" class="b7-two-futures-shock"></div>
-
         <div id="b7-two-futures-stamp" class="b7-two-futures-stamp">
           <svg class="b7-two-futures-stampsvg" viewBox="0 0 700 380" aria-hidden="true">
             <defs>
@@ -537,7 +273,7 @@
               </linearGradient>
             </defs>
             <g id="b7-two-futures-plate">
-              <rect x="4" y="4" width="692" height="372" rx="28" fill="rgba(11,8,32,0.22)" stroke="#feb022" stroke-width="6" />
+              <rect x="4" y="4" width="692" height="372" rx="28" fill="rgba(11,8,32,0.42)" stroke="#feb022" stroke-width="6" />
               <rect x="20" y="20" width="660" height="340" rx="18" fill="none" stroke="#feb022" stroke-opacity="0.45" stroke-width="2" />
             </g>
             <g id="b7-two-futures-stampglow" data-layout-ignore filter="url(#b7-two-futures-stampglowfx)" opacity="0.85">
@@ -548,15 +284,31 @@
               <text id="b7-two-futures-line1" data-layout-allow-overlap x="350" y="178" text-anchor="middle" fill="#fdf2e0" stroke="#feb022" stroke-width="8" paint-order="stroke" stroke-linejoin="round">DON'T</text>
               <text id="b7-two-futures-line2" data-layout-allow-overlap x="350" y="334" text-anchor="middle" fill="#fdf2e0" stroke="#feb022" stroke-width="8" paint-order="stroke" stroke-linejoin="round">WAIT</text>
             </g>
-            <g opacity="0.9" style="mix-blend-mode: screen">
+            <g data-layout-ignore opacity="0.9" style="mix-blend-mode: screen">
               <text x="350" y="178" text-anchor="middle" fill="url(#b7-two-futures-sheengrad)">DON'T</text>
               <text x="350" y="334" text-anchor="middle" fill="url(#b7-two-futures-sheengrad)">WAIT</text>
             </g>
           </svg>
         </div>
-
         <div id="b7-two-futures-flash" class="b7-two-futures-flash"></div>
       </div>
+    </div>
+
+    <!-- static film grain on top -->
+    <div
+      id="b7-two-futures-grainlayer"
+      class="clip b7-two-futures-layer"
+      data-start="0"
+      data-duration="3.60"
+      data-track-index="4"
+    >
+      <svg class="b7-two-futures-grain" viewBox="0 0 1080 1920" preserveAspectRatio="none" aria-hidden="true">
+        <filter id="b7-two-futures-grainfx" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="11" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="1080" height="1920" filter="url(#b7-two-futures-grainfx)" />
+      </svg>
     </div>
   </div>
 
@@ -565,425 +317,877 @@
       const ID = "b7-two-futures";
       const P = ID + "-";
       const DUR = 3.6;
-      const SVGNS = "http://www.w3.org/2000/svg";
+      const W = 1080, H = 1920;
       const $ = (s) => document.getElementById(P + s);
       const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
       const lerp = (a, b, k) => a + (b - a) * k;
+      const sstep = (a, b, x) => {
+        const k = clamp01((x - a) / (b - a));
+        return k * k * (3 - 2 * k);
+      };
       const prand = (n) => {
         const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
         return x - Math.floor(x);
       };
+      const D2R = Math.PI / 180;
       const E = {
         o2: gsap.parseEase("power2.out"),
         o3: gsap.parseEase("power3.out"),
         io2: gsap.parseEase("power2.inOut"),
         sio: gsap.parseEase("sine.inOut"),
         expo: gsap.parseEase("expo.out"),
-        back: gsap.parseEase("back.out(2.2)"),
       };
       const CUE = {
         future: 0.08, youre: 0.48, heading: 0.72, towards: 1.12, dont: 1.6, wait: 1.92,
         to: 2.24, start: 2.4, making: 2.64, a: 2.96, change: 3.12,
       };
 
-      // ---------- perspective geometry ----------
-      const HY = 280; // horizon (both vanishing points sit on it)
-      const BASE_Y = 1100; // stem start, stage bottom
-      const FORK = { x: 540, y: 900 };
-      const W0 = 176; // road width at the base
-      const width = (y) => (W0 * Math.max(0, y - HY)) / (BASE_Y - HY);
-      const BR = {
-        left: [FORK, { x: 540, y: 770 }, { x: 292, y: 520 }, { x: 250, y: HY }],
-        right: [FORK, { x: 540, y: 770 }, { x: 788, y: 520 }, { x: 830, y: HY }],
+      // ================= renderer / scene =================
+      const canvas = $("gl");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+      renderer.setSize(W, H, false);
+      renderer.setPixelRatio(1);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.0;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0x2a1c4a, 30, 900);
+      const FOV0 = 58;
+      const camera = new THREE.PerspectiveCamera(FOV0, W / H, 0.5, 3200);
+      camera.rotation.order = "YXZ";
+      scene.add(camera);
+      const UP = new THREE.Vector3(0, 1, 0);
+
+      // sun: low on the horizon, just right of the CHANGE road's heading
+      const PHI_SUN = 12 * D2R, EL_SUN = 3.5 * D2R;
+      const SUN_DIR = new THREE.Vector3(Math.sin(PHI_SUN) * Math.cos(EL_SUN), Math.sin(EL_SUN), -Math.cos(PHI_SUN) * Math.cos(EL_SUN));
+
+      // ================= shared sky / fog uniforms =================
+      const U = {
+        uB7Top: { value: new THREE.Color(0x0b0820) },
+        uB7Mid: { value: new THREE.Color(0x221a52) },
+        uB7HorL: { value: new THREE.Color(0x4c4766) },
+        uB7HorR: { value: new THREE.Color(0x9a3a7e) },
+        uB7Sun: { value: new THREE.Color(0xffa63a) },
+        uB7FogL: { value: new THREE.Color(0x5d5876) },
+        uB7SunDir: { value: SUN_DIR.clone() },
+        uB7Boost: { value: 1 },
+        uB7Time: { value: 0 },
       };
-      const bez = (c, t) => {
-        const u = 1 - t;
-        const a = u * u * u, b = 3 * u * u * t, d = 3 * u * t * t, e = t * t * t;
-        const x = a * c[0].x + b * c[1].x + d * c[2].x + e * c[3].x;
-        const y = a * c[0].y + b * c[1].y + d * c[2].y + e * c[3].y;
-        const dx = 3 * u * u * (c[1].x - c[0].x) + 6 * u * t * (c[2].x - c[1].x) + 3 * t * t * (c[3].x - c[2].x);
-        const dy = 3 * u * u * (c[1].y - c[0].y) + 6 * u * t * (c[2].y - c[1].y) + 3 * t * t * (c[3].y - c[2].y);
-        const l = Math.hypot(dx, dy) || 1;
-        return { x, y, tx: dx / l, ty: dy / l };
-      };
-      const N = 140;
-      function sampleBranch(c) {
-        const pts = [];
-        let acc = 0;
-        for (let i = 0; i <= N; i++) {
-          const p = bez(c, i / N);
-          if (i > 0) acc += Math.hypot(p.x - pts[i - 1].x, p.y - pts[i - 1].y);
-          p.s = acc;
-          pts.push(p);
+      const SKY_PARS = `
+        uniform vec3 uB7Top; uniform vec3 uB7Mid; uniform vec3 uB7HorL; uniform vec3 uB7HorR;
+        uniform vec3 uB7Sun; uniform vec3 uB7FogL; uniform vec3 uB7SunDir; uniform float uB7Boost;
+        vec3 b7Sky(vec3 d, float sunK) {
+          float el = d.y;
+          float az = atan(d.x, -d.z);
+          float rw = smoothstep(-0.32, 0.30, az);
+          vec3 hor = mix(uB7HorL, uB7HorR, rw);
+          vec3 c = mix(hor, uB7Mid, smoothstep(0.0, 0.30, el));
+          c = mix(c, uB7Top, smoothstep(0.22, 0.85, el));
+          vec2 hd = normalize(d.xz + vec2(1e-5, 0.0));
+          vec2 sh = normalize(uB7SunDir.xz);
+          float sa = max(dot(hd, sh), 0.0);
+          float band = exp(-max(el, 0.0) * 15.0) * (pow(sa, 6.0) * 0.7 + pow(sa, 60.0) * 1.1);
+          float sd = max(dot(d, uB7SunDir), 0.0);
+          c += uB7Sun * (band * 0.5 + pow(sd, 10.0) * 0.2 + pow(sd, 120.0) * 0.8 * sunK) * uB7Boost * mix(0.55, 1.0, sunK);
+          return c;
         }
-        pts.forEach((p) => (p.a = p.s / acc));
-        return { pts, len: acc };
+      `;
+      // per-direction fog: distant terrain melts into the sky colour of its own azimuth,
+      // and the SAME road (left of the fork) sinks into a thick grey-violet fog bank.
+      const FOG_FRAG = `
+        #ifdef USE_FOG
+          vec3 b7wd = (vec4(vB7View, 0.0) * viewMatrix).xyz;
+          vec3 b7wp = cameraPosition + b7wd;
+          vec3 b7fd = vec3(b7wd.x, 0.0, b7wd.z) + vec3(0.0, 0.0, -1e-4);
+          b7fd = normalize(b7fd);
+          b7fd.y = 0.012;
+          vec3 b7fc = b7Sky(normalize(b7fd), 0.0) * 0.82;
+          float b7ff = smoothstep(fogNear, fogFar, vFogDepth);
+          float b7a = atan(b7wp.x, -b7wp.z);
+          float b7lw = (1.0 - smoothstep(-0.17, -0.03, b7a)) * smoothstep(0.0, 22.0, -b7wp.z);
+          float b7lf = smoothstep(2.0, 95.0, vFogDepth) * 0.97;
+          b7ff = mix(b7ff, max(b7ff, b7lf), b7lw);
+          b7fc = mix(b7fc, uB7FogL, b7lw * 0.85);
+          gl_FragColor.rgb = mix(gl_FragColor.rgb, b7fc, b7ff);
+        #endif
+      `;
+      const fogPatch = (sh) => {
+        Object.keys(U).forEach((k) => (sh.uniforms[k] = U[k]));
+        sh.vertexShader = sh.vertexShader
+          .replace("#include <common>", "#include <common>\nvarying vec3 vB7View;")
+          .replace("#include <fog_vertex>", "#include <fog_vertex>\n  vB7View = mvPosition.xyz;");
+        sh.fragmentShader = sh.fragmentShader
+          .replace("#include <common>", "#include <common>\nvarying vec3 vB7View;\n" + SKY_PARS)
+          .replace("#include <fog_fragment>", FOG_FRAG);
+      };
+      const fogged = (m) => {
+        m.onBeforeCompile = fogPatch;
+        return m;
+      };
+
+      // ================= procedural textures (deterministic) =================
+      function canvasTex(w, h, draw) {
+        const c = document.createElement("canvas");
+        c.width = w;
+        c.height = h;
+        draw(c.getContext("2d"), w, h);
+        return new THREE.CanvasTexture(c);
       }
-      const left = sampleBranch(BR.left);
-      const right = sampleBranch(BR.right);
-      // point at arc fraction a (0 fork -> 1 vanishing point)
-      function at(br, a) {
-        const pts = br.pts;
-        a = clamp01(a);
-        let lo = 0, hi = N;
+      const radial = (stops) => (g, w, h) => {
+        const r = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+        stops.forEach(([o, a]) => r.addColorStop(o, `rgba(255,255,255,${a})`));
+        g.fillStyle = r;
+        g.fillRect(0, 0, w, h);
+      };
+      const glowTex = canvasTex(256, 256, radial([[0, 1], [0.1, 0.6], [0.3, 0.2], [0.6, 0.05], [1, 0]]));
+      const discTex = canvasTex(256, 256, radial([[0, 1], [0.4, 1], [0.46, 0.55], [0.6, 0.12], [1, 0]]));
+      const dotTex = canvasTex(64, 64, radial([[0, 1], [0.3, 0.75], [0.6, 0.18], [1, 0]]));
+      const puffTex = canvasTex(256, 256, radial([[0, 0.9], [0.35, 0.6], [0.7, 0.18], [1, 0]]));
+      const stripTex = canvasTex(128, 4, (g, w, h) => {
+        const r = g.createLinearGradient(0, 0, w, 0);
+        r.addColorStop(0, "rgba(255,255,255,0)");
+        r.addColorStop(0.5, "rgba(255,255,255,1)");
+        r.addColorStop(1, "rgba(255,255,255,0)");
+        g.fillStyle = r;
+        g.fillRect(0, 0, w, h);
+      });
+      const noiseTex = canvasTex(256, 256, (g, w, h) => {
+        const img = g.createImageData(w, h);
+        let seed = 1234567;
+        const rnd = () => (seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0) / 4294967296;
+        for (let i = 0; i < w * h; i++) {
+          let v = 168 + rnd() * 72;
+          const r = rnd();
+          if (r < 0.03) v = 255;
+          else if (r < 0.07) v = 118;
+          img.data[i * 4] = img.data[i * 4 + 1] = img.data[i * 4 + 2] = v;
+          img.data[i * 4 + 3] = 255;
+        }
+        g.putImageData(img, 0, 0);
+      });
+      noiseTex.wrapS = noiseTex.wrapT = THREE.RepeatWrapping;
+      noiseTex.colorSpace = THREE.SRGBColorSpace;
+      noiseTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+      // ================= road network =================
+      // world: x right, y up, forward = -Z; heading h: 0 = -Z, + = toward +X
+      const ROAD_W = 7, HALF = ROAD_W / 2;
+      const TH = 11 * D2R, LC = 32;
+      function buildPath(raw) {
+        const pts = raw.map((p) => ({ x: p.x, z: p.z, s: 0, h: 0 }));
+        for (let i = 1; i < pts.length; i++) pts[i].s = pts[i - 1].s + Math.hypot(pts[i].x - pts[i - 1].x, pts[i].z - pts[i - 1].z);
+        for (let i = 0; i < pts.length; i++) {
+          const a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)];
+          pts[i].h = Math.atan2(b.x - a.x, -(b.z - a.z));
+        }
+        return { pts, len: pts[pts.length - 1].s };
+      }
+      function pathAt(path, s) {
+        const pts = path.pts;
+        if (s <= 0) {
+          const p = pts[0];
+          return { x: p.x + Math.sin(p.h) * s, z: p.z - Math.cos(p.h) * s, h: p.h };
+        }
+        if (s >= path.len) {
+          const p = pts[pts.length - 1], d = s - path.len;
+          return { x: p.x + Math.sin(p.h) * d, z: p.z - Math.cos(p.h) * d, h: p.h };
+        }
+        let lo = 0, hi = pts.length - 1;
         while (hi - lo > 1) {
           const m = (lo + hi) >> 1;
-          if (pts[m].a < a) lo = m; else hi = m;
+          if (pts[m].s < s) lo = m;
+          else hi = m;
         }
-        const p0 = pts[lo], p1 = pts[hi];
-        const k = p1.a === p0.a ? 0 : (a - p0.a) / (p1.a - p0.a);
-        return { x: lerp(p0.x, p1.x, k), y: lerp(p0.y, p1.y, k), tx: lerp(p0.tx, p1.tx, k), ty: lerp(p0.ty, p1.ty, k) };
+        const a = pts[lo], b = pts[hi];
+        const k = (s - a.s) / (b.s - a.s || 1);
+        return { x: lerp(a.x, b.x, k), z: lerp(a.z, b.z, k), h: lerp(a.h, b.h, k) };
       }
-      const fx = (v) => v.toFixed(1);
-      function edges(br, innerSign) {
-        // right-hand normal of an upward path = (-ty, tx)
-        const L = [], R = [];
-        br.pts.forEach((p) => {
-          const w = width(p.y) / 2;
-          L.push({ x: p.x + p.ty * w, y: p.y - p.tx * w });
-          R.push({ x: p.x - p.ty * w, y: p.y + p.tx * w });
+      function branchRaw(sign) {
+        const raw = [{ x: 0, z: 0 }];
+        let x = 0, z = 0, s = 0;
+        while (s < 1500) {
+          const ds = s < 70 ? 0.5 : 10;
+          const hm = sign * TH * sstep(0, LC, s + ds * 0.5);
+          x += Math.sin(hm) * ds;
+          z -= Math.cos(hm) * ds;
+          s += ds;
+          raw.push({ x, z });
+        }
+        return raw;
+      }
+      const LB = buildPath(branchRaw(-1)); // SAME
+      const RB = buildPath(branchRaw(1)); // CHANGE
+      const TRUNK = buildPath([{ x: 0, z: 90 }, { x: 0, z: 0 }]);
+      const rightOf = (h) => ({ x: Math.cos(h), z: Math.sin(h) });
+
+      // inner edges begin where they leave the other road (the crotch)
+      const crotch = (() => {
+        for (let s = 0; s < 80; s += 0.25) {
+          const p = pathAt(RB, s), r = rightOf(p.h);
+          const x = p.x - r.x * (HALF - 0.25), z = p.z - r.z * (HALF - 0.25);
+          let d = 1e9;
+          for (let u = 0; u < 100; u += 0.5) {
+            const q = pathAt(LB, u);
+            d = Math.min(d, Math.hypot(q.x - x, q.z - z));
+          }
+          if (d > HALF) return s;
+        }
+        return 20;
+      })();
+
+      function ribbon(path, s0, s1, off, wid, y, opts) {
+        opts = opts || {};
+        const list = [s0];
+        path.pts.forEach((p) => {
+          if (p.s > s0 && p.s < s1) list.push(p.s);
         });
-        return { L, R };
+        list.push(s1);
+        const pos = [], nor = [], uv = [], col = [], idx = [];
+        list.forEach((s, i) => {
+          const p = pathAt(path, s), r = rightOf(p.h);
+          const cx = p.x + r.x * off, cz = p.z + r.z * off;
+          const lx = cx - (r.x * wid) / 2, lz = cz - (r.z * wid) / 2;
+          const rx = cx + (r.x * wid) / 2, rz = cz + (r.z * wid) / 2;
+          pos.push(lx, y, lz, rx, y, rz);
+          nor.push(0, 1, 0, 0, 1, 0);
+          if (opts.worldUV) uv.push(lx / 3, lz / 3, rx / 3, rz / 3);
+          else uv.push(0, s, 1, s);
+          const f = opts.fade ? opts.fade(s) : 1;
+          col.push(f, f, f, f, f, f);
+          if (i < list.length - 1) {
+            const a = 2 * i;
+            idx.push(a, a + 1, a + 3, a, a + 3, a + 2);
+          }
+        });
+        const g = new THREE.BufferGeometry();
+        g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+        g.setAttribute("normal", new THREE.Float32BufferAttribute(nor, 3));
+        g.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
+        g.setAttribute("color", new THREE.Float32BufferAttribute(col, 3));
+        g.setIndex(idx);
+        g.userData.sList = list;
+        return g;
       }
-      const poly = (arr) => arr.map((p, i) => (i ? "L" : "M") + fx(p.x) + " " + fx(p.y)).join(" ");
-      function ribbon(e) {
-        return poly(e.L) + " " + e.R.slice().reverse().map((p) => "L" + fx(p.x) + " " + fx(p.y)).join(" ") + " Z";
-      }
-      const eL = edges(left), eR = edges(right);
-      // inner edges start at the crotch (where they leave the other road)
-      const crotchL = eL.R.findIndex((p) => p.x <= 540);
-      const crotchR = eR.L.findIndex((p) => p.x >= 540);
-      const cR = eR.L[Math.max(0, crotchR)], cL = eL.R[Math.max(0, crotchL)];
-      $("cp-right").setAttribute(
-        "d",
-        `M540 ${FORK.y} L540 ${fx(cR.y)} ` + eR.L.slice(Math.max(0, crotchR)).map((p) => "L" + fx(p.x) + " " + fx(p.y)).join(" ") +
-          ` L830 -100 L1400 -100 L1400 2000 L540 2000 Z`,
-      );
-      $("cp-left").setAttribute(
-        "d",
-        `M540 ${FORK.y} L540 ${fx(cL.y)} ` + eL.R.slice(Math.max(0, crotchL)).map((p) => "L" + fx(p.x) + " " + fx(p.y)).join(" ") +
-          ` L250 -100 L-400 -100 L-400 2000 L540 2000 Z`,
-      );
-      const centre = (br) => "M" + fx(FORK.x) + " " + fx(FORK.y) + " " + br.pts.slice(1).map((p) => "L" + fx(p.x) + " " + fx(p.y)).join(" ");
-
-      $("fill-left").setAttribute("d", ribbon(eL));
-      $("fill-right").setAttribute("d", ribbon(eR));
-      $("flare").setAttribute("d", ribbon(eR));
-      $("e-lo").setAttribute("d", poly(eL.L));
-      $("e-li").setAttribute("d", poly(eL.R.slice(Math.max(0, crotchL))));
-      $("e-ro").setAttribute("d", poly(eR.R));
-      $("e-ri").setAttribute("d", poly(eR.L.slice(Math.max(0, crotchR))));
-      $("eg-ro").setAttribute("d", poly(eR.R));
-      $("eg-ri").setAttribute("d", poly(eR.L.slice(Math.max(0, crotchR))));
-      $("mp-left").setAttribute("d", centre(left));
-      $("mp-right").setAttribute("d", centre(right));
-      $("mp-flare").setAttribute("d", centre(right));
-      const wB = width(BASE_Y) / 2, wF = width(FORK.y) / 2;
-      $("fill-stem").setAttribute("d", `M${540 - wB} ${BASE_Y} L${540 - wF} ${FORK.y} L${540 + wF} ${FORK.y} L${540 + wB} ${BASE_Y} Z`);
-      $("e-sl").setAttribute("d", `M${540 - wB} ${BASE_Y} L${540 - wF} ${FORK.y}`);
-      $("e-sr").setAttribute("d", `M${540 + wB} ${BASE_Y} L${540 + wF} ${FORK.y}`);
-      $("mp-stem").setAttribute("d", `M540 ${BASE_Y + 20} L540 ${FORK.y - 4}`);
-
-      // ---------- measured stroke draws (svg-path-draw) ----------
-      const prep = (el) => {
-        const len = el.getTotalLength() + 2;
-        el.style.strokeDasharray = `${len} ${len}`;
-        el.style.strokeDashoffset = `${len}`;
-        return len;
+      const addMesh = (geo, mat, order) => {
+        const m = new THREE.Mesh(geo, mat);
+        m.frustumCulled = false;
+        if (order !== undefined) m.renderOrder = order;
+        scene.add(m);
+        return m;
       };
-      const LEN = {};
-      ["e-sl", "e-sr", "e-lo", "e-li", "e-ro", "e-ri", "eg-ro", "eg-ri", "mp-stem", "mp-left", "mp-right", "mp-flare"].forEach(
-        (k) => (LEN[k] = prep($(k))),
+
+      // ---- asphalt ----
+      const asphalt = fogged(
+        new THREE.MeshStandardMaterial({
+          color: 0x262233, map: noiseTex, roughnessMap: noiseTex, roughness: 0.62, metalness: 0.0,
+          polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -4, dithering: true,
+        }),
+      );
+      addMesh(ribbon(TRUNK, 0, TRUNK.len, 0, ROAD_W, 0.04, { worldUV: true }), asphalt);
+      addMesh(ribbon(LB, 0, 1400, 0, ROAD_W, 0.04, { worldUV: true }), asphalt);
+      addMesh(ribbon(RB, 0, 1400, 0, ROAD_W, 0.04, { worldUV: true }), asphalt);
+
+      // ---- edge lines ----
+      const lineMat = (hex, k) =>
+        fogged(new THREE.MeshBasicMaterial({ color: new THREE.Color(hex).multiplyScalar(k), polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -8, side: THREE.DoubleSide }));
+      const matEdgeT = lineMat(0xd9cdf2, 0.75);
+      const matEdgeL = lineMat(0x8d88a6, 0.55);
+      const AMBER_EDGE = new THREE.Color(0xffb53d);
+      const matEdgeR = lineMat(0xffb53d, 2.0);
+      const EO = HALF - 0.3, EW = 0.17;
+      addMesh(ribbon(TRUNK, 0, TRUNK.len, EO, EW, 0.06), matEdgeT);
+      addMesh(ribbon(TRUNK, 0, TRUNK.len, -EO, EW, 0.06), matEdgeT);
+      addMesh(ribbon(LB, 0, 900, -EO, EW, 0.06), matEdgeL);
+      addMesh(ribbon(LB, crotch, 900, EO, EW, 0.06), matEdgeL);
+      const edgeR = [ribbon(RB, 0, 900, EO, EW, 0.06), ribbon(RB, crotch, 900, -EO, EW, 0.06)];
+      edgeR.forEach((g) => addMesh(g, matEdgeR));
+      // additive glow under the amber edges (fake bloom), fading with distance
+      const glowFade = (s) => 0.25 + 0.75 * Math.exp(-s / 260);
+      const matGlowR = new THREE.MeshBasicMaterial({
+        map: stripTex, color: new THREE.Color(0xff9a1f).multiplyScalar(0.55), vertexColors: true, transparent: true,
+        blending: THREE.AdditiveBlending, depthWrite: false, fog: false, side: THREE.DoubleSide,
+      });
+      const glowR = [ribbon(RB, 0, 700, EO, 1.7, 0.08, { fade: glowFade }), ribbon(RB, crotch, 700, -EO, 1.7, 0.08, { fade: glowFade })];
+      glowR.forEach((g) => addMesh(g, matGlowR, 5));
+      const revealable = edgeR.concat(glowR);
+      function setReveal(sMax) {
+        revealable.forEach((g) => {
+          const list = g.userData.sList;
+          let k = 0;
+          while (k < list.length - 1 && list[k + 1] <= sMax) k++;
+          g.setDrawRange(0, k * 6);
+        });
+      }
+
+      // ---- lane dashes (instanced; they stretch into streaks with speed) ----
+      const dashGeo = new THREE.BufferGeometry();
+      dashGeo.setAttribute("position", new THREE.Float32BufferAttribute([-0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5], 3));
+      dashGeo.setAttribute("normal", new THREE.Float32BufferAttribute([0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0], 3));
+      dashGeo.setIndex([0, 1, 3, 0, 3, 2]);
+      const dashSets = [];
+      function dashSet(path, s0, s1, hex, k) {
+        const mat = fogged(new THREE.MeshBasicMaterial({ color: new THREE.Color(hex).multiplyScalar(k), polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -8, side: THREE.DoubleSide }));
+        const items = [];
+        for (let s = s0; s < s1; s += 9) {
+          const p = pathAt(path, s + 1.5);
+          items.push({ p: new THREE.Vector3(p.x, 0.065, p.z), q: new THREE.Quaternion().setFromAxisAngle(UP, -p.h) });
+        }
+        const mesh = new THREE.InstancedMesh(dashGeo, mat, items.length);
+        mesh.frustumCulled = false;
+        scene.add(mesh);
+        const set = { mesh, items };
+        dashSets.push(set);
+        return set;
+      }
+      dashSet(TRUNK, 0.5, 88, 0xfdf2e0, 0.95);
+      dashSet(LB, 8, 600, 0x9a96b2, 0.4);
+      dashSet(RB, 8, 700, 0xffd27a, 1.7);
+      const mtx = new THREE.Matrix4(), vsc = new THREE.Vector3();
+      function updateDashes(len) {
+        dashSets.forEach((set) => {
+          set.items.forEach((it, i) => {
+            mtx.compose(it.p, it.q, vsc.set(0.22, 1, len));
+            set.mesh.setMatrixAt(i, mtx);
+          });
+          set.mesh.instanceMatrix.needsUpdate = true;
+        });
+      }
+
+      // ---- roadside reflector posts (parallax) ----
+      const postList = [];
+      const addPosts = (path, s0, s1, off, c) => {
+        for (let s = s0; s < s1; s += 16) {
+          const p = pathAt(path, s), r = rightOf(p.h);
+          postList.push({ x: p.x + r.x * off, z: p.z + r.z * off, c });
+        }
+      };
+      const PO = HALF + 0.9;
+      const cT = new THREE.Color(0xd9cdf2).multiplyScalar(0.9);
+      const cL = new THREE.Color(0x8d88a6).multiplyScalar(0.5);
+      const cR = new THREE.Color(0xffb53d).multiplyScalar(2.6);
+      addPosts(TRUNK, 2, 88, PO, cT);
+      addPosts(TRUNK, 2, 88, -PO, cT);
+      addPosts(LB, 6, 380, -PO, cL);
+      addPosts(LB, crotch + 8, 380, PO, cL);
+      addPosts(RB, 6, 420, PO, cR);
+      addPosts(RB, crotch + 8, 420, -PO, cR);
+      const postMesh = new THREE.InstancedMesh(
+        new THREE.BoxGeometry(0.13, 1.0, 0.13),
+        fogged(new THREE.MeshStandardMaterial({ color: 0x2c2640, roughness: 0.55, metalness: 0.2 })),
+        postList.length,
+      );
+      const capMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(0.16, 0.17, 0.16), fogged(new THREE.MeshBasicMaterial({ color: 0xffffff })), postList.length);
+      postList.forEach((p, i) => {
+        mtx.makeTranslation(p.x, 0.5, p.z);
+        postMesh.setMatrixAt(i, mtx);
+        mtx.makeTranslation(p.x, 0.93, p.z);
+        capMesh.setMatrixAt(i, mtx);
+        capMesh.setColorAt(i, p.c);
+      });
+      postMesh.frustumCulled = capMesh.frustumCulled = false;
+      scene.add(postMesh, capMesh);
+
+      // ================= terrain: flat road corridors, rolling hills beyond =================
+      const decim = (path) => {
+        const a = [];
+        for (let s = 0; s <= 70; s += 5) a.push(pathAt(path, s));
+        a.push(pathAt(path, path.len + 400));
+        return a;
+      };
+      const decL = decim(LB), decR = decim(RB);
+      function segD(px, pz, a, b) {
+        const vx = b.x - a.x, vz = b.z - a.z;
+        const k = clamp01(((px - a.x) * vx + (pz - a.z) * vz) / (vx * vx + vz * vz));
+        return Math.hypot(px - a.x - vx * k, pz - a.z - vz * k);
+      }
+      function roadDist(x, z) {
+        let d = z > 0 ? Math.abs(x) : Math.hypot(x, z);
+        for (const arr of [decL, decR]) for (let i = 0; i < arr.length - 1; i++) d = Math.min(d, segD(x, z, arr[i], arr[i + 1]));
+        return d;
+      }
+      const tn = (x, z) =>
+        0.5 * Math.sin(x * 0.0123 + Math.sin(z * 0.0071) * 1.7 + 0.4) +
+        0.28 * Math.sin(x * 0.031 - z * 0.017 + 1.9) +
+        0.14 * Math.sin(x * 0.067 + z * 0.043 + 3.1) +
+        0.08 * Math.sin(x * 0.149 - z * 0.121 + 0.7);
+      {
+        const NX = 150, NZ = 170;
+        const xs = [], zs = [];
+        for (let i = 0; i <= NX; i++) {
+          const u = (i / NX) * 2 - 1;
+          xs.push(Math.sign(u) * Math.pow(Math.abs(u), 1.7) * 950);
+        }
+        for (let j = 0; j <= NZ; j++) zs.push(80 - Math.pow(j / NZ, 1.65) * 1420);
+        const pos = new Float32Array((NX + 1) * (NZ + 1) * 3);
+        const col = new Float32Array((NX + 1) * (NZ + 1) * 3);
+        const cLow = new THREE.Color(0x0e0a1f), cHigh = new THREE.Color(0x2a1f50), cShoulder = new THREE.Color(0x1e1832);
+        let o = 0;
+        for (let j = 0; j <= NZ; j++) {
+          for (let i = 0; i <= NX; i++) {
+            const x = xs[i], z = zs[j];
+            const d = roadDist(x, z);
+            const amp = sstep(13, 75, d) * (2.0 + 0.055 * Math.hypot(x, z));
+            const n = tn(x, z);
+            const hgt = amp * (0.5 * (n * 0.5 + 0.5) + 0.5 * (1 - Math.abs(n)));
+            pos[o] = x;
+            pos[o + 1] = hgt;
+            pos[o + 2] = z;
+            const k = amp > 0.01 ? clamp01(hgt / amp) : 0;
+            const sh = 1 - sstep(HALF, HALF + 6, d);
+            col[o] = lerp(lerp(cLow.r, cHigh.r, k), cShoulder.r, sh);
+            col[o + 1] = lerp(lerp(cLow.g, cHigh.g, k), cShoulder.g, sh);
+            col[o + 2] = lerp(lerp(cLow.b, cHigh.b, k), cShoulder.b, sh);
+            o += 3;
+          }
+        }
+        const idx = [];
+        for (let j = 0; j < NZ; j++) {
+          for (let i = 0; i < NX; i++) {
+            const a = j * (NX + 1) + i, b = a + 1, c = a + NX + 1, d = c + 1;
+            idx.push(a, b, d, a, d, c);
+          }
+        }
+        const g = new THREE.BufferGeometry();
+        g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        g.setAttribute("color", new THREE.BufferAttribute(col, 3));
+        g.setIndex(idx);
+        g.computeVertexNormals();
+        addMesh(g, fogged(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1.0, metalness: 0, dithering: true })));
+      }
+
+      // ================= sky dome (gradient + overcast clouds on the left) =================
+      const sky = new THREE.Mesh(
+        new THREE.SphereGeometry(2000, 64, 32),
+        new THREE.ShaderMaterial({
+          uniforms: U,
+          side: THREE.BackSide,
+          depthWrite: false,
+          depthTest: false,
+          fog: false,
+          vertexShader: `
+            varying vec3 vDir;
+            void main() {
+              vDir = position;
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+          `,
+          fragmentShader: `
+            uniform float uB7Time;
+            varying vec3 vDir;
+            ${SKY_PARS}
+            float b7h(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+            float b7n(vec2 p) {
+              vec2 i = floor(p), f = fract(p);
+              f = f * f * (3.0 - 2.0 * f);
+              return mix(mix(b7h(i), b7h(i + vec2(1.0, 0.0)), f.x), mix(b7h(i + vec2(0.0, 1.0)), b7h(i + vec2(1.0, 1.0)), f.x), f.y);
+            }
+            void main() {
+              vec3 d = normalize(vDir);
+              vec3 dd = d;
+              if (dd.y < 0.012) { dd.y = 0.012; dd = normalize(dd); }
+              vec3 c = b7Sky(dd, 1.0);
+              if (d.y < 0.012) c *= 0.82;
+              float az = atan(d.x, -d.z);
+              // dull overcast over the SAME side
+              float lw = 1.0 - smoothstep(-0.30, 0.16, az);
+              vec2 q = vec2(az * 4.0 + uB7Time * 0.03, d.y * 26.0);
+              float n = b7n(q) * 0.55 + b7n(q * 2.1 + 3.7) * 0.3 + b7n(q * 4.3 + 7.1) * 0.15;
+              float band = smoothstep(-0.01, 0.06, d.y) * (1.0 - smoothstep(0.22, 0.52, d.y));
+              c = mix(c, uB7FogL * (0.5 + 0.8 * n), lw * band * 0.85);
+              // thin violet cloud streaks on the CHANGE side, lit from below by the sun
+              float rw = smoothstep(-0.05, 0.4, az);
+              float n2 = b7n(vec2(az * 3.0 - uB7Time * 0.02, d.y * 42.0) + 11.0);
+              float st = rw * smoothstep(0.55, 0.92, n2) * smoothstep(0.03, 0.1, d.y) * (1.0 - smoothstep(0.16, 0.34, d.y));
+              c += (uB7HorR * 0.22 + uB7Sun * 0.10 * uB7Boost) * st;
+              gl_FragColor = vec4(c, 1.0);
+              #include <tonemapping_fragment>
+              #include <colorspace_fragment>
+              gl_FragColor.rgb += (b7h(gl_FragCoord.xy) - 0.5) * (2.0 / 255.0);
+            }
+          `,
+        }),
+      );
+      sky.renderOrder = -10;
+      sky.frustumCulled = false;
+      scene.add(sky);
+
+      // ---- starfield (infinitely far: follows the camera) ----
+      const STAR_N = 420;
+      const starGeo = new THREE.BufferGeometry();
+      const starPos = new Float32Array(STAR_N * 3), starCol = new Float32Array(STAR_N * 3);
+      const starData = [];
+      for (let i = 0; i < STAR_N; i++) {
+        const az = lerp(-55, 62, prand(i * 3.17 + 1)) * D2R;
+        const el = lerp(6, 70, Math.pow(prand(i * 5.31 + 2), 0.8)) * D2R;
+        starPos[i * 3] = Math.sin(az) * Math.cos(el) * 1800;
+        starPos[i * 3 + 1] = Math.sin(el) * 1800;
+        starPos[i * 3 + 2] = -Math.cos(az) * Math.cos(el) * 1800;
+        const dsun = Math.acos(Math.min(1, Math.sin(az) * Math.cos(el) * SUN_DIR.x + Math.sin(el) * SUN_DIR.y + Math.cos(az) * Math.cos(el) * -SUN_DIR.z));
+        const left = az < -0.18 ? 0.45 : 1;
+        const base = (0.25 + 0.75 * prand(i * 7.7 + 3)) * sstep(0.1, 0.4, el) * sstep(0.12, 0.45, dsun) * left * 1.4;
+        const violet = i % 4 === 0;
+        starData.push({ base, f: 1.5 + prand(i * 9.1 + 4) * 3, ph: prand(i * 11.3 + 5) * 6.283, r: violet ? 0.75 : 1, g: violet ? 0.55 : 0.95, b: 1 });
+      }
+      starGeo.setAttribute("position", new THREE.BufferAttribute(starPos, 3));
+      starGeo.setAttribute("color", new THREE.BufferAttribute(starCol, 3));
+      const stars = new THREE.Points(
+        starGeo,
+        new THREE.PointsMaterial({ size: 2.8, sizeAttenuation: false, map: dotTex, vertexColors: true, transparent: true, depthWrite: false, fog: false, blending: THREE.AdditiveBlending }),
+      );
+      stars.frustumCulled = false;
+      stars.renderOrder = -5;
+      scene.add(stars);
+
+      // ---- sun: emissive disc + additive halos + anamorphic streak ----
+      const sunGroup = new THREE.Group();
+      scene.add(sunGroup);
+      const spr = (map, color, additive, depthTest) => {
+        const s = new THREE.Sprite(
+          new THREE.SpriteMaterial({ map, color, transparent: true, depthWrite: false, depthTest, fog: false, blending: additive ? THREE.AdditiveBlending : THREE.NormalBlending }),
+        );
+        s.position.copy(SUN_DIR).multiplyScalar(1000);
+        s.frustumCulled = false;
+        sunGroup.add(s);
+        return s;
+      };
+      const SUN_C = new THREE.Color(5.2, 3.5, 1.6);
+      const HALO_C = new THREE.Color(0.5, 0.2, 0.035);
+      const WIDE_C = new THREE.Color(0.17, 0.035, 0.09);
+      const STREAK_C = new THREE.Color(0.7, 0.4, 0.12);
+      const haloWide = spr(glowTex, WIDE_C.clone(), true, false);
+      const halo = spr(glowTex, HALO_C.clone(), true, false);
+      const sunDisc = spr(discTex, SUN_C.clone(), false, true);
+      const streak = spr(glowTex, STREAK_C.clone(), true, false);
+      haloWide.renderOrder = 6;
+      halo.renderOrder = 7;
+      sunDisc.renderOrder = 4;
+      streak.renderOrder = 8;
+
+      // ---- fog banks over the SAME road ----
+      const fogBanks = [];
+      [[16, -3, 2.0, 30], [28, -7, 3.5, 44], [44, -2, 2.6, 52], [62, -9, 5.0, 70], [86, -4, 4.0, 80], [118, -12, 7.0, 110], [160, -6, 9.0, 140]].forEach(
+        ([s, lat, y, sc], i) => {
+          const p = pathAt(LB, s), r = rightOf(p.h);
+          const sp = new THREE.Sprite(
+            new THREE.SpriteMaterial({ map: puffTex, color: 0x6e6990, transparent: true, opacity: 0.34, depthWrite: false, fog: false }),
+          );
+          sp.position.set(p.x + r.x * lat, y, p.z + r.z * lat);
+          sp.scale.set(sc * 1.6, sc * 0.55, 1);
+          sp.renderOrder = 3;
+          scene.add(sp);
+          fogBanks.push({ sp, x: sp.position.x, ph: i * 1.7 });
+        },
       );
 
-      // ---------- generated DOM (setup only, deterministic) ----------
-      // ground grid: rays to the centre vanishing point + perspective cross lines
-      const gridRays = $("gridrays");
-      for (let j = -9; j <= 9; j++) {
-        const l = document.createElementNS(SVGNS, "line");
-        l.setAttribute("x1", "540");
-        l.setAttribute("y1", String(HY));
-        l.setAttribute("x2", String(540 + j * 260));
-        l.setAttribute("y2", "2200");
-        gridRays.appendChild(l);
-      }
-      const gridLinesG = $("gridlines");
-      const GL = 22, GZ0 = 0.4, GDZ = 0.62, GK = 700, GV = 0.34;
-      const gridLines = [];
-      for (let k = 0; k < GL; k++) {
-        const l = document.createElementNS(SVGNS, "line");
-        l.setAttribute("x1", "-200");
-        l.setAttribute("x2", "1280");
-        gridLinesG.appendChild(l);
-        gridLines.push(l);
-      }
-      // sky stars
-      const starsEl = $("stars");
-      const STARS = 22;
-      const stars = [];
-      for (let i = 0; i < STARS; i++) {
-        const el = document.createElement("div");
-        el.className = P + "star";
-        const size = 1.5 + prand(i * 7 + 2) * 2.5;
-        el.style.width = size + "px";
-        el.style.height = size + "px";
-        const x = 30 + prand(i * 11 + 5) * 1020;
-        const y = 130 + prand(i * 13 + 6) * 150;
-        el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
-        if (i % 3 === 0) el.style.background = "#B26BE8";
-        starsEl.appendChild(el);
-        stars.push({ el, ph: prand(i * 17 + 1) * 6.28, f: 1.2 + prand(i * 19 + 3) * 2.2, a: 0.25 + prand(i * 23 + 4) * 0.5 });
-      }
-      // centre marks (chase lights toward each vanishing point)
-      const MARKS = 9;
-      function makeMarks(g) {
-        const arr = [];
-        for (let i = 0; i < MARKS; i++) {
-          const l = document.createElementNS(SVGNS, "line");
-          l.setAttribute("opacity", "0");
-          g.appendChild(l);
-          arr.push(l);
-        }
-        return arr;
-      }
-      const marksL = makeMarks($("marks-left"));
-      const marksR = makeMarks($("marks-right"));
-      // chevrons along the amber path
-      const CHEV = 6;
-      const chevG = $("chevrons");
-      const chevrons = [];
-      const ZR = 6; // depth range for the perspective spacing
-      const persp = (s) => (1 - 1 / (1 + s * ZR)) / (1 - 1 / (1 + ZR));
-      for (let j = 0; j < CHEV; j++) {
-        const pth = document.createElementNS(SVGNS, "path");
-        pth.setAttribute("d", "M-15 8 L0 -7 L15 8");
-        pth.setAttribute("opacity", "0");
-        chevG.appendChild(pth);
-        const a = persp((j + 0.7) / (CHEV + 0.6));
-        const p = at(right, a);
-        const sc = 0.35 + 0.75 * clamp01((p.y - HY) / (FORK.y - HY));
-        const ang = (Math.atan2(p.ty, p.tx) * 180) / Math.PI + 90;
-        pth.setAttribute("transform", `translate(${fx(p.x)} ${fx(p.y)}) rotate(${ang.toFixed(2)}) scale(${sc.toFixed(3)})`);
-        pth.setAttribute("stroke-width", String((5 / sc).toFixed(2)));
-        chevrons.push({ el: pth, a });
-      }
-      // ghosts for the dot's streak
-      const ghostsEl = $("ghosts");
-      const GHOSTS = 3;
-      const ghosts = [];
-      for (let k = 1; k <= GHOSTS; k++) {
-        const g = document.createElement("div");
-        g.className = P + "ghost";
-        g.setAttribute("aria-hidden", "true");
-        g.setAttribute("data-layout-allow-overlap", "");
-        const c = document.createElement("div");
-        c.className = P + "centered " + P + "ghostcore";
-        g.appendChild(c);
-        ghostsEl.appendChild(g);
-        ghosts.push(g);
-      }
-      // amber particle burst pool (particle-burst, seeded)
-      const burstEl = $("burst");
-      const PCOUNT = 30;
-      const palette = ["#FEB022", "#FFD27A", "#FDF2E0", "#FEB022", "#FFD27A"];
-      const parts = [];
-      const ROT = (-6 * Math.PI) / 180;
-      for (let i = 0; i < PCOUNT; i++) {
-        const el = document.createElement("div");
-        el.className = P + "particle";
-        const dot = i % 3 !== 0;
-        const size = dot ? 5 + prand(i * 3 + 1) * 6 : 7 + prand(i * 3 + 1) * 8;
-        el.style.width = size + "px";
-        el.style.height = (dot ? size : size * 0.55) + "px";
-        el.style.borderRadius = dot ? "50%" : "2px";
-        el.style.background = palette[i % palette.length];
-        el.style.boxShadow = `0 0 ${Math.round(size * 1.4)}px rgba(254,176,34,0.7)`;
-        el.style.marginLeft = -size / 2 + "px";
-        el.style.marginTop = -size / 2 + "px";
-        burstEl.appendChild(el);
-        const th = (i / PCOUNT) * Math.PI * 2 + (prand(i * 5 + 2) - 0.5) * 0.35;
-        const ox0 = Math.cos(th) * 330, oy0 = Math.sin(th) * 175;
-        const ox = ox0 * Math.cos(ROT) - oy0 * Math.sin(ROT);
-        const oy = ox0 * Math.sin(ROT) + oy0 * Math.cos(ROT);
-        const nl = Math.hypot(ox, oy) || 1;
-        const sp = 300 + prand(i * 7 + 3) * 520;
-        parts.push({ el, ox, oy, vx: (ox / nl) * sp, vy: (oy / nl) * sp - 120, spin: (prand(i * 11 + 4) * 2 - 1) * 540 });
-      }
-      // vanishing-point rays
-      const raysEl = $("rays");
-      const RAYS = 16;
-      const rays = [];
-      for (let i = 0; i < RAYS; i++) {
-        const r = document.createElement("div");
-        r.className = P + "ray";
-        const len = 90 + prand(i * 13 + 7) * 170;
-        r.style.width = len.toFixed(0) + "px";
-        r.style.transform = `rotate(${(i * (360 / RAYS) + prand(i * 17 + 9) * 10).toFixed(2)}deg) scaleX(0)`;
-        raysEl.appendChild(r);
-        rays.push({ el: r, rot: i * (360 / RAYS) + prand(i * 17 + 9) * 10, delay: prand(i * 19 + 2) * 0.08 });
-      }
+      // ---- lights ----
+      scene.add(new THREE.HemisphereLight(0x7a48c4, 0x120a24, 1.25));
+      const sunLight = new THREE.DirectionalLight(0xffae4a, 3.2);
+      sunLight.position.copy(SUN_DIR).multiplyScalar(100);
+      scene.add(sunLight);
+      const fill = new THREE.DirectionalLight(0x8a84b8, 0.45);
+      fill.position.set(-60, 50, 40);
+      scene.add(fill);
 
-      // ---------- virtual camera: slow push + impact shake, one writer ----------
-      const world = $("world");
-      const gridwrap = $("gridwrap");
-      const cam = { s: 1 };
-      const SHAKE_A = [[0, 0], [16, -11], [-13, 9], [10, 7], [-8, -6], [5, 4], [-3, -2], [1, 1], [0, 0]];
-      const SHAKE_B = [[0, 0], [-7, 5], [5, -4], [-2, 2], [0, 0]];
-      const sampleTable = (tbl, k) => {
-        if (k <= 0 || k >= 1) return [0, 0];
-        const f = k * (tbl.length - 1);
-        const i = Math.floor(f);
-        const r = f - i;
-        return [lerp(tbl[i][0], tbl[i + 1][0], r), lerp(tbl[i][1], tbl[i + 1][1], r)];
+      // ================= camera: one pure function of time =================
+      const V0 = 18, VH = 1.2, VMAX = 60;
+      const vel = (t) => {
+        if (t < 1.0) return V0;
+        if (t < 1.55) return lerp(V0, VH, E.sio((t - 1.0) / 0.55));
+        if (t < CUE.start) return VH;
+        return VH + VMAX * Math.pow(clamp01((t - CUE.start) / 1.2), 1.3);
       };
-      let shakeX = 0, shakeY = 0;
-      function applyCamera() {
-        const tf = `translate(${shakeX.toFixed(2)}px, ${shakeY.toFixed(2)}px) scale(${cam.s.toFixed(5)})`;
-        world.style.transform = tf;
-        gridwrap.style.transform = tf;
+      const SN = 3600;
+      const ST = new Float64Array(SN + 1);
+      for (let i = 1; i <= SN; i++) ST[i] = ST[i - 1] + (vel(((i - 0.5) * DUR) / SN) * DUR) / SN;
+      const S = (t) => {
+        if (t <= 0) return V0 * t;
+        if (t >= DUR) return ST[SN] + vel(DUR) * (t - DUR);
+        const f = (t / DUR) * SN, i = Math.min(SN - 1, Math.floor(f));
+        return lerp(ST[i], ST[i + 1], f - i);
+      };
+      // trunk -> hesitation point -> curve onto the CHANGE road
+      const ZH = 13, SJ = 36;
+      const Z0 = ZH + S(CUE.start);
+      const camRaw = [];
+      for (let z = Z0 + 6; z > ZH; z -= 1) camRaw.push({ x: 0, z });
+      camRaw.push({ x: 0, z: ZH });
+      const J = pathAt(RB, SJ);
+      const chord = Math.hypot(J.x, J.z - ZH);
+      const m1 = { x: Math.sin(J.h) * chord, z: -Math.cos(J.h) * chord };
+      for (let k = 1; k <= 60; k++) {
+        const u = k / 60, u2 = u * u, u3 = u2 * u;
+        const h10 = u3 - 2 * u2 + u, h01 = -2 * u3 + 3 * u2, h11 = u3 - u2, h00 = 2 * u3 - 3 * u2 + 1;
+        camRaw.push({ x: h01 * J.x + h11 * m1.x, z: h00 * ZH + h10 * -chord + h01 * J.z + h11 * m1.z });
+      }
+      RB.pts.forEach((p) => {
+        if (p.s > SJ + 0.4) camRaw.push({ x: p.x, z: p.z });
+      });
+      const CP = buildPath(camRaw);
+      const camS = (t) => 6 + S(t);
+
+      function glance(t) {
+        let g = 0;
+        if (t < CUE.towards) g = 0;
+        else if (t < 1.34) g = lerp(0, -6.5, E.sio((t - CUE.towards) / 0.22));
+        else if (t < 1.66) g = lerp(-6.5, 4.5, E.sio((t - 1.34) / 0.32));
+        else if (t < 2.05) g = lerp(4.5, 2.0, E.sio((t - 1.66) / 0.39));
+        else g = 2.0;
+        return g * D2R * (1 - E.io2(clamp01((t - CUE.start) / 0.42)));
+      }
+      function headBase(t) {
+        const tt = Math.min(Math.max(t, -1), DUR + 1);
+        const sc = camS(tt);
+        const v = vel(Math.min(Math.max(tt, 0), DUR));
+        const p = pathAt(CP, sc), a = pathAt(CP, sc + 1 + 0.35 * v);
+        const base = Math.atan2(a.x - p.x, -(a.z - p.z));
+        const b = E.io2(clamp01((tt - 2.38) / 0.8));
+        return base + (PHI_SUN - base) * 0.8 * b;
+      }
+      function shakeAt(t) {
+        let yaw = 0, pitch = 0, roll = 0, px = 0, py = 0;
+        const a = t - CUE.dont;
+        if (a > 0 && a < 0.5) {
+          const env = Math.exp(-a * 9) * (1 - a / 0.5);
+          yaw += 1.0 * D2R * env * Math.sin(a * 62);
+          pitch += 0.8 * D2R * env * Math.sin(a * 51 + 1.3);
+          roll += 1.3 * D2R * env * Math.sin(a * 44 + 0.6);
+          px += 16 * env * Math.sin(a * 58 + 0.4);
+          py += 11 * env * Math.sin(a * 49 + 2.0);
+        }
+        const b = t - CUE.wait;
+        if (b > 0 && b < 0.3) {
+          const env = Math.exp(-b * 12) * (1 - b / 0.3);
+          yaw += 0.4 * D2R * env * Math.sin(b * 70);
+          pitch += 0.35 * D2R * env * Math.sin(b * 58 + 0.9);
+          px += 7 * env * Math.sin(b * 66 + 1.1);
+          py += 5 * env * Math.sin(b * 54);
+        }
+        return { yaw, pitch, roll, px, py };
+      }
+      const PITCH = 7.9 * D2R;
+      function camState(t) {
+        const sc = camS(t);
+        const p = pathAt(CP, sc);
+        const v = vel(clamp01(t / DUR) * DUR);
+        const bobAmp = t < 1.0 ? 1 : t < CUE.start ? lerp(1, 0.25, clamp01((t - 1.0) / 0.4)) : lerp(0.25, 0.7, clamp01((t - CUE.start) / 0.6));
+        const bob = Math.sin(t * Math.PI * 2 * 1.7) * 0.05 * bobAmp;
+        const sway = Math.sin(t * Math.PI * 2 * 0.85 + 0.7) * 0.05 * bobAmp;
+        const sk = shakeAt(t);
+        const hb = headBase(t);
+        const head = hb + glance(t);
+        const roll = (-0.18 * (headBase(t + 0.03) - headBase(t - 0.03))) / 0.06;
+        const accel = E.io2(clamp01((t - CUE.start) / 1.0));
+        const r = rightOf(head);
+        return {
+          x: p.x + r.x * sway,
+          y: 2.15 + bob - 0.45 * accel,
+          z: p.z + r.z * sway,
+          yaw: -(head + sk.yaw),
+          pitch: -PITCH + sk.pitch + Math.sin(t * Math.PI * 2 * 1.7 + 0.9) * 0.12 * D2R * bobAmp,
+          roll: roll + sk.roll + Math.sin(t * Math.PI * 2 * 0.85) * 0.25 * D2R * bobAmp,
+          fov: FOV0 + 7 * E.io2(clamp01((t - 2.45) / 1.05)),
+          v,
+          sk,
+        };
       }
 
-      // ---------- the dot: position is a pure function of time ----------
-      const LAUNCH = 2.58, LAUNCH_DUR = 0.5;
-      const depthScale = (y) => 0.26 + 0.74 * clamp01((y - HY) / (FORK.y - HY));
-      function hesitate(t) {
-        if (t < 1.12 || t > 1.58) return 0;
-        if (t < 1.27) return -16 * E.sio((t - 1.12) / 0.15);
-        if (t < 1.45) return lerp(-16, 16, E.sio((t - 1.27) / 0.18));
-        return lerp(16, 0, E.sio((t - 1.45) / 0.13));
+      // ================= speed lines along the CHANGE road =================
+      const SL_N = 84;
+      const slMat = new THREE.MeshBasicMaterial({
+        map: stripTex, color: new THREE.Color(1.6, 1.15, 0.6), transparent: true, opacity: 0,
+        blending: THREE.AdditiveBlending, depthWrite: false, fog: false, side: THREE.DoubleSide,
+      });
+      const slMesh = new THREE.InstancedMesh(new THREE.PlaneGeometry(1, 1), slMat, SL_N);
+      slMesh.frustumCulled = false;
+      slMesh.renderOrder = 9;
+      scene.add(slMesh);
+      const slItems = [];
+      for (let i = 0; i < SL_N; i++) {
+        const s = 6 + prand(i * 3.3 + 1) * 190;
+        const p = pathAt(RB, s), r = rightOf(p.h);
+        const side = i % 2 ? 1 : -1;
+        const lat = side * (4.3 + prand(i * 5.9 + 2) * 15);
+        const y = 0.35 + Math.pow(prand(i * 7.1 + 3), 1.5) * 8;
+        const pos = new THREE.Vector3(p.x + r.x * lat, y, p.z + r.z * lat);
+        const d = new THREE.Vector3(Math.sin(p.h), 0, -Math.cos(p.h));
+        const n = new THREE.Vector3(-r.x * lat, 1.8 - y, -r.z * lat).normalize();
+        const wv = new THREE.Vector3().crossVectors(n, d).normalize();
+        slItems.push({ pos, d, n, wv, b: 0.5 + prand(i * 11.7 + 4) * 0.9 });
+        slMesh.setColorAt(i, new THREE.Color(1, 1, 1).multiplyScalar(0.5 + prand(i * 11.7 + 4) * 0.9));
       }
-      function dotState(t) {
-        const st = { x: 540, y: 1066, s: 0, sx: 1, sy: 1, a: 0 };
-        if (t < CUE.youre) return st;
-        st.s = E.back(clamp01((t - CUE.youre) / 0.24));
-        st.y = lerp(1066, FORK.y, E.io2(clamp01((t - 0.6) / 0.5)));
-        st.x = 540 + hesitate(t);
-        const an = E.o2(clamp01((t - CUE.start) / 0.18));
-        const rel = clamp01((t - LAUNCH) / 0.08);
-        st.y += 12 * an * (1 - rel);
-        st.sy = 1 - 0.16 * an * (1 - rel);
-        st.sx = 1 + 0.12 * an * (1 - rel);
-        if (t > LAUNCH) {
-          const u = E.o3(clamp01((t - LAUNCH) / LAUNCH_DUR));
-          const p = at(right, u);
-          st.x = p.x;
-          st.y = p.y + 12 * an * (1 - rel);
-          st.s = depthScale(p.y);
-          st.a = u;
-        }
-        return st;
+      const vx1 = new THREE.Vector3(), vx2 = new THREE.Vector3();
+      function updateSpeedLines(v) {
+        const L = 0.4 + v * 0.11;
+        slItems.forEach((it, i) => {
+          vx1.copy(it.d).multiplyScalar(L);
+          vx2.copy(it.wv).multiplyScalar(0.055);
+          mtx.makeBasis(vx1, vx2, it.n);
+          mtx.setPosition(it.pos);
+          slMesh.setMatrixAt(i, mtx);
+        });
+        slMesh.instanceMatrix.needsUpdate = true;
+        slMat.opacity = 0.9 * sstep(14, 48, v);
       }
-      const dot = $("dot");
-      const dotHalo = $("dothalo");
-      const streak = $("streak"), streakGlow = $("streakglow");
 
-      // ---------- procedural layer ----------
-      const flareMask = $("mp-flare");
-      const shock = $("shock"), flash = $("flash"), vpring = $("vpring");
-      const line2 = $("line2");
-      const branchDraw = (t, at0) => E.o2(clamp01((t - at0) / 0.75));
-      function placeMarks(marks, br, t, drawn, speed, alpha) {
-        for (let i = 0; i < MARKS; i++) {
-          let s = (i / MARKS + t * speed) % 1;
-          const a0 = persp(s);
-          const z = 1 + s * ZR;
-          const len = 0.06 / z;
-          const a1 = Math.min(1, a0 + len);
-          const p0 = at(br, a0), p1 = at(br, a1);
-          const fade = clamp01(s / 0.08) * clamp01((1 - s) / 0.25) * (a1 <= drawn ? 1 : 0);
-          const m = marks[i];
-          m.setAttribute("x1", fx(p0.x));
-          m.setAttribute("y1", fx(p0.y));
-          m.setAttribute("x2", fx(p1.x));
-          m.setAttribute("y2", fx(p1.y));
-          m.setAttribute("stroke-width", (1.2 + 7 / z).toFixed(2));
-          m.setAttribute("opacity", (fade * alpha).toFixed(3));
+      // ================= amber particle bursts (camera space, ballistic in time) =================
+      const PCOL = [new THREE.Color(2.2, 1.05, 0.12), new THREE.Color(2.4, 1.7, 0.65), new THREE.Color(2.2, 2.0, 1.6)];
+      const camAt = camState(CUE.dont);
+      function makeBurst(n, seed, sx, sy, rx0, ry0, spd0, spd1, size, life0, life1, fov) {
+        const geo = new THREE.BufferGeometry();
+        const pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
+        geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+        const pts = new THREE.Points(
+          geo,
+          new THREE.PointsMaterial({ size, map: dotTex, vertexColors: true, transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending, fog: false }),
+        );
+        pts.frustumCulled = false;
+        pts.renderOrder = 20;
+        camera.add(pts);
+        const DZ = 9, th = Math.tan((fov / 2) * D2R);
+        const ox = ((sx / W) * 2 - 1) * DZ * th * (W / H), oy = (1 - (sy / H) * 2) * DZ * th;
+        const R6 = -6 * D2R;
+        const parts = [];
+        for (let i = 0; i < n; i++) {
+          const a = (i / n) * Math.PI * 2 + (prand(seed + i * 3.1) - 0.5) * 0.7;
+          const dx = Math.cos(a), dy = Math.sin(a);
+          const ex = dx * rx0 * Math.cos(R6) - dy * ry0 * Math.sin(R6);
+          const ey = dx * rx0 * Math.sin(R6) + dy * ry0 * Math.cos(R6);
+          const ux = dx * Math.cos(R6) - dy * 0.6 * Math.sin(R6), uy = dx * Math.sin(R6) + dy * 0.6 * Math.cos(R6);
+          const sp = lerp(spd0, spd1, prand(seed + i * 7.3));
+          parts.push({
+            ox: ox + ex, oy: oy + ey, oz: -DZ,
+            vx: ux * sp, vy: uy * sp + 0.8, vz: (prand(seed + i * 5.7) - 0.3) * sp * 0.8,
+            life: lerp(life0, life1, prand(seed + i * 9.9)), c: PCOL[i % 3],
+          });
         }
+        return { geo, pos, col, parts };
       }
-      function render(t) {
-        // camera: slow push + two impact shakes
-        const sa = sampleTable(SHAKE_A, (t - 1.7) / 0.32);
-        const sb = sampleTable(SHAKE_B, (t - CUE.wait) / 0.16);
-        shakeX = sa[0] + sb[0];
-        shakeY = sa[1] + sb[1];
-        applyCamera();
-        // ground grid drifting toward camera (forward motion)
-        for (let k = 0; k < GL; k++) {
-          let z = (k * GDZ - t * GV) % (GL * GDZ);
-          if (z < 0) z += GL * GDZ;
-          z += GZ0;
-          const y = HY + GK / z;
-          gridLines[k].setAttribute("y1", fx(y));
-          gridLines[k].setAttribute("y2", fx(y));
-          gridLines[k].setAttribute("opacity", Math.pow(clamp01((y - HY) / 160), 1.5).toFixed(3));
-        }
+      function updateBurst(b, tau) {
+        b.parts.forEach((p, i) => {
+          if (tau <= 0 || tau >= p.life) {
+            b.pos[i * 3] = 0; b.pos[i * 3 + 1] = 0; b.pos[i * 3 + 2] = -9;
+            b.col[i * 3] = b.col[i * 3 + 1] = b.col[i * 3 + 2] = 0;
+            return;
+          }
+          const f = (1 - Math.exp(-4 * tau)) / 4;
+          b.pos[i * 3] = p.ox + p.vx * f;
+          b.pos[i * 3 + 1] = p.oy + p.vy * f - 1.7 * tau * tau;
+          b.pos[i * 3 + 2] = p.oz + p.vz * f;
+          const fade = Math.pow(1 - tau / p.life, 1.5) * Math.min(1, tau / 0.03);
+          b.col[i * 3] = p.c.r * fade;
+          b.col[i * 3 + 1] = p.c.g * fade;
+          b.col[i * 3 + 2] = p.c.b * fade;
+        });
+        b.geo.attributes.position.needsUpdate = true;
+        b.geo.attributes.color.needsUpdate = true;
+      }
+      const burstA = makeBurst(170, 11, 540, 340, 1.85, 1.0, 3, 11, 0.075, 0.6, 1.1, camAt.fov);
+      const burstA2 = makeBurst(36, 71, 540, 340, 1.7, 0.9, 2, 7, 0.2, 0.5, 0.9, camAt.fov);
+      const burstB = makeBurst(70, 131, 540, 440, 1.3, 0.45, 2.5, 8, 0.07, 0.45, 0.8, camAt.fov);
+
+      // ================= DOM hooks =================
+      const tagL = $("tag-l"), tagR = $("tag-r");
+      const shakebox = $("shakebox"), shock = $("shock"), flash = $("flash"), line2 = $("line2");
+      const ANCH_L = new THREE.Vector3(), ANCH_R = new THREE.Vector3();
+      {
+        const a = pathAt(LB, 60), b = pathAt(RB, 60);
+        ANCH_L.set(a.x, 0.1, a.z);
+        ANCH_R.set(b.x, 0.1, b.z);
+      }
+      const vp = new THREE.Vector3();
+      const project = (v) => {
+        vp.copy(v).project(camera);
+        return { x: (vp.x + 1) * 0.5 * W, y: (1 - vp.y) * 0.5 * H, ok: vp.z > -1 && vp.z < 1 };
+      };
+      const fx = (v) => v.toFixed(1);
+
+      // ================= one frame = pure function of local time =================
+      function renderAt(t) {
+        const c = camState(t);
+        camera.position.set(c.x, c.y, c.z);
+        camera.rotation.set(c.pitch, c.yaw, c.roll);
+        camera.fov = c.fov;
+        camera.updateProjectionMatrix();
+        camera.updateMatrixWorld(true);
+        sky.position.copy(camera.position);
+        stars.position.copy(camera.position);
+        sunGroup.position.copy(camera.position);
+
+        // sun energy: wakes on "future", swells with the run, flares on "change"
+        const acc = Math.pow(clamp01((t - CUE.start) / 1.2), 1.3);
+        const f = t - CUE.change;
+        const pulse = f <= 0 ? 0 : f < 0.07 ? f / 0.07 : Math.exp(-(f - 0.07) * 5.0);
+        const settle = E.o2(clamp01(f / 0.45));
+        const wake = E.o2(clamp01((t - CUE.future) / 0.7));
+        const boost = 0.8 + 0.28 * wake + 0.5 * acc + 0.75 * pulse + 0.15 * settle;
+        U.uB7Boost.value = boost;
+        U.uB7Time.value = t;
+        sunLight.intensity = 1.7 * boost;
+        sunDisc.material.color.copy(SUN_C).multiplyScalar(0.75 + 0.3 * boost);
+        sunDisc.scale.setScalar(210 * (1 + 0.06 * acc + 0.1 * pulse));
+        halo.scale.setScalar(430 * (1 + 0.35 * acc + 0.9 * pulse + 0.15 * settle));
+        halo.material.color.copy(HALO_C).multiplyScalar(0.7 + 0.45 * boost);
+        haloWide.scale.setScalar(1050 * (1 + 0.25 * acc + 0.5 * pulse));
+        haloWide.material.color.copy(WIDE_C).multiplyScalar(0.6 + 0.4 * boost);
+        streak.scale.set(1900 * (1 + 0.5 * pulse + 0.2 * acc), 34 * (1 + 0.6 * pulse), 1);
+        streak.material.color.copy(STREAK_C).multiplyScalar(0.25 + 0.35 * acc + 0.9 * pulse);
+
+        // amber road ignites outward from the fork on "future"
+        setReveal(E.o2(clamp01((t - CUE.future) / 0.85)) * 950);
+        matEdgeR.color.copy(AMBER_EDGE).multiplyScalar(1.6 + 0.4 * wake + 1.0 * acc + 1.2 * pulse);
+        matGlowR.color.setRGB(1.0, 0.6, 0.12).multiplyScalar(0.35 + 0.25 * wake + 0.35 * acc + 0.5 * pulse);
+
+        // dashes stretch into streaks, speed lines appear with velocity
+        updateDashes(3.0 * (1 + 1.6 * sstep(20, 55, c.v)));
+        updateSpeedLines(c.v);
+
         // stars twinkle
-        for (let i = 0; i < STARS; i++) {
-          const s = stars[i];
-          s.el.style.opacity = (s.a * (0.55 + 0.45 * Math.sin(t * s.f + s.ph))).toFixed(3);
+        for (let i = 0; i < STAR_N; i++) {
+          const s = starData[i];
+          const k = s.base * (0.6 + 0.4 * Math.sin(t * s.f + s.ph)) * (1 - 0.35 * acc);
+          starCol[i * 3] = s.r * k;
+          starCol[i * 3 + 1] = s.g * k;
+          starCol[i * 3 + 2] = s.b * k;
         }
-        // chase marks
-        const marksIn = clamp01((t - 0.5) / 0.4);
-        const dimL = 1 - 0.55 * E.o2(clamp01((t - 2.6) / 0.4));
-        placeMarks(marksL, left, t, branchDraw(t, 0.26), 0.5, 0.6 * marksIn * dimL);
-        placeMarks(marksR, right, t, branchDraw(t, 0.3), 0.5 + 0.35 * clamp01((t - LAUNCH) / 0.3), 0.95 * marksIn);
-        // dot + velocity streak
-        const d = dotState(t);
-        dot.style.transform = `translate(${fx(d.x)}px, ${fx(d.y)}px) scale(${(d.s * d.sx).toFixed(4)}, ${(d.s * d.sy).toFixed(4)})`;
-        const back = dotState(t - 0.04);
-        const speed = Math.hypot(d.x - back.x, d.y - back.y) / 0.04;
-        const gate = clamp01((speed - 420) / 900);
-        const pulse = t > 1.1 && t < LAUNCH ? 1 + 0.18 * Math.sin((t - 1.1) * 9) : 1;
-        dotHalo.style.transform = `scale(${(pulse * (1 + 0.9 * gate)).toFixed(4)})`;
-        if (gate > 0 && t > CUE.youre) {
-          let path = "";
-          for (let k = 0; k <= 7; k++) {
-            const q = dotState(t - k * 0.014);
-            path += (k ? " L" : "M") + fx(q.x) + " " + fx(q.y);
-          }
-          streak.setAttribute("d", path);
-          streakGlow.setAttribute("d", path);
-          streak.setAttribute("stroke-width", (20 * d.s).toFixed(2));
-          streakGlow.setAttribute("stroke-width", (40 * d.s).toFixed(2));
-          streak.setAttribute("opacity", (0.85 * gate).toFixed(3));
-          streakGlow.setAttribute("opacity", (0.8 * gate).toFixed(3));
+        starGeo.attributes.color.needsUpdate = true;
+
+        // fog banks drift
+        fogBanks.forEach((fb) => {
+          fb.sp.position.x = fb.x + Math.sin(t * 0.6 + fb.ph) * 1.5;
+        });
+
+        // particle bursts
+        updateBurst(burstA, t - CUE.dont);
+        updateBurst(burstA2, t - CUE.dont);
+        updateBurst(burstB, t - CUE.wait);
+
+        renderer.render(scene, camera);
+
+        // ---- DOM overlay ----
+        const pl = project(ANCH_L), pr = project(ANCH_R);
+        tagL.style.transform = `translate(${fx(pl.x)}px, ${fx(Math.min(pl.y, 1110))}px)`;
+        tagL.style.opacity = (pl.ok ? sstep(110, 250, pl.x) * (1 - sstep(1000, 1100, pl.y)) : 0).toFixed(3);
+        tagR.style.transform = `translate(${fx(Math.max(190, Math.min(890, pr.x)))}px, ${fx(Math.min(pr.y, 1110))}px)`;
+        tagR.style.opacity = pr.ok ? "1" : "0";
+
+        const sk = c.sk;
+        const push = 1 + 0.03 * E.io2(clamp01((t - CUE.start) / 1.2));
+        shakebox.style.transform = `translate(${sk.px.toFixed(2)}px, ${sk.py.toFixed(2)}px) scale(${push.toFixed(4)})`;
+
+        const kk = (t - 1.7) / 0.62;
+        if (kk > 0 && kk < 1) {
+          const e = E.o2(kk);
+          shock.style.transform = `rotate(-6deg) scale(${(0.62 + 1.28 * e).toFixed(4)})`;
+          shock.style.opacity = (0.9 * (1 - e)).toFixed(3);
         } else {
-          streak.setAttribute("d", "");
-          streakGlow.setAttribute("d", "");
-          streak.setAttribute("opacity", "0");
-          streakGlow.setAttribute("opacity", "0");
+          shock.style.transform = "rotate(-6deg) scale(0.62)";
+          shock.style.opacity = "0";
         }
-        for (let k = 0; k < GHOSTS; k++) {
-          const q = dotState(t - (k + 1) * 0.03);
-          ghosts[k].style.transform = `translate(${fx(q.x)}px, ${fx(q.y)}px) scale(${q.s.toFixed(4)})`;
-          ghosts[k].style.opacity = (gate * (0.42 / (k + 1))).toFixed(3);
-        }
-        // lit flare follows the dot along the amber path
-        const lit = t > LAUNCH ? d.a : 0;
-        flareMask.style.strokeDashoffset = (LEN["mp-flare"] * (1 - lit)).toFixed(2);
-        // chevrons light as the dot passes, then pulse toward the vanishing point
-        for (let j = 0; j < CHEV; j++) {
-          const c = chevrons[j];
-          const g = clamp01((lit - c.a) / 0.05);
-          const wave = Math.pow(Math.max(0, Math.cos(Math.PI * 2 * (t * 1.6 - c.a * 1.4))), 3);
-          c.el.setAttribute("opacity", (g * (0.35 + 0.65 * wave)).toFixed(3));
-        }
-        // particle burst on the stamp impact (pure ballistic function of time)
-        const PT = (t - 1.7) / 0.9;
-        for (let i = 0; i < PCOUNT; i++) {
-          const p = parts[i];
-          if (PT <= 0 || PT >= 1) {
-            p.el.style.transform = `translate(${fx(p.ox)}px, ${fx(p.oy)}px)`;
-            p.el.style.opacity = "0";
-            continue;
-          }
-          const ft = PT * 0.9;
-          const x = p.ox + p.vx * ft;
-          const y = p.oy + p.vy * ft + 0.5 * 420 * ft * ft;
-          p.el.style.transform = `translate(${fx(x)}px, ${fx(y)}px) rotate(${(p.spin * ft).toFixed(1)}deg)`;
-          p.el.style.opacity = Math.min(1, (1 - PT) / 0.35).toFixed(3);
-        }
-        // "wait": second hit on the bottom line (scale punch + amber flash), pure function of time
+        const fl = t - 1.69;
+        flash.style.opacity = (fl <= 0 || fl >= 0.4 ? 0 : fl < 0.06 ? (0.4 * fl) / 0.06 : 0.4 * (1 - E.o2((fl - 0.06) / 0.34))).toFixed(3);
+        // "wait": second hit on the bottom line
         const wk = (t - CUE.wait) / 0.34;
         if (wk > 0 && wk < 1) {
           const e = E.o3(wk);
@@ -994,125 +1198,58 @@
           line2.removeAttribute("transform");
           line2.style.fill = "#FDF2E0";
         }
-        // impact shockwave ring + flash (ephemeral: invisible outside their window)
-        const sk = (t - 1.7) / 0.62;
-        if (sk > 0 && sk < 1) {
-          const e = E.o2(sk);
-          shock.style.transform = `rotate(-6deg) scale(${(0.62 + 1.28 * e).toFixed(4)})`;
-          shock.style.opacity = (0.95 * (1 - e)).toFixed(3);
-        } else {
-          shock.style.transform = "rotate(-6deg) scale(0.62)";
-          shock.style.opacity = "0";
-        }
-        const fl = t - 1.69;
-        flash.style.opacity = (fl <= 0 || fl >= 0.4 ? 0 : fl < 0.06 ? (0.42 * fl) / 0.06 : 0.42 * (1 - E.o2((fl - 0.06) / 0.34))).toFixed(3);
-        const vk = (t - CUE.change) / 0.48;
-        if (vk > 0 && vk < 1) {
-          const e = E.o2(vk);
-          vpring.style.transform = `scale(${(0.4 + 2.4 * e).toFixed(4)})`;
-          vpring.style.opacity = (0.95 * (1 - vk)).toFixed(3);
-        } else {
-          vpring.style.transform = "scale(0.4)";
-          vpring.style.opacity = "0";
-        }
-        // vanishing-point rays grow on "change", then rotate slowly
-        const rt = t - CUE.change;
-        for (let i = 0; i < RAYS; i++) {
-          const r = rays[i];
-          const g = E.expo(clamp01((rt - r.delay) / 0.42));
-          const breathe = 1 + 0.08 * Math.sin(t * 6 + i * 1.7) * g;
-          const spin = rt > 0 ? rt * 14 : 0;
-          r.el.style.transform = `rotate(${(r.rot + spin).toFixed(2)}deg) scaleX(${(g * breathe).toFixed(4)})`;
-          r.el.style.opacity = (g * 0.9).toFixed(3);
-        }
       }
 
-      // ---------- timeline ----------
+      // ================= timeline =================
       const tl = gsap.timeline({ paused: true });
       const clock = { t: 0 };
-      tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: () => render(clock.t) }, 0);
-      tl.fromTo(cam, { s: 1 }, { s: 1.04, duration: DUR, ease: "none", onUpdate: applyCamera }, 0);
+      tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: () => renderAt(clock.t) }, 0);
 
-      // ground ambient
-      tl.fromTo($("glow-violet"), { x: -40, y: 10, scale: 1 }, { x: 50, y: -30, scale: 1.06, duration: DUR, ease: "sine.inOut" }, 0);
-      tl.fromTo($("haze"), { x: -30, opacity: 0.8 }, { x: 30, opacity: 1, duration: DUR, ease: "sine.inOut" }, 0);
-      tl.fromTo($("fog"), { x: -20, scale: 1 }, { x: 26, scale: 1.08, duration: DUR, ease: "sine.inOut" }, 0);
-      tl.fromTo($("glow-amber"), { x: 0, scale: 0.9 }, { x: -24, scale: 1, duration: DUR, ease: "sine.inOut" }, 0);
-      tl.fromTo($("glow-amber"), { opacity: 0.16 }, { opacity: 0.38, duration: 0.45, ease: "power2.out", immediateRender: false }, CUE.change);
-      tl.fromTo($("gridwrap"), { opacity: 0.4 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+      // road tags: SAME on "heading", CHANGE right after
+      const lettersL = Array.from($("word-l").querySelectorAll("span"));
+      const lettersR = Array.from($("word-r").querySelectorAll("span"));
+      tl.fromTo($("pin-l"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, CUE.heading);
+      tl.fromTo($("tick-l"), { scaleY: 0 }, { scaleY: 1, duration: 0.26, ease: "power2.out" }, CUE.heading + 0.04);
+      tl.fromTo($("pill-l"), { opacity: 0, scale: 0.6, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "back.out(1.7)" }, CUE.heading + 0.08);
+      tl.fromTo($("pill-l"), { filter: "blur(8px)" }, { filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, CUE.heading + 0.08);
+      tl.fromTo(lettersL, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.05 }, CUE.heading + 0.12);
+      tl.fromTo($("pin-r"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 0.92);
+      tl.fromTo($("tick-r"), { scaleY: 0 }, { scaleY: 1, duration: 0.26, ease: "power2.out" }, 0.96);
+      tl.fromTo($("pill-r"), { opacity: 0, scale: 0.6, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "back.out(1.7)" }, 1.0);
+      tl.fromTo($("pill-r"), { filter: "blur(8px)" }, { filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 1.0);
+      tl.fromTo(lettersR, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.045 }, 1.04);
+      tl.set([$("pill-l"), $("pill-r")], { filter: "none" }, 1.5);
 
-      // ---- Scene 1: the fork draws (svg-path-draw) ----
-      const drawTo = (key, at0, dur, ease) =>
-        tl.fromTo($(key), { strokeDashoffset: LEN[key] }, { strokeDashoffset: 0, duration: dur, ease }, at0);
-      drawTo("e-sl", CUE.future, 0.26, "power1.in");
-      drawTo("e-sr", CUE.future, 0.26, "power1.in");
-      drawTo("mp-stem", CUE.future, 0.26, "power1.in");
-      drawTo("e-lo", 0.26, 0.75, "power2.out");
-      drawTo("mp-left", 0.26, 0.75, "power2.out");
-      drawTo("e-li", 0.34, 0.67, "power2.out");
-      drawTo("e-ro", 0.3, 0.75, "power2.out");
-      drawTo("eg-ro", 0.3, 0.75, "power2.out");
-      drawTo("mp-right", 0.3, 0.75, "power2.out");
-      drawTo("e-ri", 0.38, 0.67, "power2.out");
-      drawTo("eg-ri", 0.38, 0.67, "power2.out");
-
-      // vanishing points light up as the paths arrive
-      tl.fromTo($("vpstar-l"), { opacity: 0, scale: 0.4 }, { opacity: 0.6, scale: 1, duration: 0.5, ease: "power2.out" }, 0.84);
-      tl.fromTo($("bloom"), { opacity: 0, scale: 0.08 }, { opacity: 0.85, scale: 0.26, duration: 0.5, ease: "back.out(2)" }, 0.88);
-
-      // labels: SAME on "heading", CHANGE right after
-      const lettersL = Array.from($("label-l").querySelectorAll("span"));
-      const lettersR = Array.from($("label-r").querySelectorAll("span"));
-      tl.fromTo(lettersL, { opacity: 0, y: 14, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.32, ease: "power3.out", stagger: 0.05 }, CUE.heading);
-      tl.fromTo($("tick-l"), { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, CUE.heading + 0.12);
-      tl.fromTo(lettersR, { opacity: 0, y: 14, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.32, ease: "power3.out", stagger: 0.045 }, 0.92);
-      tl.fromTo($("tick-r"), { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, 1.02);
-
-      // ---- Scene 2: DON'T WAIT slams (kinetic-beat-slam) ----
+      // DON'T WAIT slams (scale 2.4 -> 1, rot 3 -> -6, blur 18 -> 0)
       const stamp = $("stamp");
-      tl.fromTo(
-        stamp,
-        { scale: 2.4, rotation: 3, filter: "blur(18px)" },
-        { scale: 1, rotation: -6, filter: "blur(0px)", duration: 0.34, ease: "power4.out" },
-        CUE.dont,
-      );
+      tl.fromTo(stamp, { scale: 2.4, rotation: 3, filter: "blur(18px)" }, { scale: 1, rotation: -6, filter: "blur(0px)", duration: 0.34, ease: "power4.out" }, CUE.dont);
       tl.fromTo(stamp, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, CUE.dont);
       tl.set(stamp, { filter: "none" }, CUE.dont + 0.36);
-      // impact: shockwave ring, flash, particles and shake are driven in render()
-      // "wait": second hit on the bottom line
-      // (the WAIT punch itself is driven in render())
       tl.fromTo($("stampglow"), { opacity: 0.85 }, { opacity: 1, duration: 0.12, ease: "power2.out", immediateRender: false }, CUE.wait);
       tl.fromTo($("stampglow"), { opacity: 1 }, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", immediateRender: false }, CUE.wait + 0.12);
-      // light sweep across the glyphs after landing
       tl.fromTo($("sheengrad"), { attr: { x1: -320, x2: -140 } }, { attr: { x1: 760, x2: 940 }, duration: 0.55, ease: "power2.inOut" }, 2.0);
-      // finite glow breath while held
-      tl.fromTo($("stampglow"), { opacity: 0.7 }, { opacity: 0.95, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 2.64);
+      tl.fromTo($("stampglow"), { opacity: 0.7 }, { opacity: 0.95, duration: 0.42, ease: "sine.inOut", immediateRender: false }, 2.64);
+      tl.fromTo($("stampglow"), { opacity: 0.95 }, { opacity: 0.8, duration: 0.5, ease: "sine.inOut", immediateRender: false }, 3.06);
 
-      // ---- Scene 3: the light takes the amber path ----
-      tl.fromTo($("rglow"), { opacity: 0 }, { opacity: 0.9, duration: 0.45, ease: "power2.out" }, CUE.start);
-      // grey path dims beyond the shared fork (gradient stops, so the shared lane stays lit)
-      [["sl1", 0.18, 0.06], ["sl2", 0.08, 0.025], ["se1", 0.66, 0.24], ["se2", 0.32, 0.1]].forEach(([k, a, b]) => {
-        tl.fromTo($(k), { attr: { "stop-opacity": a } }, { attr: { "stop-opacity": b }, duration: 0.45, ease: "power2.out" }, 2.6);
-      });
-      tl.fromTo($("label-l"), { opacity: 1 }, { opacity: 0.38, duration: 0.45, ease: "power2.out" }, 2.6);
-      tl.fromTo($("vpstar-l"), { opacity: 0.6 }, { opacity: 0.2, duration: 0.45, ease: "power2.out", immediateRender: false }, 2.6);
-      // "change": right vanishing point blooms
-      tl.fromTo($("bloom"), { scale: 0.26, opacity: 0.85 }, { scale: 1.18, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, CUE.change);
-      tl.fromTo($("bloom"), { scale: 1.18 }, { scale: 1, duration: 0.18, ease: "sine.inOut", immediateRender: false }, CUE.change + 0.3);
-      tl.fromTo($("label-r"), { scale: 1 }, { scale: 1.16, duration: 0.12, ease: "power2.out", immediateRender: false }, CUE.change);
-      tl.fromTo($("label-r"), { scale: 1.16 }, { scale: 1, duration: 0.32, ease: "back.out(2)", immediateRender: false }, CUE.change + 0.12);
-      // CHANGE locks in as a solid amber chip
-      tl.fromTo($("chip"), { scaleX: 0.35, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.34, ease: "back.out(1.6)" }, CUE.change);
+      // the grey road falls away: SAME dims as the camera commits right
+      tl.fromTo($("tagbody-l"), { opacity: 1 }, { opacity: 0.4, duration: 0.45, ease: "power2.out" }, 2.6);
+
+      // "change": CHANGE locks in as a solid amber chip
+      const pillR = $("pill-r");
+      tl.fromTo(pillR, { scale: 1 }, { scale: 1.16, duration: 0.12, ease: "power2.out", immediateRender: false }, CUE.change);
+      tl.fromTo(pillR, { scale: 1.16 }, { scale: 1, duration: 0.32, ease: "back.out(2)", immediateRender: false }, CUE.change + 0.12);
+      tl.fromTo($("chip"), { scaleX: 0.35, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.3, ease: "back.out(1.6)" }, CUE.change);
       tl.fromTo(
-        $("label-r"),
-        { color: "#FEB022", textShadow: "0 0 22px rgba(254,176,34,0.55)" },
-        { color: "#1A1030", textShadow: "0 0 0px rgba(254,176,34,0)", duration: 0.2, ease: "power2.out", immediateRender: false },
+        pillR,
+        { color: "#FEB022", textShadow: "0 0 18px rgba(254,176,34,0.55)", boxShadow: "0 0 26px rgba(254,176,34,0.35)" },
+        { color: "#1A1030", textShadow: "0 0 0px rgba(254,176,34,0)", boxShadow: "0 0 46px rgba(254,176,34,0.8)", duration: 0.2, ease: "power2.out", immediateRender: false },
         CUE.change + 0.04,
       );
-      tl.fromTo($("labelsheen"), { x: -70 }, { x: 290, duration: 0.28, ease: "power2.inOut" }, CUE.change + 0.2);
-      tl.fromTo($("labelsheen"), { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none" }, CUE.change + 0.2);
+      tl.fromTo($("pin-r"), { scale: 1 }, { scale: 1.8, duration: 0.16, ease: "power2.out", immediateRender: false }, CUE.change);
+      tl.fromTo($("pin-r"), { scale: 1.8 }, { scale: 1.2, duration: 0.3, ease: "sine.inOut", immediateRender: false }, CUE.change + 0.16);
+      tl.fromTo($("labelsheen"), { x: -70, opacity: 1 }, { x: 290, opacity: 1, duration: 0.28, ease: "power2.inOut" }, CUE.change + 0.2);
 
-      render(0);
+      renderAt(0);
       window.__timelines = window.__timelines || {};
       window.__timelines[ID] = tl;
     })();
