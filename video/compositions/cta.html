@@ -1,0 +1,110 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    [data-composition-id="cta"] .cta-join {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 1140px;
+      text-align: center;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 158px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #feb022;
+      text-shadow:
+        0 0 50px rgba(254, 176, 34, 0.5),
+        0 6px 20px rgba(0, 0, 0, 0.6);
+    }
+    [data-composition-id="cta"] .cta-button {
+      position: absolute;
+      left: 150px;
+      width: 780px;
+      top: 1334px;
+      height: 112px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(90deg, #4e2294 0%, #8129bc 55%, #a94271 100%);
+      border: 4px solid #feb022;
+      box-shadow:
+        0 0 40px rgba(140, 47, 194, 0.6),
+        0 18px 40px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+    [data-composition-id="cta"] .cta-label {
+      position: relative;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      font-size: 44px;
+      letter-spacing: 0.04em;
+      color: #fffdf8;
+    }
+    [data-composition-id="cta"] .cta-sheen {
+      position: absolute;
+      top: -24px;
+      left: 0;
+      width: 160px;
+      height: 160px;
+      background: linear-gradient(
+        100deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+    [data-composition-id="cta"] .cta-chev {
+      position: absolute;
+      left: 490px;
+      width: 100px;
+      height: 54px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920" data-duration="1.76">
+    <div class="cta-join" id="cta-join">JOIN US</div>
+    <div class="cta-button" id="cta-button">
+      <div class="cta-sheen" id="cta-sheen"></div>
+      <span class="cta-label">CLICK THE LINK BELOW</span>
+    </div>
+    <svg class="cta-chev" id="cta-chev-1" viewBox="0 0 100 54" style="top: 1470px">
+      <path d="M8 8 L50 46 L92 8" fill="none" stroke="#FEB022" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <svg class="cta-chev" id="cta-chev-2" viewBox="0 0 100 54" style="top: 1518px">
+      <path d="M8 8 L50 46 L92 8" fill="none" stroke="#FEB022" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // "Join us." @0.08 — slam in
+      tl.fromTo(
+        "#cta-join",
+        { opacity: 0, scale: 2.3, rotation: -5, filter: "blur(14px)" },
+        { opacity: 1, scale: 1, rotation: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" },
+        0.06,
+      );
+      tl.fromTo("#cta-join", { scale: 1 }, { scale: 1.04, duration: 1.2, ease: "sine.inOut", immediateRender: false }, 0.46);
+      // "Click the link below." @0.72 — the button springs up, a sheen crosses it
+      tl.fromTo(
+        "#cta-button",
+        { opacity: 0, y: 70, scale: 0.6 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.9)" },
+        0.68,
+      );
+      tl.fromTo("#cta-sheen", { x: -200 }, { x: 860, duration: 0.6, ease: "power2.inOut" }, 1.0);
+      // chevrons point down at the link
+      ["#cta-chev-1", "#cta-chev-2"].forEach((c, i) => {
+        tl.fromTo(c, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 0.95 + i * 0.08);
+        tl.fromTo(c, { y: 0 }, { y: 18, duration: 0.28, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.18 + i * 0.08);
+      });
+      window.__timelines["cta"] = tl;
+    })();
+  </script>
+</template>
