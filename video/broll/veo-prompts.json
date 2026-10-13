@@ -1,0 +1,50 @@
+{
+  "model": "veo-3.0-fast-generate-001",
+  "parameters": {
+    "aspectRatio": "9:16",
+    "negativePrompt": "text, captions, subtitles, letters, numbers on screen, logos, watermarks, brand names, cartoon, illustration, distorted hands, extra fingers, low quality, blurry"
+  },
+  "style": "Shared look for every clip: vertical cinematic footage, shallow depth of field, moody night interior, deep indigo and violet shadows with warm amber practical light, subtle film grain, slow deliberate camera move. No on-screen text.",
+  "clips": [
+    {
+      "id": "b1-phone-check",
+      "window": "2.10-6.50",
+      "seconds": 4.4,
+      "start": 0.5,
+      "line": "Now, picture yourself three years from now checking your bank balance.",
+      "prompt": "Vertical cinematic shot, night. A South Asian man in his early thirties sits on a sofa in a dim apartment, a warm amber lamp glowing behind him. He hesitates, then slowly lifts his smartphone to check his banking app; the screen faces away from camera and lights his face with a cool glow. Slow push-in, shallow depth of field, deep indigo and violet shadows, subtle film grain. No text, no logos."
+    },
+    {
+      "id": "b2-unlock-balance",
+      "window": "15.10-18.90",
+      "seconds": 3.8,
+      "start": 0.5,
+      "line": "Your future self, opening that account, looking at the balance.",
+      "prompt": "Vertical cinematic macro shot. A thumb presses a smartphone's fingerprint sensor, the phone unlocks with a soft glow, then a rack focus to the man's face as he looks at the screen, a mix of hope and nervousness, amber light on his face, violet bokeh behind. Slow motion, shallow depth of field, film grain. The phone screen is not readable. No text, no logos."
+    },
+    {
+      "id": "b4-harsh-voice",
+      "window": "25.55-29.40",
+      "seconds": 3.85,
+      "start": 0.5,
+      "line": "With kindness or with the same harsh voice you use today?",
+      "prompt": "Vertical cinematic shot, night. A South Asian man in his thirties sits at a desk after a losing trade, out-of-focus monitors glowing red behind him. He presses his palms into his eyes in frustration, then lowers his hands, exhales and his face softens into calm. Hard side light, red and violet tones shifting to warm amber, shallow depth of field, slow push-in. No readable screens, no text, no logos."
+    },
+    {
+      "id": "b5-same-routine",
+      "window": "32.40-34.75",
+      "seconds": 2.4,
+      "start": 0.5,
+      "line": "Nothing's really changed except the date.",
+      "prompt": "Vertical cinematic shot. The same small apartment kitchen at dawn: an alarm clock, a coffee mug, a phone on the counter and a paper wall calendar. A man's hand turns off the alarm and picks up the phone in a tired, repetitive routine. Muted, slightly desaturated colours with a faint violet cast, static locked-off camera with a very slow push-in, soft film grain. No readable text, no logos."
+    },
+    {
+      "id": "b6-money-and-mind",
+      "window": "40.00-45.05",
+      "seconds": 5.05,
+      "start": 0.5,
+      "line": "It's not just about the number in your account, it's also about the voice in your head.",
+      "prompt": "Vertical cinematic shot. Close-up of hands counting banknotes on a dark wooden table under a warm amber lamp, then a slow rack focus and tilt up to the man's face in profile, eyes closed, thoughtful and calm, a soft violet rim light outlining his head. Shallow depth of field, film grain. No readable text on the notes, no logos."
+    }
+  ]
+}

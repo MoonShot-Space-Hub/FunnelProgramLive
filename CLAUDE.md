@@ -52,3 +52,41 @@ python3 tools/fetch_broll.py get <id> --name phone-banking --start 1 --seconds 4
 
 Place a downloaded clip as a muted `<video class="clip">` cutaway (or inside a cutaway
 sub-composition) at the line it illustrates; the captions and gradient stay on top.
+
+### AI video B-roll (Google Veo)
+
+`video/tools/generate_broll_veo.py` generates clips with Veo through the Gemini API
+(`generativelanguage.googleapis.com` is reachable from this environment). It needs a
+`GEMINI_API_KEY` with Veo access; Veo is paid (roughly $0.15–0.75 per generated second), so
+confirm before generating a batch. Prompts live in `video/broll/veo-prompts.json`, one per
+human moment of Avatar Video 1, sharing one look (vertical, indigo/violet shadows, amber light,
+no on-screen text).
+
+```bash
+cd video
+python3 tools/generate_broll_veo.py models               # confirm which Veo models the key can use
+python3 tools/generate_broll_veo.py list
+python3 tools/generate_broll_veo.py generate b1-phone-check   # or --all
+```
+
+Output: `assets/broll/<id>.mp4` (1080×1920, 25 fps, muted, trimmed to the cutaway length), the
+original in `assets/broll/veo/`, provenance in `assets/broll/ledger.json`.
+
+**Avatar Video 1 plan (the user chose this mix):** Veo footage for the human moments
+(b1 phone check, b2 unlock, b4 harsh voice, b5 routine before the kinetic words, b6 money and
+mind) and 3D rendered scenes (Three.js) for the chart crash (b3) and DON'T WAIT (b7). To swap a
+cutaway, replace its sub-composition host inside the matching `.bw` wrapper in `index.html` with a
+muted `<video class="clip" src="assets/broll/<id>.mp4">` on the same `data-start` /
+`data-duration` (b5 keeps its kinetic-type phase: start the video at 32.40 for 2.35 s and shorten
+the b5 host to start at 34.75). Keep the zoom-blur transitions, captions and gradient as they are;
+light motion-graphic accents from the old cutaway (the "?" badge, "+3 YEARS" pill) can sit on
+top of the footage.
+
+### 3D scenes (Three.js)
+
+Three.js r159's classic global build is vendored at `video/vendor/three/three.min.js` and loaded
+once in `index.html`. A 3D cutaway also declares `<script src="vendor/three/three.min.js"></script>`
+as the first line of its `<template>` (lint requires it; the "multiple instances" console warning
+is harmless), draws into a `<canvas class="clip">` and renders only from its GSAP timeline through a
+proxy tween (`onUpdate: () => renderAt(clock.t)`), never `requestAnimationFrame`. Headless Chrome
+here renders WebGL in software, so keep geometry modest.
