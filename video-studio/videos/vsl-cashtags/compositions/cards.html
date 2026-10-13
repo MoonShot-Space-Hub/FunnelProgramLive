@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Side-lane cards</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "FreeSans Deva";
+          src: url("assets/fonts/FreeSans.ttf");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          font-family: "Inter", sans-serif;
+          color: #1d1d1f;
+        }
+        /* Lanes: the face never leaves x 584-1258, so cards live in x 48-548 and 1372-1872. */
+        #root .card {
+          position: absolute;
+          top: 150px;
+          width: 500px;
+          padding: 18px 18px 22px;
+          border-radius: 34px;
+          background: rgba(255, 255, 255, 0.82);
+          backdrop-filter: blur(28px) saturate(1.6);
+          -webkit-backdrop-filter: blur(28px) saturate(1.6);
+          border: 1px solid rgba(255, 255, 255, 0.75);
+          box-shadow: 0 30px 80px rgba(20, 20, 30, 0.22), 0 2px 8px rgba(20, 20, 30, 0.08);
+          opacity: 0;
+          will-change: transform, opacity, filter;
+        }
+        #root .lane-l { left: 48px; }
+        #root .lane-r { left: 1372px; }
+        #root .tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          margin: 4px 0 14px 6px;
+          padding: 8px 16px;
+          border-radius: 999px;
+          background: rgba(29, 29, 31, 0.86);
+          color: #f5f5f7;
+          font-weight: 700;
+          font-size: 19px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+        #root .tag i {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #ff3b30;
+          display: inline-block;
+        }
+        #root .tag svg {
+          width: 20px;
+          height: 20px;
+        }
+        #root .media {
+          position: relative;
+          width: 464px;
+          height: 580px;
+          border-radius: 22px;
+          overflow: hidden;
+          background: #f5f5f7;
+        }
+        #root .media video,
+        #root .media img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        #root .cap-t {
+          margin: 18px 8px 0;
+          font-weight: 900;
+          font-size: 36px;
+          line-height: 1.12;
+          letter-spacing: -0.02em;
+        }
+        #root .cap-s {
+          margin: 8px 8px 0;
+          font-weight: 400;
+          font-size: 25px;
+          line-height: 1.3;
+          color: #6e6e73;
+        }
+        #root .blue { color: #0071e3; }
+        #root .green { color: #34c759; }
+
+        /* lower third */
+        #root #lt {
+          top: 836px;
+          width: 470px;
+          padding: 22px 30px 24px;
+          border-radius: 28px;
+        }
+        #root #lt .cap-t { margin: 0; font-size: 44px; }
+        #root #lt .cap-s { margin: 6px 0 0; font-size: 24px; }
+
+        /* text-only cards */
+        #root .big {
+          margin: 6px 8px 0;
+          font-weight: 900;
+          font-size: 96px;
+          line-height: 1;
+          letter-spacing: -0.04em;
+        }
+        #root .stars {
+          display: flex;
+          gap: 10px;
+          margin: 10px 8px 6px;
+        }
+        #root .stars svg {
+          width: 74px;
+          height: 74px;
+          transform-origin: 50% 50%;
+        }
+        #root .pills {
+          display: flex;
+          gap: 14px;
+          margin: 22px 8px 4px;
+        }
+        #root .pill {
+          padding: 14px 26px 16px;
+          border-radius: 999px;
+          background: #0071e3;
+          color: #fff;
+          font-weight: 700;
+          font-size: 32px;
+          transform-origin: 50% 50%;
+        }
+        #root .pill.deva {
+          font-family: "FreeSans Deva", sans-serif;
+          font-weight: 700;
+          background: #ff9f0a;
+          color: #1d1d1f;
+        }
+        #root .thumb {
+          float: right;
+          width: 150px;
+          height: 216px;
+          margin: 0 6px 6px 16px;
+          border-radius: 12px;
+          object-fit: cover;
+          box-shadow: 0 12px 30px rgba(20, 20, 30, 0.25);
+        }
+        #root .rows {
+          margin: 6px 4px 0;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        #root .row {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          padding: 16px 18px;
+          border-radius: 20px;
+          background: #f5f5f7;
+          font-weight: 700;
+          font-size: 34px;
+          transform-origin: 0% 50%;
+        }
+        #root .row .ic {
+          width: 58px;
+          height: 58px;
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #0071e3;
+        }
+        #root .row .ic svg { width: 34px; height: 34px; }
+        #root .strike {
+          position: absolute;
+          left: 14px;
+          right: 14px;
+          top: 50%;
+          height: 5px;
+          margin-top: -2px;
+          border-radius: 3px;
+          background: #ff3b30;
+          transform-origin: 0% 50%;
+          transform: scaleX(0);
+        }
+        #root .ring {
+          display: block;
+          width: 220px;
+          height: 220px;
+          margin: 8px auto 0;
+        }
+        #root .journey {
+          display: block;
+          width: 464px;
+          height: 330px;
+        }
+        #root .swap {
+          position: relative;
+        }
+      </style>
+
+      <div id="root" data-composition-id="cards" data-start="0" data-duration="62.36" data-width="1920" data-height="1080">
+        <!-- 0.35-3.9 lower third -->
+        <div class="card lane-l" id="lt">
+          <div class="cap-t">Vishal</div>
+          <div class="cap-s">Author of <b style="color: #1d1d1f">#CASHTAGS</b></div>
+        </div>
+
+        <!-- R1 2.3-7.0 screen recording: structured plan -->
+        <div class="card lane-r" id="c-chart">
+          <div class="tag"><i></i>Screen recording</div>
+          <div class="media">
+            <video id="v-chart" class="clip" src="assets/broll/screenrec-chart.mp4" muted playsinline data-start="2.3" data-duration="4.7" data-media-start="1.6" data-track-index="1"></video>
+          </div>
+          <div class="cap-t">A <span class="blue">structured</span> way</div>
+          <div class="cap-s">not guessing</div>
+        </div>
+
+        <!-- L2 7.2-11.6 screenshot: the book -->
+        <div class="card lane-l" id="c-book">
+          <div class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="#f5f5f7" stroke-width="2" stroke-linejoin="round" /><circle cx="12" cy="13" r="3.5" fill="none" stroke="#f5f5f7" stroke-width="2" /></svg>Screenshot</div>
+          <div class="media"><img src="assets/broll/book-cover.png" alt="" /></div>
+          <div class="cap-t">#CASHTAGS</div>
+          <div class="cap-s" id="c-book-2019">Written in 2019</div>
+        </div>
+
+        <!-- R2 11.7-15.6 reviews -->
+        <div class="card lane-r" id="c-reviews">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#ff9f0a" /></svg>
+            <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#ff9f0a" /></svg>
+            <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#ff9f0a" /></svg>
+            <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#ff9f0a" /></svg>
+            <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#ff9f0a" /></svg>
+          </div>
+          <div class="cap-t" style="font-size: 52px">5-star reviews</div>
+          <div class="cap-s">on Amazon, from <b style="color: #1d1d1f">thousands of readers</b></div>
+        </div>
+
+        <!-- L3 15.8-20.6 AI image: awards -->
+        <div class="card lane-l" id="c-awards">
+          <div class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z" fill="#f5f5f7" /></svg>AI-generated image</div>
+          <div class="media"><img src="assets/broll/ai-image-awards.png" alt="" /></div>
+          <div class="cap-t">6, 7 &amp; 8-figure awards</div>
+          <div class="cap-s">on stage</div>
+        </div>
+
+        <!-- R3 20.9-25.4 AI video: guessing -> system -->
+        <div class="card lane-r" id="c-system">
+          <div class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z" fill="#f5f5f7" /></svg>AI-generated video</div>
+          <div class="media">
+            <video id="v-system" class="clip" src="assets/broll/ai-video-system.mp4" muted playsinline data-start="20.9" data-duration="4.5" data-media-start="0.6" data-track-index="2"></video>
+          </div>
+          <div class="cap-t">Random guessing <span class="blue">→ systematic</span></div>
+        </div>
+
+        <!-- L4 25.5-30.9 second edition, English + Hindi -->
+        <div class="card lane-l" id="c-edition">
+          <img class="thumb" src="assets/broll/book-cover.png" alt="" />
+          <div class="cap-s" style="margin-top: 14px">Now available</div>
+          <div class="big">2nd</div>
+          <div class="cap-t" style="font-size: 48px; margin-top: 4px">Edition</div>
+          <div style="clear: both"></div>
+          <div class="pills">
+            <div class="pill" id="p-en">English</div>
+            <div class="pill deva" id="p-hi">हिन्दी</div>
+          </div>
+        </div>
+
+        <!-- R4 31.1-34.1 trading journey -->
+        <div class="card lane-r" id="c-journey">
+          <div class="cap-s" style="margin-top: 10px">Get started on your</div>
+          <div class="cap-t" style="font-size: 48px; margin-top: 4px">trading <span class="blue">journey</span></div>
+          <svg class="journey" viewBox="0 0 464 330" aria-hidden="true">
+            <path id="j-path" d="M40 280 C 140 280, 150 180, 232 170 S 330 70, 420 60" fill="none" stroke="#0071e3" stroke-width="10" stroke-linecap="round" />
+            <circle id="j-a" cx="40" cy="280" r="18" fill="#1d1d1f" />
+            <circle id="j-b" cx="232" cy="170" r="16" fill="#0071e3" />
+            <circle id="j-c" cx="420" cy="60" r="22" fill="#34c759" />
+          </svg>
+        </div>
+
+        <!-- R5 36.3-40.8 free -> limited time -->
+        <div class="card lane-r" id="c-free">
+          <div class="swap" id="free-a">
+            <div class="big blue" style="font-size: 150px; margin-top: 18px">Free</div>
+            <div class="cap-t" id="free-ship" style="font-size: 38px; margin-top: 16px">You just cover shipping</div>
+          </div>
+          <div class="swap" id="free-b" style="position: absolute; left: 18px; right: 18px; top: 24px">
+            <svg class="ring" viewBox="0 0 220 220" aria-hidden="true">
+              <circle cx="110" cy="110" r="92" fill="none" stroke="#e8e8ed" stroke-width="16" />
+              <circle id="ring-arc" cx="110" cy="110" r="92" fill="none" stroke="#ff9f0a" stroke-width="16" stroke-linecap="round" transform="rotate(-90 110 110)" />
+              <path d="M110 62v52l32 20" fill="none" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="cap-t" style="text-align: center; font-size: 50px">Limited time</div>
+          </div>
+        </div>
+
+        <!-- R6 43.3-49.6 podcast / webinar / masterclass / video -->
+        <div class="card lane-r" id="c-media">
+          <div class="cap-s" style="margin: 6px 8px 14px">You've watched a…</div>
+          <div class="rows">
+            <div class="row" id="r1"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="#fff" /><path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" /></svg></div>Podcast<div class="strike"></div></div>
+            <div class="row" id="r2"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2" fill="none" stroke="#fff" stroke-width="2" /><path d="M8 21h8" stroke="#fff" stroke-width="2" stroke-linecap="round" /></svg></div>Webinar<div class="strike"></div></div>
+            <div class="row" id="r3"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5z" fill="#fff" /><path d="M7 11.5V16c3 2 7 2 10 0v-4.5" fill="none" stroke="#fff" stroke-width="2" /></svg></div>Masterclass<div class="strike"></div></div>
+            <div class="row" id="r4"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l8 5-8 5z" fill="#fff" /></svg></div>Videos<div class="strike"></div></div>
+          </div>
+          <div class="cap-t" id="no-structure" style="margin-top: 18px">…but <span style="color: #ff3b30">no structure</span></div>
+        </div>
+
+        <!-- L5 49.9-56.0 screen recording: the noise -->
+        <div class="card lane-l" id="c-noise">
+          <div class="tag"><i></i>Screen recording</div>
+          <div class="media">
+            <video id="v-noise" class="clip" src="assets/broll/screenrec-noise.mp4" muted playsinline data-start="49.9" data-duration="6.1" data-media-start="0.6" data-track-index="3"></video>
+          </div>
+          <div class="cap-t">Crypto. Options. <span style="color: #ff3b30">Noise.</span></div>
+        </div>
+
+        <!-- R7 56.1-60.4 cut through the noise -> simple system -->
+        <div class="card lane-r" id="c-cut">
+          <div class="media" style="height: 470px"><img src="assets/broll/screenrec-chart-poster.png" alt="" /></div>
+          <div class="cap-t">Cut through <span class="blue">the noise</span></div>
+          <div class="cap-s" id="c-cut-2">A simple system.</div>
+        </div>
+
+        <!-- L6 60.6-62.36 end card -->
+        <div class="card lane-l" id="c-end">
+          <div class="media" style="height: 560px"><img src="assets/broll/book-cover.png" alt="" /></div>
+          <div class="cap-t">#CASHTAGS</div>
+          <div class="cap-s">Free · you just cover shipping</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          var OFF = 620;
+          // Apple-style side entrance: slides in from its own edge, de-blurs, settles (expo.out).
+          function enter(sel, side, at) {
+            tl.fromTo(sel, { x: side * -OFF, opacity: 0, scale: 0.96, filter: "blur(14px)" },
+              { x: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.85, ease: "expo.out", immediateRender: true }, at);
+          }
+          function leave(sel, side, at) {
+            tl.to(sel, { x: side * -OFF, opacity: 0, scale: 0.97, filter: "blur(10px)", duration: 0.55, ease: "power3.in" }, at);
+          }
+          var L = 1, R = -1; // L enters from the left edge (x negative), R from the right
+
+          enter("#lt", L, 0.35); leave("#lt", L, 3.4);
+          enter("#c-chart", R, 2.3); leave("#c-chart", R, 6.5);
+          enter("#c-book", L, 7.2); leave("#c-book", L, 11.1);
+          tl.fromTo("#c-book-2019", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", immediateRender: true }, 10.25);
+
+          enter("#c-reviews", R, 11.7); leave("#c-reviews", R, 15.15);
+          gsap.utils.toArray("#root .star").forEach(function (el, i) {
+            tl.fromTo(el, { scale: 0.3, opacity: 0.15 }, { scale: 1, opacity: 1, duration: 0.45, ease: "expo.out", immediateRender: true }, 12.0 + i * 0.12);
+          });
+
+          enter("#c-awards", L, 15.8); leave("#c-awards", L, 20.1);
+          enter("#c-system", R, 20.9); leave("#c-system", R, 24.95);
+
+          enter("#c-edition", L, 25.5); leave("#c-edition", L, 30.45);
+          tl.fromTo("#p-en", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out", immediateRender: true }, 29.35);
+          tl.fromTo("#p-hi", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out", immediateRender: true }, 29.95);
+
+          enter("#c-journey", R, 31.1); leave("#c-journey", R, 33.75);
+          (function () {
+            var p = document.getElementById("j-path"), len = p.getTotalLength();
+            tl.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut", immediateRender: true }, 31.5);
+            ["#j-a", "#j-b", "#j-c"].forEach(function (id, i) {
+              tl.fromTo(id, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, ease: "expo.out", immediateRender: true }, 31.45 + i * 0.75);
+            });
+          })();
+
+          enter("#c-free", R, 36.25); leave("#c-free", R, 40.35);
+          tl.fromTo("#free-ship", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", immediateRender: true }, 36.9);
+          tl.fromTo("#free-b", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out", immediateRender: true }, 38.84);
+          tl.fromTo("#free-a", { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.in", immediateRender: false }, 38.8);
+          (function () {
+            var c = 2 * Math.PI * 92;
+            tl.fromTo("#ring-arc", { strokeDasharray: c, strokeDashoffset: 0 }, { strokeDashoffset: c * 0.92, duration: 1.5, ease: "power1.inOut", immediateRender: true }, 38.9);
+          })();
+
+          enter("#c-media", R, 43.25); leave("#c-media", R, 49.2);
+          [["#r1", 43.42], ["#r2", 44.26], ["#r3", 45.1], ["#r4", 46.27]].forEach(function (r) {
+            tl.fromTo(r[0], { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "expo.out", immediateRender: true }, r[1]);
+          });
+          gsap.utils.toArray("#root .strike").forEach(function (el, i) {
+            tl.fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out", immediateRender: true }, 47.4 + i * 0.08);
+          });
+          tl.fromTo("#no-structure", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", immediateRender: true }, 47.55);
+
+          enter("#c-noise", L, 49.9); leave("#c-noise", L, 55.55);
+          enter("#c-cut", R, 56.1); leave("#c-cut", R, 60.05);
+          tl.fromTo("#c-cut-2", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", immediateRender: true }, 58.9);
+          enter("#c-end", L, 60.6);
+
+          tl.seek(0);
+          window.__timelines["cards"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
