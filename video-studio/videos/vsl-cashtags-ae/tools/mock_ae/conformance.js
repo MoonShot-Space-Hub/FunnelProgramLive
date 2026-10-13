@@ -11,6 +11,8 @@ const TYPE_FOR = { linear: KIT.LINEAR, hold: KIT.HOLD };
 const isAnim = (v) => v !== null && typeof v === 'object' && !Array.isArray(v) && 'k' in v;
 const near = (a, b, tol = 1e-6) => typeof a === 'number' && typeof b === 'number' && Math.abs(a - b) <= tol * Math.max(1, Math.abs(b));
 const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+// Spec times are frame-aligned but written with a few decimals; compare on the frame grid.
+const snapper = (fps) => (t) => { const f = t * fps; const r = Math.round(f); return Math.abs(f - r) < 0.03 ? r / fps : t; };
 const spatial = (pvt) => pvt === PVT.TwoD_SPATIAL || pvt === PVT.ThreeD_SPATIAL;
 
 function* walk(node) {
@@ -35,6 +37,7 @@ export function checkConformance(spec, state, classes, root) {
   const issues = [];
   const advisories = [];
   const add = (where, msg) => issues.push(`${where}: ${msg}`);
+  const snap = snapper(spec.fps);
   const P = state.project;
   if (!P || P === state.initialProject) {
     add('project', 'nothing was built in a new project (app.newProject() not called, or the build was cancelled)');
@@ -58,7 +61,7 @@ export function checkConformance(spec, state, classes, root) {
       if (node.keys.length !== ks.length) { add(label, `${node.keys.length} keys, spec has ${ks.length}`); return; }
       ks.forEach((k, i) => {
         const K = node.keys[i];
-        if (!near(K.time, k[0])) add(label, `key ${i} at ${K.time} s, spec ${k[0]} s`);
+        if (!near(K.time, snap(k[0]))) add(label, `key ${i} at ${K.time} s, spec ${k[0]} s`);
         const e = cmp(K.value, conv(k[1]));
         if (e) add(label, `key ${i} value ${e}`);
       });
@@ -120,7 +123,7 @@ export function checkConformance(spec, state, classes, root) {
     const c = found[0];
     compItem[C.id] = c;
     if (c._w !== C.width || c._h !== C.height) add(where, `size ${c._w}x${c._h}, spec ${C.width}x${C.height}`);
-    if (!near(c._dur, C.duration)) add(where, `duration ${c._dur}, spec ${C.duration}`);
+    if (!near(c._dur, snap(C.duration))) add(where, `duration ${c._dur}, spec ${C.duration}`);
     if (!near(c._fps, spec.fps)) add(where, `frame rate ${c._fps}, spec ${spec.fps}`);
     if (!c._bgSet || cmpColor(c._bg, C.bg)) add(where, `bgColor ${JSON.stringify(c._bg)}, spec ${C.bg}`);
     if (C.folder && (!c._parent || c._parent._name !== C.folder)) add(where, `in folder "${c._parent && c._parent._name}", spec "${C.folder}"`);
@@ -139,15 +142,15 @@ export function checkConformance(spec, state, classes, root) {
     if (L.type === 'comp' && A._source !== compItem[L.comp]) add(where, `source is not comp "${L.comp}"`);
 
     // timing
-    const expStart = ['footage', 'audio'].includes(L.type) ? (L.start ?? 0) : L.type === 'comp' ? (L.start ?? L.in) : 0;
+    const expStart = snap(['footage', 'audio'].includes(L.type) ? (L.start ?? 0) : L.type === 'comp' ? (L.start ?? L.in) : 0);
     if (!near(A._start, expStart)) add(where, `startTime ${A._start}, expected ${expStart}`);
-    if (!near(A._in, L.in)) add(where, `inPoint ${A._in}, spec in ${L.in}`);
+    if (!near(A._in, snap(L.in))) add(where, `inPoint ${A._in}, spec in ${L.in}`);
     // A frame-rounded out may overshoot the media end by less than half a frame; the layer then
     // ends with its source (same frames covered). More than that is a spec error.
-    let expOut = L.out;
+    let expOut = snap(L.out);
     if (A._timed) {
       const srcEnd = A._start + A._srcDur;
-      if (L.out > srcEnd + 1e-6 && L.out <= srcEnd + 0.5 / spec.fps + 1e-9) expOut = srcEnd;
+      if (expOut > srcEnd + 1e-6 && expOut <= srcEnd + 0.5 / spec.fps + 1e-9) expOut = srcEnd;
     }
     if (!near(A._out, expOut)) add(where, `outPoint ${A._out}, spec out ${L.out}`);
     for (const f of ['position', 'scale', 'rotation', 'opacity', 'blur']) {
@@ -293,7 +296,8 @@ export function checkConformance(spec, state, classes, root) {
     const words = L.text.split(' ').length;
     checkAnim(sel.child('ADBE Text Index End'), words, cmpNum, `${where} karaoke end`);
     const keys = [[0, 0, 'hold']];
-    L.karaoke.times.forEach((t, i) => {
+    L.karaoke.times.forEach((t0, i) => {
+      const t = snap(t0);
       if (t <= keys[keys.length - 1][0] + 1e-6) keys[keys.length - 1][1] = i + 1;
       else keys.push([t, i + 1, 'hold']);
     });
@@ -305,10 +309,11 @@ export function checkConformance(spec, state, classes, root) {
   if (!main) add('main', `main comp "${spec.main}" not found`);
   else {
     const mk = main._marker.keys;
-    const want = spec.markers || [];
+    // AE keeps marker keys sorted by time; the spec may list them in any order.
+    const want = (spec.markers || []).slice().sort((a, b) => a[0] - b[0]);
     if (mk.length !== want.length) add('markers', `${mk.length} markers, spec has ${want.length}`);
     else want.forEach((m, i) => {
-      if (!near(mk[i].time, m[0]) || mk[i].value.comment !== String(m[1])) add('markers', `marker ${i} ${mk[i].time} "${mk[i].value.comment}", spec ${m[0]} "${m[1]}"`);
+      if (!near(mk[i].time, snap(m[0])) || mk[i].value.comment !== String(m[1])) add('markers', `marker ${i} ${mk[i].time} "${mk[i].value.comment}", spec ${m[0]} "${m[1]}"`);
     });
   }
   const renderComp = compItem[(spec.render && spec.render.comp) || spec.main];

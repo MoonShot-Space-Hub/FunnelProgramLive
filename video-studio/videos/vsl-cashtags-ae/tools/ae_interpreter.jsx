@@ -159,6 +159,16 @@
         return folder.fsName + "/" + rel;
     }
 
+    // Spec times are frame-aligned but written with a few decimals (14.3667 for frame 431 at 30 fps).
+    // In AE an in point or HOLD key at 14.3667 lands after frame 431 (14.36667 s) and shows one
+    // frame late, so times within 0.03 frame of the grid are snapped onto it. Values further off
+    // (a real sub-frame media offset in "start") are kept as they are.
+    function snapT(t) {
+        var f = t * fps;
+        var r = Math.round(f);
+        return (Math.abs(f - r) < 0.03) ? r / fps : t;
+    }
+
     // ------------------------------------------------------------------ value converters
     // Each converts a spec value to the value After Effects expects, or throws.
 
@@ -326,11 +336,11 @@
                 warn(where + ": key " + i + " is not [time, value, ease]; skipped");
                 continue;
             }
-            if (keys.length > 0 && e[0] <= keys[keys.length - 1].t + EPS) {
+            if (keys.length > 0 && snapT(e[0]) <= keys[keys.length - 1].t + EPS) {
                 warn(where + ": key " + i + " at " + e[0] + " s is not after the previous key; skipped");
                 continue;
             }
-            keys.push({t: e[0], v: conv(e[1]), ease: (e.length > 2 ? e[2] : null), src: i});
+            keys.push({t: snapT(e[0]), v: conv(e[1]), ease: (e.length > 2 ? e[2] : null), src: i});
         }
         if (keys.length === 0) { throw new Error(where + ": no usable keys"); }
         if (keys.length === 1) {
@@ -513,12 +523,11 @@
     // ------------------------------------------------------------------ layer timing
 
     function setTiming(layer, L, type, comp, srcDur, where) {
-        var tin = L["in"];
-        var tout = L["out"];
+        var tin = snapT(L["in"]);
+        var tout = snapT(L["out"]);
         var half = 0.5 / fps;
         if (type === "footage" || type === "audio" || type === "comp") {
-            var st = has(L, "start") ? L.start : (type === "comp" ? tin : 0);
-            cNum(st);
+            var st = has(L, "start") ? snapT(cNum(L.start)) : (type === "comp" ? tin : 0);
             // startTime first: it moves the layer, so in/out must be set after it.
             layer.startTime = st;
             if (tin < st - EPS) {
@@ -527,8 +536,9 @@
             }
             var end = st + srcDur;
             if (tout > end + EPS) {
+                // Up to half a frame over is frame rounding: end with the source (same frames).
                 if (tout > end + half) {
-                    warn(where + ": out (" + tout + ") is after the source ends (" + end + "); clamped");
+                    warn(where + ": out (" + L["out"] + ") is after the source ends (" + end + "); clamped");
                 }
                 tout = end;
             }
@@ -761,7 +771,7 @@
         }
         var keys = [[0, 0, "hold"]];
         for (var i = 0; i < times.length; i++) {
-            var t = cNum(times[i]);
+            var t = snapT(cNum(times[i]));
             var last = keys[keys.length - 1];
             if (t < last[0] - EPS) {
                 warn(where + ": karaoke time " + i + " (" + t + ") is earlier than the previous one; using the previous time");
@@ -935,7 +945,7 @@
         if (has(compItems, C.id)) { throw new Error(where + ": duplicate comp id"); }
         var w = Math.round(cPositive(req(C, "width", where)));
         var h = Math.round(cPositive(req(C, "height", where)));
-        var d = cPositive(req(C, "duration", where));
+        var d = snapT(cPositive(req(C, "duration", where)));
         var name = (isStr(C.name) && C.name !== "") ? C.name : C.id;
         var comp = proj.items.addComp(name, w, h, 1, d, fps);
         compItems[C.id] = comp;
@@ -982,7 +992,7 @@
             if (!isArray(m) || m.length < 2 || !isNum(m[0])) { warn("marker " + i + " is not [time, comment]"); continue; }
             if (m[0] < -EPS || m[0] > main.duration + EPS) { warn("marker " + i + " at " + m[0] + " s is outside the main comp"); }
             try {
-                main.markerProperty.setValueAtTime(m[0], new MarkerValue(String(m[1])));
+                main.markerProperty.setValueAtTime(snapT(m[0]), new MarkerValue(String(m[1])));
                 stats.markers++;
             } catch (e) {
                 warn("marker " + i + " failed: " + errText(e));
@@ -1064,14 +1074,19 @@
 
     function writeLog() {
         var path = joinPath(root, "build_log.txt");
-        try {
-            if (app.preferences && app.preferences.getPrefAsLong) {
-                var allowed = app.preferences.getPrefAsLong("Main Pref Section", "Pref_SCRIPTING_FILE_NETWORK_SECURITY");
-                if (allowed !== 1) {
-                    return "not written (turn on Preferences > Scripting & Expressions > Allow Scripts to Write Files and Access Network)";
+        // "Allow Scripts to Write Files and Access Network": the section is "Main Pref Section v2" in
+        // current versions and "Main Pref Section" in older ones. Only a pref that exists is trusted.
+        var sections = ["Main Pref Section v2", "Main Pref Section"];
+        for (var s = 0; s < sections.length; s++) {
+            try {
+                if (app.preferences.havePref(sections[s], "Pref_SCRIPTING_FILE_NETWORK_SECURITY")) {
+                    if (app.preferences.getPrefAsLong(sections[s], "Pref_SCRIPTING_FILE_NETWORK_SECURITY") !== 1) {
+                        return "not written (turn on Preferences > Scripting & Expressions > Allow Scripts to Write Files and Access Network)";
+                    }
+                    break;
                 }
-            }
-        } catch (e0) {}
+            } catch (e0) {}
+        }
         try {
             var f = new File(path);
             f.encoding = "UTF-8";

@@ -79,6 +79,8 @@ const CASES = [
   { name: 'mask shape with unequal tangents', expect: /Shape needs equal-length arrays/,
     interp: (s) => mut(s, 's.outTangents = [[0, 0], [k, 0], [0, 0], [0, k], [0, 0], [-k, 0], [0, 0], [0, -k]];', 's.outTangents = [[0, 0], [k, 0]];') },
   // ---- timing
+  { name: 'times not snapped to the frame grid', expect: /not on the 30 fps frame grid/,
+    interp: (s) => mut(s, 'return (Math.abs(f - r) < 0.03) ? r / fps : t;', 'return t;') },
   { name: 'inPoint before startTime', expect: /inPoint set before startTime/,
     interp: (s) => mut(mut(s, '            layer.startTime = st;\n', ''),
       '            layer.inPoint = tin;\n            layer.outPoint = tout;\n        } else {',

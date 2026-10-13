@@ -25,6 +25,9 @@ export const OM_TEMPLATES = [
 const DEFAULT_EASE_INFLUENCE = 100 / 6;
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const list = (v) => (Array.isArray(v) ? Array.prototype.slice.call(v) : null);
+// Frames of `t` off the comp's frame grid (AE evaluates a comp only at frame times, so an in
+// point or HOLD key a hair after a frame shows one frame late).
+const gridError = (t, fps) => Math.abs(t * fps - Math.round(t * fps));
 const easeDims = (pvt) => (pvt === PVT.TwoD ? 2 : pvt === PVT.ThreeD ? 3 : 1);
 const spatialDims = (pvt) => (pvt === PVT.TwoD_SPATIAL ? 2 : pvt === PVT.ThreeD_SPATIAL ? 3 : 0);
 
@@ -471,6 +474,10 @@ export function createAE(state) {
     addKey(t) {
       const n = this._prop('addKey');
       if (!isNum(t)) fail(`addKey on "${n.mn}": time must be a number, got ${fmt(t)}`);
+      const comp = n.layer ? n.layer._comp : n.comp;
+      if (comp && gridError(t, comp._fps) > 1e-6) {
+        fail(`addKey(${t}) on "${n.mn}" (${n.path()}): not on the ${comp._fps} fps frame grid (frame ${(t * comp._fps).toFixed(4)}); a HOLD here switches one frame late`);
+      }
       guardSet(n);
       const ex = n.keys.findIndex((k) => Math.abs(k.time - t) < 1e-9);
       if (ex >= 0) return ex + 1;
@@ -675,6 +682,7 @@ export function createAE(state) {
       this._bgSet = false;
       this._layers = [];   // index 0 = top (layer 1)
       this._marker = new Node(null, null, 'ADBE Marker', { kind: 'prop', name: 'Marker', pvt: PVT.MARKER, dflt: null });
+      this._marker.comp = this;
       const self = this;
       this._layerColl = strictProxy({
         addShape() { requireUndo('layers.addShape()'); return self._addLayer('shape', {})._proxy; },
@@ -814,6 +822,7 @@ export function createAE(state) {
       if (v < this._start - 1e-6) fail(`${who}: inPoint ${v} is before startTime ${this._start} (before the source starts)`);
       if (v >= this._out - 1e-6) fail(`${who}: inPoint ${v} is not before the current outPoint ${this._out}`);
       if (v < -1e-6 || v >= this._comp._dur - 1e-6) fail(`${who}: inPoint ${v} is outside the comp (0..${this._comp._dur})`);
+      if (gridError(v, this._comp._fps) > 1e-6) fail(`${who}: inPoint ${v} is not on the ${this._comp._fps} fps frame grid (frame ${(v * this._comp._fps).toFixed(4)}); the layer would start one frame late`);
       this._in = v;
       this._inSet = true;
     }
@@ -827,6 +836,8 @@ export function createAE(state) {
         fail(`${who}: outPoint ${v} is after the end of the source (startTime ${this._start} + duration ${this._srcDur} = ${this._start + this._srcDur})`);
       }
       if (v > this._comp._dur + 1e-6) fail(`${who}: outPoint ${v} is after the end of the comp (${this._comp._dur})`);
+      const atSourceEnd = this._timed && Math.abs(v - (this._start + this._srcDur)) < 1e-9;
+      if (!atSourceEnd && gridError(v, this._comp._fps) > 1e-6) fail(`${who}: outPoint ${v} is not on the ${this._comp._fps} fps frame grid (frame ${(v * this._comp._fps).toFixed(4)}); the layer would show one extra frame`);
       this._out = v;
       this._outSet = true;
     }
@@ -896,6 +907,7 @@ export function createAE(state) {
           if (!isNum(par) || par < 0.01 || par > 100) fail(`addComp("${name}"): pixelAspect must be 0.01..100, got ${fmt(par)}`);
           if (!isNum(fps) || fps < 1 || fps > 999) fail(`addComp("${name}"): frameRate must be 1..999, got ${fmt(fps)}`);
           if (!isNum(dur) || dur < 1 / fps - 1e-9 || dur > 10800) fail(`addComp("${name}"): duration must be one frame..10800 s, got ${fmt(dur)}`);
+          if (gridError(dur, fps) > 1e-6) fail(`addComp("${name}"): duration ${dur} is not a whole number of frames at ${fps} fps (${(dur * fps).toFixed(4)})`);
           const c = new CompImpl(self, name, w, h, par, dur, fps);
           return strictProxy(c, () => `comp "${c._name}"`, COMP_SETTABLE);
         },
@@ -1076,9 +1088,11 @@ export function createAE(state) {
         return vmArr(state.installedFonts.has(ps) ? [{ postScriptName: ps, familyName: ps.split('-')[0], styleName: ps.split('-')[1] || 'Regular' }] : []);
       },
     },
+    // Current AE keeps "Allow Scripts to Write Files and Access Network" in "Main Pref Section v2".
     preferences: {
+      havePref(section, key) { return section === 'Main Pref Section v2' && key === 'Pref_SCRIPTING_FILE_NETWORK_SECURITY'; },
       getPrefAsLong(section, key) {
-        if (section === 'Main Pref Section' && key === 'Pref_SCRIPTING_FILE_NETWORK_SECURITY') return 1;
+        if (section === 'Main Pref Section v2' && key === 'Pref_SCRIPTING_FILE_NETWORK_SECURITY') return 1;
         softThrow(`preference ${section} / ${key} not found`);
         return 0;
       },

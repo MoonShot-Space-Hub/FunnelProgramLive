@@ -7,7 +7,7 @@
  * What it builds (in a NEW project):
  *   - folders: 01 Main, 02 Moments, 03 Cards, 04 Footage, 05 Images, 06 Audio
  *   - 6 imported assets (footage, images, audio) from the folders next to this script
- *   - 30 compositions, main "CASHTAGS_VSL_Main" 1920x1080, 30 fps, 62.3333 s
+ *   - 30 compositions, main "CASHTAGS_VSL_Main" 1920x1080, 30 fps, 62.333333 s
  *   - 339 layers (audio 32, comp 29, ellipse 25, footage 3, image 4, path 25, rect 116, text 105) with editable text, shape layers,
  *     masks, Drop Shadow / Gaussian Blur effects, audio levels and eased keyframes
  *   - 13 comp markers on the main comp, a Render Queue item (H.264 when available)
@@ -21,7 +21,8 @@
  *   3. Optional, for build_log.txt: Preferences > Scripting & Expressions >
  *      Allow Scripts to Write Files and Access Network.
  *   4. In After Effects: File > Scripts > Run Script File... and choose this file.
- *      It asks to save the current project first (Cancel stops the build safely).
+ *      If the open project has unsaved changes, After Effects asks to save it first;
+ *      Cancel there stops the build without changing anything.
  *   5. Read the summary alert (and build_log.txt) for warnings, then render from the Render Queue.
  */
 
@@ -98,14 +99,14 @@ var SPEC = {
    "folder": "01 Main",
    "width": 1920,
    "height": 1080,
-   "duration": 62.3333,
+   "duration": 62.333333,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "VSL take 1 (source 0.00s)",
      "type": "footage",
      "in": 0.0,
-     "out": 30.9667,
+     "out": 30.966667,
      "asset": "vsl",
      "start": 0.0,
      "audio": true,
@@ -114,8 +115,8 @@ var SPEC = {
     {
      "name": "VSL take 2 (source 34.48s)",
      "type": "footage",
-     "in": 30.9667,
-     "out": 40.8333,
+     "in": 30.966667,
+     "out": 40.833333,
      "asset": "vsl",
      "start": -3.5133,
      "audio": true,
@@ -124,8 +125,8 @@ var SPEC = {
     {
      "name": "VSL take 3 (source 55.30s)",
      "type": "footage",
-     "in": 40.8333,
-     "out": 62.3333,
+     "in": 40.833333,
+     "out": 62.333333,
      "asset": "vsl",
      "start": -14.4667,
      "audio": true,
@@ -192,7 +193,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.3667,
+        0.366667,
         [
          60,
          62
@@ -212,7 +213,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.3667,
+        0.366667,
         0,
         "out"
        ],
@@ -238,7 +239,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.4667,
+        0.466667,
         [
          61,
          94
@@ -246,7 +247,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.9333,
+        0.933333,
         [
          61,
          84
@@ -258,12 +259,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.4667,
+        0.466667,
         0,
         "out"
        ],
        [
-        0.9333,
+        0.933333,
         100,
         "out"
        ]
@@ -291,7 +292,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.2333,
+        0.233333,
         [
          212.0,
          892.0
@@ -299,7 +300,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.8333,
+        0.833333,
         [
          282.0,
          892.0
@@ -307,7 +308,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.4667,
+        3.466667,
         [
          282.0,
          892.0
@@ -315,7 +316,7 @@ var SPEC = {
         "in"
        ],
        [
-        3.8667,
+        3.866667,
         [
          242.0,
          892.0
@@ -334,7 +335,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.2333,
+        0.233333,
         0,
         "out"
        ],
@@ -344,7 +345,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.4667,
+        3.466667,
         100,
         "in"
        ],
@@ -358,22 +359,22 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        0.2333,
+        0.233333,
         14,
         "out"
        ],
        [
-        0.7333,
+        0.733333,
         0,
         "out"
        ],
        [
-        3.4667,
+        3.466667,
         0,
         "in"
        ],
        [
-        3.8667,
+        3.866667,
         10,
         "out"
        ]
@@ -382,7 +383,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.2333,
+        0.233333,
         [
          96,
          96
@@ -390,7 +391,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.8333,
+        0.833333,
         [
          100,
          100
@@ -408,14 +409,14 @@ var SPEC = {
    "folder": "03 Cards",
    "width": 460,
    "height": 400,
-   "duration": 5.6333,
+   "duration": 5.633333,
    "bg": "#FFFFFF",
    "layers": [
     {
      "name": "Card background",
      "type": "rect",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "size": [
       458,
       398
@@ -433,7 +434,7 @@ var SPEC = {
      "name": "Eyebrow",
      "type": "text",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "text": "IF YOU'RE WONDERING",
      "font": "Inter-SemiBold",
      "size": 16,
@@ -451,7 +452,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         [
          36,
          54
@@ -468,7 +469,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ]
@@ -479,7 +480,7 @@ var SPEC = {
      "name": "Title",
      "type": "text",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "text": "How to make money\nfrom the stock market",
      "font": "Inter-Bold",
      "size": 32,
@@ -489,7 +490,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.0333,
+        1.033333,
         [
          36,
          110
@@ -497,7 +498,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.4667,
+        1.466667,
         [
          36,
          98
@@ -510,12 +511,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.0333,
+        1.033333,
         0,
         "out"
        ],
        [
-        1.4667,
+        1.466667,
         100,
         "out"
        ]
@@ -526,7 +527,7 @@ var SPEC = {
      "name": "Stock market underline",
      "type": "rect",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "size": [
       200.019375,
       4
@@ -568,7 +569,7 @@ var SPEC = {
      "name": "Divider",
      "type": "rect",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "size": [
       388,
       1.5
@@ -586,7 +587,7 @@ var SPEC = {
      "name": "Structured row",
      "type": "rect",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "size": [
       388,
       64
@@ -598,7 +599,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.8333,
+        2.833333,
         [
          230,
          246
@@ -606,7 +607,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.2667,
+        3.266667,
         [
          230,
          236
@@ -618,12 +619,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.8333,
+        2.833333,
         0,
         "out"
        ],
        [
-        3.2667,
+        3.266667,
         100,
         "out"
        ]
@@ -634,7 +635,7 @@ var SPEC = {
      "name": "Structured check bg",
      "type": "ellipse",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "size": [
       34,
       34
@@ -645,7 +646,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.8667,
+        2.866667,
         [
          70,
          246
@@ -653,7 +654,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.3333,
+        3.333333,
         [
          70,
          236
@@ -665,12 +666,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.8667,
+        2.866667,
         0,
         "out"
        ],
        [
-        3.3333,
+        3.333333,
         100,
         "out"
        ]
@@ -681,7 +682,7 @@ var SPEC = {
      "name": "Structured check",
      "type": "path",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "paths": [
       {
        "v": [
@@ -709,12 +710,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.8667,
+        2.866667,
         0,
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         100,
         "out"
        ]
@@ -725,7 +726,7 @@ var SPEC = {
      "name": "Structured label",
      "type": "text",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "text": "A structured way",
      "font": "Inter-SemiBold",
      "size": 24,
@@ -743,7 +744,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.3667,
+        3.366667,
         [
          102,
          245
@@ -760,7 +761,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.3667,
+        3.366667,
         100,
         "out"
        ]
@@ -771,7 +772,7 @@ var SPEC = {
      "name": "Guessing row",
      "type": "rect",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "size": [
       388,
       64
@@ -783,7 +784,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        4.2667,
+        4.266667,
         [
          230,
          324
@@ -803,7 +804,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        4.2667,
+        4.266667,
         0,
         "out"
        ],
@@ -819,7 +820,7 @@ var SPEC = {
      "name": "Guessing dot bg",
      "type": "ellipse",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "size": [
       34,
       34
@@ -838,7 +839,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.7667,
+        4.766667,
         [
          70,
          314
@@ -855,7 +856,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.7667,
+        4.766667,
         100,
         "out"
        ]
@@ -866,7 +867,7 @@ var SPEC = {
      "name": "Guessing x",
      "type": "path",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "paths": [
       {
        "v": [
@@ -919,7 +920,7 @@ var SPEC = {
      "name": "Guessing label",
      "type": "text",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "text": "Guessing",
      "font": "Inter-SemiBold",
      "size": 24,
@@ -929,7 +930,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        4.3333,
+        4.333333,
         [
          102,
          333
@@ -949,7 +950,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        4.3333,
+        4.333333,
         0,
         "out"
        ],
@@ -965,7 +966,7 @@ var SPEC = {
      "name": "Guessing strike",
      "type": "path",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "paths": [
       {
        "v": [
@@ -1012,14 +1013,14 @@ var SPEC = {
    "folder": "02 Moments",
    "width": 1920,
    "height": 1080,
-   "duration": 5.6333,
+   "duration": 5.633333,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "C02 Structured vs guessing",
      "type": "comp",
      "in": 0.0,
-     "out": 5.6333,
+     "out": 5.633333,
      "comp": "c02",
      "start": 0,
      "position": {
@@ -1041,7 +1042,7 @@ var SPEC = {
         "out"
        ],
        [
-        5.1667,
+        5.166667,
         [
          1634,
          340.0
@@ -1049,7 +1050,7 @@ var SPEC = {
         "in"
        ],
        [
-        5.5667,
+        5.566667,
         [
          1674,
          340.0
@@ -1073,12 +1074,12 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ],
        [
-        5.1667,
+        5.166667,
         100,
         "in"
        ],
@@ -1102,12 +1103,12 @@ var SPEC = {
         "out"
        ],
        [
-        5.1667,
+        5.166667,
         0,
         "in"
        ],
        [
-        5.5667,
+        5.566667,
         10,
         "out"
        ]
@@ -1185,7 +1186,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          36,
          54
@@ -1202,7 +1203,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         100,
         "out"
        ]
@@ -1302,7 +1303,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.5333,
+        1.533333,
         [
          36,
          604
@@ -1310,7 +1311,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.9667,
+        1.966667,
         [
          36,
          590
@@ -1322,12 +1323,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.5333,
+        1.533333,
         0,
         "out"
        ],
        [
-        1.9667,
+        1.966667,
         100,
         "out"
        ]
@@ -1336,12 +1337,12 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        1.5333,
+        1.533333,
         8,
         "out"
        ],
        [
-        1.9667,
+        1.966667,
         0,
         "out"
        ]
@@ -1372,7 +1373,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        1.7333,
+        1.733333,
         [
          0,
          100
@@ -1380,7 +1381,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.2333,
+        2.233333,
         [
          100,
          100
@@ -1427,7 +1428,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.4667,
+        4.466667,
         [
          286,
          460.0
@@ -1435,7 +1436,7 @@ var SPEC = {
         "in"
        ],
        [
-        4.8667,
+        4.866667,
         [
          246,
          460.0
@@ -1459,12 +1460,12 @@ var SPEC = {
         "out"
        ],
        [
-        0.5667,
+        0.566667,
         100,
         "out"
        ],
        [
-        4.4667,
+        4.466667,
         100,
         "in"
        ],
@@ -1488,12 +1489,12 @@ var SPEC = {
         "out"
        ],
        [
-        4.4667,
+        4.466667,
         0,
         "in"
        ],
        [
-        4.8667,
+        4.866667,
         10,
         "out"
        ]
@@ -1528,14 +1529,14 @@ var SPEC = {
    "folder": "03 Cards",
    "width": 460,
    "height": 300,
-   "duration": 2.1667,
+   "duration": 2.166667,
    "bg": "#FFFFFF",
    "layers": [
     {
      "name": "Card background",
      "type": "rect",
      "in": 0.0,
-     "out": 2.1667,
+     "out": 2.166667,
      "size": [
       458,
       298
@@ -1553,7 +1554,7 @@ var SPEC = {
      "name": "Eyebrow",
      "type": "text",
      "in": 0.0,
-     "out": 2.1667,
+     "out": 2.166667,
      "text": "WRITTEN IN",
      "font": "Inter-SemiBold",
      "size": 16,
@@ -1563,7 +1564,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.2333,
+        0.233333,
         [
          36,
          62
@@ -1571,7 +1572,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          36,
          54
@@ -1583,12 +1584,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.2333,
+        0.233333,
         0,
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         100,
         "out"
        ]
@@ -1599,7 +1600,7 @@ var SPEC = {
      "name": "Year",
      "type": "text",
      "in": 0.0,
-     "out": 2.1667,
+     "out": 2.166667,
      "text": "2019",
      "font": "Inter-ExtraBold",
      "size": 104,
@@ -1609,7 +1610,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.1667,
+        1.166667,
         [
          34,
          198
@@ -1617,7 +1618,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         [
          34,
          176
@@ -1629,12 +1630,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.1667,
+        1.166667,
         0,
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         100,
         "out"
        ]
@@ -1643,12 +1644,12 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        1.1667,
+        1.166667,
         10,
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         0,
         "out"
        ]
@@ -1659,7 +1660,7 @@ var SPEC = {
      "name": "Timeline track",
      "type": "rect",
      "in": 0.0,
-     "out": 2.1667,
+     "out": 2.166667,
      "size": [
       388,
       4
@@ -1679,7 +1680,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        1.3333,
+        1.333333,
         [
          0,
          100
@@ -1687,7 +1688,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.0333,
+        2.033333,
         [
          100,
          100
@@ -1701,7 +1702,7 @@ var SPEC = {
      "name": "Timeline dot",
      "type": "ellipse",
      "in": 0.0,
-     "out": 2.1667,
+     "out": 2.166667,
      "size": [
       18,
       18
@@ -1716,12 +1717,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.2667,
+        1.266667,
         0,
         "out"
        ],
        [
-        1.5333,
+        1.533333,
         100,
         "out"
        ]
@@ -1730,7 +1731,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        1.2667,
+        1.266667,
         [
          0,
          0
@@ -1738,7 +1739,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.6667,
+        1.666667,
         [
          100,
          100
@@ -1756,20 +1757,20 @@ var SPEC = {
    "folder": "02 Moments",
    "width": 1920,
    "height": 1080,
-   "duration": 2.1667,
+   "duration": 2.166667,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "C04 Written in 2019",
      "type": "comp",
      "in": 0.0,
-     "out": 2.1667,
+     "out": 2.166667,
      "comp": "c04",
      "start": 0,
      "position": {
       "k": [
        [
-        0.1333,
+        0.133333,
         [
          1704,
          290.0
@@ -1777,7 +1778,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.7333,
+        0.733333,
         [
          1634,
          290.0
@@ -1785,7 +1786,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.5667,
+        1.566667,
         [
          1634,
          290.0
@@ -1793,7 +1794,7 @@ var SPEC = {
         "in"
        ],
        [
-        1.9667,
+        1.966667,
         [
          1674,
          290.0
@@ -1812,22 +1813,22 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.1333,
+        0.133333,
         0,
         "out"
        ],
        [
-        0.5667,
+        0.566667,
         100,
         "out"
        ],
        [
-        1.5667,
+        1.566667,
         100,
         "in"
        ],
        [
-        1.9333,
+        1.933333,
         0,
         "out"
        ]
@@ -1836,22 +1837,22 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        0.1333,
+        0.133333,
         14,
         "out"
        ],
        [
-        0.6333,
+        0.633333,
         0,
         "out"
        ],
        [
-        1.5667,
+        1.566667,
         0,
         "in"
        ],
        [
-        1.9667,
+        1.966667,
         10,
         "out"
        ]
@@ -1860,7 +1861,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.1333,
+        0.133333,
         [
          96,
          96
@@ -1868,7 +1869,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.7333,
+        0.733333,
         [
          100,
          100
@@ -1886,14 +1887,14 @@ var SPEC = {
    "folder": "03 Cards",
    "width": 460,
    "height": 340,
-   "duration": 4.3667,
+   "duration": 4.366667,
    "bg": "#FFFFFF",
    "layers": [
     {
      "name": "Card background",
      "type": "rect",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "size": [
       458,
       338
@@ -1911,7 +1912,7 @@ var SPEC = {
      "name": "Eyebrow",
      "type": "text",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "text": "READERS",
      "font": "Inter-SemiBold",
      "size": 16,
@@ -1921,7 +1922,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          36,
          62
@@ -1929,7 +1930,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         [
          36,
          54
@@ -1941,12 +1942,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.0667,
+        0.066667,
         0,
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ]
@@ -1957,7 +1958,7 @@ var SPEC = {
      "name": "Title",
      "type": "text",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "text": "Thousands of people\nhave read this book",
      "font": "Inter-Bold",
      "size": 32,
@@ -1967,7 +1968,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.2667,
+        0.266667,
         [
          36,
          110
@@ -1988,7 +1989,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.2667,
+        0.266667,
         0,
         "out"
        ],
@@ -2004,7 +2005,7 @@ var SPEC = {
      "name": "Star 1 empty",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2062,7 +2063,7 @@ var SPEC = {
      "name": "Star 2 empty",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2120,7 +2121,7 @@ var SPEC = {
      "name": "Star 3 empty",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2178,7 +2179,7 @@ var SPEC = {
      "name": "Star 4 empty",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2236,7 +2237,7 @@ var SPEC = {
      "name": "Star 5 empty",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2294,7 +2295,7 @@ var SPEC = {
      "name": "Star 1",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2362,7 +2363,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.8667,
+        2.866667,
         [
          100,
          100
@@ -2376,7 +2377,7 @@ var SPEC = {
      "name": "Star 2",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2444,7 +2445,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.9333,
+        2.933333,
         [
          100,
          100
@@ -2458,7 +2459,7 @@ var SPEC = {
      "name": "Star 3",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2518,7 +2519,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        2.6667,
+        2.666667,
         [
          0,
          0
@@ -2526,7 +2527,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.0333,
+        3.033333,
         [
          100,
          100
@@ -2540,7 +2541,7 @@ var SPEC = {
      "name": "Star 4",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2600,7 +2601,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        2.7333,
+        2.733333,
         [
          0,
          0
@@ -2622,7 +2623,7 @@ var SPEC = {
      "name": "Star 5",
      "type": "path",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "paths": [
       {
        "v": [
@@ -2682,7 +2683,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        2.8333,
+        2.833333,
         [
          0,
          0
@@ -2690,7 +2691,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         [
          100,
          100
@@ -2704,7 +2705,7 @@ var SPEC = {
      "name": "Label",
      "type": "text",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "text": "5-star reviews",
      "font": "Inter-Bold",
      "size": 26,
@@ -2722,7 +2723,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.4333,
+        3.433333,
         [
          36,
          284
@@ -2739,7 +2740,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.4333,
+        3.433333,
         100,
         "out"
        ]
@@ -2750,7 +2751,7 @@ var SPEC = {
      "name": "Label sub",
      "type": "text",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "text": "on Amazon",
      "font": "Inter-Medium",
      "size": 26,
@@ -2760,7 +2761,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.3333,
+        3.333333,
         [
          222.490625,
          296
@@ -2768,7 +2769,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.7667,
+        3.766667,
         [
          222.490625,
          284
@@ -2780,12 +2781,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.3333,
+        3.333333,
         0,
         "out"
        ],
        [
-        3.7667,
+        3.766667,
         100,
         "out"
        ]
@@ -2800,20 +2801,20 @@ var SPEC = {
    "folder": "02 Moments",
    "width": 1920,
    "height": 1080,
-   "duration": 4.3667,
+   "duration": 4.366667,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "C05 Readers and reviews",
      "type": "comp",
      "in": 0.0,
-     "out": 4.3667,
+     "out": 4.366667,
      "comp": "c05",
      "start": 0,
      "position": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          1704,
          310.0
@@ -2821,7 +2822,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          1634,
          310.0
@@ -2829,7 +2830,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.9333,
+        3.933333,
         [
          1634,
          310.0
@@ -2837,7 +2838,7 @@ var SPEC = {
         "in"
        ],
        [
-        4.3333,
+        4.333333,
         [
          1674,
          310.0
@@ -2856,22 +2857,22 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.0667,
+        0.066667,
         0,
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ],
        [
-        3.9333,
+        3.933333,
         100,
         "in"
        ],
        [
-        4.2667,
+        4.266667,
         0,
         "out"
        ]
@@ -2880,22 +2881,22 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        0.0667,
+        0.066667,
         14,
         "out"
        ],
        [
-        0.5667,
+        0.566667,
         0,
         "out"
        ],
        [
-        3.9333,
+        3.933333,
         0,
         "in"
        ],
        [
-        4.3333,
+        4.333333,
         10,
         "out"
        ]
@@ -2904,7 +2905,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          96,
          96
@@ -2912,7 +2913,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          100,
          100
@@ -2973,7 +2974,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         [
          36,
          54
@@ -2990,7 +2991,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ]
@@ -3011,7 +3012,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.2667,
+        0.266667,
         [
          36,
          110
@@ -3019,7 +3020,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.7333,
+        0.733333,
         [
          36,
          98
@@ -3032,12 +3033,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.2667,
+        0.266667,
         0,
         "out"
        ],
        [
-        0.7333,
+        0.733333,
         100,
         "out"
        ]
@@ -3086,7 +3087,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        2.3333,
+        2.333333,
         [
          100,
          0
@@ -3094,7 +3095,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.8333,
+        2.833333,
         [
          100,
          100
@@ -3118,7 +3119,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.4667,
+        2.466667,
         [
          92.0,
          365
@@ -3138,7 +3139,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.4667,
+        2.466667,
         0,
         "out"
        ],
@@ -3174,7 +3175,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        2.8667,
+        2.866667,
         [
          100,
          0
@@ -3182,7 +3183,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.3667,
+        3.366667,
         [
          100,
          100
@@ -3206,7 +3207,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.9667,
+        2.966667,
         [
          230.0,
          303
@@ -3214,7 +3215,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.4333,
+        3.433333,
         [
          230.0,
          293
@@ -3226,12 +3227,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.9667,
+        2.966667,
         0,
         "out"
        ],
        [
-        3.4333,
+        3.433333,
         100,
         "out"
        ]
@@ -3294,7 +3295,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.4333,
+        3.433333,
         [
          368.0,
          241
@@ -3302,7 +3303,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.8667,
+        3.866667,
         [
          368.0,
          231
@@ -3314,12 +3315,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.4333,
+        3.433333,
         0,
         "out"
        ],
        [
-        3.8667,
+        3.866667,
         100,
         "out"
        ]
@@ -3340,7 +3341,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.8333,
+        3.833333,
         [
          36,
          528
@@ -3360,7 +3361,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.8333,
+        3.833333,
         0,
         "out"
        ],
@@ -3409,7 +3410,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.9667,
+        4.966667,
         [
          286,
          420.0
@@ -3417,7 +3418,7 @@ var SPEC = {
         "in"
        ],
        [
-        5.3333,
+        5.333333,
         [
          246,
          420.0
@@ -3441,12 +3442,12 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ],
        [
-        4.9667,
+        4.966667,
         100,
         "in"
        ],
@@ -3470,12 +3471,12 @@ var SPEC = {
         "out"
        ],
        [
-        4.9667,
+        4.966667,
         0,
         "in"
        ],
        [
-        5.3333,
+        5.333333,
         10,
         "out"
        ]
@@ -3545,7 +3546,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.6333,
+        0.633333,
         [
          56,
          84
@@ -3565,7 +3566,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.6333,
+        0.633333,
         0,
         "out"
        ],
@@ -3599,7 +3600,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.6667,
+        1.666667,
         [
          56,
          160
@@ -3616,7 +3617,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.6667,
+        1.666667,
         100,
         "out"
        ],
@@ -3689,7 +3690,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.6667,
+        3.666667,
         [
          56,
          236
@@ -3706,7 +3707,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.6667,
+        3.666667,
         100,
         "out"
        ]
@@ -4170,12 +4171,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        4.1667,
+        4.166667,
         0,
         "out"
        ],
        [
-        4.3667,
+        4.366667,
         100,
         "out"
        ]
@@ -4184,7 +4185,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        4.1667,
+        4.166667,
         [
          0,
          0
@@ -4223,7 +4224,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.5333,
+        0.533333,
         [
          410.0,
          490.0
@@ -4231,7 +4232,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.1333,
+        1.133333,
         [
          480.0,
          490.0
@@ -4239,7 +4240,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.4333,
+        4.433333,
         [
          480.0,
          490.0
@@ -4247,7 +4248,7 @@ var SPEC = {
         "in"
        ],
        [
-        4.8333,
+        4.833333,
         [
          440.0,
          490.0
@@ -4266,7 +4267,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.5333,
+        0.533333,
         0,
         "out"
        ],
@@ -4276,12 +4277,12 @@ var SPEC = {
         "out"
        ],
        [
-        4.4333,
+        4.433333,
         100,
         "in"
        ],
        [
-        4.7667,
+        4.766667,
         0,
         "out"
        ]
@@ -4290,22 +4291,22 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        0.5333,
+        0.533333,
         14,
         "out"
        ],
        [
-        1.0333,
+        1.033333,
         0,
         "out"
        ],
        [
-        4.4333,
+        4.433333,
         0,
         "in"
        ],
        [
-        4.8333,
+        4.833333,
         10,
         "out"
        ]
@@ -4314,7 +4315,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.5333,
+        0.533333,
         [
          96,
          96
@@ -4322,7 +4323,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.1333,
+        1.133333,
         [
          100,
          100
@@ -4340,14 +4341,14 @@ var SPEC = {
    "folder": "03 Cards",
    "width": 460,
    "height": 470,
-   "duration": 5.7333,
+   "duration": 5.733333,
    "bg": "#FFFFFF",
    "layers": [
     {
      "name": "Card background",
      "type": "rect",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "size": [
       458,
       468
@@ -4365,7 +4366,7 @@ var SPEC = {
      "name": "Eyebrow",
      "type": "text",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "text": "NOW AVAILABLE",
      "font": "Inter-SemiBold",
      "size": 16,
@@ -4375,7 +4376,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.4333,
+        0.433333,
         [
          36,
          62
@@ -4395,7 +4396,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.4333,
+        0.433333,
         0,
         "out"
        ],
@@ -4411,7 +4412,7 @@ var SPEC = {
      "name": "Title",
      "type": "text",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "text": "Second\nedition",
      "font": "Inter-ExtraBold",
      "size": 46,
@@ -4429,7 +4430,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         [
          36,
          118
@@ -4447,7 +4448,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         100,
         "out"
        ]
@@ -4461,7 +4462,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         0,
         "out"
        ]
@@ -4472,7 +4473,7 @@ var SPEC = {
      "name": "Book thumb",
      "type": "image",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "asset": "book",
      "position": {
       "k": [
@@ -4485,7 +4486,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.9333,
+        0.933333,
         [
          352,
          128
@@ -4506,7 +4507,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.9333,
+        0.933333,
         100,
         "out"
        ]
@@ -4517,7 +4518,7 @@ var SPEC = {
      "name": "Timeline track",
      "type": "rect",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "size": [
       240,
       3
@@ -4559,7 +4560,7 @@ var SPEC = {
      "name": "Dot 2019",
      "type": "ellipse",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "size": [
       14,
       14
@@ -4579,7 +4580,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         100,
         "out"
        ]
@@ -4590,7 +4591,7 @@ var SPEC = {
      "name": "Dot now",
      "type": "ellipse",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "size": [
       18,
       18
@@ -4610,7 +4611,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         100,
         "out"
        ]
@@ -4641,7 +4642,7 @@ var SPEC = {
      "name": "Label 2019",
      "type": "text",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "text": "2019",
      "font": "Inter-Medium",
      "size": 17,
@@ -4659,7 +4660,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         [
          36,
          296
@@ -4676,7 +4677,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         100,
         "out"
        ]
@@ -4687,7 +4688,7 @@ var SPEC = {
      "name": "Label now",
      "type": "text",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "text": "Now \u00b7 2nd edition",
      "font": "Inter-SemiBold",
      "size": 17,
@@ -4697,7 +4698,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.9333,
+        1.933333,
         [
          276,
          302
@@ -4717,7 +4718,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.9333,
+        1.933333,
         0,
         "out"
        ],
@@ -4733,7 +4734,7 @@ var SPEC = {
      "name": "Divider",
      "type": "rect",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "size": [
       388,
       1.5
@@ -4751,7 +4752,7 @@ var SPEC = {
      "name": "Also available",
      "type": "text",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "text": "ALSO AVAILABLE IN",
      "font": "Inter-SemiBold",
      "size": 16,
@@ -4761,7 +4762,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.2333,
+        3.233333,
         [
          36,
          378
@@ -4769,7 +4770,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.6667,
+        3.666667,
         [
          36,
          370
@@ -4781,12 +4782,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.2333,
+        3.233333,
         0,
         "out"
        ],
        [
-        3.6667,
+        3.666667,
         100,
         "out"
        ]
@@ -4797,7 +4798,7 @@ var SPEC = {
      "name": "Chip English",
      "type": "rect",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "size": [
       150,
       50
@@ -4813,7 +4814,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.9667,
+        3.966667,
         0,
         "out"
        ],
@@ -4827,7 +4828,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        3.9667,
+        3.966667,
         [
          80,
          80
@@ -4835,7 +4836,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.3667,
+        4.366667,
         [
          100,
          100
@@ -4849,7 +4850,7 @@ var SPEC = {
      "name": "Chip English label",
      "type": "text",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "text": "English",
      "font": "Inter-SemiBold",
      "size": 20,
@@ -4863,12 +4864,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        4.0333,
+        4.033333,
         0,
         "out"
        ],
        [
-        4.4667,
+        4.466667,
         100,
         "out"
        ]
@@ -4879,7 +4880,7 @@ var SPEC = {
      "name": "Chip Hindi",
      "type": "rect",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "size": [
       150,
       50
@@ -4900,7 +4901,7 @@ var SPEC = {
         "out"
        ],
        [
-        5.0667,
+        5.066667,
         100,
         "out"
        ]
@@ -4931,7 +4932,7 @@ var SPEC = {
      "name": "Chip Hindi label",
      "type": "text",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "text": "Hindi",
      "font": "Inter-SemiBold",
      "size": 20,
@@ -4945,7 +4946,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        4.8667,
+        4.866667,
         0,
         "out"
        ],
@@ -4965,20 +4966,20 @@ var SPEC = {
    "folder": "02 Moments",
    "width": 1920,
    "height": 1080,
-   "duration": 5.7333,
+   "duration": 5.733333,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "C08 Second edition and languages",
      "type": "comp",
      "in": 0.0,
-     "out": 5.7333,
+     "out": 5.733333,
      "comp": "c08",
      "start": 0,
      "position": {
       "k": [
        [
-        0.3333,
+        0.333333,
         [
          216,
          375.0
@@ -4986,7 +4987,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.9333,
+        0.933333,
         [
          286,
          375.0
@@ -4994,7 +4995,7 @@ var SPEC = {
         "out"
        ],
        [
-        5.3333,
+        5.333333,
         [
          286,
          375.0
@@ -5002,7 +5003,7 @@ var SPEC = {
         "in"
        ],
        [
-        5.7333,
+        5.733333,
         [
          246,
          375.0
@@ -5021,7 +5022,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.3333,
+        0.333333,
         0,
         "out"
        ],
@@ -5031,12 +5032,12 @@ var SPEC = {
         "out"
        ],
        [
-        5.3333,
+        5.333333,
         100,
         "in"
        ],
        [
-        5.6667,
+        5.666667,
         0,
         "out"
        ]
@@ -5045,22 +5046,22 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        0.3333,
+        0.333333,
         14,
         "out"
        ],
        [
-        0.8333,
+        0.833333,
         0,
         "out"
        ],
        [
-        5.3333,
+        5.333333,
         0,
         "in"
        ],
        [
-        5.7333,
+        5.733333,
         10,
         "out"
        ]
@@ -5069,7 +5070,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.3333,
+        0.333333,
         [
          96,
          96
@@ -5077,7 +5078,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.9333,
+        0.933333,
         [
          100,
          100
@@ -5130,7 +5131,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          36,
          62
@@ -5150,7 +5151,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.0667,
+        0.066667,
         0,
         "out"
        ],
@@ -5212,7 +5213,7 @@ var SPEC = {
         "inout"
        ],
        [
-        1.6667,
+        1.666667,
         [
          100,
          100
@@ -5246,7 +5247,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        2.1333,
+        2.133333,
         [
          100,
          0
@@ -5300,12 +5301,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.3667,
+        0.366667,
         0,
         "out"
        ],
        [
-        0.5667,
+        0.566667,
         100,
         "out"
        ]
@@ -5314,7 +5315,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.3667,
+        0.366667,
         [
          0,
          0
@@ -5369,7 +5370,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         100,
         "out"
        ]
@@ -5390,7 +5391,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.3667,
+        0.366667,
         [
          80,
          133
@@ -5410,7 +5411,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.3667,
+        0.366667,
         0,
         "out"
        ],
@@ -5458,12 +5459,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.6667,
+        1.666667,
         0,
         "out"
        ],
        [
-        1.8667,
+        1.866667,
         100,
         "out"
        ]
@@ -5472,7 +5473,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        1.6667,
+        1.666667,
         [
          0,
          0
@@ -5522,12 +5523,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.7667,
+        1.766667,
         0,
         "out"
        ],
        [
-        1.9667,
+        1.966667,
         100,
         "out"
        ]
@@ -5548,7 +5549,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.6667,
+        1.666667,
         [
          80,
          225
@@ -5568,7 +5569,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.6667,
+        1.666667,
         0,
         "out"
        ],
@@ -5638,7 +5639,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.8333,
+        2.833333,
         [
          100,
          100
@@ -5714,7 +5715,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.9333,
+        2.933333,
         [
          90,
          317
@@ -5731,7 +5732,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.9333,
+        2.933333,
         100,
         "out"
        ]
@@ -5759,7 +5760,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          1704,
          340.0
@@ -5767,7 +5768,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          1634,
          340.0
@@ -5775,7 +5776,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.8667,
+        2.866667,
         [
          1634,
          340.0
@@ -5783,7 +5784,7 @@ var SPEC = {
         "in"
        ],
        [
-        3.2667,
+        3.266667,
         [
          1674,
          340.0
@@ -5802,7 +5803,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.0667,
+        0.066667,
         0,
         "out"
        ],
@@ -5812,7 +5813,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.8667,
+        2.866667,
         100,
         "in"
        ],
@@ -5826,22 +5827,22 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        0.0667,
+        0.066667,
         14,
         "out"
        ],
        [
-        0.5667,
+        0.566667,
         0,
         "out"
        ],
        [
-        2.8667,
+        2.866667,
         0,
         "in"
        ],
        [
-        3.2667,
+        3.266667,
         10,
         "out"
        ]
@@ -5850,7 +5851,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          96,
          96
@@ -5858,7 +5859,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          100,
          100
@@ -5911,7 +5912,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          36,
          62
@@ -5919,7 +5920,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         [
          36,
          54
@@ -5931,12 +5932,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.0667,
+        0.066667,
         0,
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ]
@@ -5959,7 +5960,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.9667,
+        0.966667,
         [
          76,
          144
@@ -5967,7 +5968,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.4333,
+        1.433333,
         [
          76,
          134
@@ -5979,12 +5980,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.9667,
+        0.966667,
         0,
         "out"
        ],
        [
-        1.4333,
+        1.433333,
         100,
         "out"
        ]
@@ -6000,7 +6001,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.0333,
+        1.033333,
         [
          76,
          144
@@ -6008,7 +6009,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.4667,
+        1.466667,
         [
          76,
          134
@@ -6024,12 +6025,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.0333,
+        1.033333,
         0,
         "out"
        ],
        [
-        1.4667,
+        1.466667,
         100,
         "out"
        ]
@@ -6050,7 +6051,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.0667,
+        1.066667,
         [
          132,
          138
@@ -6058,7 +6059,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.5333,
+        1.533333,
         [
          132,
          128
@@ -6070,12 +6071,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.0667,
+        1.066667,
         0,
         "out"
        ],
        [
-        1.5333,
+        1.533333,
         100,
         "out"
        ]
@@ -6096,7 +6097,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.1333,
+        1.133333,
         [
          132,
          166
@@ -6104,7 +6105,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.5667,
+        1.566667,
         [
          132,
          156
@@ -6116,12 +6117,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.1333,
+        1.133333,
         0,
         "out"
        ],
        [
-        1.5667,
+        1.566667,
         100,
         "out"
        ]
@@ -6224,7 +6225,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.4333,
+        3.433333,
         [
          36,
          268
@@ -6244,7 +6245,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.4333,
+        3.433333,
         0,
         "out"
        ],
@@ -6270,7 +6271,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.4333,
+        3.433333,
         [
          424,
          268
@@ -6290,7 +6291,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.4333,
+        3.433333,
         0,
         "out"
        ],
@@ -6336,7 +6337,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        5.5333,
+        5.533333,
         [
          136,
          366
@@ -6356,7 +6357,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        5.5333,
+        5.533333,
         0,
         "out"
        ],
@@ -6383,7 +6384,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        5.5333,
+        5.533333,
         [
          66,
          366
@@ -6403,7 +6404,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        5.5333,
+        5.533333,
         0,
         "out"
        ],
@@ -6430,7 +6431,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        5.5333,
+        5.533333,
         [
          66,
          366
@@ -6450,7 +6451,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        5.5333,
+        5.533333,
         0,
         "out"
        ],
@@ -6467,12 +6468,12 @@ var SPEC = {
       "end": {
        "k": [
         [
-         5.7667,
+         5.766667,
          100,
          "linear"
         ],
         [
-         6.7667,
+         6.766667,
          8,
          "out"
         ]
@@ -6494,7 +6495,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        5.5333,
+        5.533333,
         [
          88,
          373
@@ -6514,7 +6515,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        5.5333,
+        5.533333,
         0,
         "out"
        ],
@@ -6547,7 +6548,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          1704,
          355.0
@@ -6555,7 +6556,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          1634,
          355.0
@@ -6563,7 +6564,7 @@ var SPEC = {
         "out"
        ],
        [
-        6.9667,
+        6.966667,
         [
          1634,
          355.0
@@ -6571,7 +6572,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.3667,
+        7.366667,
         [
          1674,
          355.0
@@ -6590,17 +6591,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.0667,
+        0.066667,
         0,
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ],
        [
-        6.9667,
+        6.966667,
         100,
         "in"
        ],
@@ -6614,22 +6615,22 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        0.0667,
+        0.066667,
         14,
         "out"
        ],
        [
-        0.5667,
+        0.566667,
         0,
         "out"
        ],
        [
-        6.9667,
+        6.966667,
         0,
         "in"
        ],
        [
-        7.3667,
+        7.366667,
         10,
         "out"
        ]
@@ -6638,7 +6639,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.0667,
+        0.066667,
         [
          96,
          96
@@ -6646,7 +6647,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          100,
          100
@@ -6664,14 +6665,14 @@ var SPEC = {
    "folder": "03 Cards",
    "width": 460,
    "height": 520,
-   "duration": 7.5667,
+   "duration": 7.566667,
    "bg": "#FFFFFF",
    "layers": [
     {
      "name": "Card background",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       458,
       518
@@ -6689,7 +6690,7 @@ var SPEC = {
      "name": "Eyebrow",
      "type": "text",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "text": "YOU HAVE WATCHED",
      "font": "Inter-SemiBold",
      "size": 16,
@@ -6699,7 +6700,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.5667,
+        0.566667,
         [
          36,
          62
@@ -6707,7 +6708,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.0333,
+        1.033333,
         [
          36,
          54
@@ -6719,12 +6720,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.5667,
+        0.566667,
         0,
         "out"
        ],
        [
-        1.0333,
+        1.033333,
         100,
         "out"
        ]
@@ -6735,7 +6736,7 @@ var SPEC = {
      "name": "Tile Podcast",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       186,
       150
@@ -6783,7 +6784,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -6794,7 +6795,7 @@ var SPEC = {
      "name": "Tile Podcast icon bg",
      "type": "ellipse",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       52,
       52
@@ -6840,7 +6841,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -6851,7 +6852,7 @@ var SPEC = {
      "name": "Tile Podcast mic",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       14,
       24
@@ -6898,7 +6899,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -6909,7 +6910,7 @@ var SPEC = {
      "name": "Tile Podcast stand",
      "type": "path",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "paths": [
       {
        "v": [
@@ -6978,12 +6979,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.9667,
+        0.966667,
         0,
         "out"
        ],
        [
-        1.2667,
+        1.266667,
         100,
         "out"
        ],
@@ -6993,7 +6994,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7004,7 +7005,7 @@ var SPEC = {
      "name": "Tile Podcast label",
      "type": "text",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "text": "Podcast",
      "font": "Inter-Bold",
      "size": 21,
@@ -7049,7 +7050,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7060,7 +7061,7 @@ var SPEC = {
      "name": "Tile Webinar",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       186,
       150
@@ -7072,7 +7073,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.7333,
+        1.733333,
         [
          331.0,
          175.0
@@ -7080,7 +7081,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         [
          331.0,
          163.0
@@ -7093,12 +7094,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.7333,
+        1.733333,
         0,
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         100,
         "out"
        ],
@@ -7108,7 +7109,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7119,7 +7120,7 @@ var SPEC = {
      "name": "Tile Webinar icon bg",
      "type": "ellipse",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       52,
       52
@@ -7130,7 +7131,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.7333,
+        1.733333,
         [
          282,
          146
@@ -7138,7 +7139,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         [
          282,
          134
@@ -7150,12 +7151,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.7333,
+        1.733333,
         0,
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         100,
         "out"
        ],
@@ -7165,7 +7166,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7176,7 +7177,7 @@ var SPEC = {
      "name": "Tile Webinar screen",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       32,
       22
@@ -7188,7 +7189,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.7333,
+        1.733333,
         [
          282,
          143
@@ -7196,7 +7197,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         [
          282,
          131
@@ -7208,12 +7209,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.7333,
+        1.733333,
         0,
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         100,
         "out"
        ],
@@ -7223,7 +7224,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7234,7 +7235,7 @@ var SPEC = {
      "name": "Tile Webinar stand",
      "type": "path",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "paths": [
       {
        "v": [
@@ -7286,7 +7287,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7297,7 +7298,7 @@ var SPEC = {
      "name": "Tile Webinar label",
      "type": "text",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "text": "Webinar",
      "font": "Inter-Bold",
      "size": 21,
@@ -7307,7 +7308,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.7333,
+        1.733333,
         [
          258,
          220
@@ -7315,7 +7316,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         [
          258,
          208
@@ -7327,12 +7328,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.7333,
+        1.733333,
         0,
         "out"
        ],
        [
-        2.1333,
+        2.133333,
         100,
         "out"
        ],
@@ -7342,7 +7343,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7353,7 +7354,7 @@ var SPEC = {
      "name": "Tile Masterclass",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       186,
       150
@@ -7401,7 +7402,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7412,7 +7413,7 @@ var SPEC = {
      "name": "Tile Masterclass icon bg",
      "type": "ellipse",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       52,
       52
@@ -7458,7 +7459,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7469,7 +7470,7 @@ var SPEC = {
      "name": "Tile Masterclass cap",
      "type": "path",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "paths": [
       {
        "v": [
@@ -7526,12 +7527,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.6333,
+        2.633333,
         0,
         "out"
        ],
        [
-        2.9333,
+        2.933333,
         100,
         "out"
        ],
@@ -7541,7 +7542,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7552,7 +7553,7 @@ var SPEC = {
      "name": "Tile Masterclass label",
      "type": "text",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "text": "Masterclass",
      "font": "Inter-Bold",
      "size": 21,
@@ -7597,7 +7598,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7608,7 +7609,7 @@ var SPEC = {
      "name": "Tile YouTube video",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       186,
       150
@@ -7620,7 +7621,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.7667,
+        3.766667,
         [
          331.0,
          341.0
@@ -7628,7 +7629,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.1667,
+        4.166667,
         [
          331.0,
          329.0
@@ -7641,12 +7642,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.7667,
+        3.766667,
         0,
         "out"
        ],
        [
-        4.1667,
+        4.166667,
         100,
         "out"
        ],
@@ -7656,7 +7657,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7667,7 +7668,7 @@ var SPEC = {
      "name": "Tile YouTube video icon bg",
      "type": "ellipse",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       52,
       52
@@ -7678,7 +7679,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.7667,
+        3.766667,
         [
          282,
          312
@@ -7686,7 +7687,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.1667,
+        4.166667,
         [
          282,
          300
@@ -7698,12 +7699,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.7667,
+        3.766667,
         0,
         "out"
        ],
        [
-        4.1667,
+        4.166667,
         100,
         "out"
        ],
@@ -7713,7 +7714,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7724,7 +7725,7 @@ var SPEC = {
      "name": "Tile YouTube video frame",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       32,
       24
@@ -7736,7 +7737,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.7667,
+        3.766667,
         [
          282,
          312
@@ -7744,7 +7745,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.1667,
+        4.166667,
         [
          282,
          300
@@ -7756,12 +7757,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.7667,
+        3.766667,
         0,
         "out"
        ],
        [
-        4.1667,
+        4.166667,
         100,
         "out"
        ],
@@ -7771,7 +7772,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7782,7 +7783,7 @@ var SPEC = {
      "name": "Tile YouTube video play",
      "type": "path",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "paths": [
       {
        "v": [
@@ -7825,7 +7826,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7836,7 +7837,7 @@ var SPEC = {
      "name": "Tile YouTube video label",
      "type": "text",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "text": "YouTube video",
      "font": "Inter-Bold",
      "size": 21,
@@ -7846,7 +7847,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        3.7667,
+        3.766667,
         [
          258,
          386
@@ -7854,7 +7855,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.1667,
+        4.166667,
         [
          258,
          374
@@ -7866,12 +7867,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.7667,
+        3.766667,
         0,
         "out"
        ],
        [
-        4.1667,
+        4.166667,
         100,
         "out"
        ],
@@ -7881,7 +7882,7 @@ var SPEC = {
         "soft"
        ],
        [
-        5.4333,
+        5.433333,
         40,
         "out"
        ]
@@ -7892,7 +7893,7 @@ var SPEC = {
      "name": "Banner",
      "type": "rect",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       388,
       56
@@ -7912,7 +7913,7 @@ var SPEC = {
         "out"
        ],
        [
-        6.1667,
+        6.166667,
         [
          230,
          458
@@ -7929,7 +7930,7 @@ var SPEC = {
         "out"
        ],
        [
-        6.1667,
+        6.166667,
         100,
         "out"
        ]
@@ -7940,7 +7941,7 @@ var SPEC = {
      "name": "Banner icon",
      "type": "ellipse",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "size": [
       22,
       22
@@ -7959,7 +7960,7 @@ var SPEC = {
         "out"
        ],
        [
-        6.1667,
+        6.166667,
         [
          64,
          458
@@ -7976,7 +7977,7 @@ var SPEC = {
         "out"
        ],
        [
-        6.1667,
+        6.166667,
         100,
         "out"
        ]
@@ -7987,7 +7988,7 @@ var SPEC = {
      "name": "Banner icon slash",
      "type": "path",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "paths": [
       {
        "v": [
@@ -8027,7 +8028,7 @@ var SPEC = {
      "name": "Banner text",
      "type": "text",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "text": "Never started in a structured way",
      "font": "Inter-SemiBold",
      "size": 20,
@@ -8045,7 +8046,7 @@ var SPEC = {
         "out"
        ],
        [
-        6.1667,
+        6.166667,
         [
          86,
          465
@@ -8062,7 +8063,7 @@ var SPEC = {
         "out"
        ],
        [
-        6.1667,
+        6.166667,
         100,
         "out"
        ]
@@ -8077,14 +8078,14 @@ var SPEC = {
    "folder": "02 Moments",
    "width": 1920,
    "height": 1080,
-   "duration": 7.5667,
+   "duration": 7.566667,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "C11 Where you learned",
      "type": "comp",
      "in": 0.0,
-     "out": 7.5667,
+     "out": 7.566667,
      "comp": "c11",
      "start": 0,
      "position": {
@@ -8138,7 +8139,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         100,
         "out"
        ],
@@ -8148,7 +8149,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.4667,
+        7.466667,
         0,
         "out"
        ]
@@ -8207,14 +8208,14 @@ var SPEC = {
    "folder": "03 Cards",
    "width": 460,
    "height": 600,
-   "duration": 10.4667,
+   "duration": 10.466667,
    "bg": "#FFFFFF",
    "layers": [
     {
      "name": "Card background",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       458,
       598
@@ -8232,7 +8233,7 @@ var SPEC = {
      "name": "Eyebrow",
      "type": "text",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "text": "INFLUENCERS & YOUTUBERS",
      "font": "Inter-SemiBold",
      "size": 16,
@@ -8250,7 +8251,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         [
          36,
          54
@@ -8267,17 +8268,17 @@ var SPEC = {
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         100,
         "out"
        ],
        [
-        7.3333,
+        7.333333,
         100,
         "in"
        ],
        [
-        7.6333,
+        7.633333,
         0,
         "out"
        ]
@@ -8288,7 +8289,7 @@ var SPEC = {
      "name": "Post 1",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       388,
       84
@@ -8324,7 +8325,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.7333,
+        7.733333,
         [
          230,
          160
@@ -8358,7 +8359,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.7333,
+        7.733333,
         0,
         "out"
        ]
@@ -8369,7 +8370,7 @@ var SPEC = {
      "name": "Post 1 avatar",
      "type": "ellipse",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       40,
       40
@@ -8404,7 +8405,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.7333,
+        7.733333,
         [
          70,
          160
@@ -8431,7 +8432,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.7333,
+        7.733333,
         0,
         "out"
        ]
@@ -8442,7 +8443,7 @@ var SPEC = {
      "name": "Post 1 line 1",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       160,
       10
@@ -8478,7 +8479,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.7333,
+        7.733333,
         [
          178,
          149
@@ -8505,7 +8506,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.7333,
+        7.733333,
         0,
         "out"
        ]
@@ -8516,7 +8517,7 @@ var SPEC = {
      "name": "Post 1 line 2",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       110,
       10
@@ -8552,7 +8553,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.7333,
+        7.733333,
         [
          153,
          171
@@ -8579,7 +8580,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.7333,
+        7.733333,
         0,
         "out"
        ]
@@ -8590,7 +8591,7 @@ var SPEC = {
      "name": "Post 2",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       388,
       84
@@ -8602,7 +8603,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.6667,
+        0.666667,
         [
          230,
          198
@@ -8610,7 +8611,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.0667,
+        1.066667,
         [
          230,
          216
@@ -8618,7 +8619,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         [
          230,
          216
@@ -8645,17 +8646,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.6667,
+        0.666667,
         0,
         "out"
        ],
        [
-        1.0667,
+        1.066667,
         100,
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         100,
         "in"
        ],
@@ -8671,7 +8672,7 @@ var SPEC = {
      "name": "Post 2 avatar",
      "type": "ellipse",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       40,
       40
@@ -8682,7 +8683,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.6667,
+        0.666667,
         [
          70,
          198
@@ -8690,7 +8691,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.0667,
+        1.066667,
         [
          70,
          216
@@ -8698,7 +8699,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         [
          70,
          216
@@ -8718,17 +8719,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.6667,
+        0.666667,
         0,
         "out"
        ],
        [
-        1.0667,
+        1.066667,
         100,
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         100,
         "in"
        ],
@@ -8744,7 +8745,7 @@ var SPEC = {
      "name": "Post 2 line 1",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       160,
       10
@@ -8756,7 +8757,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.6667,
+        0.666667,
         [
          178,
          187
@@ -8764,7 +8765,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.0667,
+        1.066667,
         [
          178,
          205
@@ -8772,7 +8773,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         [
          178,
          205
@@ -8792,17 +8793,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.6667,
+        0.666667,
         0,
         "out"
        ],
        [
-        1.0667,
+        1.066667,
         100,
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         100,
         "in"
        ],
@@ -8818,7 +8819,7 @@ var SPEC = {
      "name": "Post 2 line 2",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       110,
       10
@@ -8830,7 +8831,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.6667,
+        0.666667,
         [
          153,
          209
@@ -8838,7 +8839,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.0667,
+        1.066667,
         [
          153,
          227
@@ -8846,7 +8847,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         [
          153,
          227
@@ -8866,17 +8867,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.6667,
+        0.666667,
         0,
         "out"
        ],
        [
-        1.0667,
+        1.066667,
         100,
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         100,
         "in"
        ],
@@ -8892,7 +8893,7 @@ var SPEC = {
      "name": "Post 2 tag",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       84.328125,
       34
@@ -8912,7 +8913,7 @@ var SPEC = {
         "hold"
        ],
        [
-        7.4333,
+        7.433333,
         [
          363.8359375,
          216
@@ -8932,17 +8933,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.8333,
+        3.833333,
         0,
         "out"
        ],
        [
-        4.0667,
+        4.066667,
         100,
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         100,
         "in"
        ],
@@ -8956,7 +8957,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        3.8333,
+        3.833333,
         [
          70,
          70
@@ -8964,7 +8965,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.2333,
+        4.233333,
         [
          100,
          100
@@ -8978,7 +8979,7 @@ var SPEC = {
      "name": "Post 2 tag label",
      "type": "text",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "text": "Crypto",
      "font": "Inter-SemiBold",
      "size": 17,
@@ -8996,7 +8997,7 @@ var SPEC = {
         "hold"
        ],
        [
-        7.4333,
+        7.433333,
         [
          363.8359375,
          222
@@ -9016,7 +9017,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        3.8667,
+        3.866667,
         0,
         "out"
        ],
@@ -9026,7 +9027,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.4333,
+        7.433333,
         100,
         "in"
        ],
@@ -9042,7 +9043,7 @@ var SPEC = {
      "name": "Post 3",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       388,
       84
@@ -9078,7 +9079,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.8667,
+        7.866667,
         [
          230,
          352
@@ -9112,7 +9113,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.8667,
+        7.866667,
         0,
         "out"
        ]
@@ -9123,7 +9124,7 @@ var SPEC = {
      "name": "Post 3 avatar",
      "type": "ellipse",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       40,
       40
@@ -9158,7 +9159,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.8667,
+        7.866667,
         [
          70,
          352
@@ -9185,7 +9186,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.8667,
+        7.866667,
         0,
         "out"
        ]
@@ -9196,7 +9197,7 @@ var SPEC = {
      "name": "Post 3 line 1",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       160,
       10
@@ -9232,7 +9233,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.8667,
+        7.866667,
         [
          178,
          341
@@ -9259,7 +9260,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.8667,
+        7.866667,
         0,
         "out"
        ]
@@ -9270,7 +9271,7 @@ var SPEC = {
      "name": "Post 3 line 2",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       110,
       10
@@ -9306,7 +9307,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.8667,
+        7.866667,
         [
          153,
          363
@@ -9333,7 +9334,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.8667,
+        7.866667,
         0,
         "out"
        ]
@@ -9344,7 +9345,7 @@ var SPEC = {
      "name": "Post 4",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       388,
       84
@@ -9356,7 +9357,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.2333,
+        2.233333,
         [
          230,
          390
@@ -9364,7 +9365,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.6333,
+        2.633333,
         [
          230,
          408
@@ -9372,7 +9373,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         [
          230,
          408
@@ -9399,17 +9400,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.2333,
+        2.233333,
         0,
         "out"
        ],
        [
-        2.6333,
+        2.633333,
         100,
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         100,
         "in"
        ],
@@ -9425,7 +9426,7 @@ var SPEC = {
      "name": "Post 4 avatar",
      "type": "ellipse",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       40,
       40
@@ -9436,7 +9437,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.2333,
+        2.233333,
         [
          70,
          390
@@ -9444,7 +9445,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.6333,
+        2.633333,
         [
          70,
          408
@@ -9452,7 +9453,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         [
          70,
          408
@@ -9472,17 +9473,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.2333,
+        2.233333,
         0,
         "out"
        ],
        [
-        2.6333,
+        2.633333,
         100,
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         100,
         "in"
        ],
@@ -9498,7 +9499,7 @@ var SPEC = {
      "name": "Post 4 line 1",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       160,
       10
@@ -9510,7 +9511,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.2333,
+        2.233333,
         [
          178,
          379
@@ -9518,7 +9519,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.6333,
+        2.633333,
         [
          178,
          397
@@ -9526,7 +9527,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         [
          178,
          397
@@ -9546,17 +9547,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.2333,
+        2.233333,
         0,
         "out"
        ],
        [
-        2.6333,
+        2.633333,
         100,
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         100,
         "in"
        ],
@@ -9572,7 +9573,7 @@ var SPEC = {
      "name": "Post 4 line 2",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       110,
       10
@@ -9584,7 +9585,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.2333,
+        2.233333,
         [
          153,
          401
@@ -9592,7 +9593,7 @@ var SPEC = {
         "out"
        ],
        [
-        2.6333,
+        2.633333,
         [
          153,
          419
@@ -9600,7 +9601,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         [
          153,
          419
@@ -9620,17 +9621,17 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.2333,
+        2.233333,
         0,
         "out"
        ],
        [
-        2.6333,
+        2.633333,
         100,
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         100,
         "in"
        ],
@@ -9646,7 +9647,7 @@ var SPEC = {
      "name": "Post 4 tag",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       92.21875,
       34
@@ -9666,7 +9667,7 @@ var SPEC = {
         "hold"
        ],
        [
-        7.5667,
+        7.566667,
         [
          359.890625,
          408
@@ -9686,7 +9687,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        4.4667,
+        4.466667,
         0,
         "out"
        ],
@@ -9696,7 +9697,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         100,
         "in"
        ],
@@ -9710,7 +9711,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        4.4667,
+        4.466667,
         [
          70,
          70
@@ -9718,7 +9719,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.8667,
+        4.866667,
         [
          100,
          100
@@ -9732,7 +9733,7 @@ var SPEC = {
      "name": "Post 4 tag label",
      "type": "text",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "text": "Options",
      "font": "Inter-SemiBold",
      "size": 17,
@@ -9750,7 +9751,7 @@ var SPEC = {
         "hold"
        ],
        [
-        7.5667,
+        7.566667,
         [
          359.890625,
          414
@@ -9775,12 +9776,12 @@ var SPEC = {
         "out"
        ],
        [
-        4.9333,
+        4.933333,
         100,
         "out"
        ],
        [
-        7.5667,
+        7.566667,
         100,
         "in"
        ],
@@ -9796,7 +9797,7 @@ var SPEC = {
      "name": "Post 5",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       388,
       84
@@ -9808,7 +9809,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.7667,
+        2.766667,
         [
          230,
          486
@@ -9816,7 +9817,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         [
          230,
          504
@@ -9824,7 +9825,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         [
          230,
          504
@@ -9832,7 +9833,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         [
          230,
          544
@@ -9851,22 +9852,22 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.7667,
+        2.766667,
         0,
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         100,
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         100,
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         0,
         "out"
        ]
@@ -9877,7 +9878,7 @@ var SPEC = {
      "name": "Post 5 avatar",
      "type": "ellipse",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       40,
       40
@@ -9888,7 +9889,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.7667,
+        2.766667,
         [
          70,
          486
@@ -9896,7 +9897,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         [
          70,
          504
@@ -9904,7 +9905,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         [
          70,
          504
@@ -9912,7 +9913,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         [
          70,
          544
@@ -9924,22 +9925,22 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.7667,
+        2.766667,
         0,
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         100,
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         100,
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         0,
         "out"
        ]
@@ -9950,7 +9951,7 @@ var SPEC = {
      "name": "Post 5 line 1",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       160,
       10
@@ -9962,7 +9963,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.7667,
+        2.766667,
         [
          178,
          475
@@ -9970,7 +9971,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         [
          178,
          493
@@ -9978,7 +9979,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         [
          178,
          493
@@ -9986,7 +9987,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         [
          178,
          533
@@ -9998,22 +9999,22 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.7667,
+        2.766667,
         0,
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         100,
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         100,
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         0,
         "out"
        ]
@@ -10024,7 +10025,7 @@ var SPEC = {
      "name": "Post 5 line 2",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       110,
       10
@@ -10036,7 +10037,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        2.7667,
+        2.766667,
         [
          153,
          497
@@ -10044,7 +10045,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         [
          153,
          515
@@ -10052,7 +10053,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         [
          153,
          515
@@ -10060,7 +10061,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         [
          153,
          555
@@ -10072,22 +10073,22 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        2.7667,
+        2.766667,
         0,
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         100,
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         100,
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         0,
         "out"
        ]
@@ -10098,7 +10099,7 @@ var SPEC = {
      "name": "Post 5 tag",
      "type": "rect",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       85.796875,
       34
@@ -10118,7 +10119,7 @@ var SPEC = {
         "hold"
        ],
        [
-        7.6333,
+        7.633333,
         [
          363.1015625,
          504
@@ -10126,7 +10127,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         [
          363.1015625,
          544
@@ -10138,22 +10139,22 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        5.0333,
+        5.033333,
         0,
         "out"
        ],
        [
-        5.2667,
+        5.266667,
         100,
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         100,
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         0,
         "out"
        ]
@@ -10162,7 +10163,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        5.0333,
+        5.033333,
         [
          70,
          70
@@ -10170,7 +10171,7 @@ var SPEC = {
         "out"
        ],
        [
-        5.4333,
+        5.433333,
         [
          100,
          100
@@ -10184,7 +10185,7 @@ var SPEC = {
      "name": "Post 5 tag label",
      "type": "text",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "text": "+ more",
      "font": "Inter-SemiBold",
      "size": 17,
@@ -10202,7 +10203,7 @@ var SPEC = {
         "hold"
        ],
        [
-        7.6333,
+        7.633333,
         [
          363.1015625,
          510
@@ -10210,7 +10211,7 @@ var SPEC = {
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         [
          363.1015625,
          550
@@ -10222,7 +10223,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        5.0667,
+        5.066667,
         0,
         "out"
        ],
@@ -10232,12 +10233,12 @@ var SPEC = {
         "out"
        ],
        [
-        7.6333,
+        7.633333,
         100,
         "in"
        ],
        [
-        7.9667,
+        7.966667,
         0,
         "out"
        ]
@@ -10248,7 +10249,7 @@ var SPEC = {
      "name": "Cut line",
      "type": "path",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "paths": [
       {
        "v": [
@@ -10278,7 +10279,7 @@ var SPEC = {
          "in"
         ],
         [
-         7.6333,
+         7.633333,
          100,
          "out"
         ]
@@ -10287,12 +10288,12 @@ var SPEC = {
       "end": {
        "k": [
         [
-         7.1333,
+         7.133333,
          0,
          "out"
         ],
         [
-         7.4333,
+         7.433333,
          100,
          "out"
         ]
@@ -10304,7 +10305,7 @@ var SPEC = {
      "name": "System check bg",
      "type": "ellipse",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "size": [
       96,
       96
@@ -10319,7 +10320,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        8.7333,
+        8.733333,
         0,
         "out"
        ],
@@ -10333,7 +10334,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        8.7333,
+        8.733333,
         [
          0,
          0
@@ -10355,7 +10356,7 @@ var SPEC = {
      "name": "System check",
      "type": "path",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "paths": [
       {
        "v": [
@@ -10385,7 +10386,7 @@ var SPEC = {
       "end": {
        "k": [
         [
-         8.9333,
+         8.933333,
          0,
          "out"
         ],
@@ -10402,7 +10403,7 @@ var SPEC = {
      "name": "System title",
      "type": "text",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "text": "A simple system",
      "font": "Inter-ExtraBold",
      "size": 42,
@@ -10420,7 +10421,7 @@ var SPEC = {
         "out"
        ],
        [
-        9.2333,
+        9.233333,
         [
          230,
          340
@@ -10437,7 +10438,7 @@ var SPEC = {
         "out"
        ],
        [
-        9.2333,
+        9.233333,
         100,
         "out"
        ]
@@ -10451,7 +10452,7 @@ var SPEC = {
         "out"
        ],
        [
-        9.2333,
+        9.233333,
         0,
         "out"
        ]
@@ -10462,7 +10463,7 @@ var SPEC = {
      "name": "System sub",
      "type": "text",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "text": "Cut through the noise",
      "font": "Inter-Medium",
      "size": 22,
@@ -10480,7 +10481,7 @@ var SPEC = {
         "out"
        ],
        [
-        9.3667,
+        9.366667,
         [
          230,
          384
@@ -10497,7 +10498,7 @@ var SPEC = {
         "out"
        ],
        [
-        9.3667,
+        9.366667,
         100,
         "out"
        ]
@@ -10512,20 +10513,20 @@ var SPEC = {
    "folder": "02 Moments",
    "width": 1920,
    "height": 1080,
-   "duration": 10.4667,
+   "duration": 10.466667,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "C12 Noise to simple system",
      "type": "comp",
      "in": 0.0,
-     "out": 10.4667,
+     "out": 10.466667,
      "comp": "c12",
      "start": 0,
      "position": {
       "k": [
        [
-        0.1667,
+        0.166667,
         [
          1704,
          440.0
@@ -10533,7 +10534,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.7667,
+        0.766667,
         [
          1634,
          440.0
@@ -10541,7 +10542,7 @@ var SPEC = {
         "out"
        ],
        [
-        10.0333,
+        10.033333,
         [
          1634,
          440.0
@@ -10549,7 +10550,7 @@ var SPEC = {
         "in"
        ],
        [
-        10.4333,
+        10.433333,
         [
          1674,
          440.0
@@ -10568,7 +10569,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.1667,
+        0.166667,
         0,
         "out"
        ],
@@ -10578,12 +10579,12 @@ var SPEC = {
         "out"
        ],
        [
-        10.0333,
+        10.033333,
         100,
         "in"
        ],
        [
-        10.3667,
+        10.366667,
         0,
         "out"
        ]
@@ -10592,22 +10593,22 @@ var SPEC = {
      "blur": {
       "k": [
        [
-        0.1667,
+        0.166667,
         14,
         "out"
        ],
        [
-        0.6667,
+        0.666667,
         0,
         "out"
        ],
        [
-        10.0333,
+        10.033333,
         0,
         "in"
        ],
        [
-        10.4333,
+        10.433333,
         10,
         "out"
        ]
@@ -10616,7 +10617,7 @@ var SPEC = {
      "scale": {
       "k": [
        [
-        0.1667,
+        0.166667,
         [
          96,
          96
@@ -10624,7 +10625,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.7667,
+        0.766667,
         [
          100,
          100
@@ -10642,14 +10643,14 @@ var SPEC = {
    "folder": "03 Cards",
    "width": 460,
    "height": 600,
-   "duration": 1.7333,
+   "duration": 1.733333,
    "bg": "#FFFFFF",
    "layers": [
     {
      "name": "Card background",
      "type": "rect",
      "in": 0.0,
-     "out": 1.7333,
+     "out": 1.733333,
      "size": [
       458,
       598
@@ -10667,7 +10668,7 @@ var SPEC = {
      "name": "Cover stage",
      "type": "rect",
      "in": 0.0,
-     "out": 1.7333,
+     "out": 1.733333,
      "size": [
       388,
       390
@@ -10685,12 +10686,12 @@ var SPEC = {
      "name": "Book cover 3D",
      "type": "image",
      "in": 0.0,
-     "out": 1.7333,
+     "out": 1.733333,
      "asset": "book",
      "position": {
       "k": [
        [
-        0.2667,
+        0.266667,
         [
          232,
          258
@@ -10698,7 +10699,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.8667,
+        0.866667,
         [
          232,
          238
@@ -10714,12 +10715,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.2667,
+        0.266667,
         0,
         "out"
        ],
        [
-        0.8667,
+        0.866667,
         100,
         "out"
        ]
@@ -10730,7 +10731,7 @@ var SPEC = {
      "name": "Title",
      "type": "text",
      "in": 0.0,
-     "out": 1.7333,
+     "out": 1.733333,
      "text": "#CASHTAGS",
      "font": "Inter-Black",
      "size": 46,
@@ -10748,7 +10749,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.8667,
+        0.866667,
         [
          36,
          488
@@ -10765,7 +10766,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.8667,
+        0.866667,
         100,
         "out"
        ]
@@ -10779,7 +10780,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.8667,
+        0.866667,
         0,
         "out"
        ]
@@ -10790,7 +10791,7 @@ var SPEC = {
      "name": "Offer",
      "type": "text",
      "in": 0.0,
-     "out": 1.7333,
+     "out": 1.733333,
      "text": "Free \u00b7 you just cover shipping",
      "font": "Inter-SemiBold",
      "size": 21,
@@ -10800,7 +10801,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.5333,
+        0.533333,
         [
          36,
          540
@@ -10820,7 +10821,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.5333,
+        0.533333,
         0,
         "out"
        ],
@@ -10836,7 +10837,7 @@ var SPEC = {
      "name": "Help",
      "type": "text",
      "in": 0.0,
-     "out": 1.7333,
+     "out": 1.733333,
      "text": "This book will help you",
      "font": "Inter-Medium",
      "size": 19,
@@ -10854,7 +10855,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.4667,
+        1.466667,
         [
          36,
          562
@@ -10871,7 +10872,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.4667,
+        1.466667,
         100,
         "out"
        ]
@@ -10886,14 +10887,14 @@ var SPEC = {
    "folder": "02 Moments",
    "width": 1920,
    "height": 1080,
-   "duration": 1.7333,
+   "duration": 1.733333,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "C14 End card",
      "type": "comp",
      "in": 0.0,
-     "out": 1.7333,
+     "out": 1.733333,
      "comp": "c14",
      "start": 0,
      "position": {
@@ -10931,7 +10932,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5667,
+        0.566667,
         100,
         "out"
        ]
@@ -10980,14 +10981,14 @@ var SPEC = {
    "folder": "02 Moments",
    "width": 1920,
    "height": 1080,
-   "duration": 62.3333,
+   "duration": 62.333333,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "Cap 01 pill",
      "type": "rect",
-     "in": 0.3333,
-     "out": 1.5667,
+     "in": 0.333333,
+     "out": 1.566667,
      "size": [
       433.0,
       64
@@ -10998,7 +10999,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.3333,
+        0.333333,
         [
          920,
          994
@@ -11006,7 +11007,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         [
          920,
          984
@@ -11018,7 +11019,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        0.3333,
+        0.333333,
         0,
         "out"
        ],
@@ -11033,8 +11034,8 @@ var SPEC = {
     {
      "name": "Cap 01",
      "type": "text",
-     "in": 0.3333,
-     "out": 1.5667,
+     "in": 0.333333,
+     "out": 1.566667,
      "text": "Hi, my name is Vishal.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -11044,7 +11045,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        0.3333,
+        0.333333,
         [
          920,
          1007
@@ -11052,7 +11053,7 @@ var SPEC = {
         "out"
        ],
        [
-        0.5333,
+        0.533333,
         [
          920,
          997
@@ -11064,17 +11065,17 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       0.3333,
-       0.5333,
-       0.7333,
+       0.333333,
+       0.533333,
+       0.733333,
        0.9,
-       1.0333
+       1.033333
       ]
      },
      "opacity": {
       "k": [
        [
-        0.3333,
+        0.333333,
         0,
         "out"
        ],
@@ -11089,7 +11090,7 @@ var SPEC = {
     {
      "name": "Cap 02 pill",
      "type": "rect",
-     "in": 1.5667,
+     "in": 1.566667,
      "out": 3.0,
      "size": [
       618.7,
@@ -11101,7 +11102,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.5667,
+        1.566667,
         [
          920,
          994
@@ -11109,7 +11110,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7667,
+        1.766667,
         [
          920,
          984
@@ -11121,12 +11122,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        1.5667,
+        1.566667,
         0,
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         100,
         "out"
        ]
@@ -11136,7 +11137,7 @@ var SPEC = {
     {
      "name": "Cap 02",
      "type": "text",
-     "in": 1.5667,
+     "in": 1.566667,
      "out": 3.0,
      "text": "If you're wondering how to make",
      "font": "Inter-SemiBold",
@@ -11147,7 +11148,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        1.5667,
+        1.566667,
         [
          920,
          1007
@@ -11155,7 +11156,7 @@ var SPEC = {
         "out"
        ],
        [
-        1.7667,
+        1.766667,
         [
          920,
          997
@@ -11167,23 +11168,23 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       1.5667,
-       1.7333,
-       1.9333,
+       1.566667,
+       1.733333,
+       1.933333,
        2.5,
        2.7,
-       2.8333
+       2.833333
       ]
      },
      "opacity": {
       "k": [
        [
-        1.5667,
+        1.566667,
         0,
         "out"
        ],
        [
-        1.7333,
+        1.733333,
         100,
         "out"
        ]
@@ -11194,7 +11195,7 @@ var SPEC = {
      "name": "Cap 03 pill",
      "type": "rect",
      "in": 3.0,
-     "out": 4.1333,
+     "out": 4.133333,
      "size": [
       560.7,
       64
@@ -11213,7 +11214,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.2333,
+        3.233333,
         [
          920,
          984
@@ -11230,7 +11231,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         100,
         "out"
        ]
@@ -11241,7 +11242,7 @@ var SPEC = {
      "name": "Cap 03",
      "type": "text",
      "in": 3.0,
-     "out": 4.1333,
+     "out": 4.133333,
      "text": "money from the stock market",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -11259,7 +11260,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.2333,
+        3.233333,
         [
          920,
          997
@@ -11272,9 +11273,9 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        3.0,
-       3.2333,
+       3.233333,
        3.4,
-       3.4667,
+       3.466667,
        3.8
       ]
      },
@@ -11286,7 +11287,7 @@ var SPEC = {
         "out"
        ],
        [
-        3.1667,
+        3.166667,
         100,
         "out"
        ]
@@ -11296,8 +11297,8 @@ var SPEC = {
     {
      "name": "Cap 04 pill",
      "type": "rect",
-     "in": 4.1333,
-     "out": 5.2667,
+     "in": 4.133333,
+     "out": 5.266667,
      "size": [
       385.2,
       64
@@ -11308,7 +11309,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        4.1333,
+        4.133333,
         [
          920,
          994
@@ -11316,7 +11317,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.3667,
+        4.366667,
         [
          920,
          984
@@ -11328,12 +11329,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        4.1333,
+        4.133333,
         0,
         "out"
        ],
        [
-        4.3333,
+        4.333333,
         100,
         "out"
        ]
@@ -11343,8 +11344,8 @@ var SPEC = {
     {
      "name": "Cap 04",
      "type": "text",
-     "in": 4.1333,
-     "out": 5.2667,
+     "in": 4.133333,
+     "out": 5.266667,
      "text": "in a structured way",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -11354,7 +11355,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        4.1333,
+        4.133333,
         [
          920,
          1007
@@ -11362,7 +11363,7 @@ var SPEC = {
         "out"
        ],
        [
-        4.3667,
+        4.366667,
         [
          920,
          997
@@ -11374,21 +11375,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       4.1333,
-       4.2333,
+       4.133333,
+       4.233333,
        4.3,
-       4.9667
+       4.966667
       ]
      },
      "opacity": {
       "k": [
        [
-        4.1333,
+        4.133333,
         0,
         "out"
        ],
        [
-        4.3333,
+        4.333333,
         100,
         "out"
        ]
@@ -11398,7 +11399,7 @@ var SPEC = {
     {
      "name": "Cap 05 pill",
      "type": "rect",
-     "in": 5.2667,
+     "in": 5.266667,
      "out": 6.8,
      "size": [
       585.1,
@@ -11410,7 +11411,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        5.2667,
+        5.266667,
         [
          920,
          994
@@ -11418,7 +11419,7 @@ var SPEC = {
         "out"
        ],
        [
-        5.4667,
+        5.466667,
         [
          920,
          984
@@ -11430,12 +11431,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        5.2667,
+        5.266667,
         0,
         "out"
        ],
        [
-        5.4333,
+        5.433333,
         100,
         "out"
        ]
@@ -11445,7 +11446,7 @@ var SPEC = {
     {
      "name": "Cap 05",
      "type": "text",
-     "in": 5.2667,
+     "in": 5.266667,
      "out": 6.8,
      "text": "rather than guessing the thing,",
      "font": "Inter-SemiBold",
@@ -11456,7 +11457,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        5.2667,
+        5.266667,
         [
          920,
          1007
@@ -11464,7 +11465,7 @@ var SPEC = {
         "out"
        ],
        [
-        5.4667,
+        5.466667,
         [
          920,
          997
@@ -11476,22 +11477,22 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       5.2667,
-       5.5333,
-       5.7333,
-       6.1667,
-       6.3667
+       5.266667,
+       5.533333,
+       5.733333,
+       6.166667,
+       6.366667
       ]
      },
      "opacity": {
       "k": [
        [
-        5.2667,
+        5.266667,
         0,
         "out"
        ],
        [
-        5.4333,
+        5.433333,
         100,
         "out"
        ]
@@ -11521,7 +11522,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.0333,
+        7.033333,
         [
          920,
          984
@@ -11567,7 +11568,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.0333,
+        7.033333,
         [
          920,
          997
@@ -11580,10 +11581,10 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        6.8,
-       7.0667,
-       7.1333,
-       7.3333,
-       7.4667
+       7.066667,
+       7.133333,
+       7.333333,
+       7.466667
       ]
      },
      "opacity": {
@@ -11605,7 +11606,7 @@ var SPEC = {
      "name": "Cap 07 pill",
      "type": "rect",
      "in": 7.7,
-     "out": 9.6667,
+     "out": 9.666667,
      "size": [
       529.3,
       64
@@ -11624,7 +11625,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.9333,
+        7.933333,
         [
          1264.6640625,
          984
@@ -11641,7 +11642,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.8667,
+        7.866667,
         100,
         "out"
        ]
@@ -11652,7 +11653,7 @@ var SPEC = {
      "name": "Cap 07",
      "type": "text",
      "in": 7.7,
-     "out": 9.6667,
+     "out": 9.666667,
      "text": "for you called #CASHTAGS.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -11670,7 +11671,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.9333,
+        7.933333,
         [
          1264.6640625,
          997
@@ -11684,8 +11685,8 @@ var SPEC = {
       "times": [
        7.7,
        7.9,
-       7.9667,
-       8.2333
+       7.966667,
+       8.233333
       ]
      },
      "opacity": {
@@ -11696,7 +11697,7 @@ var SPEC = {
         "out"
        ],
        [
-        7.8667,
+        7.866667,
         100,
         "out"
        ]
@@ -11706,8 +11707,8 @@ var SPEC = {
     {
      "name": "Cap 08 pill",
      "type": "rect",
-     "in": 9.6667,
-     "out": 10.1667,
+     "in": 9.666667,
+     "out": 10.166667,
      "size": [
       327.5,
       64
@@ -11718,7 +11719,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        9.6667,
+        9.666667,
         [
          920,
          994
@@ -11726,7 +11727,7 @@ var SPEC = {
         "out"
        ],
        [
-        9.8667,
+        9.866667,
         [
          920,
          984
@@ -11738,12 +11739,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        9.6667,
+        9.666667,
         0,
         "out"
        ],
        [
-        9.8333,
+        9.833333,
         100,
         "out"
        ]
@@ -11753,8 +11754,8 @@ var SPEC = {
     {
      "name": "Cap 08",
      "type": "text",
-     "in": 9.6667,
-     "out": 10.1667,
+     "in": 9.666667,
+     "out": 10.166667,
      "text": "This is the book",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -11764,7 +11765,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        9.6667,
+        9.666667,
         [
          920,
          1007
@@ -11772,7 +11773,7 @@ var SPEC = {
         "out"
        ],
        [
-        9.8667,
+        9.866667,
         [
          920,
          997
@@ -11784,21 +11785,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       9.6667,
+       9.666667,
        9.8,
-       9.8667,
-       9.9667
+       9.866667,
+       9.966667
       ]
      },
      "opacity": {
       "k": [
        [
-        9.6667,
+        9.666667,
         0,
         "out"
        ],
        [
-        9.8333,
+        9.833333,
         100,
         "out"
        ]
@@ -11808,8 +11809,8 @@ var SPEC = {
     {
      "name": "Cap 09 pill",
      "type": "rect",
-     "in": 10.1667,
-     "out": 11.5667,
+     "in": 10.166667,
+     "out": 11.566667,
      "size": [
       316.0,
       64
@@ -11820,7 +11821,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        10.1667,
+        10.166667,
         [
          920,
          994
@@ -11840,12 +11841,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        10.1667,
+        10.166667,
         0,
         "out"
        ],
        [
-        10.3333,
+        10.333333,
         100,
         "out"
        ]
@@ -11855,8 +11856,8 @@ var SPEC = {
     {
      "name": "Cap 09",
      "type": "text",
-     "in": 10.1667,
-     "out": 11.5667,
+     "in": 10.166667,
+     "out": 11.566667,
      "text": "I wrote in 2019,",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -11866,7 +11867,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        10.1667,
+        10.166667,
         [
          920,
          1007
@@ -11886,21 +11887,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       10.1667,
-       10.2333,
-       10.5667,
+       10.166667,
+       10.233333,
+       10.566667,
        10.7
       ]
      },
      "opacity": {
       "k": [
        [
-        10.1667,
+        10.166667,
         0,
         "out"
        ],
        [
-        10.3333,
+        10.333333,
         100,
         "out"
        ]
@@ -11910,7 +11911,7 @@ var SPEC = {
     {
      "name": "Cap 10 pill",
      "type": "rect",
-     "in": 11.5667,
+     "in": 11.566667,
      "out": 12.6,
      "size": [
       482.6,
@@ -11922,7 +11923,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        11.5667,
+        11.566667,
         [
          920,
          994
@@ -11942,12 +11943,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        11.5667,
+        11.566667,
         0,
         "out"
        ],
        [
-        11.7667,
+        11.766667,
         100,
         "out"
        ]
@@ -11957,7 +11958,7 @@ var SPEC = {
     {
      "name": "Cap 10",
      "type": "text",
-     "in": 11.5667,
+     "in": 11.566667,
      "out": 12.6,
      "text": "and thousands of people",
      "font": "Inter-SemiBold",
@@ -11968,7 +11969,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        11.5667,
+        11.566667,
         [
          920,
          1007
@@ -11988,8 +11989,8 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       11.5667,
-       11.7333,
+       11.566667,
+       11.733333,
        12.2,
        12.3
       ]
@@ -11997,12 +11998,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        11.5667,
+        11.566667,
         0,
         "out"
        ],
        [
-        11.7667,
+        11.766667,
         100,
         "out"
        ]
@@ -12032,7 +12033,7 @@ var SPEC = {
         "out"
        ],
        [
-        12.8333,
+        12.833333,
         [
          920,
          984
@@ -12049,7 +12050,7 @@ var SPEC = {
         "out"
        ],
        [
-        12.7667,
+        12.766667,
         100,
         "out"
        ]
@@ -12078,7 +12079,7 @@ var SPEC = {
         "out"
        ],
        [
-        12.8333,
+        12.833333,
         [
          920,
          997
@@ -12091,9 +12092,9 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        12.6,
-       12.7333,
-       12.9667,
-       13.1333
+       12.733333,
+       12.966667,
+       13.133333
       ]
      },
      "opacity": {
@@ -12104,7 +12105,7 @@ var SPEC = {
         "out"
        ],
        [
-        12.7667,
+        12.766667,
         100,
         "out"
        ]
@@ -12115,7 +12116,7 @@ var SPEC = {
      "name": "Cap 12 pill",
      "type": "rect",
      "in": 13.5,
-     "out": 14.8333,
+     "out": 14.833333,
      "size": [
       482.2,
       64
@@ -12134,7 +12135,7 @@ var SPEC = {
         "out"
        ],
        [
-        13.7333,
+        13.733333,
         [
          920,
          984
@@ -12151,7 +12152,7 @@ var SPEC = {
         "out"
        ],
        [
-        13.6667,
+        13.666667,
         100,
         "out"
        ]
@@ -12162,7 +12163,7 @@ var SPEC = {
      "name": "Cap 12",
      "type": "text",
      "in": 13.5,
-     "out": 14.8333,
+     "out": 14.833333,
      "text": "and given 5-star reviews",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -12180,7 +12181,7 @@ var SPEC = {
         "out"
        ],
        [
-        13.7333,
+        13.733333,
         [
          920,
          997
@@ -12206,7 +12207,7 @@ var SPEC = {
         "out"
        ],
        [
-        13.6667,
+        13.666667,
         100,
         "out"
        ]
@@ -12216,7 +12217,7 @@ var SPEC = {
     {
      "name": "Cap 13 pill",
      "type": "rect",
-     "in": 14.8333,
+     "in": 14.833333,
      "out": 15.7,
      "size": [
       261.7,
@@ -12228,7 +12229,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        14.8333,
+        14.833333,
         [
          920,
          994
@@ -12236,7 +12237,7 @@ var SPEC = {
         "out"
        ],
        [
-        15.0333,
+        15.033333,
         [
          920,
          984
@@ -12248,7 +12249,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        14.8333,
+        14.833333,
         0,
         "out"
        ],
@@ -12263,7 +12264,7 @@ var SPEC = {
     {
      "name": "Cap 13",
      "type": "text",
-     "in": 14.8333,
+     "in": 14.833333,
      "out": 15.7,
      "text": "on Amazon,",
      "font": "Inter-SemiBold",
@@ -12274,7 +12275,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        14.8333,
+        14.833333,
         [
          920,
          1007
@@ -12282,7 +12283,7 @@ var SPEC = {
         "out"
        ],
        [
-        15.0333,
+        15.033333,
         [
          920,
          997
@@ -12294,14 +12295,14 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       14.8333,
-       14.9333
+       14.833333,
+       14.933333
       ]
      },
      "opacity": {
       "k": [
        [
-        14.8333,
+        14.833333,
         0,
         "out"
        ],
@@ -12317,7 +12318,7 @@ var SPEC = {
      "name": "Cap 14 pill",
      "type": "rect",
      "in": 15.7,
-     "out": 16.9333,
+     "out": 16.933333,
      "size": [
       607.8,
       64
@@ -12353,7 +12354,7 @@ var SPEC = {
         "out"
        ],
        [
-        15.8667,
+        15.866667,
         100,
         "out"
        ]
@@ -12364,7 +12365,7 @@ var SPEC = {
      "name": "Cap 14",
      "type": "text",
      "in": 15.7,
-     "out": 16.9333,
+     "out": 16.933333,
      "text": "and so many people have joined",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -12395,11 +12396,11 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        15.7,
-       15.8667,
-       16.0667,
+       15.866667,
+       16.066667,
        16.2,
-       16.5333,
-       16.6333
+       16.533333,
+       16.633333
       ]
      },
      "opacity": {
@@ -12410,7 +12411,7 @@ var SPEC = {
         "out"
        ],
        [
-        15.8667,
+        15.866667,
         100,
         "out"
        ]
@@ -12420,8 +12421,8 @@ var SPEC = {
     {
      "name": "Cap 15 pill",
      "type": "rect",
-     "in": 16.9333,
-     "out": 17.9333,
+     "in": 16.933333,
+     "out": 17.933333,
      "size": [
       425.3,
       64
@@ -12432,7 +12433,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        16.9333,
+        16.933333,
         [
          920,
          994
@@ -12440,7 +12441,7 @@ var SPEC = {
         "out"
        ],
        [
-        17.1667,
+        17.166667,
         [
          920,
          984
@@ -12452,12 +12453,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        16.9333,
+        16.933333,
         0,
         "out"
        ],
        [
-        17.1333,
+        17.133333,
         100,
         "out"
        ]
@@ -12467,8 +12468,8 @@ var SPEC = {
     {
      "name": "Cap 15",
      "type": "text",
-     "in": 16.9333,
-     "out": 17.9333,
+     "in": 16.933333,
+     "out": 17.933333,
      "text": "the programs and got",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -12478,7 +12479,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        16.9333,
+        16.933333,
         [
          920,
          1007
@@ -12486,7 +12487,7 @@ var SPEC = {
         "out"
        ],
        [
-        17.1667,
+        17.166667,
         [
          920,
          997
@@ -12498,21 +12499,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       16.9333,
+       16.933333,
        17.0,
        17.5,
-       17.6333
+       17.633333
       ]
      },
      "opacity": {
       "k": [
        [
-        16.9333,
+        16.933333,
         0,
         "out"
        ],
        [
-        17.1333,
+        17.133333,
         100,
         "out"
        ]
@@ -12522,8 +12523,8 @@ var SPEC = {
     {
      "name": "Cap 16 pill",
      "type": "rect",
-     "in": 17.9333,
-     "out": 19.8333,
+     "in": 17.933333,
+     "out": 19.833333,
      "size": [
       651.7,
       64
@@ -12534,7 +12535,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        17.9333,
+        17.933333,
         [
          920,
          994
@@ -12542,7 +12543,7 @@ var SPEC = {
         "out"
        ],
        [
-        18.1667,
+        18.166667,
         [
          920,
          984
@@ -12554,12 +12555,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        17.9333,
+        17.933333,
         0,
         "out"
        ],
        [
-        18.1333,
+        18.133333,
         100,
         "out"
        ]
@@ -12569,8 +12570,8 @@ var SPEC = {
     {
      "name": "Cap 16",
      "type": "text",
-     "in": 17.9333,
-     "out": 19.8333,
+     "in": 17.933333,
+     "out": 19.833333,
      "text": "6-figure, 7-figure, 8-figure awards",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -12580,7 +12581,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        17.9333,
+        17.933333,
         [
          920,
          1007
@@ -12588,7 +12589,7 @@ var SPEC = {
         "out"
        ],
        [
-        18.1667,
+        18.166667,
         [
          920,
          997
@@ -12600,21 +12601,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       17.9333,
-       18.4667,
+       17.933333,
+       18.466667,
        18.9,
-       19.4333
+       19.433333
       ]
      },
      "opacity": {
       "k": [
        [
-        17.9333,
+        17.933333,
         0,
         "out"
        ],
        [
-        18.1333,
+        18.133333,
         100,
         "out"
        ]
@@ -12624,8 +12625,8 @@ var SPEC = {
     {
      "name": "Cap 17 pill",
      "type": "rect",
-     "in": 19.8333,
-     "out": 20.9333,
+     "in": 19.833333,
+     "out": 20.933333,
      "size": [
       277.6,
       64
@@ -12636,7 +12637,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        19.8333,
+        19.833333,
         [
          920,
          994
@@ -12644,7 +12645,7 @@ var SPEC = {
         "out"
        ],
        [
-        20.0333,
+        20.033333,
         [
          920,
          984
@@ -12656,7 +12657,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        19.8333,
+        19.833333,
         0,
         "out"
        ],
@@ -12671,8 +12672,8 @@ var SPEC = {
     {
      "name": "Cap 17",
      "type": "text",
-     "in": 19.8333,
-     "out": 20.9333,
+     "in": 19.833333,
+     "out": 20.933333,
      "text": "on my stage.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -12682,7 +12683,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        19.8333,
+        19.833333,
         [
          920,
          1007
@@ -12690,7 +12691,7 @@ var SPEC = {
         "out"
        ],
        [
-        20.0333,
+        20.033333,
         [
          920,
          997
@@ -12702,15 +12703,15 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       19.8333,
-       20.0333,
+       19.833333,
+       20.033333,
        20.2
       ]
      },
      "opacity": {
       "k": [
        [
-        19.8333,
+        19.833333,
         0,
         "out"
        ],
@@ -12725,7 +12726,7 @@ var SPEC = {
     {
      "name": "Cap 18 pill",
      "type": "rect",
-     "in": 20.9333,
+     "in": 20.933333,
      "out": 22.1,
      "size": [
       500.5,
@@ -12737,7 +12738,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        20.9333,
+        20.933333,
         [
          920,
          994
@@ -12745,7 +12746,7 @@ var SPEC = {
         "out"
        ],
        [
-        21.1667,
+        21.166667,
         [
          920,
          984
@@ -12757,12 +12758,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        20.9333,
+        20.933333,
         0,
         "out"
        ],
        [
-        21.1333,
+        21.133333,
         100,
         "out"
        ]
@@ -12772,7 +12773,7 @@ var SPEC = {
     {
      "name": "Cap 18",
      "type": "text",
-     "in": 20.9333,
+     "in": 20.933333,
      "out": 22.1,
      "text": "It helps traders to go from",
      "font": "Inter-SemiBold",
@@ -12783,7 +12784,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        20.9333,
+        20.933333,
         [
          920,
          1007
@@ -12791,7 +12792,7 @@ var SPEC = {
         "out"
        ],
        [
-        21.1667,
+        21.166667,
         [
          920,
          997
@@ -12803,23 +12804,23 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       20.9333,
+       20.933333,
        21.1,
        21.3,
-       21.6333,
-       21.7333,
-       21.8667
+       21.633333,
+       21.733333,
+       21.866667
       ]
      },
      "opacity": {
       "k": [
        [
-        20.9333,
+        20.933333,
         0,
         "out"
        ],
        [
-        21.1333,
+        21.133333,
         100,
         "out"
        ]
@@ -12849,7 +12850,7 @@ var SPEC = {
         "out"
        ],
        [
-        22.3333,
+        22.333333,
         [
          920,
          984
@@ -12895,7 +12896,7 @@ var SPEC = {
         "out"
        ],
        [
-        22.3333,
+        22.333333,
         [
          920,
          997
@@ -12908,8 +12909,8 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        22.1,
-       22.6333,
-       23.0333
+       22.633333,
+       23.033333
       ]
      },
      "opacity": {
@@ -12931,7 +12932,7 @@ var SPEC = {
      "name": "Cap 20 pill",
      "type": "rect",
      "in": 23.7,
-     "out": 25.3667,
+     "out": 25.366667,
      "size": [
       587.4,
       64
@@ -12950,7 +12951,7 @@ var SPEC = {
         "out"
        ],
        [
-        23.9333,
+        23.933333,
         [
          920,
          984
@@ -12967,7 +12968,7 @@ var SPEC = {
         "out"
        ],
        [
-        23.8667,
+        23.866667,
         100,
         "out"
        ]
@@ -12978,7 +12979,7 @@ var SPEC = {
      "name": "Cap 20",
      "type": "text",
      "in": 23.7,
-     "out": 25.3667,
+     "out": 25.366667,
      "text": "to become a systematic trader.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -12996,7 +12997,7 @@ var SPEC = {
         "out"
        ],
        [
-        23.9333,
+        23.933333,
         [
          920,
          997
@@ -13009,10 +13010,10 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        23.7,
-       23.8333,
-       24.1333,
+       23.833333,
+       24.133333,
        24.2,
-       24.9667
+       24.966667
       ]
      },
      "opacity": {
@@ -13023,7 +13024,7 @@ var SPEC = {
         "out"
        ],
        [
-        23.8667,
+        23.866667,
         100,
         "out"
        ]
@@ -13033,7 +13034,7 @@ var SPEC = {
     {
      "name": "Cap 21 pill",
      "type": "rect",
-     "in": 25.3667,
+     "in": 25.366667,
      "out": 26.5,
      "size": [
       431.3,
@@ -13045,7 +13046,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        25.3667,
+        25.366667,
         [
          920,
          994
@@ -13065,12 +13066,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        25.3667,
+        25.366667,
         0,
         "out"
        ],
        [
-        25.5667,
+        25.566667,
         100,
         "out"
        ]
@@ -13080,7 +13081,7 @@ var SPEC = {
     {
      "name": "Cap 21",
      "type": "text",
-     "in": 25.3667,
+     "in": 25.366667,
      "out": 26.5,
      "text": "And now it's available",
      "font": "Inter-SemiBold",
@@ -13091,7 +13092,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        25.3667,
+        25.366667,
         [
          920,
          1007
@@ -13111,21 +13112,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       25.3667,
+       25.366667,
        25.6,
        25.9,
-       26.0333
+       26.033333
       ]
      },
      "opacity": {
       "k": [
        [
-        25.3667,
+        25.366667,
         0,
         "out"
        ],
        [
-        25.5667,
+        25.566667,
         100,
         "out"
        ]
@@ -13136,7 +13137,7 @@ var SPEC = {
      "name": "Cap 22 pill",
      "type": "rect",
      "in": 26.5,
-     "out": 28.0667,
+     "out": 28.066667,
      "size": [
       390.9,
       64
@@ -13172,7 +13173,7 @@ var SPEC = {
         "out"
        ],
        [
-        26.6667,
+        26.666667,
         100,
         "out"
        ]
@@ -13183,7 +13184,7 @@ var SPEC = {
      "name": "Cap 22",
      "type": "text",
      "in": 26.5,
-     "out": 28.0667,
+     "out": 28.066667,
      "text": "in a second edition.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -13216,7 +13217,7 @@ var SPEC = {
        26.5,
        26.6,
        26.7,
-       27.1667
+       27.166667
       ]
      },
      "opacity": {
@@ -13227,7 +13228,7 @@ var SPEC = {
         "out"
        ],
        [
-        26.6667,
+        26.666667,
         100,
         "out"
        ]
@@ -13237,8 +13238,8 @@ var SPEC = {
     {
      "name": "Cap 23 pill",
      "type": "rect",
-     "in": 28.0667,
-     "out": 29.2333,
+     "in": 28.066667,
+     "out": 29.233333,
      "size": [
       559.2,
       64
@@ -13249,7 +13250,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        28.0667,
+        28.066667,
         [
          920,
          994
@@ -13257,7 +13258,7 @@ var SPEC = {
         "out"
        ],
        [
-        28.2667,
+        28.266667,
         [
          920,
          984
@@ -13269,12 +13270,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        28.0667,
+        28.066667,
         0,
         "out"
        ],
        [
-        28.2333,
+        28.233333,
         100,
         "out"
        ]
@@ -13284,8 +13285,8 @@ var SPEC = {
     {
      "name": "Cap 23",
      "type": "text",
-     "in": 28.0667,
-     "out": 29.2333,
+     "in": 28.066667,
+     "out": 29.233333,
      "text": "In fact, now it's also available",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -13295,7 +13296,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        28.0667,
+        28.066667,
         [
          920,
          1007
@@ -13303,7 +13304,7 @@ var SPEC = {
         "out"
        ],
        [
-        28.2667,
+        28.266667,
         [
          920,
          997
@@ -13315,23 +13316,23 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       28.0667,
-       28.1667,
-       28.3667,
+       28.066667,
+       28.166667,
+       28.366667,
        28.5,
-       28.6333,
-       28.8667
+       28.633333,
+       28.866667
       ]
      },
      "opacity": {
       "k": [
        [
-        28.0667,
+        28.066667,
         0,
         "out"
        ],
        [
-        28.2333,
+        28.233333,
         100,
         "out"
        ]
@@ -13341,8 +13342,8 @@ var SPEC = {
     {
      "name": "Cap 24 pill",
      "type": "rect",
-     "in": 29.2333,
-     "out": 31.1667,
+     "in": 29.233333,
+     "out": 31.166667,
      "size": [
       531.7,
       64
@@ -13353,7 +13354,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        29.2333,
+        29.233333,
         [
          1265.8665624999999,
          994
@@ -13361,7 +13362,7 @@ var SPEC = {
         "out"
        ],
        [
-        29.4333,
+        29.433333,
         [
          1265.8665624999999,
          984
@@ -13373,7 +13374,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        29.2333,
+        29.233333,
         0,
         "out"
        ],
@@ -13388,8 +13389,8 @@ var SPEC = {
     {
      "name": "Cap 24",
      "type": "text",
-     "in": 29.2333,
-     "out": 31.1667,
+     "in": 29.233333,
+     "out": 31.166667,
      "text": "in English and Hindi as well.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -13399,7 +13400,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        29.2333,
+        29.233333,
         [
          1265.8665624999999,
          1007
@@ -13407,7 +13408,7 @@ var SPEC = {
         "out"
        ],
        [
-        29.4333,
+        29.433333,
         [
          1265.8665624999999,
          997
@@ -13419,18 +13420,18 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       29.2333,
-       29.3667,
-       29.9333,
+       29.233333,
+       29.366667,
+       29.933333,
        30.2,
-       30.5667,
-       30.7333
+       30.566667,
+       30.733333
       ]
      },
      "opacity": {
       "k": [
        [
-        29.2333,
+        29.233333,
         0,
         "out"
        ],
@@ -13445,8 +13446,8 @@ var SPEC = {
     {
      "name": "Cap 25 pill",
      "type": "rect",
-     "in": 31.1667,
-     "out": 32.5667,
+     "in": 31.166667,
+     "out": 32.566667,
      "size": [
       447.6,
       64
@@ -13457,7 +13458,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        31.1667,
+        31.166667,
         [
          920,
          994
@@ -13477,12 +13478,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        31.1667,
+        31.166667,
         0,
         "out"
        ],
        [
-        31.3333,
+        31.333333,
         100,
         "out"
        ]
@@ -13492,8 +13493,8 @@ var SPEC = {
     {
      "name": "Cap 25",
      "type": "text",
-     "in": 31.1667,
-     "out": 32.5667,
+     "in": 31.166667,
+     "out": 32.566667,
      "text": "You can read this book",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -13503,7 +13504,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        31.1667,
+        31.166667,
         [
          920,
          1007
@@ -13523,22 +13524,22 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       31.1667,
+       31.166667,
        31.3,
-       31.4667,
-       31.7667,
-       31.9667
+       31.466667,
+       31.766667,
+       31.966667
       ]
      },
      "opacity": {
       "k": [
        [
-        31.1667,
+        31.166667,
         0,
         "out"
        ],
        [
-        31.3333,
+        31.333333,
         100,
         "out"
        ]
@@ -13548,8 +13549,8 @@ var SPEC = {
     {
      "name": "Cap 26 pill",
      "type": "rect",
-     "in": 32.5667,
-     "out": 33.3667,
+     "in": 32.566667,
+     "out": 33.366667,
      "size": [
       317.5,
       64
@@ -13560,7 +13561,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        32.5667,
+        32.566667,
         [
          920,
          994
@@ -13580,12 +13581,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        32.5667,
+        32.566667,
         0,
         "out"
        ],
        [
-        32.7667,
+        32.766667,
         100,
         "out"
        ]
@@ -13595,8 +13596,8 @@ var SPEC = {
     {
      "name": "Cap 26",
      "type": "text",
-     "in": 32.5667,
-     "out": 33.3667,
+     "in": 32.566667,
+     "out": 33.366667,
      "text": "and get started",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -13606,7 +13607,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        32.5667,
+        32.566667,
         [
          920,
          1007
@@ -13626,20 +13627,20 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       32.5667,
-       32.7667,
+       32.566667,
+       32.766667,
        33.0
       ]
      },
      "opacity": {
       "k": [
        [
-        32.5667,
+        32.566667,
         0,
         "out"
        ],
        [
-        32.7667,
+        32.766667,
         100,
         "out"
        ]
@@ -13649,8 +13650,8 @@ var SPEC = {
     {
      "name": "Cap 27 pill",
      "type": "rect",
-     "in": 33.3667,
-     "out": 34.3667,
+     "in": 33.366667,
+     "out": 34.366667,
      "size": [
       467.3,
       64
@@ -13661,7 +13662,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        33.3667,
+        33.366667,
         [
          920,
          994
@@ -13669,7 +13670,7 @@ var SPEC = {
         "out"
        ],
        [
-        33.5667,
+        33.566667,
         [
          920,
          984
@@ -13681,12 +13682,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        33.3667,
+        33.366667,
         0,
         "out"
        ],
        [
-        33.5333,
+        33.533333,
         100,
         "out"
        ]
@@ -13696,8 +13697,8 @@ var SPEC = {
     {
      "name": "Cap 27",
      "type": "text",
-     "in": 33.3667,
-     "out": 34.3667,
+     "in": 33.366667,
+     "out": 34.366667,
      "text": "on your trading journey.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -13707,7 +13708,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        33.3667,
+        33.366667,
         [
          920,
          1007
@@ -13715,7 +13716,7 @@ var SPEC = {
         "out"
        ],
        [
-        33.5667,
+        33.566667,
         [
          920,
          997
@@ -13727,21 +13728,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       33.3667,
-       33.4667,
+       33.366667,
+       33.466667,
        33.6,
-       33.9333
+       33.933333
       ]
      },
      "opacity": {
       "k": [
        [
-        33.3667,
+        33.366667,
         0,
         "out"
        ],
        [
-        33.5333,
+        33.533333,
         100,
         "out"
        ]
@@ -13751,7 +13752,7 @@ var SPEC = {
     {
      "name": "Cap 28 pill",
      "type": "rect",
-     "in": 34.3667,
+     "in": 34.366667,
      "out": 35.2,
      "size": [
       436.1,
@@ -13763,7 +13764,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        34.3667,
+        34.366667,
         [
          920,
          994
@@ -13783,12 +13784,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        34.3667,
+        34.366667,
         0,
         "out"
        ],
        [
-        34.5667,
+        34.566667,
         100,
         "out"
        ]
@@ -13798,7 +13799,7 @@ var SPEC = {
     {
      "name": "Cap 28",
      "type": "text",
-     "in": 34.3667,
+     "in": 34.366667,
      "out": 35.2,
      "text": "And I want to give you",
      "font": "Inter-SemiBold",
@@ -13809,7 +13810,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        34.3667,
+        34.366667,
         [
          920,
          1007
@@ -13829,10 +13830,10 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       34.3667,
+       34.366667,
        34.6,
-       34.6667,
-       34.8667,
+       34.666667,
+       34.866667,
        34.9,
        35.1
       ]
@@ -13840,12 +13841,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        34.3667,
+        34.366667,
         0,
         "out"
        ],
        [
-        34.5667,
+        34.566667,
         100,
         "out"
        ]
@@ -13875,7 +13876,7 @@ var SPEC = {
         "out"
        ],
        [
-        35.4333,
+        35.433333,
         [
          920,
          984
@@ -13921,7 +13922,7 @@ var SPEC = {
         "out"
        ],
        [
-        35.4333,
+        35.433333,
         [
          920,
          997
@@ -13934,8 +13935,8 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        35.2,
-       35.4333,
-       35.8333,
+       35.433333,
+       35.833333,
        36.4
       ]
      },
@@ -13958,7 +13959,7 @@ var SPEC = {
      "name": "Cap 30 pill",
      "type": "rect",
      "in": 36.9,
-     "out": 38.8333,
+     "out": 38.833333,
      "size": [
       616.9,
       64
@@ -13994,7 +13995,7 @@ var SPEC = {
         "out"
        ],
        [
-        37.0667,
+        37.066667,
         100,
         "out"
        ]
@@ -14005,7 +14006,7 @@ var SPEC = {
      "name": "Cap 30",
      "type": "text",
      "in": 36.9,
-     "out": 38.8333,
+     "out": 38.833333,
      "text": "You just cover the shipping cost.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -14036,11 +14037,11 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        36.9,
-       37.0333,
-       37.3333,
+       37.033333,
+       37.333333,
        37.6,
-       37.7333,
-       38.1667
+       37.733333,
+       38.166667
       ]
      },
      "opacity": {
@@ -14051,7 +14052,7 @@ var SPEC = {
         "out"
        ],
        [
-        37.0667,
+        37.066667,
         100,
         "out"
        ]
@@ -14061,8 +14062,8 @@ var SPEC = {
     {
      "name": "Cap 31 pill",
      "type": "rect",
-     "in": 38.8333,
-     "out": 39.8333,
+     "in": 38.833333,
+     "out": 39.833333,
      "size": [
       302.1,
       64
@@ -14073,7 +14074,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        38.8333,
+        38.833333,
         [
          920,
          994
@@ -14081,7 +14082,7 @@ var SPEC = {
         "out"
        ],
        [
-        39.0667,
+        39.066667,
         [
          920,
          984
@@ -14093,12 +14094,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        38.8333,
+        38.833333,
         0,
         "out"
        ],
        [
-        39.0333,
+        39.033333,
         100,
         "out"
        ]
@@ -14108,8 +14109,8 @@ var SPEC = {
     {
      "name": "Cap 31",
      "type": "text",
-     "in": 38.8333,
-     "out": 39.8333,
+     "in": 38.833333,
+     "out": 39.833333,
      "text": "But this free is",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -14119,7 +14120,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        38.8333,
+        38.833333,
         [
          920,
          1007
@@ -14127,7 +14128,7 @@ var SPEC = {
         "out"
        ],
        [
-        39.0667,
+        39.066667,
         [
          920,
          997
@@ -14139,21 +14140,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       38.8333,
+       38.833333,
        39.1,
-       39.3667,
-       39.6333
+       39.366667,
+       39.633333
       ]
      },
      "opacity": {
       "k": [
        [
-        38.8333,
+        38.833333,
         0,
         "out"
        ],
        [
-        39.0333,
+        39.033333,
         100,
         "out"
        ]
@@ -14163,8 +14164,8 @@ var SPEC = {
     {
      "name": "Cap 32 pill",
      "type": "rect",
-     "in": 39.8333,
-     "out": 40.8667,
+     "in": 39.833333,
+     "out": 40.866667,
      "size": [
       354.0,
       64
@@ -14175,7 +14176,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        39.8333,
+        39.833333,
         [
          920,
          994
@@ -14183,7 +14184,7 @@ var SPEC = {
         "out"
        ],
        [
-        40.0667,
+        40.066667,
         [
          920,
          984
@@ -14195,7 +14196,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        39.8333,
+        39.833333,
         0,
         "out"
        ],
@@ -14210,8 +14211,8 @@ var SPEC = {
     {
      "name": "Cap 32",
      "type": "text",
-     "in": 39.8333,
-     "out": 40.8667,
+     "in": 39.833333,
+     "out": 40.866667,
      "text": "for a limited time.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -14221,7 +14222,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        39.8333,
+        39.833333,
         [
          920,
          1007
@@ -14229,7 +14230,7 @@ var SPEC = {
         "out"
        ],
        [
-        40.0667,
+        40.066667,
         [
          920,
          997
@@ -14241,16 +14242,16 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       39.8333,
+       39.833333,
        40.0,
-       40.0667,
-       40.5333
+       40.066667,
+       40.533333
       ]
      },
      "opacity": {
       "k": [
        [
-        39.8333,
+        39.833333,
         0,
         "out"
        ],
@@ -14265,7 +14266,7 @@ var SPEC = {
     {
      "name": "Cap 33 pill",
      "type": "rect",
-     "in": 40.8667,
+     "in": 40.866667,
      "out": 41.5,
      "size": [
       476.7,
@@ -14277,7 +14278,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        40.8667,
+        40.866667,
         [
          920,
          994
@@ -14297,12 +14298,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        40.8667,
+        40.866667,
         0,
         "out"
        ],
        [
-        41.0667,
+        41.066667,
         100,
         "out"
        ]
@@ -14312,7 +14313,7 @@ var SPEC = {
     {
      "name": "Cap 33",
      "type": "text",
-     "in": 40.8667,
+     "in": 40.866667,
      "out": 41.5,
      "text": "I know you have thought",
      "font": "Inter-SemiBold",
@@ -14323,7 +14324,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        40.8667,
+        40.866667,
         [
          920,
          1007
@@ -14343,22 +14344,22 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       40.8667,
+       40.866667,
        41.0,
-       41.1667,
+       41.166667,
        41.2,
-       41.3333
+       41.333333
       ]
      },
      "opacity": {
       "k": [
        [
-        40.8667,
+        40.866667,
         0,
         "out"
        ],
        [
-        41.0667,
+        41.066667,
         100,
         "out"
        ]
@@ -14388,7 +14389,7 @@ var SPEC = {
         "out"
        ],
        [
-        41.7333,
+        41.733333,
         [
          920,
          984
@@ -14434,7 +14435,7 @@ var SPEC = {
         "out"
        ],
        [
-        41.7333,
+        41.733333,
         [
          920,
          997
@@ -14447,7 +14448,7 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        41.5,
-       41.7333
+       41.733333
       ]
      },
      "opacity": {
@@ -14469,7 +14470,7 @@ var SPEC = {
      "name": "Cap 35 pill",
      "type": "rect",
      "in": 42.6,
-     "out": 44.0667,
+     "out": 44.066667,
      "size": [
       657.4,
       64
@@ -14505,7 +14506,7 @@ var SPEC = {
         "out"
        ],
        [
-        42.7667,
+        42.766667,
         100,
         "out"
        ]
@@ -14516,7 +14517,7 @@ var SPEC = {
      "name": "Cap 35",
      "type": "text",
      "in": 42.6,
-     "out": 44.0667,
+     "out": 44.066667,
      "text": "Either you have watched a podcast",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -14547,10 +14548,10 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        42.6,
-       42.8667,
-       42.9667,
-       43.0667,
-       43.3333,
+       42.866667,
+       42.966667,
+       43.066667,
+       43.333333,
        43.4
       ]
      },
@@ -14562,7 +14563,7 @@ var SPEC = {
         "out"
        ],
        [
-        42.7667,
+        42.766667,
         100,
         "out"
        ]
@@ -14572,7 +14573,7 @@ var SPEC = {
     {
      "name": "Cap 36 pill",
      "type": "rect",
-     "in": 44.0667,
+     "in": 44.066667,
      "out": 45.9,
      "size": [
       560.4,
@@ -14584,7 +14585,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        44.0667,
+        44.066667,
         [
          920,
          994
@@ -14592,7 +14593,7 @@ var SPEC = {
         "out"
        ],
        [
-        44.2667,
+        44.266667,
         [
          920,
          984
@@ -14604,12 +14605,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        44.0667,
+        44.066667,
         0,
         "out"
        ],
        [
-        44.2333,
+        44.233333,
         100,
         "out"
        ]
@@ -14619,7 +14620,7 @@ var SPEC = {
     {
      "name": "Cap 36",
      "type": "text",
-     "in": 44.0667,
+     "in": 44.066667,
      "out": 45.9,
      "text": "or a webinar or a masterclass",
      "font": "Inter-SemiBold",
@@ -14630,7 +14631,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        44.0667,
+        44.066667,
         [
          920,
          1007
@@ -14638,7 +14639,7 @@ var SPEC = {
         "out"
        ],
        [
-        44.2667,
+        44.266667,
         [
          920,
          997
@@ -14650,23 +14651,23 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       44.0667,
+       44.066667,
        44.2,
-       44.2333,
-       44.8667,
-       45.0333,
-       45.0667
+       44.233333,
+       44.866667,
+       45.033333,
+       45.066667
       ]
      },
      "opacity": {
       "k": [
        [
-        44.0667,
+        44.066667,
         0,
         "out"
        ],
        [
-        44.2333,
+        44.233333,
         100,
         "out"
        ]
@@ -14677,7 +14678,7 @@ var SPEC = {
      "name": "Cap 37 pill",
      "type": "rect",
      "in": 45.9,
-     "out": 47.3333,
+     "out": 47.333333,
      "size": [
       469.8,
       64
@@ -14713,7 +14714,7 @@ var SPEC = {
         "out"
        ],
        [
-        46.0667,
+        46.066667,
         100,
         "out"
        ]
@@ -14724,7 +14725,7 @@ var SPEC = {
      "name": "Cap 37",
      "type": "text",
      "in": 45.9,
-     "out": 47.3333,
+     "out": 47.333333,
      "text": "or some YouTube video.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -14756,8 +14757,8 @@ var SPEC = {
       "times": [
        45.9,
        46.0,
-       46.2667,
-       46.6333
+       46.266667,
+       46.633333
       ]
      },
      "opacity": {
@@ -14768,7 +14769,7 @@ var SPEC = {
         "out"
        ],
        [
-        46.0667,
+        46.066667,
         100,
         "out"
        ]
@@ -14778,8 +14779,8 @@ var SPEC = {
     {
      "name": "Cap 38 pill",
      "type": "rect",
-     "in": 47.3333,
-     "out": 48.7667,
+     "in": 47.333333,
+     "out": 48.766667,
      "size": [
       586.7,
       64
@@ -14790,7 +14791,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        47.3333,
+        47.333333,
         [
          920,
          994
@@ -14798,7 +14799,7 @@ var SPEC = {
         "out"
        ],
        [
-        47.5667,
+        47.566667,
         [
          920,
          984
@@ -14810,7 +14811,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        47.3333,
+        47.333333,
         0,
         "out"
        ],
@@ -14825,8 +14826,8 @@ var SPEC = {
     {
      "name": "Cap 38",
      "type": "text",
-     "in": 47.3333,
-     "out": 48.7667,
+     "in": 47.333333,
+     "out": 48.766667,
      "text": "You never started your journey",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -14836,7 +14837,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        47.3333,
+        47.333333,
         [
          920,
          1007
@@ -14844,7 +14845,7 @@ var SPEC = {
         "out"
        ],
        [
-        47.5667,
+        47.566667,
         [
          920,
          997
@@ -14856,17 +14857,17 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       47.3333,
-       47.4667,
+       47.333333,
+       47.466667,
        47.7,
-       48.0667,
+       48.066667,
        48.2
       ]
      },
      "opacity": {
       "k": [
        [
-        47.3333,
+        47.333333,
         0,
         "out"
        ],
@@ -14881,8 +14882,8 @@ var SPEC = {
     {
      "name": "Cap 39 pill",
      "type": "rect",
-     "in": 48.7667,
-     "out": 49.8667,
+     "in": 48.766667,
+     "out": 49.866667,
      "size": [
       395.0,
       64
@@ -14893,7 +14894,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        48.7667,
+        48.766667,
         [
          920,
          994
@@ -14901,7 +14902,7 @@ var SPEC = {
         "out"
        ],
        [
-        48.9667,
+        48.966667,
         [
          920,
          984
@@ -14913,12 +14914,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        48.7667,
+        48.766667,
         0,
         "out"
        ],
        [
-        48.9333,
+        48.933333,
         100,
         "out"
        ]
@@ -14928,8 +14929,8 @@ var SPEC = {
     {
      "name": "Cap 39",
      "type": "text",
-     "in": 48.7667,
-     "out": 49.8667,
+     "in": 48.766667,
+     "out": 49.866667,
      "text": "in a structured way.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -14939,7 +14940,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        48.7667,
+        48.766667,
         [
          920,
          1007
@@ -14947,7 +14948,7 @@ var SPEC = {
         "out"
        ],
        [
-        48.9667,
+        48.966667,
         [
          920,
          997
@@ -14959,21 +14960,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       48.7667,
+       48.766667,
        48.9,
        49.0,
-       49.2333
+       49.233333
       ]
      },
      "opacity": {
       "k": [
        [
-        48.7667,
+        48.766667,
         0,
         "out"
        ],
        [
-        48.9333,
+        48.933333,
         100,
         "out"
        ]
@@ -14983,7 +14984,7 @@ var SPEC = {
     {
      "name": "Cap 40 pill",
      "type": "rect",
-     "in": 49.8667,
+     "in": 49.866667,
      "out": 51.3,
      "size": [
       646.5,
@@ -14995,7 +14996,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        49.8667,
+        49.866667,
         [
          920,
          994
@@ -15003,7 +15004,7 @@ var SPEC = {
         "out"
        ],
        [
-        50.0667,
+        50.066667,
         [
          920,
          984
@@ -15015,12 +15016,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        49.8667,
+        49.866667,
         0,
         "out"
        ],
        [
-        50.0333,
+        50.033333,
         100,
         "out"
        ]
@@ -15030,7 +15031,7 @@ var SPEC = {
     {
      "name": "Cap 40",
      "type": "text",
-     "in": 49.8667,
+     "in": 49.866667,
      "out": 51.3,
      "text": "And there are so many influencers",
      "font": "Inter-SemiBold",
@@ -15041,7 +15042,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        49.8667,
+        49.866667,
         [
          920,
          1007
@@ -15049,7 +15050,7 @@ var SPEC = {
         "out"
        ],
        [
-        50.0667,
+        50.066667,
         [
          920,
          997
@@ -15061,10 +15062,10 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       49.8667,
-       50.0333,
-       50.1667,
-       50.2333,
+       49.866667,
+       50.033333,
+       50.166667,
+       50.233333,
        50.4,
        50.6
       ]
@@ -15072,12 +15073,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        49.8667,
+        49.866667,
         0,
         "out"
        ],
        [
-        50.0333,
+        50.033333,
         100,
         "out"
        ]
@@ -15088,7 +15089,7 @@ var SPEC = {
      "name": "Cap 41 pill",
      "type": "rect",
      "in": 51.3,
-     "out": 53.1667,
+     "out": 53.166667,
      "size": [
       541.0,
       64
@@ -15124,7 +15125,7 @@ var SPEC = {
         "out"
        ],
        [
-        51.4667,
+        51.466667,
         100,
         "out"
        ]
@@ -15135,7 +15136,7 @@ var SPEC = {
      "name": "Cap 41",
      "type": "text",
      "in": 51.3,
-     "out": 53.1667,
+     "out": 53.166667,
      "text": "and YouTubers showing you",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -15167,7 +15168,7 @@ var SPEC = {
       "times": [
        51.3,
        51.7,
-       52.6333,
+       52.633333,
        53.0
       ]
      },
@@ -15179,7 +15180,7 @@ var SPEC = {
         "out"
        ],
        [
-        51.4667,
+        51.466667,
         100,
         "out"
        ]
@@ -15189,8 +15190,8 @@ var SPEC = {
     {
      "name": "Cap 42 pill",
      "type": "rect",
-     "in": 53.1667,
-     "out": 54.8667,
+     "in": 53.166667,
+     "out": 54.866667,
      "size": [
       569.0,
       64
@@ -15201,7 +15202,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        53.1667,
+        53.166667,
         [
          920,
          994
@@ -15209,7 +15210,7 @@ var SPEC = {
         "out"
        ],
        [
-        53.3667,
+        53.366667,
         [
          920,
          984
@@ -15221,12 +15222,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        53.1667,
+        53.166667,
         0,
         "out"
        ],
        [
-        53.3333,
+        53.333333,
         100,
         "out"
        ]
@@ -15236,8 +15237,8 @@ var SPEC = {
     {
      "name": "Cap 42",
      "type": "text",
-     "in": 53.1667,
-     "out": 54.8667,
+     "in": 53.166667,
+     "out": 54.866667,
      "text": "different strategies on crypto,",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -15247,7 +15248,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        53.1667,
+        53.166667,
         [
          920,
          1007
@@ -15255,7 +15256,7 @@ var SPEC = {
         "out"
        ],
        [
-        53.3667,
+        53.366667,
         [
          920,
          997
@@ -15267,21 +15268,21 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       53.1667,
-       53.4667,
-       54.0667,
-       54.2333
+       53.166667,
+       53.466667,
+       54.066667,
+       54.233333
       ]
      },
      "opacity": {
       "k": [
        [
-        53.1667,
+        53.166667,
         0,
         "out"
        ],
        [
-        53.3333,
+        53.333333,
         100,
         "out"
        ]
@@ -15291,8 +15292,8 @@ var SPEC = {
     {
      "name": "Cap 43 pill",
      "type": "rect",
-     "in": 54.8667,
-     "out": 56.1333,
+     "in": 54.866667,
+     "out": 56.133333,
      "size": [
       269.8,
       64
@@ -15303,7 +15304,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        54.8667,
+        54.866667,
         [
          920,
          994
@@ -15311,7 +15312,7 @@ var SPEC = {
         "out"
        ],
        [
-        55.0667,
+        55.066667,
         [
          920,
          984
@@ -15323,12 +15324,12 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        54.8667,
+        54.866667,
         0,
         "out"
        ],
        [
-        55.0333,
+        55.033333,
         100,
         "out"
        ]
@@ -15338,8 +15339,8 @@ var SPEC = {
     {
      "name": "Cap 43",
      "type": "text",
-     "in": 54.8667,
-     "out": 56.1333,
+     "in": 54.866667,
+     "out": 56.133333,
      "text": "options, etc.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -15349,7 +15350,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        54.8667,
+        54.866667,
         [
          920,
          1007
@@ -15357,7 +15358,7 @@ var SPEC = {
         "out"
        ],
        [
-        55.0667,
+        55.066667,
         [
          920,
          997
@@ -15369,19 +15370,19 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       54.8667,
-       55.4333
+       54.866667,
+       55.433333
       ]
      },
      "opacity": {
       "k": [
        [
-        54.8667,
+        54.866667,
         0,
         "out"
        ],
        [
-        55.0333,
+        55.033333,
         100,
         "out"
        ]
@@ -15391,7 +15392,7 @@ var SPEC = {
     {
      "name": "Cap 44 pill",
      "type": "rect",
-     "in": 56.1333,
+     "in": 56.133333,
      "out": 57.2,
      "size": [
       579.0,
@@ -15403,7 +15404,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        56.1333,
+        56.133333,
         [
          920,
          994
@@ -15411,7 +15412,7 @@ var SPEC = {
         "out"
        ],
        [
-        56.3333,
+        56.333333,
         [
          920,
          984
@@ -15423,7 +15424,7 @@ var SPEC = {
      "opacity": {
       "k": [
        [
-        56.1333,
+        56.133333,
         0,
         "out"
        ],
@@ -15438,7 +15439,7 @@ var SPEC = {
     {
      "name": "Cap 44",
      "type": "text",
-     "in": 56.1333,
+     "in": 56.133333,
      "out": 57.2,
      "text": "You always wanted something",
      "font": "Inter-SemiBold",
@@ -15449,7 +15450,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        56.1333,
+        56.133333,
         [
          920,
          1007
@@ -15457,7 +15458,7 @@ var SPEC = {
         "out"
        ],
        [
-        56.3333,
+        56.333333,
         [
          920,
          997
@@ -15469,16 +15470,16 @@ var SPEC = {
      "karaoke": {
       "dim": "#8FA3C2",
       "times": [
-       56.1333,
-       56.2667,
-       56.5333,
-       56.8333
+       56.133333,
+       56.266667,
+       56.533333,
+       56.833333
       ]
      },
      "opacity": {
       "k": [
        [
-        56.1333,
+        56.133333,
         0,
         "out"
        ],
@@ -15513,7 +15514,7 @@ var SPEC = {
         "out"
        ],
        [
-        57.4333,
+        57.433333,
         [
          920,
          984
@@ -15559,7 +15560,7 @@ var SPEC = {
         "out"
        ],
        [
-        57.4333,
+        57.433333,
         [
          920,
          997
@@ -15572,11 +15573,11 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        57.2,
-       57.3333,
-       57.5333,
-       57.8333,
+       57.333333,
+       57.533333,
+       57.833333,
        58.0,
-       58.1333
+       58.133333
       ]
      },
      "opacity": {
@@ -15634,7 +15635,7 @@ var SPEC = {
         "out"
        ],
        [
-        58.6667,
+        58.666667,
         100,
         "out"
        ]
@@ -15676,11 +15677,11 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        58.5,
-       58.6333,
-       58.8667,
-       59.1333,
+       58.633333,
+       58.866667,
+       59.133333,
        59.2,
-       59.6667
+       59.666667
       ]
      },
      "opacity": {
@@ -15691,7 +15692,7 @@ var SPEC = {
         "out"
        ],
        [
-        58.6667,
+        58.666667,
         100,
         "out"
        ]
@@ -15721,7 +15722,7 @@ var SPEC = {
         "out"
        ],
        [
-        60.9333,
+        60.933333,
         [
          920,
          984
@@ -15767,7 +15768,7 @@ var SPEC = {
         "out"
        ],
        [
-        60.9333,
+        60.933333,
         [
          920,
          997
@@ -15780,7 +15781,7 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        60.7,
-       61.0667,
+       61.066667,
        61.2,
        61.4
       ]
@@ -15804,7 +15805,7 @@ var SPEC = {
      "name": "Cap 48 pill",
      "type": "rect",
      "in": 61.6,
-     "out": 62.3333,
+     "out": 62.333333,
      "size": [
       281.3,
       64
@@ -15823,7 +15824,7 @@ var SPEC = {
         "out"
        ],
        [
-        61.8333,
+        61.833333,
         [
          920,
          984
@@ -15851,7 +15852,7 @@ var SPEC = {
      "name": "Cap 48",
      "type": "text",
      "in": 61.6,
-     "out": 62.3333,
+     "out": 62.333333,
      "text": "will help you.",
      "font": "Inter-SemiBold",
      "size": 36,
@@ -15869,7 +15870,7 @@ var SPEC = {
         "out"
        ],
        [
-        61.8333,
+        61.833333,
         [
          920,
          997
@@ -15882,7 +15883,7 @@ var SPEC = {
       "dim": "#8FA3C2",
       "times": [
        61.6,
-       61.7667,
+       61.766667,
        62.0
       ]
      },
@@ -15909,14 +15910,14 @@ var SPEC = {
    "folder": "06 Audio",
    "width": 1920,
    "height": 1080,
-   "duration": 62.3333,
+   "duration": 62.333333,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "Music bed (original)",
      "type": "audio",
      "in": 0.0,
-     "out": 62.3333,
+     "out": 62.333333,
      "asset": "music",
      "start": 0,
      "audioLevels": {
@@ -15932,12 +15933,12 @@ var SPEC = {
         "linear"
        ],
        [
-        61.4333,
+        61.433333,
         -28,
         "soft"
        ],
        [
-        62.3333,
+        62.333333,
         -48,
         "out"
        ]
@@ -15947,26 +15948,26 @@ var SPEC = {
     {
      "name": "SFX 01 whoosh",
      "type": "audio",
-     "in": 0.4333,
+     "in": 0.433333,
      "out": 1.0,
      "asset": "whoosh",
-     "start": 0.4333,
+     "start": 0.433333,
      "audioLevels": -24
     },
     {
      "name": "SFX 02 whoosh",
      "type": "audio",
-     "in": 1.4333,
+     "in": 1.433333,
      "out": 2.0,
      "asset": "whoosh",
-     "start": 1.4333,
+     "start": 1.433333,
      "audioLevels": -24
     },
     {
      "name": "SFX 03 whoosh",
      "type": "audio",
      "in": 6.7,
-     "out": 7.2667,
+     "out": 7.266667,
      "asset": "whoosh",
      "start": 6.7,
      "audioLevels": -24
@@ -15974,35 +15975,35 @@ var SPEC = {
     {
      "name": "SFX 04 pop",
      "type": "audio",
-     "in": 8.2333,
-     "out": 8.9333,
+     "in": 8.233333,
+     "out": 8.933333,
      "asset": "pop",
-     "start": 8.2333,
+     "start": 8.233333,
      "audioLevels": -24
     },
     {
      "name": "SFX 05 whoosh",
      "type": "audio",
-     "in": 9.5333,
+     "in": 9.533333,
      "out": 10.1,
      "asset": "whoosh",
-     "start": 9.5333,
+     "start": 9.533333,
      "audioLevels": -24
     },
     {
      "name": "SFX 06 whoosh",
      "type": "audio",
-     "in": 11.4667,
-     "out": 12.0333,
+     "in": 11.466667,
+     "out": 12.033333,
      "asset": "whoosh",
-     "start": 11.4667,
+     "start": 11.466667,
      "audioLevels": -24
     },
     {
      "name": "SFX 07 click",
      "type": "audio",
      "in": 14.0,
-     "out": 14.3667,
+     "out": 14.366667,
      "asset": "click",
      "start": 14.0,
      "audioLevels": -21
@@ -16010,35 +16011,35 @@ var SPEC = {
     {
      "name": "SFX 08 whoosh",
      "type": "audio",
-     "in": 15.5667,
-     "out": 16.1333,
+     "in": 15.566667,
+     "out": 16.133333,
      "asset": "whoosh",
-     "start": 15.5667,
+     "start": 15.566667,
      "audioLevels": -24
     },
     {
      "name": "SFX 09 click",
      "type": "audio",
-     "in": 17.9333,
+     "in": 17.933333,
      "out": 18.3,
      "asset": "click",
-     "start": 17.9333,
+     "start": 17.933333,
      "audioLevels": -21
     },
     {
      "name": "SFX 10 click",
      "type": "audio",
-     "in": 18.4667,
-     "out": 18.8333,
+     "in": 18.466667,
+     "out": 18.833333,
      "asset": "click",
-     "start": 18.4667,
+     "start": 18.466667,
      "audioLevels": -21
     },
     {
      "name": "SFX 11 click",
      "type": "audio",
      "in": 18.9,
-     "out": 19.2667,
+     "out": 19.266667,
      "asset": "click",
      "start": 18.9,
      "audioLevels": -21
@@ -16046,35 +16047,35 @@ var SPEC = {
     {
      "name": "SFX 12 whoosh",
      "type": "audio",
-     "in": 20.8333,
+     "in": 20.833333,
      "out": 21.4,
      "asset": "whoosh",
-     "start": 20.8333,
+     "start": 20.833333,
      "audioLevels": -24
     },
     {
      "name": "SFX 13 whoosh",
      "type": "audio",
-     "in": 25.6333,
+     "in": 25.633333,
      "out": 26.2,
      "asset": "whoosh",
-     "start": 25.6333,
+     "start": 25.633333,
      "audioLevels": -24
     },
     {
      "name": "SFX 14 click",
      "type": "audio",
-     "in": 29.3667,
-     "out": 29.7333,
+     "in": 29.366667,
+     "out": 29.733333,
      "asset": "click",
-     "start": 29.3667,
+     "start": 29.366667,
      "audioLevels": -21
     },
     {
      "name": "SFX 15 click",
      "type": "audio",
      "in": 30.2,
-     "out": 30.5667,
+     "out": 30.566667,
      "asset": "click",
      "start": 30.2,
      "audioLevels": -21
@@ -16082,35 +16083,35 @@ var SPEC = {
     {
      "name": "SFX 16 whoosh",
      "type": "audio",
-     "in": 31.0333,
+     "in": 31.033333,
      "out": 31.6,
      "asset": "whoosh",
-     "start": 31.0333,
+     "start": 31.033333,
      "audioLevels": -24
     },
     {
      "name": "SFX 17 click",
      "type": "audio",
-     "in": 31.4667,
-     "out": 31.8333,
+     "in": 31.466667,
+     "out": 31.833333,
      "asset": "click",
-     "start": 31.4667,
+     "start": 31.466667,
      "audioLevels": -21
     },
     {
      "name": "SFX 18 click",
      "type": "audio",
-     "in": 32.7667,
-     "out": 33.1333,
+     "in": 32.766667,
+     "out": 33.133333,
      "asset": "click",
-     "start": 32.7667,
+     "start": 32.766667,
      "audioLevels": -21
     },
     {
      "name": "SFX 19 click",
      "type": "audio",
      "in": 33.6,
-     "out": 33.9667,
+     "out": 33.966667,
      "asset": "click",
      "start": 33.6,
      "audioLevels": -21
@@ -16118,17 +16119,17 @@ var SPEC = {
     {
      "name": "SFX 20 whoosh",
      "type": "audio",
-     "in": 34.2667,
-     "out": 34.8333,
+     "in": 34.266667,
+     "out": 34.833333,
      "asset": "whoosh",
-     "start": 34.2667,
+     "start": 34.266667,
      "audioLevels": -24
     },
     {
      "name": "SFX 21 click",
      "type": "audio",
      "in": 36.4,
-     "out": 36.7667,
+     "out": 36.766667,
      "asset": "click",
      "start": 36.4,
      "audioLevels": -21
@@ -16136,17 +16137,17 @@ var SPEC = {
     {
      "name": "SFX 22 whoosh",
      "type": "audio",
-     "in": 42.4667,
-     "out": 43.0333,
+     "in": 42.466667,
+     "out": 43.033333,
      "asset": "whoosh",
-     "start": 42.4667,
+     "start": 42.466667,
      "audioLevels": -24
     },
     {
      "name": "SFX 23 click",
      "type": "audio",
      "in": 43.4,
-     "out": 43.7667,
+     "out": 43.766667,
      "asset": "click",
      "start": 43.4,
      "audioLevels": -21
@@ -16154,62 +16155,62 @@ var SPEC = {
     {
      "name": "SFX 24 click",
      "type": "audio",
-     "in": 44.2333,
+     "in": 44.233333,
      "out": 44.6,
      "asset": "click",
-     "start": 44.2333,
+     "start": 44.233333,
      "audioLevels": -21
     },
     {
      "name": "SFX 25 click",
      "type": "audio",
-     "in": 45.0667,
-     "out": 45.4333,
+     "in": 45.066667,
+     "out": 45.433333,
      "asset": "click",
-     "start": 45.0667,
+     "start": 45.066667,
      "audioLevels": -21
     },
     {
      "name": "SFX 26 click",
      "type": "audio",
-     "in": 46.2667,
-     "out": 46.6333,
+     "in": 46.266667,
+     "out": 46.633333,
      "asset": "click",
-     "start": 46.2667,
+     "start": 46.266667,
      "audioLevels": -21
     },
     {
      "name": "SFX 27 whoosh",
      "type": "audio",
-     "in": 50.4667,
-     "out": 51.0333,
+     "in": 50.466667,
+     "out": 51.033333,
      "asset": "whoosh",
-     "start": 50.4667,
+     "start": 50.466667,
      "audioLevels": -24
     },
     {
      "name": "SFX 28 click",
      "type": "audio",
-     "in": 54.2333,
+     "in": 54.233333,
      "out": 54.6,
      "asset": "click",
-     "start": 54.2333,
+     "start": 54.233333,
      "audioLevels": -21
     },
     {
      "name": "SFX 29 click",
      "type": "audio",
-     "in": 54.8667,
-     "out": 55.2333,
+     "in": 54.866667,
+     "out": 55.233333,
      "asset": "click",
-     "start": 54.8667,
+     "start": 54.866667,
      "audioLevels": -21
     },
     {
      "name": "SFX 30 click",
      "type": "audio",
      "in": 59.2,
-     "out": 59.5667,
+     "out": 59.566667,
      "asset": "click",
      "start": 59.2,
      "audioLevels": -21
@@ -16218,7 +16219,7 @@ var SPEC = {
      "name": "SFX 31 whoosh",
      "type": "audio",
      "in": 60.6,
-     "out": 61.1667,
+     "out": 61.166667,
      "asset": "whoosh",
      "start": 60.6,
      "audioLevels": -24
@@ -16231,14 +16232,14 @@ var SPEC = {
    "folder": "01 Main",
    "width": 1920,
    "height": 1080,
-   "duration": 62.3333,
+   "duration": 62.333333,
    "bg": "#0A1F44",
    "layers": [
     {
      "name": "Music + SFX",
      "type": "comp",
      "in": 0.0,
-     "out": 62.3333,
+     "out": 62.333333,
      "comp": "audio",
      "start": 0
     },
@@ -16246,7 +16247,7 @@ var SPEC = {
      "name": "Stage background",
      "type": "rect",
      "in": 0.0,
-     "out": 62.3333,
+     "out": 62.333333,
      "size": [
       1920,
       1080
@@ -16262,7 +16263,7 @@ var SPEC = {
      "name": "A-Roll (edited)",
      "type": "comp",
      "in": 0.0,
-     "out": 62.3333,
+     "out": 62.333333,
      "comp": "aroll",
      "start": 0,
      "anchor": [
@@ -16272,7 +16273,7 @@ var SPEC = {
      "position": {
       "k": [
        [
-        20.9333,
+        20.933333,
         [
          910,
          380
@@ -16280,7 +16281,7 @@ var SPEC = {
         "inout"
        ],
        [
-        21.7333,
+        21.733333,
         [
          1410.2,
          359.3
@@ -16316,7 +16317,7 @@ var SPEC = {
         "linear"
        ],
        [
-        7.9333,
+        7.933333,
         [
          102,
          102
@@ -16324,7 +16325,7 @@ var SPEC = {
         "hold"
        ],
        [
-        7.9667,
+        7.966667,
         [
          107,
          107
@@ -16332,7 +16333,7 @@ var SPEC = {
         "linear"
        ],
        [
-        9.6333,
+        9.633333,
         [
          108,
          108
@@ -16340,7 +16341,7 @@ var SPEC = {
         "hold"
        ],
        [
-        9.6667,
+        9.666667,
         [
          100,
          100
@@ -16348,7 +16349,7 @@ var SPEC = {
         "linear"
        ],
        [
-        15.6667,
+        15.666667,
         [
          102,
          102
@@ -16364,7 +16365,7 @@ var SPEC = {
         "linear"
        ],
        [
-        20.9333,
+        20.933333,
         [
          106.5,
          106.5
@@ -16372,7 +16373,7 @@ var SPEC = {
         "inout"
        ],
        [
-        21.7333,
+        21.733333,
         [
          82,
          82
@@ -16396,7 +16397,7 @@ var SPEC = {
         "linear"
        ],
        [
-        30.9333,
+        30.933333,
         [
          102,
          102
@@ -16404,7 +16405,7 @@ var SPEC = {
         "hold"
        ],
        [
-        30.9667,
+        30.966667,
         [
          104,
          104
@@ -16420,7 +16421,7 @@ var SPEC = {
         "hold"
        ],
        [
-        35.8333,
+        35.833333,
         [
          109,
          109
@@ -16428,7 +16429,7 @@ var SPEC = {
         "linear"
        ],
        [
-        36.8667,
+        36.866667,
         [
          110,
          110
@@ -16452,7 +16453,7 @@ var SPEC = {
         "hold"
        ],
        [
-        40.8333,
+        40.833333,
         [
          104,
          104
@@ -16460,7 +16461,7 @@ var SPEC = {
         "linear"
        ],
        [
-        49.8333,
+        49.833333,
         [
          105.5,
          105.5
@@ -16468,7 +16469,7 @@ var SPEC = {
         "hold"
        ],
        [
-        49.8667,
+        49.866667,
         [
          100,
          100
@@ -16484,7 +16485,7 @@ var SPEC = {
         "hold"
        ],
        [
-        56.1333,
+        56.133333,
         [
          104,
          104
@@ -16492,7 +16493,7 @@ var SPEC = {
         "linear"
        ],
        [
-        60.6667,
+        60.666667,
         [
          106,
          106
@@ -16508,7 +16509,7 @@ var SPEC = {
         "linear"
        ],
        [
-        62.3333,
+        62.333333,
         [
          101.5,
          101.5
@@ -16521,7 +16522,7 @@ var SPEC = {
       "rect": {
        "k": [
         [
-         20.9333,
+         20.933333,
          [
           -80,
           -80,
@@ -16531,7 +16532,7 @@ var SPEC = {
          "inout"
         ],
         [
-         21.7333,
+         21.733333,
          [
           361,
           15,
@@ -16583,10 +16584,10 @@ var SPEC = {
     {
      "name": "M02 Structured vs guessing",
      "type": "comp",
-     "in": 1.4667,
+     "in": 1.466667,
      "out": 7.1,
      "comp": "m02",
-     "start": 1.4667
+     "start": 1.466667
     },
     {
      "name": "M03 Book reveal",
@@ -16599,16 +16600,16 @@ var SPEC = {
     {
      "name": "M04 Written in 2019",
      "type": "comp",
-     "in": 9.5333,
+     "in": 9.533333,
      "out": 11.7,
      "comp": "m04",
-     "start": 9.5333
+     "start": 9.533333
     },
     {
      "name": "M05 Readers and 5-star reviews",
      "type": "comp",
      "in": 11.5,
-     "out": 15.8667,
+     "out": 15.866667,
      "comp": "m05",
      "start": 11.5
     },
@@ -16632,7 +16633,7 @@ var SPEC = {
      "name": "M08 Second edition, English and Hindi",
      "type": "comp",
      "in": 25.4,
-     "out": 31.1333,
+     "out": 31.133333,
      "comp": "m08",
      "start": 25.4
     },
@@ -16656,7 +16657,7 @@ var SPEC = {
      "name": "M11 Podcast, webinar, masterclass, YouTube",
      "type": "comp",
      "in": 42.5,
-     "out": 50.0667,
+     "out": 50.066667,
      "comp": "m11",
      "start": 42.5
     },
@@ -16664,7 +16665,7 @@ var SPEC = {
      "name": "M12-13 Noise feed, cut to a simple system",
      "type": "comp",
      "in": 50.4,
-     "out": 60.8667,
+     "out": 60.866667,
      "comp": "m12",
      "start": 50.4
     },
@@ -16672,7 +16673,7 @@ var SPEC = {
      "name": "M14 End card",
      "type": "comp",
      "in": 60.6,
-     "out": 62.3333,
+     "out": 62.333333,
      "comp": "m14",
      "start": 60.6
     },
@@ -16680,7 +16681,7 @@ var SPEC = {
      "name": "Captions (English)",
      "type": "comp",
      "in": 0.0,
-     "out": 62.3333,
+     "out": 62.333333,
      "comp": "captions",
      "start": 0
     }
@@ -16697,7 +16698,7 @@ var SPEC = {
    "M01 Name lower third | Hi, my name is Vishal."
   ],
   [
-   1.4667,
+   1.466667,
    "M02 Structured vs guessing | money from the stock market in a structured way rather than guessing"
   ],
   [
@@ -16705,7 +16706,7 @@ var SPEC = {
    "M03 Book reveal | then I have this book for you called #CASHTAGS."
   ],
   [
-   9.5333,
+   9.533333,
    "M04 Written in 2019 | This is the book I wrote in 2019,"
   ],
   [
@@ -16908,6 +16909,16 @@ var SPEC = {
         return folder.fsName + "/" + rel;
     }
 
+    // Spec times are frame-aligned but written with a few decimals (14.3667 for frame 431 at 30 fps).
+    // In AE an in point or HOLD key at 14.3667 lands after frame 431 (14.36667 s) and shows one
+    // frame late, so times within 0.03 frame of the grid are snapped onto it. Values further off
+    // (a real sub-frame media offset in "start") are kept as they are.
+    function snapT(t) {
+        var f = t * fps;
+        var r = Math.round(f);
+        return (Math.abs(f - r) < 0.03) ? r / fps : t;
+    }
+
     // ------------------------------------------------------------------ value converters
     // Each converts a spec value to the value After Effects expects, or throws.
 
@@ -17075,11 +17086,11 @@ var SPEC = {
                 warn(where + ": key " + i + " is not [time, value, ease]; skipped");
                 continue;
             }
-            if (keys.length > 0 && e[0] <= keys[keys.length - 1].t + EPS) {
+            if (keys.length > 0 && snapT(e[0]) <= keys[keys.length - 1].t + EPS) {
                 warn(where + ": key " + i + " at " + e[0] + " s is not after the previous key; skipped");
                 continue;
             }
-            keys.push({t: e[0], v: conv(e[1]), ease: (e.length > 2 ? e[2] : null), src: i});
+            keys.push({t: snapT(e[0]), v: conv(e[1]), ease: (e.length > 2 ? e[2] : null), src: i});
         }
         if (keys.length === 0) { throw new Error(where + ": no usable keys"); }
         if (keys.length === 1) {
@@ -17262,12 +17273,11 @@ var SPEC = {
     // ------------------------------------------------------------------ layer timing
 
     function setTiming(layer, L, type, comp, srcDur, where) {
-        var tin = L["in"];
-        var tout = L["out"];
+        var tin = snapT(L["in"]);
+        var tout = snapT(L["out"]);
         var half = 0.5 / fps;
         if (type === "footage" || type === "audio" || type === "comp") {
-            var st = has(L, "start") ? L.start : (type === "comp" ? tin : 0);
-            cNum(st);
+            var st = has(L, "start") ? snapT(cNum(L.start)) : (type === "comp" ? tin : 0);
             // startTime first: it moves the layer, so in/out must be set after it.
             layer.startTime = st;
             if (tin < st - EPS) {
@@ -17276,8 +17286,9 @@ var SPEC = {
             }
             var end = st + srcDur;
             if (tout > end + EPS) {
+                // Up to half a frame over is frame rounding: end with the source (same frames).
                 if (tout > end + half) {
-                    warn(where + ": out (" + tout + ") is after the source ends (" + end + "); clamped");
+                    warn(where + ": out (" + L["out"] + ") is after the source ends (" + end + "); clamped");
                 }
                 tout = end;
             }
@@ -17510,7 +17521,7 @@ var SPEC = {
         }
         var keys = [[0, 0, "hold"]];
         for (var i = 0; i < times.length; i++) {
-            var t = cNum(times[i]);
+            var t = snapT(cNum(times[i]));
             var last = keys[keys.length - 1];
             if (t < last[0] - EPS) {
                 warn(where + ": karaoke time " + i + " (" + t + ") is earlier than the previous one; using the previous time");
@@ -17684,7 +17695,7 @@ var SPEC = {
         if (has(compItems, C.id)) { throw new Error(where + ": duplicate comp id"); }
         var w = Math.round(cPositive(req(C, "width", where)));
         var h = Math.round(cPositive(req(C, "height", where)));
-        var d = cPositive(req(C, "duration", where));
+        var d = snapT(cPositive(req(C, "duration", where)));
         var name = (isStr(C.name) && C.name !== "") ? C.name : C.id;
         var comp = proj.items.addComp(name, w, h, 1, d, fps);
         compItems[C.id] = comp;
@@ -17731,7 +17742,7 @@ var SPEC = {
             if (!isArray(m) || m.length < 2 || !isNum(m[0])) { warn("marker " + i + " is not [time, comment]"); continue; }
             if (m[0] < -EPS || m[0] > main.duration + EPS) { warn("marker " + i + " at " + m[0] + " s is outside the main comp"); }
             try {
-                main.markerProperty.setValueAtTime(m[0], new MarkerValue(String(m[1])));
+                main.markerProperty.setValueAtTime(snapT(m[0]), new MarkerValue(String(m[1])));
                 stats.markers++;
             } catch (e) {
                 warn("marker " + i + " failed: " + errText(e));
@@ -17813,14 +17824,19 @@ var SPEC = {
 
     function writeLog() {
         var path = joinPath(root, "build_log.txt");
-        try {
-            if (app.preferences && app.preferences.getPrefAsLong) {
-                var allowed = app.preferences.getPrefAsLong("Main Pref Section", "Pref_SCRIPTING_FILE_NETWORK_SECURITY");
-                if (allowed !== 1) {
-                    return "not written (turn on Preferences > Scripting & Expressions > Allow Scripts to Write Files and Access Network)";
+        // "Allow Scripts to Write Files and Access Network": the section is "Main Pref Section v2" in
+        // current versions and "Main Pref Section" in older ones. Only a pref that exists is trusted.
+        var sections = ["Main Pref Section v2", "Main Pref Section"];
+        for (var s = 0; s < sections.length; s++) {
+            try {
+                if (app.preferences.havePref(sections[s], "Pref_SCRIPTING_FILE_NETWORK_SECURITY")) {
+                    if (app.preferences.getPrefAsLong(sections[s], "Pref_SCRIPTING_FILE_NETWORK_SECURITY") !== 1) {
+                        return "not written (turn on Preferences > Scripting & Expressions > Allow Scripts to Write Files and Access Network)";
+                    }
+                    break;
                 }
-            }
-        } catch (e0) {}
+            } catch (e0) {}
+        }
         try {
             var f = new File(path);
             f.encoding = "UTF-8";

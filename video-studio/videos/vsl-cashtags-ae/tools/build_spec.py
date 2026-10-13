@@ -25,7 +25,7 @@ DUR = 1870 / FPS  # 62.333 s
 
 
 def fr(t):
-    return round(round(t * FPS) / FPS, 4)
+    return round(round(t * FPS) / FPS, 6)
 
 
 _tr = json.load(open(os.path.join(ROOT, "transcript.json")))
