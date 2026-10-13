@@ -15920,30 +15920,7 @@ var SPEC = {
      "out": 62.333333,
      "asset": "music",
      "start": 0,
-     "audioLevels": {
-      "k": [
-       [
-        0.0,
-        -40,
-        "out"
-       ],
-       [
-        0.8,
-        -28,
-        "linear"
-       ],
-       [
-        61.433333,
-        -28,
-        "soft"
-       ],
-       [
-        62.333333,
-        -48,
-        "out"
-       ]
-      ]
-     }
+     "audioLevels": -28
     },
     {
      "name": "SFX 01 whoosh",

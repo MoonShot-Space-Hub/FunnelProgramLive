@@ -789,7 +789,7 @@ def sfx(asset, t, db):
 
 def audio_comp():
     lays = [L("audio", "Music bed (original)", 0, DUR, asset="music", start=0,
-              audioLevels=K([(0, -40), (0.8, -28, "linear"), (DUR - 0.9, -28, "soft"), (DUR, -48)]))]
+              audioLevels=-28)]   # ~17 LU under the voice; static so the preview and AE mix match exactly
     dur_of = {"whoosh": 0.57, "click": 0.37, "pop": 0.72}
     for k, (asset, t, db) in enumerate(sorted(SFX, key=lambda s: s[1])):
         t_in = fr(t)

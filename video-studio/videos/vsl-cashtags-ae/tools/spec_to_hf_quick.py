@@ -20,6 +20,13 @@ def first(v):
     return v["k"][0][1] if isinstance(v, dict) else v
 
 
+def static_db(v, where):
+    if isinstance(v, dict):
+        raise SystemExit(f"{where}: animated audioLevels are not supported by this preview back end "
+                         "(it would flatten them); use a static level or tools/spec_to_hf.py")
+    return v
+
+
 def num(x):
     return float(f"{x:.4f}")
 
@@ -87,7 +94,7 @@ class Gen:
         if t == "audio":
             a = self.assets[L["asset"]]
             st = L.get("start", 0)
-            db = first(L.get("audioLevels", 0))
+            db = static_db(L.get("audioLevels", 0), L["name"])
             self.media.append(
                 f'<audio id="{self.nid()}" src="{a["preview"]}" data-start="{num(L["in"] + off)}" '
                 f'data-duration="{num(L["out"] - L["in"])}" data-media-start="{num(L["in"] - st)}" '
@@ -168,7 +175,7 @@ class Gen:
             a = self.assets[L["asset"]]
             st = L.get("start", 0)
             aud = L.get("audio", True)
-            db = first(L.get("audioLevels", 0))
+            db = static_db(L.get("audioLevels", 0), L["name"])
             attrs = (f'data-has-audio="true" data-volume="{10 ** (db / 20):.4f}"' if aud else "muted")
             return (f'<video id="{lid}v" class="clip" src="{a["preview"]}" playsinline {attrs} '
                     f'data-start="{num(L["in"] + off)}" data-duration="{num(L["out"] - L["in"])}" '

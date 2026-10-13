@@ -47,7 +47,8 @@ README = """#CASHTAGS VSL - After Effects project
 What is in this folder
 ----------------------
 CASHTAGS_VSL_Build.jsx   Builds the whole After Effects project and saves CASHTAGS_VSL.aep here.
-Footage/VSL.mp4          Your original footage, unchanged.
+Footage/VSL.mp4          Your original footage, unchanged. If your copy of this folder came without it,
+                         put your VSL.mp4 in a Footage folder here, or pick it when the script asks.
 Images/book-3d.png       Your 3D #CASHTAGS cover.
 Audio/                   Original music bed composed for this edit, plus three soft UI sound
                          effects (Pixabay licence, see SFX-CREDITS.md).
@@ -61,8 +62,8 @@ How to build the project (once)
 1. Install the six Inter fonts in Fonts/ (double-click each one, then Install).
    Restart After Effects if it was open.
 2. In After Effects, open Preferences > Scripting & Expressions and tick
-   "Allow Scripts to Write Files and Access Network". In versions before 2021 this
-   option is under Preferences > General.
+   "Allow Scripts to Write Files and Access Network". (In After Effects CC 2019 / 16.0
+   and earlier it is under Preferences > General.)
 3. File > Scripts > Run Script File... and choose CASHTAGS_VSL_Build.jsx.
    If After Effects asks whether to save your current project, answer as you like.
 4. The script imports the assets, builds every composition, layer and keyframe, adds the
