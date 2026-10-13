@@ -1,0 +1,1275 @@
+{
+ "version": 1,
+ "name": "HF_FIXTURE",
+ "fps": 30,
+ "main": "main",
+ "folders": [
+  "01 Main",
+  "02 Moments",
+  "03 Cards",
+  "04 Footage",
+  "05 Images",
+  "06 Audio"
+ ],
+ "assets": [
+  {
+   "id": "vsl",
+   "type": "footage",
+   "file": "Footage/VSL.mp4",
+   "preview": "assets/footage/VSL.mp4",
+   "width": 1920,
+   "height": 1080,
+   "duration": 76.81,
+   "folder": "04 Footage"
+  },
+  {
+   "id": "book",
+   "type": "image",
+   "file": "Images/book-3d.png",
+   "preview": "assets/images/book-3d.png",
+   "width": 824,
+   "height": 1120,
+   "folder": "05 Images"
+  },
+  {
+   "id": "music",
+   "type": "audio",
+   "file": "Audio/music-bed.mp3",
+   "preview": "assets/audio/music-bed.mp3",
+   "duration": 62.83,
+   "folder": "06 Audio"
+  },
+  {
+   "id": "whoosh",
+   "type": "audio",
+   "file": "Audio/whoosh-short.mp3",
+   "preview": "assets/audio/whoosh-short.mp3",
+   "duration": 0.57,
+   "folder": "06 Audio"
+  },
+  {
+   "id": "click",
+   "type": "audio",
+   "file": "Audio/click-soft.mp3",
+   "preview": "assets/audio/click-soft.mp3",
+   "duration": 0.37,
+   "folder": "06 Audio"
+  },
+  {
+   "id": "pop",
+   "type": "audio",
+   "file": "Audio/pop.mp3",
+   "preview": "assets/audio/pop.mp3",
+   "duration": 0.72,
+   "folder": "06 Audio"
+  }
+ ],
+ "comps": [
+  {
+   "id": "c_aroll",
+   "name": "FX A-roll",
+   "folder": "04 Footage",
+   "width": 1920,
+   "height": 1080,
+   "duration": 10,
+   "bg": "#000000",
+   "layers": [
+    {
+     "name": "VSL",
+     "type": "footage",
+     "asset": "vsl",
+     "in": 0,
+     "out": 10,
+     "start": -12,
+     "audio": true,
+     "audioLevels": {
+      "k": [
+       [
+        0,
+        -8,
+        "soft"
+       ],
+       [
+        1.5,
+        -2
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Tail bar",
+     "type": "rect",
+     "in": 0,
+     "out": 10,
+     "anchor": [
+      -160,
+      0
+     ],
+     "size": [
+      320,
+      56
+     ],
+     "radius": 28,
+     "fill": "#0866FF",
+     "position": {
+      "k": [
+       [
+        0,
+        [
+         1100,
+         980
+        ],
+        "inout"
+       ],
+       [
+        2,
+        [
+         1100,
+         860
+        ],
+        "soft"
+       ],
+       [
+        3,
+        [
+         1060,
+         860
+        ]
+       ]
+      ]
+     },
+     "opacity": {
+      "k": [
+       [
+        0.5,
+        0,
+        "hold"
+       ],
+       [
+        1.5,
+        100
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Tail label",
+     "type": "text",
+     "in": 0,
+     "out": 10,
+     "text": "Keys before t=0",
+     "font": "Inter-Bold",
+     "size": 26,
+     "color": "#FFFFFF",
+     "justify": "left",
+     "position": {
+      "k": [
+       [
+        0,
+        [
+         1124,
+         989
+        ],
+        "linear"
+       ],
+       [
+        2,
+        [
+         1124,
+         869
+        ],
+        "soft"
+       ],
+       [
+        3,
+        [
+         1084,
+         869
+        ]
+       ]
+      ]
+     },
+     "rotation": {
+      "k": [
+       [
+        0,
+        -10,
+        "in"
+       ],
+       [
+        2,
+        0
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "c_card",
+   "name": "FX Card",
+   "folder": "03 Cards",
+   "width": 760,
+   "height": 460,
+   "duration": 4,
+   "bg": "#FFFFFF",
+   "layers": [
+    {
+     "name": "Card BG",
+     "type": "rect",
+     "in": 0,
+     "out": 4,
+     "position": [
+      380,
+      230
+     ],
+     "size": [
+      720,
+      420
+     ],
+     "radius": 32,
+     "fill": "#FFFFFF",
+     "stroke": "#E4E6EB",
+     "strokeWidth": 2,
+     "shadow": {
+      "color": "#0A1F44",
+      "opacity": 25,
+      "direction": 180,
+      "distance": 12,
+      "softness": 40
+     },
+     "opacity": {
+      "k": [
+       [
+        0,
+        0,
+        "out"
+       ],
+       [
+        0.4,
+        100
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Axis",
+     "type": "rect",
+     "in": 0,
+     "out": 4,
+     "position": [
+      250,
+      421
+     ],
+     "size": [
+      400,
+      2
+     ],
+     "radius": 0,
+     "fill": "#E4E6EB"
+    },
+    {
+     "name": "Title",
+     "type": "text",
+     "in": 0,
+     "out": 4,
+     "position": [
+      56,
+      92
+     ],
+     "text": "Left justified\nsecond line",
+     "font": "Inter-Bold",
+     "size": 34,
+     "leading": 42,
+     "tracking": -10,
+     "justify": "left",
+     "color": "#0A1F44"
+    },
+    {
+     "name": "Title baseline guide",
+     "type": "rect",
+     "in": 0,
+     "out": 4,
+     "position": [
+      206,
+      92
+     ],
+     "size": [
+      300,
+      1
+     ],
+     "radius": 0,
+     "fill": "#FF3B30",
+     "opacity": 85
+    },
+    {
+     "name": "Chart line",
+     "type": "path",
+     "in": 0,
+     "out": 4,
+     "stroke": "#0866FF",
+     "strokeWidth": 6,
+     "lineCap": "round",
+     "lineJoin": "round",
+     "paths": [
+      {
+       "v": [
+        [
+         56,
+         380
+        ],
+        [
+         190,
+         300
+        ],
+        [
+         330,
+         340
+        ],
+        [
+         450,
+         210
+        ]
+       ],
+       "i": [
+        [
+         0,
+         0
+        ],
+        [
+         -50,
+         0
+        ],
+        [
+         -50,
+         0
+        ],
+        [
+         -40,
+         40
+        ]
+       ],
+       "o": [
+        [
+         50,
+         -20
+        ],
+        [
+         50,
+         0
+        ],
+        [
+         50,
+         0
+        ],
+        [
+         0,
+         0
+        ]
+       ],
+       "closed": false
+      }
+     ],
+     "trim": {
+      "start": 0,
+      "end": {
+       "k": [
+        [
+         0.5,
+         0,
+         "linear"
+        ],
+        [
+         2.0,
+         100
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "name": "Bar A",
+     "type": "rect",
+     "in": 0,
+     "out": 4,
+     "anchor": [
+      0,
+      40
+     ],
+     "position": [
+      520,
+      420
+     ],
+     "size": [
+      36,
+      80
+     ],
+     "radius": 8,
+     "fill": "#0866FF",
+     "scale": {
+      "k": [
+       [
+        0.2,
+        [
+         100,
+         0
+        ],
+        "in"
+       ],
+       [
+        1.0,
+        [
+         100,
+         100
+        ]
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Bar B",
+     "type": "rect",
+     "in": 0,
+     "out": 4,
+     "position": [
+      570,
+      390
+     ],
+     "radius": 8,
+     "fill": "#0866FF",
+     "fillOpacity": 60,
+     "size": {
+      "k": [
+       [
+        0.3,
+        [
+         36,
+         10
+        ],
+        "soft"
+       ],
+       [
+        1.3,
+        [
+         36,
+         60
+        ]
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Bar C",
+     "type": "rect",
+     "in": 0,
+     "out": 4,
+     "anchor": [
+      0,
+      50
+     ],
+     "position": [
+      620,
+      420
+     ],
+     "size": [
+      36,
+      100
+     ],
+     "radius": 8,
+     "fill": "#0A1F44",
+     "scale": {
+      "k": [
+       [
+        0.4,
+        [
+         100,
+         0
+        ],
+        "inout"
+       ],
+       [
+        1.4,
+        [
+         100,
+         100
+        ]
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Ring track",
+     "type": "ellipse",
+     "in": 0,
+     "out": 4,
+     "position": [
+      610,
+      190
+     ],
+     "size": [
+      150,
+      150
+     ],
+     "fill": null,
+     "stroke": "#E4E6EB",
+     "strokeWidth": 14
+    },
+    {
+     "name": "Ring",
+     "type": "ellipse",
+     "in": 0,
+     "out": 4,
+     "position": [
+      610,
+      190
+     ],
+     "size": [
+      150,
+      150
+     ],
+     "fill": null,
+     "stroke": "#0866FF",
+     "strokeWidth": 14,
+     "lineCap": "round",
+     "trim": {
+      "start": 0,
+      "end": {
+       "k": [
+        [
+         0.3,
+         0,
+         "inout"
+        ],
+        [
+         1.8,
+         72
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "name": "Ring label",
+     "type": "text",
+     "in": 0,
+     "out": 4,
+     "position": [
+      610,
+      202
+     ],
+     "text": "72",
+     "font": "Inter-Black",
+     "size": 36,
+     "justify": "center",
+     "color": "#0A1F44"
+    }
+   ]
+  },
+  {
+   "id": "c_nest",
+   "name": "FX Nest",
+   "folder": "02 Moments",
+   "width": 1000,
+   "height": 640,
+   "duration": 5,
+   "bg": "#123456",
+   "layers": [
+    {
+     "name": "Card",
+     "type": "comp",
+     "comp": "c_card",
+     "in": 0.5,
+     "start": 0.3,
+     "out": 4.3,
+     "position": [
+      500,
+      260
+     ],
+     "scale": {
+      "k": [
+       [
+        0.5,
+        [
+         92,
+         92
+        ],
+        "soft"
+       ],
+       [
+        1.2,
+        [
+         100,
+         100
+        ]
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Karaoke",
+     "type": "text",
+     "in": 0,
+     "out": 5,
+     "position": [
+      500,
+      600
+     ],
+     "text": "Center karaoke words light up",
+     "font": "Inter-SemiBold",
+     "size": 40,
+     "justify": "center",
+     "color": "#FFFFFF",
+     "karaoke": {
+      "dim": "#7F8FA9",
+      "times": [
+       1.0,
+       1.4,
+       1.8,
+       2.2,
+       2.6
+      ]
+     }
+    },
+    {
+     "name": "Karaoke guide",
+     "type": "rect",
+     "in": 0,
+     "out": 5,
+     "position": [
+      500,
+      600
+     ],
+     "size": [
+      700,
+      1
+     ],
+     "radius": 0,
+     "fill": "#FF3B30",
+     "opacity": 85
+    },
+    {
+     "name": "Karaoke centre guide",
+     "type": "rect",
+     "in": 0,
+     "out": 5,
+     "position": [
+      500,
+      580
+     ],
+     "size": [
+      1,
+      60
+     ],
+     "radius": 0,
+     "fill": "#FF3B30",
+     "opacity": 85
+    },
+    {
+     "name": "Click",
+     "type": "audio",
+     "asset": "click",
+     "in": 1.0,
+     "out": 1.333333,
+     "start": 1.0,
+     "audioLevels": -8
+    }
+   ]
+  },
+  {
+   "id": "main",
+   "name": "FX Main",
+   "folder": "01 Main",
+   "width": 1920,
+   "height": 1080,
+   "duration": 6,
+   "bg": "#0A1F44",
+   "layers": [
+    {
+     "name": "A-roll",
+     "type": "comp",
+     "comp": "c_aroll",
+     "in": 0,
+     "out": 6,
+     "start": -1,
+     "mask": {
+      "rect": {
+       "k": [
+        [
+         0.6,
+         [
+          0,
+          0,
+          1920,
+          1080
+         ],
+         "inout"
+        ],
+        [
+         1.6,
+         [
+          1000,
+          140,
+          1840,
+          940
+         ],
+         "hold"
+        ],
+        [
+         4.6,
+         [
+          960,
+          100,
+          1880,
+          980
+         ]
+        ]
+       ]
+      },
+      "radius": 36
+     },
+     "shadow": {
+      "color": "#000000",
+      "opacity": 60,
+      "direction": 135,
+      "distance": 24,
+      "softness": 40
+     }
+    },
+    {
+     "name": "Nest",
+     "type": "comp",
+     "comp": "c_nest",
+     "in": 1,
+     "start": 0.5,
+     "out": 5.5,
+     "position": [
+      500,
+      560
+     ],
+     "rotation": {
+      "k": [
+       [
+        1,
+        -3,
+        "linear"
+       ],
+       [
+        2,
+        0
+       ]
+      ]
+     },
+     "opacity": {
+      "k": [
+       [
+        1,
+        0,
+        "out"
+       ],
+       [
+        1.5,
+        100
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Title",
+     "type": "text",
+     "in": 0.2,
+     "out": 6,
+     "position": [
+      1000,
+      90
+     ],
+     "text": "Title with blur",
+     "font": "Inter-ExtraBold",
+     "size": 56,
+     "justify": "center",
+     "color": "#FFFFFF",
+     "tracking": -20,
+     "blur": {
+      "k": [
+       [
+        0.2,
+        30,
+        "out"
+       ],
+       [
+        1,
+        0
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Title baseline guide",
+     "type": "rect",
+     "in": 0,
+     "out": 6.0,
+     "position": [
+      1000,
+      90
+     ],
+     "size": [
+      600,
+      1
+     ],
+     "radius": 0,
+     "fill": "#FF3B30",
+     "opacity": 85
+    },
+    {
+     "name": "Title centre guide",
+     "type": "rect",
+     "in": 0,
+     "out": 6.0,
+     "position": [
+      1000,
+      60
+     ],
+     "size": [
+      1,
+      90
+     ],
+     "radius": 0,
+     "fill": "#FF3B30",
+     "opacity": 85
+    },
+    {
+     "name": "Right text",
+     "type": "text",
+     "in": 0,
+     "out": 6,
+     "position": [
+      1880,
+      1010
+     ],
+     "text": "Right justified\nmulti-line text",
+     "font": "Inter-Medium",
+     "size": 30,
+     "leading": 40,
+     "justify": "right",
+     "color": "#E4E6EB"
+    },
+    {
+     "name": "Right baseline guide 1",
+     "type": "rect",
+     "in": 0,
+     "out": 6.0,
+     "position": [
+      1680,
+      1010
+     ],
+     "size": [
+      500,
+      1
+     ],
+     "radius": 0,
+     "fill": "#FF3B30",
+     "opacity": 85
+    },
+    {
+     "name": "Right baseline guide 2",
+     "type": "rect",
+     "in": 0,
+     "out": 6.0,
+     "position": [
+      1680,
+      1050
+     ],
+     "size": [
+      500,
+      1
+     ],
+     "radius": 0,
+     "fill": "#FF3B30",
+     "opacity": 85
+    },
+    {
+     "name": "Right edge guide",
+     "type": "rect",
+     "in": 0,
+     "out": 6.0,
+     "position": [
+      1880,
+      1010
+     ],
+     "size": [
+      1,
+      110
+     ],
+     "radius": 0,
+     "fill": "#FF3B30",
+     "opacity": 85
+    },
+    {
+     "name": "Dot",
+     "type": "ellipse",
+     "in": 0,
+     "out": 6,
+     "position": [
+      80,
+      990
+     ],
+     "size": {
+      "k": [
+       [
+        2,
+        [
+         40,
+         40
+        ],
+        "inout"
+       ],
+       [
+        3,
+        [
+         80,
+         80
+        ]
+       ]
+      ]
+     },
+     "fill": {
+      "k": [
+       [
+        0,
+        "#0866FF",
+        "hold"
+       ],
+       [
+        2.5,
+        "#FFFFFF"
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Spinner",
+     "type": "rect",
+     "in": 0,
+     "out": 6,
+     "position": [
+      200,
+      990
+     ],
+     "size": [
+      60,
+      60
+     ],
+     "radius": 12,
+     "fill": "#0866FF",
+     "stroke": "#FFFFFF",
+     "strokeWidth": 4,
+     "rotation": {
+      "k": [
+       [
+        0,
+        0,
+        "linear"
+       ],
+       [
+        6,
+        360
+       ]
+      ]
+     },
+     "fillOpacity": {
+      "k": [
+       [
+        0,
+        100,
+        "hold"
+       ],
+       [
+        3,
+        40
+       ]
+      ]
+     },
+     "strokeOpacity": {
+      "k": [
+       [
+        0,
+        100,
+        "linear"
+       ],
+       [
+        6,
+        20
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Blob",
+     "type": "path",
+     "in": 0,
+     "out": 6,
+     "fill": "#0866FF",
+     "fillOpacity": 70,
+     "stroke": "#FFFFFF",
+     "strokeWidth": 4,
+     "lineJoin": "miter",
+     "paths": [
+      {
+       "v": [
+        [
+         300,
+         950
+        ],
+        [
+         400,
+         990
+        ],
+        [
+         300,
+         1030
+        ],
+        [
+         340,
+         990
+        ]
+       ],
+       "i": [
+        [
+         0,
+         0
+        ],
+        [
+         0,
+         -30
+        ],
+        [
+         0,
+         0
+        ],
+        [
+         0,
+         20
+        ]
+       ],
+       "o": [
+        [
+         0,
+         0
+        ],
+        [
+         0,
+         30
+        ],
+        [
+         0,
+         0
+        ],
+        [
+         0,
+         -20
+        ]
+       ],
+       "closed": true
+      },
+      {
+       "v": [
+        [
+         440,
+         950
+        ],
+        [
+         520,
+         950
+        ],
+        [
+         520,
+         1030
+        ],
+        [
+         440,
+         1030
+        ]
+       ],
+       "closed": true
+      }
+     ],
+     "trim": {
+      "start": {
+       "k": [
+        [
+         1,
+         0,
+         "soft"
+        ],
+        [
+         4,
+         40
+        ]
+       ]
+      },
+      "end": 100
+     }
+    },
+    {
+     "name": "Pie",
+     "type": "ellipse",
+     "in": 0,
+     "out": 6,
+     "position": [
+      640,
+      990
+     ],
+     "fill": "#0866FF",
+     "stroke": "#FFFFFF",
+     "strokeWidth": 3,
+     "size": {
+      "k": [
+       [
+        0.5,
+        [
+         50,
+         50
+        ],
+        "out"
+       ],
+       [
+        2.5,
+        [
+         80,
+         80
+        ]
+       ]
+      ]
+     },
+     "trim": {
+      "start": 0,
+      "end": {
+       "k": [
+        [
+         0.5,
+         100,
+         "inout"
+        ],
+        [
+         3.5,
+         30
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "name": "Book",
+     "type": "image",
+     "asset": "book",
+     "in": 2.0,
+     "out": 6,
+     "position": [
+      1640,
+      760
+     ],
+     "scale": [
+      22,
+      22
+     ],
+     "rotation": 6,
+     "shadow": {
+      "color": "#000000",
+      "opacity": 50,
+      "direction": 180,
+      "distance": 30,
+      "softness": 60
+     }
+    },
+    {
+     "name": "PiP",
+     "type": "footage",
+     "asset": "vsl",
+     "in": 0,
+     "out": 6,
+     "start": -30,
+     "audio": false,
+     "position": [
+      230,
+      140
+     ],
+     "scale": [
+      20,
+      20
+     ],
+     "mask": {
+      "rect": [
+       0,
+       0,
+       1920,
+       1080
+      ],
+      "radius": 120
+     }
+    },
+    {
+     "name": "Music",
+     "type": "audio",
+     "asset": "music",
+     "in": 0,
+     "out": 6,
+     "start": 0,
+     "audioLevels": {
+      "k": [
+       [
+        0,
+        -40,
+        "soft"
+       ],
+       [
+        1.5,
+        -14,
+        "hold"
+       ],
+       [
+        4.5,
+        -20,
+        "linear"
+       ],
+       [
+        6,
+        -30
+       ]
+      ]
+     }
+    },
+    {
+     "name": "Whoosh",
+     "type": "audio",
+     "asset": "whoosh",
+     "in": 0.6,
+     "out": 1.166667,
+     "start": 0.6,
+     "audioLevels": -6
+    },
+    {
+     "name": "Pop",
+     "type": "audio",
+     "asset": "pop",
+     "in": 3,
+     "out": 3.7,
+     "start": 3,
+     "audioLevels": -10
+    }
+   ]
+  }
+ ],
+ "render": {
+  "comp": "main",
+  "output": "HF_FIXTURE"
+ },
+ "markers": [
+  [
+   1,
+   "nest in"
+  ],
+  [
+   3,
+   "pop"
+  ]
+ ]
+}

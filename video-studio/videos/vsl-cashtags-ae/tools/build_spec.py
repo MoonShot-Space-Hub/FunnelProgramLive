@@ -394,7 +394,7 @@ def m07(t0, dur):
     cw, ch = 840, 860
     px0, py0, pw, ph = 56, 300, 728, 500   # chart panel (card-local)
     content = [
-        appear(eyebrow("Eyebrow", "It helps traders go from", 56, 76, dur), ws(73), t0, dy=8),
+        appear(eyebrow("Eyebrow", "It helps traders go from", 56, 76, dur), ws(73) + 0.6, t0, dy=8),
         appear(text("Random guessing", "Random guessing", 56, 160, "Inter-Bold", 56, MUTED, dur, tracking=-20), ws(79), t0),
         rect("Panel", px0 + pw / 2, py0 + ph / 2, pw, ph, dur, r=22, fill=SOFT),
         text("Illustrative", "Illustrative", px0 + pw - 24, py0 + 40, "Inter-Medium", 16, MUTED, dur, justify="right"),
@@ -434,7 +434,8 @@ def m07(t0, dur):
     appear_scale(dot, ws(85) + 0.85, t0, s0=0, dur=0.35)
     content.append(dot)
     c = card("c07", "C07 Guessing to systematic chart", ch, dur, content, w=cw, radius=36)
-    lay = card_layer(c, 60 + cw / 2, 60 + ch / 2, "L", ws(73) + 0.05, 25.32, t0, dur)
+    # enters once the A-roll has slid right (face clear of x <= 900), 0.5 s into the 0.8 s move
+    lay = card_layer(c, 60 + cw / 2, 60 + ch / 2, "L", ws(73) + 0.5, 25.32, t0, dur)
     return [lay]
 
 

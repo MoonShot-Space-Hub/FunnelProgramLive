@@ -10,7 +10,8 @@ are listed under NOTES below.
 
 Element model (one per visual layer, DOM order = painting order, bottom to top):
 
-    <div class="L" id="Ln">               outer box at the comp origin, transform-origin 0 0.
+    <div class="L" id="Ln" data-ae="comp/layer path">
+                                          outer box at the comp origin, transform-origin 0 0.
                                           GSAP animates x, y, rotation, scaleX, scaleY, opacity
                                           (GSAP's 2D transform order is translate, rotate, scale,
                                           which is position + R * S * (p - anchor)). Visibility,
@@ -47,8 +48,12 @@ NOTES (schema readings):
   trimmed path (getPointAtLength); the stroke uses pathLength=100 + dasharray/dashoffset.
 - Karaoke: words are split on single spaces as SCHEMA.md says; a word that contains a line
   break stays one span.
-- Text: the first baseline sits on the layer origin using the Inter vertical metrics from
-  SCHEMA.md (ascender 0.96875 em, descender 0.2412 em) and CSS half-leading.
+- Text: the first baseline sits exactly on the layer origin. The offset uses the Inter
+  vertical metrics from SCHEMA.md (ascender 0.96875 em, descender 0.2412 em) with Blink's
+  line-box rounding (see text_baseline). Tracking is CSS letter-spacing, which Chrome also
+  adds after the last glyph of a line, so centre/right-justified lines with non-zero tracking
+  can sit tracking/2 or tracking px away from AE's placement (sub-pixel to ~1 px at the sizes
+  used).
 """
 
 import json
@@ -312,6 +317,18 @@ def shadow_css(sh):
         num(dx), num(dy), num(soft / 2.0), color[0], color[1], color[2], num(op))
 
 
+def text_baseline(size, leading):
+    """Distance from the top of the first CSS line box to its baseline, as Blink lays it out.
+
+    CSS half-leading puts the baseline at L/2 + (ascent - descent)/2 * size, but Blink rounds
+    the font's ascent and descent to whole pixels (half up) and floors the half-leading. Using
+    the same arithmetic puts the first baseline exactly on the layer origin (verified in
+    headless Chrome over 372 size/leading pairs, fractional values included)."""
+    a = math.floor(ASCENT * size + 0.5)
+    d = math.floor(DESCENT * size + 0.5)
+    return a + math.floor((leading - a - d) / 2.0)
+
+
 def db_gain(db):
     return 10 ** (float(db) / 20.0)
 
@@ -524,9 +541,8 @@ class Builder:
                 names = ["m0", "m1", "m2", "m3"] if key == "m" else (["w", "h"] if key == "wh" else [key])
                 self.track(1, ci, names, keys, off, conv)
 
-        label = escape(where.replace("--", "- -"), quote=False)
-        return '<!-- %s --><div id="%s" class="L"%s><div id="%s" class="%s" style="%s">%s</div></div>\n' % (
-            label, lid, (' style="%s"' % outer_style) if outer_style else "", iid, cls, inner_style, content)
+        return '<div id="%s" class="L" data-ae="%s"%s><div id="%s" class="%s" style="%s">%s</div></div>\n' % (
+            lid, escape(where), (' style="%s"' % outer_style) if outer_style else "", iid, cls, inner_style, content)
 
     # ---------------------------------------------------------------- shapes
 
@@ -538,6 +554,13 @@ class Builder:
             stroke = None
         fill_anim = is_anim(fill)
         fill0 = first_value(fill) if fill_anim else fill
+        try:
+            for colour in [k[1] for k in norm_keys(fill, where)] if fill is not None else []:
+                hex_rgb(colour)
+            if stroke:
+                hex_rgb(stroke)
+        except SpecError as e:
+            raise SpecError("%s: %s" % (where, e))
         fo, so = L.get("fillOpacity", 100), L.get("strokeOpacity", 100)
         trim = L.get("trim") if t in ("ellipse", "path") else None
         if L.get("trim") and t == "rect":
@@ -639,7 +662,7 @@ class Builder:
             raise SpecError("%s: bad justify %r" % (where, justify))
         color = L.get("color", "#000000")
         hex_rgb(color)
-        baseline = leading / 2 + (ASCENT - DESCENT) / 2 * size
+        baseline = text_baseline(size, leading)
         style = "top:%spx;font-weight:%d;font-size:%spx;line-height:%spx;color:%s;text-align:%s" % (
             num(-baseline), FONT_WEIGHTS[font], num(size), num(leading), color, justify)
         if tracking:
@@ -687,6 +710,7 @@ class Builder:
         keys = norm_keys(levels, where + " audioLevels")
         attrs = 'id="%s" src="%s" data-start="%s" data-duration="%s" data-media-start="%s" data-track-index="%d"' % (
             mid, escape(a["preview"]), tnum(lo), tnum(hi - lo), tnum(media_start), self.media_n)
+        attrs += ' data-ae="%s"' % escape(where)
         has_audio = (L.get("audio", True) is not False) if box else True
         if has_audio:
             attrs += ' data-volume="%s"' % num(min(db_gain(keys[0][1]), 3.98))
