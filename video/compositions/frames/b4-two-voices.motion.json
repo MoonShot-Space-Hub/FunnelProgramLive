@@ -1,0 +1,13 @@
+{
+  "scene": "b4-two-voices",
+  "duration_s": 3.85,
+  "rules": ["split-tilt-cards", "spring-pop-entrance", "sine-wave-loop", "chromatic-glitch", "depth-of-field-blur", "motion-blur-streak"],
+  "exit": {
+    "vector": "near rest: slow radial camera push-in (scale +0.009/s, ~5 px/s at the edges), counter-phase card idle bob <=8 px/s vertical; both waveforms keep animating in place; harsh card held dimmed + 2.2px defocus",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "right ~6500 px/s at frame 0 (KINDNESS card sweeps x -700->0 on expo.out 0.75s with rotationY 14->0 and an X-axis motion-blur peak of 22)",
+    "from_rest": false
+  }
+}

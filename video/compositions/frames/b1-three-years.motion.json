@@ -1,0 +1,19 @@
+{
+  "scene": "b1-three-years",
+  "duration_s": 4.4,
+  "rules": [
+    "svg-path-draw",
+    "vertical-spring-ticker",
+    "ambient-glow-bloom",
+    "motion-blur-streak",
+    "spring-pop-entrance"
+  ],
+  "exit": {
+    "vector": "radial outward camera push-in (scale +0.0091/s about 540,620): ~5 px/s at stage edges, ~12 px/s at frame bottom; hero (phone + ? badge) at rest (float eases to 0 px/s); ambient dust rising 14-60 px/s",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "~0 px/s at frame 0: camera push-in only (scale +0.0091/s, ~5 px/s at stage edges) + ambient drift; ring draw starts 0.05s, hero year scale-in (0.84->1, 36px rise, expo.out) starts 0.08s",
+    "from_rest": true
+  }
+}

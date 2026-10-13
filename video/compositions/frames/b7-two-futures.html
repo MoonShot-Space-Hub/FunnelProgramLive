@@ -85,7 +85,6 @@
       position: absolute;
       inset: 0;
       transform-origin: 540px 1000px;
-      will-change: transform;
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-roads {
       position: absolute;
@@ -283,7 +282,6 @@
       left: 0;
       top: 0;
       opacity: 0;
-      will-change: transform, opacity;
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-shock {
       position: absolute;
@@ -306,7 +304,6 @@
       height: 380px;
       transform-origin: 50% 50%;
       z-index: 6;
-      will-change: transform, filter;
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-stampsvg {
       position: absolute;
@@ -402,13 +399,14 @@
             </linearGradient>
             <linearGradient id="b7-two-futures-g-left" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
               <stop offset="0" stop-color="#c9a6ee" stop-opacity="0.22" />
-              <stop offset="0.24" stop-color="#9a96b2" stop-opacity="0.18" />
-              <stop offset="0.6" stop-color="#9a96b2" stop-opacity="0.08" />
+              <stop id="b7-two-futures-sl1" offset="0.24" stop-color="#9a96b2" stop-opacity="0.18" />
+              <stop id="b7-two-futures-sl2" offset="0.6" stop-color="#9a96b2" stop-opacity="0.08" />
               <stop offset="1" stop-color="#9a96b2" stop-opacity="0" />
             </linearGradient>
             <linearGradient id="b7-two-futures-g-leftedge" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
               <stop offset="0" stop-color="#b4b0c8" stop-opacity="0.75" />
-              <stop offset="0.6" stop-color="#9a96b2" stop-opacity="0.32" />
+              <stop id="b7-two-futures-se1" offset="0.22" stop-color="#b4b0c8" stop-opacity="0.66" />
+              <stop id="b7-two-futures-se2" offset="0.6" stop-color="#9a96b2" stop-opacity="0.32" />
               <stop offset="1" stop-color="#9a96b2" stop-opacity="0" />
             </linearGradient>
             <linearGradient id="b7-two-futures-g-right" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
@@ -882,6 +880,7 @@
       // ---------- procedural layer ----------
       const flareMask = $("mp-flare");
       const shock = $("shock"), flash = $("flash"), vpring = $("vpring");
+      const line2 = $("line2");
       const branchDraw = (t, at0) => E.o2(clamp01((t - at0) / 0.75));
       function placeMarks(marks, br, t, drawn, speed, alpha) {
         for (let i = 0; i < MARKS; i++) {
@@ -949,6 +948,8 @@
           streak.setAttribute("opacity", (0.85 * gate).toFixed(3));
           streakGlow.setAttribute("opacity", (0.8 * gate).toFixed(3));
         } else {
+          streak.setAttribute("d", "");
+          streakGlow.setAttribute("d", "");
           streak.setAttribute("opacity", "0");
           streakGlow.setAttribute("opacity", "0");
         }
@@ -972,6 +973,7 @@
         for (let i = 0; i < PCOUNT; i++) {
           const p = parts[i];
           if (PT <= 0 || PT >= 1) {
+            p.el.style.transform = `translate(${fx(p.ox)}px, ${fx(p.oy)}px)`;
             p.el.style.opacity = "0";
             continue;
           }
@@ -981,13 +983,27 @@
           p.el.style.transform = `translate(${fx(x)}px, ${fx(y)}px) rotate(${(p.spin * ft).toFixed(1)}deg)`;
           p.el.style.opacity = Math.min(1, (1 - PT) / 0.35).toFixed(3);
         }
+        // "wait": second hit on the bottom line (scale punch + amber flash), pure function of time
+        const wk = (t - CUE.wait) / 0.34;
+        if (wk > 0 && wk < 1) {
+          const e = E.o3(wk);
+          const sc = 1.14 - 0.14 * e;
+          line2.setAttribute("transform", `translate(350 280) scale(${sc.toFixed(4)}) translate(-350 -280)`);
+          line2.style.fill = `rgb(${Math.round(lerp(255, 253, e))},${Math.round(lerp(210, 242, e))},${Math.round(lerp(122, 224, e))})`;
+        } else {
+          line2.removeAttribute("transform");
+          line2.style.fill = "#FDF2E0";
+        }
         // impact shockwave ring + flash (ephemeral: invisible outside their window)
         const sk = (t - 1.7) / 0.62;
         if (sk > 0 && sk < 1) {
           const e = E.o2(sk);
           shock.style.transform = `rotate(-6deg) scale(${(0.62 + 1.28 * e).toFixed(4)})`;
           shock.style.opacity = (0.95 * (1 - e)).toFixed(3);
-        } else shock.style.opacity = "0";
+        } else {
+          shock.style.transform = "rotate(-6deg) scale(0.62)";
+          shock.style.opacity = "0";
+        }
         const fl = t - 1.69;
         flash.style.opacity = (fl <= 0 || fl >= 0.4 ? 0 : fl < 0.06 ? (0.42 * fl) / 0.06 : 0.42 * (1 - E.o2((fl - 0.06) / 0.34))).toFixed(3);
         const vk = (t - CUE.change) / 0.48;
@@ -995,7 +1011,10 @@
           const e = E.o2(vk);
           vpring.style.transform = `scale(${(0.4 + 2.4 * e).toFixed(4)})`;
           vpring.style.opacity = (0.95 * (1 - vk)).toFixed(3);
-        } else vpring.style.opacity = "0";
+        } else {
+          vpring.style.transform = "scale(0.4)";
+          vpring.style.opacity = "0";
+        }
         // vanishing-point rays grow on "change", then rotate slowly
         const rt = t - CUE.change;
         for (let i = 0; i < RAYS; i++) {
@@ -1058,15 +1077,10 @@
         CUE.dont,
       );
       tl.fromTo(stamp, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, CUE.dont);
+      tl.set(stamp, { filter: "none" }, CUE.dont + 0.36);
       // impact: shockwave ring, flash, particles and shake are driven in render()
       // "wait": second hit on the bottom line
-      const line2 = $("line2");
-      tl.fromTo(
-        line2,
-        { scale: 1.14, fill: "#FFD27A", transformOrigin: "50% 60%" },
-        { scale: 1, fill: "#FDF2E0", transformOrigin: "50% 60%", duration: 0.34, ease: "power3.out", immediateRender: false },
-        CUE.wait,
-      );
+      // (the WAIT punch itself is driven in render())
       tl.fromTo($("stampglow"), { opacity: 0.85 }, { opacity: 1, duration: 0.12, ease: "power2.out", immediateRender: false }, CUE.wait);
       tl.fromTo($("stampglow"), { opacity: 1 }, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", immediateRender: false }, CUE.wait + 0.12);
       // light sweep across the glyphs after landing
@@ -1076,7 +1090,10 @@
 
       // ---- Scene 3: the light takes the amber path ----
       tl.fromTo($("rglow"), { opacity: 0 }, { opacity: 0.9, duration: 0.45, ease: "power2.out" }, CUE.start);
-      tl.fromTo($("left"), { opacity: 1 }, { opacity: 0.32, duration: 0.45, ease: "power2.out" }, 2.6);
+      // grey path dims beyond the shared fork (gradient stops, so the shared lane stays lit)
+      [["sl1", 0.18, 0.06], ["sl2", 0.08, 0.025], ["se1", 0.66, 0.24], ["se2", 0.32, 0.1]].forEach(([k, a, b]) => {
+        tl.fromTo($(k), { attr: { "stop-opacity": a } }, { attr: { "stop-opacity": b }, duration: 0.45, ease: "power2.out" }, 2.6);
+      });
       tl.fromTo($("label-l"), { opacity: 1 }, { opacity: 0.38, duration: 0.45, ease: "power2.out" }, 2.6);
       tl.fromTo($("vpstar-l"), { opacity: 0.6 }, { opacity: 0.2, duration: 0.45, ease: "power2.out", immediateRender: false }, 2.6);
       // "change": right vanishing point blooms

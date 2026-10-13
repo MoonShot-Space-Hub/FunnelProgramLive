@@ -174,7 +174,7 @@
 }
 [data-composition-id="b1-three-years"] .b1-three-years-dot { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: #FDF2E0; margin-right: 8px; }
 [data-composition-id="b1-three-years"] .b1-three-years-dot.b1-three-years-dl { margin-right: 0; }
-[data-composition-id="b1-three-years"] .b1-three-years-cm { flex: 0 0 auto; width: 8px; height: 15px; margin: 18px 6px 0 6px; border-radius: 4px; background: #FDF2E0; transform: skewX(-14deg); }
+[data-composition-id="b1-three-years"] .b1-three-years-cm { flex: 0 0 auto; width: 8px; height: 15px; margin: 18px 6px 0 6px; border-radius: 4px 4px 3px 8px; background: #FDF2E0; }
 [data-composition-id="b1-three-years"] .b1-three-years-sk { position: absolute; height: 10px; border-radius: 5px; background: rgba(154,150,178,0.24); }
 [data-composition-id="b1-three-years"] #b1-three-years-shimmer {
   position: absolute; left: 0; top: 0; width: 160px; height: 200px;
@@ -504,7 +504,7 @@
   // here so the summed position AND its velocity (for the motion blur) are pure functions of time.
   var ITEM_H = 280, STEP_DUR = 0.42;
   var STEP_AT = [1.66, 1.88, 2.1];
-  var STEP_S = [1.7, 1.7, 2.3]; // back.out overshoot per step; the climax step lands harder
+  var STEP_S = [1.7, 1.7, 2.0]; // back.out overshoot per step; the climax step lands harder
   var stack = el("stack"), vblur = el("vblur-node"), ticksG = el("ticks"), arc = el("arc"), you = el("you");
   var C_ARC = arc.getTotalLength();
   var steps = [{ p: 0 }, { p: 0 }, { p: 0 }];

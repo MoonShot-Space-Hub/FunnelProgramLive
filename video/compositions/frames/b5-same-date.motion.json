@@ -1,0 +1,13 @@
+{
+  "scene": "b5-same-date",
+  "duration_s": 5.75,
+  "rules": ["kinetic-beat-slam", "3d-text-depth-layers", "motion-blur-streak", "spring-pop-entrance"],
+  "exit": {
+    "vector": "near rest: slow radial camera push-in on the type stack (scale +0.012/s, ~6 px/s at the edges) plus sine drift <=4 px/s; all words settled by 5.52s, LATER cursor blinking",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "up ~690 px/s (calendar rises 70px, scales 0.9->1, rotationX 16->0, blur 10->0 on expo.out 0.7s)",
+    "from_rest": false
+  }
+}

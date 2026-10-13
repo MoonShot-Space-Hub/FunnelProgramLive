@@ -289,11 +289,15 @@
         background: linear-gradient(180deg, rgba(6, 3, 18, 0.9) 0%, rgba(6, 3, 18, 0.45) 100%);
       }
       /* the unchanged icon row */
-      [data-composition-id="b5-same-date"] .b5-same-date-tile {
+      [data-composition-id="b5-same-date"] .b5-same-date-tilefloat {
         position: absolute;
         top: 920px;
         width: 96px;
         height: 96px;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-tile {
+        position: absolute;
+        inset: 0;
         border-radius: 26px;
         border: 2px solid rgba(154, 150, 178, 0.32);
         background: rgba(21, 16, 54, 0.72);
@@ -507,13 +511,13 @@
             <!-- the page underneath: same month, three years on -->
             <div class="b5-same-date-page b5-same-date-under" id="b5-same-date-under">
               <div class="b5-same-date-perf"></div>
-              <div class="b5-same-date-month">OCT</div>
+              <div class="b5-same-date-month" data-layout-allow-overlap>OCT</div>
               <div class="b5-same-date-rule"></div>
               <div class="b5-same-date-year">
                 <div id="b5-same-date-y29">
-                  <span class="b5-same-date-y29l b5-same-date-y29glow" id="b5-same-date-y29glow" aria-hidden="true">2029</span>
-                  <span class="b5-same-date-y29l b5-same-date-y29lit">2029</span>
-                  <span class="b5-same-date-y29l b5-same-date-sheen" id="b5-same-date-y29sheen" aria-hidden="true">2029</span>
+                  <span data-layout-ignore class="b5-same-date-y29l b5-same-date-y29glow" id="b5-same-date-y29glow" aria-hidden="true">2029</span>
+                  <span data-layout-allow-overlap class="b5-same-date-y29l b5-same-date-y29lit">2029</span>
+                  <span data-layout-ignore class="b5-same-date-y29l b5-same-date-sheen" id="b5-same-date-y29sheen" aria-hidden="true">2029</span>
                 </div>
               </div>
               <div class="b5-same-date-dots"><i></i><i></i><i class="b5-same-date-on"></i><i></i><i></i><i></i><i></i></div>
@@ -538,7 +542,7 @@
             <div class="b5-same-date-ring" id="b5-same-date-ring2"></div>
           </div>
 
-          <div class="b5-same-date-tile" id="b5-same-date-tile1" style="left: 336px">
+          <div class="b5-same-date-tilefloat" id="b5-same-date-float1" style="left: 336px"><div class="b5-same-date-tile" id="b5-same-date-tile1">
             <svg viewBox="0 0 64 64" aria-hidden="true">
               <g fill="none" stroke="#9a96b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="19" y="6" width="26" height="52" rx="6" />
@@ -546,8 +550,8 @@
                 <line x1="29" y1="13" x2="35" y2="13" />
               </g>
             </svg>
-          </div>
-          <div class="b5-same-date-tile" id="b5-same-date-tile2" style="left: 492px">
+          </div></div>
+          <div class="b5-same-date-tilefloat" id="b5-same-date-float2" style="left: 492px"><div class="b5-same-date-tile" id="b5-same-date-tile2">
             <svg viewBox="0 0 64 64" aria-hidden="true">
               <g fill="none" stroke="#9a96b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 28 H44 V41 C44 50 38 55 28 55 C18 55 12 50 12 41 Z" />
@@ -558,8 +562,8 @@
                 </g>
               </g>
             </svg>
-          </div>
-          <div class="b5-same-date-tile" id="b5-same-date-tile3" style="left: 648px">
+          </div></div>
+          <div class="b5-same-date-tilefloat" id="b5-same-date-float3" style="left: 648px"><div class="b5-same-date-tile" id="b5-same-date-tile3">
             <svg viewBox="0 0 64 64" aria-hidden="true">
               <g fill="none" stroke="#9a96b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M10 15 C10 11 13 9 17 9 H47 C51 9 54 11 54 15 V36 C54 40 51 42 47 42 H29 L19 52 V42 H17 C13 42 10 40 10 36 Z" />
@@ -570,7 +574,7 @@
                 <circle cx="42" cy="25.5" r="3" />
               </g>
             </svg>
-          </div>
+          </div></div>
           <div id="b5-same-date-unch">
             <div class="b5-same-date-hair" id="b5-same-date-hairl"></div>
             <div class="b5-same-date-unchtext" id="b5-same-date-unchtext"><span>U</span><span>N</span><span>C</span><span>H</span><span>A</span><span>N</span><span>G</span><span>E</span><span>D</span></div>
@@ -587,11 +591,11 @@
         </div>
         <div class="b5-same-date-line" id="b5-same-date-l1">
           <div class="b5-same-date-word b5-same-date-depth" id="b5-same-date-same1">
-            <div class="b5-same-date-dl b5-same-date-dback" data-layer="4" aria-hidden="true" style="color: rgba(140, 47, 194, 0.33)">SAME</div>
-            <div class="b5-same-date-dl b5-same-date-dback" data-layer="3" aria-hidden="true" style="color: rgba(140, 47, 194, 0.46)">SAME</div>
-            <div class="b5-same-date-dl b5-same-date-dback" data-layer="2" aria-hidden="true" style="color: rgba(140, 47, 194, 0.59)">SAME</div>
-            <div class="b5-same-date-dl b5-same-date-dback" data-layer="1" aria-hidden="true" style="color: rgba(140, 47, 194, 0.72)">SAME</div>
-            <div class="b5-same-date-dl b5-same-date-dfront" data-layer="0">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layout-ignore data-depth="4" aria-hidden="true" style="color: rgba(140, 47, 194, 0.33)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layout-ignore data-depth="3" aria-hidden="true" style="color: rgba(140, 47, 194, 0.46)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layout-ignore data-depth="2" aria-hidden="true" style="color: rgba(140, 47, 194, 0.59)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layout-ignore data-depth="1" aria-hidden="true" style="color: rgba(140, 47, 194, 0.72)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dfront" data-layout-allow-overlap data-depth="0">SAME</div>
           </div>
           <div class="b5-same-date-word" id="b5-same-date-voicewrap">
             <span class="b5-same-date-amber" id="b5-same-date-voice">VOICE.</span>
@@ -599,11 +603,11 @@
         </div>
         <div class="b5-same-date-line" id="b5-same-date-l2">
           <div class="b5-same-date-word b5-same-date-depth" id="b5-same-date-same2">
-            <div class="b5-same-date-dl b5-same-date-dback" data-layer="4" aria-hidden="true" style="color: rgba(140, 47, 194, 0.33)">SAME</div>
-            <div class="b5-same-date-dl b5-same-date-dback" data-layer="3" aria-hidden="true" style="color: rgba(140, 47, 194, 0.46)">SAME</div>
-            <div class="b5-same-date-dl b5-same-date-dback" data-layer="2" aria-hidden="true" style="color: rgba(140, 47, 194, 0.59)">SAME</div>
-            <div class="b5-same-date-dl b5-same-date-dback" data-layer="1" aria-hidden="true" style="color: rgba(140, 47, 194, 0.72)">SAME</div>
-            <div class="b5-same-date-dl b5-same-date-dfront" data-layer="0">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layout-ignore data-depth="4" aria-hidden="true" style="color: rgba(140, 47, 194, 0.33)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layout-ignore data-depth="3" aria-hidden="true" style="color: rgba(140, 47, 194, 0.46)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layout-ignore data-depth="2" aria-hidden="true" style="color: rgba(140, 47, 194, 0.59)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layout-ignore data-depth="1" aria-hidden="true" style="color: rgba(140, 47, 194, 0.72)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dfront" data-layout-allow-overlap data-depth="0">SAME</div>
           </div>
           <div class="b5-same-date-word b5-same-date-amber" id="b5-same-date-habits">HABITS.</div>
         </div>
@@ -656,6 +660,7 @@
         var cam1 = $("cam1"), cam2 = $("cam2"), grid = $("grid"), violet = $("violet"), amberGlow = $("amberglow");
         var marker = $("marker"), beatbar = $("beatbar"), cursor = $("cursor"), steam = $("steam");
         var tiles = [$("tile1"), $("tile2"), $("tile3")];
+        var floats = [$("float1"), $("float2"), $("float3")];
         var stacks = [
           { el: $("same1"), at: BEATS.same1 + 0.06 },
           { el: $("same2"), at: BEATS.same2 + 0.08 }
@@ -702,7 +707,7 @@
           stacks.forEach(function (s) {
             var g = outCubic((t - s.at) / 0.4);
             s.layers.forEach(function (el) {
-              var i = Number(el.getAttribute("data-layer"));
+              var i = Number(el.getAttribute("data-depth"));
               var fade = clamp01((t - (s.at + (4 - i) * 0.05)) / 0.22);
               el.style.transform = "translate(" + (i * OFF * g).toFixed(2) + "px," + (i * OFF * g).toFixed(2) + "px)";
               el.style.opacity = fade.toFixed(3);
@@ -714,6 +719,8 @@
           for (var k = 0; k < HITS.length; k++) if (t >= HITS[k].t) last = k;
           if (last < 0) {
             marker.style.opacity = 0;
+            marker.style.transform = "translate3d(0," + HITS[0].y + "px,0)";
+            marker.style.height = HITS[0].h + "px";
             beatbar.style.opacity = 0.3;
           } else {
             var h = HITS[last], prev = last > 0 ? HITS[last - 1] : h;
@@ -731,7 +738,7 @@
           cursor.style.opacity = t < BEATS.later ? 0 : Math.floor((t - BEATS.later) / 0.18) % 2 === 0 ? 1 : 0.15;
 
           // ambient decoratives
-          tiles.forEach(function (el, i) {
+          floats.forEach(function (el, i) {
             el.style.transform = "translate3d(0," + (Math.sin(t * 2.2 + i * 1.9) * 2.5).toFixed(2) + "px,0)";
           });
           steam.setAttribute("transform", "translate(0 " + (Math.sin(t * 3.1) * 1.6).toFixed(2) + ")");
@@ -775,7 +782,7 @@
         );
         tl.set(cal, { filter: "none" }, 0.72);
         tl.fromTo([$("ring1"), $("ring2")], { y: -36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)", stagger: 0.06 }, 0.1);
-        tl.fromTo($("month"), { opacity: 0, letterSpacing: "0.6em" }, { opacity: 1, letterSpacing: "0.32em", duration: 0.5, ease: "power3.out" }, 0.12);
+        tl.fromTo($("month"), { opacity: 0, y: -14, scale: 1.18 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.12);
         tl.fromTo($("y26").children, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power4.out", stagger: 0.05 }, 0.14);
         tl.fromTo(tiles, { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)", stagger: 0.08 }, 0.3);
 
@@ -808,6 +815,7 @@
 
         // 2.28 — zoom-through: scene 1 rushes past the camera (scale + blur, linear dim)
         var s1 = $("s1");
+        gsap.set(s1, { scale: 1 });
         tl.fromTo(s1, { scale: 1, filter: "blur(0px)" }, { scale: 1.6, filter: "blur(18px)", duration: 0.16, ease: "power3.in", immediateRender: false }, ZOOM_AT);
         tl.fromTo(s1, { opacity: 1 }, { opacity: 0, duration: 0.16, ease: "none", immediateRender: false }, ZOOM_AT);
         tl.to(amberGlow, { opacity: 0.2, duration: 0.3, ease: "power2.out" }, ZOOM_AT);

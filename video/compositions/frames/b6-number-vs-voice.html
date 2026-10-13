@@ -65,7 +65,6 @@
       border-radius: 50%;
       background: #ffd27a;
       opacity: 0;
-      will-change: transform, opacity;
     }
     [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-grain {
       position: absolute;
@@ -79,7 +78,6 @@
       position: absolute;
       inset: 0;
       transform-origin: 540px 620px;
-      will-change: transform;
     }
     [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cardcam {
       --b6-number-vs-voice-dof: 0px;
@@ -90,7 +88,6 @@
       height: 460px;
       transform-origin: 50% 50%;
       filter: blur(var(--b6-number-vs-voice-dof));
-      will-change: filter, transform;
       z-index: 1;
     }
     [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cardfloat,
@@ -719,6 +716,8 @@
           const p = (t - born) / 0.95;
           const ring = rings[k];
           if (p <= 0 || p >= 1) {
+            ring.style.transform = "scale(0.55)";
+            ring.style.borderColor = "rgba(178,107,232,0.85)";
             ring.style.opacity = "0";
             continue;
           }
@@ -768,12 +767,8 @@
       tl.fromTo($("cardbody"), { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power1.out" }, 0.3);
 
       // chip pops on "it's", contacts draw
-      tl.fromTo(
-        $("chip"),
-        { scale: 0.3, rotation: -14, opacity: 0, filter: "blur(6px)" },
-        { scale: 1, rotation: 0, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.8)" },
-        CUE.its,
-      );
+      tl.fromTo($("chip"), { scale: 0.3, rotation: -14, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, CUE.its);
+      tl.fromTo($("chip"), { filter: "blur(6px)" }, { filter: "blur(0px)", duration: 0.32, ease: "power2.out" }, CUE.its);
       chipLines.forEach((l, i) => {
         const len = parseFloat(l.style.strokeDasharray);
         tl.fromTo(l, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, CUE.its + 0.18 + i * 0.1);
@@ -801,12 +796,8 @@
       tl.fromTo($("track"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, CUE.about);
 
       // ---- "number": pill pops + count-up with dynamic scale + paired fill ----
-      tl.fromTo(
-        $("pill1"),
-        { scale: 0.45, y: 16, opacity: 0, filter: "blur(8px)" },
-        { scale: 1, y: 0, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "back.out(1.7)" },
-        CUE.number,
-      );
+      tl.fromTo($("pill1"), { scale: 0.45, y: 16, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, CUE.number);
+      tl.fromTo($("pill1"), { filter: "blur(8px)" }, { filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, CUE.number);
       tl.fromTo($("pill1sheen"), { x: -90, opacity: 1 }, { x: 380, opacity: 1, duration: 0.5, ease: "power2.inOut" }, CUE.number + 0.4);
 
       const COUNT_AT = CUE.number;
@@ -822,7 +813,7 @@
 
       // "account": glint sweeps across the card
       const glint = $("glint");
-      tl.fromTo(glint, { x: -260, rotation: 18, opacity: 1 }, { x: 1120, rotation: 18, opacity: 1, duration: 0.62, ease: "power2.inOut" }, CUE.account);
+      tl.fromTo(glint, { x: -440, rotation: 18, opacity: 1 }, { x: 1120, rotation: 18, opacity: 1, duration: 0.62, ease: "power2.inOut" }, CUE.account);
 
       // ---- Scene 2: focus shifts down to the head (viewport-change + depth-of-field) ----
       const cardcam = $("cardcam");
@@ -836,7 +827,8 @@
       tl.fromTo(headLine, { strokeDashoffset: HEAD_LEN }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.out" }, CUE.also);
       tl.fromTo(headGlow, { strokeDashoffset: HEAD_LEN }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.out" }, CUE.also);
       tl.fromTo(headGlow, { opacity: 0 }, { opacity: 0.35, duration: 0.3, ease: "power1.out" }, CUE.also);
-      tl.fromTo(headSpark, { strokeDashoffset: HSPARK, opacity: 0 }, { strokeDashoffset: HSPARK - HEAD_LEN, opacity: 0.9, duration: 0.85, ease: "power2.out" }, CUE.also);
+      tl.fromTo(headSpark, { strokeDashoffset: HSPARK }, { strokeDashoffset: HSPARK - HEAD_LEN, duration: 0.85, ease: "power2.out" }, CUE.also);
+      tl.fromTo(headSpark, { opacity: 0 }, { opacity: 0.9, duration: 0.1, ease: "none" }, CUE.also);
       tl.fromTo(headSpark, { opacity: 0.9 }, { opacity: 0, duration: 0.25, ease: "power1.out", immediateRender: false }, CUE.also + 0.62);
       tl.fromTo($("headfill"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, CUE.also + 0.35);
       tl.fromTo($("headinner"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power2.out" }, CUE.also + 0.45);

@@ -1,0 +1,13 @@
+{
+  "scene": "b6-number-vs-voice",
+  "duration_s": 5.05,
+  "rules": ["svg-path-draw", "counting-dynamic-scale", "stat-bars-and-fills", "viewport-change", "depth-of-field-blur", "sine-wave-loop"],
+  "exit": {
+    "vector": "radial outward camera push from (540,620): linear scale 1.00->1.04 over 5.05s (0.0079/s), about 4 px/s at the stage edges, 11 px/s at the frame corners; world pan finished at 4.10s (0 px/s); waveform bars oscillating in place (scaleY), motes drifting up 10-48 px/s",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "radial outward camera push from (540,620) already at its constant rate (about 4 px/s at the stage edges); no content visible at frame 0, card outline starts drawing at 0.08s",
+    "from_rest": false
+  }
+}

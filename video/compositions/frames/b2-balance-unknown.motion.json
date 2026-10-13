@@ -1,0 +1,20 @@
+{
+  "scene": "b2-balance-unknown",
+  "duration_s": 3.8,
+  "rules": [
+    "svg-path-draw",
+    "vertical-spring-ticker",
+    "spring-pop-entrance",
+    "motion-blur-streak",
+    "depth-of-field-blur",
+    "ambient-glow-bloom"
+  ],
+  "exit": {
+    "vector": "radial outward camera push-in (scale +0.0105/s about 540,620): ~6 px/s at stage edges; card float eases to 0 px/s; ?,??,??? row at rest (shake ends 3.58s, sweep ends 3.74s); ambient dust rising 14-60 px/s",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "radial outward scale-up toward camera at frame 0: card 0.94->1 (expo.out) = +0.59 scale/s, ~267 px/s at the card edges, opacity 0.35->1, blur 8->0px; plus camera push-in +0.0105/s",
+    "from_rest": false
+  }
+}

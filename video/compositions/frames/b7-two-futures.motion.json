@@ -1,0 +1,13 @@
+{
+  "scene": "b7-two-futures",
+  "duration_s": 3.6,
+  "rules": ["svg-path-draw", "kinetic-beat-slam", "particle-burst", "motion-blur-streak"],
+  "exit": {
+    "vector": "radial outward camera push from (540,1000): linear scale 1.00->1.04 over 3.6s (0.0111/s), about 10 px/s at the stage top, 12 px/s at the top corners; vanishing-point rays rotating 14 deg/s; ground grid lines drifting down toward the camera; centre marks streaming toward the vanishing points; the stamp is at rest",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "radial outward camera push from (540,1000) already at its constant rate (about 10 px/s at the stage top); ground grid drifting down; paths start drawing at 0.08s",
+    "from_rest": false
+  }
+}

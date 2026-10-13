@@ -1,0 +1,483 @@
+<template>
+<style>
+[data-composition-id="b2-balance-unknown"] {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FDF2E0; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+
+/* ---------- ground ---------- */
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-base {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background-color: #0B0820;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #221A52 0%, #0B0820 70%);
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-blob {
+  position: absolute; left: 350px; top: -30px; width: 900px; height: 900px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(140,47,194,1) 0%, rgba(140,47,194,0.62) 38%, rgba(140,47,194,0.18) 72%, rgba(140,47,194,0) 100%);
+  opacity: 0.35; will-change: transform;
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-amber {
+  position: absolute; left: 330px; top: 390px; width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(254,176,34,1) 0%, rgba(254,176,34,0.42) 45%, rgba(254,176,34,0) 100%);
+  opacity: 0.16; will-change: transform;
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-dof { --dof: 0px; filter: blur(var(--dof)); will-change: filter; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-floor {
+  position: absolute; left: 0; top: 930px; width: 100%; height: 990px; overflow: hidden;
+  perspective: 1000px; perspective-origin: 50% 0%;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 34%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 34%, rgba(0,0,0,1) 100%);
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-floorplane {
+  position: absolute; left: -1060px; top: 0; width: 3200px; height: 860px; overflow: hidden;
+  transform-origin: 50% 0%; transform: rotateX(64deg); opacity: 0.22;
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-floorgrid {
+  position: absolute; left: 0; top: -90px; width: 3200px; height: 950px;
+  background-image:
+    linear-gradient(rgba(178,107,232,0.7) 2px, rgba(178,107,232,0) 2px),
+    linear-gradient(90deg, rgba(178,107,232,0.7) 2px, rgba(178,107,232,0) 2px);
+  background-size: 90px 90px; will-change: transform;
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-bokehs,
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-dust { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-bokeh { position: absolute; display: block; border-radius: 50%; will-change: transform; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-mote { position: absolute; display: block; border-radius: 50%; opacity: 0; will-change: transform, opacity; }
+
+/* ---------- stage / camera ---------- */
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-cam { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 540px 620px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-grain { position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0.06; }
+
+/* ---------- the card (a phone screen up close) ---------- */
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-cardin { position: absolute; left: 90px; top: 170px; width: 900px; height: 900px; transform-origin: 50% 50%; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-cardfloat { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-card {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 36px; overflow: hidden;
+  box-sizing: border-box; border: 3px solid rgba(178,107,232,0.38);
+  background: linear-gradient(160deg, rgba(34,26,82,0.94), rgba(21,16,54,0.94));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 40px 90px rgba(0,0,0,0.5);
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-cardsheen {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 34%);
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-cardglow {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 36px; box-sizing: border-box;
+  border: 3px solid rgba(254,176,34,0.9);
+  box-shadow: 0 0 60px rgba(254,176,34,0.35), inset 0 0 50px rgba(254,176,34,0.1);
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-ctxchip { position: absolute; left: 42px; top: 42px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-chip {
+  display: flex; align-items: center; white-space: nowrap;
+  padding: 12px 22px 12px 18px; border-radius: 999px;
+  border: 2px solid rgba(178,107,232,0.5); background: rgba(140,47,194,0.16);
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 26px; line-height: 1;
+  letter-spacing: 0.08em; color: #FDF2E0;
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-livedot { display: block; width: 12px; height: 12px; border-radius: 50%; margin-right: 14px; background: #FEB022; box-shadow: 0 0 12px rgba(254,176,34,0.85); }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-yr { color: #FEB022; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-ctxlock { position: absolute; right: 44px; top: 36px; width: 52px; height: 60px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-lock { position: absolute; left: 0; top: 0; width: 52px; height: 60px; overflow: visible; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-lockg { fill: none; stroke: #B26BE8; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* fingerprint + scan */
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-zoom { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 447px 447px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-zoomfade { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-printglow {
+  position: absolute; left: 187px; top: 187px; width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(232,134,6,0.9) 0%, rgba(232,134,6,0.35) 40%, rgba(232,134,6,0) 100%);
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-ripgate { position: absolute; left: 287px; top: 287px; width: 320px; height: 320px; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-rip { position: absolute; left: 0; top: 0; width: 320px; height: 320px; border-radius: 50%; box-sizing: border-box; border: 4px solid #FEB022; box-shadow: 0 0 24px rgba(254,176,34,0.5); }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-printbox { position: absolute; left: 217px; top: 217px; width: 460px; height: 460px; transform-origin: 50% 50%; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-fpsvg { position: absolute; left: 0; top: 0; width: 460px; height: 460px; overflow: visible; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-ghost { fill: none; stroke: #B26BE8; stroke-width: 5; stroke-linecap: round; stroke-opacity: 0.13; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-fpg { fill: none; stroke: #B26BE8; stroke-width: 5; stroke-linecap: round; filter: drop-shadow(0 0 8px rgba(178,107,232,0.55)); }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-scanclip { position: absolute; left: 40px; top: 10px; width: 380px; height: 440px; border-radius: 50%; overflow: hidden; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-scan { position: absolute; left: 0; top: 0; width: 380px; height: 93px; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-scantrail {
+  position: absolute; left: 0; top: 0; width: 100%; height: 90px;
+  background: linear-gradient(to bottom, rgba(178,107,232,0) 0%, rgba(178,107,232,0.3) 100%);
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-scanline { position: absolute; left: 0; top: 90px; width: 100%; height: 3px; background: #F1DBFF; box-shadow: 0 0 14px 3px rgba(178,107,232,0.9); }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-progress { position: absolute; left: 277px; top: 732px; width: 340px; height: 8px; border-radius: 4px; overflow: hidden; background: rgba(178,107,232,0.18); }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-progfill { position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 4px; background-color: #B26BE8; transform-origin: 0% 50%; }
+
+/* account panel */
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-panel { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 447px 447px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-ctxhead { position: absolute; left: 63px; top: 142px; width: 768px; height: 70px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-head { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-title {
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 46px; line-height: 1;
+  letter-spacing: 0.14em; color: #FDF2E0; white-space: nowrap;
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-ch { display: inline-block; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-avatar {
+  width: 64px; height: 64px; border-radius: 50%; flex: 0 0 auto;
+  background: linear-gradient(150deg, #8C2FC2, #4A2390); box-shadow: 0 0 0 3px rgba(178,107,232,0.45);
+  display: flex; align-items: center; justify-content: center;
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-ctxdiv { position: absolute; left: 63px; top: 240px; width: 768px; height: 6px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-divline { fill: none; stroke: rgba(178,107,232,0.5); stroke-width: 2; stroke-linecap: round; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-ctxlabel { position: absolute; left: 66px; top: 296px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-label {
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 30px; line-height: 1;
+  letter-spacing: 0.24em; color: #9A96B2; white-space: nowrap;
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-rowbloom {
+  position: absolute; left: -10px; top: 236px; width: 860px; height: 440px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(232,134,6,0.85) 0%, rgba(232,134,6,0.3) 45%, rgba(232,134,6,0) 100%);
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-rowshake { position: absolute; left: 63px; top: 356px; width: 720px; height: 200px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-row,
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-rowsheen {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: flex;
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 160px; font-variant-numeric: tabular-nums;
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-row { color: #9A96B2; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-col { position: relative; flex: 0 0 auto; width: 107.2px; height: 200px; margin-right: -4.8px; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-win {
+  width: 107.2px; height: 200px; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 14%, #000 86%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 14%, #000 86%, rgba(0,0,0,0) 100%);
+}
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-stack { display: flex; flex-direction: column; will-change: transform; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-it { flex: 0 0 auto; height: 200px; line-height: 200px; text-align: center; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-d { color: #FDF2E0; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-q { color: #FEB022; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-cm,
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-scm { flex: 0 0 auto; width: 52.8px; height: 200px; line-height: 200px; text-align: center; margin-right: -4.8px; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-sc { flex: 0 0 auto; width: 107.2px; height: 200px; line-height: 200px; text-align: center; margin-right: -4.8px; }
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-rowsheen {
+  color: transparent;
+  background-image: linear-gradient(105deg, rgba(255,248,232,0) 0%, rgba(255,248,232,0) 45%, rgba(255,252,244,0.95) 50%, rgba(255,248,232,0) 55%, rgba(255,248,232,0) 100%);
+  background-size: 300% 100%; background-repeat: no-repeat; background-position: 100% 50%;
+  -webkit-background-clip: text; background-clip: text;
+}
+[data-composition-id="b2-balance-unknown"] #b2-balance-unknown-ctxskel { position: absolute; left: 63px; top: 616px; width: 768px; height: 250px; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-sr { position: absolute; left: 0; width: 768px; height: 60px; }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-src { position: absolute; left: 0; top: 2px; width: 56px; height: 56px; border-radius: 50%; background: #221A52; box-shadow: inset 0 0 0 2px rgba(178,107,232,0.25); }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-sra { position: absolute; left: 80px; top: 12px; height: 16px; border-radius: 8px; background: rgba(253,242,224,0.18); }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-srb { position: absolute; left: 80px; top: 38px; height: 12px; border-radius: 6px; background: rgba(154,150,178,0.2); }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-srr { position: absolute; right: 0; top: 20px; width: 120px; height: 16px; border-radius: 8px; background: rgba(253,242,224,0.14); }
+[data-composition-id="b2-balance-unknown"] .b2-balance-unknown-pill { position: absolute; top: 190px; width: 370px; height: 54px; border-radius: 27px; box-sizing: border-box; border: 2px solid rgba(178,107,232,0.3); background: rgba(34,26,82,0.5); }
+</style>
+<div id="root" data-composition-id="b2-balance-unknown" data-start="0" data-duration="3.8" data-width="1080" data-height="1920">
+  <svg class="b2-balance-unknown-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="b2-balance-unknown-cb0" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur id="b2-balance-unknown-cb0-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="b2-balance-unknown-cb1" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur id="b2-balance-unknown-cb1-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="b2-balance-unknown-cb2" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur id="b2-balance-unknown-cb2-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="b2-balance-unknown-cb3" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur id="b2-balance-unknown-cb3-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="b2-balance-unknown-cb4" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur id="b2-balance-unknown-cb4-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="b2-balance-unknown-cb5" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur id="b2-balance-unknown-cb5-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="b2-balance-unknown-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="23" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track -->
+  <div id="b2-balance-unknown-ground" class="clip b2-balance-unknown-layer" data-start="0" data-duration="3.8" data-track-index="0">
+    <div class="b2-balance-unknown-base"></div>
+    <div id="b2-balance-unknown-blob"></div>
+    <div id="b2-balance-unknown-floor" class="b2-balance-unknown-dof">
+      <div class="b2-balance-unknown-floorplane"><div id="b2-balance-unknown-floorgrid"></div></div>
+    </div>
+    <div id="b2-balance-unknown-amber"></div>
+    <div id="b2-balance-unknown-bokehs" class="b2-balance-unknown-dof">
+    <i class="b2-balance-unknown-bokeh" style="left:-2px;top:240px;width:120px;height:120px;opacity:0.2;background:radial-gradient(circle closest-side, rgba(178,107,232,0.34) 0%, rgba(178,107,232,0.44) 70%, rgba(178,107,232,0.66) 86%, rgba(178,107,232,0) 100%)"></i>
+    <i class="b2-balance-unknown-bokeh" style="left:955px;top:445px;width:150px;height:150px;opacity:0.24;background:radial-gradient(circle closest-side, rgba(140,47,194,0.34) 0%, rgba(140,47,194,0.44) 70%, rgba(140,47,194,0.66) 86%, rgba(140,47,194,0) 100%)"></i>
+    <i class="b2-balance-unknown-bokeh" style="left:14px;top:940px;width:100px;height:100px;opacity:0.13;background:radial-gradient(circle closest-side, rgba(255,210,122,0.34) 0%, rgba(255,210,122,0.44) 70%, rgba(255,210,122,0.66) 86%, rgba(255,210,122,0) 100%)"></i>
+    <i class="b2-balance-unknown-bokeh" style="left:970px;top:1074px;width:92px;height:92px;opacity:0.15;background:radial-gradient(circle closest-side, rgba(254,176,34,0.34) 0%, rgba(254,176,34,0.44) 70%, rgba(254,176,34,0.66) 86%, rgba(254,176,34,0) 100%)"></i>
+    <i class="b2-balance-unknown-bokeh" style="left:235px;top:1185px;width:130px;height:130px;opacity:0.14;background:radial-gradient(circle closest-side, rgba(178,107,232,0.34) 0%, rgba(178,107,232,0.44) 70%, rgba(178,107,232,0.66) 86%, rgba(178,107,232,0) 100%)"></i>
+    <i class="b2-balance-unknown-bokeh" style="left:765px;top:1275px;width:110px;height:110px;opacity:0.1;background:radial-gradient(circle closest-side, rgba(253,242,224,0.34) 0%, rgba(253,242,224,0.44) 70%, rgba(253,242,224,0.66) 86%, rgba(253,242,224,0) 100%)"></i>
+    </div>
+    <div id="b2-balance-unknown-dust" class="b2-balance-unknown-dof">
+        <i class="b2-balance-unknown-mote" style="left:482.26px;top:744.52px;width:4.94px;height:4.94px;background:#FFD27A;"></i>
+        <i class="b2-balance-unknown-mote" style="left:228.21px;top:743.13px;width:2.96px;height:2.96px;background:#B26BE8;"></i>
+        <i class="b2-balance-unknown-mote" style="left:1007.16px;top:1407.46px;width:6.15px;height:6.15px;background:#FDF2E0;box-shadow:0 0 14.76px #FDF2E0;"></i>
+        <i class="b2-balance-unknown-mote" style="left:70.34px;top:264.63px;width:5.53px;height:5.53px;background:#FDF2E0;box-shadow:0 0 13.28px #FDF2E0;"></i>
+        <i class="b2-balance-unknown-mote" style="left:891.49px;top:1513.23px;width:7.41px;height:7.41px;background:#B26BE8;box-shadow:0 0 17.79px #B26BE8;"></i>
+        <i class="b2-balance-unknown-mote" style="left:779.29px;top:1733.67px;width:5.24px;height:5.24px;background:#B26BE8;box-shadow:0 0 12.58px #B26BE8;"></i>
+        <i class="b2-balance-unknown-mote" style="left:283.1px;top:1287.9px;width:4.04px;height:4.04px;background:#FDF2E0;"></i>
+        <i class="b2-balance-unknown-mote" style="left:992.73px;top:1600.74px;width:6.74px;height:6.74px;background:#FFD27A;box-shadow:0 0 16.19px #FFD27A;"></i>
+        <i class="b2-balance-unknown-mote" style="left:755.27px;top:1310.23px;width:3.49px;height:3.49px;background:#FFD27A;"></i>
+        <i class="b2-balance-unknown-mote" style="left:959.34px;top:347.21px;width:7.23px;height:7.23px;background:#B26BE8;box-shadow:0 0 17.36px #B26BE8;"></i>
+        <i class="b2-balance-unknown-mote" style="left:96.51px;top:235.59px;width:7.46px;height:7.46px;background:#B26BE8;box-shadow:0 0 17.91px #B26BE8;"></i>
+        <i class="b2-balance-unknown-mote" style="left:499.48px;top:876.1px;width:7.45px;height:7.45px;background:#FDF2E0;box-shadow:0 0 17.88px #FDF2E0;"></i>
+        <i class="b2-balance-unknown-mote" style="left:488.22px;top:1378.65px;width:6.23px;height:6.23px;background:#FFD27A;box-shadow:0 0 14.96px #FFD27A;"></i>
+        <i class="b2-balance-unknown-mote" style="left:1022.38px;top:467.07px;width:4.19px;height:4.19px;background:#FDF2E0;"></i>
+        <i class="b2-balance-unknown-mote" style="left:699.07px;top:807.57px;width:6.79px;height:6.79px;background:#FDF2E0;box-shadow:0 0 16.29px #FDF2E0;"></i>
+        <i class="b2-balance-unknown-mote" style="left:990.4px;top:778.98px;width:2.81px;height:2.81px;background:#B26BE8;"></i>
+        <i class="b2-balance-unknown-mote" style="left:956.57px;top:1061.41px;width:7.19px;height:7.19px;background:#FDF2E0;box-shadow:0 0 17.26px #FDF2E0;"></i>
+        <i class="b2-balance-unknown-mote" style="left:542.7px;top:421.89px;width:5.06px;height:5.06px;background:#B26BE8;"></i>
+    </div>
+  </div>
+
+  <!-- stage: all content inside x60-1020 / y120-1120 -->
+  <div id="b2-balance-unknown-stage" class="clip b2-balance-unknown-layer" data-start="0" data-duration="3.8" data-track-index="1">
+    <div id="b2-balance-unknown-cam">
+      <div id="b2-balance-unknown-cardin">
+        <div id="b2-balance-unknown-cardfloat">
+          <div id="b2-balance-unknown-card">
+            <div class="b2-balance-unknown-cardsheen"></div>
+
+            <div id="b2-balance-unknown-ctxchip" class="b2-balance-unknown-dof">
+              <div id="b2-balance-unknown-chip"><i id="b2-balance-unknown-livedot" class="b2-balance-unknown-livedot"></i><span class="b2-balance-unknown-yr">2029</span>&#160;&#183;&#160;FUTURE YOU</div>
+            </div>
+            <div id="b2-balance-unknown-ctxlock" class="b2-balance-unknown-dof">
+              <svg id="b2-balance-unknown-lock" viewBox="0 0 52 60" width="52" height="60" aria-hidden="true">
+                <g id="b2-balance-unknown-lockg">
+                  <path id="b2-balance-unknown-shackle" d="M15 27V18a11 11 0 0 1 22 0v9"></path>
+                  <rect x="7" y="26" width="38" height="30" rx="8"></rect>
+                  <path d="M26 37v7"></path>
+                </g>
+              </svg>
+            </div>
+
+            <div id="b2-balance-unknown-zoom">
+              <div id="b2-balance-unknown-zoomfade">
+                <div id="b2-balance-unknown-printglow"></div>
+                <div id="b2-balance-unknown-ripgate1" class="b2-balance-unknown-ripgate"><div id="b2-balance-unknown-rip1" class="b2-balance-unknown-rip"></div></div>
+                <div id="b2-balance-unknown-ripgate2" class="b2-balance-unknown-ripgate"><div id="b2-balance-unknown-rip2" class="b2-balance-unknown-rip"></div></div>
+                <div id="b2-balance-unknown-printbox">
+                  <svg id="b2-balance-unknown-fpsvg" viewBox="0 0 460 460" width="460" height="460" aria-hidden="true">
+                    <g id="b2-balance-unknown-ghost">
+                <path class="b2-balance-unknown-fpg" d="M216.16 253A18.92 22 0 1 1 238.59 257.6"></path>
+                <path class="b2-balance-unknown-fpg" d="M211.04 273.28A35.78 41.6 0 1 1 258.19 263.61"></path>
+                <path class="b2-balance-unknown-fpg" d="M195.47 284.19A52.63 61.2 0 1 1 255.52 291.53"></path>
+                <path class="b2-balance-unknown-fpg" d="M210.85 315.67A69.49 80.8 0 0 1 180.01 181.87"></path>
+                <path class="b2-balance-unknown-fpg" d="M195.26 168.03A69.49 80.8 0 0 1 281.64 292.07"></path>
+                <path class="b2-balance-unknown-fpg" d="M172.22 312.61A86.34 100.4 0 1 1 256.68 333.49"></path>
+                <path class="b2-balance-unknown-fpg" d="M191.34 349.26A103.2 120 0 1 1 297.71 147.43"></path>
+                <path class="b2-balance-unknown-fpg" d="M314.54 169.17A103.2 120 0 0 1 287.71 337.48"></path>
+                <path class="b2-balance-unknown-fpg" d="M148.12 340.1A120.06 139.6 0 1 1 252.91 375.04"></path>
+                <path class="b2-balance-unknown-fpg" d="M192.26 391.03A136.91 159.2 0 0 1 97.75 196.8"></path>
+                <path class="b2-balance-unknown-fpg" d="M115.18 151.29A136.91 159.2 0 1 1 310.47 366.8"></path>
+                <path class="b2-balance-unknown-fpg" d="M90.64 313.56A153.77 178.8 0 1 1 352.8 345.6"></path>
+                <path class="b2-balance-unknown-fpg" d="M59.48 244.92A170.62 198.4 0 0 1 218.1 40.08"></path>
+                <path class="b2-balance-unknown-fpg" d="M253.75 41.53A170.62 198.4 0 0 1 400.52 244.92"></path>
+                    </g>
+                    <g id="b2-balance-unknown-fpg">
+                <path class="b2-balance-unknown-fp" d="M216.16 253A18.92 22 0 1 1 238.59 257.6"></path>
+                <path class="b2-balance-unknown-fp" d="M211.04 273.28A35.78 41.6 0 1 1 258.19 263.61"></path>
+                <path class="b2-balance-unknown-fp" d="M195.47 284.19A52.63 61.2 0 1 1 255.52 291.53"></path>
+                <path class="b2-balance-unknown-fp" d="M210.85 315.67A69.49 80.8 0 0 1 180.01 181.87"></path>
+                <path class="b2-balance-unknown-fp" d="M195.26 168.03A69.49 80.8 0 0 1 281.64 292.07"></path>
+                <path class="b2-balance-unknown-fp" d="M172.22 312.61A86.34 100.4 0 1 1 256.68 333.49"></path>
+                <path class="b2-balance-unknown-fp" d="M191.34 349.26A103.2 120 0 1 1 297.71 147.43"></path>
+                <path class="b2-balance-unknown-fp" d="M314.54 169.17A103.2 120 0 0 1 287.71 337.48"></path>
+                <path class="b2-balance-unknown-fp" d="M148.12 340.1A120.06 139.6 0 1 1 252.91 375.04"></path>
+                <path class="b2-balance-unknown-fp" d="M192.26 391.03A136.91 159.2 0 0 1 97.75 196.8"></path>
+                <path class="b2-balance-unknown-fp" d="M115.18 151.29A136.91 159.2 0 1 1 310.47 366.8"></path>
+                <path class="b2-balance-unknown-fp" d="M90.64 313.56A153.77 178.8 0 1 1 352.8 345.6"></path>
+                <path class="b2-balance-unknown-fp" d="M59.48 244.92A170.62 198.4 0 0 1 218.1 40.08"></path>
+                <path class="b2-balance-unknown-fp" d="M253.75 41.53A170.62 198.4 0 0 1 400.52 244.92"></path>
+                    </g>
+                  </svg>
+                  <div id="b2-balance-unknown-scanclip">
+                    <div id="b2-balance-unknown-scan"><div class="b2-balance-unknown-scantrail"></div><div class="b2-balance-unknown-scanline"></div></div>
+                  </div>
+                </div>
+                <div id="b2-balance-unknown-progress"><div id="b2-balance-unknown-progfill"></div></div>
+              </div>
+            </div>
+
+            <div id="b2-balance-unknown-panel">
+              <div id="b2-balance-unknown-ctxhead" class="b2-balance-unknown-dof">
+                <div id="b2-balance-unknown-head">
+                  <div class="b2-balance-unknown-title"><span class="b2-balance-unknown-ch">A</span><span class="b2-balance-unknown-ch">C</span><span class="b2-balance-unknown-ch">C</span><span class="b2-balance-unknown-ch">O</span><span class="b2-balance-unknown-ch">U</span><span class="b2-balance-unknown-ch">N</span><span class="b2-balance-unknown-ch">T</span></div>
+                  <div id="b2-balance-unknown-avatar">
+                    <svg width="34" height="34" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="9.5" r="4.6" fill="none" stroke="#FDF2E0" stroke-width="2.2"></circle><path d="M4.5 23c1.2-4.6 4.4-7 8.5-7s7.3 2.4 8.5 7" fill="none" stroke="#FDF2E0" stroke-width="2.2" stroke-linecap="round"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div id="b2-balance-unknown-ctxdiv" class="b2-balance-unknown-dof">
+                <svg viewBox="0 0 768 6" width="768" height="6" aria-hidden="true"><path id="b2-balance-unknown-divline" d="M1 3H767"></path></svg>
+              </div>
+              <div id="b2-balance-unknown-ctxlabel" class="b2-balance-unknown-dof"><div id="b2-balance-unknown-label">BALANCE</div></div>
+              <div id="b2-balance-unknown-rowbloom"></div>
+              <div id="b2-balance-unknown-rowshake">
+                <div id="b2-balance-unknown-row">
+              <div class="b2-balance-unknown-col" id="b2-balance-unknown-col0" style="filter:url(#b2-balance-unknown-cb0)"><div class="b2-balance-unknown-win"><div class="b2-balance-unknown-stack" id="b2-balance-unknown-stk0"><div class="b2-balance-unknown-it">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div><div class="b2-balance-unknown-it b2-balance-unknown-d">2</div><div class="b2-balance-unknown-it b2-balance-unknown-d">9</div><div class="b2-balance-unknown-it b2-balance-unknown-d">6</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div><div class="b2-balance-unknown-it b2-balance-unknown-d">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div><div class="b2-balance-unknown-it b2-balance-unknown-q">?</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div></div></div></div>
+              <div class="b2-balance-unknown-cm">,</div>
+              <div class="b2-balance-unknown-col" id="b2-balance-unknown-col1" style="filter:url(#b2-balance-unknown-cb1)"><div class="b2-balance-unknown-win"><div class="b2-balance-unknown-stack" id="b2-balance-unknown-stk1"><div class="b2-balance-unknown-it">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div><div class="b2-balance-unknown-it b2-balance-unknown-d">2</div><div class="b2-balance-unknown-it b2-balance-unknown-d">9</div><div class="b2-balance-unknown-it b2-balance-unknown-d">6</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div><div class="b2-balance-unknown-it b2-balance-unknown-d">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-q">?</div><div class="b2-balance-unknown-it b2-balance-unknown-d">6</div></div></div></div>
+              <div class="b2-balance-unknown-col" id="b2-balance-unknown-col2" style="filter:url(#b2-balance-unknown-cb2)"><div class="b2-balance-unknown-win"><div class="b2-balance-unknown-stack" id="b2-balance-unknown-stk2"><div class="b2-balance-unknown-it">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div><div class="b2-balance-unknown-it b2-balance-unknown-d">2</div><div class="b2-balance-unknown-it b2-balance-unknown-d">9</div><div class="b2-balance-unknown-it b2-balance-unknown-d">6</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div><div class="b2-balance-unknown-it b2-balance-unknown-d">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div><div class="b2-balance-unknown-it b2-balance-unknown-q">?</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div></div></div></div>
+              <div class="b2-balance-unknown-cm">,</div>
+              <div class="b2-balance-unknown-col" id="b2-balance-unknown-col3" style="filter:url(#b2-balance-unknown-cb3)"><div class="b2-balance-unknown-win"><div class="b2-balance-unknown-stack" id="b2-balance-unknown-stk3"><div class="b2-balance-unknown-it">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div><div class="b2-balance-unknown-it b2-balance-unknown-d">2</div><div class="b2-balance-unknown-it b2-balance-unknown-d">9</div><div class="b2-balance-unknown-it b2-balance-unknown-d">6</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div><div class="b2-balance-unknown-it b2-balance-unknown-d">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-q">?</div><div class="b2-balance-unknown-it b2-balance-unknown-d">9</div></div></div></div>
+              <div class="b2-balance-unknown-col" id="b2-balance-unknown-col4" style="filter:url(#b2-balance-unknown-cb4)"><div class="b2-balance-unknown-win"><div class="b2-balance-unknown-stack" id="b2-balance-unknown-stk4"><div class="b2-balance-unknown-it">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div><div class="b2-balance-unknown-it b2-balance-unknown-d">2</div><div class="b2-balance-unknown-it b2-balance-unknown-d">9</div><div class="b2-balance-unknown-it b2-balance-unknown-d">6</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div><div class="b2-balance-unknown-it b2-balance-unknown-d">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-q">?</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div></div></div></div>
+              <div class="b2-balance-unknown-col" id="b2-balance-unknown-col5" style="filter:url(#b2-balance-unknown-cb5)"><div class="b2-balance-unknown-win"><div class="b2-balance-unknown-stack" id="b2-balance-unknown-stk5"><div class="b2-balance-unknown-it">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div><div class="b2-balance-unknown-it b2-balance-unknown-d">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-d">1</div><div class="b2-balance-unknown-it b2-balance-unknown-d">8</div><div class="b2-balance-unknown-it b2-balance-unknown-d">5</div><div class="b2-balance-unknown-it b2-balance-unknown-d">2</div><div class="b2-balance-unknown-it b2-balance-unknown-d">9</div><div class="b2-balance-unknown-it b2-balance-unknown-d">6</div><div class="b2-balance-unknown-it b2-balance-unknown-d">3</div><div class="b2-balance-unknown-it b2-balance-unknown-d">0</div><div class="b2-balance-unknown-it b2-balance-unknown-d">7</div><div class="b2-balance-unknown-it b2-balance-unknown-d">4</div><div class="b2-balance-unknown-it b2-balance-unknown-q">?</div><div class="b2-balance-unknown-it b2-balance-unknown-d">2</div></div></div></div>
+                </div>
+                <div id="b2-balance-unknown-rowsheen" aria-hidden="true"><div class="b2-balance-unknown-sc">?</div><div class="b2-balance-unknown-scm">,</div><div class="b2-balance-unknown-sc">?</div><div class="b2-balance-unknown-sc">?</div><div class="b2-balance-unknown-scm">,</div><div class="b2-balance-unknown-sc">?</div><div class="b2-balance-unknown-sc">?</div><div class="b2-balance-unknown-sc">?</div></div>
+              </div>
+              <div id="b2-balance-unknown-ctxskel" class="b2-balance-unknown-dof">
+                <div class="b2-balance-unknown-sr" style="top:0"><i class="b2-balance-unknown-src"></i><i class="b2-balance-unknown-sra" style="width:268px"></i><i class="b2-balance-unknown-srb" style="width:164px"></i><i class="b2-balance-unknown-srr"></i></div>
+                <div class="b2-balance-unknown-sr" style="top:86px"><i class="b2-balance-unknown-src"></i><i class="b2-balance-unknown-sra" style="width:220px"></i><i class="b2-balance-unknown-srb" style="width:190px"></i><i class="b2-balance-unknown-srr"></i></div>
+                <i class="b2-balance-unknown-pill" style="left:0"></i>
+                <i class="b2-balance-unknown-pill" style="left:398px"></i>
+              </div>
+            </div>
+          </div>
+          <div id="b2-balance-unknown-cardglow"></div>
+        </div>
+      </div>
+    </div>
+    <svg id="b2-balance-unknown-grain" width="1080" height="1920" aria-hidden="true"><rect width="1080" height="1920" filter="url(#b2-balance-unknown-grainf)"></rect></svg>
+  </div>
+</div>
+<script>
+(function () {
+  var DUR = 3.8;
+  function el(name) { return document.getElementById("b2-balance-unknown-" + name); }
+  var tl = gsap.timeline({ paused: true });
+
+  // ---------- GROUND: ambient drift (slower than the stage) ----------
+  tl.fromTo(el("blob"), { x: 50, y: -20 }, { x: -60, y: 50, duration: DUR, ease: "sine.inOut" }, 0);
+  tl.fromTo(el("amber"), { scale: 0.92 }, { scale: 1.14, duration: DUR, ease: "sine.inOut" }, 0);
+  tl.fromTo(el("floorgrid"), { y: 0 }, { y: 90, duration: DUR, ease: "none" }, 0);
+
+  // one finite ambient clock: bokeh drift, dust motes, the chip's live dot
+  var MOTES = [[44.29,21.43,3.156,0.481],[32.16,14.41,5.81,0.515],[51.73,11.21,0.74,0.592],[47.94,19.79,1.111,0.48],[59.46,20.57,6.257,0.276],[46.14,19.33,2.882,0.59],[38.81,9.55,3.429,0.347],[55.37,12.93,5.115,0.535],[35.39,21.45,6.193,0.321],[58.36,15.13,4.287,0.556],[59.77,21.39,3.995,0.441],[59.69,13.49,5.256,0.338],[52.24,7.43,5.066,0.527],[39.71,17.9,2.586,0.256],[55.63,14.81,1.052,0.276],[31.22,15.94,4.194,0.454],[58.1,13.37,0.692,0.563],[45.04,8.68,4.808,0.303]];
+  var BOKEH = [[12,0.7],[14,2.4],[10,4.2],[9,1.6],[12,3.3],[11,5.1]];
+  var moteEls = el("dust").querySelectorAll(".b2-balance-unknown-mote");
+  var bokehEls = el("bokehs").querySelectorAll(".b2-balance-unknown-bokeh");
+  var liveDot = el("livedot");
+  var amb = { t: 0 };
+  function applyAmbient() {
+    var t = amb.t, i;
+    for (i = 0; i < bokehEls.length; i++) {
+      var b = BOKEH[i];
+      var bx = b[0] * Math.sin(b[1] + t * 0.55), by = b[0] * 0.8 * Math.cos(b[1] * 1.3 + t * 0.42);
+      bokehEls[i].style.transform = "translate(" + bx.toFixed(2) + "px," + by.toFixed(2) + "px) scale(" + (1 + 0.05 * Math.sin(b[1] + t * 0.8)).toFixed(4) + ")";
+    }
+    for (i = 0; i < moteEls.length; i++) {
+      var m = MOTES[i];
+      var x = m[1] * Math.sin(m[2] + t * 0.9);
+      var y = -m[0] * t;
+      moteEls[i].style.transform = "translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+      moteEls[i].style.opacity = (m[3] * (0.62 + 0.38 * Math.sin(m[2] * 1.7 + t * 2.1))).toFixed(3);
+    }
+    liveDot.style.opacity = (0.6 + 0.4 * Math.cos(t * 6.2)).toFixed(3);
+  }
+  applyAmbient();
+  tl.fromTo(amb, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: applyAmbient }, 0);
+
+  // ---------- CAMERA: slow push (1.00 -> 1.04) ----------
+  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.04, duration: DUR, ease: "none" }, 0);
+
+  // ---------- SCENE 1 (0.0-1.3): the card, the chip, the fingerprint draws + scan ----------
+  tl.fromTo(el("cardin"),
+    { opacity: 0.35, scale: 0.94, filter: "blur(8px)" },
+    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, 0);
+  tl.fromTo(el("cardfloat"), { y: 0 }, { y: -10, duration: DUR, ease: "sine.inOut" }, 0);
+  tl.fromTo(el("chip"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 0.12);
+  tl.fromTo(el("lock"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, 0.18);
+  tl.fromTo(el("ghost"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.1);
+
+  // svg-path-draw, arc by arc from the core outward: "future" (0.34) -> "self" (0.74)
+  var arcs = el("fpg").querySelectorAll("path");
+  for (var a = 0; a < arcs.length; a++) {
+    var L = arcs[a].getTotalLength() * 1.02;
+    arcs[a].style.strokeDasharray = String(L);
+    arcs[a].style.strokeDashoffset = String(L);
+    tl.fromTo(arcs[a], { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.36, ease: "power2.out" }, 0.34 + a * (0.4 / (arcs.length - 1)));
+  }
+  tl.fromTo(el("printbox"), { scale: 1 }, { scale: 1.03, duration: 1.0, ease: "sine.inOut" }, 0.3);
+  tl.fromTo(el("scan"), { y: -90 }, { y: 440, duration: 0.88, ease: "sine.inOut" }, 0.4);
+  tl.fromTo(el("progfill"), { scaleX: 0 }, { scaleX: 1, duration: 0.88, ease: "power1.inOut" }, 0.4);
+
+  // ---------- SCENE 2 (1.3-2.5): unlock -> zoom-through -> account panel ----------
+  // "opening" (1.30): print turns amber, ripples, lock opens
+  tl.fromTo(el("fpg"), { stroke: "#B26BE8", strokeWidth: 5 }, { stroke: "#FEB022", strokeWidth: 6.5, duration: 0.22, ease: "power2.out" }, 1.3);
+  tl.fromTo(el("printglow"), { opacity: 0, scale: 0.7 }, { opacity: 0.42, scale: 1, duration: 0.3, ease: "power2.out" }, 1.3);
+  tl.fromTo(el("progfill"), { backgroundColor: "#B26BE8" }, { backgroundColor: "#FEB022", duration: 0.2, ease: "power2.out", immediateRender: false }, 1.3);
+  tl.fromTo(el("ripgate1"), { opacity: 0 }, { opacity: 1, duration: 0.03, ease: "none" }, 1.32);
+  tl.fromTo(el("rip1"), { scale: 0.55, opacity: 0.95 }, { scale: 2, opacity: 0, duration: 0.6, ease: "power2.out" }, 1.32);
+  tl.fromTo(el("ripgate2"), { opacity: 0 }, { opacity: 1, duration: 0.03, ease: "none" }, 1.42);
+  tl.fromTo(el("rip2"), { scale: 0.55, opacity: 0.8 }, { scale: 2.3, opacity: 0, duration: 0.6, ease: "power2.out" }, 1.42);
+  tl.fromTo(el("lockg"), { stroke: "#B26BE8" }, { stroke: "#FEB022", duration: 0.25, ease: "power2.out" }, 1.3);
+  tl.fromTo(el("shackle"), { y: 0 }, { y: -10, duration: 0.4, ease: "back.out(2.2)" }, 1.3);
+
+  // inner zoom-through (cut at peak velocity, matched 18px blur): print pushes past camera...
+  tl.fromTo(el("zoom"), { scale: 1, filter: "blur(0px)" }, { scale: 1.6, filter: "blur(18px)", duration: 0.22, ease: "power3.in" }, 1.52);
+  tl.fromTo(el("zoomfade"), { opacity: 1 }, { opacity: 0, duration: 0.22, ease: "none" }, 1.52);
+  // ...and the account panel arrives from behind; lands on "account" (1.94)
+  tl.fromTo(el("panel"),
+    { opacity: 0, scale: 0.85, filter: "blur(18px)" },
+    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.56, ease: "expo.out" }, 1.66);
+  // the header + label ride in on the panel (the zoom-through carries real content); inside it the
+  // header letters settle, the divider draws, then the placeholder balance pops in after "account"
+  tl.fromTo(el("head").querySelectorAll(".b2-balance-unknown-ch"), { opacity: 0.35, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.025 }, 1.66);
+  tl.fromTo(el("avatar"), { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 1.82);
+  var divLine = el("divline");
+  var DL = divLine.getTotalLength();
+  divLine.style.strokeDasharray = String(DL);
+  divLine.style.strokeDashoffset = String(DL);
+  tl.fromTo(divLine, { strokeDashoffset: DL }, { strokeDashoffset: 0, duration: 0.44, ease: "power2.out" }, 1.8);
+  tl.fromTo(el("label"), { opacity: 0.3, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, 1.76);
+  // spring-pop-entrance: the placeholder balance 0,00,000 pops in column by column
+  tl.fromTo(el("row").children, { opacity: 0, scale: 0.6, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "power3.out", stagger: 0.03 }, 1.98);
+  tl.fromTo(el("ctxskel").children, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.07 }, 2.08);
+
+  // ---------- SCENE 3 (2.5-3.8): every column spins and lands on "?" ----------
+  // vertical-spring-ticker: three additive back.out springs per column (n items each), staggered
+  // starts; the vertical motion blur is driven by each column's own summed velocity.
+  var ITEM_H = 200;
+  var COLS = [[[2.5,0.36,1.4,5],[2.7,0.36,1.4,6],[2.92,0.46,1.8,2]],[[2.535,0.36,1.4,6],[2.735,0.36,1.4,5],[2.944,0.46,1.8,2]],[[2.57,0.36,1.4,7],[2.77,0.36,1.4,6],[2.968,0.46,1.8,2]],[[2.605,0.36,1.4,5],[2.805,0.36,1.4,7],[2.992,0.46,1.8,2]],[[2.64,0.36,1.4,6],[2.84,0.36,1.4,5],[3.016,0.46,1.8,2]],[[2.675,0.36,1.4,7],[2.875,0.36,1.4,6],[3.04,0.46,1.8,2]]]; // per column: [[start, dur, overshoot, items], ...]
+  function backOut(p, s) { if (p <= 0) return 0; if (p >= 1) return 1; var q = p - 1; return q * q * ((s + 1) * q + s) + 1; }
+  function backOutVel(p, s) { if (p <= 0 || p >= 1) return 0; var q = p - 1; return 3 * (s + 1) * q * q + 2 * s * q; }
+  var stacks = [], blurs = [], prog = [];
+  function applyCol(c) {
+    var st = COLS[c], pr = prog[c], pos = 0, vel = 0;
+    for (var k = 0; k < st.length; k++) {
+      pos += st[k][3] * backOut(pr[k].p, st[k][2]);
+      vel += st[k][3] * backOutVel(pr[k].p, st[k][2]) / st[k][1];
+    }
+    stacks[c].style.transform = "translate3d(0," + (-pos * ITEM_H).toFixed(2) + "px,0)";
+    var b = Math.min(26, Math.abs(vel) * ITEM_H / 25 * 0.1);
+    blurs[c].setAttribute("stdDeviation", "0 " + b.toFixed(2));
+  }
+  function colUpdater(c) { return function () { applyCol(c); }; }
+  for (var c = 0; c < COLS.length; c++) {
+    stacks[c] = el("stk" + c);
+    blurs[c] = el("cb" + c + "-node");
+    // create every spring's progress proxy before any tween can call applyCol
+    prog[c] = COLS[c].map(function () { return { p: 0 }; });
+    for (var k = 0; k < COLS[c].length; k++) {
+      tl.fromTo(prog[c][k], { p: 0 }, { p: 1, duration: COLS[c][k][1], ease: "none", onUpdate: colUpdater(c) }, COLS[c][k][0]);
+    }
+    applyCol(c);
+  }
+
+  // depth-of-field-blur: the world recedes while the reels spin, then the card rack-focuses onto the row
+  tl.fromTo([el("floor"), el("bokehs"), el("dust")], { "--dof": "0px", opacity: 1 }, { "--dof": "6px", opacity: 0.6, duration: 0.6, ease: "power2.inOut" }, 2.5);
+  tl.fromTo([el("ctxchip"), el("ctxlock"), el("ctxhead"), el("ctxdiv"), el("ctxlabel"), el("ctxskel")],
+    { "--dof": "0px", opacity: 1 }, { "--dof": "3px", opacity: 0.5, duration: 0.5, ease: "power2.inOut" }, 2.86);
+
+  // "balance" (3.14): ?,??,??? lands amber with glow + bloom, short shake, edge glow, light sweep
+  tl.fromTo(el("row"),
+    { color: "#9A96B2", textShadow: "0 0 0px rgba(254,176,34,0)" },
+    { color: "#FEB022", textShadow: "0 0 40px rgba(254,176,34,0.45)", duration: 0.3, ease: "power2.out" }, 3.06);
+  tl.fromTo(el("rowbloom"), { opacity: 0, scale: 0.8 }, { opacity: 0.38, scale: 1, duration: 0.4, ease: "power2.out" }, 3.04);
+  var rowShake = el("rowshake");
+  var shake = { p: 0 };
+  tl.fromTo(shake, { p: 0 }, {
+    p: 1, duration: 0.42, ease: "none",
+    onUpdate: function () {
+      var x = 14 * Math.exp(-4.6 * shake.p) * Math.sin(Math.PI * 2 * 5 * shake.p);
+      rowShake.style.transform = "translate3d(" + x.toFixed(2) + "px,0,0)";
+    }
+  }, 3.16);
+  tl.fromTo(el("cardglow"), { opacity: 0 }, { opacity: 1, duration: 0.38, ease: "power2.out" }, 3.12);
+  tl.fromTo(el("amber"), { y: 0, opacity: 0.16 }, { y: 44, opacity: 0.24, duration: 0.5, ease: "power2.out", immediateRender: false }, 3.06);
+  tl.fromTo(el("rowsheen"), { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%", duration: 0.46, ease: "none" }, 3.28);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["b2-balance-unknown"] = tl;
+})();
+</script>
+</template>
