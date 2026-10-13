@@ -6,3 +6,6 @@ renders/
 snapshots/
 
 node_modules/
+
+# Python bytecode from running the tools
+__pycache__/
