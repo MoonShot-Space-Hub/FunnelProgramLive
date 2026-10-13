@@ -1,0 +1,864 @@
+<template id="b6-number-vs-voice-template">
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Montserrat", sans-serif;
+      color: #fdf2e0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    /* ---------- ground ---------- */
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-ground {
+      background-color: #0b0820;
+      background-image: radial-gradient(circle at 540px 620px, #221a52 0%, #0b0820 70%);
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-grid {
+      position: absolute;
+      left: -60px;
+      top: -144px;
+      width: 1200px;
+      height: 2208px;
+      background-image:
+        linear-gradient(rgba(178, 107, 232, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(178, 107, 232, 0.12) 1px, transparent 1px);
+      background-size: 72px 72px;
+      -webkit-mask-image: radial-gradient(ellipse 620px 760px at 600px 780px, #000 30%, transparent 100%);
+      mask-image: radial-gradient(ellipse 620px 760px at 600px 780px, #000 30%, transparent 100%);
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-blob {
+      position: absolute;
+      border-radius: 50%;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-blob-violet {
+      left: 90px;
+      top: 220px;
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(circle, rgba(140, 47, 194, 0.95) 0%, rgba(140, 47, 194, 0.45) 35%, rgba(140, 47, 194, 0) 70%);
+      opacity: 0.35;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-blob-amber {
+      left: 330px;
+      top: 180px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(254, 176, 34, 0.9) 0%, rgba(254, 176, 34, 0.35) 38%, rgba(254, 176, 34, 0) 70%);
+      opacity: 0.16;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-motes {
+      position: absolute;
+      inset: 0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-mote {
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 50%;
+      background: #ffd27a;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-grain {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.07;
+    }
+    /* ---------- stage ---------- */
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-world {
+      position: absolute;
+      inset: 0;
+      transform-origin: 540px 620px;
+      will-change: transform;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cardcam {
+      --b6-number-vs-voice-dof: 0px;
+      position: absolute;
+      left: 70px;
+      top: 160px;
+      width: 940px;
+      height: 460px;
+      transform-origin: 50% 50%;
+      filter: blur(var(--b6-number-vs-voice-dof));
+      will-change: filter, transform;
+      z-index: 1;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cardfloat,
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-card {
+      position: absolute;
+      inset: 0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-card {
+      transform-origin: 50% 60%;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cardbody {
+      position: absolute;
+      inset: 0;
+      border-radius: 36px;
+      background: linear-gradient(160deg, rgba(34, 26, 82, 0.94), rgba(21, 16, 54, 0.94));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 40px 90px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cardsheen {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 520px 260px at 82% 0%, rgba(178, 107, 232, 0.16), rgba(178, 107, 232, 0) 70%);
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-glint {
+      position: absolute;
+      left: 0;
+      top: -200px;
+      width: 150px;
+      height: 860px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 244, 222, 0.22) 45%, rgba(255, 255, 255, 0.34) 50%, rgba(255, 244, 222, 0.22) 55%, rgba(255, 255, 255, 0) 100%);
+      transform-origin: 50% 50%;
+      opacity: 0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cardstroke {
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      width: 948px;
+      height: 468px;
+      overflow: visible;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cardstroke path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-edge {
+      stroke: rgba(178, 107, 232, 0.62);
+      stroke-width: 3;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-spark {
+      stroke: #ffd27a;
+      stroke-width: 5;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-chip {
+      position: absolute;
+      left: 56px;
+      top: 52px;
+      width: 96px;
+      height: 72px;
+      overflow: visible;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-acct {
+      position: absolute;
+      left: 182px;
+      top: 70px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 36px;
+      letter-spacing: 0.26em;
+      color: #9a96b2;
+      white-space: nowrap;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-acct span {
+      display: inline-block;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-pill {
+      position: absolute;
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: 2px solid #feb022;
+      background: rgba(254, 176, 34, 0.1);
+      color: #feb022;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 38px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-shadow: 0 0 24px rgba(254, 176, 34, 0.45);
+      box-shadow: 0 0 34px rgba(254, 176, 34, 0.18);
+      overflow: hidden;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-pillsheen {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 70px;
+      height: 120px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 236, 200, 0.55), rgba(255, 255, 255, 0));
+      opacity: 0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-pill1 {
+      right: 52px;
+      top: 48px;
+      transform-origin: 70% 50%;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-counterwrap {
+      position: absolute;
+      left: 56px;
+      top: 138px;
+      width: 828px;
+      height: 170px;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-bloom {
+      position: absolute;
+      left: 120px;
+      top: -150px;
+      width: 560px;
+      height: 460px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(254, 176, 34, 0.55) 0%, rgba(254, 176, 34, 0.18) 40%, rgba(254, 176, 34, 0) 70%);
+      opacity: 0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-counter {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: inline-block;
+      font-family: "Archivo Black", sans-serif;
+      font-weight: 400;
+      font-size: 160px;
+      line-height: 170px;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      color: #fdf2e0;
+      white-space: nowrap;
+      transform-origin: 0% 70%;
+      text-shadow: 0 0 46px rgba(178, 107, 232, 0.35);
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-track {
+      position: absolute;
+      left: 56px;
+      top: 330px;
+      width: 828px;
+      height: 14px;
+      border-radius: 7px;
+      background: rgba(178, 107, 232, 0.18);
+      transform-origin: 0% 50%;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-fillclip {
+      position: absolute;
+      inset: 0;
+      border-radius: 7px;
+      overflow: hidden;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #c77a12, #feb022 60%, #ffd27a);
+      transform-origin: 0% 50%;
+      box-shadow: 0 0 18px rgba(254, 176, 34, 0.6);
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-cap {
+      position: absolute;
+      left: -17px;
+      top: -10px;
+      width: 34px;
+      height: 34px;
+      opacity: 0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-capdot {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff6e2 0%, #ffd27a 40%, rgba(254, 176, 34, 0) 72%);
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-digits {
+      position: absolute;
+      left: 56px;
+      top: 384px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 38px;
+      letter-spacing: 0.12em;
+      color: #9a96b2;
+      white-space: nowrap;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-digits span {
+      display: inline-block;
+      margin-right: 26px;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-nfc {
+      position: absolute;
+      right: 54px;
+      top: 374px;
+      width: 50px;
+      height: 50px;
+      overflow: visible;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-nfc path {
+      fill: none;
+      stroke: #b26be8;
+      stroke-width: 4;
+      stroke-linecap: round;
+    }
+    /* ---------- head ---------- */
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-head {
+      position: absolute;
+      left: 300px;
+      top: 560px;
+      width: 480px;
+      height: 540px;
+      z-index: 2;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-headsvg {
+      position: absolute;
+      inset: 0;
+      width: 480px;
+      height: 540px;
+      overflow: visible;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-headinner {
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(178, 107, 232, 0.34) 0%, rgba(140, 47, 194, 0.14) 42%, rgba(140, 47, 194, 0) 70%);
+      opacity: 0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-headinner-amber {
+      background: radial-gradient(circle, rgba(254, 176, 34, 0.42) 0%, rgba(254, 176, 34, 0.12) 42%, rgba(254, 176, 34, 0) 70%);
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-wave {
+      position: absolute;
+      left: 103px;
+      top: 140px;
+      width: 284px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-bar {
+      display: block;
+      width: 8px;
+      border-radius: 4px;
+      background: #b26be8;
+      transform: scaleY(0);
+      transform-origin: 50% 50%;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-ring {
+      position: absolute;
+      left: 95px;
+      top: 100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 2px solid rgba(178, 107, 232, 0.8);
+      opacity: 0;
+    }
+    [data-composition-id="b6-number-vs-voice"] .b6-number-vs-voice-pill2 {
+      left: 80px;
+      top: 628px;
+      transform-origin: 0% 50%;
+      z-index: 3;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="b6-number-vs-voice"
+    data-start="0"
+    data-duration="5.05"
+    data-width="1080"
+    data-height="1920"
+  >
+    <!-- Full-bleed ground: lowest track, full duration -->
+    <div
+      id="b6-number-vs-voice-ground"
+      class="clip b6-number-vs-voice-layer b6-number-vs-voice-ground"
+      data-start="0"
+      data-duration="5.05"
+      data-track-index="0"
+    >
+      <div id="b6-number-vs-voice-grid" class="b6-number-vs-voice-grid"></div>
+      <div id="b6-number-vs-voice-blob-violet" class="b6-number-vs-voice-blob b6-number-vs-voice-blob-violet"></div>
+      <div id="b6-number-vs-voice-blob-amber" class="b6-number-vs-voice-blob b6-number-vs-voice-blob-amber"></div>
+      <div id="b6-number-vs-voice-motes" class="b6-number-vs-voice-motes"></div>
+      <svg class="b6-number-vs-voice-grain" viewBox="0 0 1080 1920" preserveAspectRatio="none" aria-hidden="true">
+        <filter id="b6-number-vs-voice-grainfx" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="1080" height="1920" filter="url(#b6-number-vs-voice-grainfx)" />
+      </svg>
+    </div>
+
+    <!-- Scene content: everything inside the stage (x 60-1020, y 120-1120) -->
+    <div
+      id="b6-number-vs-voice-scene"
+      class="clip b6-number-vs-voice-layer"
+      data-start="0"
+      data-duration="5.05"
+      data-track-index="1"
+    >
+      <div id="b6-number-vs-voice-world" class="b6-number-vs-voice-world">
+        <!-- THE NUMBER: bank card -->
+        <div id="b6-number-vs-voice-cardcam" class="b6-number-vs-voice-cardcam">
+          <div id="b6-number-vs-voice-cardfloat" class="b6-number-vs-voice-cardfloat">
+            <div id="b6-number-vs-voice-card" class="b6-number-vs-voice-card">
+              <div id="b6-number-vs-voice-cardbody" class="b6-number-vs-voice-cardbody">
+                <div class="b6-number-vs-voice-cardsheen"></div>
+                <div id="b6-number-vs-voice-glint" class="b6-number-vs-voice-glint"></div>
+              </div>
+              <svg class="b6-number-vs-voice-cardstroke" viewBox="-4 -4 948 468" aria-hidden="true">
+                <defs>
+                  <filter id="b6-number-vs-voice-sparkglow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="b" />
+                    <feMerge>
+                      <feMergeNode in="b" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path
+                  id="b6-number-vs-voice-edge-r"
+                  class="b6-number-vs-voice-edge"
+                  d="M470 1.5 H904 A34.5 34.5 0 0 1 938.5 36 V424 A34.5 34.5 0 0 1 904 458.5 H470"
+                />
+                <path
+                  id="b6-number-vs-voice-edge-l"
+                  class="b6-number-vs-voice-edge"
+                  d="M470 1.5 H36 A34.5 34.5 0 0 0 1.5 36 V424 A34.5 34.5 0 0 0 36 458.5 H470"
+                />
+                <path
+                  id="b6-number-vs-voice-spark-r"
+                  class="b6-number-vs-voice-spark"
+                  filter="url(#b6-number-vs-voice-sparkglow)"
+                  d="M470 1.5 H904 A34.5 34.5 0 0 1 938.5 36 V424 A34.5 34.5 0 0 1 904 458.5 H470"
+                />
+                <path
+                  id="b6-number-vs-voice-spark-l"
+                  class="b6-number-vs-voice-spark"
+                  filter="url(#b6-number-vs-voice-sparkglow)"
+                  d="M470 1.5 H36 A34.5 34.5 0 0 0 1.5 36 V424 A34.5 34.5 0 0 0 36 458.5 H470"
+                />
+              </svg>
+
+              <svg id="b6-number-vs-voice-chip" class="b6-number-vs-voice-chip" viewBox="0 0 96 72" aria-hidden="true">
+                <rect x="1.5" y="1.5" width="93" height="69" rx="14" fill="rgba(254,176,34,0.14)" stroke="#ffd27a" stroke-width="3" />
+                <path class="b6-number-vs-voice-chipline" d="M1.5 25 H30 M1.5 47 H30 M66 25 H94.5 M66 47 H94.5" fill="none" stroke="#ffd27a" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+                <path class="b6-number-vs-voice-chipline" d="M30 12 V60 M66 12 V60 M30 36 H66" fill="none" stroke="#ffd27a" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+              </svg>
+
+              <div id="b6-number-vs-voice-acct" class="b6-number-vs-voice-acct">ACCOUNT</div>
+
+              <div id="b6-number-vs-voice-pill1" class="b6-number-vs-voice-pill b6-number-vs-voice-pill1">
+                THE NUMBER
+                <div id="b6-number-vs-voice-pill1sheen" class="b6-number-vs-voice-pillsheen"></div>
+              </div>
+
+              <div class="b6-number-vs-voice-counterwrap">
+                <div id="b6-number-vs-voice-bloom" class="b6-number-vs-voice-bloom"></div>
+                <div id="b6-number-vs-voice-counter" class="b6-number-vs-voice-counter">0</div>
+              </div>
+
+              <div id="b6-number-vs-voice-track" class="b6-number-vs-voice-track">
+                <div class="b6-number-vs-voice-fillclip">
+                  <div id="b6-number-vs-voice-fill" class="b6-number-vs-voice-fill"></div>
+                </div>
+                <div id="b6-number-vs-voice-cap" class="b6-number-vs-voice-cap"><div id="b6-number-vs-voice-capdot" class="b6-number-vs-voice-capdot"></div></div>
+              </div>
+
+              <div id="b6-number-vs-voice-digits" class="b6-number-vs-voice-digits">
+                <span>••••</span><span>••••</span><span>••••</span><span>2047</span>
+              </div>
+
+              <svg id="b6-number-vs-voice-nfc" class="b6-number-vs-voice-nfc" viewBox="0 0 50 50" aria-hidden="true">
+                <path d="M10 17 Q16 25 10 33" />
+                <path d="M20 11 Q30 25 20 39" />
+                <path d="M30 5 Q44 25 30 45" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE VOICE: head in profile with a waveform inside -->
+        <div id="b6-number-vs-voice-head" class="b6-number-vs-voice-head">
+          <div id="b6-number-vs-voice-headinner" class="b6-number-vs-voice-headinner"></div>
+          <div id="b6-number-vs-voice-headinner-amber" class="b6-number-vs-voice-headinner b6-number-vs-voice-headinner-amber"></div>
+          <svg class="b6-number-vs-voice-headsvg" viewBox="0 0 480 540" aria-hidden="true">
+            <defs>
+              <linearGradient id="b6-number-vs-voice-headfade" gradientUnits="userSpaceOnUse" x1="0" y1="400" x2="0" y2="530">
+                <stop offset="0" stop-color="#fff" />
+                <stop offset="1" stop-color="#000" />
+              </linearGradient>
+              <mask id="b6-number-vs-voice-headmask" maskUnits="userSpaceOnUse" x="-60" y="-60" width="600" height="660">
+                <rect x="-60" y="-60" width="600" height="660" fill="url(#b6-number-vs-voice-headfade)" />
+              </mask>
+              <radialGradient id="b6-number-vs-voice-headfillgrad" cx="0.48" cy="0.42" r="0.62">
+                <stop offset="0" stop-color="#221a52" stop-opacity="0.85" />
+                <stop offset="1" stop-color="#151036" stop-opacity="0.55" />
+              </radialGradient>
+              <filter id="b6-number-vs-voice-headglowfx" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="10" />
+              </filter>
+            </defs>
+            <g mask="url(#b6-number-vs-voice-headmask)">
+              <path id="b6-number-vs-voice-headfill" fill="url(#b6-number-vs-voice-headfillgrad)" stroke="none" opacity="0" d="" />
+              <path id="b6-number-vs-voice-headglow" fill="none" stroke="#b26be8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" filter="url(#b6-number-vs-voice-headglowfx)" opacity="0" d="" />
+              <path id="b6-number-vs-voice-headline" fill="none" stroke="#b26be8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="" />
+              <path id="b6-number-vs-voice-headspark" fill="none" stroke="#fff3da" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0" d="" />
+            </g>
+          </svg>
+          <div id="b6-number-vs-voice-ring0" class="b6-number-vs-voice-ring"></div>
+          <div id="b6-number-vs-voice-ring1" class="b6-number-vs-voice-ring"></div>
+          <div id="b6-number-vs-voice-ring2" class="b6-number-vs-voice-ring"></div>
+          <div id="b6-number-vs-voice-wave" class="b6-number-vs-voice-wave"></div>
+        </div>
+
+        <div id="b6-number-vs-voice-pill2" class="b6-number-vs-voice-pill b6-number-vs-voice-pill2">
+          THE VOICE
+          <div id="b6-number-vs-voice-pill2sheen" class="b6-number-vs-voice-pillsheen"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const ID = "b6-number-vs-voice";
+      const P = ID + "-";
+      const DUR = 5.05;
+      const $ = (s) => document.getElementById(P + s);
+      const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+      const lerp = (a, b, k) => a + (b - a) * k;
+      // seeded hash PRNG: pure function of n
+      const prand = (n) => {
+        const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+        return x - Math.floor(x);
+      };
+      const eOut2 = gsap.parseEase("power2.out");
+      const eOut3 = gsap.parseEase("power3.out");
+      const eInOut = gsap.parseEase("sine.inOut");
+
+      // ---------- word cues (local seconds) ----------
+      const CUE = {
+        because: 0.08, its: 0.4, not: 0.72, just: 0.88, about: 1.12, the: 1.36,
+        number: 1.52, account: 2.24, also: 3.2, voice: 3.84, in2: 4.24, head: 4.56,
+      };
+
+      // ---------- head profile (facing right, 480x540 box) ----------
+      const HEAD_D =
+        "M150 540 C152 508 154 488 156 470 C120 442 74 386 68 304 C60 186 140 54 262 48 " +
+        "C362 44 420 110 424 190 C426 212 420 226 416 238 C414 248 420 258 428 270 " +
+        "C440 290 458 310 462 326 C465 337 452 343 440 345 C440 353 446 361 446 369 " +
+        "C446 375 437 379 432 381 C440 386 443 393 440 401 C438 408 429 412 428 419 " +
+        "C430 433 432 447 418 458 C400 471 362 468 346 479 C336 495 334 520 338 540";
+      ["headline", "headglow", "headspark"].forEach((k) => $(k).setAttribute("d", HEAD_D));
+      $("headfill").setAttribute("d", HEAD_D + " L150 540 Z");
+
+      // ---------- build split / generated DOM (setup only, deterministic) ----------
+      const acct = $("acct");
+      const acctText = acct.textContent;
+      acct.textContent = "";
+      const acctLetters = [];
+      for (const ch of acctText) {
+        const s = document.createElement("span");
+        s.textContent = ch;
+        acct.appendChild(s);
+        acctLetters.push(s);
+      }
+
+      const wave = $("wave");
+      const BARS = 24;
+      const bars = [];
+      for (let i = 0; i < BARS; i++) {
+        const b = document.createElement("div");
+        b.className = P + "bar";
+        const env = Math.pow(Math.sin((Math.PI * (i + 0.5)) / BARS), 1.4);
+        const h = Math.round(34 + 150 * env);
+        b.style.height = h + "px";
+        wave.appendChild(b);
+        bars.push({
+          el: b,
+          phA: i * 0.71 + prand(i * 3 + 1) * 1.2,
+          phB: i * 1.93 + prand(i * 5 + 2) * 2.0,
+          delay: Math.abs(i - (BARS - 1) / 2) * 0.014,
+        });
+      }
+
+      const motesEl = $("motes");
+      const MOTES = 26;
+      const motes = [];
+      for (let i = 0; i < MOTES; i++) {
+        const el = document.createElement("div");
+        el.className = P + "mote";
+        const near = i % 3 === 0;
+        const size = near ? 6 + prand(i * 7 + 1) * 6 : 2 + prand(i * 7 + 1) * 3;
+        el.style.width = size + "px";
+        el.style.height = size + "px";
+        if (near) el.style.filter = "blur(2px)";
+        if (i % 4 === 1) el.style.background = "#B26BE8";
+        motesEl.appendChild(el);
+        motes.push({
+          el,
+          x: 40 + prand(i * 11 + 3) * 1000,
+          y: 140 + prand(i * 13 + 4) * 1700,
+          vy: (near ? 26 : 10) + prand(i * 17 + 5) * (near ? 22 : 12),
+          sway: 6 + prand(i * 19 + 6) * 14,
+          fq: 0.25 + prand(i * 23 + 7) * 0.35,
+          ph: prand(i * 29 + 8) * Math.PI * 2,
+          a: (near ? 0.16 : 0.35) + prand(i * 31 + 9) * 0.3,
+        });
+      }
+
+      // ---------- measured path lengths (svg-path-draw) ----------
+      const prep = (el, extra) => {
+        const len = el.getTotalLength() * (extra || 1);
+        el.style.strokeDasharray = `${len} ${len}`;
+        el.style.strokeDashoffset = `${len}`;
+        return len;
+      };
+      const edgeR = $("edge-r"), edgeL = $("edge-l");
+      const sparkR = $("spark-r"), sparkL = $("spark-l");
+      const EDGE_LEN = prep(edgeR);
+      prep(edgeL);
+      const SPARK = 70;
+      [sparkR, sparkL].forEach((s) => {
+        s.style.strokeDasharray = `${SPARK} ${EDGE_LEN + SPARK}`;
+        s.style.strokeDashoffset = `${SPARK}`;
+        s.style.opacity = "0";
+      });
+      const chipLines = Array.from(document.querySelectorAll("." + P + "chipline"));
+      chipLines.forEach((l) => prep(l));
+      const nfcArcs = Array.from($("nfc").querySelectorAll("path"));
+      nfcArcs.forEach((a) => prep(a));
+      const headLine = $("headline"), headGlow = $("headglow"), headSpark = $("headspark");
+      const HEAD_LEN = prep(headLine, 1.02);
+      prep(headGlow, 1.02);
+      const HSPARK = 90;
+      headSpark.style.strokeDasharray = `${HSPARK} ${HEAD_LEN + HSPARK}`;
+      headSpark.style.strokeDashoffset = `${HSPARK}`;
+
+      // ---------- virtual camera (viewport-change): one writer ----------
+      const world = $("world");
+      const push = { s: 1 };
+      const pan = { y: 0 };
+      function applyCamera() {
+        world.style.transform = `translate(0px, ${pan.y}px) scale(${push.s})`;
+      }
+      applyCamera();
+
+      // ---------- counter (counting-dynamic-scale) ----------
+      const counter = $("counter");
+      const fmtIN = (n) => {
+        const s = String(Math.round(n));
+        if (s.length <= 3) return s;
+        const last3 = s.slice(-3);
+        const rest = s.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+        return rest + "," + last3;
+      };
+      const count = { v: 0 };
+      const writeCount = () => {
+        counter.textContent = fmtIN(count.v);
+      };
+      writeCount();
+
+      // ---------- procedural layer: pure function of time ----------
+      const VIOLET = [178, 107, 232];
+      const AMBER = [254, 176, 34];
+      const rings = [$("ring0"), $("ring1"), $("ring2")];
+      const cardFloat = $("cardfloat");
+      const cap = $("cap");
+      const capDot = $("capdot");
+      function render(t) {
+        // motes: slow upward drift + sway + twinkle (ambient, all frame)
+        for (let i = 0; i < MOTES; i++) {
+          const m = motes[i];
+          let y = m.y - m.vy * t;
+          if (y < 100) y += 1760;
+          const x = m.x + Math.sin(t * m.fq * Math.PI * 2 + m.ph) * m.sway;
+          const tw = 0.55 + 0.45 * Math.sin(t * 2.1 + m.ph * 3);
+          const fadeIn = clamp01(t / 0.6);
+          m.el.style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px)`;
+          m.el.style.opacity = (m.a * tw * fadeIn).toFixed(3);
+        }
+        // card float: tiny bounded drift once landed (sine-wave-loop, low amplitude)
+        const fl = clamp01((t - 0.95) / 0.5);
+        cardFloat.style.transform = `translate(0px, ${(Math.sin((t - 0.95) * 2.4) * 3 * fl).toFixed(2)}px)`;
+        // progress cap shimmer after landing
+        const capOn = clamp01((t - 2.62) / 0.3);
+        capDot.style.transform = `scale(${(1 + 0.16 * capOn * Math.sin((t - 2.62) * 7)).toFixed(4)})`;
+        // waveform (sine-wave-loop, deterministic phase per bar)
+        const swell = eOut2(clamp01((t - CUE.head) / 0.28));
+        const r = Math.round(lerp(VIOLET[0], AMBER[0], swell));
+        const g = Math.round(lerp(VIOLET[1], AMBER[1], swell));
+        const b = Math.round(lerp(VIOLET[2], AMBER[2], swell));
+        const col = `rgb(${r},${g},${b})`;
+        for (let i = 0; i < BARS; i++) {
+          const bar = bars[i];
+          const grow = eOut3(clamp01((t - CUE.voice - bar.delay) / 0.3));
+          const osc =
+            0.6 * Math.sin(t * Math.PI * 2 * 1.7 + bar.phA) + 0.4 * Math.sin(t * Math.PI * 2 * 2.9 + bar.phB);
+          const level = (0.3 + 0.7 * Math.abs(osc)) * grow * (1 + 0.32 * swell);
+          bar.el.style.transform = `scaleY(${Math.max(0, level).toFixed(4)})`;
+          bar.el.style.background = col;
+        }
+        wave.style.filter = `drop-shadow(0 0 ${(8 + 8 * swell).toFixed(1)}px rgba(${r},${g},${b},0.8))`;
+        // voice ripples emanating from the waveform
+        for (let k = 0; k < 3; k++) {
+          const born = CUE.in2 + k * 0.3;
+          const p = (t - born) / 0.95;
+          const ring = rings[k];
+          if (p <= 0 || p >= 1) {
+            ring.style.opacity = "0";
+            continue;
+          }
+          const e = eOut2(p);
+          ring.style.transform = `scale(${(0.55 + 0.75 * e).toFixed(4)})`;
+          ring.style.opacity = (0.55 * (1 - p)).toFixed(3);
+          ring.style.borderColor = `rgba(${r},${g},${b},0.85)`;
+        }
+      }
+
+      // ---------- timeline ----------
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.fromTo(
+        clock,
+        { t: 0 },
+        { t: DUR, duration: DUR, ease: "none", onUpdate: () => render(clock.t) },
+        0,
+      );
+
+      // camera: slow push across the whole scene + focus shift down on "also"
+      tl.fromTo(push, { s: 1 }, { s: 1.04, duration: DUR, ease: "none", onUpdate: applyCamera }, 0);
+      tl.fromTo(pan, { y: 0 }, { y: -30, duration: 0.9, ease: "power3.inOut", onUpdate: applyCamera }, CUE.also);
+
+      // ground ambient drift (background slower than foreground)
+      tl.fromTo($("grid"), { y: 0, x: 0 }, { y: -72, x: -18, duration: DUR, ease: "none" }, 0);
+      tl.fromTo($("blob-violet"), { x: -50, y: 30, scale: 1 }, { x: 60, y: -60, scale: 1.08, duration: DUR, ease: "sine.inOut" }, 0);
+      tl.fromTo($("blob-amber"), { scale: 0.85 }, { scale: 1, duration: 1.4, ease: "sine.inOut" }, 0);
+      // amber glow follows the focus from the number to the head
+      tl.fromTo($("blob-amber"), { x: 0, y: 0 }, { x: 20, y: 470, duration: 1.0, ease: "power3.inOut", immediateRender: false }, CUE.also);
+      tl.fromTo($("blob-amber"), { opacity: 0.16 }, { opacity: 0.3, duration: 0.4, ease: "power2.out", immediateRender: false }, CUE.head);
+
+      // ---- Scene 1: the card assembles ----
+      const card = $("card");
+      tl.fromTo(card, { y: 30, scale: 0.955 }, { y: 0, scale: 1, duration: 0.9, ease: "expo.out" }, CUE.because);
+      // outline draws from the top centre both ways (svg-path-draw)
+      [edgeR, edgeL].forEach((e) => {
+        tl.fromTo(e, { strokeDashoffset: EDGE_LEN }, { strokeDashoffset: 0, duration: 0.72, ease: "power2.out" }, CUE.because);
+      });
+      // leading spark rides the pen head, then dies
+      [sparkR, sparkL].forEach((s) => {
+        tl.fromTo(s, { strokeDashoffset: SPARK }, { strokeDashoffset: SPARK - EDGE_LEN, duration: 0.72, ease: "power2.out" }, CUE.because);
+        tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none" }, CUE.because);
+        tl.fromTo(s, { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power1.out", immediateRender: false }, CUE.because + 0.5);
+      });
+      // draw then fill
+      tl.fromTo($("cardbody"), { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power1.out" }, 0.3);
+
+      // chip pops on "it's", contacts draw
+      tl.fromTo(
+        $("chip"),
+        { scale: 0.3, rotation: -14, opacity: 0, filter: "blur(6px)" },
+        { scale: 1, rotation: 0, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.8)" },
+        CUE.its,
+      );
+      chipLines.forEach((l, i) => {
+        const len = parseFloat(l.style.strokeDasharray);
+        tl.fromTo(l, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, CUE.its + 0.18 + i * 0.1);
+      });
+      // ACCOUNT types on (mono)
+      tl.fromTo(
+        acctLetters,
+        { opacity: 0, x: -10 },
+        { opacity: 1, x: 0, duration: 0.22, ease: "power2.out", stagger: 0.035 },
+        CUE.its + 0.12,
+      );
+      // contactless arcs on "not"
+      nfcArcs.forEach((a, i) => {
+        const len = parseFloat(a.style.strokeDasharray);
+        tl.fromTo(a, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.32, ease: "power2.out" }, CUE.not + i * 0.08);
+      });
+      // masked card digits on "just"
+      tl.fromTo(
+        Array.from($("digits").children),
+        { opacity: 0, y: 14, filter: "blur(4px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.38, ease: "power3.out", stagger: 0.06 },
+        CUE.just,
+      );
+      // progress track opens on "about"
+      tl.fromTo($("track"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, CUE.about);
+
+      // ---- "number": pill pops + count-up with dynamic scale + paired fill ----
+      tl.fromTo(
+        $("pill1"),
+        { scale: 0.45, y: 16, opacity: 0, filter: "blur(8px)" },
+        { scale: 1, y: 0, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "back.out(1.7)" },
+        CUE.number,
+      );
+      tl.fromTo($("pill1sheen"), { x: -90, opacity: 1 }, { x: 380, opacity: 1, duration: 0.5, ease: "power2.inOut" }, CUE.number + 0.4);
+
+      const COUNT_AT = CUE.number;
+      const COUNT_DUR = 1.1;
+      tl.fromTo(count, { v: 0 }, { v: 2500000, duration: COUNT_DUR, ease: "power3.out", onUpdate: writeCount }, COUNT_AT);
+      tl.fromTo(counter, { scale: 0.55 }, { scale: 1, duration: COUNT_DUR, ease: "power3.out" }, COUNT_AT);
+      tl.fromTo(counter, { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, COUNT_AT);
+      tl.fromTo($("fill"), { scaleX: 0 }, { scaleX: 0.82, duration: COUNT_DUR, ease: "power3.out" }, COUNT_AT);
+      tl.fromTo(cap, { x: 0, opacity: 0 }, { x: 828 * 0.82, opacity: 1, duration: COUNT_DUR, ease: "power3.out" }, COUNT_AT);
+      // landing bloom behind the number
+      tl.fromTo($("bloom"), { opacity: 0, scale: 0.7 }, { opacity: 0.85, scale: 1.08, duration: 0.25, ease: "power2.out" }, COUNT_AT + COUNT_DUR - 0.12);
+      tl.fromTo($("bloom"), { opacity: 0.85 }, { opacity: 0.35, duration: 0.6, ease: "power2.inOut", immediateRender: false }, COUNT_AT + COUNT_DUR + 0.13);
+
+      // "account": glint sweeps across the card
+      const glint = $("glint");
+      tl.fromTo(glint, { x: -260, rotation: 18, opacity: 1 }, { x: 1120, rotation: 18, opacity: 1, duration: 0.62, ease: "power2.inOut" }, CUE.account);
+
+      // ---- Scene 2: focus shifts down to the head (viewport-change + depth-of-field) ----
+      const cardcam = $("cardcam");
+      tl.fromTo(
+        cardcam,
+        { scale: 1, y: 0, opacity: 1, "--b6-number-vs-voice-dof": "0px" },
+        { scale: 0.8, y: -24, opacity: 0.5, "--b6-number-vs-voice-dof": "7px", duration: 0.9, ease: "power3.inOut" },
+        CUE.also,
+      );
+      // head outline draws in violet-hi (svg-path-draw)
+      tl.fromTo(headLine, { strokeDashoffset: HEAD_LEN }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.out" }, CUE.also);
+      tl.fromTo(headGlow, { strokeDashoffset: HEAD_LEN }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.out" }, CUE.also);
+      tl.fromTo(headGlow, { opacity: 0 }, { opacity: 0.35, duration: 0.3, ease: "power1.out" }, CUE.also);
+      tl.fromTo(headSpark, { strokeDashoffset: HSPARK, opacity: 0 }, { strokeDashoffset: HSPARK - HEAD_LEN, opacity: 0.9, duration: 0.85, ease: "power2.out" }, CUE.also);
+      tl.fromTo(headSpark, { opacity: 0.9 }, { opacity: 0, duration: 0.25, ease: "power1.out", immediateRender: false }, CUE.also + 0.62);
+      tl.fromTo($("headfill"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, CUE.also + 0.35);
+      tl.fromTo($("headinner"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power2.out" }, CUE.also + 0.45);
+
+      // "voice": second pill slides in from the left (different axis than pill 1)
+      tl.fromTo(
+        $("pill2"),
+        { x: -70, opacity: 0, scale: 0.9, filter: "blur(10px)" },
+        { x: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" },
+        CUE.voice,
+      );
+      tl.fromTo($("pill2sheen"), { x: -90, opacity: 1 }, { x: 330, opacity: 1, duration: 0.5, ease: "power2.inOut" }, CUE.voice + 0.38);
+
+      // "head": outline glows, inside warms to amber (bars swell in render())
+      tl.fromTo(headGlow, { opacity: 0.35, strokeWidth: 14 }, { opacity: 0.95, strokeWidth: 20, duration: 0.35, ease: "power2.out", immediateRender: false }, CUE.head);
+      tl.fromTo(headLine, { stroke: "#B26BE8" }, { stroke: "#E2C3FF", duration: 0.3, ease: "power2.out", immediateRender: false }, CUE.head);
+      tl.fromTo($("headinner-amber"), { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1.05, duration: 0.4, ease: "power2.out" }, CUE.head);
+      tl.fromTo(headSpark, { strokeDashoffset: HSPARK }, { strokeDashoffset: HSPARK - HEAD_LEN, duration: 0.45, ease: "power2.inOut", immediateRender: false }, CUE.head);
+      tl.fromTo(headSpark, { opacity: 0 }, { opacity: 0.85, duration: 0.08, ease: "none", immediateRender: false }, CUE.head);
+      tl.fromTo(headSpark, { opacity: 0.85 }, { opacity: 0, duration: 0.15, ease: "power1.out", immediateRender: false }, CUE.head + 0.33);
+
+      render(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines[ID] = tl;
+    })();
+  </script>
+</template>
