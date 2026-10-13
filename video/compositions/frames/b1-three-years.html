@@ -1,0 +1,595 @@
+<template>
+<style>
+[data-composition-id="b1-three-years"] {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FDF2E0; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="b1-three-years"] .b1-three-years-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+[data-composition-id="b1-three-years"] .b1-three-years-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+
+/* ---------- ground ---------- */
+[data-composition-id="b1-three-years"] .b1-three-years-base {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background-color: #0B0820;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #221A52 0%, #0B0820 70%);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-blob {
+  position: absolute; left: -130px; top: 50px; width: 900px; height: 900px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(140,47,194,1) 0%, rgba(140,47,194,0.62) 38%, rgba(140,47,194,0.18) 72%, rgba(140,47,194,0) 100%);
+  opacity: 0.35; will-change: transform;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-amber {
+  position: absolute; left: 330px; top: 390px; width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(254,176,34,1) 0%, rgba(254,176,34,0.42) 45%, rgba(254,176,34,0) 100%);
+  opacity: 0.16; will-change: transform;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-floor {
+  position: absolute; left: 0; top: 930px; width: 100%; height: 990px; overflow: hidden;
+  perspective: 700px; perspective-origin: 50% 0%;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 34%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 34%, rgba(0,0,0,1) 100%);
+}
+[data-composition-id="b1-three-years"] .b1-three-years-floorplane {
+  position: absolute; left: -1060px; top: 0; width: 3200px; height: 620px; overflow: hidden;
+  transform-origin: 50% 0%; transform: rotateX(72deg); opacity: 0.2;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-floorgrid {
+  position: absolute; left: 0; top: -120px; width: 3200px; height: 740px;
+  background-image:
+    linear-gradient(rgba(178,107,232,0.7) 2px, rgba(178,107,232,0) 2px),
+    linear-gradient(90deg, rgba(178,107,232,0.7) 2px, rgba(178,107,232,0) 2px);
+  background-size: 120px 120px; will-change: transform;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-dust { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="b1-three-years"] .b1-three-years-mote { position: absolute; display: block; border-radius: 50%; opacity: 0; will-change: transform, opacity; }
+
+/* ---------- stage / camera ---------- */
+[data-composition-id="b1-three-years"] #b1-three-years-cam { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 540px 620px; }
+[data-composition-id="b1-three-years"] #b1-three-years-grain { position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0.06; }
+
+/* ---------- clock: ring + ticks + year ---------- */
+[data-composition-id="b1-three-years"] #b1-three-years-clock { position: absolute; left: 140px; top: 200px; width: 800px; height: 800px; transform-origin: 50% 50%; }
+[data-composition-id="b1-three-years"] #b1-three-years-bloom { position: absolute; left: 50px; top: 50px; width: 700px; height: 700px; }
+[data-composition-id="b1-three-years"] #b1-three-years-bloomcore {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 50%; opacity: 0.9;
+  background: radial-gradient(circle closest-side, rgba(232,134,6,0.95) 0%, rgba(232,134,6,0.42) 34%, rgba(232,134,6,0.1) 66%, rgba(232,134,6,0) 100%);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-dial { position: absolute; left: 0; top: 0; width: 800px; height: 800px; overflow: visible; }
+[data-composition-id="b1-three-years"] .b1-three-years-tk { stroke: #B26BE8; stroke-width: 2; stroke-linecap: round; stroke-opacity: 0.42; }
+[data-composition-id="b1-three-years"] .b1-three-years-tk-maj { stroke-width: 3; stroke-opacity: 0.9; }
+[data-composition-id="b1-three-years"] #b1-three-years-ringin { fill: none; stroke: #B26BE8; stroke-width: 1.5; stroke-opacity: 0.34; }
+[data-composition-id="b1-three-years"] #b1-three-years-ring { fill: none; stroke: #B26BE8; stroke-width: 4; stroke-linecap: round; filter: drop-shadow(0 0 10px rgba(178,107,232,0.6)); }
+[data-composition-id="b1-three-years"] #b1-three-years-arc { fill: none; stroke: #FEB022; stroke-width: 8; stroke-linecap: round; filter: drop-shadow(0 0 12px rgba(254,176,34,0.7)); }
+[data-composition-id="b1-three-years"] #b1-three-years-you { position: absolute; left: 0; top: 0; width: 26px; height: 26px; }
+[data-composition-id="b1-three-years"] #b1-three-years-youpop {
+  position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: #FDF2E0;
+  box-shadow: 0 0 0 5px rgba(254,176,34,0.38), 0 0 28px 6px rgba(254,176,34,0.75);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-yougate { position: absolute; left: -22px; top: -22px; width: 70px; height: 70px; }
+[data-composition-id="b1-three-years"] #b1-three-years-youring {
+  position: absolute; left: 0; top: 0; width: 70px; height: 70px; border-radius: 50%;
+  border: 3px solid rgba(255,210,122,0.95); box-sizing: border-box;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-labelslot { position: absolute; left: 0; top: 214px; width: 800px; height: 76px; }
+[data-composition-id="b1-three-years"] #b1-three-years-today {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 34px; line-height: 1;
+  letter-spacing: 0.42em; padding-left: 0.42em; box-sizing: border-box; color: #9A96B2;
+}
+[data-composition-id="b1-three-years"] .b1-three-years-ch { display: inline-block; }
+[data-composition-id="b1-three-years"] #b1-three-years-pillwrap {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-pill {
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 32px; line-height: 1;
+  letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;
+  color: #FEB022; background: rgba(254,176,34,0.10); border: 2px solid #FEB022; border-radius: 999px;
+  padding: 14px 24px 14px 30px; box-shadow: 0 0 30px rgba(254,176,34,0.22);
+  text-shadow: 0 0 24px rgba(254,176,34,0.45);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-yearin { position: absolute; left: 0; top: 264px; width: 800px; height: 280px; transform-origin: 50% 50%; }
+[data-composition-id="b1-three-years"] #b1-three-years-year,
+[data-composition-id="b1-three-years"] #b1-three-years-yearsheen {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  display: flex; justify-content: center;
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 230px;
+  font-variant-numeric: tabular-nums;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-year { color: #FDF2E0; }
+[data-composition-id="b1-three-years"] .b1-three-years-dig { flex: 0 0 auto; width: 154px; height: 280px; line-height: 280px; text-align: center; margin-right: -7px; }
+[data-composition-id="b1-three-years"] .b1-three-years-win {
+  flex: 0 0 auto; width: 154px; height: 280px; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 15%, #000 85%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 15%, #000 85%, rgba(0,0,0,0) 100%);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-ublur { position: relative; width: 154px; height: 280px; filter: url(#b1-three-years-vblur); }
+[data-composition-id="b1-three-years"] #b1-three-years-stack { display: flex; flex-direction: column; will-change: transform; }
+[data-composition-id="b1-three-years"] .b1-three-years-it { flex: 0 0 auto; height: 280px; line-height: 280px; text-align: center; }
+[data-composition-id="b1-three-years"] #b1-three-years-yearsheen {
+  color: transparent;
+  background-image: linear-gradient(105deg, rgba(255,248,232,0) 0%, rgba(255,248,232,0) 41%, rgba(255,252,244,0.95) 50%, rgba(255,248,232,0) 59%, rgba(255,248,232,0) 100%);
+  background-size: 300% 100%; background-repeat: no-repeat; background-position: 100% 50%;
+  -webkit-background-clip: text; background-clip: text;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-yearsheen .b1-three-years-dig:last-child { margin-right: 0; }
+
+/* ---------- phone ---------- */
+[data-composition-id="b1-three-years"] #b1-three-years-phonewrap {
+  position: absolute; left: 362px; top: 404px; width: 356px; height: 686px;
+  transform-origin: 50% 50%; filter: url(#b1-three-years-pblur);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-phonefloat { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="b1-three-years"] #b1-three-years-phone {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 56px; background: #0E0A26;
+  box-shadow: 0 0 0 2px rgba(178,107,232,0.4), 0 0 70px rgba(140,47,194,0.35), 0 40px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.12);
+}
+[data-composition-id="b1-three-years"] .b1-three-years-bezel { position: absolute; left: 6px; top: 6px; right: 6px; bottom: 6px; border-radius: 50px; background: #1B1440; }
+[data-composition-id="b1-three-years"] #b1-three-years-screen {
+  position: absolute; left: 16px; top: 16px; width: 324px; height: 654px; border-radius: 42px;
+  background: #151036; overflow: hidden;
+}
+[data-composition-id="b1-three-years"] .b1-three-years-island { position: absolute; left: 114px; top: 12px; width: 96px; height: 26px; border-radius: 13px; background: #07051A; }
+[data-composition-id="b1-three-years"] .b1-three-years-sig { position: absolute; top: 18px; left: 26px; width: 30px; height: 14px; }
+[data-composition-id="b1-three-years"] .b1-three-years-sig i { position: absolute; bottom: 0; width: 5px; border-radius: 2px; background: rgba(253,242,224,0.55); }
+[data-composition-id="b1-three-years"] .b1-three-years-batt {
+  position: absolute; top: 19px; right: 26px; width: 28px; height: 13px; border-radius: 4px;
+  border: 2px solid rgba(253,242,224,0.5); box-sizing: border-box;
+}
+[data-composition-id="b1-three-years"] .b1-three-years-batt i { position: absolute; left: 2px; top: 2px; width: 14px; height: 5px; border-radius: 1px; background: rgba(253,242,224,0.7); }
+[data-composition-id="b1-three-years"] #b1-three-years-hdr { position: absolute; left: 20px; top: 56px; height: 46px; display: flex; align-items: center; }
+[data-composition-id="b1-three-years"] .b1-three-years-avatar {
+  flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; margin-right: 14px;
+  background: linear-gradient(150deg, #8C2FC2, #4A2390); box-shadow: 0 0 0 2px rgba(178,107,232,0.45);
+  display: flex; align-items: center; justify-content: center;
+}
+[data-composition-id="b1-three-years"] .b1-three-years-hdrtitle {
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 22px; line-height: 1;
+  letter-spacing: 0.14em; color: #FDF2E0; white-space: nowrap;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-bcard {
+  position: absolute; left: 14px; top: 122px; width: 296px; height: 200px; border-radius: 26px; overflow: hidden;
+  background: linear-gradient(160deg, rgba(42,32,99,0.98), rgba(28,21,72,0.98));
+  border: 2px solid rgba(178,107,232,0.36); box-sizing: border-box;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 18px 40px rgba(0,0,0,0.35);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-blabel {
+  position: absolute; left: 20px; top: 24px; white-space: nowrap;
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 17px; line-height: 1;
+  letter-spacing: 0.1em; color: #9A96B2;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-eye { position: absolute; left: 246px; top: 15px; width: 30px; height: 30px; overflow: visible; }
+[data-composition-id="b1-three-years"] .b1-three-years-eyeline { fill: none; stroke: #9A96B2; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+[data-composition-id="b1-three-years"] #b1-three-years-slash { fill: none; stroke: #FDF2E0; stroke-width: 2.6; stroke-linecap: round; }
+[data-composition-id="b1-three-years"] #b1-three-years-dotsglow {
+  position: absolute; left: 6px; top: 58px; width: 284px; height: 86px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(254,176,34,0.55), rgba(254,176,34,0));
+}
+[data-composition-id="b1-three-years"] #b1-three-years-dotspulse { position: absolute; left: 20px; top: 78px; width: 256px; height: 46px; transform-origin: 40% 50%; }
+[data-composition-id="b1-three-years"] #b1-three-years-dots {
+  position: absolute; left: 0; top: 0; height: 46px; display: flex; align-items: center;
+  filter: blur(13px);
+}
+[data-composition-id="b1-three-years"] .b1-three-years-dot { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: #FDF2E0; margin-right: 8px; }
+[data-composition-id="b1-three-years"] .b1-three-years-dot.b1-three-years-dl { margin-right: 0; }
+[data-composition-id="b1-three-years"] .b1-three-years-cm { flex: 0 0 auto; width: 8px; height: 15px; margin: 18px 6px 0 6px; border-radius: 4px; background: #FDF2E0; transform: skewX(-14deg); }
+[data-composition-id="b1-three-years"] .b1-three-years-sk { position: absolute; height: 10px; border-radius: 5px; background: rgba(154,150,178,0.24); }
+[data-composition-id="b1-three-years"] #b1-three-years-shimmer {
+  position: absolute; left: 0; top: 0; width: 130px; height: 200px;
+  background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-qa { position: absolute; left: 0; top: 344px; width: 324px; height: 56px; }
+[data-composition-id="b1-three-years"] .b1-three-years-qb {
+  position: absolute; top: 0; width: 52px; height: 52px; border-radius: 50%;
+  border: 2px solid rgba(178,107,232,0.34); box-sizing: border-box; background: rgba(34,26,82,0.7);
+  display: flex; align-items: center; justify-content: center;
+}
+[data-composition-id="b1-three-years"] .b1-three-years-qi { fill: none; stroke: #9A96B2; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+[data-composition-id="b1-three-years"] .b1-three-years-tx { position: absolute; left: 20px; width: 284px; height: 44px; }
+[data-composition-id="b1-three-years"] .b1-three-years-txc { position: absolute; left: 0; top: 2px; width: 40px; height: 40px; border-radius: 50%; background: #221A52; box-shadow: inset 0 0 0 2px rgba(178,107,232,0.22); }
+[data-composition-id="b1-three-years"] .b1-three-years-txa { position: absolute; left: 54px; top: 8px; height: 11px; border-radius: 6px; background: rgba(253,242,224,0.2); }
+[data-composition-id="b1-three-years"] .b1-three-years-txb { position: absolute; left: 54px; top: 27px; height: 9px; border-radius: 5px; background: rgba(154,150,178,0.2); }
+[data-composition-id="b1-three-years"] .b1-three-years-txr { position: absolute; right: 0; top: 14px; width: 56px; height: 11px; border-radius: 6px; background: rgba(253,242,224,0.16); }
+[data-composition-id="b1-three-years"] .b1-three-years-home { position: absolute; left: 107px; top: 638px; width: 110px; height: 5px; border-radius: 3px; background: rgba(253,242,224,0.35); }
+[data-composition-id="b1-three-years"] .b1-three-years-gloss {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 36%);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-glass {
+  position: absolute; left: 0; top: -40px; width: 230px; height: 740px;
+  background: linear-gradient(105deg, rgba(255,255,255,0) 18%, rgba(255,255,255,0.11) 50%, rgba(255,255,255,0) 82%);
+}
+[data-composition-id="b1-three-years"] #b1-three-years-badgewrap { position: absolute; left: 286px; top: -18px; width: 100px; height: 100px; }
+[data-composition-id="b1-three-years"] #b1-three-years-badgegate { position: absolute; left: 0; top: 0; width: 100px; height: 100px; }
+[data-composition-id="b1-three-years"] #b1-three-years-badgering {
+  position: absolute; left: 0; top: 0; width: 100px; height: 100px; border-radius: 50%;
+  border: 4px solid #FEB022; box-sizing: border-box;
+}
+[data-composition-id="b1-three-years"] #b1-three-years-badge {
+  position: absolute; left: 0; top: 0; width: 100px; height: 100px; border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #FFE6AE 0%, #FEB022 52%, #E8960C 100%);
+  box-shadow: 0 0 0 5px #0B0820, 0 0 46px rgba(254,176,34,0.65), 0 14px 28px rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 64px; line-height: 1;
+  color: #0B0820; padding-top: 4px; box-sizing: border-box;
+}
+</style>
+<div id="root" data-composition-id="b1-three-years" data-start="0" data-duration="4.4" data-width="1080" data-height="1920">
+  <svg class="b1-three-years-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="b1-three-years-vblur" x="-10%" y="-35%" width="120%" height="170%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="b1-three-years-vblur-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur>
+      </filter>
+      <filter id="b1-three-years-pblur" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="b1-three-years-pblur-node" in="SourceGraphic" stdDeviation="0 26"></feGaussianBlur>
+      </filter>
+      <filter id="b1-three-years-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track -->
+  <div id="b1-three-years-ground" class="clip b1-three-years-layer" data-start="0" data-duration="4.4" data-track-index="0">
+    <div class="b1-three-years-base"></div>
+    <div id="b1-three-years-blob"></div>
+    <div id="b1-three-years-floor">
+      <div class="b1-three-years-floorplane"><div id="b1-three-years-floorgrid"></div></div>
+    </div>
+    <div id="b1-three-years-amber"></div>
+    <div id="b1-three-years-dust">
+        <i class="b1-three-years-mote" style="left:443.81px;top:614.55px;width:2.75px;height:2.75px;background:#FFD27A;"></i>
+        <i class="b1-three-years-mote" style="left:661.85px;top:695.79px;width:6.92px;height:6.92px;background:#FDF2E0;box-shadow:0 0 16.61px #FDF2E0;"></i>
+        <i class="b1-three-years-mote" style="left:327.11px;top:875.59px;width:5.63px;height:5.63px;background:#FDF2E0;box-shadow:0 0 13.52px #FDF2E0;"></i>
+        <i class="b1-three-years-mote" style="left:961.19px;top:1071.76px;width:5px;height:5px;background:#FDF2E0;"></i>
+        <i class="b1-three-years-mote" style="left:491.92px;top:1561.34px;width:4.86px;height:4.86px;background:#FFD27A;"></i>
+        <i class="b1-three-years-mote" style="left:127.92px;top:611.75px;width:4.66px;height:4.66px;background:#FDF2E0;"></i>
+        <i class="b1-three-years-mote" style="left:815.27px;top:1131.07px;width:5.44px;height:5.44px;background:#FFD27A;box-shadow:0 0 13.06px #FFD27A;"></i>
+        <i class="b1-three-years-mote" style="left:172.75px;top:228.92px;width:5.31px;height:5.31px;background:#B26BE8;box-shadow:0 0 12.73px #B26BE8;"></i>
+        <i class="b1-three-years-mote" style="left:143.11px;top:1013.03px;width:5.3px;height:5.3px;background:#B26BE8;box-shadow:0 0 12.72px #B26BE8;"></i>
+        <i class="b1-three-years-mote" style="left:772.83px;top:417.86px;width:7.29px;height:7.29px;background:#FDF2E0;box-shadow:0 0 17.5px #FDF2E0;"></i>
+        <i class="b1-three-years-mote" style="left:187.42px;top:707.64px;width:2.79px;height:2.79px;background:#FFD27A;"></i>
+        <i class="b1-three-years-mote" style="left:690.61px;top:711.27px;width:6.32px;height:6.32px;background:#B26BE8;box-shadow:0 0 15.17px #B26BE8;"></i>
+        <i class="b1-three-years-mote" style="left:587.61px;top:364.23px;width:3.89px;height:3.89px;background:#FDF2E0;"></i>
+        <i class="b1-three-years-mote" style="left:1022.52px;top:365.36px;width:5.82px;height:5.82px;background:#B26BE8;box-shadow:0 0 13.98px #B26BE8;"></i>
+        <i class="b1-three-years-mote" style="left:442.46px;top:827.61px;width:2.66px;height:2.66px;background:#FDF2E0;"></i>
+        <i class="b1-three-years-mote" style="left:337.68px;top:288.68px;width:5.01px;height:5.01px;background:#B26BE8;"></i>
+        <i class="b1-three-years-mote" style="left:366.73px;top:1814.08px;width:3.93px;height:3.93px;background:#FFD27A;"></i>
+        <i class="b1-three-years-mote" style="left:630.34px;top:1498.34px;width:6.26px;height:6.26px;background:#B26BE8;box-shadow:0 0 15.02px #B26BE8;"></i>
+        <i class="b1-three-years-mote" style="left:601.46px;top:919.21px;width:4.47px;height:4.47px;background:#FDF2E0;"></i>
+        <i class="b1-three-years-mote" style="left:386.49px;top:1602.13px;width:3.32px;height:3.32px;background:#FDF2E0;"></i>
+    </div>
+  </div>
+
+  <!-- stage: all content inside x60-1020 / y120-1120 -->
+  <div id="b1-three-years-stage" class="clip b1-three-years-layer" data-start="0" data-duration="4.4" data-track-index="1">
+    <div id="b1-three-years-cam">
+
+      <div id="b1-three-years-clock">
+        <div id="b1-three-years-bloom"><div id="b1-three-years-bloomcore"></div></div>
+        <svg id="b1-three-years-dial" viewBox="0 0 800 800" width="800" height="800" aria-hidden="true">
+          <g id="b1-three-years-ticks">
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="400" y1="56" x2="400" y2="26"></line>
+              <line class="b1-three-years-tk" x1="436.58" y1="51.92" x2="438.05" y2="37.99"></line>
+              <line class="b1-three-years-tk" x1="472.77" y1="57.65" x2="475.68" y2="43.95"></line>
+              <line class="b1-three-years-tk" x1="508.16" y1="67.13" x2="512.48" y2="53.82"></line>
+              <line class="b1-three-years-tk" x1="542.36" y1="80.26" x2="548.05" y2="67.47"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="572" y1="102.09" x2="587" y2="76.11"></line>
+              <line class="b1-three-years-tk" x1="605.72" y1="116.84" x2="613.95" y2="105.52"></line>
+              <line class="b1-three-years-tk" x1="634.2" y1="139.9" x2="643.56" y2="129.5"></line>
+              <line class="b1-three-years-tk" x1="660.1" y1="165.8" x2="670.5" y2="156.44"></line>
+              <line class="b1-three-years-tk" x1="683.16" y1="194.28" x2="694.48" y2="186.05"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="697.91" y1="228" x2="723.89" y2="213"></line>
+              <line class="b1-three-years-tk" x1="719.74" y1="257.64" x2="732.53" y2="251.95"></line>
+              <line class="b1-three-years-tk" x1="732.87" y1="291.84" x2="746.18" y2="287.52"></line>
+              <line class="b1-three-years-tk" x1="742.35" y1="327.23" x2="756.05" y2="324.32"></line>
+              <line class="b1-three-years-tk" x1="748.08" y1="363.42" x2="762.01" y2="361.95"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="744" y1="400" x2="774" y2="400"></line>
+              <line class="b1-three-years-tk" x1="748.08" y1="436.58" x2="762.01" y2="438.05"></line>
+              <line class="b1-three-years-tk" x1="742.35" y1="472.77" x2="756.05" y2="475.68"></line>
+              <line class="b1-three-years-tk" x1="732.87" y1="508.16" x2="746.18" y2="512.48"></line>
+              <line class="b1-three-years-tk" x1="719.74" y1="542.36" x2="732.53" y2="548.05"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="697.91" y1="572" x2="723.89" y2="587"></line>
+              <line class="b1-three-years-tk" x1="683.16" y1="605.72" x2="694.48" y2="613.95"></line>
+              <line class="b1-three-years-tk" x1="660.1" y1="634.2" x2="670.5" y2="643.56"></line>
+              <line class="b1-three-years-tk" x1="634.2" y1="660.1" x2="643.56" y2="670.5"></line>
+              <line class="b1-three-years-tk" x1="605.72" y1="683.16" x2="613.95" y2="694.48"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="572" y1="697.91" x2="587" y2="723.89"></line>
+              <line class="b1-three-years-tk" x1="542.36" y1="719.74" x2="548.05" y2="732.53"></line>
+              <line class="b1-three-years-tk" x1="508.16" y1="732.87" x2="512.48" y2="746.18"></line>
+              <line class="b1-three-years-tk" x1="472.77" y1="742.35" x2="475.68" y2="756.05"></line>
+              <line class="b1-three-years-tk" x1="436.58" y1="748.08" x2="438.05" y2="762.01"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="400" y1="744" x2="400" y2="774"></line>
+              <line class="b1-three-years-tk" x1="363.42" y1="748.08" x2="361.95" y2="762.01"></line>
+              <line class="b1-three-years-tk" x1="327.23" y1="742.35" x2="324.32" y2="756.05"></line>
+              <line class="b1-three-years-tk" x1="291.84" y1="732.87" x2="287.52" y2="746.18"></line>
+              <line class="b1-three-years-tk" x1="257.64" y1="719.74" x2="251.95" y2="732.53"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="228" y1="697.91" x2="213" y2="723.89"></line>
+              <line class="b1-three-years-tk" x1="194.28" y1="683.16" x2="186.05" y2="694.48"></line>
+              <line class="b1-three-years-tk" x1="165.8" y1="660.1" x2="156.44" y2="670.5"></line>
+              <line class="b1-three-years-tk" x1="139.9" y1="634.2" x2="129.5" y2="643.56"></line>
+              <line class="b1-three-years-tk" x1="116.84" y1="605.72" x2="105.52" y2="613.95"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="102.09" y1="572" x2="76.11" y2="587"></line>
+              <line class="b1-three-years-tk" x1="80.26" y1="542.36" x2="67.47" y2="548.05"></line>
+              <line class="b1-three-years-tk" x1="67.13" y1="508.16" x2="53.82" y2="512.48"></line>
+              <line class="b1-three-years-tk" x1="57.65" y1="472.77" x2="43.95" y2="475.68"></line>
+              <line class="b1-three-years-tk" x1="51.92" y1="436.58" x2="37.99" y2="438.05"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="56" y1="400" x2="26" y2="400"></line>
+              <line class="b1-three-years-tk" x1="51.92" y1="363.42" x2="37.99" y2="361.95"></line>
+              <line class="b1-three-years-tk" x1="57.65" y1="327.23" x2="43.95" y2="324.32"></line>
+              <line class="b1-three-years-tk" x1="67.13" y1="291.84" x2="53.82" y2="287.52"></line>
+              <line class="b1-three-years-tk" x1="80.26" y1="257.64" x2="67.47" y2="251.95"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="102.09" y1="228" x2="76.11" y2="213"></line>
+              <line class="b1-three-years-tk" x1="116.84" y1="194.28" x2="105.52" y2="186.05"></line>
+              <line class="b1-three-years-tk" x1="139.9" y1="165.8" x2="129.5" y2="156.44"></line>
+              <line class="b1-three-years-tk" x1="165.8" y1="139.9" x2="156.44" y2="129.5"></line>
+              <line class="b1-three-years-tk" x1="194.28" y1="116.84" x2="186.05" y2="105.52"></line>
+              <line class="b1-three-years-tk b1-three-years-tk-maj" x1="228" y1="102.09" x2="213" y2="76.11"></line>
+              <line class="b1-three-years-tk" x1="257.64" y1="80.26" x2="251.95" y2="67.47"></line>
+              <line class="b1-three-years-tk" x1="291.84" y1="67.13" x2="287.52" y2="53.82"></line>
+              <line class="b1-three-years-tk" x1="327.23" y1="57.65" x2="324.32" y2="43.95"></line>
+              <line class="b1-three-years-tk" x1="363.42" y1="51.92" x2="361.95" y2="37.99"></line>
+          </g>
+          <circle id="b1-three-years-ringin" cx="400" cy="400" r="312" transform="rotate(-90 400 400)"></circle>
+          <circle id="b1-three-years-ring" cx="400" cy="400" r="330" transform="rotate(-90 400 400)"></circle>
+          <circle id="b1-three-years-arc" cx="400" cy="400" r="330" transform="rotate(-90 400 400)" stroke-dasharray="0 2100" style="opacity:0"></circle>
+        </svg>
+        <div id="b1-three-years-you">
+          <div id="b1-three-years-yougate"><div id="b1-three-years-youring"></div></div>
+          <div id="b1-three-years-youpop"></div>
+        </div>
+        <div id="b1-three-years-labelslot">
+          <div id="b1-three-years-today"><span class="b1-three-years-ch">T</span><span class="b1-three-years-ch">O</span><span class="b1-three-years-ch">D</span><span class="b1-three-years-ch">A</span><span class="b1-three-years-ch">Y</span></div>
+          <div id="b1-three-years-pillwrap"><div id="b1-three-years-pill">+3 Years</div></div>
+        </div>
+        <div id="b1-three-years-yearin">
+          <div id="b1-three-years-year">
+            <div class="b1-three-years-dig">2</div>
+            <div class="b1-three-years-dig">0</div>
+            <div class="b1-three-years-dig">2</div>
+            <div class="b1-three-years-win">
+              <div id="b1-three-years-ublur">
+                <div id="b1-three-years-stack">
+                  <div class="b1-three-years-it">6</div>
+                  <div class="b1-three-years-it">7</div>
+                  <div class="b1-three-years-it">8</div>
+                  <div class="b1-three-years-it">9</div>
+                  <div class="b1-three-years-it">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="b1-three-years-yearsheen" aria-hidden="true"><div class="b1-three-years-dig">2</div><div class="b1-three-years-dig">0</div><div class="b1-three-years-dig">2</div><div class="b1-three-years-dig">9</div></div>
+        </div>
+      </div>
+
+      <div id="b1-three-years-phonewrap">
+        <div id="b1-three-years-phonefloat">
+          <div id="b1-three-years-phone">
+            <div class="b1-three-years-bezel"></div>
+            <div id="b1-three-years-screen">
+              <div class="b1-three-years-island"></div>
+              <div class="b1-three-years-sig"><i style="left:0;height:5px"></i><i style="left:8px;height:9px"></i><i style="left:16px;height:13px"></i></div>
+              <div class="b1-three-years-batt"><i></i></div>
+              <div id="b1-three-years-hdr">
+                <div class="b1-three-years-avatar">
+                  <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="9.5" r="4.6" fill="none" stroke="#FDF2E0" stroke-width="2.4"></circle><path d="M4.5 23c1.2-4.6 4.4-7 8.5-7s7.3 2.4 8.5 7" fill="none" stroke="#FDF2E0" stroke-width="2.4" stroke-linecap="round"></path></svg>
+                </div>
+                <div class="b1-three-years-hdrtitle">MY ACCOUNT</div>
+              </div>
+              <div id="b1-three-years-bcard">
+                <div id="b1-three-years-blabel">AVAILABLE BALANCE</div>
+                <svg id="b1-three-years-eye" viewBox="0 0 30 30" width="30" height="30" aria-hidden="true">
+                  <path class="b1-three-years-eyeline" d="M3 15c3.2-5.6 7.2-8.4 12-8.4s8.8 2.8 12 8.4c-3.2 5.6-7.2 8.4-12 8.4S6.2 20.6 3 15z"></path>
+                  <circle class="b1-three-years-eyeline" cx="15" cy="15" r="4"></circle>
+                  <path id="b1-three-years-slash" d="M5 4.5L25 25.5"></path>
+                </svg>
+                <div id="b1-three-years-dotsglow"></div>
+                <div id="b1-three-years-dotspulse">
+                  <div id="b1-three-years-dots">
+                    <i class="b1-three-years-dot"></i><i class="b1-three-years-dot b1-three-years-dl"></i><i class="b1-three-years-cm"></i><i class="b1-three-years-dot"></i><i class="b1-three-years-dot b1-three-years-dl"></i><i class="b1-three-years-cm"></i><i class="b1-three-years-dot"></i><i class="b1-three-years-dot"></i><i class="b1-three-years-dot b1-three-years-dl"></i>
+                  </div>
+                </div>
+                <div class="b1-three-years-sk" style="left:20px;top:152px;width:112px"></div>
+                <div class="b1-three-years-sk" style="left:144px;top:152px;width:62px"></div>
+                <div id="b1-three-years-shimmer"></div>
+              </div>
+              <div id="b1-three-years-qa">
+                <div class="b1-three-years-qb" style="left:24px"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path class="b1-three-years-qi" d="M12 19V5M6 11l6-6 6 6"></path></svg></div>
+                <div class="b1-three-years-qb" style="left:99px"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path class="b1-three-years-qi" d="M12 5v14M6 13l6 6 6-6"></path></svg></div>
+                <div class="b1-three-years-qb" style="left:174px"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path class="b1-three-years-qi" d="M12 5v14M5 12h14"></path></svg></div>
+                <div class="b1-three-years-qb" style="left:249px"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path class="b1-three-years-qi" d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"></path></svg></div>
+              </div>
+              <div class="b1-three-years-sk" style="left:20px;top:420px;width:118px;height:12px"></div>
+              <div class="b1-three-years-tx" style="top:446px"><i class="b1-three-years-txc"></i><i class="b1-three-years-txa" style="width:132px"></i><i class="b1-three-years-txb" style="width:84px"></i><i class="b1-three-years-txr"></i></div>
+              <div class="b1-three-years-tx" style="top:504px"><i class="b1-three-years-txc"></i><i class="b1-three-years-txa" style="width:110px"></i><i class="b1-three-years-txb" style="width:96px"></i><i class="b1-three-years-txr"></i></div>
+              <div class="b1-three-years-tx" style="top:562px"><i class="b1-three-years-txc"></i><i class="b1-three-years-txa" style="width:146px"></i><i class="b1-three-years-txb" style="width:70px"></i><i class="b1-three-years-txr"></i></div>
+              <div class="b1-three-years-home"></div>
+              <div class="b1-three-years-gloss"></div>
+              <div id="b1-three-years-glass"></div>
+            </div>
+          </div>
+          <div id="b1-three-years-badgewrap">
+            <div id="b1-three-years-badgegate"><div id="b1-three-years-badgering"></div></div>
+            <div id="b1-three-years-badge">?</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <svg id="b1-three-years-grain" width="1080" height="1920" aria-hidden="true"><rect width="1080" height="1920" filter="url(#b1-three-years-grainf)"></rect></svg>
+  </div>
+</div>
+<script>
+(function () {
+  var DUR = 4.4;
+  function el(name) { return document.getElementById("b1-three-years-" + name); }
+  var tl = gsap.timeline({ paused: true });
+
+  // ---------- GROUND: ambient drift (background moves slower than the stage) ----------
+  tl.fromTo(el("blob"), { x: -40, y: -30 }, { x: 80, y: 60, duration: DUR, ease: "sine.inOut" }, 0);
+  tl.fromTo(el("amber"), { scale: 0.92 }, { scale: 1.14, duration: DUR, ease: "sine.inOut" }, 0);
+  // the warm light follows the focus down to the phone on "checking"
+  tl.fromTo(el("amber"), { y: 0 }, { y: 210, duration: 0.8, ease: "power2.inOut", immediateRender: false }, 2.86);
+  tl.fromTo(el("floorgrid"), { y: 0 }, { y: 120, duration: DUR, ease: "none" }, 0);
+
+  // dust motes: one finite ambient clock drives every mote (pure function of t)
+  var MOTES = [[30.87,13.82,4.775,0.52],[56.44,21.07,1.813,0.447],[48.55,8.41,1.682,0.352],[44.68,20.18,3.581,0.326],[43.82,7.73,5.249,0.303],[42.57,10.62,4.17,0.261],[47.37,8.5,4.999,0.454],[46.54,21.41,1.912,0.233],[46.5,13.86,2.601,0.4],[58.71,14.52,5.844,0.342],[31.09,12.65,1.529,0.239],[52.76,18.58,2.247,0.52],[37.86,10.66,4.744,0.533],[49.71,12.38,5.353,0.389],[30.32,21.31,4.928,0.292],[44.75,6.81,6.259,0.443],[38.09,7.46,0.214,0.411],[52.39,8.03,4.896,0.506],[41.4,8.12,5.953,0.486],[34.34,21.5,1.721,0.319]];
+  var moteEls = el("dust").querySelectorAll(".b1-three-years-mote");
+  var amb = { t: 0 };
+  function applyAmbient() {
+    var t = amb.t;
+    for (var i = 0; i < moteEls.length; i++) {
+      var m = MOTES[i];
+      var x = m[1] * Math.sin(m[2] + t * 0.9);
+      var y = -m[0] * t;
+      moteEls[i].style.transform = "translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+      moteEls[i].style.opacity = (m[3] * (0.62 + 0.38 * Math.sin(m[2] * 1.7 + t * 2.1))).toFixed(3);
+    }
+  }
+  applyAmbient();
+  tl.fromTo(amb, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: applyAmbient }, 0);
+
+  // ---------- CAMERA: slow push on the whole stage (1.00 -> 1.04) ----------
+  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.04, duration: DUR, ease: "none" }, 0);
+
+  // ---------- SCENE 1 (0.0-1.6): ring draws, ticks fade in, TODAY / 2026 ----------
+  // svg-path-draw: measured lengths; main ring clockwise from 12 o'clock, inner ring counter-clockwise
+  var ring = el("ring"), ringIn = el("ringin");
+  var RING_LEN = ring.getTotalLength(), RIN_LEN = ringIn.getTotalLength();
+  ring.style.strokeDasharray = String(RING_LEN);
+  ring.style.strokeDashoffset = String(RING_LEN);
+  ringIn.style.strokeDasharray = String(RIN_LEN);
+  ringIn.style.strokeDashoffset = String(-RIN_LEN);
+  tl.fromTo(ring, { strokeDashoffset: RING_LEN }, { strokeDashoffset: 0, duration: 0.95, ease: "power2.out" }, 0.05);
+  tl.fromTo(ringIn, { strokeDashoffset: -RIN_LEN }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.out" }, 0.2);
+
+  // 60 ticks fade in clockwise from 12 o'clock
+  tl.fromTo(el("ticks").querySelectorAll("line"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out", stagger: 0.011 }, 0.12);
+
+  // hero year: scale + rise + blur resolve (visible well before 0.5s)
+  tl.fromTo(el("yearin"),
+    { opacity: 0, scale: 0.84, y: 36, filter: "blur(14px)" },
+    { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.75, ease: "expo.out" }, 0.08);
+
+  // "TODAY" on "picture" (0.62)
+  tl.fromTo(el("today").querySelectorAll(".b1-three-years-ch"),
+    { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.045 }, 0.6);
+
+  // the "you" marker pops onto the ring on "yourself" (1.10), with a ripple
+  tl.fromTo(el("youpop"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 1.1);
+  tl.fromTo(el("yougate"), { opacity: 0 }, { opacity: 1, duration: 0.04, ease: "none" }, 1.14);
+  tl.fromTo(el("youring"), { scale: 0.35, opacity: 0.95 }, { scale: 1.9, opacity: 0, duration: 0.7, ease: "power2.out" }, 1.14);
+
+  // ---------- SCENE 2 (1.6-2.8): vertical-spring-ticker 2026 -> 2027 -> 2028 -> 2029 ----------
+  // Three additive springs (one item each). Each spring's progress is linear; back.out is applied
+  // here so the summed position AND its velocity (for the motion blur) are pure functions of time.
+  var ITEM_H = 280, STEP_DUR = 0.42;
+  var STEP_AT = [1.66, 1.88, 2.1];
+  var STEP_S = [1.7, 1.7, 2.3]; // back.out overshoot per step; the climax step lands harder
+  var stack = el("stack"), vblur = el("vblur-node"), ticksG = el("ticks"), arc = el("arc"), you = el("you");
+  var C_ARC = arc.getTotalLength();
+  var steps = [{ p: 0 }, { p: 0 }, { p: 0 }];
+  var drift = { p: 0 };
+  function backOut(p, s) { if (p <= 0) return 0; if (p >= 1) return 1; var q = p - 1; return q * q * ((s + 1) * q + s) + 1; }
+  function backOutVel(p, s) { if (p <= 0 || p >= 1) return 0; var q = p - 1; return 3 * (s + 1) * q * q + 2 * s * q; }
+  function applyDial() {
+    var pos = 0, vel = 0;
+    for (var i = 0; i < steps.length; i++) {
+      pos += backOut(steps[i].p, STEP_S[i]);
+      vel += backOutVel(steps[i].p, STEP_S[i]) / STEP_DUR;
+    }
+    stack.style.transform = "translate3d(0," + (-pos * ITEM_H).toFixed(2) + "px,0)";
+    // motion-blur-streak: vertical blur tracks the reel speed (px per frame at 25fps), sharp at rest
+    var blurPx = Math.min(22, Math.abs(vel) * ITEM_H / 25 * 0.16);
+    vblur.setAttribute("stdDeviation", "0 " + blurPx.toFixed(2));
+    // tick dial: slow ambient turn + one spring click per year (counter to the amber hand)
+    ticksG.setAttribute("transform", "rotate(" + (-10 * drift.p - 30 * pos).toFixed(3) + " 400 400)");
+    // amber "+3 years" arc and the you-marker ride the same springs clockwise
+    var len = pos * C_ARC / 12;
+    arc.setAttribute("stroke-dasharray", len.toFixed(2) + " " + (C_ARC + 20).toFixed(2));
+    arc.style.opacity = len > 0.5 ? "1" : "0";
+    var a = (-90 + 30 * pos) * Math.PI / 180;
+    you.style.transform = "translate(" + (400 + 330 * Math.cos(a) - 13).toFixed(2) + "px," + (400 + 330 * Math.sin(a) - 13).toFixed(2) + "px)";
+  }
+  applyDial();
+  tl.fromTo(drift, { p: 0 }, { p: 1, duration: DUR, ease: "none", onUpdate: applyDial }, 0);
+  steps.forEach(function (s, i) {
+    tl.fromTo(s, { p: 0 }, { p: 1, duration: STEP_DUR, ease: "none", onUpdate: applyDial }, STEP_AT[i]);
+  });
+
+  // "years" (1.98): TODAY zooms through, the amber "+3 YEARS" pill arrives from behind
+  tl.fromTo(el("today"), { scale: 1, opacity: 1, filter: "blur(0px)" }, { scale: 1.3, opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, 1.92);
+  tl.fromTo(el("pill"), { scale: 0.72, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 2.08);
+
+  // landed 2029 turns amber + glow; ambient-glow-bloom lands on the same settle
+  tl.fromTo(el("year"),
+    { color: "#FDF2E0", textShadow: "0 0 0px rgba(254,176,34,0)" },
+    { color: "#FEB022", textShadow: "0 0 40px rgba(254,176,34,0.45)", duration: 0.34, ease: "power2.out" }, 2.22);
+  tl.fromTo(el("bloom"), { opacity: 0, scale: 0.8 }, { opacity: 0.4, scale: 1, duration: 0.5, ease: "power2.out" }, 2.1);
+  var bloomCore = el("bloomcore");
+  var breathe = { p: 0 };
+  tl.fromTo(breathe, { p: 0 }, {
+    p: Math.PI * 2 * 0.62, duration: DUR - 2.6, ease: "none",
+    onUpdate: function () {
+      var s = Math.sin(breathe.p);
+      bloomCore.style.opacity = (0.9 + 0.1 * s).toFixed(3);
+      bloomCore.style.transform = "scale(" + (1 + 0.03 * s).toFixed(4) + ")";
+    }
+  }, 2.6);
+  // light sweep across the landed year
+  tl.fromTo(el("yearsheen"), { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%", duration: 0.6, ease: "none" }, 2.46);
+
+  // ---------- SCENE 3 (2.8-4.4): ring lifts, phone rises, hidden balance ----------
+  tl.fromTo(el("clock"), { y: 0, scale: 1 }, { y: -316, scale: 0.38, duration: 0.72, ease: "power3.inOut" }, 2.86);
+
+  // phone rises from below with a vertical motion-blur streak (blur shares the move's window + ease)
+  var pblur = el("pblur-node");
+  var pb = { v: 26 };
+  function writePB() { pblur.setAttribute("stdDeviation", "0 " + pb.v.toFixed(2)); }
+  writePB();
+  tl.fromTo(el("phonewrap"), { y: 900, rotation: 8, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 0.62, ease: "expo.out" }, 2.9);
+  tl.fromTo(pb, { v: 26 }, { v: 0, duration: 0.62, ease: "expo.out", onUpdate: writePB }, 2.9);
+  tl.fromTo(el("phonefloat"), { y: 0 }, { y: -8, duration: DUR - 3.52, ease: "sine.inOut" }, 3.52);
+
+  // screen builds after the landing
+  tl.fromTo(el("hdr"), { opacity: 0, x: -26 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 3.12);
+  tl.fromTo(el("bcard"), { opacity: 0, y: 28, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, 3.18);
+  tl.fromTo(el("blabel"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.26);
+  tl.fromTo(el("dots").querySelectorAll("i"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: "back.out(1.7)", stagger: 0.03 }, 3.28);
+  tl.fromTo(el("eye"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 3.3);
+  var slash = el("slash");
+  var SL = slash.getTotalLength();
+  slash.style.strokeDasharray = String(SL);
+  slash.style.strokeDashoffset = String(SL);
+  tl.fromTo(slash, { strokeDashoffset: SL }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 3.42);
+  tl.fromTo(el("qa").querySelectorAll(".b1-three-years-qb"), { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out", stagger: 0.04 }, 3.34);
+  tl.fromTo(el("screen").querySelectorAll(".b1-three-years-tx"), { opacity: 0, x: 28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.07 }, 3.42);
+  // shimmer over the blurred balance (one bounded pass) + one glass sweep across the phone
+  tl.fromTo(el("shimmer"), { x: -150 }, { x: 320, duration: 0.85, ease: "none" }, 3.45);
+  tl.fromTo(el("glass"), { x: -260 }, { x: 360, duration: 0.7, ease: "none" }, 3.52);
+
+  // "balance" (3.74): the hidden row pulses once (almost readable, then gone) ...
+  var dotsPulse = el("dotspulse"), dots = el("dots"), dotsGlow = el("dotsglow");
+  var pulse = { p: 0 };
+  tl.fromTo(pulse, { p: 0 }, {
+    p: 1, duration: 0.44, ease: "none",
+    onUpdate: function () {
+      var k = Math.sin(Math.PI * pulse.p);
+      dotsPulse.style.transform = "scale(" + (1 + 0.08 * k).toFixed(4) + ")";
+      dots.style.filter = "blur(" + (13 - 5 * k).toFixed(2) + "px)";
+      dotsGlow.style.opacity = (0.55 * k).toFixed(3);
+    }
+  }, 3.74);
+  // ... and the amber "?" badge springs onto the phone corner
+  tl.fromTo(el("badge"), { scale: 0, rotation: -28, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 3.74);
+  tl.fromTo(el("badgegate"), { opacity: 0 }, { opacity: 1, duration: 0.04, ease: "none" }, 3.8);
+  tl.fromTo(el("badgering"), { scale: 0.7, opacity: 0.95 }, { scale: 2, opacity: 0, duration: 0.55, ease: "power2.out" }, 3.8);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["b1-three-years"] = tl;
+})();
+</script>
+</template>

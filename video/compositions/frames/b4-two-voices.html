@@ -1,0 +1,722 @@
+<template id="b4-two-voices-template">
+  <div
+    id="root"
+    data-composition-id="b4-two-voices"
+    data-start="0"
+    data-duration="3.85"
+    data-width="1080"
+    data-height="1920"
+  >
+    <style>
+      #root {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      [data-composition-id="b4-two-voices"] #b4-two-voices-ground,
+      [data-composition-id="b4-two-voices"] #b4-two-voices-scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      /* ---------- ground ---------- */
+      [data-composition-id="b4-two-voices"] #b4-two-voices-ground {
+        background: #0b0820;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-g-radial {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle farthest-corner at 540px 620px, #221a52 0%, #0b0820 70%);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-g-grid {
+        position: absolute;
+        left: -120px;
+        top: -120px;
+        width: 1320px;
+        height: 2280px;
+        background-image:
+          linear-gradient(rgba(178, 107, 232, 0.11) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(178, 107, 232, 0.11) 2px, transparent 2px);
+        background-size: 120px 120px;
+        will-change: transform;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-g-violet {
+        position: absolute;
+        left: 90px;
+        top: 170px;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(140, 47, 194, 1) 0%, rgba(140, 47, 194, 0.5) 38%, rgba(140, 47, 194, 0) 70%);
+        opacity: 0.35;
+        filter: blur(40px);
+        will-change: transform;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-g-amber {
+        position: absolute;
+        left: 470px;
+        top: 90px;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(254, 176, 34, 1) 0%, rgba(254, 176, 34, 0) 70%);
+        opacity: 0.16;
+        will-change: transform;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-g-red {
+        position: absolute;
+        left: 60px;
+        top: 600px;
+        width: 620px;
+        height: 620px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 77, 94, 1) 0%, rgba(255, 77, 94, 0) 70%);
+        opacity: 0;
+        will-change: transform;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-g-grain {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        opacity: 0.07;
+        will-change: transform;
+      }
+      /* ---------- scene ---------- */
+      [data-composition-id="b4-two-voices"] #b4-two-voices-cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 540px 620px;
+        will-change: transform;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-card {
+        position: absolute;
+        left: 60px;
+        width: 960px;
+      }
+      [data-composition-id="b4-two-voices"] #b4-two-voices-kind {
+        top: 150px;
+        height: 440px;
+        filter: url(#b4-two-voices-mbk);
+      }
+      [data-composition-id="b4-two-voices"] #b4-two-voices-harsh {
+        top: 650px;
+        height: 450px;
+        filter: url(#b4-two-voices-mbh);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-inner {
+        position: absolute;
+        inset: 0;
+      }
+      [data-composition-id="b4-two-voices"] #b4-two-voices-hdof {
+        --dof: 0px;
+        filter: blur(var(--dof));
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-glow,
+      [data-composition-id="b4-two-voices"] .b4-two-voices-border,
+      [data-composition-id="b4-two-voices"] .b4-two-voices-bright {
+        position: absolute;
+        inset: 0;
+        border-radius: 36px;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-glow-k {
+        box-shadow:
+          0 0 70px rgba(254, 176, 34, 0.38),
+          0 0 140px rgba(140, 47, 194, 0.4);
+        opacity: 0.5;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-glow-h {
+        box-shadow:
+          0 0 70px rgba(255, 77, 94, 0.38),
+          0 0 130px rgba(169, 66, 113, 0.3);
+        opacity: 0.6;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-border {
+        box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-border-k {
+        background: linear-gradient(120deg, #8c2fc2 0%, #b26be8 38%, #feb022 100%);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-border-h {
+        background: rgba(255, 77, 94, 0.82);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-bright {
+        background: linear-gradient(120deg, #feb022 0%, #ffd27a 50%, #feb022 100%);
+        opacity: 0;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-body {
+        position: absolute;
+        inset: 3px;
+        border-radius: 33px;
+        overflow: hidden;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-body-k {
+        background: linear-gradient(160deg, rgba(34, 26, 82, 0.97), rgba(21, 16, 54, 0.97));
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-body-h {
+        background: linear-gradient(160deg, rgba(44, 20, 54, 0.97), rgba(22, 14, 46, 0.97));
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-chip {
+        position: absolute;
+        left: 40px;
+        top: 36px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        padding: 11px 22px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-chip i {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-chip-k {
+        color: #ffd27a;
+        border: 2px solid rgba(254, 176, 34, 0.6);
+        background: rgba(254, 176, 34, 0.1);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-chip-k i {
+        background: #feb022;
+        box-shadow: 0 0 10px rgba(254, 176, 34, 0.9);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-chip-h {
+        color: #ff8a96;
+        border: 2px solid rgba(255, 77, 94, 0.6);
+        background: rgba(255, 77, 94, 0.1);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-chip-h i {
+        background: #ff4d5e;
+        box-shadow: 0 0 10px rgba(255, 77, 94, 0.9);
+      }
+      /* KINDNESS word layers */
+      [data-composition-id="b4-two-voices"] #b4-two-voices-kword {
+        position: absolute;
+        left: 40px;
+        top: 106px;
+        display: grid;
+        transform-origin: 0% 50%;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-kw {
+        grid-area: 1 / 1;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-size: 110px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        white-space: nowrap;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-kdim {
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(178, 107, 232, 0.5);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-kbloom {
+        color: #feb022;
+        filter: blur(18px);
+        opacity: 0;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-klit {
+        color: #feb022;
+        text-shadow: 0 0 40px rgba(254, 176, 34, 0.45);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-sheen {
+        color: transparent;
+        background-image: linear-gradient(105deg, rgba(255, 250, 235, 0) 40%, rgba(255, 250, 235, 0.95) 50%, rgba(255, 250, 235, 0) 60%);
+        background-size: 300% 100%;
+        background-repeat: no-repeat;
+        background-position: 100% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+      [data-composition-id="b4-two-voices"] #b4-two-voices-kflare {
+        position: absolute;
+        left: 0;
+        top: -14px;
+        width: 16px;
+        height: 138px;
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(255, 210, 122, 0), #fff3d6 50%, rgba(255, 210, 122, 0));
+        box-shadow: 0 0 30px 8px rgba(254, 176, 34, 0.55);
+        opacity: 0;
+      }
+      /* HARSH VOICE glitch stack */
+      [data-composition-id="b4-two-voices"] #b4-two-voices-hstack {
+        position: absolute;
+        left: 40px;
+        top: 112px;
+        display: grid;
+        transform-origin: 0% 50%;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-hw {
+        grid-area: 1 / 1;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-size: 96px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        white-space: nowrap;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-hbase {
+        z-index: 2;
+        color: #ff4d5e;
+        text-shadow: 0 0 34px rgba(255, 77, 94, 0.42);
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-hcopy {
+        z-index: 1;
+        opacity: 0;
+        mix-blend-mode: screen;
+        will-change: transform;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-hwarm {
+        color: #ff3fb4;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-hcool {
+        color: #38e8ff;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-icon {
+        position: absolute;
+        right: 44px;
+        top: 52px;
+        width: 120px;
+        height: 120px;
+        overflow: visible;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-wave {
+        position: absolute;
+        left: 40px;
+        top: 262px;
+        width: 874px;
+        overflow: visible;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-sweep {
+        position: absolute;
+        left: 0;
+        top: -140px;
+        width: 240px;
+        height: 720px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 244, 220, 0.16), rgba(255, 255, 255, 0));
+      }
+      /* VS badge (outside the cards, so it never inherits their tilt) */
+      [data-composition-id="b4-two-voices"] #b4-two-voices-vs {
+        position: absolute;
+        left: 466px;
+        top: 546px;
+        width: 148px;
+        height: 148px;
+      }
+      [data-composition-id="b4-two-voices"] #b4-two-voices-vsring {
+        position: absolute;
+        inset: 0;
+        width: 148px;
+        height: 148px;
+        overflow: visible;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-vscore {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 40% 32%, #2e2468 0%, #151036 75%);
+        border: 3px solid rgba(178, 107, 232, 0.75);
+        box-shadow:
+          0 0 44px rgba(140, 47, 194, 0.65),
+          0 20px 40px rgba(0, 0, 0, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      [data-composition-id="b4-two-voices"] .b4-two-voices-vstext {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: transparent;
+        background-image: linear-gradient(180deg, #ffd27a 0%, #feb022 46%, #ff4d5e 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        padding-top: 2px;
+      }
+      [data-composition-id="b4-two-voices"] #b4-two-voices-vsburst {
+        position: absolute;
+        left: 466px;
+        top: 546px;
+        width: 148px;
+        height: 148px;
+        border-radius: 50%;
+        border: 3px solid rgba(178, 107, 232, 0.9);
+        opacity: 0;
+      }
+    </style>
+
+    <!-- Full-bleed ground -->
+    <div id="b4-two-voices-ground" class="clip" data-start="0" data-duration="3.85" data-track-index="0">
+      <div class="b4-two-voices-g-radial"></div>
+      <div class="b4-two-voices-g-grid" id="b4-two-voices-grid"></div>
+      <div class="b4-two-voices-g-violet" id="b4-two-voices-violet"></div>
+      <div class="b4-two-voices-g-amber" id="b4-two-voices-amberglow"></div>
+      <div class="b4-two-voices-g-red" id="b4-two-voices-redglow"></div>
+      <svg class="b4-two-voices-g-grain" viewBox="0 0 1080 1920" aria-hidden="true">
+        <filter id="b4-two-voices-grainf" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="1080" height="1920" filter="url(#b4-two-voices-grainf)" />
+      </svg>
+    </div>
+
+    <div id="b4-two-voices-scene" class="clip" data-start="0" data-duration="3.85" data-track-index="1">
+      <!-- directional motion-blur filters for the two card sweeps -->
+      <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+        <filter id="b4-two-voices-mbk" x="-50%" y="-20%" width="200%" height="140%">
+          <feGaussianBlur id="b4-two-voices-mbk-node" in="SourceGraphic" stdDeviation="0 0" />
+        </filter>
+        <filter id="b4-two-voices-mbh" x="-50%" y="-20%" width="200%" height="140%">
+          <feGaussianBlur id="b4-two-voices-mbh-node" in="SourceGraphic" stdDeviation="0 0" />
+        </filter>
+        <filter id="b4-two-voices-wglow" x="-10%" y="-60%" width="120%" height="220%">
+          <feGaussianBlur stdDeviation="7" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </svg>
+
+      <div id="b4-two-voices-cam">
+        <!-- TOP CARD: the kind inner voice -->
+        <div class="b4-two-voices-card" id="b4-two-voices-kind">
+          <div class="b4-two-voices-inner" id="b4-two-voices-kbob">
+            <div class="b4-two-voices-glow b4-two-voices-glow-k" id="b4-two-voices-kglow"></div>
+            <div class="b4-two-voices-border b4-two-voices-border-k"></div>
+            <div class="b4-two-voices-bright" id="b4-two-voices-kbright"></div>
+            <div class="b4-two-voices-body b4-two-voices-body-k">
+              <div class="b4-two-voices-chip b4-two-voices-chip-k" id="b4-two-voices-kchip"><i></i>INNER VOICE · CALM</div>
+              <svg class="b4-two-voices-icon" id="b4-two-voices-heart" viewBox="0 0 120 120" aria-hidden="true">
+                <g id="b4-two-voices-heartbeat">
+                  <path
+                    d="M60 104 C 28 80, 8 60, 8 36 C 8 20, 20 8, 36 8 C 47 8, 55 14, 60 23 C 65 14, 73 8, 84 8 C 100 8, 112 20, 112 36 C 112 60, 92 80, 60 104 Z"
+                    fill="rgba(254,176,34,0.14)"
+                    stroke="#feb022"
+                    stroke-width="5"
+                    stroke-linejoin="round"
+                    filter="url(#b4-two-voices-wglow)"
+                  />
+                </g>
+              </svg>
+              <div id="b4-two-voices-kword">
+                <span class="b4-two-voices-kw b4-two-voices-kdim" id="b4-two-voices-kdim">KINDNESS</span>
+                <span class="b4-two-voices-kw b4-two-voices-kbloom" id="b4-two-voices-kbloom" aria-hidden="true">KINDNESS</span>
+                <span class="b4-two-voices-kw b4-two-voices-klit" id="b4-two-voices-klit" aria-hidden="true">KINDNESS</span>
+                <span class="b4-two-voices-kw b4-two-voices-sheen" id="b4-two-voices-ksheen" aria-hidden="true">KINDNESS</span>
+                <div id="b4-two-voices-kflare"></div>
+              </div>
+              <svg class="b4-two-voices-wave" id="b4-two-voices-kwave" viewBox="0 0 874 140" height="140" aria-hidden="true">
+                <defs>
+                  <clipPath id="b4-two-voices-kwclip"><rect id="b4-two-voices-kwrect" x="-20" y="-60" width="0" height="260" /></clipPath>
+                </defs>
+                <g clip-path="url(#b4-two-voices-kwclip)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="0" y1="70" x2="874" y2="70" stroke="rgba(178,107,232,0.18)" stroke-width="2" />
+                  <path id="b4-two-voices-kw3" stroke="#ffd27a" stroke-opacity="0.35" stroke-width="2" />
+                  <path id="b4-two-voices-kw2" stroke="#b26be8" stroke-opacity="0.65" stroke-width="3" />
+                  <path id="b4-two-voices-kw1" stroke="#feb022" stroke-width="5" filter="url(#b4-two-voices-wglow)" />
+                </g>
+              </svg>
+              <div class="b4-two-voices-sweep" id="b4-two-voices-ksweep"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM CARD: the harsh inner voice -->
+        <div class="b4-two-voices-card" id="b4-two-voices-harsh">
+          <div class="b4-two-voices-inner" id="b4-two-voices-hdof">
+            <div class="b4-two-voices-glow b4-two-voices-glow-h"></div>
+            <div class="b4-two-voices-border b4-two-voices-border-h"></div>
+            <div class="b4-two-voices-body b4-two-voices-body-h">
+              <div class="b4-two-voices-chip b4-two-voices-chip-h" id="b4-two-voices-hchip"><i></i>INNER VOICE · CRITIC</div>
+              <svg class="b4-two-voices-icon" id="b4-two-voices-bolt" viewBox="0 0 120 120" aria-hidden="true">
+                <path
+                  id="b4-two-voices-boltpath"
+                  d="M70 6 L22 66 L56 66 L44 114 L98 48 L62 48 L78 6 Z"
+                  fill="rgba(255,77,94,0.16)"
+                  stroke="#ff4d5e"
+                  stroke-width="5"
+                  stroke-linejoin="round"
+                  filter="url(#b4-two-voices-wglow)"
+                />
+              </svg>
+              <div id="b4-two-voices-hstack">
+                <span class="b4-two-voices-hw b4-two-voices-hcopy b4-two-voices-hwarm" id="b4-two-voices-hwarm" aria-hidden="true">HARSH VOICE</span>
+                <span class="b4-two-voices-hw b4-two-voices-hcopy b4-two-voices-hcool" id="b4-two-voices-hcool" aria-hidden="true">HARSH VOICE</span>
+                <span class="b4-two-voices-hw b4-two-voices-hbase">HARSH VOICE</span>
+              </div>
+              <svg class="b4-two-voices-wave" id="b4-two-voices-hwave" viewBox="0 0 874 150" height="150" aria-hidden="true">
+                <defs>
+                  <clipPath id="b4-two-voices-hwclip"><rect id="b4-two-voices-hwrect" x="894" y="-60" width="0" height="270" /></clipPath>
+                </defs>
+                <g clip-path="url(#b4-two-voices-hwclip)" fill="none" stroke-linejoin="miter" stroke-miterlimit="8">
+                  <line x1="0" y1="75" x2="874" y2="75" stroke="rgba(255,77,94,0.2)" stroke-width="2" />
+                  <path id="b4-two-voices-hwg1" stroke="#ff3fb4" stroke-width="4" style="mix-blend-mode: screen; opacity: 0" />
+                  <path id="b4-two-voices-hwg2" stroke="#38e8ff" stroke-width="4" style="mix-blend-mode: screen; opacity: 0" />
+                  <path id="b4-two-voices-hw1" stroke="#ff4d5e" stroke-width="4" filter="url(#b4-two-voices-wglow)" />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- VS badge between the cards -->
+        <div id="b4-two-voices-vsburst"></div>
+        <div id="b4-two-voices-vs">
+          <svg id="b4-two-voices-vsring" viewBox="0 0 148 148" aria-hidden="true">
+            <circle cx="74" cy="74" r="71" fill="none" stroke="rgba(178,107,232,0.7)" stroke-width="2" stroke-dasharray="5 9" />
+          </svg>
+          <div class="b4-two-voices-vscore"><span class="b4-two-voices-vstext">VS</span></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var ID = "b4-two-voices";
+        var DUR = 3.85;
+        var $ = function (s) {
+          return document.getElementById(ID + "-" + s);
+        };
+        var hash = function (n) {
+          var x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+          return x - Math.floor(x);
+        };
+        var clamp01 = function (v) {
+          return v < 0 ? 0 : v > 1 ? 1 : v;
+        };
+        var smooth = function (v) {
+          v = clamp01(v);
+          return v * v * (3 - 2 * v);
+        };
+
+        // ---- word cues (local s) ----
+        var KIND_AT = 0.37; // "kindness"
+        var OR_AT = 1.17; // "or" -> VS
+        var SAME_AT = 1.73; // "same" -> harsh card slams
+        var HARSH_AT = 2.05; // "harsh"
+        var VOICE_AT = 2.53; // "voice" -> shake
+        var USE_AT = 3.0; // small glitch burst
+        var TODAY_AT = 3.33; // "today" -> rack focus to kindness
+
+        var kind = $("kind"), harsh = $("harsh"), kbob = $("kbob"), hdof = $("hdof");
+        var kw1 = $("kw1"), kw2 = $("kw2"), kw3 = $("kw3");
+        var hw1 = $("hw1"), hwg = [$("hwg1"), $("hwg2")];
+        var hcopies = [$("hwarm"), $("hcool")];
+        var cam = $("cam"), grid = $("grid"), violet = $("violet"), amberGlow = $("amberglow"), redGlow = $("redglow");
+        var vsring = $("vsring"), heartbeat = $("heartbeat"), boltpath = $("boltpath");
+
+        var WW = 874;
+
+        function kindPath(amp, ph, k1, k2, off) {
+          var d = "";
+          for (var i = 0; i <= 96; i++) {
+            var u = i / 96;
+            var x = u * WW;
+            var env = Math.pow(Math.sin(Math.PI * u), 1.2);
+            var y = 70 - amp * env * (0.62 * Math.sin(u * Math.PI * 2 * k1 - ph + off) + 0.38 * Math.sin(u * Math.PI * 2 * k2 + ph * 1.3 + off));
+            d += (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(2);
+          }
+          return d;
+        }
+        function harshPath(amp, step) {
+          var d = "";
+          var n = 48;
+          for (var i = 0; i <= n; i++) {
+            var u = i / n;
+            var x = u * WW;
+            var env = 0.22 + 0.78 * Math.pow(Math.sin(Math.PI * u), 0.7);
+            var h = hash(i * 7.31 + step * 13.7);
+            var spike = hash(i * 3.7 + step * 5.1) > 0.8 ? 1 : 0.5;
+            var y = 75 + (i % 2 ? 1 : -1) * amp * env * (0.25 + 0.75 * h) * spike;
+            if (i === 0 || i === n) y = 75;
+            d += (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(2);
+          }
+          return d;
+        }
+        // amplitude envelope of a glitch window (snap to 1, decay to 0 on power3.in)
+        function win(t, at, dur) {
+          if (t < at || t >= at + dur) return 0;
+          var u = (t - at) / dur;
+          return 1 - u * u * u;
+        }
+
+        // ---- the rig: procedural state as a pure function of local time ----
+        function rig(t) {
+          // calm sine voice
+          var ampK = 16 + 32 * smooth((t - KIND_AT) / 0.5) + 10 * smooth((t - TODAY_AT) / 0.4);
+          var ph = t * Math.PI * 2 * 0.55;
+          kw1.setAttribute("d", kindPath(ampK, ph, 2.2, 3.7, 0));
+          kw2.setAttribute("d", kindPath(ampK * 0.72, ph, 2.2, 3.7, 1.15));
+          kw3.setAttribute("d", kindPath(ampK * 0.5, ph, 2.2, 3.7, -1.05));
+
+          // jagged harsh voice, re-rolled every 0.06s (quantized, seeded)
+          var stepH = Math.floor(t / 0.06 + 1e-6);
+          var ampH = 56 * (1 - 0.38 * smooth((t - TODAY_AT) / 0.45));
+          var hd = harshPath(ampH, stepH);
+          hw1.setAttribute("d", hd);
+          hwg[0].setAttribute("d", hd);
+          hwg[1].setAttribute("d", hd);
+
+          // chromatic glitch: entrance + two bursts, quantized-time hash
+          var stepG = Math.floor(t / 0.04 + 1e-6);
+          var amp = Math.max(win(t, HARSH_AT, 0.35), win(t, VOICE_AT, 0.18), win(t, USE_AT, 0.14));
+          hcopies.forEach(function (el, layer) {
+            if (amp > 0) {
+              var jx = (hash(stepG * 13 + layer * 7) * 2 - 1) * 12 * amp;
+              var jy = (hash(stepG * 29 + layer * 11) * 2 - 1) * 4 * amp;
+              el.style.transform = "translate(" + jx.toFixed(2) + "px," + jy.toFixed(2) + "px)";
+              el.style.opacity = 0.8;
+            } else {
+              el.style.transform = "translate(0px,0px)";
+              el.style.opacity = 0;
+            }
+          });
+          // waveform RGB flicker: sporadic low-level split + the bursts
+          var flick = t >= SAME_AT + 0.15 && hash(stepH * 3.3 + 1) > 0.62 ? 0.4 : 0;
+          var wa = Math.max(amp, flick);
+          hwg.forEach(function (el, layer) {
+            if (wa > 0) {
+              var jx = (hash(stepG * 17 + layer * 5 + 3) * 2 - 1) * 12 * wa;
+              var jy = (hash(stepG * 23 + layer * 9 + 1) * 2 - 1) * 5 * wa;
+              el.setAttribute("transform", "translate(" + jx.toFixed(2) + " " + jy.toFixed(2) + ")");
+              el.style.opacity = 0.75;
+            } else {
+              el.setAttribute("transform", "translate(0 0)");
+              el.style.opacity = 0;
+            }
+          });
+
+          // harsh card shake on "voice" + counter-phase idle bobs
+          var sx = 0, sy = 0, sr = 0;
+          if (t >= VOICE_AT && t < VOICE_AT + 0.32) {
+            var env = Math.pow(1 - (t - VOICE_AT) / 0.32, 2);
+            sx = (hash(stepG * 5 + 1) * 2 - 1) * 18 * env;
+            sy = (hash(stepG * 9 + 4) * 2 - 1) * 6 * env;
+            sr = (hash(stepG * 3 + 2) * 2 - 1) * 1.1 * env;
+          }
+          var bobK = t > 0.9 ? Math.sin(((t - 0.9) * Math.PI * 2) / 2.4) * 3 : 0;
+          var bobH = t > 2.3 ? -Math.sin(((t - 2.3) * Math.PI * 2) / 2.4) * 3 : 0;
+          kbob.style.transform = "translate3d(0," + bobK.toFixed(2) + "px,0)";
+          hdof.style.transform = "translate3d(" + sx.toFixed(2) + "px," + (sy + bobH).toFixed(2) + "px,0) rotate(" + sr.toFixed(3) + "deg)";
+
+          // camera: slow push, drift, landing bump from the harsh slam
+          var push = 1 + 0.035 * (t / DUR);
+          var by = 0, bs = 0;
+          if (t >= 1.86) {
+            var k = Math.max(0, 1 - (t - 1.86) / 0.35);
+            by = 10 * k * k;
+            bs = 0.01 * k * k;
+          }
+          var tr = t >= VOICE_AT && t < VOICE_AT + 0.25 ? (hash(stepG * 11 + 7) * 2 - 1) * 2.5 * (1 - (t - VOICE_AT) / 0.25) : 0;
+          var dx = Math.sin(t * 1.3) * 4 + tr;
+          var dy = Math.sin(t * 1.69) * 2.5 + by;
+          cam.style.transform = "translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px) scale(" + (push + bs).toFixed(4) + ")";
+
+          // ambient decoratives
+          vsring.style.transform = "rotate(" + (t * 38).toFixed(2) + "deg)";
+          var beat = Math.pow(Math.max(0, Math.sin(t * Math.PI * 2 * 1.1)), 6);
+          heartbeat.setAttribute("transform", "translate(60 60) scale(" + (1 + 0.07 * beat).toFixed(4) + ") translate(-60 -60)");
+          boltpath.style.opacity = (hash(stepH * 7 + 3) > 0.25 ? 1 : 0.45) * (amp > 0 && hash(stepG * 2 + 9) > 0.5 ? 0.5 : 1);
+          grid.style.transform = "translate3d(0," + (-t * 14).toFixed(2) + "px,0)";
+          violet.style.transform = "translate3d(" + (Math.sin(t * 0.7) * 40).toFixed(2) + "px," + (Math.sin(t * 0.5 + 1) * 30).toFixed(2) + "px,0)";
+          amberGlow.style.transform = "scale(" + (1 + 0.07 * Math.sin(t * 2.1)).toFixed(4) + ")";
+          redGlow.style.transform = "scale(" + (1 + 0.06 * Math.sin(t * 3.3)).toFixed(4) + ")";
+        }
+
+        // motion-blur proxies (directional, X axis), share window + ease with each sweep
+        var mbk = $("mbk-node"), mbh = $("mbh-node");
+        var bk = { v: 22 }, bh = { v: 26 };
+        var writeK = function () { mbk.setAttribute("stdDeviation", bk.v.toFixed(2) + " 0"); };
+        var writeH = function () { mbh.setAttribute("stdDeviation", bh.v.toFixed(2) + " 0"); };
+        writeK();
+        writeH();
+
+        var tl = gsap.timeline({ paused: true });
+        var drv = { t: 0 };
+        rig(0);
+        tl.to(drv, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { rig(drv.t); } }, 0);
+
+        gsap.set([kind, harsh], { transformPerspective: 1400, transformOrigin: "50% 50%" });
+
+        // ---- Scene 1: KINDNESS card sweeps in from the left with a 3D tilt ----
+        tl.fromTo(kind, { x: -700 }, { x: 0, duration: 0.75, ease: "expo.out" }, 0);
+        tl.fromTo(kind, { rotationY: 14 }, { rotationY: 0, duration: 0.9, ease: "back.out(1.6)" }, 0);
+        tl.fromTo(kind, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: "power2.out" }, 0);
+        tl.fromTo(bk, { v: 22 }, { v: 0, duration: 0.75, ease: "expo.out", onUpdate: writeK }, 0);
+        tl.set(kind, { filter: "none" }, 0.8);
+
+        tl.fromTo($("kchip"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+        tl.fromTo($("kdim"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0.1);
+        tl.fromTo($("kwrect"), { attr: { width: 0 } }, { attr: { width: 914 }, duration: 0.6, ease: "power2.out" }, 0.16);
+
+        // "kindness" @0.37 — the word lights up (wipe + flare), blooms, punches
+        tl.fromTo($("klit"), { clipPath: "inset(-60px 100% -60px -60px)" }, { clipPath: "inset(-60px -12% -60px -60px)", duration: 0.4, ease: "power3.out" }, KIND_AT);
+        tl.fromTo($("kflare"), { x: 0 }, { x: 640, duration: 0.4, ease: "power3.out" }, KIND_AT);
+        tl.fromTo($("kflare"), { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power1.out" }, KIND_AT);
+        tl.to($("kflare"), { opacity: 0, duration: 0.14, ease: "power1.in" }, KIND_AT + 0.28);
+        tl.fromTo($("kword"), { scale: 1.06 }, { scale: 1, duration: 0.5, ease: "power3.out" }, KIND_AT);
+        tl.fromTo($("kbloom"), { opacity: 0 }, { opacity: 0.85, duration: 0.25, ease: "power2.out" }, KIND_AT + 0.24);
+        tl.to($("kbloom"), { opacity: 0.45, duration: 0.5, ease: "power2.out" }, KIND_AT + 0.49);
+        tl.fromTo($("kglow"), { opacity: 0.5 }, { opacity: 0.85, duration: 0.5, ease: "power2.out" }, KIND_AT);
+        tl.fromTo($("heart"), { scale: 0, opacity: 0, rotation: -18, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, rotation: 0, duration: 0.55, ease: "back.out(1.7)" }, 0.55);
+        tl.fromTo($("ksheen"), { backgroundPosition: "100% 0%" }, { backgroundPosition: "0% 0%", duration: 0.55, ease: "power2.inOut" }, 0.82);
+
+        // ---- Scene 2: "or" @1.17 VS badge springs in ----
+        tl.fromTo($("vs"), { scale: 0, rotation: -120, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.55, ease: "back.out(1.7)" }, OR_AT);
+        tl.fromTo($("vsburst"), { scale: 0.8 }, { scale: 1.9, duration: 0.5, ease: "power2.out" }, OR_AT + 0.06);
+        tl.fromTo($("vsburst"), { opacity: 0.9 }, { opacity: 0, duration: 0.5, ease: "power1.in", immediateRender: false }, OR_AT + 0.06);
+
+        // "same" @1.73 — HARSH card slams in from the right
+        tl.fromTo(harsh, { x: 700 }, { x: 0, duration: 0.5, ease: "power4.out" }, SAME_AT);
+        tl.fromTo(harsh, { rotationY: -14 }, { rotationY: 0, duration: 0.65, ease: "back.out(1.5)" }, SAME_AT);
+        tl.fromTo(harsh, { opacity: 0 }, { opacity: 1, duration: 0.16, ease: "power2.out" }, SAME_AT);
+        tl.fromTo(bh, { v: 26 }, { v: 0, duration: 0.5, ease: "power4.out", onUpdate: writeH }, SAME_AT);
+        tl.set(harsh, { filter: "none" }, SAME_AT + 0.55);
+        tl.fromTo(redGlow, { opacity: 0 }, { opacity: 0.16, duration: 0.5, ease: "power2.out" }, SAME_AT);
+
+        tl.fromTo($("hchip"), { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, SAME_AT + 0.12);
+        tl.fromTo($("hwrect"), { attr: { x: 894, width: 0 } }, { attr: { x: -20, width: 914 }, duration: 0.5, ease: "power3.out" }, SAME_AT + 0.08);
+
+        // "harsh" @2.05 — glitch-stretch entrance of HARSH VOICE (envelope runs in the rig)
+        tl.fromTo($("hstack"), { scaleX: 1.6, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.35, ease: "power4.out" }, HARSH_AT);
+        tl.fromTo($("bolt"), { scale: 0, opacity: 0, rotation: 20, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, HARSH_AT + 0.12);
+
+        // ---- Scene 3: "today" @3.33 — light sweep + glow on KINDNESS, harsh card recedes ----
+        tl.fromTo($("ksweep"), { x: -420, rotation: 20 }, { x: 1300, rotation: 20, duration: 0.48, ease: "power2.inOut" }, TODAY_AT);
+        tl.to($("kglow"), { opacity: 1, duration: 0.4, ease: "power2.out" }, TODAY_AT);
+        tl.fromTo($("kbright"), { opacity: 0 }, { opacity: 0.9, duration: 0.4, ease: "power2.out" }, TODAY_AT);
+        tl.to($("kbloom"), { opacity: 0.8, duration: 0.4, ease: "power2.out" }, TODAY_AT);
+        tl.to(kind, { scale: 1.025, duration: 0.5, ease: "power2.out" }, TODAY_AT);
+        tl.fromTo(hdof, { "--dof": "0px" }, { "--dof": "2.2px", duration: 0.5, ease: "power2.inOut" }, TODAY_AT);
+        tl.to(harsh, { opacity: 0.6, scale: 0.975, duration: 0.5, ease: "power2.inOut" }, TODAY_AT);
+        tl.to(redGlow, { opacity: 0.06, duration: 0.5, ease: "power2.out" }, TODAY_AT);
+        tl.to(amberGlow, { opacity: 0.28, duration: 0.5, ease: "power2.out" }, TODAY_AT);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </div>
+</template>
