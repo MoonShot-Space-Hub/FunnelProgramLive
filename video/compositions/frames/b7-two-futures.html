@@ -133,10 +133,10 @@
       opacity: 0;
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-bloom {
-      left: -200px;
-      top: -200px;
-      width: 400px;
-      height: 400px;
+      left: -160px;
+      top: -160px;
+      width: 320px;
+      height: 320px;
       background: radial-gradient(circle, rgba(255, 246, 226, 1) 0%, rgba(255, 210, 122, 0.85) 10%, rgba(254, 176, 34, 0.42) 30%, rgba(254, 176, 34, 0.1) 52%, rgba(254, 176, 34, 0) 70%);
       mix-blend-mode: screen;
       opacity: 0;
@@ -168,7 +168,7 @@
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-label {
       position: absolute;
-      top: 188px;
+      top: 164px;
       width: 300px;
       text-align: center;
       font-family: "JetBrains Mono", monospace;
@@ -196,9 +196,9 @@
     [data-composition-id="b7-two-futures"] .b7-two-futures-tick {
       position: absolute;
       left: 149px;
-      top: 50px;
+      top: 52px;
       width: 2px;
-      height: 30px;
+      height: 52px;
       transform-origin: 50% 0%;
     }
     [data-composition-id="b7-two-futures"] .b7-two-futures-label-l .b7-two-futures-tick {
@@ -207,12 +207,30 @@
     [data-composition-id="b7-two-futures"] .b7-two-futures-label-r .b7-two-futures-tick {
       background: rgba(254, 176, 34, 0.9);
     }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-chip,
+    [data-composition-id="b7-two-futures"] .b7-two-futures-sheenclip {
+      position: absolute;
+      left: 22px;
+      top: -6px;
+      width: 256px;
+      height: 56px;
+      border-radius: 999px;
+    }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-chip {
+      z-index: -1;
+      background: #feb022;
+      box-shadow: 0 0 30px rgba(254, 176, 34, 0.65), 0 0 70px rgba(254, 176, 34, 0.3);
+      opacity: 0;
+    }
+    [data-composition-id="b7-two-futures"] .b7-two-futures-sheenclip {
+      overflow: hidden;
+    }
     [data-composition-id="b7-two-futures"] .b7-two-futures-labelsheen {
       position: absolute;
       left: 0;
       top: -10px;
       width: 60px;
-      height: 70px;
+      height: 76px;
       background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 244, 222, 0.75), rgba(255, 255, 255, 0));
       mix-blend-mode: screen;
       opacity: 0;
@@ -398,9 +416,9 @@
               <stop offset="1" stop-color="#ffd27a" stop-opacity="0.5" />
             </linearGradient>
             <linearGradient id="b7-two-futures-g-flare" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="280">
-              <stop offset="0" stop-color="#feb022" stop-opacity="0.34" />
-              <stop offset="0.6" stop-color="#ffd27a" stop-opacity="0.5" />
-              <stop offset="1" stop-color="#fff3da" stop-opacity="0.85" />
+              <stop offset="0" stop-color="#feb022" stop-opacity="0.22" />
+              <stop offset="0.6" stop-color="#ffd27a" stop-opacity="0.42" />
+              <stop offset="1" stop-color="#fff3da" stop-opacity="0.8" />
             </linearGradient>
             <mask id="b7-two-futures-m-stem" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
               <path id="b7-two-futures-mp-stem" d="" fill="none" stroke="#fff" stroke-width="320" />
@@ -414,6 +432,12 @@
             <mask id="b7-two-futures-m-flare" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
               <path id="b7-two-futures-mp-flare" d="" fill="none" stroke="#fff" stroke-width="300" />
             </mask>
+            <clipPath id="b7-two-futures-clip-left" clipPathUnits="userSpaceOnUse">
+              <path id="b7-two-futures-cp-left" d="" />
+            </clipPath>
+            <clipPath id="b7-two-futures-clip-right" clipPathUnits="userSpaceOnUse">
+              <path id="b7-two-futures-cp-right" d="" />
+            </clipPath>
             <filter id="b7-two-futures-f-glow" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="5" result="b" />
               <feMerge>
@@ -428,7 +452,9 @@
 
           <!-- SAME: grey-violet path into fog -->
           <g id="b7-two-futures-left">
-            <path id="b7-two-futures-fill-left" d="" fill="url(#b7-two-futures-g-left)" mask="url(#b7-two-futures-m-left)" />
+            <g clip-path="url(#b7-two-futures-clip-left)">
+              <path id="b7-two-futures-fill-left" d="" fill="url(#b7-two-futures-g-left)" mask="url(#b7-two-futures-m-left)" />
+            </g>
             <path id="b7-two-futures-e-lo" class="b7-two-futures-edge" d="" fill="none" stroke="url(#b7-two-futures-g-leftedge)" stroke-width="3" stroke-linecap="round" />
             <path id="b7-two-futures-e-li" class="b7-two-futures-edge" d="" fill="none" stroke="url(#b7-two-futures-g-leftedge)" stroke-width="3" stroke-linecap="round" />
             <g id="b7-two-futures-marks-left" stroke="#b4b0c8" stroke-linecap="round"></g>
@@ -436,8 +462,12 @@
 
           <!-- CHANGE: amber glowing path -->
           <g id="b7-two-futures-right">
-            <path id="b7-two-futures-fill-right" d="" fill="url(#b7-two-futures-g-right)" mask="url(#b7-two-futures-m-right)" />
-            <path id="b7-two-futures-flare" d="" fill="url(#b7-two-futures-g-flare)" mask="url(#b7-two-futures-m-flare)" />
+            <g clip-path="url(#b7-two-futures-clip-right)">
+              <path id="b7-two-futures-fill-right" d="" fill="url(#b7-two-futures-g-right)" mask="url(#b7-two-futures-m-right)" />
+            </g>
+            <g clip-path="url(#b7-two-futures-clip-right)" style="mix-blend-mode: screen">
+              <path id="b7-two-futures-flare" d="" fill="url(#b7-two-futures-g-flare)" mask="url(#b7-two-futures-m-flare)" />
+            </g>
             <g id="b7-two-futures-rglow" filter="url(#b7-two-futures-f-soft)" opacity="0">
               <path id="b7-two-futures-eg-ro" d="" fill="none" stroke="#feb022" stroke-width="9" />
               <path id="b7-two-futures-eg-ri" d="" fill="none" stroke="#feb022" stroke-width="9" />
@@ -479,8 +509,9 @@
         </div>
         <div id="b7-two-futures-label-r" class="b7-two-futures-label b7-two-futures-label-r">
           <span>C</span><span>H</span><span>A</span><span>N</span><span>G</span><span>E</span>
+          <div id="b7-two-futures-chip" class="b7-two-futures-chip"></div>
           <div id="b7-two-futures-tick-r" class="b7-two-futures-tick"></div>
-          <div id="b7-two-futures-labelsheen" class="b7-two-futures-labelsheen"></div>
+          <div class="b7-two-futures-sheenclip"><div id="b7-two-futures-labelsheen" class="b7-two-futures-labelsheen"></div></div>
         </div>
 
         <div id="b7-two-futures-ghosts"></div>
@@ -505,7 +536,7 @@
               </linearGradient>
             </defs>
             <g id="b7-two-futures-plate">
-              <rect x="4" y="4" width="692" height="372" rx="28" fill="rgba(11,8,32,0.4)" stroke="#feb022" stroke-width="6" />
+              <rect x="4" y="4" width="692" height="372" rx="28" fill="rgba(11,8,32,0.22)" stroke="#feb022" stroke-width="6" />
               <rect x="20" y="20" width="660" height="340" rx="18" fill="none" stroke="#feb022" stroke-opacity="0.45" stroke-width="2" />
             </g>
             <g id="b7-two-futures-stampglow" filter="url(#b7-two-futures-stampglowfx)" opacity="0.85">
@@ -621,6 +652,17 @@
       // inner edges start at the crotch (where they leave the other road)
       const crotchL = eL.R.findIndex((p) => p.x <= 540);
       const crotchR = eR.L.findIndex((p) => p.x >= 540);
+      const cR = eR.L[Math.max(0, crotchR)], cL = eL.R[Math.max(0, crotchL)];
+      $("cp-right").setAttribute(
+        "d",
+        `M540 ${FORK.y} L540 ${fx(cR.y)} ` + eR.L.slice(Math.max(0, crotchR)).map((p) => "L" + fx(p.x) + " " + fx(p.y)).join(" ") +
+          ` L830 -100 L1400 -100 L1400 2000 L540 2000 Z`,
+      );
+      $("cp-left").setAttribute(
+        "d",
+        `M540 ${FORK.y} L540 ${fx(cL.y)} ` + eL.R.slice(Math.max(0, crotchL)).map((p) => "L" + fx(p.x) + " " + fx(p.y)).join(" ") +
+          ` L250 -100 L-400 -100 L-400 2000 L540 2000 Z`,
+      );
       const centre = (br) => "M" + fx(FORK.x) + " " + fx(FORK.y) + " " + br.pts.slice(1).map((p) => "L" + fx(p.x) + " " + fx(p.y)).join(" ");
 
       $("fill-left").setAttribute("d", ribbon(eL));
@@ -801,7 +843,7 @@
       }
 
       // ---------- the dot: position is a pure function of time ----------
-      const LAUNCH = 2.58, LAUNCH_DUR = 0.52;
+      const LAUNCH = 2.58, LAUNCH_DUR = 0.5;
       const depthScale = (y) => 0.26 + 0.74 * clamp01((y - HY) / (FORK.y - HY));
       function hesitate(t) {
         if (t < 1.12 || t > 1.58) return 0;
@@ -821,7 +863,7 @@
         st.sy = 1 - 0.16 * an * (1 - rel);
         st.sx = 1 + 0.12 * an * (1 - rel);
         if (t > LAUNCH) {
-          const u = E.expo(clamp01((t - LAUNCH) / LAUNCH_DUR));
+          const u = E.o3(clamp01((t - LAUNCH) / LAUNCH_DUR));
           const p = at(right, u);
           st.x = p.x;
           st.y = p.y + 12 * an * (1 - rel);
@@ -836,6 +878,7 @@
 
       // ---------- procedural layer ----------
       const flareMask = $("mp-flare");
+      const shock = $("shock"), flash = $("flash"), vpring = $("vpring");
       const branchDraw = (t, at0) => E.o2(clamp01((t - at0) / 0.75));
       function placeMarks(marks, br, t, drawn, speed, alpha) {
         for (let i = 0; i < MARKS; i++) {
@@ -870,7 +913,7 @@
           const y = HY + GK / z;
           gridLines[k].setAttribute("y1", fx(y));
           gridLines[k].setAttribute("y2", fx(y));
-          gridLines[k].setAttribute("opacity", clamp01((y - HY) / 60).toFixed(3));
+          gridLines[k].setAttribute("opacity", Math.pow(clamp01((y - HY) / 160), 1.5).toFixed(3));
         }
         // stars twinkle
         for (let i = 0; i < STARS; i++) {
@@ -885,11 +928,11 @@
         // dot + velocity streak
         const d = dotState(t);
         dot.style.transform = `translate(${fx(d.x)}px, ${fx(d.y)}px) scale(${(d.s * d.sx).toFixed(4)}, ${(d.s * d.sy).toFixed(4)})`;
-        const pulse = t > 1.1 && t < LAUNCH ? 1 + 0.18 * Math.sin((t - 1.1) * 9) : 1;
-        dotHalo.style.transform = `scale(${pulse.toFixed(4)})`;
         const back = dotState(t - 0.04);
         const speed = Math.hypot(d.x - back.x, d.y - back.y) / 0.04;
         const gate = clamp01((speed - 420) / 900);
+        const pulse = t > 1.1 && t < LAUNCH ? 1 + 0.18 * Math.sin((t - 1.1) * 9) : 1;
+        dotHalo.style.transform = `scale(${(pulse * (1 + 0.9 * gate)).toFixed(4)})`;
         if (gate > 0 && t > CUE.youre) {
           let path = "";
           for (let k = 0; k <= 7; k++) {
@@ -935,6 +978,21 @@
           p.el.style.transform = `translate(${fx(x)}px, ${fx(y)}px) rotate(${(p.spin * ft).toFixed(1)}deg)`;
           p.el.style.opacity = Math.min(1, (1 - PT) / 0.35).toFixed(3);
         }
+        // impact shockwave ring + flash (ephemeral: invisible outside their window)
+        const sk = (t - 1.7) / 0.62;
+        if (sk > 0 && sk < 1) {
+          const e = E.o2(sk);
+          shock.style.transform = `rotate(-6deg) scale(${(0.62 + 1.28 * e).toFixed(4)})`;
+          shock.style.opacity = (0.95 * (1 - e)).toFixed(3);
+        } else shock.style.opacity = "0";
+        const fl = t - 1.69;
+        flash.style.opacity = (fl <= 0 || fl >= 0.4 ? 0 : fl < 0.06 ? (0.42 * fl) / 0.06 : 0.42 * (1 - E.o2((fl - 0.06) / 0.34))).toFixed(3);
+        const vk = (t - CUE.change) / 0.48;
+        if (vk > 0 && vk < 1) {
+          const e = E.o2(vk);
+          vpring.style.transform = `scale(${(0.4 + 2.4 * e).toFixed(4)})`;
+          vpring.style.opacity = (0.95 * (1 - vk)).toFixed(3);
+        } else vpring.style.opacity = "0";
         // vanishing-point rays grow on "change", then rotate slowly
         const rt = t - CUE.change;
         for (let i = 0; i < RAYS; i++) {
@@ -997,10 +1055,7 @@
         CUE.dont,
       );
       tl.fromTo(stamp, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, CUE.dont);
-      // impact: shockwave ring + flash (particles + shake run in render())
-      tl.fromTo($("shock"), { scale: 0.62, rotation: -6, opacity: 0.95 }, { scale: 1.9, rotation: -6, opacity: 0, duration: 0.62, ease: "power2.out" }, 1.7);
-      tl.fromTo($("flash"), { opacity: 0 }, { opacity: 0.42, duration: 0.06, ease: "none" }, 1.69);
-      tl.fromTo($("flash"), { opacity: 0.42 }, { opacity: 0, duration: 0.34, ease: "power2.out", immediateRender: false }, 1.75);
+      // impact: shockwave ring, flash, particles and shake are driven in render()
       // "wait": second hit on the bottom line
       const line2 = $("line2");
       tl.fromTo(
@@ -1024,11 +1079,18 @@
       // "change": right vanishing point blooms
       tl.fromTo($("bloom"), { scale: 0.26, opacity: 0.85 }, { scale: 1.18, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, CUE.change);
       tl.fromTo($("bloom"), { scale: 1.18 }, { scale: 1, duration: 0.18, ease: "sine.inOut", immediateRender: false }, CUE.change + 0.3);
-      tl.fromTo($("vpring"), { scale: 0.4, opacity: 0.95 }, { scale: 2.8, opacity: 0, duration: 0.6, ease: "power2.out" }, CUE.change);
       tl.fromTo($("label-r"), { scale: 1 }, { scale: 1.16, duration: 0.12, ease: "power2.out", immediateRender: false }, CUE.change);
       tl.fromTo($("label-r"), { scale: 1.16 }, { scale: 1, duration: 0.32, ease: "back.out(2)", immediateRender: false }, CUE.change + 0.12);
-      tl.fromTo($("label-r"), { color: "#FEB022" }, { color: "#FFE3A6", duration: 0.2, ease: "power2.out", immediateRender: false }, CUE.change);
-      tl.fromTo($("labelsheen"), { x: -70, opacity: 1 }, { x: 300, opacity: 1, duration: 0.42, ease: "power2.inOut" }, CUE.change + 0.1);
+      // CHANGE locks in as a solid amber chip
+      tl.fromTo($("chip"), { scaleX: 0.35, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.34, ease: "back.out(1.6)" }, CUE.change);
+      tl.fromTo(
+        $("label-r"),
+        { color: "#FEB022", textShadow: "0 0 22px rgba(254,176,34,0.55)" },
+        { color: "#1A1030", textShadow: "0 0 0px rgba(254,176,34,0)", duration: 0.2, ease: "power2.out", immediateRender: false },
+        CUE.change + 0.04,
+      );
+      tl.fromTo($("labelsheen"), { x: -70 }, { x: 290, duration: 0.28, ease: "power2.inOut" }, CUE.change + 0.2);
+      tl.fromTo($("labelsheen"), { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none" }, CUE.change + 0.2);
 
       render(0);
       window.__timelines = window.__timelines || {};

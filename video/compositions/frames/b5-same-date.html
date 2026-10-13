@@ -1,0 +1,854 @@
+<template id="b5-same-date-template">
+  <div
+    id="root"
+    data-composition-id="b5-same-date"
+    data-start="0"
+    data-duration="5.75"
+    data-width="1080"
+    data-height="1920"
+  >
+    <style>
+      #root {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-ground,
+      [data-composition-id="b5-same-date"] #b5-same-date-scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      /* ---------- ground ---------- */
+      [data-composition-id="b5-same-date"] #b5-same-date-ground {
+        background: #0b0820;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-g-radial {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle farthest-corner at 540px 620px, #221a52 0%, #0b0820 70%);
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-g-grid {
+        position: absolute;
+        left: -120px;
+        top: -120px;
+        width: 1320px;
+        height: 2400px;
+        background-image:
+          linear-gradient(rgba(178, 107, 232, 0.11) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(178, 107, 232, 0.11) 2px, transparent 2px);
+        background-size: 120px 120px;
+        will-change: transform;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-g-violet {
+        position: absolute;
+        left: 90px;
+        top: 150px;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(140, 47, 194, 1) 0%, rgba(140, 47, 194, 0.5) 38%, rgba(140, 47, 194, 0) 70%);
+        opacity: 0.35;
+        filter: blur(40px);
+        will-change: transform;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-g-amber {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 560px;
+        height: 560px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(254, 176, 34, 1) 0%, rgba(254, 176, 34, 0) 70%);
+        opacity: 0.12;
+        will-change: transform;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-g-grain {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        opacity: 0.07;
+        will-change: transform;
+      }
+      /* ---------- scene 1: the calendar ---------- */
+      [data-composition-id="b5-same-date"] #b5-same-date-cam1,
+      [data-composition-id="b5-same-date"] #b5-same-date-cam2,
+      [data-composition-id="b5-same-date"] #b5-same-date-s1 {
+        position: absolute;
+        inset: 0;
+        transform-origin: 540px 560px;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-cam2 {
+        transform-origin: 540px 620px;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-cal {
+        position: absolute;
+        left: 210px;
+        top: 150px;
+        width: 660px;
+        height: 736px;
+        transform-origin: 50% 50%;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-ring {
+        position: absolute;
+        top: 0;
+        width: 28px;
+        height: 78px;
+        border-radius: 14px;
+        border: 7px solid #d6cfe6;
+        box-shadow:
+          inset 0 2px 0 rgba(255, 255, 255, 0.5),
+          0 6px 10px rgba(0, 0, 0, 0.45);
+        z-index: 3;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-ring1 {
+        left: 168px;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-ring2 {
+        left: 464px;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-binding {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        width: 660px;
+        height: 112px;
+        border-radius: 36px 36px 10px 10px;
+        background: linear-gradient(100deg, #b2386f 0%, #9b33a6 45%, #8c2fc2 100%);
+        box-shadow:
+          inset 0 2px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -10px 18px rgba(20, 6, 40, 0.45),
+          0 50px 100px rgba(0, 0, 0, 0.55);
+        z-index: 2;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-hole {
+        position: absolute;
+        top: 30px;
+        width: 34px;
+        height: 18px;
+        border-radius: 50%;
+        background: #120a26;
+        box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.7);
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-sheet {
+        position: absolute;
+        border-radius: 0 0 28px 28px;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-sheet-a {
+        left: 10px;
+        right: 10px;
+        top: 690px;
+        height: 30px;
+        background: #1e1748;
+        border: 2px solid rgba(178, 107, 232, 0.22);
+        border-top: 0;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-sheet-b {
+        left: 26px;
+        right: 26px;
+        top: 704px;
+        height: 30px;
+        background: #161039;
+        border: 2px solid rgba(178, 107, 232, 0.16);
+        border-top: 0;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-page {
+        position: absolute;
+        left: 0;
+        top: 150px;
+        width: 660px;
+        height: 556px;
+        border-radius: 8px 8px 30px 30px;
+        background: linear-gradient(172deg, #2b2165 0%, #1b1544 100%);
+        border: 2px solid rgba(178, 107, 232, 0.3);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-page {
+        transform-origin: 50% 0%;
+        backface-visibility: hidden;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-perf {
+        position: absolute;
+        left: 22px;
+        right: 22px;
+        top: 10px;
+        height: 0;
+        border-top: 4px dotted rgba(178, 107, 232, 0.4);
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-month {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50px;
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 1;
+        letter-spacing: 0.32em;
+        padding-left: 0.32em;
+        color: #9a96b2;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-rule {
+        position: absolute;
+        left: 230px;
+        right: 230px;
+        top: 122px;
+        height: 2px;
+        background: rgba(178, 107, 232, 0.32);
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-year {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 168px;
+        display: flex;
+        justify-content: center;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-size: 220px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: #fdf2e0;
+        white-space: nowrap;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-year span {
+        display: inline-block;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-dots {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 448px;
+        display: flex;
+        justify-content: center;
+        gap: 44px;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-dots i {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: rgba(154, 150, 178, 0.35);
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-dots i.b5-same-date-on {
+        background: transparent;
+        border: 3px solid #9a96b2;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-light {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255, 244, 225, 0.35), rgba(255, 244, 225, 0.05));
+        opacity: 0;
+      }
+      /* the page underneath: 2029 */
+      [data-composition-id="b5-same-date"] .b5-same-date-under .b5-same-date-month {
+        color: #ffd27a;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-under .b5-same-date-dots i.b5-same-date-on {
+        border-color: #feb022;
+        box-shadow: 0 0 12px rgba(254, 176, 34, 0.8);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-y29 {
+        display: grid;
+        justify-content: center;
+        transform-origin: 50% 55%;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-y29l {
+        grid-area: 1 / 1;
+        text-align: center;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-y29glow {
+        color: #feb022;
+        filter: blur(22px);
+        opacity: 0;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-y29lit {
+        color: #feb022;
+        text-shadow: 0 0 40px rgba(254, 176, 34, 0.45);
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-sheen {
+        color: transparent;
+        background-image: linear-gradient(105deg, rgba(255, 250, 235, 0) 40%, rgba(255, 250, 235, 0.95) 50%, rgba(255, 250, 235, 0) 60%);
+        background-size: 300% 100%;
+        background-repeat: no-repeat;
+        background-position: 100% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-shade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(6, 3, 18, 0.9) 0%, rgba(6, 3, 18, 0.45) 100%);
+      }
+      /* the unchanged icon row */
+      [data-composition-id="b5-same-date"] .b5-same-date-tile {
+        position: absolute;
+        top: 920px;
+        width: 96px;
+        height: 96px;
+        border-radius: 26px;
+        border: 2px solid rgba(154, 150, 178, 0.32);
+        background: rgba(21, 16, 54, 0.72);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-tile svg {
+        position: absolute;
+        left: 16px;
+        top: 16px;
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-unch {
+        position: absolute;
+        left: 0;
+        width: 1080px;
+        top: 1046px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 22px;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-hair {
+        width: 70px;
+        height: 2px;
+        background: rgba(154, 150, 178, 0.45);
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-unchtext {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: 0.34em;
+        padding-left: 0.34em;
+        color: #9a96b2;
+        white-space: nowrap;
+      }
+      /* ---------- scene 2: kinetic words ---------- */
+      [data-composition-id="b5-same-date"] .b5-same-date-line {
+        position: absolute;
+        inset: 0;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-word {
+        position: absolute;
+        left: 100px;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        white-space: nowrap;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-depth {
+        font-size: 150px;
+        transform-origin: 30% 60%;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-dl {
+        line-height: 1;
+        white-space: nowrap;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-dfront {
+        position: relative;
+        z-index: 10;
+        color: #fdf2e0;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-dback {
+        position: absolute;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+      }
+      [data-composition-id="b5-same-date"] .b5-same-date-amber {
+        color: #feb022;
+        text-shadow: 0 0 40px rgba(254, 176, 34, 0.45);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-same1 {
+        top: 116px;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-voicewrap {
+        top: 236px;
+        clip-path: inset(-80px -300px 18px -80px);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-voice {
+        display: block;
+        font-size: 200px;
+        filter: url(#b5-same-date-mbvoice);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-same2 {
+        top: 474px;
+        filter: url(#b5-same-date-mbsame2);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-habits {
+        top: 594px;
+        font-size: 200px;
+        filter: url(#b5-same-date-mbhabits);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-three {
+        top: 836px;
+        font-size: 250px;
+        transform-origin: 0% 100%;
+        filter: url(#b5-same-date-mbthree);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-years {
+        left: 448px;
+        top: 866px;
+        font-size: 130px;
+        transform-origin: 0% 100%;
+        filter: url(#b5-same-date-mbyears);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-later {
+        position: absolute;
+        left: 454px;
+        top: 1006px;
+        display: flex;
+        align-items: center;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 1;
+        letter-spacing: 0.3em;
+        color: #ffd27a;
+        white-space: nowrap;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-later span {
+        display: inline-block;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-cursor {
+        display: block;
+        width: 24px;
+        height: 42px;
+        margin-left: 2px;
+        background: #ffd27a;
+        box-shadow: 0 0 14px rgba(254, 176, 34, 0.7);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-beat {
+        position: absolute;
+        left: 58px;
+        top: 130px;
+        width: 4px;
+        height: 960px;
+        opacity: 0;
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-beatbar {
+        position: absolute;
+        left: 1px;
+        top: 0;
+        width: 2px;
+        height: 960px;
+        background: rgba(178, 107, 232, 0.9);
+      }
+      [data-composition-id="b5-same-date"] #b5-same-date-marker {
+        position: absolute;
+        left: -2px;
+        top: 0;
+        width: 8px;
+        height: 100px;
+        border-radius: 4px;
+        background: #feb022;
+        box-shadow: 0 0 18px rgba(254, 176, 34, 0.85);
+        opacity: 0;
+      }
+    </style>
+
+    <!-- Full-bleed ground -->
+    <div id="b5-same-date-ground" class="clip" data-start="0" data-duration="5.75" data-track-index="0">
+      <div class="b5-same-date-g-radial"></div>
+      <div class="b5-same-date-g-grid" id="b5-same-date-grid"></div>
+      <div class="b5-same-date-g-violet" id="b5-same-date-violet"></div>
+      <div class="b5-same-date-g-amber" id="b5-same-date-amberglow"></div>
+      <svg class="b5-same-date-g-grain" viewBox="0 0 1080 1920" aria-hidden="true">
+        <filter id="b5-same-date-grainf" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="5" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="1080" height="1920" filter="url(#b5-same-date-grainf)" />
+      </svg>
+    </div>
+
+    <div id="b5-same-date-scene" class="clip" data-start="0" data-duration="5.75" data-track-index="1">
+      <!-- directional motion-blur filters, one per slam -->
+      <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+        <filter id="b5-same-date-mbvoice" x="-20%" y="-60%" width="140%" height="220%">
+          <feGaussianBlur id="b5-same-date-mbvoice-n" in="SourceGraphic" stdDeviation="0 0" />
+        </filter>
+        <filter id="b5-same-date-mbsame2" x="-60%" y="-20%" width="220%" height="140%">
+          <feGaussianBlur id="b5-same-date-mbsame2-n" in="SourceGraphic" stdDeviation="0 0" />
+        </filter>
+        <filter id="b5-same-date-mbhabits" x="-60%" y="-20%" width="220%" height="140%">
+          <feGaussianBlur id="b5-same-date-mbhabits-n" in="SourceGraphic" stdDeviation="0 0" />
+        </filter>
+        <filter id="b5-same-date-mbthree" x="-30%" y="-60%" width="160%" height="220%">
+          <feGaussianBlur id="b5-same-date-mbthree-n" in="SourceGraphic" stdDeviation="0 0" />
+        </filter>
+        <filter id="b5-same-date-mbyears" x="-30%" y="-60%" width="160%" height="220%">
+          <feGaussianBlur id="b5-same-date-mbyears-n" in="SourceGraphic" stdDeviation="0 0" />
+        </filter>
+      </svg>
+
+      <!-- Scene 1: tear-off calendar + the unchanged icon row -->
+      <div id="b5-same-date-cam1">
+        <div id="b5-same-date-s1">
+          <div id="b5-same-date-cal">
+            <div class="b5-same-date-sheet b5-same-date-sheet-b"></div>
+            <div class="b5-same-date-sheet b5-same-date-sheet-a"></div>
+            <!-- the page underneath: same month, three years on -->
+            <div class="b5-same-date-page b5-same-date-under" id="b5-same-date-under">
+              <div class="b5-same-date-perf"></div>
+              <div class="b5-same-date-month">OCT</div>
+              <div class="b5-same-date-rule"></div>
+              <div class="b5-same-date-year">
+                <div id="b5-same-date-y29">
+                  <span class="b5-same-date-y29l b5-same-date-y29glow" id="b5-same-date-y29glow" aria-hidden="true">2029</span>
+                  <span class="b5-same-date-y29l b5-same-date-y29lit">2029</span>
+                  <span class="b5-same-date-y29l b5-same-date-sheen" id="b5-same-date-y29sheen" aria-hidden="true">2029</span>
+                </div>
+              </div>
+              <div class="b5-same-date-dots"><i></i><i></i><i class="b5-same-date-on"></i><i></i><i></i><i></i><i></i></div>
+              <div class="b5-same-date-shade" id="b5-same-date-shade"></div>
+            </div>
+            <!-- the page on top: 2026 (tears off on "date") -->
+            <div class="b5-same-date-page" id="b5-same-date-page">
+              <div class="b5-same-date-perf"></div>
+              <div class="b5-same-date-month" id="b5-same-date-month">OCT</div>
+              <div class="b5-same-date-rule"></div>
+              <div class="b5-same-date-year" id="b5-same-date-y26">
+                <span>2</span><span>0</span><span>2</span><span>6</span>
+              </div>
+              <div class="b5-same-date-dots"><i></i><i></i><i class="b5-same-date-on"></i><i></i><i></i><i></i><i></i></div>
+              <div class="b5-same-date-light" id="b5-same-date-light"></div>
+            </div>
+            <div class="b5-same-date-binding">
+              <div class="b5-same-date-hole" style="left: 165px"></div>
+              <div class="b5-same-date-hole" style="left: 461px"></div>
+            </div>
+            <div class="b5-same-date-ring" id="b5-same-date-ring1"></div>
+            <div class="b5-same-date-ring" id="b5-same-date-ring2"></div>
+          </div>
+
+          <div class="b5-same-date-tile" id="b5-same-date-tile1" style="left: 336px">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <g fill="none" stroke="#9a96b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="19" y="6" width="26" height="52" rx="6" />
+                <line x1="28" y1="50" x2="36" y2="50" />
+                <line x1="29" y1="13" x2="35" y2="13" />
+              </g>
+            </svg>
+          </div>
+          <div class="b5-same-date-tile" id="b5-same-date-tile2" style="left: 492px">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <g fill="none" stroke="#9a96b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 28 H44 V41 C44 50 38 55 28 55 C18 55 12 50 12 41 Z" />
+                <path d="M44 32 H48 C52 32 54 35 54 38 C54 42 51 44 48 44 H44" />
+                <g id="b5-same-date-steam">
+                  <path d="M22 20 C19 16 25 13 22 8" />
+                  <path d="M33 20 C30 16 36 13 33 8" />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="b5-same-date-tile" id="b5-same-date-tile3" style="left: 648px">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <g fill="none" stroke="#9a96b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 15 C10 11 13 9 17 9 H47 C51 9 54 11 54 15 V36 C54 40 51 42 47 42 H29 L19 52 V42 H17 C13 42 10 40 10 36 Z" />
+              </g>
+              <g fill="#9a96b2">
+                <circle cx="22" cy="25.5" r="3" />
+                <circle cx="32" cy="25.5" r="3" />
+                <circle cx="42" cy="25.5" r="3" />
+              </g>
+            </svg>
+          </div>
+          <div id="b5-same-date-unch">
+            <div class="b5-same-date-hair" id="b5-same-date-hairl"></div>
+            <div class="b5-same-date-unchtext" id="b5-same-date-unchtext"><span>U</span><span>N</span><span>C</span><span>H</span><span>A</span><span>N</span><span>G</span><span>E</span><span>D</span></div>
+            <div class="b5-same-date-hair" id="b5-same-date-hairr"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 2: the spoken line as kinetic type (host hides captions from 2.35) -->
+      <div id="b5-same-date-cam2">
+        <div id="b5-same-date-beat">
+          <div id="b5-same-date-beatbar"></div>
+          <div id="b5-same-date-marker"></div>
+        </div>
+        <div class="b5-same-date-line" id="b5-same-date-l1">
+          <div class="b5-same-date-word b5-same-date-depth" id="b5-same-date-same1">
+            <div class="b5-same-date-dl b5-same-date-dback" data-layer="4" aria-hidden="true" style="color: rgba(140, 47, 194, 0.33)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layer="3" aria-hidden="true" style="color: rgba(140, 47, 194, 0.46)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layer="2" aria-hidden="true" style="color: rgba(140, 47, 194, 0.59)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layer="1" aria-hidden="true" style="color: rgba(140, 47, 194, 0.72)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dfront" data-layer="0">SAME</div>
+          </div>
+          <div class="b5-same-date-word" id="b5-same-date-voicewrap">
+            <span class="b5-same-date-amber" id="b5-same-date-voice">VOICE.</span>
+          </div>
+        </div>
+        <div class="b5-same-date-line" id="b5-same-date-l2">
+          <div class="b5-same-date-word b5-same-date-depth" id="b5-same-date-same2">
+            <div class="b5-same-date-dl b5-same-date-dback" data-layer="4" aria-hidden="true" style="color: rgba(140, 47, 194, 0.33)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layer="3" aria-hidden="true" style="color: rgba(140, 47, 194, 0.46)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layer="2" aria-hidden="true" style="color: rgba(140, 47, 194, 0.59)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dback" data-layer="1" aria-hidden="true" style="color: rgba(140, 47, 194, 0.72)">SAME</div>
+            <div class="b5-same-date-dl b5-same-date-dfront" data-layer="0">SAME</div>
+          </div>
+          <div class="b5-same-date-word b5-same-date-amber" id="b5-same-date-habits">HABITS.</div>
+        </div>
+        <div class="b5-same-date-line" id="b5-same-date-l3">
+          <div class="b5-same-date-word b5-same-date-amber" id="b5-same-date-three">+3</div>
+          <div class="b5-same-date-word b5-same-date-amber" id="b5-same-date-years">YEARS</div>
+          <div id="b5-same-date-later"><span>L</span><span>A</span><span>T</span><span>E</span><span>R</span><i id="b5-same-date-cursor"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var ID = "b5-same-date";
+        var DUR = 5.75;
+        var $ = function (s) {
+          return document.getElementById(ID + "-" + s);
+        };
+        var clamp01 = function (v) {
+          return v < 0 ? 0 : v > 1 ? 1 : v;
+        };
+        var smooth = function (v) {
+          v = clamp01(v);
+          return v * v * (3 - 2 * v);
+        };
+        var outCubic = function (v) {
+          v = clamp01(v);
+          return 1 - Math.pow(1 - v, 3);
+        };
+
+        // ---- word cues (local s) ----
+        var CHANGED_AT = 0.88;
+        var EXCEPT_AT = 1.28;
+        var THE_AT = 1.6;
+        var DATE_AT = 1.76;
+        var ZOOM_AT = 2.28; // calendar zooms through (exit done by 2.44)
+        // kinetic-beat-slam onset array — every word / chrome hit reads from here
+        var BEATS = { same1: 2.4, voice: 2.72, same2: 3.36, habits: 3.76, three: 4.64, years: 5.04, later: 5.28 };
+        // beat-bar hit rows (stage y of the word's glyph band)
+        var HITS = [
+          { t: BEATS.same1, y: 140, h: 112 },
+          { t: BEATS.voice, y: 268, h: 148 },
+          { t: BEATS.same2, y: 498, h: 112 },
+          { t: BEATS.habits, y: 626, h: 148 },
+          { t: BEATS.three, y: 876, h: 184 },
+          { t: BEATS.years, y: 892, h: 96 },
+          { t: BEATS.later, y: 1004, h: 46 }
+        ];
+
+        var cam1 = $("cam1"), cam2 = $("cam2"), grid = $("grid"), violet = $("violet"), amberGlow = $("amberglow");
+        var marker = $("marker"), beatbar = $("beatbar"), cursor = $("cursor"), steam = $("steam");
+        var tiles = [$("tile1"), $("tile2"), $("tile3")];
+        var stacks = [
+          { el: $("same1"), at: BEATS.same1 + 0.06 },
+          { el: $("same2"), at: BEATS.same2 + 0.08 }
+        ];
+        stacks.forEach(function (s) {
+          s.layers = Array.prototype.slice.call(s.el.querySelectorAll(".b5-same-date-dback"));
+        });
+        var OFF = 3.2; // px per depth layer (+x,+y => light from upper-left)
+
+        // where the amber light sits: follows the focus (calendar -> line 1 -> line 2 -> line 3)
+        var GLOW_PTS = [
+          { t: 0, x: 540, y: 540 },
+          { t: 2.3, x: 540, y: 540 },
+          { t: 2.5, x: 470, y: 300 },
+          { t: 3.36, x: 470, y: 300 },
+          { t: 3.6, x: 560, y: 680 },
+          { t: 4.64, x: 560, y: 680 },
+          { t: 4.9, x: 470, y: 960 }
+        ];
+        function glowAt(t) {
+          for (var i = GLOW_PTS.length - 1; i >= 0; i--) {
+            if (t >= GLOW_PTS[i].t) {
+              var a = GLOW_PTS[i], b = GLOW_PTS[i + 1];
+              if (!b) return a;
+              var u = smooth((t - a.t) / (b.t - a.t));
+              return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u };
+            }
+          }
+          return GLOW_PTS[0];
+        }
+
+        // ---- the rig: procedural state as a pure function of local time ----
+        function rig(t) {
+          // camera 1 (calendar): slow push 1.00 -> 1.05 with an extra lean-in on "except"
+          var p1 = 1 + 0.035 * (t / 2.3) + 0.015 * smooth((t - EXCEPT_AT) / 0.6);
+          cam1.style.transform =
+            "translate(" + (Math.sin(t * 1.4) * 4).toFixed(2) + "px," + (Math.sin(t * 1.82) * 2.5).toFixed(2) + "px) scale(" + p1.toFixed(4) + ")";
+          // camera 2 (kinetic type): its own slow push from the cut
+          var p2 = 1 + 0.04 * clamp01((t - 2.3) / (DUR - 2.3));
+          cam2.style.transform =
+            "translate(" + (Math.sin(t * 1.1 + 2) * 3).toFixed(2) + "px," + (Math.sin(t * 1.43 + 1) * 2).toFixed(2) + "px) scale(" + p2.toFixed(4) + ")";
+
+          // depth extrusion grows forward after each SAME slam (cascade back-to-front)
+          stacks.forEach(function (s) {
+            var g = outCubic((t - s.at) / 0.4);
+            s.layers.forEach(function (el) {
+              var i = Number(el.getAttribute("data-layer"));
+              var fade = clamp01((t - (s.at + (4 - i) * 0.05)) / 0.22);
+              el.style.transform = "translate(" + (i * OFF * g).toFixed(2) + "px," + (i * OFF * g).toFixed(2) + "px)";
+              el.style.opacity = fade.toFixed(3);
+            });
+          });
+
+          // beat bar: marker jumps to the hit row, bar + marker flash on every hit
+          var last = -1;
+          for (var k = 0; k < HITS.length; k++) if (t >= HITS[k].t) last = k;
+          if (last < 0) {
+            marker.style.opacity = 0;
+            beatbar.style.opacity = 0.3;
+          } else {
+            var h = HITS[last], prev = last > 0 ? HITS[last - 1] : h;
+            var u = outCubic((t - h.t) / 0.14);
+            var y = prev.y + (h.y - prev.y) * u;
+            var hh = prev.h + (h.h - prev.h) * u;
+            marker.style.transform = "translate3d(0," + y.toFixed(2) + "px,0)";
+            marker.style.height = hh.toFixed(1) + "px";
+            var since = t - h.t;
+            marker.style.opacity = (0.6 + 0.4 * Math.exp(-since / 0.12)).toFixed(3);
+            beatbar.style.opacity = (0.28 + 0.55 * Math.exp(-since / 0.15)).toFixed(3);
+          }
+          marker.style.top = "-130px";
+
+          // LATER cursor blink (finite, time-derived)
+          cursor.style.opacity = t < BEATS.later ? 0 : Math.floor((t - BEATS.later) / 0.18) % 2 === 0 ? 1 : 0.15;
+
+          // ambient decoratives
+          tiles.forEach(function (el, i) {
+            el.style.transform = "translate3d(0," + (Math.sin(t * 2.2 + i * 1.9) * 2.5).toFixed(2) + "px,0)";
+          });
+          steam.setAttribute("transform", "translate(0 " + (Math.sin(t * 3.1) * 1.6).toFixed(2) + ")");
+          steam.style.opacity = (0.55 + 0.35 * Math.sin(t * 2.4)).toFixed(3);
+          grid.style.transform = "translate3d(0," + (-t * 14).toFixed(2) + "px,0)";
+          violet.style.transform = "translate3d(" + (Math.sin(t * 0.6) * 40).toFixed(2) + "px," + (Math.sin(t * 0.45 + 1) * 34).toFixed(2) + "px,0)";
+          var gp = glowAt(t);
+          amberGlow.style.transform =
+            "translate3d(" + (gp.x - 280).toFixed(2) + "px," + (gp.y - 280).toFixed(2) + "px,0) scale(" + (1 + 0.06 * Math.sin(t * 2.3)).toFixed(4) + ")";
+        }
+
+        // motion-blur proxies: blur rides the same window + ease as each slam
+        var blurs = {};
+        function mb(name, axis, peak) {
+          var node = $("mb" + name + "-n");
+          var o = { v: peak };
+          var w = function () {
+            node.setAttribute("stdDeviation", axis === "x" ? o.v.toFixed(2) + " 0" : "0 " + o.v.toFixed(2));
+          };
+          w();
+          blurs[name] = { o: o, w: w, peak: peak };
+        }
+        mb("voice", "y", 16);
+        mb("same2", "x", 22);
+        mb("habits", "x", 22);
+        mb("three", "y", 18);
+        mb("years", "y", 16);
+
+        var tl = gsap.timeline({ paused: true });
+        var drv = { t: 0 };
+        rig(0);
+        tl.to(drv, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { rig(drv.t); } }, 0);
+
+        // ================= Scene 1 (0.0 - 2.3): the calendar =================
+        var cal = $("cal");
+        tl.fromTo(
+          cal,
+          { opacity: 0, scale: 0.9, y: 70, rotationX: 16, transformPerspective: 1600, filter: "blur(10px)" },
+          { opacity: 1, scale: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: 0.7, ease: "expo.out" },
+          0
+        );
+        tl.set(cal, { filter: "none" }, 0.72);
+        tl.fromTo([$("ring1"), $("ring2")], { y: -36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)", stagger: 0.06 }, 0.1);
+        tl.fromTo($("month"), { opacity: 0, letterSpacing: "0.6em" }, { opacity: 1, letterSpacing: "0.32em", duration: 0.5, ease: "power3.out" }, 0.12);
+        tl.fromTo($("y26").children, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power4.out", stagger: 0.05 }, 0.14);
+        tl.fromTo(tiles, { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)", stagger: 0.08 }, 0.3);
+
+        // "changed" @0.88 — UNCHANGED ticks in letter by letter, hairlines draw out
+        tl.fromTo([$("hairl"), $("hairr")], { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, CHANGED_AT);
+        gsap.set($("hairl"), { transformOrigin: "100% 50%" });
+        gsap.set($("hairr"), { transformOrigin: "0% 50%" });
+        Array.prototype.slice.call($("unchtext").children).forEach(function (ch, i) {
+          tl.fromTo(ch, { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none" }, CHANGED_AT + i * 0.03);
+        });
+
+        // "except" @1.28 — the calendar leans in
+        tl.to(cal, { scale: 1.03, duration: 0.45, ease: "power2.out" }, EXCEPT_AT);
+
+        // "the" @1.60 — the page corner lifts (anticipation); "date" @1.76 — it tears off
+        var page = $("page");
+        gsap.set(page, { transformPerspective: 1500, transformOrigin: "50% 0%" });
+        tl.fromTo(page, { rotationX: 0, rotationZ: 0, y: 0 }, { rotationX: -9, duration: 0.16, ease: "power2.out" }, THE_AT);
+        tl.to(page, { rotationX: -110, rotationZ: -4, y: -26, duration: 0.3, ease: "power1.in" }, DATE_AT);
+        tl.fromTo(page, { filter: "blur(0px)" }, { filter: "blur(9px)", duration: 0.3, ease: "power2.in", immediateRender: false }, DATE_AT);
+        tl.fromTo(page, { opacity: 1 }, { opacity: 0, duration: 0.1, ease: "none", immediateRender: false }, DATE_AT + 0.2);
+        tl.fromTo($("light"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.in" }, THE_AT + 0.05);
+        tl.fromTo($("shade"), { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.out" }, DATE_AT);
+        // 2029 springs up with a glow bloom, then a light sweep
+        tl.fromTo($("y29"), { scale: 0.82 }, { scale: 1, duration: 0.5, ease: "back.out(1.8)" }, DATE_AT + 0.1);
+        tl.fromTo($("y29glow"), { opacity: 0 }, { opacity: 1, duration: 0.22, ease: "power2.out" }, DATE_AT + 0.14);
+        tl.to($("y29glow"), { opacity: 0.65, duration: 0.3, ease: "power2.out" }, DATE_AT + 0.36);
+        tl.fromTo(amberGlow, { opacity: 0.12 }, { opacity: 0.3, duration: 0.4, ease: "power2.out" }, DATE_AT + 0.1);
+        tl.fromTo($("y29sheen"), { backgroundPosition: "100% 0%" }, { backgroundPosition: "0% 0%", duration: 0.32, ease: "power2.inOut" }, 2.0);
+
+        // 2.28 — zoom-through: scene 1 rushes past the camera (scale + blur, linear dim)
+        var s1 = $("s1");
+        tl.fromTo(s1, { scale: 1, filter: "blur(0px)" }, { scale: 1.6, filter: "blur(18px)", duration: 0.16, ease: "power3.in", immediateRender: false }, ZOOM_AT);
+        tl.fromTo(s1, { opacity: 1 }, { opacity: 0, duration: 0.16, ease: "none", immediateRender: false }, ZOOM_AT);
+        tl.to(amberGlow, { opacity: 0.2, duration: 0.3, ease: "power2.out" }, ZOOM_AT);
+
+        // ================= Scene 2 (2.3 - 5.75): kinetic-beat-slam =================
+        tl.fromTo($("beat"), { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power1.out" }, ZOOM_AT + 0.06);
+
+        // SAME @2.40 — scale + blur slam (hard, power4.out)
+        tl.fromTo($("same1"), { scale: 1.9, opacity: 0, filter: "blur(12px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.42, ease: "power4.out" }, BEATS.same1);
+        tl.set($("same1"), { filter: "none" }, BEATS.same1 + 0.44);
+
+        // VOICE. @2.72 — snaps up out of a mask line (expo.out), vertical streak
+        tl.fromTo($("voice"), { yPercent: 105 }, { yPercent: 0, duration: 0.4, ease: "expo.out" }, BEATS.voice);
+        tl.fromTo(blurs.voice.o, { v: 16 }, { v: 0, duration: 0.4, ease: "expo.out", onUpdate: blurs.voice.w }, BEATS.voice);
+
+        // SAME @3.36 — side-snap from the left; line 1 dims to 55%
+        tl.to($("l1"), { opacity: 0.55, duration: 0.3, ease: "power2.out" }, BEATS.same2);
+        tl.fromTo($("same2"), { x: -520, opacity: 0 }, { x: 0, opacity: 1, duration: 0.38, ease: "expo.out" }, BEATS.same2);
+        tl.fromTo(blurs.same2.o, { v: 22 }, { v: 0, duration: 0.38, ease: "expo.out", onUpdate: blurs.same2.w }, BEATS.same2);
+
+        // HABITS. @3.76 — side-snap from the right
+        tl.fromTo($("habits"), { x: 600, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, BEATS.habits);
+        tl.fromTo(blurs.habits.o, { v: 22 }, { v: 0, duration: 0.4, ease: "expo.out", onUpdate: blurs.habits.w }, BEATS.habits);
+
+        // +3 @4.64 — rise + rotate (circ.out momentum); lines 1-2 dim
+        tl.to($("l1"), { opacity: 0.38, duration: 0.3, ease: "power2.out" }, BEATS.three);
+        tl.to($("l2"), { opacity: 0.55, duration: 0.3, ease: "power2.out" }, BEATS.three);
+        tl.fromTo($("three"), { y: 170, rotation: 12, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 0.5, ease: "circ.out" }, BEATS.three);
+        tl.fromTo(blurs.three.o, { v: 18 }, { v: 0, duration: 0.5, ease: "circ.out", onUpdate: blurs.three.w }, BEATS.three);
+
+        // YEARS @5.04 — rise + rotate with a small overshoot settle
+        tl.fromTo($("years"), { y: 120, rotation: -9, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, BEATS.years);
+        tl.fromTo(blurs.years.o, { v: 16 }, { v: 0, duration: 0.45, ease: "power3.out", onUpdate: blurs.years.w }, BEATS.years);
+
+        // LATER @5.28 — mono letters tick in on a stepped beat, cursor keeps blinking
+        Array.prototype.slice.call($("later").querySelectorAll("span")).forEach(function (ch, i) {
+          tl.fromTo(ch, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.06, ease: "steps(2)" }, BEATS.later + i * 0.045);
+        });
+
+        // light sweep across +3 after it lands; finale glow breath on line 3
+        tl.fromTo($("three"), { textShadow: "0 0 40px rgba(254,176,34,0.45)" }, { textShadow: "0 0 70px rgba(254,176,34,0.75)", duration: 0.35, ease: "power2.out", immediateRender: false }, BEATS.three + 0.45);
+        tl.to($("three"), { textShadow: "0 0 46px rgba(254,176,34,0.5)", duration: 0.5, ease: "sine.inOut" }, BEATS.three + 0.8);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </div>
+</template>
