@@ -362,59 +362,53 @@ window.CAPTION_GROUPS = [
  },
  {
   "start": 17.42,
-  "end": 18.273,
+  "end": 18.312,
   "words": [
    {
     "text": "YOU'LL",
     "start": 17.46,
-    "end": 17.863,
+    "end": 17.882,
     "tone": ""
    },
    {
     "text": "FACE",
-    "start": 17.863,
-    "end": 18.159,
+    "start": 17.882,
+    "end": 18.191,
     "tone": ""
    },
    {
     "text": "A",
-    "start": 18.159,
-    "end": 18.293,
+    "start": 18.191,
+    "end": 18.332,
     "tone": ""
    }
   ]
  },
  {
-  "start": 18.253,
-  "end": 18.81,
+  "start": 18.292,
+  "end": 18.79,
   "words": [
    {
-    "text": "PROBLEM",
-    "start": 18.293,
-    "end": 18.75,
+    "text": "PROBLEM,",
+    "start": 18.332,
+    "end": 18.81,
     "tone": "red"
-   },
-   {
-    "text": "\u2014",
-    "start": 18.75,
-    "end": 18.83,
-    "tone": ""
    }
   ]
  },
  {
-  "start": 18.79,
+  "start": 18.77,
   "end": 19.42,
   "words": [
    {
     "text": "A",
-    "start": 18.83,
-    "end": 18.964,
+    "start": 18.81,
+    "end": 18.951,
     "tone": ""
    },
    {
     "text": "LOSS.",
-    "start": 18.964,
+    "start": 18.951,
     "end": 19.26,
     "tone": "red"
    }
@@ -545,14 +539,8 @@ window.CAPTION_GROUPS = [
     "tone": ""
    },
    {
-    "text": "1",
+    "text": "1:",
     "start": 24.88,
-    "end": 25.18,
-    "tone": ""
-   },
-   {
-    "text": "\u2014",
-    "start": 25.18,
     "end": 25.36,
     "tone": ""
    }
@@ -818,7 +806,7 @@ window.CAPTION_GROUPS = [
  },
  {
   "start": 36.48,
-  "end": 37.495,
+  "end": 37.519,
   "words": [
    {
     "text": "ONE",
@@ -829,43 +817,37 @@ window.CAPTION_GROUPS = [
    {
     "text": "MASTERCLASS,",
     "start": 36.96,
-    "end": 37.515,
+    "end": 37.539,
     "tone": ""
    }
   ]
  },
  {
-  "start": 37.475,
-  "end": 37.983,
+  "start": 37.499,
+  "end": 38.028,
   "words": [
    {
     "text": "YOU",
-    "start": 37.515,
-    "end": 37.715,
+    "start": 37.539,
+    "end": 37.747,
     "tone": ""
    },
    {
     "text": "LEARN",
-    "start": 37.715,
-    "end": 38.003,
+    "start": 37.747,
+    "end": 38.048,
     "tone": ""
    }
   ]
  },
  {
-  "start": 37.963,
+  "start": 38.008,
   "end": 38.62,
   "words": [
    {
-    "text": "EVERYTHING",
-    "start": 38.003,
-    "end": 38.513,
-    "tone": ""
-   },
-   {
-    "text": "\u2014",
-    "start": 38.513,
-    "end": 38.593,
+    "text": "EVERYTHING.",
+    "start": 38.048,
+    "end": 38.58,
     "tone": ""
    }
   ]
