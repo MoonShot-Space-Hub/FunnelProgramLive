@@ -220,9 +220,6 @@ export const Reel: React.FC = () => {
           );
         })}
         <AvatarLayer />
-        <Sequence from={SHOTS[SHOTS.length - 1].from} name="cta-foreground">
-          <CtaForeground from={SHOTS[SHOTS.length - 1].from} />
-        </Sequence>
       </Camera>
 
       {SHOTS.filter((s) => s.enter === "whip" || s.enter === "whipUp" || s.enter === "spin").map((s) => (
@@ -239,6 +236,9 @@ export const Reel: React.FC = () => {
       <LightLeak at={sceneStart("overnight") + 30} dur={40} hue="cool" />
 
       <Captions />
+      <Sequence from={SHOTS[SHOTS.length - 1].from} name="cta-foreground">
+        <CtaForeground from={SHOTS[SHOTS.length - 1].from} />
+      </Sequence>
       <ProgressBar total={TOTAL_FRAMES} />
       <Finish />
 
