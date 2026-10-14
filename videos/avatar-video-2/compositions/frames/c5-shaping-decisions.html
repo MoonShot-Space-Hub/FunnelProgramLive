@@ -1,0 +1,606 @@
+<template>
+<style>
+[data-composition-id="c5-shaping-decisions"] {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FFF5EA; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-fill { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- ground ---------- */
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-ground { z-index: 0; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-stage { z-index: 1; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-base {
+  background-color: #12061A;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #2E1240 0%, #12061A 72%);
+}
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-blob {
+  position: absolute; left: -260px; top: 160px; width: 900px; height: 900px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(224,33,138,1) 0%, rgba(224,33,138,0.5) 42%, rgba(224,33,138,0.12) 76%, rgba(224,33,138,0) 100%);
+  opacity: 0.30;
+}
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-goldglow {
+  position: absolute; left: 645px; top: 430px; width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255,194,74,1) 0%, rgba(255,194,74,0.38) 46%, rgba(255,194,74,0) 100%);
+  opacity: 0.16;
+}
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-lowglow {
+  position: absolute; left: -160px; top: 1300px; width: 1400px; height: 760px; border-radius: 50%;
+  background: radial-gradient(ellipse closest-side, rgba(46,18,64,0.95) 0%, rgba(46,18,64,0.35) 60%, rgba(46,18,64,0) 100%);
+}
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-rings { position: absolute; left: -260px; top: -80px; width: 1600px; height: 1400px; overflow: visible; opacity: 0.10; }
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-dust { position: absolute; left: 0; top: 0; display: block; border-radius: 50%; background: radial-gradient(circle closest-side, rgba(255,225,160,1) 0%, rgba(255,194,74,0.55) 45%, rgba(255,194,74,0) 100%); }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-grain { opacity: 0.06; }
+
+/* ---------- stage ---------- */
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-cam { transform-origin: 540px 720px; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-back { position: absolute; left: 0; top: 0; width: 1080px; height: 1200px; overflow: visible; transform-origin: 540px 720px; }
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-draw { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-label {
+  position: absolute; top: 346px; height: 64px; width: 260px; display: flex; align-items: center; justify-content: center;
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 46px; line-height: 1;
+  letter-spacing: 0.14em; text-indent: 0.14em; text-transform: uppercase; white-space: nowrap; overflow: hidden;
+}
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-lsafe { left: 95px; color: #A99BB5; text-shadow: 0 0 22px rgba(31,181,201,0.35); }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-lgrow { left: 725px; color: #FFC24A; text-shadow: 0 0 40px rgba(255,194,74,0.5); }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-lgrowsheen {
+  position: absolute; left: 0; top: -10px; width: 80px; height: 90px;
+  background: linear-gradient(100deg, rgba(255,245,234,0) 0%, rgba(255,245,234,0.75) 50%, rgba(255,245,234,0) 100%);
+  mix-blend-mode: overlay;
+}
+
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-figwrap { position: absolute; left: 240px; top: 600px; width: 600px; height: 520px; transform-origin: 300px 470px; filter: drop-shadow(0 0 26px rgba(255,245,234,0.22)); }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-figsvg { display: block; overflow: visible; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-strings { position: absolute; left: 0; top: 0; width: 1080px; height: 1200px; overflow: visible; }
+
+/* marionette control bar */
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-barwrap { position: absolute; left: 170px; top: 150px; width: 740px; height: 100px; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-bar { position: absolute; left: 0; top: 0; width: 740px; height: 100px; transform-origin: 370px 50px; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-handle { position: absolute; left: 364px; top: -14px; width: 12px; height: 66px; border-radius: 6px; background: linear-gradient(90deg, #B89A70 0%, #FFF5EA 45%, #C9A878 100%); }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-ring { position: absolute; left: 356px; top: -40px; width: 28px; height: 28px; border-radius: 50%; border: 4px solid #FFE1A0; box-sizing: border-box; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-rod { position: absolute; left: 6px; top: 43px; width: 728px; height: 14px; border-radius: 7px; background: linear-gradient(180deg, #FFF5EA 0%, #E8CFA6 55%, #A8875C 100%); box-shadow: 0 10px 22px rgba(0,0,0,0.5); }
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-cap { position: absolute; top: 40px; width: 20px; height: 20px; border-radius: 50%; background: #FFE1A0; box-shadow: 0 0 12px rgba(255,225,160,0.6); }
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-cglow { position: absolute; top: -10px; width: 280px; height: 120px; border-radius: 50%; background: radial-gradient(ellipse closest-side, rgba(255,77,94,0.75) 0%, rgba(255,77,94,0.2) 55%, rgba(255,77,94,0) 100%); opacity: 0.35; }
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-chip {
+  position: absolute; top: 22px; height: 56px; box-sizing: border-box; padding: 0 26px 0 calc(26px + 0.14em);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+  border-radius: 999px; border: 2px solid #FF4D5E; background: #241030;
+  box-shadow: inset 0 0 0 200px rgba(255,77,94,0.12), 0 0 24px rgba(255,77,94,0.35), 0 14px 26px rgba(0,0,0,0.5);
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 32px; line-height: 1;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #FF4D5E; white-space: nowrap;
+  text-shadow: 0 0 16px rgba(255,77,94,0.45);
+}
+[data-composition-id="c5-shaping-decisions"] .c5-shaping-decisions-csheen {
+  position: absolute; left: 0; top: -6px; width: 60px; height: 70px;
+  background: linear-gradient(100deg, rgba(255,245,234,0) 0%, rgba(255,245,234,0.55) 50%, rgba(255,245,234,0) 100%);
+}
+
+/* autopilot chip */
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-auto {
+  position: absolute; left: 612px; top: 772px; height: 58px; box-sizing: border-box; padding: 0 26px 0 22px;
+  display: flex; align-items: center; gap: 14px; overflow: hidden; white-space: nowrap;
+  border-radius: 999px; border: 2px solid rgba(255,95,176,0.75); background: #1E0D2B;
+  box-shadow: 0 0 26px rgba(224,33,138,0.4), 0 16px 30px rgba(0,0,0,0.55);
+  transform-origin: 0px 29px;
+}
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-autodot { width: 14px; height: 14px; border-radius: 50%; background: #FF5FB0; box-shadow: 0 0 12px rgba(255,95,176,0.9); flex: none; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-autotxt { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 30px; line-height: 1; letter-spacing: 0.08em; color: #FFF5EA; }
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-autosheen {
+  position: absolute; left: 0; top: -6px; width: 60px; height: 70px;
+  background: linear-gradient(100deg, rgba(255,245,234,0) 0%, rgba(255,245,234,0.45) 50%, rgba(255,245,234,0) 100%);
+}
+</style>
+
+<div id="root" data-composition-id="c5-shaping-decisions" data-start="0" data-duration="3.6" data-width="1080" data-height="1920">
+  <svg class="c5-shaping-decisions-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="c5-shaping-decisions-hblur" x="-40%" y="-10%" width="180%" height="120%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="c5-shaping-decisions-hblur-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur>
+      </filter>
+      <filter id="c5-shaping-decisions-vblur" x="-10%" y="-80%" width="120%" height="260%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="c5-shaping-decisions-vblur-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur>
+      </filter>
+      <filter id="c5-shaping-decisions-glowf" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"></feGaussianBlur>
+        <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+      </filter>
+      <filter id="c5-shaping-decisions-softf" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="14"></feGaussianBlur>
+      </filter>
+      <filter id="c5-shaping-decisions-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="23" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track -->
+  <div id="c5-shaping-decisions-ground" class="clip c5-shaping-decisions-layer" data-start="0" data-duration="3.6" data-track-index="0">
+    <div id="c5-shaping-decisions-base" class="c5-shaping-decisions-fill"></div>
+    <div id="c5-shaping-decisions-blob"></div>
+    <div id="c5-shaping-decisions-lowglow"></div>
+    <svg id="c5-shaping-decisions-rings" viewBox="0 0 1600 1400" aria-hidden="true">
+      <g id="c5-shaping-decisions-ringsrot"></g>
+    </svg>
+    <div id="c5-shaping-decisions-goldglow"></div>
+    <div id="c5-shaping-decisions-dusts" class="c5-shaping-decisions-fill"></div>
+    <svg id="c5-shaping-decisions-grain" class="c5-shaping-decisions-fill" width="1080" height="1920" aria-hidden="true">
+      <rect x="0" y="0" width="1080" height="1920" filter="url(#c5-shaping-decisions-grainf)"></rect>
+    </svg>
+  </div>
+
+  <!-- stage: content inside x60-1020 / y120-1120 -->
+  <div id="c5-shaping-decisions-stage" class="clip c5-shaping-decisions-layer" data-start="0" data-duration="3.6" data-track-index="1">
+    <div id="c5-shaping-decisions-cam" class="c5-shaping-decisions-fill">
+
+      <!-- back plane: floor + two doorways -->
+      <svg id="c5-shaping-decisions-back" viewBox="0 0 1080 1200" aria-hidden="true">
+        <defs>
+          <radialGradient id="c5-shaping-decisions-growin" cx="0.5" cy="0.45" r="0.75">
+            <stop offset="0" stop-color="#FFF5EA"></stop>
+            <stop offset="0.3" stop-color="#FFE1A0"></stop>
+            <stop offset="0.7" stop-color="#FFC24A"></stop>
+            <stop offset="1" stop-color="#C98420"></stop>
+          </radialGradient>
+          <radialGradient id="c5-shaping-decisions-safein" cx="0.5" cy="0.4" r="0.8">
+            <stop offset="0" stop-color="#2B5A6E"></stop>
+            <stop offset="0.55" stop-color="#22213F"></stop>
+            <stop offset="1" stop-color="#1A0D29"></stop>
+          </radialGradient>
+          <radialGradient id="c5-shaping-decisions-rayg" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#FFE1A0" stop-opacity="0.9"></stop>
+            <stop offset="0.5" stop-color="#FFC24A" stop-opacity="0.3"></stop>
+            <stop offset="1" stop-color="#FFC24A" stop-opacity="0"></stop>
+          </radialGradient>
+          <radialGradient id="c5-shaping-decisions-halo" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#FFC24A" stop-opacity="0.7"></stop>
+            <stop offset="0.5" stop-color="#FFC24A" stop-opacity="0.2"></stop>
+            <stop offset="1" stop-color="#FFC24A" stop-opacity="0"></stop>
+          </radialGradient>
+          <radialGradient id="c5-shaping-decisions-teal" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#1FB5C9" stop-opacity="0.55"></stop>
+            <stop offset="0.6" stop-color="#1FB5C9" stop-opacity="0.12"></stop>
+            <stop offset="1" stop-color="#1FB5C9" stop-opacity="0"></stop>
+          </radialGradient>
+          <linearGradient id="c5-shaping-decisions-spill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFC24A" stop-opacity="0.55"></stop>
+            <stop offset="1" stop-color="#FFC24A" stop-opacity="0"></stop>
+          </linearGradient>
+          <linearGradient id="c5-shaping-decisions-leafg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#1A0A26"></stop>
+            <stop offset="1" stop-color="#3A1650"></stop>
+          </linearGradient>
+          <clipPath id="c5-shaping-decisions-floorclip"><rect x="0" y="1000" width="1080" height="200"></rect></clipPath>
+        </defs>
+
+        <!-- floor grid -->
+        <g id="c5-shaping-decisions-floor" clip-path="url(#c5-shaping-decisions-floorclip)" opacity="0"></g>
+        <ellipse cx="540" cy="1074" rx="230" ry="26" fill="url(#c5-shaping-decisions-halo)" opacity="0.5"></ellipse>
+
+        <!-- SAFE doorway (dim, cool) -->
+        <g id="c5-shaping-decisions-safelight" opacity="0">
+          <ellipse id="c5-shaping-decisions-safehaze" cx="225" cy="700" rx="230" ry="340" fill="url(#c5-shaping-decisions-teal)"></ellipse>
+          <path d="M 95 1000 L 95 450 Q 95 420 125 420 L 325 420 Q 355 420 355 450 L 355 1000 Z" fill="url(#c5-shaping-decisions-safein)"></path>
+          <path d="M 125 1000 L 140 980 L 310 980 L 325 1000 Z" fill="#1FB5C9" fill-opacity="0.12"></path>
+          <path d="M 95 1000 L 355 1000 L 380 1060 L 70 1060 Z" fill="#1FB5C9" fill-opacity="0.07"></path>
+        </g>
+        <path id="c5-shaping-decisions-safeframe" class="c5-shaping-decisions-draw" d="M 95 1000 L 95 450 Q 95 420 125 420 L 325 420 Q 355 420 355 450 L 355 1000" stroke="#A99BB5" stroke-opacity="0.75" stroke-width="10"></path>
+
+        <!-- GROW doorway (warm gold light, rays, spill) -->
+        <g id="c5-shaping-decisions-growlight" opacity="0">
+          <g id="c5-shaping-decisions-raysburst"><g id="c5-shaping-decisions-rays" opacity="0.55"></g></g>
+          <ellipse cx="855" cy="700" rx="260" ry="380" fill="url(#c5-shaping-decisions-halo)"></ellipse>
+          <path d="M 725 1000 L 985 1000 L 1080 1120 L 600 1120 Z" fill="url(#c5-shaping-decisions-spill)"></path>
+          <path d="M 725 1000 L 725 450 Q 725 420 755 420 L 955 420 Q 985 420 985 450 L 985 1000 Z" fill="url(#c5-shaping-decisions-growin)"></path>
+          <path d="M 725 1000 L 725 450 Q 725 420 755 420 L 955 420 Q 985 420 985 450 L 985 1000 Z" fill="#FFF5EA" fill-opacity="0.35" filter="url(#c5-shaping-decisions-softf)"></path>
+        </g>
+        <path id="c5-shaping-decisions-leaf" d="M 725 424 L 668 446 L 668 990 L 725 1000 Z" fill="url(#c5-shaping-decisions-leafg)" stroke="#FFE1A0" stroke-opacity="0.55" stroke-width="2" opacity="0"></path>
+        <path id="c5-shaping-decisions-growframe" class="c5-shaping-decisions-draw" d="M 725 1000 L 725 450 Q 725 420 755 420 L 955 420 Q 985 420 985 450 L 985 1000" stroke="#FFE1A0" stroke-opacity="0.95" stroke-width="10"></path>
+      </svg>
+
+      <div id="c5-shaping-decisions-lsafe" class="c5-shaping-decisions-label" data-layout-allow-overlap>SAFE</div>
+      <div id="c5-shaping-decisions-lgrow" class="c5-shaping-decisions-label" data-layout-allow-overlap>GROW<span id="c5-shaping-decisions-lgrowsheen"></span></div>
+
+      <!-- the person (cream silhouette, rigged) -->
+      <div id="c5-shaping-decisions-figwrap">
+        <svg id="c5-shaping-decisions-figsvg" width="600" height="520" viewBox="240 600 600 520" aria-hidden="true">
+          <defs>
+            <linearGradient id="c5-shaping-decisions-figg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#E6D6E8"></stop>
+              <stop offset="0.5" stop-color="#FFF5EA"></stop>
+              <stop offset="1" stop-color="#FFE7C2"></stop>
+            </linearGradient>
+            <linearGradient id="c5-shaping-decisions-figrim" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#1FB5C9" stop-opacity="0.5"></stop>
+              <stop offset="0.5" stop-color="#FFF5EA" stop-opacity="0"></stop>
+              <stop offset="1" stop-color="#FFC24A" stop-opacity="0.95"></stop>
+            </linearGradient>
+          </defs>
+          <ellipse id="c5-shaping-decisions-shadow" cx="540" cy="1074" rx="70" ry="10" fill="#000" fill-opacity="0.5"></ellipse>
+          <g id="c5-shaping-decisions-fig" filter="url(#c5-shaping-decisions-hblur)">
+            <g id="c5-shaping-decisions-legL"><path d="M -11 0 C -13 60 -11 130 -9 176 C -9 182 -20 184 -24 186 C -26 190 -2 191 6 187 C 4 140 6 70 9 0 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path></g>
+            <g id="c5-shaping-decisions-legR"><path d="M 11 0 C 13 60 11 130 9 176 C 9 182 20 184 24 186 C 26 190 2 191 -6 187 C -4 140 -6 70 -9 0 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path></g>
+            <path d="M -40 -300 C -44 -270 -36 -230 -30 -190 L -28 -172 C -10 -164 10 -164 28 -172 L 30 -190 C 36 -230 44 -270 40 -300 C 30 -314 14 -318 0 -318 C -14 -318 -30 -314 -40 -300 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2.5"></path>
+            <rect x="-8" y="-334" width="16" height="22" rx="6" fill="url(#c5-shaping-decisions-figg)"></rect>
+            <g id="c5-shaping-decisions-armL"><path d="M -10 0 C -11 50 -8 100 -6 138 L 6 138 C 8 100 11 50 10 0 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path><circle cx="0" cy="146" r="10" fill="url(#c5-shaping-decisions-figg)"></circle></g>
+            <g id="c5-shaping-decisions-armR"><path d="M -10 0 C -11 50 -8 100 -6 138 L 6 138 C 8 100 11 50 10 0 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path><circle cx="0" cy="146" r="10" fill="url(#c5-shaping-decisions-figg)"></circle></g>
+            <g id="c5-shaping-decisions-head"><circle cx="0" cy="-352" r="27" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2.5"></circle></g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- strings, glints, attach pulses -->
+      <svg id="c5-shaping-decisions-strings" viewBox="0 0 1080 1200" aria-hidden="true">
+        <defs>
+          <radialGradient id="c5-shaping-decisions-glintg" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#FFF5EA" stop-opacity="1"></stop>
+            <stop offset="0.3" stop-color="#FFE1A0" stop-opacity="0.7"></stop>
+            <stop offset="1" stop-color="#FFC24A" stop-opacity="0"></stop>
+          </radialGradient>
+        </defs>
+        <g id="c5-shaping-decisions-sglows"></g>
+        <g id="c5-shaping-decisions-slines"></g>
+        <g id="c5-shaping-decisions-knots"></g>
+        <g id="c5-shaping-decisions-pulses"></g>
+        <g id="c5-shaping-decisions-glints"></g>
+      </svg>
+
+      <!-- marionette control bar: three limiting beliefs -->
+      <div id="c5-shaping-decisions-barwrap">
+        <div id="c5-shaping-decisions-bar">
+          <div id="c5-shaping-decisions-ring"></div>
+          <div id="c5-shaping-decisions-handle"></div>
+          <div id="c5-shaping-decisions-rod"></div>
+          <div class="c5-shaping-decisions-cap" style="left: -2px;"></div>
+          <div class="c5-shaping-decisions-cap" style="left: 722px;"></div>
+          <div id="c5-shaping-decisions-cg0" class="c5-shaping-decisions-cglow" style="left: -20px;"></div>
+          <div id="c5-shaping-decisions-cg1" class="c5-shaping-decisions-cglow" style="left: 230px;"></div>
+          <div id="c5-shaping-decisions-cg2" class="c5-shaping-decisions-cglow" style="left: 480px;"></div>
+          <div id="c5-shaping-decisions-chip0" class="c5-shaping-decisions-chip" style="left: 20px; width: 200px;" data-layout-allow-overlap>CAN&rsquo;T<span class="c5-shaping-decisions-csheen"></span></div>
+          <div id="c5-shaping-decisions-chip1" class="c5-shaping-decisions-chip" style="left: 248px; width: 244px;" data-layout-allow-overlap>SELFISH<span class="c5-shaping-decisions-csheen"></span></div>
+          <div id="c5-shaping-decisions-chip2" class="c5-shaping-decisions-chip" style="left: 520px; width: 200px;" data-layout-allow-overlap>NEVER<span class="c5-shaping-decisions-csheen"></span></div>
+        </div>
+      </div>
+
+      <!-- autopilot status chip -->
+      <div id="c5-shaping-decisions-auto" data-layout-allow-overlap>
+        <span id="c5-shaping-decisions-autodot"></span>
+        <span id="c5-shaping-decisions-autotxt">AUTOPILOT</span>
+        <span id="c5-shaping-decisions-autosheen"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var DUR = 3.6;
+  var ID = "c5-shaping-decisions";
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(name) { return document.getElementById(ID + "-" + name); }
+  function svgEl(tag, attrs, parent) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function rng(seed) {
+    return function () {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function seg(t, a, d) { return clamp01((t - a) / d); }
+  function bump(u) { return u <= 0 || u >= 1 ? 0 : Math.sin(Math.PI * u); }
+  var P2O = gsap.parseEase("power2.out");
+  var P2IO = gsap.parseEase("power2.inOut");
+  var SIO = gsap.parseEase("sine.inOut");
+  var BK13 = gsap.parseEase("back.out(1.3)");
+  var BK16 = gsap.parseEase("back.out(1.6)");
+  var BK18 = gsap.parseEase("back.out(1.8)");
+  var BK2 = gsap.parseEase("back.out(2)");
+  var BK22 = gsap.parseEase("back.out(2.2)");
+  var BK25 = gsap.parseEase("back.out(2.5)");
+  var TAU = Math.PI * 2, DEG = Math.PI / 180;
+  var R = rng(20261024);
+
+  // keyframe helper: [[t0, v0], [t1, v1, ease], ...] — pure function of t (seek-safe)
+  function kf(t, keys) {
+    if (t <= keys[0][0]) return keys[0][1];
+    for (var i = 1; i < keys.length; i++) {
+      var a = keys[i - 1], b = keys[i];
+      if (t < b[0]) {
+        var u = (t - a[0]) / (b[0] - a[0]);
+        return a[1] + (b[1] - a[1]) * (b[2] ? b[2](u) : u);
+      }
+    }
+    return keys[keys.length - 1][1];
+  }
+
+  var tl = gsap.timeline({ paused: true });
+
+  // ======================= BUILD: ground =======================
+  var ringsRot = el("ringsrot");
+  [[240, "4 10"], [360, "2 18"], [490, "26 14"], [640, "3 12"], [800, "40 22"]].forEach(function (r, i) {
+    svgEl("circle", { cx: 800, cy: 700, r: r[0], fill: "none", stroke: "#FF5FB0", "stroke-width": i % 2 ? 2 : 3, "stroke-dasharray": r[1] }, ringsRot);
+  });
+  var DUST = [];
+  var dustHost = el("dusts");
+  for (var di = 0; di < 30; di++) {
+    var dx = 60 + R() * 960, dy = 130 + R() * 1500, ds = 4 + R() * 9;
+    var dn = document.createElement("i");
+    dn.className = ID + "-dust";
+    dn.style.width = ds.toFixed(1) + "px";
+    dn.style.height = ds.toFixed(1) + "px";
+    dn.style.opacity = "0";
+    dustHost.appendChild(dn);
+    DUST.push({ n: dn, x: dx, y: dy, sp: 10 + R() * 24, ph: R() * TAU, fq: 2 + R() * 4, base: 0.25 + R() * 0.5, sway: 4 + R() * 10 });
+  }
+
+  // floor grid (perspective, vanishing point above the figure)
+  var floor = el("floor");
+  [1000, 1016, 1036, 1062, 1096, 1140].forEach(function (y) {
+    svgEl("line", { x1: 0, y1: y, x2: 1080, y2: y, stroke: "#FF5FB0", "stroke-opacity": 0.16, "stroke-width": 2 }, floor);
+  });
+  for (var fx0 = -600; fx0 <= 1680; fx0 += 120) {
+    svgEl("line", { x1: 540, y1: 760, x2: (540 + (fx0 - 540) * 1.9).toFixed(1), y2: 1216, stroke: "#FF5FB0", "stroke-opacity": 0.13, "stroke-width": 2 }, floor);
+  }
+
+  // GROW rays
+  var rays = el("rays");
+  for (var ri = 0; ri < 14; ri++) {
+    var a0 = -Math.PI * 0.95 + (ri / 13) * Math.PI * 1.9, w = 0.035 + (ri % 3) * 0.012, len = 520 + (ri % 4) * 70;
+    var cxr = 855, cyr = 700;
+    svgEl("path", {
+      d: "M " + cxr + " " + cyr + " L " + (cxr + len * Math.sin(a0 - w)).toFixed(1) + " " + (cyr - len * Math.cos(a0 - w)).toFixed(1) +
+         " L " + (cxr + len * Math.sin(a0 + w)).toFixed(1) + " " + (cyr - len * Math.cos(a0 + w)).toFixed(1) + " Z",
+      fill: "url(#" + ID + "-rayg)", opacity: (0.45 + (ri % 3) * 0.18).toFixed(2)
+    }, rays);
+  }
+
+  // ======================= BUILD: chips layout =======================
+  // chip centres in bar-local px: 120 / 370 / 620 (bar centre 370,50 == global 540,200)
+  // fixed widths (no font-dependent measuring): 200 / 244 / 200 centred on 120 / 370 / 620
+  var CHIPS = [el("chip0"), el("chip1"), el("chip2")];
+  var CGLOW = [el("cg0"), el("cg1"), el("cg2")];
+
+  // ======================= BUILD: strings, knots, pulses, glints =======================
+  var SGLOW = [], SLINE = [], KNOT = [];
+  for (var si = 0; si < 3; si++) {
+    SGLOW.push(svgEl("path", { fill: "none", stroke: "#FFE1A0", "stroke-opacity": 0.22, "stroke-width": 7, "stroke-linecap": "round" }, el("sglows")));
+    SLINE.push(svgEl("path", { fill: "none", stroke: "#FFF5EA", "stroke-opacity": 0.92, "stroke-width": 2.6, "stroke-linecap": "round" }, el("slines")));
+    KNOT.push(svgEl("circle", { r: 5.5, fill: "#FFE1A0", opacity: 0 }, el("knots")));
+  }
+  // string i: 0 = CAN'T -> left hand, 1 = SELFISH -> head, 2 = NEVER -> right hand
+  var STR_AT = [0.40, 0.30, 0.48], STR_DUR = 0.34;
+  var BAR_LX = [-250, 0, 250], BAR_LY = 28;
+  var GLINTS = [
+    { s: 0, at: 1.74, dur: 0.55 }, { s: 1, at: 1.90, dur: 0.55 }, { s: 2, at: 2.06, dur: 0.55 },
+    { s: 0, at: 2.70, dur: 0.48 }, { s: 1, at: 2.76, dur: 0.48 }, { s: 2, at: 2.82, dur: 0.48 }
+  ];
+  GLINTS.forEach(function (g) {
+    var grp = svgEl("g", { opacity: 0 }, el("glints"));
+    g.tail = [];
+    for (var k = 3; k >= 1; k--) g.tail.push(svgEl("circle", { r: (5 - k).toFixed(1), fill: "#FFE1A0", opacity: (0.6 / k).toFixed(2) }, grp));
+    g.halo = svgEl("circle", { r: 26, fill: "url(#" + ID + "-glintg)" }, grp);
+    g.core = svgEl("circle", { r: 5, fill: "#FFFFFF" }, grp);
+    g.g = grp;
+  });
+  var PULSES = [];
+  for (var pi = 0; pi < 3; pi++) PULSES.push({ s: pi, at: STR_AT[pi] + STR_DUR });
+  GLINTS.forEach(function (g) { PULSES.push({ s: g.s, at: g.at + g.dur }); });
+  PULSES.forEach(function (p) { p.n = svgEl("circle", { r: 8, fill: "none", stroke: "#FFE1A0", "stroke-width": 3, opacity: 0 }, el("pulses")); });
+
+  // ======================= RIG =======================
+  var fig = el("fig"), armL = el("armL"), armR = el("armR"), legL = el("legL"), legR = el("legR"), head = el("head"), shadow = el("shadow");
+  var bar = el("bar"), hblur = el("hblur-node"), vblur = el("vblur-node");
+  var FEET_X = 540, FEET_Y = 1070;
+
+  function pose(t) {
+    var P = {};
+    P.fx = kf(t, [[0, 0], [1.02, 0], [1.40, 62, P2IO], [1.45, 62], [1.90, -78, gsap.parseEase("back.out(1.7)")], [2.70, -78], [3.05, -104, BK2], [3.6, -104]]) + 2.5 * Math.sin(t * 2.2);
+    P.lean = kf(t, [[0, 0], [1.02, 0], [1.40, 7, P2IO], [1.45, 7], [1.88, -9, BK2], [2.70, -6, SIO], [3.05, -11, BK2], [3.6, -8, SIO]]);
+    P.aL = kf(t, [[0, 26], [0.74, 26], [0.98, 40, BK25], [1.02, 40], [1.40, 32, P2IO], [1.45, 32], [1.80, 62, BK2], [2.70, 54, SIO], [3.0, 68, BK2], [3.6, 60, SIO]]);
+    P.aR = kf(t, [[0, 26], [0.82, 26], [1.02, 40, BK25], [1.40, 80, P2IO], [1.45, 80], [1.78, 124, BK18], [2.70, 104, SIO], [3.0, 132, BK2], [3.6, 118, SIO]]);
+    P.lL = kf(t, [[0, 0], [1.02, 0], [1.40, 6, P2IO], [1.45, 6], [1.80, 18, BK2], [2.70, 6, SIO], [3.0, 15, BK2], [3.6, 5, SIO]]);
+    P.lR = kf(t, [[0, 0], [1.02, 0], [1.40, -18, P2IO], [1.45, -18], [1.80, 4, BK2], [2.70, -4, SIO], [3.0, 3, BK2], [3.6, -3, SIO]]);
+    P.head = kf(t, [[0, 0], [0.64, 0], [0.86, -6, BK2], [1.02, -4], [1.40, 9, P2IO], [1.45, 9], [1.80, -12, BK2], [2.70, -8, SIO], [3.0, -14, BK2], [3.6, -10, SIO]]);
+    P.bob = -6 * bump(seg(t, 1.02, 0.38)) - 16 * bump(seg(t, 1.45, 0.5)) - 9 * bump(seg(t, 2.70, 0.4)) + 1.5 * Math.sin(t * 3.1);
+    return P;
+  }
+  function barState(t) {
+    var B = {};
+    var drop = BK13(seg(t, 0.04, 0.5));
+    B.y = -340 * (1 - drop) - 24 * bump(seg(t, 1.45, 0.4)) - 18 * bump(seg(t, 2.70, 0.35)) + 3 * Math.sin(t * 1.7);
+    B.x = kf(t, [[0, 0], [1.02, 0], [1.40, 16, P2IO], [1.45, 16], [1.75, -66, BK16], [2.70, -66], [3.0, -92, BK18], [3.6, -92]]) + 5 * Math.sin(t * 1.3);
+    var dangle = t > 0.5 ? 6 * Math.exp(-(t - 0.5) * 3.2) * Math.sin((t - 0.5) * 12) : 0;
+    B.r = dangle + kf(t, [[0, 0], [1.45, 0], [1.80, -12, BK22], [2.70, -9, SIO], [3.0, -17, BK2], [3.6, -13, SIO]]) + 1.2 * Math.sin(t * 2.0);
+    return B;
+  }
+  function anchor(B, i) {
+    var r = B.r * DEG, lx = BAR_LX[i], ly = BAR_LY;
+    return { x: 540 + B.x + lx * Math.cos(r) - ly * Math.sin(r), y: 200 + B.y + lx * Math.sin(r) + ly * Math.cos(r) };
+  }
+  function figPt(P, lx, ly) {
+    var r = P.lean * DEG;
+    return { x: FEET_X + P.fx + lx * Math.cos(r) - ly * Math.sin(r), y: FEET_Y + P.bob + lx * Math.sin(r) + ly * Math.cos(r) };
+  }
+  function attach(P, i) {
+    if (i === 1) {
+      // top of the head, rotated about the neck by the head tilt
+      var hr = P.head * DEG;
+      return figPt(P, 0 + 0 * Math.cos(hr) - (-49) * Math.sin(hr), -330 + 0 * Math.sin(hr) + (-49) * Math.cos(hr));
+    }
+    var sx = i === 0 ? -36 : 36;
+    var th = (i === 0 ? P.aL : -P.aR) * DEG;
+    return figPt(P, sx - 146 * Math.sin(th), -298 + 146 * Math.cos(th));
+  }
+  function quad(A, C, P, u) {
+    var m = 1 - u;
+    return { x: m * m * A.x + 2 * m * u * C.x + u * u * P.x, y: m * m * A.y + 2 * m * u * C.y + u * u * P.y };
+  }
+
+  // ======================= MASTER CLOCK =======================
+  var ringsR = el("ringsrot"), autodot = el("autodot");
+  function render(t) {
+    // ground
+    ringsR.setAttribute("transform", "rotate(" + (6 * t).toFixed(3) + " 800 700)");
+    for (var i = 0; i < DUST.length; i++) {
+      var d = DUST[i];
+      var tw = 0.55 + 0.45 * Math.sin(d.ph + t * d.fq);
+      d.n.style.opacity = (d.base * tw * P2O(seg(t, 0, 0.5))).toFixed(3);
+      d.n.style.transform = "translate(" + (d.x + d.sway * Math.sin(d.ph + t * 1.3)).toFixed(1) + "px," + (d.y - d.sp * t).toFixed(1) + "px)";
+    }
+    rays.setAttribute("transform", "rotate(" + (3 * Math.sin(t * 0.9)).toFixed(3) + " 855 700)");
+    rays.setAttribute("opacity", (0.5 + 0.06 * Math.sin(t * 7.3) + 0.04 * Math.sin(t * 13.1)).toFixed(3));
+
+    // bar (drop with vertical motion blur, pendulum settle, tilts that yank)
+    var B = barState(t), B0 = barState(t - 0.02);
+    bar.style.transform = "translate(" + B.x.toFixed(2) + "px," + B.y.toFixed(2) + "px) rotate(" + B.r.toFixed(3) + "deg)";
+    var vby = Math.abs(B.y - B0.y) / 0.02;
+    var sb = Math.min(20, vby * 0.011);
+    vblur.setAttribute("stdDeviation", "0 " + sb.toFixed(2));
+    bar.style.filter = sb > 0.08 ? "url(#" + ID + "-vblur)" : "none";
+
+    // figure rig
+    var P = pose(t), P0 = pose(t - 0.02);
+    fig.setAttribute("transform", "translate(" + (FEET_X + P.fx).toFixed(2) + " " + (FEET_Y + P.bob).toFixed(2) + ") rotate(" + P.lean.toFixed(3) + ")");
+    armL.setAttribute("transform", "translate(-36 -298) rotate(" + P.aL.toFixed(3) + ")");
+    armR.setAttribute("transform", "translate(36 -298) rotate(" + (-P.aR).toFixed(3) + ")");
+    legL.setAttribute("transform", "translate(-14 -184) rotate(" + P.lL.toFixed(3) + ")");
+    legR.setAttribute("transform", "translate(14 -184) rotate(" + P.lR.toFixed(3) + ")");
+    head.setAttribute("transform", "rotate(" + P.head.toFixed(3) + " 0 -330)");
+    shadow.setAttribute("cx", (FEET_X + P.fx).toFixed(2));
+    shadow.setAttribute("rx", (70 + P.bob * 0.8).toFixed(2));
+    var vfx = Math.abs(P.fx - P0.fx) / 0.02;
+    var sf = Math.min(14, vfx * 0.011);
+    hblur.setAttribute("stdDeviation", sf.toFixed(2) + " 0");
+
+    // strings: bar anchor -> figure attach, swaying quadratic, drawn on (svg-path-draw)
+    var slack = 1 - 0.8 * bump(seg(t, 1.45, 0.45)) - 0.6 * bump(seg(t, 2.70, 0.4));
+    var CTRL = [], A = [], Q = [];
+    for (var s = 0; s < 3; s++) {
+      var a = anchor(B, s), p = attach(P, s);
+      var dxs = p.x - a.x, dys = p.y - a.y, L0 = Math.sqrt(dxs * dxs + dys * dys) || 1;
+      var off = slack * (9 * Math.sin(t * 2.3 + s * 1.7) + 4 * Math.sin(t * 4.3 + s * 0.6)) + 5;
+      var c = { x: (a.x + p.x) / 2 + (-dys / L0) * off, y: (a.y + p.y) / 2 + (dxs / L0) * off };
+      A.push(a); Q.push(p); CTRL.push(c);
+      var dstr = "M " + a.x.toFixed(2) + " " + a.y.toFixed(2) + " Q " + c.x.toFixed(2) + " " + c.y.toFixed(2) + " " + p.x.toFixed(2) + " " + p.y.toFixed(2);
+      SLINE[s].setAttribute("d", dstr);
+      SGLOW[s].setAttribute("d", dstr);
+      var prog = P2O(seg(t, STR_AT[s], STR_DUR));
+      var Ls = SLINE[s].getTotalLength() + 2;
+      var dash = Ls.toFixed(2) + " " + Ls.toFixed(2), doff = (Ls * (1 - prog)).toFixed(2);
+      SLINE[s].setAttribute("stroke-dasharray", dash);
+      SLINE[s].setAttribute("stroke-dashoffset", doff);
+      SGLOW[s].setAttribute("stroke-dasharray", dash);
+      SGLOW[s].setAttribute("stroke-dashoffset", doff);
+      SLINE[s].setAttribute("opacity", prog > 0 ? "1" : "0");
+      SGLOW[s].setAttribute("opacity", prog > 0 ? "1" : "0");
+      KNOT[s].setAttribute("cx", p.x.toFixed(2));
+      KNOT[s].setAttribute("cy", p.y.toFixed(2));
+      KNOT[s].setAttribute("opacity", seg(t, STR_AT[s] + STR_DUR - 0.03, 0.05).toFixed(3));
+    }
+
+    // glints travel down the strings; each departure flashes its belief chip
+    var flash = [0, 0, 0];
+    for (var g = 0; g < GLINTS.length; g++) {
+      var G = GLINTS[g];
+      var u = seg(t, G.at, G.dur);
+      if (t > G.at) flash[G.s] = Math.max(flash[G.s], Math.exp(-(t - G.at) / 0.22));
+      if (u <= 0 || u >= 1) { G.g.setAttribute("opacity", "0"); continue; }
+      var ue = SIO(u);
+      var pt = quad(A[G.s], CTRL[G.s], Q[G.s], ue);
+      G.halo.setAttribute("cx", pt.x.toFixed(2)); G.halo.setAttribute("cy", pt.y.toFixed(2));
+      G.core.setAttribute("cx", pt.x.toFixed(2)); G.core.setAttribute("cy", pt.y.toFixed(2));
+      for (var k = 0; k < G.tail.length; k++) {
+        var tp = quad(A[G.s], CTRL[G.s], Q[G.s], Math.max(0, ue - (G.tail.length - k) * 0.035));
+        G.tail[k].setAttribute("cx", tp.x.toFixed(2)); G.tail[k].setAttribute("cy", tp.y.toFixed(2));
+      }
+      G.g.setAttribute("opacity", Math.min(1, u * 8, (1 - u) * 8).toFixed(3));
+    }
+    // "it"@3.26: all three beliefs pulse together
+    var itf = t > 3.26 ? Math.exp(-(t - 3.26) / 0.25) : 0;
+    for (var cg = 0; cg < 3; cg++) {
+      CGLOW[cg].style.opacity = Math.min(1, 0.32 + 0.6 * flash[cg] + 0.5 * itf + 0.05 * Math.sin(t * 3 + cg)).toFixed(3);
+    }
+
+    // attach / arrival pulses
+    for (var q = 0; q < PULSES.length; q++) {
+      var Pp = PULSES[q], pp = seg(t, Pp.at, 0.4);
+      if (pp <= 0 || pp >= 1) { Pp.n.setAttribute("opacity", "0"); continue; }
+      Pp.n.setAttribute("cx", Q[Pp.s].x.toFixed(2));
+      Pp.n.setAttribute("cy", Q[Pp.s].y.toFixed(2));
+      Pp.n.setAttribute("r", (7 + 30 * P2O(pp)).toFixed(2));
+      Pp.n.setAttribute("opacity", (0.9 * (1 - pp)).toFixed(3));
+    }
+
+    // AUTOPILOT dot blink (sine-wave-loop, phase 0 at its arrival)
+    var bt = Math.max(0, t - 2.30);
+    autodot.style.opacity = (t < 2.30 ? 1 : 0.6 + 0.4 * Math.cos(TAU * bt / 0.62)).toFixed(3);
+    autodot.style.transform = "scale(" + (t < 2.30 ? 1 : 1 + 0.18 * Math.cos(TAU * bt / 0.62)).toFixed(3) + ")";
+  }
+  render(0);
+  var clock = { t: 0 };
+  tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { render(clock.t); } }, 0);
+
+  // ======================= CAMERA + PARALLAX =======================
+  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.045, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(el("back"), { y: 0, scale: 1 }, { y: 10, scale: 0.985, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(el("blob"), { x: -30, y: 0 }, { x: 80, y: 70, duration: DUR, ease: "sine.inOut" }, 0);
+  tl.fromTo(el("goldglow"), { scale: 0.9 }, { scale: 1.15, duration: DUR, ease: "sine.inOut" }, 0);
+
+  // ======================= SCENE 1 (0.0-1.0): doors, figure, bar drop, strings =======================
+  function prepDraw(node) {
+    var L = node.getTotalLength() * 1.04;
+    node.style.strokeDasharray = L.toFixed(1);
+    node.style.strokeDashoffset = L.toFixed(1);
+    return L;
+  }
+  var Ls = prepDraw(el("safeframe")), Lg = prepDraw(el("growframe"));
+  tl.fromTo(el("safeframe"), { strokeDashoffset: Ls }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.0);
+  tl.fromTo(el("growframe"), { strokeDashoffset: Lg }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.06);
+  tl.fromTo(el("floor"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.0);
+  tl.fromTo(el("safelight"), { opacity: 0 }, { opacity: 0.75, duration: 0.45, ease: "power2.out" }, 0.16);
+  tl.fromTo(el("growlight"), { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.12);
+  tl.fromTo(el("raysburst"), { scale: 0.55, transformOrigin: "855px 700px" }, { scale: 1, transformOrigin: "855px 700px", duration: 0.8, ease: "expo.out" }, 0.12);
+  tl.fromTo(el("leaf"), { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.22);
+  tl.fromTo(el("goldglow"), { opacity: 0.05 }, { opacity: 0.22, duration: 0.5, ease: "power2.out" }, 0.12);
+  tl.fromTo(el("lsafe"), { scale: 0.6, y: 18, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.24);
+  tl.fromTo(el("lgrow"), { scale: 0.6, y: 18, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.3);
+  tl.fromTo(el("lgrowsheen"), { x: -100 }, { x: 300, duration: 0.45, ease: "power1.inOut" }, 0.66);
+  // the person: hero visible by ~0.3s
+  tl.fromTo(el("figwrap"), { opacity: 0, y: 30, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.04);
+  // bar arrival (position is clock-driven; fade + chip stagger here)
+  tl.fromTo(el("barwrap"), { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, 0.04);
+  CHIPS.forEach(function (c, i) {
+    tl.fromTo(c, { y: -26 - i * 8, scale: 0.9 }, { y: 0, scale: 1, duration: 0.45, ease: "back.out(2)" }, 0.12 + i * 0.05);
+    tl.fromTo(c.querySelector("." + ID + "-csheen"), { x: -80 }, { x: 260, duration: 0.4, ease: "power1.inOut" }, 0.56 + i * 0.07);
+  });
+
+  // ======================= SCENE 2 (1.0-3.6): step toward GROW, yanked back, autopilot =======================
+  // GROW light dims a little as the strings win
+  tl.fromTo(el("growlight"), { opacity: 1 }, { opacity: 0.62, duration: 0.5, ease: "power2.out", immediateRender: false }, 1.5);
+  tl.fromTo(el("growlight"), { opacity: 0.62 }, { opacity: 0.5, duration: 0.4, ease: "power2.out", immediateRender: false }, 2.78);
+  tl.fromTo(el("lgrow"), { opacity: 1 }, { opacity: 0.72, duration: 0.5, ease: "power2.out", immediateRender: false }, 1.5);
+  tl.fromTo(el("goldglow"), { opacity: 0.22 }, { opacity: 0.12, duration: 0.5, ease: "power2.out", immediateRender: false }, 1.5);
+  tl.fromTo(el("safelight"), { opacity: 0.75 }, { opacity: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 1.6);
+  // AUTOPILOT blinks on (flicker keys, then a sine blink on its dot) + light sweep
+  tl.fromTo(el("auto"), { scale: 0.8, x: -14 }, { scale: 1, x: 0, duration: 0.4, ease: "back.out(1.8)" }, 2.22);
+  tl.fromTo(el("auto"), { opacity: 0 }, { opacity: 1, duration: 0.03, ease: "none" }, 2.22);
+  tl.set(el("auto"), { opacity: 0.2 }, 2.28);
+  tl.set(el("auto"), { opacity: 1 }, 2.32);
+  tl.set(el("auto"), { opacity: 0.35 }, 2.36);
+  tl.set(el("auto"), { opacity: 1 }, 2.40);
+  tl.fromTo(el("autosheen"), { x: -80 }, { x: 320, duration: 0.45, ease: "power1.inOut" }, 2.5);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["c5-shaping-decisions"] = tl;
+})();
+</script>
+</template>

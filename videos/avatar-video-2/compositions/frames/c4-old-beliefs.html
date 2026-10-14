@@ -211,13 +211,16 @@
         position: absolute;
         left: 4%;
         right: 6%;
-        bottom: 0.04em;
-        height: 0.09em;
+        bottom: 0;
+        height: 0.085em;
         border-radius: 999px;
         background: #ff4d5e;
         box-shadow: 0 0 22px rgba(255, 77, 94, 0.85);
         transform-origin: 0% 50%;
         z-index: 3;
+      }
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-big .c4-old-beliefs-ul {
+        bottom: -0.04em;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-ripple {
         position: absolute;
@@ -695,7 +698,7 @@
           fade($(id), at, 0.95, 0.6);
         }
         function echo(id, at) {
-          tl.fromTo($(id), { scale: 1 }, { scale: 1.16, duration: 0.6, ease: "power2.out" }, at);
+          tl.fromTo($(id), { scale: 1 }, { scale: 1.07, duration: 0.6, ease: "power2.out" }, at);
           fade($(id), at, 0.85, 0.6);
         }
         function sheen(id, at) {
@@ -813,9 +816,9 @@
         tl.fromTo($("w-never"), { scale: 1.5, y: -40, rotationX: 62, filter: "blur(22px)" }, { scale: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.4)" }, CUE.never - LEAD);
         unblur($("w-never"), CUE.never + 0.52);
         redHit("never", HIT3, 1, 0.62);
-        ripple("rp-never-1", HIT3, 2.2);
-        ripple("rp-never-2", HIT3 + 0.09, 2.7);
-        ripple("rp-never-3", HIT3 + 0.18, 3.2);
+        ripple("rp-never-1", HIT3, 1.5);
+        ripple("rp-never-2", HIT3 + 0.09, 1.85);
+        ripple("rp-never-3", HIT3 + 0.18, 2.2);
         flash(HIT3, 0.42);
         tl.fromTo(card3, { scale: 1.035 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, HIT3);
         tl.fromTo($("bloom3"), { opacity: 0, scale: 0.85 }, { opacity: 0.45, scale: 1, duration: 0.28, ease: "power2.out" }, HIT3);

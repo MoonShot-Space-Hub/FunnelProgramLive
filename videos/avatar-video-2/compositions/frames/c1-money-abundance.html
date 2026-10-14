@@ -598,7 +598,7 @@
     }
   }
   writeSparks();
-  tl.fromTo(drv, { T: 0 }, { T: 1, duration: FLIGHT, ease: "none", onUpdate: writeSparks }, SPARK_AT);
+  tl.fromTo(drv, { T: 0 }, { T: 1, duration: FLIGHT, ease: "none", onUpdate: writeSparks, immediateRender: false }, SPARK_AT);
 
   window.__timelines = window.__timelines || {};
   window.__timelines[ID] = tl;

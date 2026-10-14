@@ -1,0 +1,7 @@
+{
+  "scene": "c1-money-abundance",
+  "duration_s": 1.88,
+  "rules": ["orbit-3d-entry", "particle-burst", "ambient-glow-bloom", "center-outward-expansion", "motion-blur-streak", "spring-pop-entrance"],
+  "exit": { "vector": "down ~1000-2400 px/s (parallax coin rain, near layer fastest); globe spinning ~0.6 rad/s; orbit coins circling ~1 rad/s; camera push-in scale +0.03/s; chip settled", "still_moving": true },
+  "entry": { "vector": "radial outward from centre (540,600): globe scale 0.4->1 on back.out(1.5) over 0.62s (~4 scale/s at t=0) with 14px blur, gold flash 0.35->1.5, coins/notes exploding outward ~1500-2000 px/s at t=0", "from_rest": false }
+}

@@ -306,7 +306,8 @@
     r.className = P + "ring";
     var rp = qpt(w, 0.84);
     r.style.left = f1(rp[0] - 50) + "px"; r.style.top = f1(rp[1] - 50) + "px"; r.style.width = "100px"; r.style.height = "100px";
-    r.style.border = "4px solid #FF5FB0"; r.style.boxShadow = "0 0 18px rgba(224,33,138,0.8)";
+    r.style.border = "3px solid #FF5FB0"; r.style.boxShadow = "0 0 18px rgba(224,33,138,0.8)";
+    r.style.background = "radial-gradient(closest-side, rgba(255,225,240,0.95) 0%, rgba(255,95,176,0.55) 35%, rgba(224,33,138,0) 100%)";
     ringsEl.appendChild(r);
     pulses.push({ el: r, at: w[6] + w[7] * 0.8 });
   });
@@ -371,9 +372,9 @@
     }
     // absorption pulses
     for (k = 0; k < pulses.length; k++) {
-      var pl = pulses[k], pt2 = (t - pl.at) / 0.4;
+      var pl = pulses[k], pt2 = (t - pl.at) / 0.3;
       if (pt2 <= 0 || pt2 >= 1) { pl.el.style.opacity = "0"; continue; }
-      pl.el.style.transform = "scale(" + (0.3 + 1.5 * (1 - Math.pow(1 - pt2, 3))).toFixed(3) + ")";
+      pl.el.style.transform = "scale(" + (0.25 + 0.85 * (1 - Math.pow(1 - pt2, 3))).toFixed(3) + ")";
       pl.el.style.opacity = (0.9 * (1 - pt2)).toFixed(3);
     }
     // LEARNING dots tick
@@ -416,7 +417,7 @@
     pctEl.textContent = Math.round(prog.p * 100) + "%";
   }
   writeProg();
-  tl.fromTo(prog, { p: 0 }, { p: 0.24, duration: 1.0, ease: "none", onUpdate: writeProg }, 0.3);
+  tl.fromTo(prog, { p: 0 }, { p: 0.24, duration: 1.0, ease: "none", onUpdate: writeProg, immediateRender: false }, 0.3);
   tl.fromTo(prog, { p: 0.24 }, { p: 1, duration: 0.5, ease: "power3.inOut", onUpdate: writeProg, immediateRender: false }, 1.32);
 
   // circuits light up as the beliefs install

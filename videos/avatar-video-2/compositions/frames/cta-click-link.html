@@ -248,7 +248,7 @@
     mbn.setAttribute("stdDeviation", "0 " + mbp.b.toFixed(2));
   }
   writeMB();
-  tl.fromTo(mbp, { b: 16 }, { b: 0, duration: 0.28, ease: "power2.out", onUpdate: writeMB }, 0.12);
+  tl.fromTo(mbp, { b: 16 }, { b: 0, duration: 0.28, ease: "power2.out", onUpdate: writeMB, immediateRender: false }, 0.12);
 
   // ---------- cursor glides in, taps on "link" @0.60 (cursor-click-ripple + press-release-spring) ----------
   tl.fromTo(el("hand"), { x: 240, y: 200, rotation: 16, opacity: 0 }, { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.36, ease: "power3.out" }, 0.2);
@@ -283,7 +283,7 @@
     }
   }
   writeSparks();
-  tl.fromTo(drv, { T: 0 }, { T: 1, duration: FLIGHT, ease: "none", onUpdate: writeSparks }, SPARK_AT);
+  tl.fromTo(drv, { T: 0 }, { T: 1, duration: FLIGHT, ease: "none", onUpdate: writeSparks, immediateRender: false }, SPARK_AT);
 
   // ---------- "below" @0.84: chevrons drop in, then bounce to the end ----------
   [0, 1, 2].forEach(function (k) {

@@ -1,0 +1,7 @@
+{
+  "scene": "c2-installed-beliefs",
+  "duration_s": 2.44,
+  "rules": ["svg-path-draw", "stat-bars-and-fills", "kinetic-beat-slam", "motion-blur-streak"],
+  "exit": { "vector": "near rest: padlock squash-settle (back.out) and decaying impact shake (14px * e^-11t, ~0.4px at the last frame); brain glow breathing; camera push-in scale +0.016/s", "still_moving": true },
+  "entry": { "vector": "head settles leftward ~230 px/s at t=0 (x +40->0, scale 0.9->1, expo.out 0.7s) while its outline draws; first belief word enters from off-left at ~1700 px/s", "from_rest": false }
+}
