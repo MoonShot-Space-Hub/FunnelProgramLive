@@ -1,0 +1,11 @@
+# HyperFrames local state: check reports, locks, render bookkeeping
+.hyperframes/
+
+# Rendered output and QC snapshots (regenerate with `npm run render`)
+renders/
+snapshots/
+
+node_modules/
+
+# Python bytecode from running the tools
+__pycache__/
