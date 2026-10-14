@@ -23,6 +23,7 @@ Faceless 9:16 reel (1080×1920, 30 fps, 39 s) built from this script:
 - **Captions**: burned-in, word-by-word, with the active word in yellow and key words in green. Kept inside the Reels/Shorts safe zone.
 - **B-roll**: original motion graphics drawn in code: an ECG "surgery course", a "how to fly a plane" article, 3 YouTube-style videos, a crashing trading account, "WHY?", a skill unlock, the Education / Practice / Rules pillars, a staircase for "overnight", a SHORTCUT sign getting banned, and the masterclass end card with a "Link is below" button.
 - **Music + SFX**: an original score synthesized in `tools/music.py`: a tense intro with a ticking clock, a riser into a hard cut and an impact on "Why?", then an Am–F–C–G groove that lifts for the CTA. There are whooshes on the cuts and chimes on Education / Practice / Rules, and the music ducks under the voice.
+- **Logo**: the end card uses the "Anybody Can Trade With AI" (ABCT With AI) logo from `public/brand/abct-with-ai-logo.png`. It pops in on "ABCT" and glows on "AI".
 - **Font**: Montserrat (SIL OFL, `public/fonts/OFL.txt`).
 
 ## Rebuild

@@ -1,5 +1,5 @@
 import React from "react";
-import { interpolate } from "remotion";
+import { Img, interpolate, staticFile } from "remotion";
 import { pop, prog } from "../anim";
 import { Glow, Icon, Panel, SceneFrame, useT } from "../components/ui";
 import { C } from "../theme";
@@ -8,6 +8,11 @@ import { line, scene, wordAt } from "../timeline";
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 const STAGES = ["BASICS", "SETUPS", "RISK RULES", "AI TOOLS"];
+
+const LOGO = staticFile("brand/abct-with-ai-logo.png");
+const LOGO_W = 1606;
+const LOGO_H = 777;
+const GOLD = "#F5B82E";
 
 /** "If you want a structured place to begin": a roadmap with a start pin. */
 const Roadmap: React.FC<{ t: number }> = ({ t }) => {
@@ -127,6 +132,9 @@ export const Cta: React.FC = () => {
   const abct = wordAt("cta2", "abct");
   const ai = wordAt("cta2", "ai");
   const master = wordAt("cta2", "masterclass");
+  const logoIn = pop(t, abct - 0.08, 0.45);
+  const sweep = prog(t, abct + 0.2, 0.75, (x) => x);
+  const aiGlow = interpolate(t, [ai - 0.05, ai + 0.15, ai + 0.9], [0, 1, 0.35], clamp);
   const link = line("cta3").start - 0.05;
   const btn = pop(t, link, 0.4);
   const pulse = 1 + 0.035 * Math.sin(Math.max(0, t - link - 0.4) * 7);
@@ -200,45 +208,52 @@ export const Cta: React.FC = () => {
               <Icon.Play size={80} color="#fff" />
             </div>
 
-            <div style={{ position: "absolute", left: 50, right: 50, top: 250 }}>
+            {/* ABCT (Anybody Can Trade) With AI logo: pops in on "ABCT", glows on "AI" */}
+            <div
+              style={{
+                position: "absolute",
+                left: 40,
+                top: 190,
+                width: 820,
+                height: Math.round((820 * LOGO_H) / LOGO_W),
+                opacity: Math.min(1, logoIn * 1.8),
+                scale: String(0.82 + 0.18 * logoIn),
+                filter: `drop-shadow(0 14px 22px rgba(0,0,0,0.6)) drop-shadow(0 0 ${36 * aiGlow}px rgba(0,212,255,${0.85 * aiGlow}))`,
+              }}
+            >
+              <Img src={LOGO} style={{ width: "100%", height: "100%" }} />
+              {/* light sweep clipped to the logo's shape */}
               <div
                 style={{
-                  fontSize: 168,
-                  fontWeight: 900,
-                  letterSpacing: -4,
-                  lineHeight: 0.95,
-                  opacity: prog(t, abct - 0.05, 0.2),
-                  translate: `0px ${(1 - prog(t, abct - 0.05, 0.3)) * 50}px`,
+                  position: "absolute",
+                  inset: 0,
+                  opacity: sweep > 0 && sweep < 1 ? 1 : 0,
+                  background: `linear-gradient(105deg, transparent ${sweep * 150 - 45}%, rgba(255,255,255,0.9) ${sweep * 150 - 30}%, transparent ${sweep * 150 - 15}%)`,
+                  WebkitMaskImage: `url(${LOGO})`,
+                  maskImage: `url(${LOGO})`,
+                  WebkitMaskSize: "100% 100%",
+                  maskSize: "100% 100%",
                 }}
-              >
-                ABCT
-              </div>
-              <div
-                style={{
-                  fontSize: 120,
-                  fontWeight: 900,
-                  letterSpacing: -2,
-                  lineHeight: 1.05,
-                  opacity: prog(t, ai - 0.15, 0.2),
-                }}
-              >
-                WITH <span style={{ color: C.yellow, textShadow: `0 0 40px ${C.yellow}88` }}>AI</span>
-              </div>
-              <div
-                style={{
-                  marginTop: 26,
-                  display: "inline-block",
-                  padding: "14px 30px",
-                  borderRadius: 18,
-                  border: `4px solid ${C.text}`,
-                  fontSize: 70,
-                  fontWeight: 900,
-                  letterSpacing: 8,
-                  scale: String(pop(t, master - 0.05, 0.35)),
-                }}
-              >
-                MASTERCLASS
-              </div>
+              />
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: 625,
+                translate: "-50% 0",
+                padding: "14px 34px",
+                borderRadius: 18,
+                border: `4px solid ${GOLD}`,
+                boxShadow: `0 0 30px ${GOLD}55`,
+                fontSize: 70,
+                fontWeight: 900,
+                letterSpacing: 8,
+                whiteSpace: "nowrap",
+                scale: String(pop(t, master - 0.05, 0.35)),
+              }}
+            >
+              MASTERCLASS
             </div>
             <div
               style={{
