@@ -1,0 +1,931 @@
+<template id="b3-chart-crash-template">
+  <script src="vendor/three/three.min.js"></script>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    [data-composition-id="b3-chart-crash"] .b3-chart-crash-gl {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-ui {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    [data-composition-id="b3-chart-crash"] .b3-chart-crash-full {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+    }
+    [data-composition-id="b3-chart-crash"] .b3-chart-crash-grain {
+      opacity: 0.06;
+    }
+    [data-composition-id="b3-chart-crash"] .b3-chart-crash-lens {
+      background: radial-gradient(ellipse 78% 62% at 50% 34%, rgba(5, 3, 16, 0) 55%, rgba(5, 3, 16, 0.38) 82%, rgba(5, 3, 16, 0.62) 100%);
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-vig {
+      background: radial-gradient(
+        ellipse 74% 56% at 50% 36%,
+        rgba(255, 77, 94, 0) 48%,
+        rgba(255, 77, 94, 0.22) 76%,
+        rgba(255, 77, 94, 0.5) 100%
+      );
+      opacity: 0;
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-flash {
+      background: #ff4d5e;
+      mix-blend-mode: screen;
+      opacity: 0;
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-fx {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+    }
+    /* ---- price tag riding the 3D tip ---- */
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-tagpos,
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-alertpos {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-tagfade {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-tagline {
+      position: absolute;
+      left: -500px;
+      top: -500px;
+      width: 1000px;
+      height: 1000px;
+      overflow: visible;
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-tagbox {
+      position: absolute;
+      left: -118px;
+      top: -155px;
+      width: 236px;
+      height: 74px;
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-tagpop,
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-tagflip {
+      position: absolute;
+      inset: 0;
+    }
+    [data-composition-id="b3-chart-crash"] .b3-chart-crash-pill {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    [data-composition-id="b3-chart-crash"] .b3-chart-crash-pill-a {
+      color: #feb022;
+      border: 3px solid #feb022;
+      background: rgba(24, 16, 44, 0.9);
+      box-shadow:
+        0 0 36px rgba(254, 176, 34, 0.45),
+        inset 0 0 20px rgba(254, 176, 34, 0.16);
+      text-shadow: 0 0 22px rgba(254, 176, 34, 0.6);
+    }
+    [data-composition-id="b3-chart-crash"] .b3-chart-crash-pill-r {
+      color: #ff5a69;
+      border: 3px solid #ff4d5e;
+      background: rgba(34, 10, 30, 0.92);
+      box-shadow:
+        0 0 44px rgba(255, 77, 94, 0.6),
+        inset 0 0 22px rgba(255, 77, 94, 0.2);
+      text-shadow: 0 0 24px rgba(255, 77, 94, 0.7);
+      opacity: 0;
+    }
+    /* ---- alert triangle ---- */
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-alertpop {
+      position: absolute;
+      left: -100px;
+      top: -100px;
+      width: 200px;
+      height: 200px;
+    }
+    [data-composition-id="b3-chart-crash"] .b3-chart-crash-ring {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 3px solid #ff4d5e;
+      box-shadow: 0 0 24px rgba(255, 77, 94, 0.5);
+      opacity: 0;
+    }
+    [data-composition-id="b3-chart-crash"] #b3-chart-crash-tri {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      overflow: visible;
+      filter: drop-shadow(0 0 18px rgba(255, 77, 94, 0.75));
+    }
+  </style>
+
+  <div id="root" data-composition-id="b3-chart-crash" data-start="0" data-duration="1.90" data-width="1080" data-height="1920">
+    <!-- Full-bleed 3D render (lowest track): void, fog, reflective floor + grid, candles, glowing price tube -->
+    <canvas
+      id="b3-chart-crash-gl"
+      class="b3-chart-crash-gl clip"
+      width="1080"
+      height="1920"
+      data-start="0"
+      data-duration="1.90"
+      data-track-index="0"
+    ></canvas>
+
+    <!-- DOM overlays above the canvas: lens falloff, grain, red vignette, flash, price tag, alert -->
+    <div id="b3-chart-crash-ui" class="clip" data-start="0" data-duration="1.90" data-track-index="1">
+      <div class="b3-chart-crash-full b3-chart-crash-lens"></div>
+      <svg class="b3-chart-crash-full b3-chart-crash-grain" viewBox="0 0 1080 1920" aria-hidden="true">
+        <filter id="b3-chart-crash-grainf" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="1080" height="1920" filter="url(#b3-chart-crash-grainf)" />
+      </svg>
+      <div id="b3-chart-crash-vig" class="b3-chart-crash-full"></div>
+      <div id="b3-chart-crash-flash" class="b3-chart-crash-full"></div>
+
+      <div id="b3-chart-crash-fx">
+        <div id="b3-chart-crash-alertpos">
+          <div id="b3-chart-crash-alertpop">
+            <div class="b3-chart-crash-ring" id="b3-chart-crash-ring1"></div>
+            <div class="b3-chart-crash-ring" id="b3-chart-crash-ring2"></div>
+            <svg id="b3-chart-crash-tri" viewBox="0 0 200 200" aria-hidden="true">
+              <path d="M100 26 L178 162 L22 162 Z" fill="#2a0a1c" fill-opacity="0.92" stroke="#ff4d5e" stroke-width="11" stroke-linejoin="round" />
+              <path d="M100 26 L178 162 L22 162 Z" fill="#ff4d5e" fill-opacity="0.16" />
+              <line x1="100" y1="72" x2="100" y2="114" stroke="#ffd9dd" stroke-width="12" stroke-linecap="round" />
+              <circle cx="100" cy="138" r="7.5" fill="#ffd9dd" />
+            </svg>
+          </div>
+        </div>
+
+        <div id="b3-chart-crash-tagpos">
+          <div id="b3-chart-crash-tagfade">
+            <svg id="b3-chart-crash-tagline" viewBox="-500 -500 1000 1000" aria-hidden="true">
+              <line id="b3-chart-crash-leader" x1="0" y1="0" x2="0" y2="-118" stroke="#feb022" stroke-width="3" stroke-opacity="0.8" />
+              <circle id="b3-chart-crash-anchor" cx="0" cy="0" r="13" fill="none" stroke="#feb022" stroke-width="3" />
+            </svg>
+            <div id="b3-chart-crash-tagbox">
+              <div id="b3-chart-crash-tagpop">
+                <div id="b3-chart-crash-tagflip">
+                  <div class="b3-chart-crash-pill b3-chart-crash-pill-a" id="b3-chart-crash-pilla">+0.7%</div>
+                  <div class="b3-chart-crash-pill b3-chart-crash-pill-r" id="b3-chart-crash-pillr">-18.6%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var ID = "b3-chart-crash";
+      var DUR = 1.9;
+      var W = 1080;
+      var H = 1920;
+      var $ = function (s) {
+        return document.getElementById(ID + "-" + s);
+      };
+      var clamp01 = function (v) {
+        return v < 0 ? 0 : v > 1 ? 1 : v;
+      };
+      var clamp = function (v, a, b) {
+        return v < a ? a : v > b ? b : v;
+      };
+      var lerp = function (a, b, k) {
+        return a + (b - a) * k;
+      };
+      var hash = function (n) {
+        var x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+        return x - Math.floor(x);
+      };
+      var eOutCubic = function (p) {
+        return 1 - Math.pow(1 - p, 3);
+      };
+      var eOutBack = function (p, s) {
+        var q = p - 1;
+        return 1 + (s + 1) * q * q * q + s * q * q;
+      };
+      var smooth = function (p) {
+        return p * p * (3 - 2 * p);
+      };
+
+      // ---- timing (local seconds; word cues When@0.09 something@0.33 goes@0.73 wrong@1.05 how@1.61) ----
+      var CLIMB_END = 0.98; // tip decelerates onto the peak
+      var CRASH_AT = 1.05; // "wrong"
+      var PLUNGE_DUR = 0.24; // accelerating fall
+      var FLIP_AT = 1.15; // tag flips red
+      var ALERT_AT = 1.27; // alert triangle
+      var HOW_AT = 1.61; // "how" — second alarm pulse
+      var U0 = 0.08; // tube already started at frame 0
+
+      var C = {
+        canvas: 0x0b0820,
+        raised: 0x221a52,
+        violet: 0x8c2fc2,
+        violetHi: 0xb26be8,
+        amber: 0xfeb022,
+        amberSoft: 0xffd27a,
+        cream: 0xfdf2e0,
+        red: 0xff4d5e,
+        magenta: 0xa94271,
+      };
+
+      // ---------------- renderer / scene / camera ----------------
+      var canvas = $("gl");
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(W, H, false);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.05;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.autoClear = false;
+      renderer.setClearColor(C.canvas, 1);
+
+      var scene = new THREE.Scene();
+      scene.background = null; // cleared manually (two-pass mirror render)
+      scene.fog = new THREE.Fog(C.canvas, 9, 27);
+
+      // lens shift: optical centre sits at y=620 (stage centre) instead of the frame centre
+      var camera = new THREE.PerspectiveCamera(66, W / 2600, 0.1, 140);
+      camera.setViewOffset(W, 2600, 0, 680, W, H);
+
+      // ---------------- textures (procedural, deterministic) ----------------
+      function radialTex(stops) {
+        var c = document.createElement("canvas");
+        c.width = 256;
+        c.height = 256;
+        var g = c.getContext("2d");
+        var gr = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+        for (var i = 0; i < stops.length; i++) gr.addColorStop(stops[i][0], stops[i][1]);
+        g.fillStyle = gr;
+        g.fillRect(0, 0, 256, 256);
+        var tex = new THREE.CanvasTexture(c);
+        tex.colorSpace = THREE.SRGBColorSpace;
+        return tex;
+      }
+      var glowTex = radialTex([
+        [0, "rgba(255,255,255,1)"],
+        [0.18, "rgba(255,255,255,0.55)"],
+        [0.45, "rgba(255,255,255,0.16)"],
+        [1, "rgba(255,255,255,0)"],
+      ]);
+      var softTex = radialTex([
+        [0, "rgba(255,255,255,1)"],
+        [0.5, "rgba(255,255,255,0.35)"],
+        [1, "rgba(255,255,255,0)"],
+      ]);
+
+      function glowSprite(tex, color, opacity) {
+        var m = new THREE.SpriteMaterial({
+          map: tex,
+          color: color,
+          transparent: true,
+          opacity: opacity,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+          fog: false,
+          toneMapped: false,
+        });
+        return new THREE.Sprite(m);
+      }
+
+      // ---------------- environment ----------------
+      // alpha falloff so the floor dissolves into the horizon haze instead of ending on a hard line
+      var fadeCanvas = document.createElement("canvas");
+      fadeCanvas.width = 256;
+      fadeCanvas.height = 256;
+      var fg = fadeCanvas.getContext("2d");
+      fg.fillStyle = "#000";
+      fg.fillRect(0, 0, 256, 256);
+      var fgr = fg.createRadialGradient(128, 128, 0, 128, 128, 128);
+      fgr.addColorStop(0, "#fff");
+      fgr.addColorStop(0.34, "#fff");
+      fgr.addColorStop(1, "#000");
+      fg.fillStyle = fgr;
+      fg.fillRect(0, 0, 256, 256);
+      var fadeTex = new THREE.CanvasTexture(fadeCanvas);
+      var floor = new THREE.Mesh(
+        new THREE.PlaneGeometry(120, 120),
+        new THREE.MeshStandardMaterial({ color: 0x0f0a2c, roughness: 0.2, metalness: 0.0, transparent: true, opacity: 0.8, alphaMap: fadeTex })
+      );
+      floor.rotation.x = -Math.PI / 2;
+      floor.renderOrder = 1;
+      scene.add(floor);
+
+      var grid = new THREE.GridHelper(90, 180, C.violetHi, C.violetHi);
+      grid.material.transparent = true;
+      grid.material.opacity = 0.2;
+      grid.material.depthWrite = false;
+      grid.position.y = 0.004;
+      grid.renderOrder = 3;
+      scene.add(grid);
+
+      var floorGlow = new THREE.Mesh(
+        new THREE.PlaneGeometry(16, 11),
+        new THREE.MeshBasicMaterial({
+          map: softTex,
+          color: C.violet,
+          transparent: true,
+          opacity: 0.36,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+          toneMapped: false,
+          fog: false,
+        })
+      );
+      floorGlow.rotation.x = -Math.PI / 2;
+      floorGlow.position.set(-0.3, 0.006, 0.2);
+      floorGlow.renderOrder = 2;
+      scene.add(floorGlow);
+
+      var tipSpot = new THREE.Mesh(
+        new THREE.PlaneGeometry(3.4, 3.4),
+        new THREE.MeshBasicMaterial({
+          map: softTex,
+          color: C.amber,
+          transparent: true,
+          opacity: 0.35,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+          toneMapped: false,
+          fog: false,
+        })
+      );
+      tipSpot.rotation.x = -Math.PI / 2;
+      tipSpot.position.y = 0.008;
+      tipSpot.renderOrder = 2;
+      scene.add(tipSpot);
+
+      var horizon = glowSprite(softTex, C.violet, 0.6);
+      horizon.scale.set(120, 30, 1);
+      horizon.position.set(-8, 0.0, -78);
+      scene.add(horizon);
+      var nebula = glowSprite(softTex, C.magenta, 0.28);
+      nebula.scale.set(16, 16, 1);
+      nebula.position.set(-6.5, 7.5, -14);
+      scene.add(nebula);
+
+      // drifting dust (seeded)
+      var PN = 170;
+      var dpos = new Float32Array(PN * 3);
+      var dcol = new Float32Array(PN * 3);
+      var cA = new THREE.Color(C.violetHi);
+      var cB = new THREE.Color(C.amberSoft);
+      for (var pi = 0; pi < PN; pi++) {
+        dpos[pi * 3] = -8 + 16 * hash(pi * 1.7 + 0.3);
+        dpos[pi * 3 + 1] = 0.25 + 7 * hash(pi * 2.9 + 1.1);
+        dpos[pi * 3 + 2] = -13 + 17 * hash(pi * 4.3 + 2.7);
+        var cc = hash(pi * 7.1 + 5.5) > 0.84 ? cB : cA;
+        var br = 0.45 + 0.55 * hash(pi * 3.3 + 9.1);
+        dcol[pi * 3] = cc.r * br;
+        dcol[pi * 3 + 1] = cc.g * br;
+        dcol[pi * 3 + 2] = cc.b * br;
+      }
+      var dgeo = new THREE.BufferGeometry();
+      dgeo.setAttribute("position", new THREE.BufferAttribute(dpos, 3));
+      dgeo.setAttribute("color", new THREE.BufferAttribute(dcol, 3));
+      var dust = new THREE.Points(
+        dgeo,
+        new THREE.PointsMaterial({
+          size: 0.075,
+          map: glowTex,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.9,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending,
+          sizeAttenuation: true,
+          toneMapped: false,
+        })
+      );
+      dust.renderOrder = 6;
+      scene.add(dust);
+
+      // ---------------- lights ----------------
+      var hemi = new THREE.HemisphereLight(0x6a55c8, 0x0b0820, 0.6);
+      var key = new THREE.DirectionalLight(0xffd6a6, 2.4); // warm key, front-left-top
+      key.position.set(-3, 6, 7);
+      var rim = new THREE.DirectionalLight(C.violetHi, 5.5); // violet rim, back-left
+      rim.position.set(-5, 4.5, -7);
+      var rim2 = new THREE.DirectionalLight(0x8f6bff, 2.6); // cool rim, back-right
+      rim2.position.set(6, 3, -5);
+      var tipLight = new THREE.PointLight(C.amber, 0, 0, 2);
+      var redLight = new THREE.PointLight(C.red, 0, 0, 2);
+      scene.add(hemi, key, rim, rim2, tipLight, redLight);
+      var LIGHTS = [hemi, key, rim, rim2, tipLight, redLight];
+
+      // ---------------- chart (mirrored in pass 1 for the glossy floor reflection) ----------------
+      var chart = new THREE.Group();
+      scene.add(chart);
+      var V = function (x, y, z) {
+        return new THREE.Vector3(x, y, z || 0);
+      };
+      var climbCurve = new THREE.CatmullRomCurve3(
+        [V(-2.75, 0.85), V(-2.25, 1.25), V(-1.8, 1.05), V(-1.35, 1.75), V(-0.9, 1.55), V(-0.45, 2.35), V(0.0, 2.15), V(0.5, 3.0), V(0.95, 2.85), V(1.5, 3.9)],
+        false,
+        "centripetal"
+      );
+      var plungeCurve = new THREE.CatmullRomCurve3(
+        [V(1.5, 3.9, 0), V(1.72, 3.35, 0.05), V(1.86, 2.4, 0.12), V(1.98, 1.5, 0.2), V(2.12, 0.75, 0.3)],
+        false,
+        "centripetal"
+      );
+
+      // y of the climb at a given x (sampled once)
+      var CS = [];
+      for (var si = 0; si <= 400; si++) CS.push(climbCurve.getPointAt(si / 400));
+      function pathY(x) {
+        for (var i = 1; i < CS.length; i++) {
+          if (CS[i].x >= x) {
+            var a = CS[i - 1];
+            var b = CS[i];
+            var k = b.x === a.x ? 0 : (x - a.x) / (b.x - a.x);
+            return lerp(a.y, b.y, clamp01(k));
+          }
+        }
+        return CS[CS.length - 1].y;
+      }
+
+      var HALO_VS =
+        "varying vec3 vN; varying vec3 vV;" +
+        "void main(){ vec4 mv = modelViewMatrix * vec4(position, 1.0); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }";
+      var HALO_FS =
+        "uniform vec3 uColor; uniform float uOpacity; uniform float uPow; varying vec3 vN; varying vec3 vV;" +
+        "void main(){ float f = abs(dot(normalize(vN), normalize(vV))); float a = pow(f, uPow) * uOpacity * (1.0 - 0.9 * smoothstep(0.82, 0.95, f)); gl_FragColor = vec4(uColor, a); }";
+      function haloMat(rgb, op, pw) {
+        return new THREE.ShaderMaterial({
+          uniforms: { uColor: { value: new THREE.Vector3(rgb[0], rgb[1], rgb[2]) }, uOpacity: { value: op }, uPow: { value: pw } },
+          vertexShader: HALO_VS,
+          fragmentShader: HALO_FS,
+          transparent: true,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending,
+        });
+      }
+      var AMBER_RGB = [1.0, 0.5, 0.06];
+      var RED_RGB = [1.0, 0.22, 0.3];
+
+      var RS = 14; // radial segments
+      var SEG_C = 320;
+      var SEG_P = 120;
+      // neon cores skip tone mapping so they hold the brand amber / red instead of drifting to yellow-white
+      var amberMat = new THREE.MeshStandardMaterial({ color: 0x1c1003, emissive: C.amber, emissiveIntensity: 1.0, roughness: 0.26, metalness: 0.1, toneMapped: false });
+      var redMat = new THREE.MeshStandardMaterial({ color: 0x1c0306, emissive: C.red, emissiveIntensity: 1.0, roughness: 0.26, metalness: 0.1, toneMapped: false });
+      var aHalo1 = haloMat(AMBER_RGB, 0.6, 1.4);
+      var aHalo2 = haloMat(AMBER_RGB, 0.2, 2.4);
+      var rHalo1 = haloMat(RED_RGB, 0.75, 1.4);
+      var rHalo2 = haloMat(RED_RGB, 0.28, 2.4);
+
+      function tubeSet(curve, segs, mats) {
+        var radii = [0.072, 0.17, 0.38];
+        var meshes = [];
+        for (var i = 0; i < 3; i++) {
+          var m = new THREE.Mesh(new THREE.TubeGeometry(curve, segs, radii[i], RS, false), mats[i]);
+          m.renderOrder = i === 0 ? 0 : 4;
+          chart.add(m);
+          meshes.push(m);
+        }
+        return meshes;
+      }
+      var climbTubes = tubeSet(climbCurve, SEG_C, [amberMat, aHalo1, aHalo2]);
+      var plungeTubes = tubeSet(plungeCurve, SEG_P, [redMat, rHalo1, rHalo2]);
+      function setDraw(meshes, segs, u) {
+        var n = Math.round(clamp01(u) * segs) * RS * 6;
+        for (var i = 0; i < meshes.length; i++) {
+          meshes[i].geometry.setDrawRange(0, n);
+          meshes[i].visible = n > 0;
+        }
+      }
+
+      // tube tail cap + peak joint
+      var capGeo = new THREE.SphereGeometry(0.072, 16, 12);
+      var tail = new THREE.Mesh(capGeo, amberMat);
+      tail.position.copy(climbCurve.getPointAt(0));
+      chart.add(tail);
+      var joint = new THREE.Mesh(capGeo, amberMat);
+      joint.position.copy(climbCurve.getPointAt(1));
+      chart.add(joint);
+
+      // glowing tip
+      var tipCoreMat = new THREE.MeshBasicMaterial({ color: C.cream, toneMapped: false });
+      var tip = new THREE.Mesh(new THREE.SphereGeometry(0.11, 20, 14), tipCoreMat);
+      chart.add(tip);
+      var tipGlow = glowSprite(glowTex, C.amber, 1.0);
+      tipGlow.renderOrder = 5;
+      chart.add(tipGlow);
+      var tipHalo = glowSprite(softTex, C.amber, 0.35);
+      tipHalo.renderOrder = 5;
+      chart.add(tipHalo);
+
+      // ---------------- candlesticks (rounded, beveled bodies + thin wicks) ----------------
+      function roundedRect(w, d, r) {
+        var s = new THREE.Shape();
+        var x = -w / 2;
+        var y = -d / 2;
+        s.moveTo(x + r, y);
+        s.lineTo(x + w - r, y);
+        s.quadraticCurveTo(x + w, y, x + w, y + r);
+        s.lineTo(x + w, y + d - r);
+        s.quadraticCurveTo(x + w, y + d, x + w - r, y + d);
+        s.lineTo(x + r, y + d);
+        s.quadraticCurveTo(x, y + d, x, y + d - r);
+        s.lineTo(x, y + r);
+        s.quadraticCurveTo(x, y, x + r, y);
+        return s;
+      }
+      var BEV = 0.025;
+      var SHAPE = roundedRect(0.26, 0.26, 0.05);
+      function bodyGeo(h) {
+        var g = new THREE.ExtrudeGeometry(SHAPE, {
+          depth: Math.max(0.04, h - 2 * BEV),
+          bevelEnabled: true,
+          bevelThickness: BEV,
+          bevelSize: BEV,
+          bevelSegments: 3,
+          curveSegments: 5,
+        });
+        g.rotateX(-Math.PI / 2);
+        g.translate(0, BEV, 0);
+        var pos = g.attributes.position;
+        var col = new Float32Array(pos.count * 3);
+        for (var i = 0; i < pos.count; i++) {
+          var k = clamp01(pos.getY(i) / h);
+          var v = 0.16 + 0.84 * Math.pow(k, 1.35);
+          col[i * 3] = v;
+          col[i * 3 + 1] = v;
+          col[i * 3 + 2] = v;
+        }
+        g.setAttribute("color", new THREE.BufferAttribute(col, 3));
+        return g;
+      }
+
+      var BODY_V = new THREE.Color(0x6a4cc8);
+      var BODY_R = new THREE.Color(0xd42a46);
+      var EMI_V = new THREE.Color(0x1c0a3e);
+      var EMI_R = new THREE.Color(0x48060f);
+      var WICK_V = new THREE.Color(C.violetHi);
+      var WICK_R = new THREE.Color(C.red);
+
+      var candles = [];
+      function addCandle(x, top, wickTop, redFrom, redBase) {
+        var g = new THREE.Group();
+        g.position.set(x, 0, 0);
+        var bm = new THREE.MeshStandardMaterial({ color: BODY_V.clone(), vertexColors: true, roughness: 0.3, metalness: 0.25, emissive: EMI_V.clone(), emissiveIntensity: 1 });
+        var body = new THREE.Mesh(bodyGeo(top), bm);
+        g.add(body);
+        var wm = new THREE.MeshStandardMaterial({ color: 0x2a1850, emissive: WICK_V.clone(), emissiveIntensity: 1.2, roughness: 0.4 });
+        var wl = Math.max(0.05, wickTop - top);
+        var wick = new THREE.Mesh(new THREE.CylinderGeometry(0.017, 0.017, wl, 8), wm);
+        wick.position.y = top + wl / 2;
+        g.add(wick);
+        g.scale.y = 0.001;
+        g.visible = false;
+        chart.add(g);
+        var c = { g: g, x: x, bm: bm, wm: wm, red: redBase || 0, redFrom: redFrom, at: 0 };
+        candles.push(c);
+        return c;
+      }
+
+      var NC = 10;
+      for (var ci = 0; ci < NC; ci++) {
+        var cx = -2.6 + ci * 0.44;
+        var py = pathY(cx);
+        var top = py - (0.34 + 0.22 * hash(ci * 3 + 1));
+        var wt = py - (0.1 + 0.05 * hash(ci * 5 + 2));
+        // red wave runs leftward from the crash: nearest candles first, fading strength
+        var dist = NC - 1 - ci;
+        var redAmt = dist < 4 ? [1, 1, 0.85, 0.55][dist] : 0;
+        var c = addCandle(cx, top, wt, CRASH_AT + 0.02 + dist * 0.05, 0);
+        c.redAmt = redAmt;
+      }
+      // a short red down-candle forms under the crash after the fall
+      var crashCandle = addCandle(1.84, 0.6, 0.78, 0, 1);
+      crashCandle.redAmt = 1;
+      crashCandle.at = 1.3;
+
+      // climb progress (arc-length fraction) — decelerates onto the peak
+      function climbU(t) {
+        var p = clamp01(t / CLIMB_END);
+        return U0 + (1 - U0) * (1 - Math.pow(1 - p, 1.8));
+      }
+      // candle i grows as the tip reaches it (precomputed, pure)
+      for (var gi = 0; gi < NC; gi++) {
+        var cand = candles[gi];
+        var found = -0.4;
+        for (var ts = 0; ts <= 1.0001; ts += 0.004) {
+          if (climbCurve.getPointAt(climbU(ts)).x >= cand.x - 0.06) {
+            found = ts <= 0.0001 ? -0.4 : ts - 0.06;
+            break;
+          }
+        }
+        cand.at = found;
+      }
+
+      // ---------------- camera rig (pure function of t) ----------------
+      // fixed shake table, one row per 25fps frame from "wrong": [right, up, roll°]
+      var SHAKE = [
+        [0, 0, 0],
+        [0.16, -0.1, 0.9],
+        [-0.13, 0.12, -0.8],
+        [0.1, 0.07, 0.6],
+        [-0.08, -0.09, -0.5],
+        [0.06, 0.05, 0.35],
+        [-0.04, -0.03, -0.2],
+        [0.02, 0.02, 0.1],
+        [0, 0, 0],
+      ];
+      var vR = new THREE.Vector3();
+      var vU = new THREE.Vector3();
+      function placeCamera(t) {
+        var e = eOutCubic(clamp01(t / 1.0));
+        var r = lerp(11.8, 9.6, e);
+        var az = lerp(42, 31, e);
+        var el = lerp(8, 4, e);
+        var tx = lerp(0.0, -0.05, e);
+        var ty = lerp(2.0, 2.05, e);
+        var h = Math.max(0, t - 1.0);
+        r -= 0.12 * h;
+        az -= 1.2 * h;
+        var sx = 0.012 * Math.sin(t * 2.3);
+        var sy = 0.01 * Math.sin(t * 3.1 + 1.0);
+        var roll = 0;
+        var k = t - CRASH_AT;
+        if (k >= 0) {
+          var pin = k < 0.05 ? 0.45 * (k / 0.05) : 0.12 + 0.33 * Math.exp(-(k - 0.05) * 10);
+          r -= pin;
+          ty -= 0.08 * clamp01(k / 0.3);
+          var f = k / 0.04;
+          var i = Math.floor(f);
+          var fr = f - i;
+          if (i < SHAKE.length - 1) {
+            sx += lerp(SHAKE[i][0], SHAKE[i + 1][0], fr);
+            sy += lerp(SHAKE[i][1], SHAKE[i + 1][1], fr);
+            roll += lerp(SHAKE[i][2], SHAKE[i + 1][2], fr);
+          }
+        }
+        var a = (az * Math.PI) / 180;
+        var b = (el * Math.PI) / 180;
+        camera.position.set(tx + r * Math.sin(a) * Math.cos(b), ty + r * Math.sin(b), r * Math.cos(a) * Math.cos(b));
+        camera.up.set(0, 1, 0);
+        camera.lookAt(tx, ty, 0);
+        camera.updateMatrixWorld();
+        vR.setFromMatrixColumn(camera.matrixWorld, 0);
+        vU.setFromMatrixColumn(camera.matrixWorld, 1);
+        camera.position.addScaledVector(vR, sx).addScaledVector(vU, sy);
+        camera.rotateZ((roll * Math.PI) / 180);
+        camera.updateMatrixWorld();
+      }
+
+      // ---------------- DOM overlay refs ----------------
+      var tagPos = $("tagpos");
+      var tagBox = $("tagbox");
+      var leader = $("leader");
+      var anchor = $("anchor");
+      var pillA = $("pilla");
+      var pillR = $("pillr");
+      var alertPos = $("alertpos");
+      var ring1 = $("ring1");
+      var ring2 = $("ring2");
+      var fx = $("fx");
+      var vig = $("vig");
+      var flash = $("flash");
+      var lastTxt = "";
+      var lastRed = -1;
+
+      var tipP = new THREE.Vector3();
+      var vProj = new THREE.Vector3();
+      var ALERT_ANCHOR = V(-1.0, 3.3, 0.4); // upper-left void, above the climb
+      function toScreen(v) {
+        vProj.copy(v).project(camera);
+        return [((vProj.x + 1) / 2) * W, ((1 - vProj.y) / 2) * H];
+      }
+      function ringState(el, t0, dur, t) {
+        var k = (t - t0) / dur;
+        if (k < 0 || k > 1) {
+          el.style.opacity = "0";
+          return;
+        }
+        var e = eOutCubic(k);
+        el.style.opacity = ((1 - k) * 0.9).toFixed(3);
+        el.style.transform = "scale(" + (0.6 + 1.1 * e).toFixed(4) + ")";
+      }
+
+      var lightY = LIGHTS.map(function (l) {
+        return l.position.y;
+      });
+
+      // ---------------- the render: every value is a pure function of local time t ----------------
+      function renderAt(t) {
+        var crashed = t >= CRASH_AT;
+        var uc = climbU(t);
+        var kp = clamp01((t - CRASH_AT) / PLUNGE_DUR);
+        var up = crashed ? kp * kp : 0;
+        var kc = smooth(clamp01((t - CRASH_AT) / 0.3)); // post-crash settle
+
+        setDraw(climbTubes, SEG_C, uc);
+        setDraw(plungeTubes, SEG_P, up);
+
+        if (crashed) plungeCurve.getPointAt(up, tipP);
+        else climbCurve.getPointAt(uc, tipP);
+        tip.position.copy(tipP);
+        tipGlow.position.copy(tipP);
+        tipHalo.position.copy(tipP);
+        var pulse = 1 + 0.12 * Math.sin(t * (crashed ? 16 : 9));
+        tipGlow.scale.setScalar((crashed ? 1.9 : 1.5) * pulse);
+        tipHalo.scale.setScalar((crashed ? 4.2 : 3.4) * (1 + 0.06 * Math.sin(t * 5)));
+        tipGlow.material.color.setHex(crashed ? C.red : C.amber);
+        tipHalo.material.color.setHex(crashed ? C.red : C.amber);
+        tipCoreMat.color.setHex(crashed ? 0xffd9dd : C.cream);
+        joint.visible = crashed;
+
+        // amber dims once the red takes focus
+        amberMat.emissiveIntensity = lerp(1.0, 0.62, kc);
+        aHalo1.uniforms.uOpacity.value = lerp(0.6, 0.32, kc);
+        aHalo2.uniforms.uOpacity.value = lerp(0.2, 0.1, kc);
+
+        // lights
+        tipLight.position.set(tipP.x, tipP.y + 0.35, tipP.z + 0.7);
+        tipLight.intensity = lerp(9, 1.2, kc);
+        var k = t - CRASH_AT;
+        var flashI = 0;
+        if (k >= 0) {
+          flashI = k < 0.04 ? 75 * (k / 0.04) : 10 + 65 * Math.exp(-(k - 0.04) * 7);
+          flashI *= 1 + 0.07 * Math.sin(t * 41);
+        }
+        redLight.intensity = flashI;
+        redLight.position.set(tipP.x + 0.1, tipP.y + 0.3, tipP.z + 0.9);
+
+        // floor glow under the tip
+        tipSpot.position.x = tipP.x;
+        tipSpot.position.z = tipP.z;
+        tipSpot.material.color.setHex(crashed ? C.red : C.amber);
+        tipSpot.material.opacity = crashed ? 0.32 + 0.4 * Math.exp(-Math.max(0, k) * 5) : 0.3;
+        var sp = crashed ? 1.25 : 1;
+        tipSpot.scale.set(sp, sp, 1);
+
+        // candles: grow as the tip passes, the ones by the crash bleed red
+        for (var i = 0; i < candles.length; i++) {
+          var c = candles[i];
+          var g = clamp01((t - c.at) / 0.32);
+          var s = g <= 0 ? 0.001 : eOutBack(g, 1.6);
+          c.g.scale.y = Math.max(0.001, s);
+          c.g.visible = g > 0;
+          var rk = c.red ? 1 : c.redAmt ? smooth(clamp01((t - c.redFrom) / 0.16)) * c.redAmt : 0;
+          c.bm.color.copy(BODY_V).lerp(BODY_R, rk);
+          c.bm.emissive.copy(EMI_V).lerp(EMI_R, rk);
+          c.wm.emissive.copy(WICK_V).lerp(WICK_R, rk);
+        }
+
+        // dust drift
+        dust.position.set(Math.sin(t * 0.7) * 0.12, t * 0.2, 0);
+
+        // camera
+        placeCamera(t);
+
+        // ---- pass 1: mirrored chart under the floor (glossy reflection) ----
+        renderer.setClearColor(C.canvas, 1);
+        renderer.clear(true, true, true);
+        chart.scale.y = -1;
+        floor.visible = grid.visible = floorGlow.visible = tipSpot.visible = horizon.visible = nebula.visible = dust.visible = false;
+        for (var li = 0; li < LIGHTS.length; li++) LIGHTS[li].position.y = -LIGHTS[li].position.y;
+        renderer.render(scene, camera);
+        for (var lj = 0; lj < LIGHTS.length; lj++) LIGHTS[lj].position.y = -LIGHTS[lj].position.y;
+        // ---- pass 2: floor over the reflection, then the real scene ----
+        renderer.clearDepth();
+        chart.scale.y = 1;
+        floor.visible = grid.visible = floorGlow.visible = tipSpot.visible = horizon.visible = nebula.visible = dust.visible = true;
+        renderer.render(scene, camera);
+
+        // ---- DOM overlays (positions from our own scene math, projected) ----
+        var st = toScreen(tipP);
+        var ox = lerp(-30, -215, kc);
+        var oy = lerp(-120, -44, kc);
+        var pcx = clamp(st[0] + ox, 60 + 120, 1020 - 120);
+        var pcy = clamp(st[1] + oy, 120 + 40, 1120 - 40);
+        tagPos.style.transform = "translate3d(" + st[0].toFixed(2) + "px," + st[1].toFixed(2) + "px,0)";
+        var dx = pcx - st[0];
+        var dy = pcy - st[1];
+        tagBox.style.left = (dx - 118).toFixed(2) + "px";
+        tagBox.style.top = (dy - 37).toFixed(2) + "px";
+        leader.setAttribute("x2", dx.toFixed(2));
+        leader.setAttribute("y2", dy.toFixed(2));
+        var isRed = crashed ? 1 : 0;
+        if (isRed !== lastRed) {
+          var col = isRed ? "#ff4d5e" : "#feb022";
+          leader.setAttribute("stroke", col);
+          anchor.setAttribute("stroke", col);
+          lastRed = isRed;
+        }
+        anchor.setAttribute("r", (13 + 3 * Math.sin(t * 10)).toFixed(2));
+
+        var v = 8.2 * clamp01(crashed ? 1 : uc);
+        var txt = "+" + v.toFixed(1) + "%";
+        if (txt !== lastTxt) {
+          pillA.textContent = txt;
+          lastTxt = txt;
+        }
+        var flipped = t >= FLIP_AT;
+        pillA.style.opacity = flipped ? "0" : "1";
+        pillR.style.opacity = flipped ? "1" : "0";
+
+        var sa = toScreen(ALERT_ANCHOR);
+        alertPos.style.transform =
+          "translate3d(" + clamp(sa[0], 60 + 100, 1020 - 100).toFixed(2) + "px," + clamp(sa[1], 120 + 100, 1120 - 100).toFixed(2) + "px,0)";
+        ringState(ring1, ALERT_AT + 0.06, 0.5, t);
+        ringState(ring2, HOW_AT, 0.42, t);
+
+        // red edge vignette: hit on "wrong", settle, second pulse on "how"
+        var vo = 0;
+        if (k >= 0) {
+          vo = k < 0.07 ? k / 0.07 : 0.45 + 0.55 * Math.exp(-(k - 0.07) * 6);
+          var kh = t - HOW_AT;
+          if (kh >= 0) vo += 0.3 * Math.exp(-kh * 7) * clamp01(kh / 0.04);
+        }
+        vig.style.opacity = clamp01(vo).toFixed(3);
+        flash.style.opacity = (k >= 0 ? (k < 0.03 ? 0.22 * (k / 0.03) : 0.22 * Math.exp(-(k - 0.03) * 14)) : 0).toFixed(3);
+
+        // RGB-split flicker on the DOM overlays only (quantized to frames, two bursts)
+        var step = Math.floor(t * 25 + 1e-4);
+        var amp = 0;
+        if (k >= 0 && k < 0.32) amp = 1 - k / 0.32;
+        var ka = t - ALERT_AT;
+        if (ka >= 0 && ka < 0.14) amp = Math.max(amp, 0.7 * (1 - ka / 0.14));
+        if (amp > 0) {
+          var on = hash(step * 7.3 + 1) > 0.22;
+          var off = on ? (6 + 10 * hash(step * 3.1 + 2)) * amp : 0;
+          var jx = (hash(step * 11.7 + 3) * 2 - 1) * 9 * amp;
+          fx.style.filter =
+            off > 0.5
+              ? "drop-shadow(" + off.toFixed(1) + "px 0 0 rgba(255,40,90,0.85)) drop-shadow(" + (-off).toFixed(1) + "px 0 0 rgba(40,230,255,0.75))"
+              : "none";
+          fx.style.transform = "translate3d(" + jx.toFixed(2) + "px,0,0)";
+        } else {
+          fx.style.filter = "none";
+          fx.style.transform = "translate3d(0px,0,0)";
+        }
+      }
+
+      // ---------------- timeline ----------------
+      var tl = gsap.timeline({ paused: true });
+      var clock = { t: 0 };
+      tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { renderAt(clock.t); } }, 0);
+
+      // price tag pops in on "When"
+      tl.fromTo($("tagfade"), { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "power1.out" }, 0.09);
+      tl.fromTo($("tagpop"), { scale: 0.4, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(1.8)" }, 0.09);
+      // card-flip to red as the value crashes through zero
+      tl.fromTo($("tagflip"), { scaleY: 1 }, { scaleY: 0, duration: 0.05, ease: "power2.in" }, FLIP_AT - 0.05);
+      tl.to($("tagflip"), { scaleY: 1, duration: 0.22, ease: "back.out(2.4)" }, FLIP_AT);
+      // alert triangle springs in
+      tl.fromTo(
+        $("alertpop"),
+        { scale: 0, rotation: -35, opacity: 0 },
+        { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.9)" },
+        ALERT_AT
+      );
+
+      renderAt(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines[ID] = tl;
+    })();
+  </script>
+</template>

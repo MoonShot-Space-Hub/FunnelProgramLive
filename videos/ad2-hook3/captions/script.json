@@ -1,0 +1,26 @@
+{
+  "_note": "English captions for Ad 2 (speech is Hindi with English trading terms). Each phrase has a time window from speech-band pauses; words with an @time are anchored to the moment he says that English word (Parakeet word timings); the rest are spread across the window. '*' marks an amber keyword, '!' a red one. Edit here, then run tools/build_captions_translated.py.",
+  "phrases": [
+    { "window": [0.30, 2.12], "text": "Trading is just like *garba*." },
+    { "window": [2.52, 5.32], "text": "If you've ever been to *Navratri*," },
+    { "window": [5.40, 7.52], "text": "different songs@5.44, different *steps*@6.80." },
+    { "window": [7.68, 9.44], "text": "Every song has its own *rhythm*." },
+    { "window": [9.60, 11.86], "text": "Same way, market trends@11.12 change@11.44." },
+    { "window": [12.10, 14.20], "text": "*Uptrend*@12.16 to *downtrend*@12.80, downtrend@13.28 to *sideways*@13.84." },
+    { "window": [14.36, 17.40], "text": "If you don't change your strategy@15.60, your *steps*@16.32," },
+    { "window": [17.46, 19.26], "text": "you'll face a !problem — a !loss." },
+    { "window": [19.44, 21.92], "text": "That's why you need a *systematic*@20.28 *approach*@20.68." },
+    { "window": [22.08, 23.98], "text": "So to learn this systematic@23.20 approach@23.60:" },
+    { "window": [24.14, 26.98], "text": "Step@24.72 1@24.88 — *entry*@25.36, *exit*@25.68, *stop*@26.16 *loss*@26.40, *target*@26.72." },
+    { "window": [27.20, 29.78], "text": "What's an *uptrend*@27.36, a *downtrend*@28.16, a *sideways*@28.96 trend@29.28?" },
+    { "window": [29.94, 31.56], "text": "You must *identify*@30.24 it," },
+    { "window": [31.60, 33.90], "text": "then implement your *system*@32.88." },
+    { "window": [33.96, 36.24], "text": "I teach all of it in a *free* *masterclass*." },
+    { "window": [36.52, 38.58], "text": "One masterclass@36.96, you learn everything —" },
+    { "window": [38.64, 41.90], "text": "plus@38.64 *risk*@39.20 *management*@39.36 and *mind*@40.32 *management*@40.56." },
+    { "window": [41.94, 43.72], "text": "And it's absolutely *free*." },
+    { "window": [44.40, 46.86], "text": "So@44.40 click@44.56 on@44.80 the@44.88 *link*@44.96 and@45.12 check@45.28 out@45.44 this@45.60 *one*@45.84 *hour*@46.08 *masterclass*@46.32" },
+    { "window": [46.88, 49.84], "text": "where@46.88 you@47.04 learn@47.20 step@47.52 by@47.76 step@47.92 process@48.16 to@48.56 become@48.72 a@49.12 *systematic*@49.28 *trader*@49.84." },
+    { "window": [50.40, 52.30], "text": "So@50.40 click@50.64 on@50.88 the@50.96 *link*@51.04 and@51.20 *book*@51.36 *your*@51.60 *seat*@51.76 right@52.08 now@52.16." }
+  ]
+}

@@ -39,56 +39,55 @@ LENGTH = {
 # impacts are mastered very hot (-4.5 to -6.5 LUFS), so they sit near 0.1;
 # whooshes (-15 LUFS) near 0.23; sparkle (-11 LUFS) 0.11; glitch (-4.5 LUFS) 0.06.
 CUES = [
-    # intro blink into b1
-    (2.02, "whoosh-short", 0.22, "blink"),
-    # b1 three years (2.10–6.50)
-    (3.78, "click-soft", 0.3, "b1 year tick"),
-    (4.00, "click-soft", 0.3, "b1 year tick"),
-    (4.22, "click-soft", 0.3, "b1 year tick"),
-    (4.44, "click-soft", 0.3, "b1 year tick"),
-    (5.10, "whoosh", 0.24, "b1 phone rises"),
-    (5.86, "pop", 0.34, "b1 question badge"),
-    (6.36, "whoosh-short", 0.22, "b1 out"),
-    # b2 balance unknown (15.10–18.90)
-    (15.20, "whoosh", 0.24, "b2 in"),
-    (16.40, "chime", 0.4, "b2 fingerprint unlock"),
-    (18.24, "sparkle", 0.11, "b2 question marks land"),
-    (18.76, "whoosh-short", 0.22, "b2 out"),
-    # b3 chart crash (20.95–22.85)
-    (20.90, "whoosh", 0.24, "b3 blocks"),
-    (22.00, "impact-bass-1", 0.11, "b3 crash"),
-    (22.00, "glitch-2", 0.06, "b3 crash glitch", 0.9, 0.8),
-    (22.71, "whoosh-short", 0.22, "b3 out"),
-    # b4 two voices (25.55–29.40)
-    (25.65, "whoosh", 0.24, "b4 in"),
-    (26.72, "pop", 0.34, "b4 VS"),
-    (27.30, "impact-bass-1", 0.1, "b4 harsh card slams"),
-    (29.26, "whoosh-short", 0.22, "b4 out"),
-    # b5 same date (32.40–38.15)
-    (32.50, "whoosh", 0.24, "b5 in"),
-    (34.16, "whoosh-short", 0.22, "b5 page tears"),
-    (34.80, "impact-bass-1", 0.1, "b5 SAME VOICE"),
-    (35.76, "impact-bass-1", 0.1, "b5 SAME HABITS"),
-    (37.04, "impact-bass-1", 0.1, "b5 +3 YEARS"),
-    (38.01, "whoosh-short", 0.22, "b5 out"),
-    # b6 number vs voice (40.00–45.05)
-    (39.95, "whoosh", 0.24, "b6 blocks"),
-    (41.52, "pop", 0.34, "b6 THE NUMBER"),
-    (42.62, "sparkle", 0.11, "b6 counter lands"),
-    (43.84, "pop", 0.34, "b6 THE VOICE"),
-    (44.91, "whoosh-short", 0.22, "b6 out"),
-    # b7 two futures (46.40–50.00)
-    (46.50, "whoosh", 0.24, "b7 in"),
-    (48.00, "impact-bass-2", 0.1, "b7 DON'T WAIT stamp"),
-    (48.85, "whoosh-short", 0.22, "b7 dot takes the amber path"),
-    (49.86, "whoosh-short", 0.22, "b7 out"),
-    # CTA (50.00–51.76)
-    (50.08, "impact-bass-1", 0.12, "CTA JOIN US"),
-    (50.72, "pop", 0.34, "CTA button"),
-    (51.02, "sparkle", 0.11, "CTA sheen"),
+    # g1 Navratri night (2.48–5.38) and songs/steps (5.38–9.58)
+    (2.55, "whoosh", 0.24, "g1 in"),
+    (4.56, "sparkle", 0.11, "NAVRATRI chip"),
+    (5.42, "whoosh-short", 0.22, "g1b in"),
+    (5.44, "click-soft", 0.3, "song tick 1"),
+    (5.96, "click-soft", 0.3, "song tick 2"),
+    (6.48, "click-soft", 0.3, "song tick 3"),
+    (6.80, "pop", 0.34, "NEW STEPS chip"),
+    (9.04, "sparkle", 0.11, "rhythm waveform"),
+    # g2 trends change (9.58–14.34)
+    (9.52, "whoosh", 0.24, "g2 blocks"),
+    (12.16, "pop", 0.34, "UPTREND"),
+    (12.80, "whoosh-short", 0.22, "DOWNTREND"),
+    (13.84, "pop", 0.34, "SIDEWAYS"),
+    (14.20, "whoosh-short", 0.22, "g2 out"),
+    # loss (17.42–19.32), 3D chart crash
+    (17.36, "whoosh", 0.24, "loss blocks"),
+    (18.47, "impact-bass-1", 0.1, "crash"),
+    (18.47, "glitch-2", 0.06, "crash glitch", 0.9, 0.8),
+    (19.18, "whoosh-short", 0.22, "loss out"),
+    # g4 step 1 (24.60–29.92)
+    (24.67, "whoosh", 0.24, "g4 in"),
+    (24.72, "impact-bass-1", 0.08, "STEP 1 badge"),
+    (25.36, "pop", 0.3, "ENTRY"),
+    (25.68, "pop", 0.3, "EXIT"),
+    (26.16, "pop", 0.3, "STOP LOSS"),
+    (26.72, "pop", 0.3, "TARGET"),
+    (27.36, "click-soft", 0.3, "uptrend tile"),
+    (28.16, "click-soft", 0.3, "downtrend tile"),
+    (28.96, "click-soft", 0.3, "sideways tile"),
+    (29.78, "whoosh-short", 0.22, "g4 out"),
+    # g5 bundle (36.48–44.10)
+    (36.55, "whoosh", 0.24, "g5 in"),
+    (36.96, "pop", 0.34, "MASTERCLASS card"),
+    (38.64, "pop", 0.3, "plus"),
+    (39.20, "whoosh-short", 0.2, "RISK MANAGEMENT card"),
+    (40.32, "whoosh-short", 0.2, "MIND MANAGEMENT card"),
+    (43.36, "impact-bass-2", 0.09, "FREE stamp"),
+    (43.36, "sparkle", 0.11, "FREE petals"),
+    (43.96, "whoosh-short", 0.22, "g5 out"),
+    # CTA overlay (44.36–52.36)
+    (45.84, "pop", 0.34, "1-HOUR MASTERCLASS chip"),
+    (49.28, "click-soft", 0.3, "SYSTEMATIC TRADER badge"),
+    (50.64, "pop", 0.34, "BOOK YOUR SEAT button"),
+    (51.36, "click-soft", 0.34, "button tap"),
+    (52.12, "sparkle", 0.1, "final sparkle"),
 ]
 
-END = 51.76
+END = 52.36
 lines = ["      <!-- SFX_BEGIN -->"]
 for n, cue in enumerate(CUES, 1):
     event, name, vol, label = cue[:4]
