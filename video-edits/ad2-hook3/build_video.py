@@ -2,15 +2,18 @@
 """Build the edited "Ad 2 / Hook 3" reel.
 
 Burns English captions (with a black gradient behind them) onto the source
-video, and optionally overlays B-roll clips and a ducked background-music bed.
+video, optionally overlays B-roll clips and a ducked background-music bed, and
+normalises the final mix to --lufs (default -14, the Reels/Shorts norm).
 
 Usage:
   python3 build_video.py --input in.mp4 --fonts fonts/ --out out.mp4 \
-      [--broll broll.json] [--music track.mp3] [--music-volume 0.14]
+      [--broll broll.json] [--music track.wav] [--music-start end] [--music-volume 0.22]
 
 broll.json is a list of {"file": "...", "start": 2.5, "end": 5.5, "offset": 0}
 (start/end are timeline seconds, offset is where to start inside the clip;
-relative paths resolve against the JSON file's folder).
+relative paths resolve against the JSON file's folder). Optional "fade_in" /
+"fade_out" seconds override the default 0.2s; use 0 for a hard cut between
+back-to-back clips. Other keys (e.g. "source", "credit") are ignored.
 
 Needs ffmpeg with libass, Pillow, fontTools, and a Montserrat Black TTF in
 --fonts (e.g. from the @expo-google-fonts/montserrat npm package).
@@ -233,13 +236,21 @@ def build(args):
     for i, clip in enumerate(broll, 1):
         inputs += ["-ss", str(clip.get("offset", 0)), "-i", os.path.join(broll_dir, clip["file"])]
         d = clip["end"] - clip["start"]
-        fade = min(0.2, d / 4)
+        fade_in = clip.get("fade_in", min(0.2, d / 4))
+        fade_out = clip.get("fade_out", min(0.2, d / 4))
+        fades = ""
+        if fade_in:
+            fades += f",fade=t=in:st=0:d={fade_in:.3f}:alpha=1"
+        if fade_out:
+            fades += f",fade=t=out:st={d - fade_out:.3f}:d={fade_out:.3f}:alpha=1"
         # Cover-crop to 9:16, slow push-in, fade edges, shift onto the timeline.
+        # Run 0.1s past the slot so frame-rate conversion can't end the clip a frame
+        # early (which flashes the base video); the overlay's enable window does the cut.
         graph.append(
-            f"[{i}:v]trim=duration={d:.3f},setpts=PTS-STARTPTS,fps=60,"
+            f"[{i}:v]trim=duration={d + 0.1:.3f},setpts=PTS-STARTPTS,fps=60,"
             f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
             f"scale=w='{W}*(1+0.06*t/{d:.3f})':h=-2:eval=frame,crop={W}:{H},"
-            f"format=yuva420p,fade=t=in:st=0:d={fade:.3f}:alpha=1,fade=t=out:st={d - fade:.3f}:d={fade:.3f}:alpha=1,"
+            f"format=yuva420p{fades},"
             f"setpts=PTS+{clip['start']:.3f}/TB[b{i}]"
         )
         graph.append(f"[{last}][b{i}]overlay=eof_action=pass:enable='between(t,{clip['start']:.3f},{clip['end']:.3f})'[base{i}]")
@@ -247,23 +258,37 @@ def build(args):
     fonts_dir = os.path.abspath(args.fonts).replace(":", r"\:")
     graph.append(f"[{last}]subtitles=filename='{ass_path}':fontsdir='{fonts_dir}',format=yuv420p[vout]")
 
-    audio_map = "0:a"
     if args.music:
         idx = len(broll) + 1
-        inputs += ["-stream_loop", "-1", "-i", args.music]
-        fade_out = max(duration - 2.0, 0)
-        graph.append("[0:a]aformat=sample_rates=48000:channel_layouts=stereo,asplit=2[voice][key]")
-        graph.append(
+        # "end" back-times the track so its natural ending lands on the last frame.
+        if args.music_start == "end":
+            music_start = max(probe_duration(args.music) - duration, 0)
+        else:
+            music_start = float(args.music_start)
+        inputs += ["-ss", f"{music_start:.3f}", "-stream_loop", "-1", "-i", args.music]
+        audio = [
+            "[0:a]aformat=sample_rates=48000:channel_layouts=stereo,asplit=2[voice][key]",
             f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=duration={duration:.3f},"
-            f"volume={args.music_volume},afade=t=in:st=0:d=1.0,afade=t=out:st={fade_out:.3f}:d=2.0[bed]"
-        )
-        # Duck the music under the voice.
-        graph.append("[bed][key]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=350[ducked]")
-        graph.append("[voice][ducked]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[aout]")
-        audio_map = "[aout]"
+            f"volume={args.music_volume},afade=t=in:st=0:d=0.3,"
+            f"afade=t=out:st={max(duration - 1.5, 0):.3f}:d=1.5[bed]",
+            # Duck the music under the voice.
+            "[bed][key]sidechaincompress=threshold=0.03:ratio=4:attack=20:release=400[ducked]",
+            "[voice][ducked]amix=inputs=2:duration=first:normalize=0[mix]",
+        ]
+    else:
+        audio = ["[0:a]aformat=sample_rates=48000:channel_layouts=stereo[mix]"]
+
+    # Measure the mix, then apply a static gain to hit the target loudness.
+    measure = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-nostats", *inputs, "-filter_complex",
+         ";".join(audio + ["[mix]ebur128=framelog=quiet[m]"]), "-map", "[m]", "-f", "null", "-"],
+        capture_output=True, text=True, check=True).stderr
+    gain = args.lufs - float(re.findall(r"I:\s+(-?[\d.]+) LUFS", measure)[-1])
+    print(f"mix loudness gain: {gain:+.1f} dB -> {args.lufs} LUFS")
+    graph += audio + [f"[mix]volume={gain:.2f}dB,alimiter=limit=0.84:level=false[aout]"]
 
     cmd = ["ffmpeg", "-hide_banner", "-y", *inputs, "-filter_complex", ";".join(graph),
-           "-map", "[vout]", "-map", audio_map,
+           "-map", "[vout]", "-map", "[aout]",
            "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-profile:v", "high", "-pix_fmt", "yuv420p",
            "-r", "60", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart",
            "-t", f"{duration:.3f}", args.out]
@@ -278,7 +303,9 @@ if __name__ == "__main__":
     p.add_argument("--out", required=True)
     p.add_argument("--broll")
     p.add_argument("--music")
-    p.add_argument("--music-volume", type=float, default=0.14)
+    p.add_argument("--music-volume", type=float, default=0.22)
+    p.add_argument("--music-start", default="0", help="seconds into the track, or 'end' to back-time it")
+    p.add_argument("--lufs", type=float, default=-14.0, help="target integrated loudness of the final mix")
     p.add_argument("--srt")
     p.add_argument("--ass-copy")
     build(p.parse_args())

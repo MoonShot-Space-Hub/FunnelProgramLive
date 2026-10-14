@@ -1,0 +1,22 @@
+[
+  {"file": "g3.mp4", "start": 2.42,  "end": 5.00,  "offset": 0.2, "fade_in": 0, "fade_out": 0,
+   "source": "https://www.pexels.com/video/a-footage-of-a-woman-dancing-8810995/", "credit": "Yan Krukau"},
+  {"file": "g1.mp4", "start": 5.00,  "end": 7.68,  "offset": 3.3, "fade_in": 0,
+   "source": "https://www.pexels.com/video/mother-and-daughter-dancing-while-on-the-grass-7102478/", "credit": "RDNE Stock project"},
+  {"file": "m1.mp4", "start": 9.76,  "end": 12.12, "offset": 7.4, "fade_out": 0,
+   "source": "https://www.pexels.com/video/person-looking-a-stock-market-8480284/", "credit": "ArtHouse Studio"},
+  {"file": "a2.mp4", "start": 12.12, "end": 14.40, "offset": 4.5, "fade_in": 0,
+   "source": "https://www.pexels.com/video/a-person-looking-at-the-stock-analysis-using-a-laptop-7579575/", "credit": "Tima Miroshnichenko"},
+  {"file": "l1.mp4", "start": 17.00, "end": 19.40, "offset": 0.2,
+   "source": "https://www.pexels.com/video/tired-man-using-laptop-7578620/", "credit": "Tima Miroshnichenko"},
+  {"file": "t1.mp4", "start": 27.16, "end": 29.88, "offset": 13.0,
+   "source": "https://www.pexels.com/video/analyzing-a-graphic-7578609/", "credit": "Tima Miroshnichenko"},
+  {"file": "a3.mp4", "start": 31.56, "end": 33.96, "offset": 1.0,
+   "source": "https://www.pexels.com/video/person-looking-at-stock-market-graph-5716235/", "credit": "Artem Podrez"},
+  {"file": "l2.mp4", "start": 38.56, "end": 40.04, "offset": 2.0, "fade_out": 0,
+   "source": "https://www.pexels.com/video/man-evaluating-the-finances-7579571/", "credit": "Tima Miroshnichenko"},
+  {"file": "z2.mp4", "start": 40.04, "end": 41.48, "offset": 5.0, "fade_in": 0,
+   "source": "https://www.pexels.com/video/video-of-a-man-meditating-7117436/", "credit": "KATRIN BOLOVTSOVA"},
+  {"file": "o2.mp4", "start": 45.06, "end": 47.40, "offset": 2.0,
+   "source": "https://www.pexels.com/video/student-having-an-online-class-5904571/", "credit": "Katerina Holmes"}
+]
