@@ -1,0 +1,667 @@
+<template>
+<style>
+[data-composition-id="g1-navratri-ring"] {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FFF4E0; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-fill { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+/* ---------- ground ---------- */
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-base {
+  background-color: #1A0509;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #4A0A14 0%, #1A0509 72%);
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-blob {
+  position: absolute; left: -200px; top: 60px; width: 920px; height: 920px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(200,16,46,1) 0%, rgba(200,16,46,0.55) 40%, rgba(200,16,46,0.14) 74%, rgba(200,16,46,0) 100%);
+  opacity: 0.35;
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-goldglow {
+  position: absolute; left: 230px; top: 330px; width: 620px; height: 620px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255,201,60,1) 0%, rgba(255,201,60,0.4) 45%, rgba(255,201,60,0) 100%);
+  opacity: 0.18;
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-floorglow {
+  position: absolute; left: 20px; top: 610px; width: 1040px; height: 380px; border-radius: 50%;
+  background: radial-gradient(ellipse closest-side, rgba(255,159,28,0.5) 0%, rgba(200,16,46,0.22) 55%, rgba(200,16,46,0) 100%);
+  opacity: 0.55;
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-lowglow {
+  position: absolute; left: -140px; top: 1280px; width: 1360px; height: 760px; border-radius: 50%;
+  background: radial-gradient(ellipse closest-side, rgba(74,10,20,0.9) 0%, rgba(74,10,20,0.35) 60%, rgba(74,10,20,0) 100%);
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-mandala { position: absolute; left: -110px; top: -10px; width: 1300px; height: 1300px; opacity: 0.13; overflow: visible; }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-veil { background: #1A0509; }
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-bokeh { position: absolute; display: block; border-radius: 50%; }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-grain { opacity: 0.06; }
+
+/* ---------- stage ---------- */
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-cam { transform-origin: 540px 640px; }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-lights { position: absolute; left: 0; top: 0; width: 1080px; height: 420px; overflow: visible; transform-origin: 540px 260px; }
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-wire { fill: none; stroke: rgba(255,201,60,0.42); stroke-width: 1.6; stroke-linecap: round; }
+
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-rays { position: absolute; left: 40px; top: 140px; width: 1000px; height: 1000px; }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-raysin {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,201,60,0) 0deg, rgba(255,201,60,0.75) 3deg, rgba(255,201,60,0) 7deg, rgba(255,201,60,0) 15deg);
+  -webkit-mask-image: radial-gradient(circle closest-side, rgba(0,0,0,1) 12%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,0) 100%);
+  mask-image: radial-gradient(circle closest-side, rgba(0,0,0,1) 12%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,0) 100%);
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-bloom { position: absolute; left: 150px; top: 250px; width: 780px; height: 780px; }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-bloomin {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255,159,28,0.95) 0%, rgba(255,159,28,0.45) 32%, rgba(200,16,46,0.16) 64%, rgba(200,16,46,0) 100%);
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-halo { position: absolute; left: 140px; top: 220px; width: 800px; height: 800px; overflow: visible; }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-floor { position: absolute; left: 0; top: 560px; width: 1080px; height: 500px; overflow: visible; }
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-stroke { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-arena { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-dancer { position: absolute; left: 0; top: 0; width: 130px; height: 230px; transform-origin: 65px 228px; }
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-dflip { position: absolute; left: 0; top: 0; width: 130px; height: 230px; transform-origin: 65px 228px; }
+[data-composition-id="g1-navratri-ring"] .g1-navratri-ring-dflip svg { display: block; overflow: visible; }
+
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-garbo { position: absolute; left: 390px; top: 470px; width: 300px; height: 330px; z-index: 20; }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-garborise { position: absolute; left: 0; top: 0; width: 300px; height: 330px; filter: url(#g1-navratri-ring-vblur); }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-garbosvg { position: absolute; left: 0; top: 0; width: 300px; height: 330px; overflow: visible; }
+
+/* ---------- title chip ---------- */
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-chipwrap { position: absolute; left: 0; top: 340px; width: 1080px; height: 110px; text-align: center; z-index: 60; }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-shock {
+  position: absolute; left: 400px; top: -85px; width: 280px; height: 280px; border-radius: 50%;
+  border: 3px solid rgba(255,201,60,0.9); box-shadow: 0 0 24px rgba(255,159,28,0.6);
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-chipblur { display: inline-block; filter: url(#g1-navratri-ring-cblur); }
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-chip {
+  position: relative; display: inline-block; overflow: hidden;
+  padding: 18px calc(46px - 0.14em) 18px 46px; border-radius: 999px;
+  background: #FFF4E0; border: 3px solid #FF9F1C;
+  box-shadow: 0 0 0 6px rgba(255,159,28,0.18), 0 0 46px rgba(255,159,28,0.55), 0 22px 50px rgba(0,0,0,0.5);
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 62px; line-height: 1;
+  letter-spacing: 0.14em; color: #4A0A14; white-space: nowrap;
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-chipsheen {
+  position: absolute; left: 0; top: -20px; width: 120px; height: 140px;
+  background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%);
+}
+[data-composition-id="g1-navratri-ring"] #g1-navratri-ring-sparks { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; z-index: 61; pointer-events: none; }
+</style>
+
+<div id="root" data-composition-id="g1-navratri-ring" data-start="0" data-duration="2.9" data-width="1080" data-height="1920">
+  <svg class="g1-navratri-ring-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="g1-navratri-ring-vblur" x="-20%" y="-40%" width="140%" height="180%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="g1-navratri-ring-vblur-node" in="SourceGraphic" stdDeviation="0 16"></feGaussianBlur>
+      </filter>
+      <filter id="g1-navratri-ring-cblur" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="g1-navratri-ring-cblur-node" in="SourceGraphic" stdDeviation="0 12"></feGaussianBlur>
+      </filter>
+      <filter id="g1-navratri-ring-holeglow" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3.2" result="b"></feGaussianBlur>
+        <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+      </filter>
+      <filter id="g1-navratri-ring-soft" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5"></feGaussianBlur>
+      </filter>
+      <filter id="g1-navratri-ring-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track, covers all 1920px -->
+  <div id="g1-navratri-ring-ground" class="clip g1-navratri-ring-layer" data-start="0" data-duration="2.9" data-track-index="0">
+    <div id="g1-navratri-ring-base" class="g1-navratri-ring-fill"></div>
+    <div id="g1-navratri-ring-blob"></div>
+    <div id="g1-navratri-ring-lowglow"></div>
+    <svg id="g1-navratri-ring-mandala" viewBox="0 0 1300 1300" aria-hidden="true">
+      <g id="g1-navratri-ring-mandrot"></g>
+    </svg>
+    <div id="g1-navratri-ring-veil" class="g1-navratri-ring-fill"></div>
+    <div id="g1-navratri-ring-goldglow"></div>
+    <div id="g1-navratri-ring-floorglow"></div>
+    <div id="g1-navratri-ring-bokehs" class="g1-navratri-ring-fill"></div>
+    <svg id="g1-navratri-ring-lights" viewBox="0 0 1080 420" aria-hidden="true">
+        <defs>
+          <radialGradient id="g1-navratri-ring-bg0"><stop offset="0" stop-color="#FFC93C" stop-opacity="0.95"></stop><stop offset="0.35" stop-color="#FFC93C" stop-opacity="0.45"></stop><stop offset="1" stop-color="#FFC93C" stop-opacity="0"></stop></radialGradient>
+          <radialGradient id="g1-navratri-ring-bg1"><stop offset="0" stop-color="#FF9F1C" stop-opacity="0.95"></stop><stop offset="0.35" stop-color="#FF9F1C" stop-opacity="0.45"></stop><stop offset="1" stop-color="#FF9F1C" stop-opacity="0"></stop></radialGradient>
+          <radialGradient id="g1-navratri-ring-bg2"><stop offset="0" stop-color="#E5007D" stop-opacity="0.9"></stop><stop offset="0.35" stop-color="#E5007D" stop-opacity="0.4"></stop><stop offset="1" stop-color="#E5007D" stop-opacity="0"></stop></radialGradient>
+          <radialGradient id="g1-navratri-ring-bg3"><stop offset="0" stop-color="#FFF4E0" stop-opacity="0.95"></stop><stop offset="0.35" stop-color="#FFF4E0" stop-opacity="0.4"></stop><stop offset="1" stop-color="#FFF4E0" stop-opacity="0"></stop></radialGradient>
+        </defs>
+        <path id="g1-navratri-ring-w0" class="g1-navratri-ring-wire" d="M -40 112 Q 540 252 1120 112"></path>
+        <path id="g1-navratri-ring-w1" class="g1-navratri-ring-wire" d="M -40 168 Q 270 330 540 200 Q 810 330 1120 168"></path>
+        <path id="g1-navratri-ring-w2" class="g1-navratri-ring-wire" d="M -40 238 Q 540 378 1120 238"></path>
+        <g id="g1-navratri-ring-bulbs"></g>
+      </svg>
+    <svg id="g1-navratri-ring-grain" class="g1-navratri-ring-fill" width="1080" height="1920" aria-hidden="true">
+      <rect x="0" y="0" width="1080" height="1920" filter="url(#g1-navratri-ring-grainf)"></rect>
+    </svg>
+  </div>
+
+  <!-- stage: all content inside x60-1020 / y120-1120 -->
+  <div id="g1-navratri-ring-stage" class="clip g1-navratri-ring-layer" data-start="0" data-duration="2.9" data-track-index="1">
+    <div id="g1-navratri-ring-cam" class="g1-navratri-ring-fill">
+      <div id="g1-navratri-ring-rays"><div id="g1-navratri-ring-raysin"></div></div>
+      <div id="g1-navratri-ring-bloom"><div id="g1-navratri-ring-bloomin"></div></div>
+
+      <svg id="g1-navratri-ring-halo" viewBox="0 0 800 800" aria-hidden="true">
+        <g id="g1-navratri-ring-haloA">
+          <circle id="g1-navratri-ring-hring" class="g1-navratri-ring-stroke" cx="400" cy="400" r="304" stroke="#FFC93C" stroke-width="2.4" stroke-opacity="0.6" transform="rotate(-90 400 400)"></circle>
+          <path id="g1-navratri-ring-hscallop" class="g1-navratri-ring-stroke" stroke="#FF9F1C" stroke-width="3.4" stroke-opacity="0.9"></path>
+        </g>
+        <g id="g1-navratri-ring-haloB">
+          <path id="g1-navratri-ring-hstar" class="g1-navratri-ring-stroke" stroke="#C8102E" stroke-width="3" stroke-opacity="0.95"></path>
+          <circle id="g1-navratri-ring-hinner" class="g1-navratri-ring-stroke" cx="400" cy="400" r="186" stroke="#FFC93C" stroke-width="1.6" stroke-opacity="0.5" transform="rotate(90 400 400)"></circle>
+        </g>
+        <g id="g1-navratri-ring-haloC"></g>
+      </svg>
+
+      <svg id="g1-navratri-ring-floor" viewBox="0 0 1080 500" aria-hidden="true">
+        <ellipse id="g1-navratri-ring-fring" class="g1-navratri-ring-stroke" cx="540" cy="225" rx="458" ry="170" stroke="#FFC93C" stroke-width="2.2" stroke-opacity="0.5"></ellipse>
+        <path id="g1-navratri-ring-fscallop" class="g1-navratri-ring-stroke" stroke="#FF9F1C" stroke-width="2.6" stroke-opacity="0.62"></path>
+        <ellipse id="g1-navratri-ring-finner" class="g1-navratri-ring-stroke" cx="540" cy="225" rx="356" ry="128" stroke="#C8102E" stroke-width="2.4" stroke-opacity="0.75"></ellipse>
+        <g id="g1-navratri-ring-fdots"></g>
+      </svg>
+
+      <div id="g1-navratri-ring-arena">
+        <div id="g1-navratri-ring-garbo">
+          <div id="g1-navratri-ring-garborise">
+            <svg id="g1-navratri-ring-garbosvg" viewBox="0 0 300 330" aria-hidden="true">
+              <defs>
+                <radialGradient id="g1-navratri-ring-potg" cx="0.4" cy="0.36" r="0.72">
+                  <stop offset="0" stop-color="#E88A45"></stop>
+                  <stop offset="0.38" stop-color="#B9521F"></stop>
+                  <stop offset="0.78" stop-color="#6A2310"></stop>
+                  <stop offset="1" stop-color="#2E0C06"></stop>
+                </radialGradient>
+                <linearGradient id="g1-navratri-ring-neckg" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#5A1D0C"></stop>
+                  <stop offset="0.45" stop-color="#C0612B"></stop>
+                  <stop offset="1" stop-color="#4A170A"></stop>
+                </linearGradient>
+                <radialGradient id="g1-navratri-ring-mouthg" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0" stop-color="#FFF4E0"></stop>
+                  <stop offset="0.45" stop-color="#FFC93C"></stop>
+                  <stop offset="1" stop-color="#FF9F1C"></stop>
+                </radialGradient>
+                <linearGradient id="g1-navratri-ring-flameg" x1="0" y1="1" x2="0" y2="0">
+                  <stop offset="0" stop-color="#FF9F1C"></stop>
+                  <stop offset="0.55" stop-color="#FF6A1C"></stop>
+                  <stop offset="1" stop-color="#C8102E" stop-opacity="0.85"></stop>
+                </linearGradient>
+                <linearGradient id="g1-navratri-ring-flamein" x1="0" y1="1" x2="0" y2="0">
+                  <stop offset="0" stop-color="#FFF4E0"></stop>
+                  <stop offset="1" stop-color="#FFC93C"></stop>
+                </linearGradient>
+                <radialGradient id="g1-navratri-ring-flameglow"><stop offset="0" stop-color="#FFC93C" stop-opacity="0.85"></stop><stop offset="1" stop-color="#FF9F1C" stop-opacity="0"></stop></radialGradient>
+                <linearGradient id="g1-navratri-ring-sheeng" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#FFF4E0" stop-opacity="0"></stop>
+                  <stop offset="0.5" stop-color="#FFF4E0" stop-opacity="0.55"></stop>
+                  <stop offset="1" stop-color="#FFF4E0" stop-opacity="0"></stop>
+                </linearGradient>
+                <clipPath id="g1-navratri-ring-potclip">
+                  <path d="M 100 90 C 40 110, 8 160, 10 205 C 12 262, 70 312, 150 312 C 230 312, 288 262, 290 205 C 292 160, 260 110, 200 90 Z"></path>
+                </clipPath>
+              </defs>
+              <ellipse cx="150" cy="316" rx="128" ry="15" fill="#000" fill-opacity="0.5"></ellipse>
+              <path d="M 100 90 C 40 110, 8 160, 10 205 C 12 262, 70 312, 150 312 C 230 312, 288 262, 290 205 C 292 160, 260 110, 200 90 Z" fill="url(#g1-navratri-ring-potg)" stroke="#FFC93C" stroke-opacity="0.35" stroke-width="1.5"></path>
+              <g clip-path="url(#g1-navratri-ring-potclip)">
+                <path d="M 0 168 Q 150 200 300 168" fill="none" stroke="#C8102E" stroke-width="9" stroke-opacity="0.85"></path>
+                <path d="M 0 159 Q 150 191 300 159" fill="none" stroke="#FFC93C" stroke-width="2" stroke-opacity="0.7"></path>
+                <path d="M 0 177 Q 150 209 300 177" fill="none" stroke="#FFC93C" stroke-width="2" stroke-opacity="0.7"></path>
+                <path d="M 0 252 Q 150 282 300 252" fill="none" stroke="#C8102E" stroke-width="7" stroke-opacity="0.8"></path>
+                <path d="M 0 244 Q 150 274 300 244" fill="none" stroke="#FFC93C" stroke-width="1.6" stroke-opacity="0.6"></path>
+                <g id="g1-navratri-ring-holes" filter="url(#g1-navratri-ring-holeglow)"></g>
+                <g id="g1-navratri-ring-potsheen"><rect x="-120" y="60" width="110" height="280" fill="url(#g1-navratri-ring-sheeng)" transform="skewX(-18)"></rect></g>
+              </g>
+              <path d="M 96 94 L 106 62 L 194 62 L 204 94 Z" fill="url(#g1-navratri-ring-neckg)"></path>
+              <path d="M 98 88 L 202 88" stroke="#FFC93C" stroke-width="2" stroke-opacity="0.6"></path>
+              <ellipse cx="150" cy="62" rx="60" ry="13" fill="#C9692F" stroke="#FFC93C" stroke-opacity="0.6" stroke-width="1.6"></ellipse>
+              <ellipse id="g1-navratri-ring-mouth" cx="150" cy="62" rx="47" ry="8.5" fill="url(#g1-navratri-ring-mouthg)"></ellipse>
+              <g id="g1-navratri-ring-flameignite">
+                <circle id="g1-navratri-ring-flamehalo" cx="150" cy="34" r="46" fill="url(#g1-navratri-ring-flameglow)"></circle>
+                <g id="g1-navratri-ring-flame">
+                  <path d="M 150 -6 C 164 16, 178 32, 172 48 C 168 60, 132 60, 128 48 C 122 32, 136 16, 150 -6 Z" fill="url(#g1-navratri-ring-flameg)"></path>
+                  <path d="M 150 18 C 158 30, 164 40, 160 50 C 157 57, 143 57, 140 50 C 136 40, 142 30, 150 18 Z" fill="url(#g1-navratri-ring-flamein)"></path>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div id="g1-navratri-ring-chipwrap">
+        <div id="g1-navratri-ring-shock"></div>
+        <div id="g1-navratri-ring-chipblur">
+          <div id="g1-navratri-ring-chip">NAVRATRI<span id="g1-navratri-ring-chipsheen"></span></div>
+        </div>
+      </div>
+      <svg id="g1-navratri-ring-sparks" viewBox="0 0 1080 1920" aria-hidden="true"></svg>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var DUR = 2.9;
+  var ID = "g1-navratri-ring";
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(name) { return document.getElementById(ID + "-" + name); }
+  function svgEl(tag, attrs, parent) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function rng(seed) {
+    return function () {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function seg(t, a, d) { return clamp01((t - a) / d); }
+  var P3O = gsap.parseEase("power3.out");
+  var P2O = gsap.parseEase("power2.out");
+  var BACK = gsap.parseEase("back.out(1.8)");
+  var TAU = Math.PI * 2;
+  var R = rng(20261014);
+
+  var tl = gsap.timeline({ paused: true });
+
+  // ======================= BUILD: ground mandala =======================
+  var mand = el("mandrot");
+  (function () {
+    var c = 650, d = "";
+    svgEl("circle", { cx: c, cy: c, r: 610, fill: "none", stroke: "#FFC93C", "stroke-width": 3 }, mand);
+    svgEl("circle", { cx: c, cy: c, r: 470, fill: "none", stroke: "#C8102E", "stroke-width": 4 }, mand);
+    var N = 24;
+    for (var k = 0; k < N; k++) {
+      var a0 = (k / N) * TAU, a1 = ((k + 1) / N) * TAU, am = (a0 + a1) / 2;
+      if (k === 0) d += "M " + (c + 480 * Math.cos(a0)).toFixed(1) + " " + (c + 480 * Math.sin(a0)).toFixed(1);
+      d += " Q " + (c + 640 * Math.cos(am)).toFixed(1) + " " + (c + 640 * Math.sin(am)).toFixed(1) + " " + (c + 480 * Math.cos(a1)).toFixed(1) + " " + (c + 480 * Math.sin(a1)).toFixed(1);
+      svgEl("circle", { cx: (c + 535 * Math.cos(am)).toFixed(1), cy: (c + 535 * Math.sin(am)).toFixed(1), r: 7, fill: "#FFC93C" }, mand);
+    }
+    svgEl("path", { d: d, fill: "none", stroke: "#FF9F1C", "stroke-width": 3 }, mand);
+    var d2 = "";
+    for (var j = 0; j <= 32; j++) {
+      var a = (j / 32) * TAU, rr = j % 2 ? 330 : 420;
+      d2 += (j ? " L " : "M ") + (c + rr * Math.cos(a)).toFixed(1) + " " + (c + rr * Math.sin(a)).toFixed(1);
+    }
+    svgEl("path", { d: d2, fill: "none", stroke: "#FFC93C", "stroke-width": 2.5 }, mand);
+  })();
+
+  // ======================= BUILD: ground bokeh =======================
+  var BOKEH = [];
+  var bokehHost = el("bokehs");
+  var BCOL = ["255,201,60", "255,159,28", "255,244,224", "229,0,125", "255,201,60", "255,159,28"];
+  for (var bi = 0; bi < 30; bi++) {
+    var top = bi < 21;
+    var bx = 30 + R() * 1020;
+    var by = top ? 70 + R() * 560 : 640 + R() * 1180;
+    var bs = top ? 34 + R() * 96 : 40 + R() * 120;
+    var col = BCOL[Math.floor(R() * BCOL.length)];
+    var node = document.createElement("i");
+    node.className = ID + "-bokeh";
+    node.style.left = (bx - bs / 2).toFixed(1) + "px";
+    node.style.top = (by - bs / 2).toFixed(1) + "px";
+    node.style.width = bs.toFixed(1) + "px";
+    node.style.height = bs.toFixed(1) + "px";
+    node.style.opacity = "0";
+    node.style.background = "radial-gradient(circle closest-side, rgba(" + col + ",0.5) 0%, rgba(" + col + ",0.55) 66%, rgba(" + col + ",0.85) 84%, rgba(" + col + ",0) 100%)";
+    bokehHost.appendChild(node);
+    BOKEH.push({
+      n: node, base: (top ? 0.14 : 0.08) + R() * (top ? 0.2 : 0.12), amp: 6 + R() * 14,
+      ph: R() * TAU, fq: 1.4 + R() * 2.4, delay: 0.04 + (Math.abs(bx - 540) / 540) * 0.5 + R() * 0.22
+    });
+  }
+
+  // ======================= BUILD: string-light bulbs =======================
+  var BULBS = [];
+  var bulbHost = el("bulbs");
+  var wires = [el("w0"), el("w1"), el("w2")];
+  var WIRE_AT = [0.0, 0.08, 0.16], WIRE_DUR = 0.95;
+  wires.forEach(function (w, wi) {
+    var L = w.getTotalLength();
+    w.style.strokeDasharray = L.toFixed(1);
+    w.style.strokeDashoffset = L.toFixed(1);
+    tl.fromTo(w, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: WIRE_DUR, ease: "power1.inOut" }, WIRE_AT[wi]);
+    var spacing = 58 + wi * 4, n = Math.floor(L / spacing);
+    var ease = gsap.parseEase("power1.inOut");
+    for (var k = 1; k < n; k++) {
+      var f = (k * spacing + wi * 17) / L;
+      if (f >= 1) break;
+      var pt = w.getPointAtLength(f * L);
+      if (pt.x < 8 || pt.x > 1072) continue;
+      var ci = (k + wi) % 4;
+      var g = svgEl("g", { transform: "translate(" + pt.x.toFixed(1) + " " + (pt.y + 8).toFixed(1) + ")", opacity: 0 }, bulbHost);
+      svgEl("line", { x1: 0, y1: -8, x2: 0, y2: -3, stroke: "rgba(255,201,60,0.5)", "stroke-width": 1.4 }, g);
+      var glow = svgEl("circle", { cx: 0, cy: 3, r: 19, fill: "url(#" + ID + "-bg" + ci + ")" }, g);
+      svgEl("circle", { cx: 0, cy: 3, r: 4.6, fill: ci === 2 ? "#FFD3EA" : "#FFF4E0" }, g);
+      // time the draw head reaches this bulb (invert power1.inOut numerically)
+      var lo = 0, hi = 1;
+      for (var it = 0; it < 18; it++) { var mid = (lo + hi) / 2; if (ease(mid) < f) lo = mid; else hi = mid; }
+      BULBS.push({ g: g, glow: glow, on: WIRE_AT[wi] + lo * WIRE_DUR, ph: R() * TAU, fq: 3 + R() * 4 });
+    }
+  });
+
+  // ======================= BUILD: halo rangoli =======================
+  (function () {
+    var c = 400, d = "", N = 16, d2 = "";
+    for (var k = 0; k < N; k++) {
+      var a0 = (k / N) * TAU - Math.PI / 2, a1 = ((k + 1) / N) * TAU - Math.PI / 2, am = (a0 + a1) / 2;
+      if (k === 0) d += "M " + (c + 250 * Math.cos(a0)).toFixed(1) + " " + (c + 250 * Math.sin(a0)).toFixed(1);
+      d += " Q " + (c + 322 * Math.cos(am)).toFixed(1) + " " + (c + 322 * Math.sin(am)).toFixed(1) + " " + (c + 250 * Math.cos(a1)).toFixed(1) + " " + (c + 250 * Math.sin(a1)).toFixed(1);
+    }
+    el("hscallop").setAttribute("d", d);
+    for (var j = 0; j <= 48; j++) {
+      var a = (j / 48) * TAU - Math.PI / 2, rr = j % 2 ? 198 : 230;
+      d2 += (j ? " L " : "M ") + (c + rr * Math.cos(a)).toFixed(1) + " " + (c + rr * Math.sin(a)).toFixed(1);
+    }
+    el("hstar").setAttribute("d", d2);
+    var hc = el("haloC");
+    for (var m = 0; m < 32; m++) {
+      var aa = (m / 32) * TAU;
+      svgEl("circle", { cx: (c + 242 * Math.cos(aa)).toFixed(1), cy: (c + 242 * Math.sin(aa)).toFixed(1), r: 0, fill: m % 2 ? "#FFF4E0" : "#FFC93C", "class": ID + "-hdot" }, hc);
+    }
+  })();
+
+  // ======================= BUILD: floor rangoli =======================
+  var FDOTS = [];
+  (function () {
+    var cx = 540, cy = 225, d = "", N = 28;
+    for (var k = 0; k < N; k++) {
+      var a0 = (k / N) * TAU - Math.PI / 2, a1 = ((k + 1) / N) * TAU - Math.PI / 2, am = (a0 + a1) / 2;
+      if (k === 0) d += "M " + (cx + 410 * Math.cos(a0)).toFixed(1) + " " + (cy + 150 * Math.sin(a0)).toFixed(1);
+      d += " Q " + (cx + 466 * Math.cos(am)).toFixed(1) + " " + (cy + 172 * Math.sin(am)).toFixed(1) + " " + (cx + 410 * Math.cos(a1)).toFixed(1) + " " + (cy + 150 * Math.sin(a1)).toFixed(1);
+    }
+    el("fscallop").setAttribute("d", d);
+    var host = el("fdots");
+    for (var m = 0; m < 44; m++) {
+      FDOTS.push({ n: svgEl("circle", { cx: 0, cy: 0, r: 3, fill: m % 3 ? "#FFC93C" : "#FFF4E0", opacity: 0 }, host), a: (m / 44) * TAU, on: 0.62 + (m / 44) * 0.55 });
+    }
+  })();
+
+  // ======================= BUILD: garbo holes =======================
+  var HOLES = [];
+  (function () {
+    var host = el("holes");
+    var rows = [
+      { y: 128, w: 92, n: 7, r: 3.4, shape: "dot" },
+      { y: 146, w: 116, n: 9, r: 4.4, shape: "dot" },
+      { y: 210, w: 138, n: 11, r: 7.5, shape: "petal" },
+      { y: 228, w: 136, n: 12, r: 3.4, shape: "dot" },
+      { y: 280, w: 98, n: 8, r: 4.2, shape: "dot" }
+    ];
+    rows.forEach(function (row, ri) {
+      for (var k = 0; k < row.n; k++) {
+        var th = -1.22 + (2.44 * (k + 0.5)) / row.n + (ri % 2 ? 0.06 : 0);
+        var sx = Math.cos(th);
+        var x = 150 + row.w * Math.sin(th);
+        var y = row.y + 14 * sx;
+        var n;
+        if (row.shape === "petal") {
+          var h = row.r, wv = row.r * 0.6 * sx;
+          n = svgEl("path", { d: "M " + x.toFixed(1) + " " + (y - h).toFixed(1) + " Q " + (x + wv).toFixed(1) + " " + y.toFixed(1) + " " + x.toFixed(1) + " " + (y + h).toFixed(1) + " Q " + (x - wv).toFixed(1) + " " + y.toFixed(1) + " " + x.toFixed(1) + " " + (y - h).toFixed(1) + " Z", fill: "#FFE7A3" }, host);
+        } else {
+          n = svgEl("ellipse", { cx: x.toFixed(1), cy: y.toFixed(1), rx: (row.r * sx).toFixed(2), ry: row.r, fill: "#FFE7A3" }, host);
+        }
+        HOLES.push({ n: n, ph: R() * TAU, fq: 5 + R() * 7, edge: 0.55 + 0.45 * sx });
+      }
+    });
+  })();
+
+  // ======================= BUILD: dancers =======================
+  var SKIRTS = [
+    ["#C8102E", "#E5007D"], ["#FF9F1C", "#C8102E"], ["#E5007D", "#7A0A3A"], ["#FFC93C", "#FF6A1C"],
+    ["#C8102E", "#4A0A14"], ["#12B3A8", "#0B5E6A"], ["#E5007D", "#C8102E"], ["#FF9F1C", "#E5007D"]
+  ];
+  var DANCERS = [];
+  var arena = el("arena");
+  function dancerSVG(i) {
+    var sk = SKIRTS[i], gid = ID + "-sk" + i;
+    var body = "#22070D", rim = "rgba(255,201,60,0.7)";
+    return '<svg viewBox="0 0 130 230" width="130" height="230" aria-hidden="true">' +
+      '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + sk[0] + '"/><stop offset="1" stop-color="' + sk[1] + '"/></linearGradient></defs>' +
+      '<ellipse cx="65" cy="226" rx="46" ry="6" fill="#000" fill-opacity="0.45"/>' +
+      '<g class="' + ID + '-dbody">' +
+        '<g class="' + ID + '-darmL">' +
+          '<path d="M 26 4 L 46 54" stroke="#FFC93C" stroke-width="4.2" stroke-linecap="round"/>' +
+          '<path d="M 26 4 L 46 54" stroke="#C8102E" stroke-width="4.2" stroke-dasharray="4 5" stroke-linecap="butt"/>' +
+          '<circle cx="26" cy="4" r="3.4" fill="#FFF4E0"/>' +
+          '<path d="M 53 80 L 42 60 L 37 40" fill="none" stroke="' + body + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '<circle cx="37" cy="40" r="4.4" fill="' + body + '" stroke="' + rim + '" stroke-width="1"/>' +
+        '</g>' +
+        '<g class="' + ID + '-darmR">' +
+          '<path d="M 104 4 L 84 54" stroke="#FFC93C" stroke-width="4.2" stroke-linecap="round"/>' +
+          '<path d="M 104 4 L 84 54" stroke="#C8102E" stroke-width="4.2" stroke-dasharray="4 5" stroke-linecap="butt"/>' +
+          '<circle cx="104" cy="4" r="3.4" fill="#FFF4E0"/>' +
+          '<path d="M 77 80 L 88 60 L 93 40" fill="none" stroke="' + body + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '<circle cx="93" cy="40" r="4.4" fill="' + body + '" stroke="' + rim + '" stroke-width="1"/>' +
+        '</g>' +
+        '<path d="M 77 78 C 102 100 100 140 78 176 L 71 172 C 90 138 90 104 71 82 Z" fill="#FFC93C" fill-opacity="0.32"/>' +
+        '<g class="' + ID + '-dskirt">' +
+          '<path d="M 52 104 C 44 140, 20 184, 6 214 Q 20 222 36 217 Q 50 225 65 218 Q 80 225 94 217 Q 110 222 124 214 C 110 184, 86 140, 78 104 Z" fill="url(#' + gid + ')" stroke="' + rim + '" stroke-width="1.2"/>' +
+          '<path d="M 58 108 L 40 214 M 65 108 L 65 216 M 72 108 L 90 214" stroke="rgba(255,244,224,0.22)" stroke-width="1.6" fill="none"/>' +
+          '<path d="M 12 203 Q 24 211 38 206 Q 51 213 65 207 Q 79 213 92 206 Q 106 211 118 203" fill="none" stroke="#FFC93C" stroke-width="4"/>' +
+          '<g fill="#FFF4E0"><circle cx="22" cy="206" r="2.1"/><circle cx="37" cy="208" r="2.1"/><circle cx="51" cy="210" r="2.1"/><circle cx="65" cy="209" r="2.1"/><circle cx="79" cy="210" r="2.1"/><circle cx="93" cy="208" r="2.1"/><circle cx="108" cy="206" r="2.1"/></g>' +
+          '<path d="M 40 160 Q 65 168 90 160" fill="none" stroke="#FFC93C" stroke-width="1.6" stroke-opacity="0.7"/>' +
+        '</g>' +
+        '<path d="M 51 78 Q 65 73 79 78 L 76 104 Q 65 109 54 104 Z" fill="' + body + '" stroke="' + rim + '" stroke-width="1.1"/>' +
+        '<path d="M 52 104 Q 65 110 78 104" fill="none" stroke="#FFC93C" stroke-width="3"/>' +
+        '<path d="M 57 80 Q 65 88 73 80" fill="none" stroke="#FFC93C" stroke-width="1.6"/>' +
+        '<rect x="61.5" y="62" width="7" height="14" rx="3" fill="' + body + '"/>' +
+        '<circle cx="77" cy="48" r="7.5" fill="' + body + '" stroke="' + rim + '" stroke-width="1"/>' +
+        '<circle cx="65" cy="54" r="12" fill="' + body + '" stroke="' + rim + '" stroke-width="1.2"/>' +
+        '<circle cx="65" cy="44.5" r="1.9" fill="#FFC93C"/>' +
+      '</g></svg>';
+  }
+  var RX = 400, RY = 150, OCX = 540, OCY = 785, OMEGA = 0.8, ORBIT_T0 = 1.3;
+  var EXP_AT = 1.3, EXP_DUR = 0.95, EXP_STAG = 0.055;
+  for (var di = 0; di < 8; di++) {
+    var outer = document.createElement("div");
+    outer.className = ID + "-dancer";
+    outer.id = ID + "-dancer" + di;
+    var flip = document.createElement("div");
+    flip.className = ID + "-dflip";
+    flip.innerHTML = dancerSVG(di);
+    outer.appendChild(flip);
+    outer.style.opacity = "0";
+    arena.appendChild(outer);
+    DANCERS.push({
+      o: outer, f: flip,
+      body: flip.querySelector("." + ID + "-dbody"),
+      skirt: flip.querySelector("." + ID + "-dskirt"),
+      armL: flip.querySelector("." + ID + "-darmL"),
+      armR: flip.querySelector("." + ID + "-darmR"),
+      a0: (di / 8) * TAU + Math.PI / 8,
+      ph: di * 1.9,
+      at: EXP_AT + di * EXP_STAG
+    });
+  }
+
+  // ======================= BUILD: sparkles =======================
+  var SPARKS = [];
+  (function () {
+    var host = el("sparks");
+    for (var s = 0; s < 16; s++) {
+      var ang = (s / 16) * TAU + (s % 2 ? 0.12 : -0.08);
+      var g = svgEl("g", { opacity: 0 }, host);
+      var sz = s % 3 === 0 ? 15 : 9;
+      svgEl("path", { d: "M 0 " + (-sz) + " Q 1.6 -1.6 " + sz + " 0 Q 1.6 1.6 0 " + sz + " Q -1.6 1.6 " + (-sz) + " 0 Q -1.6 -1.6 0 " + (-sz) + " Z", fill: s % 4 === 1 ? "#FFF4E0" : "#FFC93C" }, g);
+      SPARKS.push({ g: g, ang: ang, dist: 190 + (s % 4) * 38 + (s % 3) * 14, rot: (s % 2 ? 1 : -1) * (90 + s * 11), sc: s % 3 === 0 ? 1.15 : 0.9 });
+    }
+  })();
+
+  // ======================= MASTER AMBIENT CLOCK (pure function of t) =======================
+  var veil = el("veil"), mandRot = el("mandrot"), raysIn = el("raysin"), bloomIn = el("bloomin");
+  var haloA = el("haloA"), haloB = el("haloB"), haloC = el("haloC");
+  var flame = el("flame"), flameHalo = el("flamehalo"), mouth = el("mouth");
+  var CHIP_T = 2.08, SPARK_X = 540, SPARK_Y = 395, shock = el("shock");
+
+  function render(t) {
+    // ground fades up from darkness
+    veil.style.opacity = (0.82 * (1 - P2O(seg(t, 0, 0.9)))).toFixed(3);
+    mandRot.setAttribute("transform", "rotate(" + (-6 + 4.2 * t).toFixed(3) + " 650 650)");
+    for (var i = 0; i < BOKEH.length; i++) {
+      var b = BOKEH[i];
+      var up = P2O(seg(t, b.delay, 0.6));
+      var tw = 0.72 + 0.28 * Math.sin(b.ph + t * b.fq);
+      b.n.style.opacity = (b.base * up * tw).toFixed(3);
+      b.n.style.transform = "translate(" + (b.amp * Math.sin(b.ph + t * 0.6)).toFixed(2) + "px," + (b.amp * 0.7 * Math.cos(b.ph * 1.3 + t * 0.45) - 10 * t).toFixed(2) + "px) scale(" + (0.9 + 0.1 * up).toFixed(3) + ")";
+    }
+    // string lights: light up as the wire head passes, then twinkle
+    for (var j = 0; j < BULBS.length; j++) {
+      var bu = BULBS[j];
+      var lp = seg(t, bu.on, 0.22);
+      bu.g.setAttribute("opacity", clamp01(lp * 2.5).toFixed(3));
+      var flash = lp > 0 ? Math.exp(-Math.max(0, t - bu.on) / 0.18) : 0;
+      var tw2 = 0.62 + 0.38 * Math.sin(bu.ph + t * bu.fq);
+      bu.glow.setAttribute("r", (19 * (0.5 + 0.5 * BACK(lp)) * (1 + 0.5 * flash)).toFixed(2));
+      bu.glow.setAttribute("opacity", Math.min(1, tw2 + flash * 0.6).toFixed(3));
+    }
+    // light rays + bloom breathe (inner layers; outer layers own the bloom-in tween)
+    var flashChip = t > CHIP_T ? Math.exp(-(t - CHIP_T) / 0.28) : 0;
+    raysIn.style.transform = "rotate(" + (8 * t).toFixed(3) + "deg) scale(" + (1 + 0.025 * Math.sin(t * 2.2)).toFixed(4) + ")";
+    bloomIn.style.opacity = (0.86 + 0.08 * Math.sin(t * 2.4) + 0.14 * flashChip).toFixed(3);
+    bloomIn.style.transform = "scale(" + (1 + 0.02 * Math.sin(t * 2.4) + 0.05 * flashChip).toFixed(4) + ")";
+    // halo rangoli: counter-rotating rings
+    haloA.setAttribute("transform", "rotate(" + (7 * t).toFixed(3) + " 400 400)");
+    haloB.setAttribute("transform", "rotate(" + (-11 * t).toFixed(3) + " 400 400)");
+    haloC.setAttribute("transform", "rotate(" + (4 * t).toFixed(3) + " 400 400)");
+    // floor dot ring travels around the ellipse
+    for (var m = 0; m < FDOTS.length; m++) {
+      var fd = FDOTS[m];
+      var a = fd.a + 0.35 * t;
+      var depth = (Math.sin(a) + 1) / 2;
+      fd.n.setAttribute("cx", (540 + 384 * Math.cos(a)).toFixed(1));
+      fd.n.setAttribute("cy", (225 + 139 * Math.sin(a)).toFixed(1));
+      fd.n.setAttribute("r", (BACK(seg(t, fd.on, 0.3)) * (2 + 1.8 * depth)).toFixed(2));
+      fd.n.setAttribute("opacity", (clamp01(seg(t, fd.on, 0.15)) * (0.45 + 0.55 * depth)).toFixed(3));
+    }
+    // garbo: holes flicker, flame dances (deterministic multi-octave sine)
+    for (var h = 0; h < HOLES.length; h++) {
+      var ho = HOLES[h];
+      var fl = 0.7 + 0.18 * Math.sin(ho.ph + t * ho.fq) + 0.12 * Math.sin(ho.ph * 2.3 + t * ho.fq * 2.7);
+      ho.n.setAttribute("opacity", (fl * ho.edge).toFixed(3));
+    }
+    var fsY = 1 + 0.1 * Math.sin(t * 13.1) + 0.05 * Math.sin(t * 29.3 + 1.1);
+    var fsX = 1 - 0.05 * Math.sin(t * 13.1 + 0.6);
+    var fsk = 5 * Math.sin(t * 9.7) + 2.5 * Math.sin(t * 23.9);
+    flame.setAttribute("transform", "translate(150 58) skewX(" + fsk.toFixed(2) + ") scale(" + fsX.toFixed(3) + " " + fsY.toFixed(3) + ") translate(-150 -58)");
+    flameHalo.setAttribute("opacity", (0.75 + 0.2 * Math.sin(t * 11.3)).toFixed(3));
+    mouth.setAttribute("opacity", (0.85 + 0.15 * Math.sin(t * 12.7 + 0.4)).toFixed(3));
+
+    // dancers: centre-outward expansion -> tilted perspective orbit, each in a step cycle
+    for (var d = 0; d < DANCERS.length; d++) {
+      var D = DANCERS[d];
+      var e = P3O(seg(t, D.at, EXP_DUR));
+      if (t < D.at) { D.o.style.opacity = "0"; continue; }
+      var th = D.a0 + OMEGA * (t - ORBIT_T0);
+      var rf = 0.3 + 0.7 * e;
+      var x = OCX + RX * rf * Math.cos(th);
+      var y = OCY + RY * rf * Math.sin(th);
+      var dep = (Math.sin(th) + 1) / 2;
+      var sc = (0.62 + 0.38 * dep) * (0.55 + 0.45 * e);
+      D.o.style.transform = "translate(" + (x - 65).toFixed(2) + "px," + (y - 228).toFixed(2) + "px) scale(" + sc.toFixed(4) + ")";
+      D.o.style.opacity = (clamp01(e * 3.2) * (0.72 + 0.28 * dep)).toFixed(3);
+      var s = Math.sin(th);
+      D.o.style.zIndex = String(s >= 0 ? 21 + Math.round(s * 9) : 19 - Math.round(-s * 9));
+      D.f.style.transform = "perspective(700px) rotateY(" + (72 * (1 - e)).toFixed(2) + "deg)";
+      // step cycle (garba: one step per beat)
+      var w = (t - D.at) * 8.7 + D.ph;
+      var sw = Math.sin(w);
+      var bob = -4.5 * (0.5 - 0.5 * Math.cos(2 * w));
+      D.body.setAttribute("transform", "translate(0 " + bob.toFixed(2) + ") rotate(" + (5 * sw).toFixed(2) + " 65 226)");
+      D.skirt.setAttribute("transform", "translate(65 104) skewX(" + (-7 * sw).toFixed(2) + ") scale(" + (1 + 0.06 * Math.sin(w + 1.5)).toFixed(4) + " 1) translate(-65 -104)");
+      D.armL.setAttribute("transform", "rotate(" + (-6 + 14 * Math.sin(w + 0.4)).toFixed(2) + " 53 80)");
+      D.armR.setAttribute("transform", "rotate(" + (6 + 14 * Math.sin(w + 0.4 + Math.PI)).toFixed(2) + " 77 80)");
+    }
+
+    // shockwave ring behind the chip
+    var shp = seg(t, CHIP_T + 0.02, 0.65);
+    shock.style.opacity = (shp > 0 && shp < 1 ? 0.95 * Math.pow(1 - shp, 1.4) : 0).toFixed(3);
+    shock.style.transform = "scale(" + (0.3 + 2.0 * P2O(shp)).toFixed(4) + ")";
+    // gold sparkle burst on "navratri"
+    for (var k = 0; k < SPARKS.length; k++) {
+      var sp = SPARKS[k];
+      var p = seg(t, CHIP_T + 0.02 + (k % 4) * 0.015, 0.75);
+      if (p <= 0 || p >= 1) { sp.g.setAttribute("opacity", "0"); continue; }
+      var dd = sp.dist * P3O(p);
+      var px = SPARK_X + Math.cos(sp.ang) * dd * 1.25;
+      var py = SPARK_Y + Math.sin(sp.ang) * dd * 0.62;
+      var ss = sp.sc * Math.pow(Math.sin(Math.PI * Math.min(1, p * 1.25)), 0.7);
+      sp.g.setAttribute("transform", "translate(" + px.toFixed(1) + " " + py.toFixed(1) + ") rotate(" + (sp.rot * p).toFixed(1) + ") scale(" + Math.max(0.001, ss).toFixed(3) + ")");
+      sp.g.setAttribute("opacity", (1 - p * p).toFixed(3));
+    }
+  }
+  render(0);
+  var clock = { t: 0 };
+  tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { render(clock.t); } }, 0);
+
+  // ======================= CAMERA: slow push + parallax =======================
+  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.05, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(el("lights"), { scale: 1, y: 0 }, { scale: 1.025, y: -6, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(el("blob"), { x: -30, y: -20 }, { x: 60, y: 50, duration: DUR, ease: "sine.inOut" }, 0);
+
+  // ======================= SCENE 1 (0.0-1.3): rangoli draws, garbo rises, rays bloom =======================
+  function prepDraw(node) {
+    var L = node.getTotalLength() * 1.02;
+    node.style.strokeDasharray = L.toFixed(1);
+    node.style.strokeDashoffset = L.toFixed(1);
+    return L;
+  }
+  var L1 = prepDraw(el("hring"));
+  tl.fromTo(el("hring"), { strokeDashoffset: L1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 0.12);
+  var L2 = prepDraw(el("hscallop"));
+  tl.fromTo(el("hscallop"), { strokeDashoffset: L2 }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.out" }, 0.28);
+  var L3 = prepDraw(el("hstar"));
+  tl.fromTo(el("hstar"), { strokeDashoffset: L3 }, { strokeDashoffset: 0, duration: 0.75, ease: "power2.out" }, 0.44);
+  var L4 = prepDraw(el("hinner"));
+  tl.fromTo(el("hinner"), { strokeDashoffset: L4 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 0.58);
+  var hdots = el("haloC").querySelectorAll("circle");
+  for (var q = 0; q < hdots.length; q++) {
+    tl.fromTo(hdots[q], { attr: { r: 0 } }, { attr: { r: q % 2 ? 3.2 : 4.6 }, duration: 0.32, ease: "back.out(2)" }, 0.7 + q * 0.014);
+  }
+  var L5 = prepDraw(el("fring"));
+  tl.fromTo(el("fring"), { strokeDashoffset: L5 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.out" }, 0.34);
+  var L6 = prepDraw(el("fscallop"));
+  tl.fromTo(el("fscallop"), { strokeDashoffset: L6 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.out" }, 0.48);
+  var L7 = prepDraw(el("finner"));
+  tl.fromTo(el("finner"), { strokeDashoffset: L7 }, { strokeDashoffset: 0, duration: 0.75, ease: "power2.out" }, 0.6);
+
+  // garbo rises into the centre with a vertical motion blur and an overshoot settle
+  tl.fromTo(el("garborise"), { y: 300, scale: 0.82 }, { y: 0, scale: 1, duration: 0.85, ease: "back.out(1.4)" }, 0.1);
+  tl.fromTo(el("garborise"), { opacity: 0 }, { opacity: 1, duration: 0.28, ease: "power1.out" }, 0.1);
+  var vb = el("vblur-node"), vbp = { v: 16 };
+  function writeVB() { vb.setAttribute("stdDeviation", "0 " + vbp.v.toFixed(2)); }
+  writeVB();
+  tl.fromTo(vbp, { v: 16 }, { v: 0, duration: 0.55, ease: "power2.out", onUpdate: writeVB }, 0.1);
+  // flame ignites as the pot lands
+  tl.fromTo(el("flameignite"), { scale: 0, opacity: 0, transformOrigin: "50% 100%" }, { scale: 1, opacity: 1, transformOrigin: "50% 100%", duration: 0.5, ease: "back.out(2)" }, 0.42);
+  // gold rays + bloom land with the garbo settle (one beat)
+  tl.fromTo(el("bloom"), { opacity: 0, scale: 0.8 }, { opacity: 0.42, scale: 1, duration: 0.85, ease: "power2.out" }, 0.2);
+  tl.fromTo(el("rays"), { opacity: 0, scale: 0.7 }, { opacity: 0.34, scale: 1, duration: 0.95, ease: "power2.out" }, 0.25);
+  tl.fromTo(el("goldglow"), { scale: 0.8 }, { scale: 1.08, duration: DUR, ease: "sine.inOut" }, 0);
+  // light sweep across the landed pot
+  tl.fromTo(el("potsheen"), { x: -40 }, { x: 470, duration: 0.6, ease: "power1.inOut" }, 0.98);
+
+  // ======================= SCENE 2 (1.3-2.9): dancers expand + orbit (driven by the clock), title chip =======================
+  // "navratri" @2.08: cream chip pops above the garbo with motion blur, shockwave, sparkle burst
+  tl.fromTo(el("chip"), { scale: 0.35, y: 46, rotation: -5, opacity: 0 }, { scale: 1, y: 0, rotation: 0, opacity: 1, duration: 0.55, ease: "back.out(1.7)" }, CHIP_T - 0.02);
+  var cb = el("cblur-node"), cbp = { v: 12 };
+  function writeCB() { cb.setAttribute("stdDeviation", "0 " + cbp.v.toFixed(2)); }
+  writeCB();
+  tl.fromTo(cbp, { v: 12 }, { v: 0, duration: 0.3, ease: "power2.out", onUpdate: writeCB }, CHIP_T);
+  tl.fromTo(el("chipsheen"), { x: -160 }, { x: 640, duration: 0.5, ease: "power1.inOut" }, CHIP_T + 0.36);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["g1-navratri-ring"] = tl;
+})();
+</script>
+</template>

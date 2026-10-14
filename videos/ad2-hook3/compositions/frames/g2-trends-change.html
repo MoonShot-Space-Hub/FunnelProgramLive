@@ -1,0 +1,638 @@
+<template>
+<style>
+[data-composition-id="g2-trends-change"] {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FFF4E0; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="g2-trends-change"] .g2-trends-change-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+[data-composition-id="g2-trends-change"] .g2-trends-change-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+
+/* ---------- ground ---------- */
+[data-composition-id="g2-trends-change"] .g2-trends-change-base {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background-color: #1A0509;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #4A0A14 0%, #1A0509 72%);
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-blob {
+  position: absolute; left: -300px; top: 960px; width: 1040px; height: 1040px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(200,16,46,1) 0%, rgba(200,16,46,0.55) 40%, rgba(200,16,46,0) 100%);
+  opacity: 0.35;
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-goldglow {
+  position: absolute; left: 380px; top: 250px; width: 760px; height: 760px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255,201,60,1) 0%, rgba(255,201,60,0.4) 45%, rgba(255,201,60,0) 100%);
+  opacity: 0.18;
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-rangoli {
+  position: absolute; left: -60px; top: 20px; width: 1200px; height: 1200px; opacity: 0.14; overflow: visible;
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-rangoli2 {
+  position: absolute; left: 120px; top: 1300px; width: 840px; height: 840px; opacity: 0.11; overflow: visible;
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-wires { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-lights { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="g2-trends-change"] .g2-trends-change-bk { position: absolute; display: block; border-radius: 50%; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-grain { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: 0.06; }
+
+/* ---------- stage / camera ---------- */
+[data-composition-id="g2-trends-change"] #g2-trends-change-cam { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 540px 620px; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-mandala {
+  position: absolute; left: -80px; top: -20px; width: 1240px; height: 1240px; overflow: visible; opacity: 0;
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-ripples { position: absolute; left: -80px; top: -20px; width: 1240px; height: 1240px; overflow: visible; }
+
+/* the chart card */
+[data-composition-id="g2-trends-change"] #g2-trends-change-cardin { position: absolute; left: 60px; top: 240px; width: 960px; height: 720px; transform-origin: 50% 50%; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-card {
+  position: absolute; left: 0; top: 0; width: 960px; height: 720px; border-radius: 34px; overflow: hidden;
+  box-sizing: border-box; border: 3px solid rgba(255,159,28,0.45);
+  background: linear-gradient(160deg, rgba(74,10,20,0.95), rgba(26,5,9,0.95));
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55);
+}
+[data-composition-id="g2-trends-change"] .g2-trends-change-innerline {
+  position: absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border-radius: 25px;
+  border: 1px solid rgba(255,201,60,0.2);
+}
+[data-composition-id="g2-trends-change"] .g2-trends-change-bandhani {
+  position: absolute; left: 0; bottom: 0; width: 300px; height: 220px; opacity: 0.08;
+  background-image: radial-gradient(circle, rgba(255,201,60,1) 2.2px, rgba(255,201,60,0) 3px);
+  background-size: 20px 20px;
+  -webkit-mask-image: radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%);
+  mask-image: radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%);
+}
+[data-composition-id="g2-trends-change"] .g2-trends-change-sheencard {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 34%);
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-cardsweep {
+  position: absolute; left: 0; top: -60px; width: 520px; height: 840px;
+  background: linear-gradient(105deg, rgba(255,230,170,0) 30%, rgba(255,230,170,0.16) 50%, rgba(255,230,170,0) 70%);
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-cardglow {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 34px; box-sizing: border-box;
+  border: 3px solid #FF9F1C; opacity: 0;
+}
+
+/* header: market chip + state chip slot */
+[data-composition-id="g2-trends-change"] #g2-trends-change-mkt { position: absolute; right: 38px; top: 50px; transform-origin: 100% 50%; }
+[data-composition-id="g2-trends-change"] .g2-trends-change-mktchip {
+  display: flex; align-items: center; white-space: nowrap;
+  padding: 11px 20px 11px 16px; border-radius: 999px;
+  border: 2px solid rgba(255,159,28,0.6); background: rgba(255,159,28,0.08);
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 28px; line-height: 1;
+  letter-spacing: 0.14em; color: #FFF4E0;
+}
+[data-composition-id="g2-trends-change"] #g2-trends-change-live { display: block; width: 13px; height: 13px; border-radius: 50%; margin-right: 14px; background: #FF9F1C; box-shadow: 0 0 12px rgba(255,159,28,0.9); }
+[data-composition-id="g2-trends-change"] #g2-trends-change-slot { position: absolute; left: 34px; top: 30px; width: 640px; height: 110px; overflow: hidden; }
+[data-composition-id="g2-trends-change"] .g2-trends-change-chipout,
+[data-composition-id="g2-trends-change"] .g2-trends-change-chipin { position: absolute; left: 0; top: 0; width: 640px; height: 110px; }
+[data-composition-id="g2-trends-change"] .g2-trends-change-chipin { transform-origin: 6% 50%; }
+[data-composition-id="g2-trends-change"] .g2-trends-change-chip {
+  position: absolute; left: 4px; top: 7px; height: 96px; box-sizing: border-box;
+  display: flex; align-items: center; white-space: nowrap; overflow: hidden;
+  padding: 0 28px 0 34px; border-radius: 999px; border: 3px solid;
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 46px; line-height: 1;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+[data-composition-id="g2-trends-change"] .g2-trends-change-chip svg { display: block; width: 46px; height: 46px; margin-left: 10px; overflow: visible; }
+[data-composition-id="g2-trends-change"] .g2-trends-change-chip svg path { fill: none; stroke: currentColor; stroke-width: 6.5; stroke-linecap: round; stroke-linejoin: round; }
+[data-composition-id="g2-trends-change"] .g2-trends-change-up {
+  color: #2BD27A; border-color: #2BD27A; background: rgba(43,210,122,0.13);
+  box-shadow: 0 0 34px rgba(43,210,122,0.35), inset 0 0 22px rgba(43,210,122,0.12); text-shadow: 0 0 26px rgba(43,210,122,0.55);
+}
+[data-composition-id="g2-trends-change"] .g2-trends-change-down {
+  color: #FF3B4E; border-color: #FF3B4E; background: rgba(255,59,78,0.13);
+  box-shadow: 0 0 34px rgba(255,59,78,0.38), inset 0 0 22px rgba(255,59,78,0.12); text-shadow: 0 0 26px rgba(255,59,78,0.55);
+}
+[data-composition-id="g2-trends-change"] .g2-trends-change-side {
+  color: #FFC93C; border-color: #FFC93C; background: rgba(255,201,60,0.13);
+  box-shadow: 0 0 34px rgba(255,201,60,0.35), inset 0 0 22px rgba(255,201,60,0.12); text-shadow: 0 0 26px rgba(255,201,60,0.55);
+}
+[data-composition-id="g2-trends-change"] .g2-trends-change-sheen {
+  position: absolute; left: 0; top: 0; width: 180px; height: 100%;
+  background: linear-gradient(100deg, rgba(255,250,235,0) 0%, rgba(255,250,235,0.42) 50%, rgba(255,250,235,0) 100%);
+}
+
+/* plot */
+[data-composition-id="g2-trends-change"] #g2-trends-change-plotwrap { position: absolute; left: 40px; top: 150px; width: 880px; height: 540px; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-plot { position: absolute; left: 0; top: 0; width: 880px; height: 540px; overflow: visible; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-line,
+[data-composition-id="g2-trends-change"] #g2-trends-change-glow { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-tippos { position: absolute; left: 0; top: 0; width: 176px; height: 58px; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-tippop { position: absolute; left: 0; top: 0; width: 176px; height: 58px; transform-origin: 50% 100%; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-tip {
+  position: absolute; left: 0; top: 0; width: 176px; height: 58px; box-sizing: border-box;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 14px; border: 2px solid #FF9F1C; background: rgba(26,5,9,0.9);
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 32px; line-height: 1;
+  font-variant-numeric: tabular-nums; color: #FF9F1C;
+}
+
+/* dancer on the card's corner */
+[data-composition-id="g2-trends-change"] #g2-trends-change-dancer { position: absolute; left: 786px; top: -116px; width: 103px; height: 120px; transform-origin: 50% 100%; }
+[data-composition-id="g2-trends-change"] #g2-trends-change-dsvg { position: absolute; left: 0; top: 0; width: 103px; height: 120px; overflow: visible; filter: drop-shadow(0 0 10px rgba(255,159,28,0.55)); }
+</style>
+
+<div id="root" data-composition-id="g2-trends-change" data-start="0" data-duration="4.76" data-width="1080" data-height="1920">
+  <svg class="g2-trends-change-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="g2-trends-change-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="31" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+      <filter id="g2-trends-change-streak" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="g2-trends-change-streakblur" in="SourceGraphic" stdDeviation="22 0"></feGaussianBlur>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track, covers all 1920px -->
+  <div id="g2-trends-change-ground" class="clip g2-trends-change-layer" data-start="0" data-duration="4.76" data-track-index="0">
+    <div class="g2-trends-change-base"></div>
+    <div id="g2-trends-change-blob"></div>
+    <div id="g2-trends-change-goldglow"></div>
+    <svg id="g2-trends-change-rangoli" viewBox="-600 -600 1200 1200" width="1200" height="1200" aria-hidden="true"></svg>
+    <svg id="g2-trends-change-rangoli2" viewBox="-420 -420 840 840" width="840" height="840" aria-hidden="true"></svg>
+    <svg id="g2-trends-change-wires" viewBox="0 0 1080 1920" width="1080" height="1920" aria-hidden="true">
+      <path d="M-40 70 Q540 300 1120 60" fill="none" stroke="rgba(255,201,60,0.22)" stroke-width="2"></path>
+      <path d="M-40 1560 Q540 1800 1120 1530" fill="none" stroke="rgba(255,201,60,0.2)" stroke-width="2"></path>
+    </svg>
+    <div id="g2-trends-change-lights"></div>
+    <svg id="g2-trends-change-grain" width="1080" height="1920" aria-hidden="true"><rect width="1080" height="1920" filter="url(#g2-trends-change-grainf)"></rect></svg>
+  </div>
+
+  <!-- stage: all content inside x60-1020 / y120-1120 -->
+  <div id="g2-trends-change-stage" class="clip g2-trends-change-layer" data-start="0" data-duration="4.76" data-track-index="1">
+    <div id="g2-trends-change-cam">
+      <svg id="g2-trends-change-mandala" viewBox="-620 -620 1240 1240" width="1240" height="1240" aria-hidden="true"></svg>
+      <svg id="g2-trends-change-ripples" viewBox="-620 -620 1240 1240" width="1240" height="1240" aria-hidden="true">
+        <circle id="g2-trends-change-rip0" cx="0" cy="0" r="400" fill="none" stroke="#FF9F1C" stroke-width="6" opacity="0"></circle>
+        <circle id="g2-trends-change-rip1" cx="0" cy="0" r="400" fill="none" stroke="#C8102E" stroke-width="6" opacity="0"></circle>
+        <circle id="g2-trends-change-rip2" cx="0" cy="0" r="400" fill="none" stroke="#FFC93C" stroke-width="6" opacity="0"></circle>
+      </svg>
+
+      <div id="g2-trends-change-cardin">
+        <div id="g2-trends-change-card">
+          <div class="g2-trends-change-sheencard"></div>
+          <div class="g2-trends-change-bandhani"></div>
+          <div class="g2-trends-change-innerline"></div>
+
+          <div id="g2-trends-change-mkt"><div class="g2-trends-change-mktchip"><i id="g2-trends-change-live"></i>MARKET</div></div>
+
+          <div id="g2-trends-change-slot">
+            <div id="g2-trends-change-upout" class="g2-trends-change-chipout">
+              <div id="g2-trends-change-upin" class="g2-trends-change-chipin">
+                <div id="g2-trends-change-upchip" class="g2-trends-change-chip g2-trends-change-up">UPTREND<svg viewBox="0 0 44 44" aria-hidden="true"><path d="M7 37 L37 7"></path><path d="M15 7 H37 V29"></path></svg><i id="g2-trends-change-upsheen" class="g2-trends-change-sheen"></i></div>
+              </div>
+            </div>
+            <div id="g2-trends-change-downout" class="g2-trends-change-chipout">
+              <div id="g2-trends-change-downin" class="g2-trends-change-chipin">
+                <div id="g2-trends-change-downchip" class="g2-trends-change-chip g2-trends-change-down">DOWNTREND<svg viewBox="0 0 44 44" aria-hidden="true"><path d="M7 7 L37 37"></path><path d="M37 15 V37 H15"></path></svg><i id="g2-trends-change-downsheen" class="g2-trends-change-sheen"></i></div>
+              </div>
+            </div>
+            <div id="g2-trends-change-sideout" class="g2-trends-change-chipout">
+              <div id="g2-trends-change-sidein" class="g2-trends-change-chipin">
+                <div id="g2-trends-change-sidechip" class="g2-trends-change-chip g2-trends-change-side">SIDEWAYS<svg viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 H39"></path><path d="M27 10 L39 22 L27 34"></path></svg><i id="g2-trends-change-sidesheen" class="g2-trends-change-sheen"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="g2-trends-change-plotwrap">
+            <svg id="g2-trends-change-plot" viewBox="0 0 880 540" width="880" height="540" aria-hidden="true">
+              <defs>
+                <linearGradient id="g2-trends-change-sgrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="880" y2="0">
+                  <stop id="g2-trends-change-sg0" offset="0" stop-color="#FF9F1C"></stop>
+                  <stop id="g2-trends-change-sg1" offset="1" stop-color="#FF9F1C"></stop>
+                </linearGradient>
+                <linearGradient id="g2-trends-change-agrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop id="g2-trends-change-ag0" offset="0" stop-color="#FF9F1C" stop-opacity="0.32"></stop>
+                  <stop id="g2-trends-change-ag1" offset="1" stop-color="#FF9F1C" stop-opacity="0"></stop>
+                </linearGradient>
+                <filter id="g2-trends-change-glowf" x="-10%" y="-40%" width="120%" height="180%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="8"></feGaussianBlur>
+                </filter>
+                <filter id="g2-trends-change-morphf" x="-5%" y="-40%" width="110%" height="180%" color-interpolation-filters="sRGB">
+                  <feGaussianBlur id="g2-trends-change-morphblur" in="SourceGraphic" stdDeviation="0.01 0.01"></feGaussianBlur>
+                </filter>
+              </defs>
+              <g id="g2-trends-change-grid" stroke="rgba(255,244,224,0.08)" stroke-width="1.5"></g>
+              <g id="g2-trends-change-candles" opacity="0.2"></g>
+              <g id="g2-trends-change-band">
+                <rect id="g2-trends-change-bandfill" x="20" y="0" width="840" height="10" fill="rgba(255,201,60,0.08)"></rect>
+                <line id="g2-trends-change-bandhi" x1="20" x2="860" y1="0" y2="0" stroke="#FFC93C" stroke-width="3" stroke-dasharray="14 12" opacity="0.75"></line>
+                <line id="g2-trends-change-bandlo" x1="20" x2="860" y1="0" y2="0" stroke="#FFC93C" stroke-width="3" stroke-dasharray="14 12" opacity="0.75"></line>
+              </g>
+              <line id="g2-trends-change-track" x1="0" x2="0" y1="20" y2="510" stroke="#FFF4E0" stroke-width="2" stroke-dasharray="7 8" opacity="0"></line>
+              <path id="g2-trends-change-area" d="M0 0" fill="url(#g2-trends-change-agrad)"></path>
+              <g id="g2-trends-change-linegrp">
+                <path id="g2-trends-change-glow" d="M0 0" stroke="url(#g2-trends-change-sgrad)" stroke-width="22" opacity="0.5" filter="url(#g2-trends-change-glowf)"></path>
+                <path id="g2-trends-change-line" d="M0 0" stroke="url(#g2-trends-change-sgrad)" stroke-width="8"></path>
+              </g>
+              <circle id="g2-trends-change-burst0" cx="0" cy="0" r="12" fill="none" stroke="#FF9F1C" stroke-width="4" opacity="0"></circle>
+              <circle id="g2-trends-change-burst1" cx="0" cy="0" r="12" fill="none" stroke="#FF9F1C" stroke-width="4" opacity="0"></circle>
+              <circle id="g2-trends-change-halo" cx="0" cy="0" r="28" fill="#FF9F1C" opacity="0"></circle>
+              <circle id="g2-trends-change-dot" cx="0" cy="0" r="12" fill="#FFF4E0" stroke="#FF9F1C" stroke-width="6" opacity="0"></circle>
+            </svg>
+            <div id="g2-trends-change-tippos"><div id="g2-trends-change-tippop"><div id="g2-trends-change-tip"><span id="g2-trends-change-tipv">+0.0%</span></div></div></div>
+          </div>
+
+          <div id="g2-trends-change-cardsweep"></div>
+          <div id="g2-trends-change-cardglow"></div>
+        </div>
+
+        <!-- garba dancer standing on the card's top-right corner -->
+        <div id="g2-trends-change-dancer">
+          <svg id="g2-trends-change-dsvg" viewBox="0 0 120 140" width="103" height="120" aria-hidden="true">
+            <defs>
+              <linearGradient id="g2-trends-change-dskirtg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#E5007D"></stop>
+                <stop offset="1" stop-color="#C8102E"></stop>
+              </linearGradient>
+              <linearGradient id="g2-trends-change-dbodyg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FFC93C"></stop>
+                <stop offset="1" stop-color="#FF9F1C"></stop>
+              </linearGradient>
+            </defs>
+            <g id="g2-trends-change-dbody">
+              <g id="g2-trends-change-dskirt">
+                <path d="M51 80 L69 80 L96 132 Q84 138 72 133 Q60 139 48 133 Q36 138 24 132 Z" fill="url(#g2-trends-change-dskirtg)"></path>
+                <path d="M24 132 Q36 138 48 133 Q60 139 72 133 Q84 138 96 132" fill="none" stroke="#FFC93C" stroke-width="3" stroke-linecap="round"></path>
+                <path d="M38 112 Q60 118 82 112" fill="none" stroke="#FFC93C" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"></path>
+              </g>
+              <path d="M52 81 Q50 66 53 55 L67 55 Q70 66 68 81 Z" fill="url(#g2-trends-change-dbodyg)"></path>
+              <rect x="57" y="47" width="6" height="9" rx="2" fill="#FFC93C"></rect>
+              <circle cx="60" cy="40" r="9" fill="#FFC93C"></circle>
+              <circle cx="67" cy="35" r="4.5" fill="#FF9F1C"></circle>
+              <path id="g2-trends-change-darml" d="M54 57 L44 70 L36 80" fill="none" stroke="#FFC93C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path id="g2-trends-change-darmr" d="M66 57 L76 70 L84 80" fill="none" stroke="#FFC93C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path id="g2-trends-change-dstickl" d="M30 74 L42 86" fill="none" stroke="#FFF4E0" stroke-width="3.5" stroke-linecap="round"></path>
+              <path id="g2-trends-change-dstickr" d="M78 74 L90 86" fill="none" stroke="#FFF4E0" stroke-width="3.5" stroke-linecap="round"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var P = "g2-trends-change-";
+  var DUR = 4.76;
+  function el(n) { return document.getElementById(P + n); }
+  function clamp01(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function lerp(a, b, k) { return a + (b - a) * k; }
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var q = Math.imul(a ^ (a >>> 15), 1 | a);
+      q = (q + Math.imul(q ^ (q >>> 7), 61 | q)) ^ q;
+      return ((q ^ (q >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  var rnd = mulberry32(91024);
+  var E_IO = gsap.parseEase("power3.inOut");
+  var E_P2 = gsap.parseEase("power2.out");
+  var E_EXPO = gsap.parseEase("expo.out");
+  var tl = gsap.timeline({ paused: true });
+
+  // ======================= GROUND (built once, deterministic) =======================
+  function petal(r1, r2, w, deg) {
+    var m = (r1 + r2) / 2;
+    return '<path transform="rotate(' + deg + ')" d="M0 ' + (-r1).toFixed(1) + ' Q' + w.toFixed(1) + ' ' + (-m).toFixed(1) + ' 0 ' + (-r2).toFixed(1) + ' Q' + (-w).toFixed(1) + ' ' + (-m).toFixed(1) + ' 0 ' + (-r1).toFixed(1) + 'Z"></path>';
+  }
+  function ringOf(n, r, rad) {
+    var s = "";
+    for (var k = 0; k < n; k++) {
+      var a = (k / n) * Math.PI * 2;
+      s += '<circle cx="' + (Math.cos(a) * r).toFixed(1) + '" cy="' + (Math.sin(a) * r).toFixed(1) + '" r="' + rad.toFixed(1) + '"></circle>';
+    }
+    return s;
+  }
+  function rangoli(R, gold, red, sw) {
+    var s = '<g fill="none" stroke="' + red + '" stroke-width="' + sw + '">';
+    s += '<circle r="' + (R * 0.28).toFixed(1) + '"></circle><circle r="' + (R * 0.54).toFixed(1) + '"></circle><circle r="' + (R * 0.79).toFixed(1) + '"></circle>';
+    for (var k = 0; k < 12; k++) s += petal(R * 0.3, R * 0.52, R * 0.07, k * 30);
+    s += '</g><g fill="none" stroke="' + gold + '" stroke-width="' + (sw * 0.85) + '">';
+    for (k = 0; k < 24; k++) s += petal(R * 0.56, R * 0.77, R * 0.045, k * 15 + 7.5);
+    s += '<circle r="' + (R * 0.97).toFixed(1) + '"></circle></g>';
+    s += '<g fill="' + gold + '">' + ringOf(48, R * 0.87, R * 0.013) + '</g>';
+    s += '<g fill="none" stroke="' + red + '" stroke-width="' + (sw * 0.85) + '">' + ringOf(36, R * 0.97, R * 0.045) + '</g>';
+    s += '<g fill="' + gold + '">';
+    for (k = 0; k < 8; k++) s += petal(R * 0.04, R * 0.22, R * 0.05, k * 45);
+    s += '</g>';
+    return s;
+  }
+  el("rangoli").innerHTML = rangoli(560, "#FFC93C", "#C8102E", 3);
+  el("rangoli2").innerHTML = rangoli(400, "#FFC93C", "#C8102E", 3);
+  el("mandala").innerHTML = rangoli(600, "#FFC93C", "#FF9F1C", 4);
+
+  // string lights on two wires + loose bokeh
+  var lightsHost = el("lights");
+  var LIGHTS = [];
+  function qb(p0, p1, p2, k) { var u = 1 - k; return u * u * p0 + 2 * u * k * p1 + k * k * p2; }
+  function addLight(x, y, d, rgb, base, kind) {
+    var n = document.createElement("i");
+    n.className = P + "bk";
+    var g = kind === "bulb"
+      ? "radial-gradient(circle closest-side, rgba(255,246,220,0.95) 0%, rgba(" + rgb + ",0.75) 22%, rgba(" + rgb + ",0.22) 55%, rgba(" + rgb + ",0) 100%)"
+      : "radial-gradient(circle closest-side, rgba(" + rgb + ",0.32) 0%, rgba(" + rgb + ",0.4) 74%, rgba(" + rgb + ",0.62) 88%, rgba(" + rgb + ",0) 100%)";
+    n.style.cssText = "left:" + (x - d / 2).toFixed(1) + "px;top:" + (y - d / 2).toFixed(1) + "px;width:" + d.toFixed(1) + "px;height:" + d.toFixed(1) + "px;background:" + g + ";opacity:" + base.toFixed(3) + ";";
+    lightsHost.appendChild(n);
+    LIGHTS.push({ n: n, base: base, amp: kind === "bulb" ? 2 + rnd() * 2 : 8 + rnd() * 14, ph: rnd() * 6.283, sp: 0.35 + rnd() * 0.5, tw: kind === "bulb" ? 2.2 + rnd() * 3.2 : 0.8 + rnd() * 1.2 });
+  }
+  var BULB_RGB = ["255,201,60", "255,159,28", "255,201,60", "255,226,150"];
+  var k;
+  for (k = 0; k < 15; k++) {
+    var u = (k + 0.5) / 15;
+    addLight(qb(-40, 540, 1120, u), qb(70, 300, 60, u) + 8, 46 + rnd() * 26, BULB_RGB[k % 4], 0.5 + rnd() * 0.35, "bulb");
+  }
+  for (k = 0; k < 13; k++) {
+    var u2 = (k + 0.5) / 13;
+    addLight(qb(-40, 540, 1120, u2), qb(1560, 1800, 1530, u2) + 8, 52 + rnd() * 30, BULB_RGB[(k + 1) % 4], 0.45 + rnd() * 0.35, "bulb");
+  }
+  var BOKEH_RGB = ["255,201,60", "255,159,28", "200,16,46", "255,201,60", "229,0,125"];
+  for (k = 0; k < 20; k++) {
+    var bx = 30 + rnd() * 1020, by = 60 + rnd() * 1820;
+    addLight(bx, by, 60 + rnd() * 110, BOKEH_RGB[k % 5], 0.07 + rnd() * 0.15, "disc");
+  }
+
+  // ======================= CHART DATA (literal, baked) =======================
+  var N = 21, PW = 880, PH = 540, PADL = 36, PADR = 40, PADT = 50, PADB = 40;
+  function X(i) { return PADL + (i / (N - 1)) * (PW - PADL - PADR); }
+  function Y(v) { return PADT + (1 - v) * (PH - PADT - PADB); }
+  var SH = {
+    n:  [0.50,0.58,0.64,0.62,0.54,0.46,0.40,0.42,0.50,0.58,0.62,0.58,0.50,0.43,0.40,0.45,0.53,0.60,0.62,0.57,0.52],
+    u:  [0.10,0.18,0.15,0.25,0.33,0.28,0.38,0.46,0.41,0.50,0.58,0.53,0.62,0.70,0.65,0.73,0.80,0.76,0.84,0.90,0.94],
+    d:  [0.92,0.84,0.87,0.78,0.70,0.75,0.66,0.58,0.63,0.55,0.47,0.52,0.44,0.37,0.42,0.35,0.28,0.33,0.27,0.22,0.24],
+    d2: [0.92,0.84,0.87,0.78,0.70,0.75,0.66,0.58,0.63,0.55,0.47,0.52,0.44,0.37,0.40,0.30,0.22,0.26,0.16,0.09,0.05],
+    s:  [0.50,0.58,0.61,0.55,0.45,0.40,0.44,0.53,0.60,0.62,0.54,0.44,0.39,0.42,0.51,0.59,0.61,0.55,0.46,0.41,0.48]
+  };
+  var COL = { n: [255,159,28], u: [43,210,122], d: [255,59,78], d2: [255,59,78], s: [255,201,60] };
+  // the SAME line morphs on the cues: uptrend@2.58, downtrend@3.22, downtrend@3.70, sideways@4.26
+  var MORPHS = [
+    { at: 2.48, dur: 0.40, a: "n",  b: "u" },
+    { at: 3.14, dur: 0.38, a: "u",  b: "d" },
+    { at: 3.64, dur: 0.30, a: "d",  b: "d2" },
+    { at: 4.14, dur: 0.36, a: "d2", b: "s" }
+  ];
+  var STAG = 0.008; // the change ripples left -> right along the line
+  var DRAW_AT = 0.89, DRAW_DUR = 0.72;
+
+  // grid + faint candles
+  var grid = "";
+  for (k = 0; k <= 5; k++) { var gy = PADT + k * ((PH - PADT - PADB) / 5); grid += '<line x1="0" x2="' + PW + '" y1="' + gy.toFixed(1) + '" y2="' + gy.toFixed(1) + '"></line>'; }
+  for (k = 0; k <= 10; k++) { var gx = PADL + k * ((PW - PADL - PADR) / 10); grid += '<line y1="10" y2="' + (PH - 10) + '" x1="' + gx.toFixed(1) + '" x2="' + gx.toFixed(1) + '"></line>'; }
+  el("grid").innerHTML = grid;
+  var cHost = el("candles"), SVGNS = "http://www.w3.org/2000/svg";
+  var NC = 28;
+  function cbase(j) { return 0.5 + 0.2 * Math.sin(j * 0.45 + 0.6) + 0.07 * Math.sin(j * 1.7); }
+  for (k = 0; k < NC; k++) {
+    var o = cbase(k), c = cbase(k + 1), hi = Math.max(o, c) + 0.03 + rnd() * 0.04, lo = Math.min(o, c) - 0.03 - rnd() * 0.04;
+    var cx = 24 + k * ((PW - 48) / (NC - 1)), col = c >= o ? "#2BD27A" : "#FF3B4E";
+    var g = document.createElementNS(SVGNS, "g");
+    g.setAttribute("class", P + "candle");
+    var w = document.createElementNS(SVGNS, "line");
+    w.setAttribute("x1", cx.toFixed(1)); w.setAttribute("x2", cx.toFixed(1));
+    w.setAttribute("y1", Y(hi).toFixed(1)); w.setAttribute("y2", Y(lo).toFixed(1));
+    w.setAttribute("stroke", col); w.setAttribute("stroke-width", "2");
+    var b = document.createElementNS(SVGNS, "rect");
+    var top = Y(Math.max(o, c)), bot = Y(Math.min(o, c));
+    b.setAttribute("x", (cx - 7).toFixed(1)); b.setAttribute("width", "14");
+    b.setAttribute("y", top.toFixed(1)); b.setAttribute("height", Math.max(4, bot - top).toFixed(1));
+    b.setAttribute("rx", "2"); b.setAttribute("fill", col);
+    g.appendChild(w); g.appendChild(b); cHost.appendChild(g);
+  }
+  // sideways range band
+  var BAND_HI = Y(0.64), BAND_LO = Y(0.37);
+  el("bandhi").setAttribute("y1", BAND_HI.toFixed(1)); el("bandhi").setAttribute("y2", BAND_HI.toFixed(1));
+  el("bandlo").setAttribute("y1", BAND_LO.toFixed(1)); el("bandlo").setAttribute("y2", BAND_LO.toFixed(1));
+  el("bandfill").setAttribute("y", BAND_HI.toFixed(1)); el("bandfill").setAttribute("height", (BAND_LO - BAND_HI).toFixed(1));
+
+  // ======================= DANCER POSES (keyframed, deterministic) =======================
+  // [L upper, L fore, R upper, R fore, crouch, lean, skirt flare, skirt swirl]
+  var POSE = {
+    n:  [150, 25, 40, 55, 0, -4, 1.0, 0],
+    u:  [168, 8, 168, 8, -3, 0, 1.06, 0],
+    d:  [32, -18, 32, -18, 11, 9, 1.22, 0],
+    d2: [26, -24, 26, -24, 15, 12, 1.3, 0],
+    s:  [92, -4, 92, -4, 2, -9, 1.14, 14]
+  };
+
+  // ======================= DOM refs =======================
+  var cam = el("cam"), lineP = el("line"), glowP = el("glow"), areaP = el("area");
+  var sg0 = el("sg0"), sg1 = el("sg1"), ag0 = el("ag0"), ag1 = el("ag1");
+  var dot = el("dot"), halo = el("halo"), track = el("track"), bursts = [el("burst0"), el("burst1")];
+  var lineGrp = el("linegrp"), morphBlur = el("morphblur");
+  var tipPos = el("tippos"), tip = el("tip"), tipV = el("tipv");
+  var mandala = el("mandala"), rips = [el("rip0"), el("rip1"), el("rip2")], cardGlow = el("cardglow");
+  var rang1 = el("rangoli"), rang2 = el("rangoli2"), blob = el("blob"), goldGlow = el("goldglow"), live = el("live");
+  var downIn = el("downin"), streakBlur = el("streakblur"), downChip = el("downchip");
+  var dBody = el("dbody"), dSkirt = el("dskirt"), dArmL = el("darml"), dArmR = el("darmr"), dStickL = el("dstickl"), dStickR = el("dstickr");
+
+  var cur = new Array(N);
+  var lastTip = "";
+  function hex(c) { return "rgb(" + Math.round(c[0]) + "," + Math.round(c[1]) + "," + Math.round(c[2]) + ")"; }
+  function mixC(a, b, k2) { return [lerp(a[0], b[0], k2), lerp(a[1], b[1], k2), lerp(a[2], b[2], k2)]; }
+  function pulse(t, T, decay) { var dt = t - T; if (dt < 0) return 0; var att = clamp01(dt / 0.06); return att * Math.exp(-Math.max(0, dt - 0.06) * decay); }
+  function fmt(v) { var s = v >= 0 ? "+" : "-"; return s + Math.abs(v).toFixed(1) + "%"; }
+
+  // ======================= THE ONE PER-FRAME APPLIER (pure function of t) =======================
+  function render(t) {
+    var i, m, lp;
+    // ---- line shape: chained morphs, each point offset by its index ----
+    var lastM = -1;
+    for (i = 0; i < N; i++) {
+      var v = SH.n[i];
+      for (m = 0; m < MORPHS.length; m++) {
+        var M = MORPHS[m];
+        lp = clamp01((t - M.at - i * STAG) / M.dur);
+        if (lp > 0) v = SH[M.a][i] + (SH[M.b][i] - SH[M.a][i]) * E_IO(lp);
+      }
+      cur[i] = v;
+    }
+    for (m = 0; m < MORPHS.length; m++) if (t >= MORPHS[m].at) lastM = m;
+
+    // ---- color: the new color travels along the line with the morph wave ----
+    var cA = COL.n, cB = COL.n, edge = 2, colMix = 0, midLp = 0;
+    if (lastM >= 0) {
+      var LM = MORPHS[lastM];
+      cA = COL[LM.a]; cB = COL[LM.b];
+      edge = (t - LM.at - LM.dur * 0.2) / (LM.dur * 0.6 + STAG * (N - 1));
+      colMix = E_IO(clamp01((t - LM.at) / (LM.dur + STAG * (N - 1))));
+      midLp = clamp01((t - LM.at - 10 * STAG) / LM.dur);
+    }
+    var cNow = mixC(cA, cB, colMix), cNowS = hex(cNow);
+    sg0.setAttribute("offset", clamp01(edge - 0.12).toFixed(4));
+    sg1.setAttribute("offset", clamp01(edge + 0.12).toFixed(4));
+    sg0.setAttribute("stop-color", hex(cB));
+    sg1.setAttribute("stop-color", hex(cA));
+    ag0.setAttribute("stop-color", cNowS); ag1.setAttribute("stop-color", cNowS);
+
+    // ---- geometry ----
+    var d = "";
+    for (i = 0; i < N; i++) d += (i ? "L" : "M") + X(i).toFixed(2) + " " + Y(cur[i]).toFixed(2);
+    lineP.setAttribute("d", d); glowP.setAttribute("d", d);
+    areaP.setAttribute("d", d + "L" + X(N - 1).toFixed(2) + " " + (PH - 6) + "L" + X(0).toFixed(2) + " " + (PH - 6) + "Z");
+
+    // ---- svg-path-draw: measured length, dashoffset len -> 0 ----
+    var drawP = E_P2(clamp01((t - DRAW_AT) / DRAW_DUR));
+    var len = lineP.getTotalLength();
+    if (drawP < 1) {
+      lineP.style.strokeDasharray = len.toFixed(2) + " " + (len + 40).toFixed(2);
+      lineP.style.strokeDashoffset = (len * (1 - drawP)).toFixed(2);
+      glowP.style.strokeDasharray = lineP.style.strokeDasharray;
+      glowP.style.strokeDashoffset = lineP.style.strokeDashoffset;
+    } else {
+      lineP.style.strokeDasharray = "none"; lineP.style.strokeDashoffset = "0";
+      glowP.style.strokeDasharray = "none"; glowP.style.strokeDashoffset = "0";
+    }
+    lineP.style.opacity = t < DRAW_AT ? "0" : "1";
+    glowP.style.opacity = t < DRAW_AT ? "0" : "0.5";
+
+    // ---- vertical motion blur on the morph (peaks mid-morph, sharp at rest) ----
+    var sig = (lastM >= 0 && midLp > 0 && midLp < 1) ? 6 * Math.sin(Math.PI * midLp) : 0;
+    if (sig > 0.15) { morphBlur.setAttribute("stdDeviation", "0.01 " + sig.toFixed(2)); lineGrp.setAttribute("filter", "url(#" + P + "morphf)"); }
+    else lineGrp.removeAttribute("filter");
+
+    // ---- chart-scrub-readout: the dot rides the drawing head, then the line's end ----
+    var px, py, idx;
+    if (drawP < 1) {
+      var pt = lineP.getPointAtLength(len * drawP);
+      px = pt.x; py = pt.y;
+      idx = Math.max(0, Math.min(N - 1, Math.round((px - PADL) / ((PW - PADL - PADR) / (N - 1)))));
+    } else { px = X(N - 1); py = Y(cur[N - 1]); idx = N - 1; }
+    var dotOp = clamp01((t - DRAW_AT) / 0.1);
+    dot.setAttribute("cx", px.toFixed(2)); dot.setAttribute("cy", py.toFixed(2));
+    dot.setAttribute("stroke", cNowS); dot.style.opacity = dotOp.toFixed(3);
+    halo.setAttribute("cx", px.toFixed(2)); halo.setAttribute("cy", py.toFixed(2));
+    halo.setAttribute("r", (28 + 5 * Math.sin(t * 6.4)).toFixed(2));
+    halo.setAttribute("fill", cNowS); halo.style.opacity = (0.26 * dotOp).toFixed(3);
+    track.setAttribute("x1", px.toFixed(2)); track.setAttribute("x2", px.toFixed(2));
+    track.style.opacity = (0.32 * dotOp).toFixed(3);
+    // landing bursts on the dot
+    var LAND = [1.61, 2.92, 3.56, 3.98, 4.52];
+    for (var bI = 0; bI < 2; bI++) {
+      var bp = -1;
+      for (var q = bI; q < LAND.length; q += 2) if (t >= LAND[q]) bp = (t - LAND[q]) / 0.6;
+      var bEl = bursts[bI];
+      if (bp >= 0 && bp < 1) {
+        bEl.setAttribute("cx", px.toFixed(2)); bEl.setAttribute("cy", py.toFixed(2));
+        bEl.setAttribute("r", (12 + 62 * E_P2(bp)).toFixed(2)); bEl.setAttribute("stroke", cNowS);
+        bEl.style.opacity = (0.85 * (1 - bp)).toFixed(3);
+      } else bEl.style.opacity = "0";
+    }
+    // readout text: written only when it changes
+    var val = (cur[idx] - cur[0]) * 30;
+    var txt = fmt(val);
+    if (txt !== lastTip) { tipV.textContent = txt; lastTip = txt; }
+    tip.style.color = cNowS; tip.style.borderColor = cNowS;
+    var sm = clamp01((px - 170) / 230); sm = sm * sm * (3 - 2 * sm);
+    tipPos.style.transform = "translate(" + (px + lerp(30, -206, sm)).toFixed(2) + "px," + (py - 92).toFixed(2) + "px)";
+
+    // ---- mandala pulse behind the card: "trends"@1.54, "change"@1.86 ----
+    var mo = 0, mk = 0, PUL = [1.54, 1.86], PA = [0.5, 0.7];
+    for (q = 0; q < 2; q++) {
+      var dtp = t - PUL[q];
+      if (dtp >= 0) { mo = Math.max(mo, clamp01(dtp / 0.08) * (0.2 + PA[q] * Math.exp(-dtp * 4.2))); mk += 0.05 * pulse(t, PUL[q], 6); }
+    }
+    mandala.style.opacity = mo.toFixed(3);
+    mandala.style.transform = "rotate(" + (-5 * t).toFixed(2) + "deg) scale(" + (0.9 + 0.08 * E_P2(clamp01((t - 1.54) / 0.6)) + mk).toFixed(4) + ")";
+    var RIP = [1.54, 1.86, 1.98];
+    for (q = 0; q < 3; q++) {
+      var rp = (t - RIP[q]) / 0.95;
+      if (rp >= 0 && rp < 1) {
+        rips[q].setAttribute("r", (380 + 440 * E_P2(rp)).toFixed(1));
+        rips[q].setAttribute("stroke-width", (9 * (1 - rp) + 1).toFixed(2));
+        rips[q].style.opacity = (0.8 * Math.pow(1 - rp, 1.4) * clamp01(rp / 0.05)).toFixed(3);
+      } else rips[q].style.opacity = "0";
+    }
+    // card border flash in the current color
+    var FL = [[1.54, 0.5], [1.86, 0.8], [2.6, 0.7], [3.24, 0.75], [3.72, 0.9], [4.28, 0.7]];
+    var fo = 0;
+    for (q = 0; q < FL.length; q++) fo = Math.max(fo, FL[q][1] * pulse(t, FL[q][0], 3.6));
+    cardGlow.style.opacity = fo.toFixed(3);
+    cardGlow.style.borderColor = cNowS;
+    cardGlow.style.boxShadow = "0 0 60px rgba(" + Math.round(cNow[0]) + "," + Math.round(cNow[1]) + "," + Math.round(cNow[2]) + ",0.45), inset 0 0 50px rgba(" + Math.round(cNow[0]) + "," + Math.round(cNow[1]) + "," + Math.round(cNow[2]) + ",0.12)";
+
+    // ---- camera: slow push 1.00 -> 1.04 + beat kicks on "change" and the second "downtrend" ----
+    var cs = 1 + 0.04 * (t / DUR) + 0.012 * pulse(t, 1.86, 7) + 0.01 * pulse(t, 3.72, 7);
+    cam.style.transform = "translate(0px," + (-8 * (t / DUR)).toFixed(2) + "px) scale(" + cs.toFixed(5) + ")";
+
+    // ---- DOWNTREND chip: directional streak blur (same window + ease as its x move), then the shake ----
+    var sp2 = clamp01((t - 3.2) / 0.42);
+    var sb = (t < 3.2 || sp2 >= 1) ? 0 : 22 * (1 - E_EXPO(sp2));
+    if (sb > 0.2) { streakBlur.setAttribute("stdDeviation", sb.toFixed(2) + " 0"); downIn.style.filter = "url(#" + P + "streak)"; }
+    else downIn.style.filter = "none";
+    var shp = (t - 3.72) / 0.42;
+    var shx = (shp > 0 && shp < 1) ? 12 * Math.exp(-4.4 * shp) * Math.sin(Math.PI * 2 * 4.5 * shp) : 0;
+    downChip.style.transform = "translate(" + shx.toFixed(2) + "px,0px)";
+
+    // ---- dancer: pose blends with each state change (+ a hop and a sway) ----
+    var pA = POSE.n, pB = POSE.n, pk = 0, hop = 0;
+    if (lastM >= 0) { pA = POSE[MORPHS[lastM].a]; pB = POSE[MORPHS[lastM].b]; pk = E_IO(midLp); hop = Math.sin(Math.PI * midLp) * 9; }
+    var pose = []; for (q = 0; q < 8; q++) pose.push(lerp(pA[q], pB[q], pk));
+    var sway = Math.sin(t * 5.6);
+    var lean = pose[5] + 3 * sway;
+    dBody.setAttribute("transform", "translate(0 " + (pose[4] * 0.6 - hop).toFixed(2) + ") rotate(" + lean.toFixed(2) + " 60 136)");
+    dSkirt.setAttribute("transform", "translate(60 80) scale(" + (pose[6] + 0.03 * Math.sin(t * 5.6 + 1)).toFixed(3) + " 1) skewX(" + (pose[7] + 4 * sway).toFixed(2) + ") translate(-60 -80)");
+    function arm(sx, dir, a1, a2, pathEl, stickEl) {
+      var r1 = a1 * Math.PI / 180, r2 = (a1 + a2) * Math.PI / 180, r3 = (a1 + a2 + 28) * Math.PI / 180;
+      var ex = sx + 17 * dir * Math.sin(r1), ey = 57 + 17 * Math.cos(r1);
+      var hx = ex + 15 * dir * Math.sin(r2), hy = ey + 15 * Math.cos(r2);
+      pathEl.setAttribute("d", "M" + sx + " 57 L" + ex.toFixed(2) + " " + ey.toFixed(2) + " L" + hx.toFixed(2) + " " + hy.toFixed(2));
+      var dx = dir * Math.sin(r3), dy = Math.cos(r3);
+      stickEl.setAttribute("d", "M" + (hx - 7 * dx).toFixed(2) + " " + (hy - 7 * dy).toFixed(2) + " L" + (hx + 17 * dx).toFixed(2) + " " + (hy + 17 * dy).toFixed(2));
+    }
+    arm(54, -1, pose[0] + 6 * Math.sin(t * 5.6 + 0.5), pose[1], dArmL, dStickL);
+    arm(66, 1, pose[2] + 6 * Math.sin(t * 5.6 + 2.1), pose[3], dArmR, dStickR);
+
+    // ---- ground ambience: drifting, twinkling string-light bokeh; rotating rangoli ----
+    for (i = 0; i < LIGHTS.length; i++) {
+      var Lg = LIGHTS[i];
+      var lx = Lg.amp * Math.sin(Lg.ph + t * Lg.sp), ly = Lg.amp * 0.7 * Math.cos(Lg.ph * 1.3 + t * Lg.sp * 0.8);
+      Lg.n.style.transform = "translate(" + lx.toFixed(2) + "px," + ly.toFixed(2) + "px)";
+      Lg.n.style.opacity = (Lg.base * (0.62 + 0.38 * Math.sin(Lg.ph * 2 + t * Lg.tw))).toFixed(3);
+    }
+    rang1.style.transform = "rotate(" + (2.6 * t).toFixed(3) + "deg)";
+    rang2.style.transform = "rotate(" + (-3.4 * t).toFixed(3) + "deg)";
+    blob.style.transform = "translate(" + (30 * Math.sin(t * 0.5)).toFixed(2) + "px," + (-18 * t).toFixed(2) + "px)";
+    goldGlow.style.transform = "scale(" + (0.94 + 0.08 * Math.sin(t * 0.9)).toFixed(4) + ")";
+    live.style.opacity = (0.55 + 0.45 * Math.cos(t * 6.2)).toFixed(3);
+  }
+  render(0);
+  var clock = { t: 0 };
+  tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { render(clock.t); } }, 0);
+
+  // ======================= SCENE 1 (0.0-2.5): card, grid, candles, the line draws, mandala pulse =======================
+  tl.fromTo(el("cardin"), { opacity: 0.3, y: 46, scale: 0.965 }, { opacity: 1, y: 0, scale: 1, duration: 0.65, ease: "expo.out" }, 0);
+  tl.fromTo(el("grid"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.05);
+  tl.fromTo(cHost.querySelectorAll("." + P + "candle"), { opacity: 0, scaleY: 0.2, transformOrigin: "50% 50%" },
+    { opacity: 1, scaleY: 1, duration: 0.36, ease: "power3.out", stagger: 0.018 }, 0.1);
+  tl.fromTo(el("dancer"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.7)" }, 0.28);
+  // "market"@0.89: the market chip pops as the line starts to draw
+  tl.fromTo(el("mkt"), { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, 0.82);
+  tl.fromTo(el("tippop"), { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: "back.out(1.7)" }, 0.95);
+  tl.fromTo(areaP, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 1.45);
+  // light sweep across the card once the line lands
+  tl.fromTo(el("cardsweep"), { x: -620 }, { x: 1120, duration: 0.8, ease: "power2.inOut" }, 1.62);
+
+  // ======================= SCENE 2 (2.5-4.76): uptrend -> downtrend -> sideways =======================
+  // "uptrend"@2.58 — chip springs in (overshoot settle), sheen after landing
+  tl.fromTo(el("upin"), { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, 2.56);
+  tl.fromTo(el("upsheen"), { x: -200 }, { x: 560, duration: 0.55, ease: "power2.inOut" }, 2.98);
+  // "downtrend"@3.22 — previous chip slides away inside the card; DOWNTREND streaks in (motion-blur-streak)
+  tl.fromTo(el("upout"), { x: 0, opacity: 1, filter: "blur(0px)" }, { x: -190, opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in", immediateRender: false }, 3.2);
+  tl.fromTo(el("downin"), { x: 300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 3.2);
+  tl.fromTo(el("downsheen"), { x: -200 }, { x: 600, duration: 0.5, ease: "power2.inOut" }, 3.56);
+  // "sideways"@4.26 — DOWNTREND slides away, SIDEWAYS springs in, the range band draws
+  tl.fromTo(el("downout"), { x: 0, opacity: 1, filter: "blur(0px)" }, { x: -210, opacity: 0, filter: "blur(8px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 4.2);
+  tl.fromTo(el("sidein"), { scale: 0.2, opacity: 0, x: 40 }, { scale: 1, opacity: 1, x: 0, duration: 0.45, ease: "back.out(1.6)" }, 4.22);
+  tl.fromTo(el("sidesheen"), { x: -200 }, { x: 560, duration: 0.3, ease: "power2.inOut" }, 4.46);
+  tl.fromTo(el("band"), { opacity: 0, scaleX: 0, transformOrigin: "0% 50%" }, { opacity: 1, scaleX: 1, duration: 0.42, ease: "power2.out" }, 4.3);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["g2-trends-change"] = tl;
+})();
+</script>
+</template>
