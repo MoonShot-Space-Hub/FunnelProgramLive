@@ -1,0 +1,13 @@
+{
+  "scene": "c5-shaping-decisions",
+  "duration_s": 3.6,
+  "rules": ["svg-path-draw", "spring-pop-entrance", "sine-wave-loop", "motion-blur-streak"],
+  "exit": {
+    "vector": "near rest: linear camera push 1.00->1.045 (0.0125/s, ~6 px/s at the frame edges); control bar idle sway ~5 px/s vertical with +/-1.2deg rotation; strings swaying up to ~20 px/s at mid-length; figure settled on the SAFE side (lean easing to -8deg, sway <1 px/s); AUTOPILOT dot blinking (0.62 s period); GROW rays rotating ~3deg/s and flickering",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "down ~2900 px/s at frame 0.04 (control bar drops y -340->0 on back.out(1.3) 0.5 s with a vertical motion-blur peak of 20, then a damped pendulum settle); figure rises y 30->0 (~180 px/s up) while scaling 0.92->1; door frames draw on (svg-path-draw) and the GROW rays burst 0.55->1",
+    "from_rest": false
+  }
+}

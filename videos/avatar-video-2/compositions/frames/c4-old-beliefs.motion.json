@@ -1,0 +1,13 @@
+{
+  "scene": "c4-old-beliefs",
+  "duration_s": 5.92,
+  "rules": ["kinetic-beat-slam", "spring-pop-entrance", "motion-blur-streak", "ambient-glow-bloom"],
+  "exit": {
+    "vector": "camera slow push (scale +0.0034/s) with sine drift ~5 px/s; card-3 light sweep still crossing left-to-right (~2600 px/s, inside the card); card idle bobs ~8 px/s vertical; gold dust rising 12-38 px/s",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "card 1 slams in centre-high: scale 1.10 -> 1.00 with downward settle (~250 px/s at frame 0, power4.out) plus blur 14px -> 0 and opacity ramp",
+    "from_rest": false
+  }
+}

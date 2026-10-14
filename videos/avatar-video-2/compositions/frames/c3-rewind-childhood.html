@@ -40,7 +40,7 @@
 [data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-grain { opacity: 0.06; }
 
 /* ---------- stage / camera ---------- */
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-cam { transform-origin: 660px 470px; }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-cam { transform-origin: 660px 600px; }
 [data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-dial { position: absolute; left: 130px; top: 150px; width: 820px; height: 820px; overflow: visible; transform-origin: 410px 410px; }
 [data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-world { position: absolute; left: 0; top: 0; width: 1080px; height: 1200px; overflow: visible; }
 [data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-draw { fill: none; stroke-linecap: round; stroke-linejoin: round; }
@@ -163,12 +163,14 @@
           <circle cx="410" cy="410" r="392" fill="none" stroke="#FF5FB0" stroke-opacity="0.32" stroke-width="2"></circle>
           <g id="c3-rewind-childhood-ticks"></g>
           <circle cx="410" cy="410" r="318" fill="none" stroke="#FFE1A0" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="3 14"></circle>
+          <g id="c3-rewind-childhood-dialhub">
           <g id="c3-rewind-childhood-ghosts"></g>
           <g id="c3-rewind-childhood-hand">
             <line x1="410" y1="410" x2="410" y2="62" stroke="#FFE1A0" stroke-width="5" stroke-linecap="round" filter="url(#c3-rewind-childhood-glowf)"></line>
             <circle cx="410" cy="62" r="9" fill="#FFC24A" filter="url(#c3-rewind-childhood-glowf)"></circle>
           </g>
           <circle cx="410" cy="410" r="14" fill="#2E1240" stroke="#FFE1A0" stroke-opacity="0.6" stroke-width="3"></circle>
+          </g>
         </svg>
 
         <!-- the childhood scene (draws in on Scene 2) -->
@@ -250,7 +252,7 @@
               <circle cx="345" cy="650" r="26" fill="url(#c3-rewind-childhood-wing)"></circle>
               <path d="M 345 624 L 345 676 M 319 650 L 371 650" stroke="#2A1038" stroke-width="5"></path>
               <path d="M 381 896 L 381 1036" stroke="#FFE1A0" stroke-width="4" stroke-linecap="round"></path>
-              <path id="c3-rewind-childhood-doorspill" d="M 372 1040 L 392 1040 L 470 1118 L 330 1118 Z" fill="url(#c3-rewind-childhood-spill)"></path>
+              <path id="c3-rewind-childhood-doorspill" d="M 372 1040 L 392 1040 L 460 1100 L 340 1100 Z" fill="url(#c3-rewind-childhood-spill)"></path>
             </g>
             <path id="c3-rewind-childhood-hline" class="c3-rewind-childhood-draw" d="M 96 748 L 345 518 L 594 748 M 130 748 L 130 1040 M 560 748 L 560 1040 M 440 610 L 440 566 L 480 566 L 480 646" stroke="#FFE1A0" stroke-opacity="0.9" stroke-width="4"></path>
           </g>
@@ -486,7 +488,7 @@
   var BUB = [
     { id: "b1", cx: 480, cy: 462, w: 232, h: 116, tb: 150, tx: 236, ty: 178, at: 1.08, rot: -9 },
     { id: "b2", cx: 884, cy: 432, w: 232, h: 116, tb: 84, tx: 106, ty: 170, at: 1.18, rot: 8 },
-    { id: "b3", cx: 640, cy: 306, w: 252, h: 124, tb: 128, tx: 190, ty: 186, at: 1.28, rot: -6 }
+    { id: "b3", cx: 630, cy: 306, w: 252, h: 124, tb: 128, tx: 190, ty: 186, at: 1.28, rot: -6 }
   ];
   var DOTS = [];
   BUB.forEach(function (b, bi) {
@@ -623,7 +625,7 @@
 
   // ======================= CAMERA + PARALLAX =======================
   tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.015, duration: SCENE2, ease: "power1.inOut" }, 0);
-  tl.fromTo(el("cam"), { scale: 1.015 }, { scale: 1.075, duration: DUR - SCENE2, ease: "power1.in", immediateRender: false }, SCENE2);
+  tl.fromTo(el("cam"), { scale: 1.015 }, { scale: 1.065, duration: DUR - SCENE2, ease: "power1.in", immediateRender: false }, SCENE2);
   tl.fromTo(el("blob"), { x: -40, y: -10 }, { x: 70, y: 60, duration: DUR, ease: "sine.inOut" }, 0);
   tl.fromTo(el("goldglow"), { scale: 0.9 }, { scale: 1.12, duration: DUR, ease: "sine.inOut" }, 0);
 
@@ -668,6 +670,7 @@
   tl.fromTo(el("dial"), { opacity: 0.9, scale: 1 }, { opacity: 0.2, scale: 1.3, duration: 0.6, ease: "power2.out", immediateRender: false }, SCENE2);
   // scrubber ticks + playhead dissolve; the track stays as the horizon
   tl.fromTo(el("scrubfx"), { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, SCENE2 + 0.02);
+  tl.fromTo(el("dialhub"), { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, SCENE2 + 0.05);
   // warm light floods in
   tl.fromTo(el("warm"), { opacity: 0 }, { opacity: 0.42, duration: 0.6, ease: "power2.out" }, SCENE2 + 0.05);
   tl.fromTo(el("goldglow"), { opacity: 0.16 }, { opacity: 0.3, duration: 0.6, ease: "power2.out" }, SCENE2 + 0.05);

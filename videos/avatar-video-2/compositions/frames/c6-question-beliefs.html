@@ -46,8 +46,8 @@
         opacity: 0.3;
       }
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-ggold {
-        left: 350px;
-        top: 420px;
+        left: 340px;
+        top: 350px;
         width: 420px;
         height: 420px;
         background: radial-gradient(circle, rgba(255, 194, 74, 1) 0%, rgba(255, 194, 74, 0) 70%);
@@ -88,7 +88,7 @@
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-cam {
         position: absolute;
         inset: 0;
-        transform-origin: 540px 640px;
+        transform-origin: 540px 600px;
         will-change: transform;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-fan {
@@ -267,8 +267,8 @@
       /* ---------------- dim halo behind the question mark ---------------- */
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-halo {
         position: absolute;
-        left: 40px;
-        top: 140px;
+        left: 50px;
+        top: 60px;
         width: 1000px;
         height: 1000px;
         border-radius: 50%;
@@ -277,8 +277,8 @@
       }
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-qbloom {
         position: absolute;
-        left: 160px;
-        top: 240px;
+        left: 150px;
+        top: 160px;
         width: 800px;
         height: 800px;
         border-radius: 50%;
@@ -337,8 +337,8 @@
       /* ---------------- the giant question mark ---------------- */
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-q {
         position: absolute;
-        left: 360px;
-        top: 412px;
+        left: 350px;
+        top: 330px;
         width: 400px;
         height: 460px;
         display: grid;
@@ -359,15 +359,18 @@
         font-size: 420px;
         line-height: 1;
         letter-spacing: -0.03em;
+        position: relative;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qglow {
         color: #ffc24a;
         filter: blur(34px);
         opacity: 0;
+        z-index: 1;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qdepth {
         color: #8a560c;
         transform: translate(0px, 12px);
+        z-index: 2;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qmain {
         color: #ffc24a;
@@ -375,6 +378,7 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+        z-index: 3;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qsheen {
         color: transparent;
@@ -384,6 +388,7 @@
         background-position: 100% 0%;
         -webkit-background-clip: text;
         background-clip: text;
+        z-index: 4;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-ring {
         position: absolute;
@@ -397,6 +402,7 @@
         border: 6px solid rgba(255, 194, 74, 0.9);
         box-shadow: 0 0 30px rgba(255, 194, 74, 0.5);
         opacity: 0;
+        z-index: 0;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-spark {
         position: absolute;
@@ -409,6 +415,7 @@
         border-radius: 4px;
         background: linear-gradient(90deg, rgba(255, 225, 160, 0), #ffe1a0 60%, #ffffff);
         opacity: 0;
+        z-index: 0;
       }
     </style>
 
@@ -726,7 +733,9 @@
         // ================= Scene 2 (1.1–2.82): the "?" slams in; cracks; the beliefs split =================
         var Q = $("q");
         tl.fromTo(Q, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, QUESTIONING - 0.03);
-        tl.fromTo(Q, { scale: 2.1, rotation: -16, y: -40, filter: "blur(22px)" }, { scale: 1, rotation: 0, y: 0, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.5)" }, QUESTIONING - 0.03);
+        tl.fromTo(Q, { scale: 2.1, rotation: -16, y: -40 }, { scale: 1, rotation: 0, y: 0, duration: 0.5, ease: "back.out(1.5)" }, QUESTIONING - 0.03);
+        // blur on its own non-overshooting ease (back.out would push blur() negative = invalid CSS)
+        tl.fromTo(Q, { filter: "blur(22px)" }, { filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, QUESTIONING - 0.03);
         tl.set(Q, { filter: "none" }, QUESTIONING + 0.5);
         tl.fromTo($("halo"), { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, QUESTIONING);
         tl.fromTo($("qbloom"), { opacity: 0, scale: 0.8 }, { opacity: 0.42, scale: 1, duration: 0.35, ease: "power2.out" }, QUESTIONING + 0.08);

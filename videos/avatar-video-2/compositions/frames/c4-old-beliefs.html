@@ -740,7 +740,9 @@
 
         // "HARD" — red, drops from above with overshoot, shake + flash on impact
         show($("w-hard"), CUE.hard - LEAD);
-        tl.fromTo($("w-hard"), { y: -120, scale: 1.6, rotation: -9, filter: "blur(12px)" }, { y: 0, scale: 1, rotation: 0, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.6)" }, CUE.hard - LEAD);
+        tl.fromTo($("w-hard"), { y: -120, scale: 1.6, rotation: -9 }, { y: 0, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, CUE.hard - LEAD);
+        // blur rides a non-overshooting ease (an overshoot would drive blur() negative = invalid)
+        tl.fromTo($("w-hard"), { filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, CUE.hard - LEAD);
         unblur($("w-hard"), CUE.hard + 0.52);
         redHit("hard", HIT1, 0.95, 0.5);
         ripple("rp-hard-1", HIT1, 2.6);
@@ -761,7 +763,8 @@
         // ================= Scene 2 (1.7–3.5): card 1 sinks into the stack, card 2 drops in =================
         tl.fromTo(card1, { y: 0, scale: 1 }, { y: 336, scale: 0.82, duration: 0.5, ease: "expo.out", immediateRender: false }, CARD2 - 0.04);
         tl.fromTo(card1, { filter: F0 }, { filter: "blur(0px) brightness(0.72) saturate(0.85)", duration: 0.5, ease: "power2.out", immediateRender: false }, CARD2);
-        tl.fromTo(card2, { opacity: 0, y: -150, rotation: -4, filter: "blur(12px) brightness(1.25) saturate(1)" }, { opacity: 1, y: 0, rotation: 0, filter: F0, duration: 0.46, ease: "back.out(1.4)" }, CARD2);
+        tl.fromTo(card2, { opacity: 0, y: -150, rotation: -4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.46, ease: "back.out(1.4)" }, CARD2);
+        tl.fromTo(card2, { filter: "blur(12px) brightness(1.25) saturate(1)" }, { filter: F0, duration: 0.34, ease: "power3.out" }, CARD2);
         echo("echo2a", CARD2 + 0.18);
         echo("echo2b", CARD2 + 0.3);
         chip(2, CARD2 + 0.16);
@@ -772,7 +775,7 @@
         unblur($("w-wanting"), CUE.wanting + 0.47);
         // "MORE" — overshoot pop
         show($("w-more"), CUE.more - LEAD);
-        tl.fromTo($("w-more"), { scale: 0.2 }, { scale: 1, duration: 0.4, ease: "back.out(2.2)" }, CUE.more - LEAD);
+        tl.fromTo($("w-more"), { scale: 0.2 }, { scale: 1, duration: 0.4, ease: "back.out(1.4)" }, CUE.more - LEAD);
         // "IS" — snap from the left
         show($("w-is"), CUE.is - LEAD);
         tl.fromTo($("w-is"), { x: -70, filter: "blur(8px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, CUE.is - LEAD);
@@ -813,7 +816,8 @@
 
         // "NEVER" — the biggest hit: tilt-down slam, flash, shake, bloom, sparks, ripples
         show($("w-never"), CUE.never - LEAD);
-        tl.fromTo($("w-never"), { scale: 1.5, y: -40, rotationX: 62, filter: "blur(22px)" }, { scale: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.4)" }, CUE.never - LEAD);
+        tl.fromTo($("w-never"), { scale: 1.5, y: -40, rotationX: 62 }, { scale: 1, y: 0, rotationX: 0, duration: 0.5, ease: "back.out(1.4)" }, CUE.never - LEAD);
+        tl.fromTo($("w-never"), { filter: "blur(22px)" }, { filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, CUE.never - LEAD);
         unblur($("w-never"), CUE.never + 0.52);
         redHit("never", HIT3, 1, 0.62);
         ripple("rp-never-1", HIT3, 1.5);
@@ -848,7 +852,7 @@
         tl.fromTo($("w-be"), { y: 56, filter: "blur(8px)" }, { y: 0, filter: "blur(0px)", duration: 0.38, ease: "circ.out" }, CUE.be - LEAD);
         unblur($("w-be"), CUE.be + 0.4);
         show($("w-wealthy"), CUE.wealthy - LEAD);
-        tl.fromTo($("w-wealthy"), { y: 56, scale: 1.22, filter: "blur(10px)" }, { y: 0, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "circ.out" }, CUE.wealthy - LEAD);
+        tl.fromTo($("w-wealthy"), { y: 56, scale: 1.14, filter: "blur(10px)", transformOrigin: "0% 60%" }, { y: 0, scale: 1, filter: "blur(0px)", duration: 0.42, ease: "circ.out" }, CUE.wealthy - LEAD);
         unblur($("w-wealthy"), CUE.wealthy + 0.47);
         tl.fromTo($("lock"), { scale: 0, rotation: -25, opacity: 0, transformOrigin: "50% 60%" }, { scale: 1, rotation: 0, opacity: 1, duration: 0.42, ease: "back.out(2)" }, 4.98);
         tl.fromTo($("shackle"), { y: -22 }, { y: 0, duration: 0.14, ease: "power3.in" }, 5.2);

@@ -46,9 +46,10 @@
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-lsafe { left: 95px; color: #A99BB5; text-shadow: 0 0 22px rgba(31,181,201,0.35); }
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-lgrow { left: 725px; color: #FFC24A; text-shadow: 0 0 40px rgba(255,194,74,0.5); }
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-lgrowsheen {
-  position: absolute; left: 0; top: -10px; width: 80px; height: 90px;
-  background: linear-gradient(100deg, rgba(255,245,234,0) 0%, rgba(255,245,234,0.75) 50%, rgba(255,245,234,0) 100%);
-  mix-blend-mode: overlay;
+  left: 725px; color: rgba(255,245,234,0);
+  background-image: linear-gradient(100deg, rgba(255,245,234,0) 40%, rgba(255,250,240,0.95) 50%, rgba(255,245,234,0) 60%);
+  background-size: 300% 100%; background-repeat: no-repeat; background-position: 100% 0%;
+  -webkit-background-clip: text; background-clip: text;
 }
 
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-figwrap { position: absolute; left: 240px; top: 600px; width: 600px; height: 520px; transform-origin: 300px 470px; filter: drop-shadow(0 0 26px rgba(255,245,234,0.22)); }
@@ -172,7 +173,7 @@
             <stop offset="0" stop-color="#1A0A26"></stop>
             <stop offset="1" stop-color="#3A1650"></stop>
           </linearGradient>
-          <clipPath id="c5-shaping-decisions-floorclip"><rect x="0" y="1000" width="1080" height="200"></rect></clipPath>
+          <clipPath id="c5-shaping-decisions-floorclip"><rect x="0" y="1000" width="1080" height="112"></rect></clipPath>
         </defs>
 
         <!-- floor grid -->
@@ -192,7 +193,7 @@
         <g id="c5-shaping-decisions-growlight" opacity="0">
           <g id="c5-shaping-decisions-raysburst"><g id="c5-shaping-decisions-rays" opacity="0.55"></g></g>
           <ellipse cx="855" cy="700" rx="260" ry="380" fill="url(#c5-shaping-decisions-halo)"></ellipse>
-          <path d="M 725 1000 L 985 1000 L 1080 1120 L 600 1120 Z" fill="url(#c5-shaping-decisions-spill)"></path>
+          <path d="M 725 1000 L 985 1000 L 1070 1108 L 620 1108 Z" fill="url(#c5-shaping-decisions-spill)"></path>
           <path d="M 725 1000 L 725 450 Q 725 420 755 420 L 955 420 Q 985 420 985 450 L 985 1000 Z" fill="url(#c5-shaping-decisions-growin)"></path>
           <path d="M 725 1000 L 725 450 Q 725 420 755 420 L 955 420 Q 985 420 985 450 L 985 1000 Z" fill="#FFF5EA" fill-opacity="0.35" filter="url(#c5-shaping-decisions-softf)"></path>
         </g>
@@ -201,7 +202,8 @@
       </svg>
 
       <div id="c5-shaping-decisions-lsafe" class="c5-shaping-decisions-label" data-layout-allow-overlap>SAFE</div>
-      <div id="c5-shaping-decisions-lgrow" class="c5-shaping-decisions-label" data-layout-allow-overlap>GROW<span id="c5-shaping-decisions-lgrowsheen"></span></div>
+      <div id="c5-shaping-decisions-lgrow" class="c5-shaping-decisions-label" data-layout-allow-overlap>GROW</div>
+      <div id="c5-shaping-decisions-lgrowsheen" class="c5-shaping-decisions-label" data-layout-ignore aria-hidden="true">GROW</div>
 
       <!-- the person (cream silhouette, rigged) -->
       <div id="c5-shaping-decisions-figwrap">
@@ -220,13 +222,14 @@
           </defs>
           <ellipse id="c5-shaping-decisions-shadow" cx="540" cy="1074" rx="70" ry="10" fill="#000" fill-opacity="0.5"></ellipse>
           <g id="c5-shaping-decisions-fig" filter="url(#c5-shaping-decisions-hblur)">
-            <g id="c5-shaping-decisions-legL"><path d="M -11 0 C -13 60 -11 130 -9 176 C -9 182 -20 184 -24 186 C -26 190 -2 191 6 187 C 4 140 6 70 9 0 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path></g>
-            <g id="c5-shaping-decisions-legR"><path d="M 11 0 C 13 60 11 130 9 176 C 9 182 20 184 24 186 C 26 190 2 191 -6 187 C -4 140 -6 70 -9 0 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path></g>
-            <path d="M -40 -300 C -44 -270 -36 -230 -30 -190 L -28 -172 C -10 -164 10 -164 28 -172 L 30 -190 C 36 -230 44 -270 40 -300 C 30 -314 14 -318 0 -318 C -14 -318 -30 -314 -40 -300 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2.5"></path>
-            <rect x="-8" y="-334" width="16" height="22" rx="6" fill="url(#c5-shaping-decisions-figg)"></rect>
-            <g id="c5-shaping-decisions-armL"><path d="M -10 0 C -11 50 -8 100 -6 138 L 6 138 C 8 100 11 50 10 0 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path><circle cx="0" cy="146" r="10" fill="url(#c5-shaping-decisions-figg)"></circle></g>
-            <g id="c5-shaping-decisions-armR"><path d="M -10 0 C -11 50 -8 100 -6 138 L 6 138 C 8 100 11 50 10 0 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path><circle cx="0" cy="146" r="10" fill="url(#c5-shaping-decisions-figg)"></circle></g>
-            <g id="c5-shaping-decisions-head"><circle cx="0" cy="-352" r="27" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2.5"></circle></g>
+            <g id="c5-shaping-decisions-legL"><path d="M -15 -14 C -17 40 -15 110 -10 170 C -10 177 -19 180 -27 183 C -32 188 -4 191 7 186 C 6 130 10 50 15 -14 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path></g>
+            <g id="c5-shaping-decisions-legR"><path d="M 15 -14 C 17 40 15 110 10 170 C 10 177 19 180 27 183 C 32 188 4 191 -7 186 C -6 130 -10 50 -15 -14 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path></g>
+            <path d="M -12 -316 C -26 -314 -40 -310 -46 -300 C -53 -289 -51 -270 -46 -250 C -41 -228 -35 -206 -32 -186 L -31 -160 C -12 -150 12 -150 31 -160 L 32 -186 C 35 -206 41 -228 46 -250 C 51 -270 53 -289 46 -300 C 40 -310 26 -314 12 -316 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2.5"></path>
+            <path d="M -9 -332 C -9 -322 -10 -316 -14 -310 L 14 -310 C 10 -316 9 -322 9 -332 Z" fill="url(#c5-shaping-decisions-figg)"></path>
+            <path d="M -30 -168 C -10 -160 10 -160 30 -168" fill="none" stroke="#FFC24A" stroke-opacity="0.35" stroke-width="2"></path>
+            <g id="c5-shaping-decisions-armL"><circle cx="0" cy="0" r="12.5" fill="url(#c5-shaping-decisions-figg)"></circle><path d="M -12 -2 C -13 40 -9 96 -7 134 L 7 134 C 9 96 13 40 12 -2 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path><ellipse cx="0" cy="145" rx="9.5" ry="12.5" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="1.5"></ellipse></g>
+            <g id="c5-shaping-decisions-armR"><circle cx="0" cy="0" r="12.5" fill="url(#c5-shaping-decisions-figg)"></circle><path d="M -12 -2 C -13 40 -9 96 -7 134 L 7 134 C 9 96 13 40 12 -2 Z" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2"></path><ellipse cx="0" cy="145" rx="9.5" ry="12.5" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="1.5"></ellipse></g>
+            <g id="c5-shaping-decisions-head"><ellipse cx="0" cy="-352" rx="25" ry="28" fill="url(#c5-shaping-decisions-figg)" stroke="url(#c5-shaping-decisions-figrim)" stroke-width="2.5"></ellipse><path d="M -25 -356 C -27 -384 26 -388 26 -356 C 18 -372 -12 -374 -25 -356 Z" fill="#F1DCC8"></path></g>
           </g>
         </svg>
       </div>
@@ -445,6 +448,17 @@
     return { x: m * m * A.x + 2 * m * u * C.x + u * u * P.x, y: m * m * A.y + 2 * m * u * C.y + u * u * P.y };
   }
 
+  // arc length of a quadratic by sampling (pure math, no DOM measurement inside the timeline)
+  function qlen(A, C, P) {
+    var L = 0, prev = A;
+    for (var k = 1; k <= 24; k++) {
+      var pt = quad(A, C, P, k / 24);
+      L += Math.sqrt((pt.x - prev.x) * (pt.x - prev.x) + (pt.y - prev.y) * (pt.y - prev.y));
+      prev = pt;
+    }
+    return L;
+  }
+
   // ======================= MASTER CLOCK =======================
   var ringsR = el("ringsrot"), autodot = el("autodot");
   function render(t) {
@@ -494,7 +508,7 @@
       SLINE[s].setAttribute("d", dstr);
       SGLOW[s].setAttribute("d", dstr);
       var prog = P2O(seg(t, STR_AT[s], STR_DUR));
-      var Ls = SLINE[s].getTotalLength() + 2;
+      var Ls = qlen(a, c, p) + 2;
       var dash = Ls.toFixed(2) + " " + Ls.toFixed(2), doff = (Ls * (1 - prog)).toFixed(2);
       SLINE[s].setAttribute("stroke-dasharray", dash);
       SLINE[s].setAttribute("stroke-dashoffset", doff);
@@ -573,7 +587,8 @@
   tl.fromTo(el("goldglow"), { opacity: 0.05 }, { opacity: 0.22, duration: 0.5, ease: "power2.out" }, 0.12);
   tl.fromTo(el("lsafe"), { scale: 0.6, y: 18, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.24);
   tl.fromTo(el("lgrow"), { scale: 0.6, y: 18, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.3);
-  tl.fromTo(el("lgrowsheen"), { x: -100 }, { x: 300, duration: 0.45, ease: "power1.inOut" }, 0.66);
+  tl.fromTo(el("lgrowsheen"), { scale: 0.6, y: 18, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.3);
+  tl.fromTo(el("lgrowsheen"), { backgroundPosition: "100% 0%" }, { backgroundPosition: "0% 0%", duration: 0.5, ease: "power1.inOut" }, 0.66);
   // the person: hero visible by ~0.3s
   tl.fromTo(el("figwrap"), { opacity: 0, y: 30, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.04);
   // bar arrival (position is clock-driven; fade + chip stagger here)

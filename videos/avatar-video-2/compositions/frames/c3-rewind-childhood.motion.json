@@ -1,0 +1,13 @@
+{
+  "scene": "c3-rewind-childhood",
+  "duration_s": 2.1,
+  "rules": ["vertical-spring-ticker", "svg-path-draw", "spring-pop-entrance", "sine-wave-loop", "motion-blur-streak", "zoom-through (cut-catalog, REWIND->PLAY OSD swap)"],
+  "exit": {
+    "vector": "slow radial camera push-in toward the speech bubbles (scale 1.015->1.065 on power1.in, ending ~0.083/s: ~25 px/s at the bubbles, ~45 px/s at the frame edges); bubbles floating up ~10-20 px/s (sine); '...' dots bouncing 9 px at 2.4 Hz; house window glow breathing; faint VHS tracking bands rolling down ~900-1420 px/s at 15% opacity",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "downward year-strip roll inside the masked counter from t=0.04 (12-year back.out(1.4) spring, ~28,000 px/s peak, vertical blur up to 18) under a counter scale-in 1.12->1 (~216 px/s inward at the window edges), dial rotating 24deg->0 on expo.out, RGB-split + horizontal tape jitter (+/-3.5 px per frame)",
+    "from_rest": false
+  }
+}

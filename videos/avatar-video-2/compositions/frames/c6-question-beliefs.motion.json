@@ -1,0 +1,13 @@
+{
+  "scene": "c6-question-beliefs",
+  "duration_s": 2.82,
+  "rules": ["spring-pop-entrance", "kinetic-beat-slam", "svg-path-draw", "ambient-glow-bloom", "motion-blur-streak"],
+  "exit": {
+    "vector": "gold question mark floating (~18 px/s vertical, +-1.6 deg sway); magnifier hovering over card 3 (~17 px/s); dust puffs dispersing outward (~60 px/s, fading); camera push (scale +0.011/s); gold dust rising 12-38 px/s",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "three belief cards fan outward from a centre pile (radial, expo.out, ~3000 px/s at frame 0) with scale 0.30 -> 0.60, rotation settle and blur 10px -> 0",
+    "from_rest": false
+  }
+}
