@@ -1,0 +1,19 @@
+{
+  "scene": "g1-songs-steps",
+  "duration_s": 4.2,
+  "rules": [
+    "vertical-spring-ticker",
+    "waterfall-entry",
+    "svg-path-draw",
+    "sine-wave-loop",
+    "spring-pop-entrance"
+  ],
+  "exit": {
+    "vector": "hero layout at rest: card, NEW STEPS chip, 6/8 tag (settled 4.11s) and dandiya pairs (last click 3.66s, sparks gone by 4.04s) static; waveform scaleY pulse decaying (last weak beat 4.06s, <2% at end); vinyl spinning 95 deg/s, eq bars bouncing; camera push-in continuing (+0.0095 scale/s about 540,640, ~5 px/s at stage edges); bokeh drifting up ~9 px/s",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "card rises from +60 px (expo.out 0.5s): ~830 px/s upward at frame 0, decelerating to rest by 0.5s; vinyl pop + label slide start 0.04-0.10s; ticker first spring step at 0.06s; footprint waterfall from below starts 0.10s; camera push-in +0.0095 scale/s",
+    "from_rest": false
+  }
+}

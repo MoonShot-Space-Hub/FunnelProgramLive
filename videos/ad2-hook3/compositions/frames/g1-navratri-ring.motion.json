@@ -1,0 +1,20 @@
+{
+  "scene": "g1-navratri-ring",
+  "duration_s": 2.9,
+  "rules": [
+    "svg-path-draw",
+    "ambient-glow-bloom",
+    "center-outward-expansion",
+    "orbit-3d-entry",
+    "sine-wave-loop",
+    "spring-pop-entrance"
+  ],
+  "exit": {
+    "vector": "8 dancers orbiting the garbo on a tilted ellipse (RX 400 / RY 150, 0.8 rad/s): front/back dancers ~320 px/s horizontal, side dancers ~120 px/s vertical, each in a ~0.72 s step cycle (sway +-5deg, bob 4.5 px); camera push-in continuing (+0.0172 scale/s about 540,640, ~8 px/s at stage edges); NAVRATRI chip at rest (settled 2.61s, sheen ends 2.86s); sparkle burst fully decayed; bokeh drifting up ~10 px/s",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "near-dark frame 0 (ground veil 0.82 fading over 0.9s); only camera push-in (+0.0172 scale/s, ~8 px/s at stage edges) + bokeh drift; string-light wires start drawing left-to-right at 0.00s; garbo rise (300 px up, back.out 1.4, vertical motion blur) starts at 0.10s",
+    "from_rest": true
+  }
+}

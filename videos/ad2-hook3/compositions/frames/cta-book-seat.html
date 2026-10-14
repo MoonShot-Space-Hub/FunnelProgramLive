@@ -1,0 +1,485 @@
+<template>
+<style>
+#root {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; background: transparent; color: #FFF4E0; font-family: "Montserrat", sans-serif;
+  pointer-events: none;
+}
+[data-composition-id="cta-book-seat"] .cta-book-seat-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+
+/* top band: readability scrim (fades out well above the face band) + toran */
+[data-composition-id="cta-book-seat"] #cta-book-seat-scrim {
+  position: absolute; left: 0; top: 0; width: 1080px; height: 430px; opacity: 0;
+  background: linear-gradient(180deg, rgba(26,5,9,0.66) 0%, rgba(26,5,9,0.4) 48%, rgba(26,5,9,0) 100%);
+}
+[data-composition-id="cta-book-seat"] #cta-book-seat-toran { position: absolute; left: 0; top: 0; width: 1080px; height: 220px; overflow: visible; }
+
+/* chip */
+[data-composition-id="cta-book-seat"] .cta-book-seat-row { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; align-items: center; }
+[data-composition-id="cta-book-seat"] #cta-book-seat-chipglow {
+  position: absolute; left: 90px; top: 170px; width: 900px; height: 200px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(255,159,28,0.75) 0%, rgba(200,16,46,0.3) 55%, rgba(200,16,46,0) 100%);
+}
+[data-composition-id="cta-book-seat"] #cta-book-seat-chip {
+  position: relative; height: 100px; padding: 0 40px 0 15px; box-sizing: border-box;
+  display: flex; align-items: center; gap: 18px; overflow: hidden;
+  border-radius: 999px; border: 3px solid #FF9F1C;
+  background: linear-gradient(160deg, rgba(74,10,20,0.95), rgba(26,5,9,0.95));
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 30px rgba(255,159,28,0.35);
+  transform-origin: 50% 50%; white-space: nowrap;
+}
+[data-composition-id="cta-book-seat"] #cta-book-seat-free {
+  display: block; height: 70px; line-height: 72px; padding: 0 24px; border-radius: 999px;
+  background: linear-gradient(180deg, #FFC93C 0%, #FF9F1C 100%);
+  box-shadow: inset 0 -4px 0 rgba(200,16,46,0.35), 0 0 18px rgba(255,201,60,0.45);
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 40px; letter-spacing: -0.01em; color: #4A0A14;
+}
+[data-composition-id="cta-book-seat"] .cta-book-seat-sep { display: block; width: 11px; height: 11px; border-radius: 50%; background: #FFC93C; box-shadow: 0 0 10px rgba(255,201,60,0.8); }
+[data-composition-id="cta-book-seat"] .cta-book-seat-chiptxt { display: block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 36px; letter-spacing: 0.1em; color: #FFF4E0; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-sheen {
+  position: absolute; left: 0; top: -40%; width: 220px; height: 180%;
+  background: linear-gradient(100deg, rgba(255,244,224,0) 0%, rgba(255,244,224,0.32) 50%, rgba(255,244,224,0) 100%);
+}
+
+/* badge */
+[data-composition-id="cta-book-seat"] #cta-book-seat-badge {
+  position: relative; height: 60px; padding: 0 30px 0 22px; box-sizing: border-box;
+  display: flex; align-items: center; gap: 14px; overflow: hidden;
+  border-radius: 999px; border: 2px solid rgba(255,201,60,0.78);
+  background: rgba(26,5,9,0.84); box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+  transform-origin: 50% 50%; white-space: nowrap;
+}
+[data-composition-id="cta-book-seat"] #cta-book-seat-bicon { display: block; width: 40px; height: 32px; overflow: visible; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-btxt { display: block; font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 30px; line-height: 1; letter-spacing: 0.14em; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-bw1 { color: #FFF4E0; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-bw2 { color: #FFC93C; font-weight: 900; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-ch { display: inline-block; transform-origin: 50% 100%; }
+
+/* mirror-work dots */
+[data-composition-id="cta-book-seat"] .cta-book-seat-mirror {
+  position: absolute; border-radius: 50%; box-sizing: border-box;
+  background: radial-gradient(circle at 38% 34%, #FFF4E0 0%, #FFE7A0 18%, #FFC93C 52%, #C98A12 100%);
+  border: 3px solid #C8102E;
+  box-shadow: 0 0 0 2px rgba(255,201,60,0.55), 0 0 16px rgba(255,201,60,0.55);
+}
+[data-composition-id="cta-book-seat"] .cta-book-seat-glint { position: absolute; left: 22%; top: 18%; width: 34%; height: 22%; border-radius: 50%; background: #FFFFFF; transform: rotate(-30deg); }
+
+/* torso band: button, chevrons, cursor */
+[data-composition-id="cta-book-seat"] #cta-book-seat-bscrim {
+  position: absolute; left: 40px; top: 846px; width: 1000px; height: 290px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(26,5,9,0.55) 0%, rgba(26,5,9,0.3) 60%, rgba(26,5,9,0) 100%);
+}
+[data-composition-id="cta-book-seat"] #cta-book-seat-btnglow {
+  position: absolute; left: 60px; top: 870px; width: 960px; height: 240px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(255,159,28,0.8) 0%, rgba(200,16,46,0.35) 55%, rgba(200,16,46,0) 100%);
+}
+[data-composition-id="cta-book-seat"] #cta-book-seat-burst {
+  position: absolute; left: 90px; top: 870px; width: 900px; height: 240px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(255,201,60,0.95) 0%, rgba(255,159,28,0.55) 40%, rgba(200,16,46,0) 100%);
+}
+[data-composition-id="cta-book-seat"] #cta-book-seat-pulse { position: absolute; left: 150px; top: 930px; width: 780px; height: 120px; border-radius: 999px; box-sizing: border-box; border: 4px solid #FFC93C; box-shadow: 0 0 24px rgba(255,201,60,0.6); opacity: 0; }
+[data-composition-id="cta-book-seat"] #cta-book-seat-btnwrap { position: absolute; left: 150px; top: 930px; width: 780px; height: 120px; transform-origin: 50% 50%; opacity: 0; }
+[data-composition-id="cta-book-seat"] #cta-book-seat-btnmb, [data-composition-id="cta-book-seat"] #cta-book-seat-btn { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 50% 50%; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-btnface {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; box-sizing: border-box; overflow: hidden;
+  border-radius: 999px; border: 4px solid #FFC93C;
+  background: linear-gradient(90deg, #A50D26 0%, #C8102E 38%, #E0441E 74%, #FF9F1C 100%);
+  box-shadow: 0 0 40px rgba(255,159,28,0.55), 0 18px 40px rgba(0,0,0,0.5);
+}
+[data-composition-id="cta-book-seat"] .cta-book-seat-btnhi { position: absolute; left: 30px; right: 30px; top: 8px; height: 38px; border-radius: 999px; background: linear-gradient(180deg, rgba(255,244,224,0.28), rgba(255,244,224,0)); }
+[data-composition-id="cta-book-seat"] .cta-book-seat-btnlabel {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center; padding-top: 3px; box-sizing: border-box;
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 52px; letter-spacing: 0.06em; color: #FFF4E0; white-space: nowrap;
+  text-shadow: 0 3px 0 rgba(74,10,20,0.6), 0 0 18px rgba(74,10,20,0.4);
+}
+[data-composition-id="cta-book-seat"] .cta-book-seat-chev { position: absolute; left: 508px; width: 64px; height: 26px; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-chev svg { position: absolute; left: 0; top: 0; width: 64px; height: 26px; overflow: visible; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-ripple { position: absolute; left: 495px; top: 945px; width: 90px; height: 90px; border-radius: 50%; box-sizing: border-box; border: 4px solid #FFF4E0; box-shadow: 0 0 18px rgba(255,201,60,0.8); opacity: 0; }
+[data-composition-id="cta-book-seat"] #cta-book-seat-hand { position: absolute; left: 501px; top: 987px; width: 96px; height: 116px; overflow: visible; transform-origin: 39px 3px; opacity: 0; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.45)); }
+[data-composition-id="cta-book-seat"] .cta-book-seat-origin { position: absolute; left: 540px; top: 990px; width: 0; height: 0; }
+[data-composition-id="cta-book-seat"] .cta-book-seat-spk { position: absolute; left: 0; top: 0; display: block; opacity: 0; }
+</style>
+
+<div id="root" data-composition-id="cta-book-seat" data-start="0" data-duration="8.01" data-width="1080" data-height="1920">
+  <svg class="cta-book-seat-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="cta-book-seat-mb" x="-20%" y="-80%" width="140%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="cta-book-seat-mb-n" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+    </defs>
+  </svg>
+
+  <div id="cta-book-seat-scrim"></div>
+  <svg id="cta-book-seat-toran" viewBox="0 0 1080 220" aria-hidden="true">
+    <defs>
+      <radialGradient id="cta-book-seat-bulbglow"><stop offset="0" stop-color="#FFE7A0" stop-opacity="0.95"></stop><stop offset="0.4" stop-color="#FFC93C" stop-opacity="0.5"></stop><stop offset="1" stop-color="#FFC93C" stop-opacity="0"></stop></radialGradient>
+      <linearGradient id="cta-book-seat-leafgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#18C4B8"></stop><stop offset="1" stop-color="#0B6E66"></stop></linearGradient>
+      <linearGradient id="cta-book-seat-bellgrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C98A12"></stop><stop offset="0.45" stop-color="#FFE7A0"></stop><stop offset="1" stop-color="#C98A12"></stop></linearGradient>
+      <symbol id="cta-book-seat-mgA" viewBox="-20 -20 40 40">
+        <circle r="17" fill="#D9690A"></circle>
+        <circle r="15.5" fill="none" stroke="#FF9F1C" stroke-width="7" stroke-dasharray="0.01 5.4" stroke-linecap="round"></circle>
+        <circle r="10.5" fill="#FF9F1C"></circle>
+        <circle r="9.5" fill="none" stroke="#FFB23C" stroke-width="5" stroke-dasharray="0.01 4.6" stroke-linecap="round"></circle>
+        <circle r="4.5" fill="#FFC93C"></circle>
+      </symbol>
+      <symbol id="cta-book-seat-mgB" viewBox="-20 -20 40 40">
+        <circle r="17" fill="#E39A0E"></circle>
+        <circle r="15.5" fill="none" stroke="#FFC93C" stroke-width="7" stroke-dasharray="0.01 5.4" stroke-linecap="round"></circle>
+        <circle r="10.5" fill="#FFC93C"></circle>
+        <circle r="9.5" fill="none" stroke="#FFE7A0" stroke-width="5" stroke-dasharray="0.01 4.6" stroke-linecap="round"></circle>
+        <circle r="4.5" fill="#FF9F1C"></circle>
+      </symbol>
+      <symbol id="cta-book-seat-mgC" viewBox="-20 -20 40 40">
+        <circle r="17" fill="#8A0A20"></circle>
+        <circle r="15.5" fill="none" stroke="#C8102E" stroke-width="7" stroke-dasharray="0.01 5.4" stroke-linecap="round"></circle>
+        <circle r="10.5" fill="#C8102E"></circle>
+        <circle r="9.5" fill="none" stroke="#E5007D" stroke-width="5" stroke-dasharray="0.01 4.6" stroke-linecap="round"></circle>
+        <circle r="4.5" fill="#FFC93C"></circle>
+      </symbol>
+      <symbol id="cta-book-seat-star" viewBox="-32 -32 64 64">
+        <path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFE7A0"></path>
+        <circle r="5" fill="#FFFFFF"></circle>
+      </symbol>
+    </defs>
+    <g id="cta-book-seat-tor">
+      <path id="cta-book-seat-wire" d="M-40 6 Q115 122 270 6 Q405 122 540 6 Q675 122 810 6 Q965 122 1120 6" fill="none" stroke="#2A070D" stroke-width="2.5"></path>
+      <g id="cta-book-seat-bulbs"></g>
+      <g id="cta-book-seat-strands"></g>
+      <g id="cta-book-seat-leaves"></g>
+      <path d="M-40 22 Q115 178 270 22 Q405 178 540 22 Q675 178 810 22 Q965 178 1120 22" fill="none" stroke="#6E0A1A" stroke-width="6"></path>
+      <g id="cta-book-seat-flowers"></g>
+      <g id="cta-book-seat-nails"></g>
+    </g>
+  </svg>
+
+  <div id="cta-book-seat-chipglow"></div>
+  <div id="cta-book-seat-mirrors"></div>
+  <div class="cta-book-seat-row" style="top:220px;height:100px">
+    <div id="cta-book-seat-chip">
+      <span id="cta-book-seat-free">FREE</span>
+      <i class="cta-book-seat-sep"></i>
+      <span class="cta-book-seat-chiptxt">1-HOUR MASTERCLASS</span>
+      <div class="cta-book-seat-sheen" id="cta-book-seat-chipsheen"></div>
+    </div>
+  </div>
+  <div class="cta-book-seat-row" style="top:330px;height:60px">
+    <div id="cta-book-seat-badge">
+      <svg id="cta-book-seat-bicon" viewBox="0 0 40 32" aria-hidden="true">
+        <path id="cta-book-seat-bstep" d="M3 28 H13 V20 H23 V12 H33 V4" fill="none" stroke="#FFC93C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path id="cta-book-seat-barrow" d="M27 4 H34 V11" fill="none" stroke="#FF9F1C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span class="cta-book-seat-btxt" id="cta-book-seat-btxt"><span class="cta-book-seat-bw1 cta-book-seat-split">BECOME A </span><span class="cta-book-seat-bw2 cta-book-seat-split">SYSTEMATIC TRADER</span></span>
+      <div class="cta-book-seat-sheen" id="cta-book-seat-badgesheen"></div>
+    </div>
+  </div>
+
+  <div id="cta-book-seat-bscrim"></div>
+  <div id="cta-book-seat-btnglow"></div>
+  <div id="cta-book-seat-burst"></div>
+  <div id="cta-book-seat-pulse"></div>
+  <div id="cta-book-seat-btnwrap">
+    <div id="cta-book-seat-btnmb">
+      <div id="cta-book-seat-btn">
+        <div class="cta-book-seat-btnface">
+          <div class="cta-book-seat-btnhi"></div>
+          <div class="cta-book-seat-btnlabel">BOOK YOUR SEAT</div>
+          <div class="cta-book-seat-sheen" id="cta-book-seat-btnsheen"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-book-seat-chev" id="cta-book-seat-chev0" style="top:1056px"><svg viewBox="0 0 64 26" aria-hidden="true"><path d="M6 5 L32 21 L58 5" fill="none" stroke="#FF9F1C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+  <div class="cta-book-seat-chev" id="cta-book-seat-chev1" style="top:1074px"><svg viewBox="0 0 64 26" aria-hidden="true"><path d="M6 5 L32 21 L58 5" fill="none" stroke="#FF9F1C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+  <div class="cta-book-seat-chev" id="cta-book-seat-chev2" style="top:1092px"><svg viewBox="0 0 64 26" aria-hidden="true"><path d="M6 5 L32 21 L58 5" fill="none" stroke="#FF9F1C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+  <div class="cta-book-seat-ripple" id="cta-book-seat-rip0"></div>
+  <div class="cta-book-seat-ripple" id="cta-book-seat-rip1"></div>
+  <div class="cta-book-seat-ripple" id="cta-book-seat-rip2"></div>
+  <div class="cta-book-seat-origin" id="cta-book-seat-sparks"></div>
+  <svg id="cta-book-seat-hand" viewBox="0 0 100 120" aria-hidden="true">
+    <g fill="#4A0A14" stroke="#4A0A14" stroke-width="9" stroke-linejoin="round">
+      <rect x="31" y="3" width="20" height="62" rx="10"></rect>
+      <rect x="50" y="38" width="18" height="36" rx="9"></rect>
+      <rect x="66" y="42" width="17" height="34" rx="8.5"></rect>
+      <rect x="81" y="48" width="15" height="30" rx="7.5"></rect>
+      <path d="M31 58 H96 V88 C96 106 84 117 66 117 H50 C38 117 28 110 22 100 L8 76 C4 69 7 62 13 61 C18 60 22 63 25 67 L31 76 Z"></path>
+    </g>
+    <g fill="#FFF4E0">
+      <rect x="31" y="3" width="20" height="62" rx="10"></rect>
+      <rect x="50" y="38" width="18" height="36" rx="9"></rect>
+      <rect x="66" y="42" width="17" height="34" rx="8.5"></rect>
+      <rect x="81" y="48" width="15" height="30" rx="7.5"></rect>
+      <path d="M31 58 H96 V88 C96 106 84 117 66 117 H50 C38 117 28 110 22 100 L8 76 C4 69 7 62 13 61 C18 60 22 63 25 67 L31 76 Z"></path>
+    </g>
+    <path d="M50 54 V68 M66 58 V70 M81 62 V72" fill="none" stroke="rgba(74,10,20,0.35)" stroke-width="2.5" stroke-linecap="round"></path>
+    <path d="M35 12 C38 8 44 8 47 12" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="3" stroke-linecap="round"></path>
+  </svg>
+</div>
+
+<script>
+(function () {
+  var ID = "cta-book-seat";
+  var P = ID + "-";
+  var DUR = 8.01;
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(n) { return document.getElementById(P + n); }
+  function prand(n) { var x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function smooth(v) { v = clamp01(v); return v * v * (3 - 2 * v); }
+  function mk(tag, attrs, parent) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function useSym(sym, x, y, r, parent) {
+    var u = mk("use", { x: (x - r).toFixed(2), y: (y - r).toFixed(2), width: (2 * r).toFixed(2), height: (2 * r).toFixed(2) }, parent);
+    u.setAttribute("href", "#" + P + sym);
+    return u;
+  }
+  function qb(x0, y0, cx, cy, x1, y1, t) {
+    var u = 1 - t;
+    return [u * u * x0 + 2 * u * t * cx + t * t * x1, u * u * y0 + 2 * u * t * cy + t * t * y1];
+  }
+
+  // ---------- setup: marigold toran (deterministic) ----------
+  var AX = [-40, 270, 540, 810, 1120];
+  var flowersG = el("flowers"), leavesG = el("leaves"), bulbsG = el("bulbs"), strandsG = el("strands"), nailsG = el("nails");
+  var leaves = [], bulbs = [], strands = [];
+  var fi = 0, s, j;
+  for (s = 0; s < 4; s++) {
+    var x0 = AX[s], x1 = AX[s + 1], cx = (x0 + x1) / 2;
+    // flower rope
+    for (j = 0; j < 13; j++) {
+      var pt = qb(x0, 22, cx, 178, x1, 22, j / 13);
+      var band = Math.floor(j / 2) % 2;
+      useSym(band ? "mgB" : "mgA", pt[0], pt[1], j % 2 ? 15.5 : 17.5, flowersG);
+      fi++;
+    }
+    // mango leaves hanging under the rope
+    for (j = 0; j < 4; j++) {
+      var tl0 = 0.16 + j * 0.225;
+      var lp = qb(x0, 22, cx, 178, x1, 22, tl0);
+      var g = mk("g", {}, leavesG);
+      mk("path", { d: "M0 0 C13 10 15 36 0 56 C-15 36 -13 10 0 0 Z", fill: "url(#" + P + "leafgrad)" }, g);
+      mk("path", { d: "M0 5 L0 50", fill: "none", stroke: "rgba(255,244,224,0.35)", "stroke-width": "2", "stroke-linecap": "round" }, g);
+      var base = (tl0 - 0.5) * -28;
+      leaves.push({ g: g, x: lp[0], y: lp[1] + 8, base: base, ph: prand(s * 10 + j) * 6.283 });
+    }
+    // string lights
+    for (j = 0; j < 6; j++) {
+      var bp = qb(x0, 6, cx, 122, x1, 6, (j + 0.5) / 6);
+      var bg = mk("g", { transform: "translate(" + bp[0].toFixed(2) + "," + (bp[1] + 6).toFixed(2) + ")" }, bulbsG);
+      mk("circle", { r: "15", fill: "url(#" + P + "bulbglow)" }, bg);
+      mk("circle", { r: "4.5", fill: "#FFE7A0" }, bg);
+      bg.setAttribute("opacity", "0");
+      bulbs.push({ g: bg, i: s * 6 + j, x: bp[0], ph: prand(s * 6 + j + 40) * 6.283 });
+    }
+  }
+  // hanging strands at the three nails
+  for (s = 1; s <= 3; s++) {
+    var sg = mk("g", { transform: "translate(" + AX[s] + ",22)" }, strandsG);
+    mk("path", { d: "M0 0 L0 120", stroke: "#6E0A1A", "stroke-width": "3", fill: "none" }, sg);
+    for (j = 0; j < 4; j++) useSym(j % 2 ? "mgB" : "mgA", 0, 26 + j * 25, 13, sg);
+    mk("path", { d: "M-11 140 C-11 124 -7 117 0 117 C7 117 11 124 11 140 Z", fill: "url(#" + P + "bellgrad)", stroke: "#8A5A08", "stroke-width": "1.5" }, sg);
+    mk("circle", { cx: "0", cy: "144", r: "3.5", fill: "#FFC93C" }, sg);
+    strands.push({ g: sg, x: AX[s], ph: s * 1.3 });
+    useSym("mgC", AX[s], 22, 21, nailsG);
+  }
+
+  // mirror-work dots flanking the chip: [x, y, size]
+  var MIR = [[112, 262, 30], [70, 312, 18], [968, 262, 30], [1010, 214, 18]];
+  var mirrors = [];
+  for (j = 0; j < MIR.length; j++) {
+    var md = document.createElement("div");
+    md.className = P + "mirror";
+    md.style.left = (MIR[j][0] - MIR[j][2] / 2) + "px";
+    md.style.top = (MIR[j][1] - MIR[j][2] / 2) + "px";
+    md.style.width = MIR[j][2] + "px";
+    md.style.height = MIR[j][2] + "px";
+    var gl = document.createElement("i");
+    gl.className = P + "glint";
+    md.appendChild(gl);
+    el("mirrors").appendChild(md);
+    mirrors.push({ el: md, glint: gl, ph: prand(j * 7 + 3) * 6.283 });
+  }
+
+  // badge text -> per-character spans (spaces kept as nbsp)
+  var spl = el("badge").querySelectorAll("." + P + "split");
+  for (j = 0; j < spl.length; j++) {
+    var txt = spl[j].textContent;
+    spl[j].textContent = "";
+    for (var c = 0; c < txt.length; c++) {
+      var sp = document.createElement("span");
+      sp.className = P + "ch";
+      sp.textContent = txt.charAt(c) === " " ? " " : txt.charAt(c);
+      spl[j].appendChild(sp);
+    }
+  }
+
+  // gold sparkle pool for "now": emitted from the button's rim, outward
+  var sparks = [];
+  for (j = 0; j < 24; j++) {
+    var star = j % 3 !== 2;
+    var a = j / 24 * Math.PI * 2 + (prand(j * 5 + 1) - 0.5) * 0.25;
+    var ox = Math.cos(a) * 392, oy = Math.sin(a) * 62;
+    var nx = Math.cos(a) / 392, ny = Math.sin(a) / 62;
+    var nl = Math.sqrt(nx * nx + ny * ny);
+    nx /= nl; ny /= nl;
+    var spd = 260 + prand(j * 7 + 2) * 300;
+    var size = star ? 20 + prand(j * 11 + 3) * 18 : 7 + prand(j * 11 + 3) * 4;
+    var node;
+    if (star) {
+      node = document.createElementNS(SVGNS, "svg");
+      node.setAttribute("viewBox", "-32 -32 64 64");
+      node.setAttribute("width", size.toFixed(1));
+      node.setAttribute("height", size.toFixed(1));
+      var u2 = document.createElementNS(SVGNS, "use");
+      u2.setAttribute("href", "#" + P + "star");
+      u2.setAttribute("x", "-32"); u2.setAttribute("y", "-32"); u2.setAttribute("width", "64"); u2.setAttribute("height", "64");
+      node.appendChild(u2);
+    } else {
+      node = document.createElement("i");
+      node.style.width = size.toFixed(1) + "px";
+      node.style.height = size.toFixed(1) + "px";
+      node.style.borderRadius = "50%";
+      node.style.background = "#FFE7A0";
+      node.style.boxShadow = "0 0 12px #FFC93C";
+    }
+    node.setAttribute("class", P + "spk");
+    node.style.marginLeft = (-size / 2).toFixed(1) + "px";
+    node.style.marginTop = (-size / 2).toFixed(1) + "px";
+    el("sparks").appendChild(node);
+    sparks.push({ el: node, ox: ox, oy: oy, vx: nx * spd, vy: ny * spd * 0.6, k: 5 + prand(j * 13 + 4) * 1.5, spin: (prand(j * 17 + 5) * 2 - 1) * 260, star: star });
+  }
+
+  var tl = gsap.timeline({ paused: true });
+
+  // ---------- AMBIENT: one finite clock, pure function of t ----------
+  var chevIn = [el("chev0").firstElementChild, el("chev1").firstElementChild, el("chev2").firstElementChild];
+  var chipGlow = el("chipglow"), btnGlow = el("btnglow");
+  var amb = { t: 0 };
+  function applyAmbient() {
+    var t = amb.t, i;
+    // strands: damped swing after the drop lands, then a gentle sway
+    for (i = 0; i < strands.length; i++) {
+      var st = strands[i], tau = t - 0.42;
+      var th = 0;
+      if (tau > 0) th = 9 * Math.exp(-2.4 * tau) * Math.sin(5.6 * tau + i * 0.4) + 2.4 * Math.sin(1.5 * tau + st.ph) * smooth(tau / 1.2);
+      st.g.setAttribute("transform", "translate(" + st.x + ",22) rotate(" + th.toFixed(3) + ")");
+    }
+    for (i = 0; i < leaves.length; i++) {
+      var lf = leaves[i];
+      lf.g.setAttribute("transform", "translate(" + lf.x.toFixed(2) + "," + lf.y.toFixed(2) + ") rotate(" + (lf.base + 3.5 * Math.sin(1.9 * t + lf.ph)).toFixed(3) + ")");
+    }
+    // string lights switch on left -> right on "link", then twinkle
+    for (i = 0; i < bulbs.length; i++) {
+      var bu = bulbs[i];
+      var on = smooth((t - (0.56 + bu.i * 0.022)) / 0.1);
+      bu.g.setAttribute("opacity", (on * (0.5 + 0.5 * Math.max(0, Math.sin(3.3 * t + bu.ph)))).toFixed(3));
+    }
+    for (i = 0; i < mirrors.length; i++) {
+      mirrors[i].glint.style.opacity = (0.45 + 0.55 * Math.max(0, Math.sin(mirrors[i].ph + t * 3.1))).toFixed(3);
+    }
+    // bounded breathe on the chip glow once the chip has landed
+    var cg = smooth((t - 1.6) / 0.5);
+    chipGlow.style.opacity = (cg * (0.26 + 0.04 * Math.sin((t - 1.6) * 2.1))).toFixed(3);
+    // button glow: rises with the button, flares on the release and on "now"
+    var bgl = smooth((t - 6.3) / 0.5) * 0.28 + 0.16 * Math.exp(-Math.pow((t - 7.25) / 0.18, 2)) + 0.14 * Math.exp(-Math.pow((t - 7.86) / 0.14, 2));
+    btnGlow.style.opacity = Math.min(0.45, bgl).toFixed(3);
+    // chevrons: a downward bounce wave (top -> bottom)
+    var env = smooth((t - 6.95) / 0.3);
+    for (i = 0; i < chevIn.length; i++) {
+      var w = Math.max(0, Math.sin(2 * Math.PI * (t - 6.95) / 0.8 - i * 0.9));
+      chevIn[i].style.transform = "translate(0px," + (5 * w * env).toFixed(2) + "px)";
+      chevIn[i].style.opacity = (1 - env * (1 - (0.45 + 0.55 * w))).toFixed(3);
+    }
+  }
+  applyAmbient();
+  tl.fromTo(amb, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: applyAmbient }, 0);
+
+  // ---------- SCENE 1 (0.0-3.0): toran drops in, string lights, FREE 1-HOUR MASTERCLASS chip ----------
+  tl.fromTo(el("scrim"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0);
+  tl.fromTo(el("tor"), { y: -210 }, { y: 0, duration: 0.75, ease: "back.out(1.5)" }, 0.04);
+
+  // chip springs in on "one hour masterclass"
+  tl.fromTo(el("chip"), { scale: 0.3, opacity: 0, y: 26 }, { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.6)" }, 1.46);
+  tl.fromTo(el("free"), { scale: 0, rotation: -14 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.62);
+  tl.fromTo(el("chip").querySelectorAll("." + P + "sep, ." + P + "chiptxt"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out", stagger: 0.06 }, 1.66);
+  mirrors.forEach(function (m, i) {
+    tl.fromTo(m.el, { scale: 0, rotation: -120, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 1.78 + i * 0.05);
+  });
+  tl.fromTo(el("chipsheen"), { x: -260 }, { x: 900, duration: 0.65, ease: "power1.inOut" }, 2.06);
+
+  // ---------- SCENE 2 (3.0-6.2): BECOME A SYSTEMATIC TRADER ticks in ----------
+  tl.fromTo(el("badge"), { scaleX: 0.2, scaleY: 0.6, opacity: 0 }, { scaleX: 1, scaleY: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 4.84);
+  var bch = el("btxt").querySelectorAll("." + P + "ch");
+  tl.fromTo(bch, { rotationX: -95, opacity: 0, y: 8, transformPerspective: 400 }, { rotationX: 0, opacity: 1, y: 0, transformPerspective: 400, duration: 0.3, ease: "power3.out", stagger: 0.016 }, 4.92);
+  var bstep = el("bstep"), barrow = el("barrow");
+  var BS = bstep.getTotalLength(), BA = barrow.getTotalLength();
+  bstep.style.strokeDasharray = BS; barrow.style.strokeDasharray = BA;
+  tl.fromTo(bstep, { strokeDashoffset: BS }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.inOut" }, 4.98);
+  tl.fromTo(barrow, { strokeDashoffset: BA }, { strokeDashoffset: 0, duration: 0.22, ease: "power2.out" }, 5.4);
+  tl.fromTo(el("badgesheen"), { x: -260 }, { x: 900, duration: 0.6, ease: "power1.inOut" }, 5.6);
+
+  // ---------- SCENE 3 (6.2-8.01): BOOK YOUR SEAT, cursor tap, chevrons, sparkle burst ----------
+  tl.fromTo(el("bscrim"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 6.2);
+  tl.fromTo(el("btnwrap"), { y: 150, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" }, 6.24);
+  // vertical motion blur on the rise
+  var mbw = el("btnmb"), mbn = el("mb-n"), mbp = { b: 18 };
+  function writeMB() {
+    if (mbp.b < 0.25 || mbp.b >= 18) { mbw.style.filter = "none"; mbn.setAttribute("stdDeviation", "0 0"); return; }
+    mbw.style.filter = "url(#" + P + "mb)";
+    mbn.setAttribute("stdDeviation", "0 " + mbp.b.toFixed(2));
+  }
+  writeMB();
+  tl.fromTo(mbp, { b: 18 }, { b: 0, duration: 0.34, ease: "power2.out", onUpdate: writeMB }, 6.24);
+  tl.fromTo(el("btnsheen"), { x: -260 }, { x: 960, duration: 0.6, ease: "power1.inOut" }, 6.76);
+
+  [0, 1, 2].forEach(function (i) {
+    tl.fromTo(el("chev" + i), { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 6.6 + i * 0.08);
+  });
+
+  // cursor-click-ripple: move (ends before the click) -> click on "book" -> ripples from the click point
+  tl.fromTo(el("hand"), { x: 600, y: 40, rotation: 14, opacity: 0 }, { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 6.44);
+  tl.fromTo(el("hand"), { scale: 1 }, { scale: 0.84, duration: 0.09, ease: "power2.in" }, 7.0);
+  tl.to(el("hand"), { scale: 1, duration: 0.14, ease: "power2.out" }, 7.09);
+  // press-release-spring on the button: linear press, spring release (adjacent => continuous)
+  tl.fromTo(el("btn"), { scale: 1 }, { scale: 0.92, duration: 0.12, ease: "power1.in" }, 7.0);
+  tl.to(el("btn"), { scale: 1, duration: 0.6, ease: "back.out(2.2)" }, 7.12);
+  [0, 1, 2].forEach(function (i) {
+    var r = el("rip" + i), at = 7.03 + i * 0.09;
+    tl.fromTo(r, { scale: 0.2, opacity: 0 }, { scale: 0.45, opacity: 0.95, duration: 0.05, ease: "none" }, at);
+    tl.to(r, { scale: 2.6, opacity: 0, duration: 0.7, ease: "power2.out" }, at + 0.05);
+  });
+  tl.fromTo(el("burst"), { scale: 0.9, opacity: 0 }, { scale: 1.25, opacity: 0.8, duration: 0.4, ease: "power2.out" }, 7.12);
+  tl.to(el("burst"), { opacity: 0, duration: 0.5, ease: "power2.in" }, 7.52);
+  tl.fromTo(el("pulse"), { scaleX: 1, scaleY: 1, opacity: 0 }, { scaleX: 1.01, scaleY: 1.04, opacity: 0.95, duration: 0.05, ease: "none" }, 7.12);
+  tl.to(el("pulse"), { scaleX: 1.09, scaleY: 1.45, opacity: 0, duration: 0.6, ease: "power2.out" }, 7.17);
+  // the hand eases off the label after the tap
+  tl.to(el("hand"), { x: 310, y: 16, rotation: -6, duration: 0.6, ease: "power2.inOut" }, 7.3);
+  tl.fromTo(el("btnsheen"), { x: -260 }, { x: 960, duration: 0.6, ease: "power1.inOut", immediateRender: false }, 7.42);
+
+  // "now" 7.80: gold sparkle burst off the button rim (drag ballistic, seeded)
+  // the burst's life is 0.5s; the driver covers the part that fits before the end of the scene
+  var BURST = 7.76, LIFE = 0.5, WIN = DUR - BURST;
+  var drv = { T: 0 };
+  function writeSparks() {
+    var t = drv.T * WIN, T = t / LIFE;
+    var op = drv.T <= 0 ? 0 : smooth(T / 0.08) * (1 - smooth((T - 0.3) / 0.7));
+    for (var i = 0; i < sparks.length; i++) {
+      var q = sparks[i];
+      var e = 1 - Math.exp(-q.k * t);
+      var x = q.ox + q.vx * e / q.k;
+      var y = q.oy + q.vy * e / q.k + 60 * t * t;
+      var sc = q.star ? 0.4 + 0.6 * smooth(T / 0.15) : 1;
+      q.el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + (q.spin * t).toFixed(1) + "deg) scale(" + sc.toFixed(3) + ")";
+      q.el.style.opacity = op.toFixed(3);
+    }
+  }
+  writeSparks();
+  tl.fromTo(drv, { T: 0 }, { T: 1, duration: WIN, ease: "none", onUpdate: writeSparks }, BURST);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

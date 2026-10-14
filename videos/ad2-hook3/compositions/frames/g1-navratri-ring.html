@@ -308,6 +308,8 @@
     var by = top ? 70 + R() * 560 : 640 + R() * 1180;
     var bs = top ? 34 + R() * 96 : 40 + R() * 120;
     var col = BCOL[Math.floor(R() * BCOL.length)];
+    // keep the hero zone (garbo + flame) clear of big discs
+    if (Math.abs(bx - 540) < 270 && by > 340 && by < 860) bx = bx < 540 ? Math.max(30, bx - 280) : Math.min(1050, bx + 280);
     var node = document.createElement("i");
     node.className = ID + "-bokeh";
     node.style.left = (bx - bs / 2).toFixed(1) + "px";
@@ -643,7 +645,7 @@
   var vb = el("vblur-node"), vbp = { v: 16 };
   function writeVB() { vb.setAttribute("stdDeviation", "0 " + vbp.v.toFixed(2)); }
   writeVB();
-  tl.fromTo(vbp, { v: 16 }, { v: 0, duration: 0.55, ease: "power2.out", onUpdate: writeVB }, 0.1);
+  tl.fromTo(vbp, { v: 16 }, { v: 0, duration: 0.55, ease: "power2.out", onUpdate: writeVB, immediateRender: false }, 0.1);
   // flame ignites as the pot lands
   tl.fromTo(el("flameignite"), { scale: 0, opacity: 0, transformOrigin: "50% 100%" }, { scale: 1, opacity: 1, transformOrigin: "50% 100%", duration: 0.5, ease: "back.out(2)" }, 0.42);
   // gold rays + bloom land with the garbo settle (one beat)
@@ -659,8 +661,8 @@
   var cb = el("cblur-node"), cbp = { v: 12 };
   function writeCB() { cb.setAttribute("stdDeviation", "0 " + cbp.v.toFixed(2)); }
   writeCB();
-  tl.fromTo(cbp, { v: 12 }, { v: 0, duration: 0.3, ease: "power2.out", onUpdate: writeCB }, CHIP_T);
-  tl.fromTo(el("chipsheen"), { x: -160 }, { x: 640, duration: 0.5, ease: "power1.inOut" }, CHIP_T + 0.36);
+  tl.fromTo(cbp, { v: 12 }, { v: 0, duration: 0.3, ease: "power2.out", onUpdate: writeCB, immediateRender: false }, CHIP_T);
+  tl.fromTo(el("chipsheen"), { x: -160 }, { x: 640, duration: 0.48, ease: "power1.inOut" }, CHIP_T + 0.3);
 
   window.__timelines = window.__timelines || {};
   window.__timelines["g1-navratri-ring"] = tl;

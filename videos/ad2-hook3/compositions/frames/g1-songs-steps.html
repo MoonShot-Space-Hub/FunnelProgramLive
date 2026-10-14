@@ -359,7 +359,7 @@
   for (var ci = 0; ci <= 96; ci++) { var ca = -Math.PI / 2 - (ci / 96) * TAU; circlePts.push([CX + 178 * Math.cos(ca), CY + 178 * Math.sin(ca)]); }
   var zigPts = [[180, 640], [360, 840], [540, 640], [720, 840], [900, 640]];
   var spinPts = [];
-  for (var si = 0; si <= 120; si++) { var su = si / 120; var sa = Math.PI + su * 3.5 * Math.PI; var sr = 22 + 160 * su; spinPts.push([CX + sr * Math.cos(sa), CY + sr * Math.sin(sa)]); }
+  for (var si = 0; si <= 120; si++) { var su = si / 120; var sa = -2.5 * Math.PI + su * 3 * Math.PI; var sr = 46 + 140 * su; spinPts.push([CX + sr * Math.cos(sa), CY + sr * Math.sin(sa)]); }
   var LAYOUTS = [placeAlong(circlePts, 15), placeAlong(zigPts, 17), placeAlong(spinPts, 13)];
   // unwrap rotations so each re-form turns the short way
   for (var li = 1; li < LAYOUTS.length; li++) {
@@ -378,6 +378,11 @@
   var WX0 = 100, WX1 = 980, WCY = 770, WAMP = 116, NP = 12, PW = (WX1 - WX0) / NP;
   var ACC = [1, 0.42, 0.58, 0.82, 0.42, 0.58];
   function accentOf(k) { return ACC[((k - 1) % 6 + 6) % 6]; }
+  function peakY(k) {
+    var x = WX0 + PW * (k + 0.25);
+    var env = Math.min(1, (x - WX0) / (PW * 0.5), (WX1 - x) / (PW * 0.5));
+    return WCY - WAMP * accentOf(k) * env;
+  }
   (function () {
     var d = "";
     for (var x = WX0; x <= WX1 + 0.01; x += 4) {
@@ -399,7 +404,7 @@
   (function () {
     var host = el("wdots");
     for (var k = 0; k < NP; k++) {
-      var px = WX0 + PW * (k + 0.25), py = WCY - WAMP * accentOf(k);
+      var px = WX0 + PW * (k + 0.25), py = peakY(k);
       WDOTS.push({ n: svgEl("circle", { cx: px.toFixed(1), cy: py.toFixed(1), r: 0, fill: "#FFF4E0" }, host), on: headTime(px), acc: accentOf(k) });
     }
   })();
@@ -411,7 +416,7 @@
   (function () {
     var host = el("dandiyas");
     [1, 4, 7, 10].forEach(function (k, j) {
-      var px = WX0 + PW * (k + 0.25), py = WCY - WAMP * accentOf(k) - 40;
+      var px = WX0 + PW * (k + 0.25), py = peakY(k) - 46;
       var g = svgEl("g", { transform: "translate(" + px.toFixed(1) + " " + py.toFixed(1) + ") scale(0)" }, host);
       var sticks = [];
       [-1, 1].forEach(function (side) {
@@ -537,7 +542,7 @@
     for (var j = 0; j < DANDIYAS.length; j++) {
       var Dd = DANDIYAS[j];
       var pop = BACK2(seg(t, Dd.on, 0.34));
-      Dd.g.setAttribute("transform", "translate(" + Dd.x.toFixed(1) + " " + Dd.y.toFixed(1) + ") scale(" + Math.max(0.0001, pop * 1.05).toFixed(4) + ")");
+      Dd.g.setAttribute("transform", "translate(" + Dd.x.toFixed(1) + " " + Dd.y.toFixed(1) + ") scale(" + Math.max(0.0001, pop * 1.3).toFixed(4) + ")");
       var close = 0, last = -1;
       for (var c = 0; c < Dd.clicks.length; c++) { var dtc = t - Dd.clicks[c]; close = Math.max(close, clickClose(dtc)); if (dtc >= 0) last = dtc; }
       var open = 26 * (1 - close);
