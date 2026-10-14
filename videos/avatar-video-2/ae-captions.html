@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap/gsap.min.js"></script>
+    <script src="captions/groups.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: transparent;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* A-roll inside a non-timed camera wrapper for punch-ins (face centre ≈ 500, 660) */
+      #cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 500px 660px;
+        will-change: transform, filter;
+      }
+      #a-roll {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* cutaway wrappers (non-timed) around each sub-composition host */
+      .bw {
+        position: absolute;
+        inset: 0;
+        z-index: 40;
+        pointer-events: none;
+        will-change: opacity, filter;
+      }
+      .bw > div[data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* black gradient behind the captions */
+      #cap-gradient {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1040px;
+        z-index: 30;
+        pointer-events: none;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0.84) 30%,
+          rgba(0, 0, 0, 0.76) 55%,
+          rgba(0, 0, 0, 0.68) 66%,
+          rgba(0, 0, 0, 0.44) 82%,
+          rgba(0, 0, 0, 0.16) 92%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+
+      /* captions: y 1030–1248, inside Instagram's Reels safe zone (bottom 35% kept clear) */
+      #captions {
+        position: absolute;
+        left: 0;
+        top: 1030px;
+        width: 100%;
+        height: 218px;
+        z-index: 60;
+        pointer-events: none;
+      }
+      .cg {
+        position: absolute;
+        left: 75px;
+        right: 75px;
+        top: 0;
+        height: 218px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: baseline;
+        justify-content: center;
+        column-gap: 22px;
+        row-gap: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .cw {
+        position: relative;
+        display: inline-block;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+        font-size: 74px;
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+        color: #fff5ea;
+        text-shadow:
+          0 4px 18px rgba(0, 0, 0, 0.6),
+          0 2px 3px rgba(0, 0, 0, 0.7);
+        transform-origin: 50% 70%;
+        isolation: isolate;
+        --mk: 0;
+      }
+      .cw.em {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-size: 96px;
+        letter-spacing: -0.03em;
+        color: #ffc24a;
+        text-shadow:
+          0 0 38px rgba(255, 194, 74, 0.5),
+          0 4px 16px rgba(0, 0, 0, 0.65);
+      }
+      .cw.em.red {
+        color: #ff4d5e;
+        text-shadow:
+          0 0 38px rgba(255, 77, 94, 0.45),
+          0 4px 16px rgba(0, 0, 0, 0.65);
+      }
+      .cw.em::after {
+        content: "";
+        position: absolute;
+        left: -6px;
+        right: -6px;
+        bottom: 14px;
+        height: 22px;
+        border-radius: 6px;
+        background: rgba(224, 33, 138, 0.8);
+        transform-origin: 0% 50%;
+        transform: scaleX(var(--mk));
+        z-index: -1;
+      }
+      .cw.em.long {
+        font-size: 80px;
+      }
+      .cw.em.red::after {
+        background: rgba(70, 8, 30, 0.85);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="ae-captions"
+      data-start="0"
+      data-duration="43.32"
+      data-fps="25"
+      data-width="1080"
+      data-height="1920"
+    >
+
+
+      <!-- Captions (built from captions/groups.js) -->
+      <div id="captions" class="clip" data-start="0" data-duration="43.32" data-track-index="5"></div>
+
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // ------------------------------------------------------------------ captions
+      const layer = document.getElementById("captions");
+      const GROUPS = window.CAPTION_GROUPS;
+      GROUPS.forEach((g, gi) => {
+        const el = document.createElement("div");
+        el.className = "cg";
+        el.id = "cg-" + gi;
+        g.words.forEach((w, wi) => {
+          const s = document.createElement("span");
+          s.className = "cw" + (w.tone ? " em " + w.tone : "");
+          s.id = "cg-" + gi + "-w" + wi;
+          s.textContent = w.text;
+          el.appendChild(s);
+        });
+        layer.appendChild(el);
+      });
+      GROUPS.forEach((g, gi) => {
+        const el = document.getElementById("cg-" + gi);
+        tl.set(el, { visibility: "visible", opacity: 1, y: 0 }, g.start);
+        g.words.forEach((w, wi) => {
+          const s = document.getElementById("cg-" + gi + "-w" + wi);
+          const at = Math.max(g.start, w.start - 0.04);
+          if (w.tone) {
+            tl.fromTo(
+              s,
+              { opacity: 0, scale: 1.9, y: -8, rotation: -5, filter: "blur(10px)" },
+              { opacity: 1, scale: 1, y: 0, rotation: 0, filter: "blur(0px)", duration: 0.34, ease: "expo.out" },
+              at,
+            );
+            tl.fromTo(s, { "--mk": 0 }, { "--mk": 1, duration: 0.28, ease: "power3.out" }, at + 0.12);
+          } else {
+            tl.fromTo(
+              s,
+              { opacity: 0, y: 44, scale: 0.7, color: "#FFE1A0" },
+              { opacity: 1, y: 0, scale: 1, color: "#FFE1A0", duration: 0.24, ease: "back.out(2.2)" },
+              at,
+            );
+            tl.fromTo(s, { color: "#FFE1A0" }, { color: "#FFF5EA", duration: 0.22, ease: "power1.out", immediateRender: false }, Math.max(at + 0.12, w.end));
+          }
+        });
+        tl.to(el, { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, g.end - 0.1);
+        tl.set(el, { opacity: 0, visibility: "hidden" }, g.end);
+      });
+
+      // caption self-lint
+      GROUPS.forEach((g, gi) => {
+        const el = document.getElementById("cg-" + gi);
+        tl.seek(g.end + 0.01);
+        const cs = window.getComputedStyle(el);
+        if (cs.opacity !== "0" && cs.visibility !== "hidden") {
+          console.warn("[caption-lint] group " + gi + " still visible at t=" + (g.end + 0.01).toFixed(2) + "s");
+        }
+      });
+      tl.seek(0);
+
+      window.__timelines["ae-captions"] = tl;
+    </script>
+  </body>
+</html>
