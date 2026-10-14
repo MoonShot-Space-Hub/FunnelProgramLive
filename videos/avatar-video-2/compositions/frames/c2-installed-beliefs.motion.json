@@ -2,6 +2,6 @@
   "scene": "c2-installed-beliefs",
   "duration_s": 2.44,
   "rules": ["svg-path-draw", "stat-bars-and-fills", "kinetic-beat-slam", "motion-blur-streak"],
-  "exit": { "vector": "near rest: padlock squash-settle (back.out) and decaying impact shake (14px * e^-11t, ~0.4px at the last frame); brain glow breathing; camera push-in scale +0.016/s", "still_moving": true },
-  "entry": { "vector": "head settles leftward ~230 px/s at t=0 (x +40->0, scale 0.9->1, expo.out 0.7s) while its outline draws; first belief word enters from off-left at ~1700 px/s", "from_rest": false }
+  "exit": { "vector": "transparent overlay, face zone clear: near rest; RIGHT-rail head card shake decaying (9px * e^-11t, ~0.3px at the last frame), padlock squash-settle, card push-in about its own centre +0.016/s", "still_moving": true },
+  "entry": { "vector": "head card slides in from the right edge (x +120->0, scale 0.86->1, expo.out 0.5s, ~1700 px/s leftward at t=0); first belief chip streaks in from off-left along the TOP band (~6000 px/s at t=0, expo.out)", "from_rest": false }
 }

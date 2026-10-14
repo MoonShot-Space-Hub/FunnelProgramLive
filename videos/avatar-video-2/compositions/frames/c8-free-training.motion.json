@@ -1,13 +1,14 @@
 {
   "scene": "c8-free-training",
   "duration_s": 2.2,
+  "layout": "transparent face-safe overlay: TOP band horizontal training card, RIGHT rail FREE stamp landing on the card's corner, LEFT rail 60:00 readout card; each zone clipped clear of the face zone",
   "rules": ["split-tilt-cards", "kinetic-beat-slam", "svg-path-draw", "ambient-glow-bloom", "particle-burst", "spring-pop-entrance"],
   "exit": {
-    "vector": "card idle float (y sine 6px amp, <=16 px/s; rotateY sway +-1.2deg); camera push 1.00->1.04 easing to ~0 px/s; second play-button pulse ring expanding; gold glow still growing slightly (until 2.28); dust rising 18-64 px/s, ground rings rotating -6 deg/s; FREE stamp, 60:00 readout and gold underline at rest",
+    "vector": "training card idle float (y sine 3px amp, <=8 px/s; rotateY sway +-1deg); per-zone push 1.00->1.03 easing to ~0 px/s; play-button pulse ring expanding; stamp glow breathing; FREE stamp, 60:00 readout and gold underline at rest",
     "still_moving": true
   },
   "entry": {
-    "vector": "training card tilting in from x+300 / z-260 / rotateY -46deg / rotateX 14deg with blur 16px, moving leftward ~1250 px/s at frame 0 (power3.out over 0.72s) and settling to rotateY -5deg; dust and blob drifting",
+    "vector": "training card enters from the right canvas edge, x+460 / rotateY 34deg / blur 16px, moving leftward ~1900 px/s at frame 0 (power3.out over 0.72s) and settling flat in the top band",
     "from_rest": false
   }
 }

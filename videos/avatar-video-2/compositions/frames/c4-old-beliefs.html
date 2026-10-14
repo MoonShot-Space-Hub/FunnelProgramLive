@@ -15,109 +15,43 @@
         height: 100%;
         overflow: hidden;
       }
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-ground,
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-scene,
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-fx {
+      /* v2: TRANSPARENT overlay. No ground: the speaker footage shows everywhere outside the cards.
+         Zones: TOP band y 270-490 | LEFT rail x 65-345 | RIGHT rail x 685-1015 | LOWER+caption band y 880-1248.
+         Face zone x 360-670, y 500-870 is never drawn into. */
+      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-scene {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
       }
-      /* ---------------- ground ---------------- */
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-ground {
-        background: #12061a;
-      }
-      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-g-radial {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle farthest-corner at 540px 620px, #2e1240 0%, #12061a 72%);
-      }
-      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-g-blob {
-        position: absolute;
-        border-radius: 50%;
-        will-change: transform;
-      }
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-gmag {
-        left: 90px;
-        top: 140px;
-        width: 900px;
-        height: 900px;
-        background: radial-gradient(circle, rgba(224, 33, 138, 1) 0%, rgba(224, 33, 138, 0.45) 36%, rgba(224, 33, 138, 0) 70%);
-        opacity: 0.3;
-      }
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-ggold {
-        left: 330px;
-        top: 150px;
-        width: 420px;
-        height: 420px;
-        background: radial-gradient(circle, rgba(255, 194, 74, 1) 0%, rgba(255, 194, 74, 0) 70%);
-        opacity: 0.16;
-      }
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-gred {
-        left: 120px;
-        top: 260px;
-        width: 840px;
-        height: 840px;
-        background: radial-gradient(circle, rgba(255, 77, 94, 1) 0%, rgba(255, 77, 94, 0.35) 40%, rgba(255, 77, 94, 0) 70%);
-        opacity: 0;
-      }
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-grings {
-        position: absolute;
-        left: -360px;
-        top: -280px;
-        width: 1800px;
-        height: 1800px;
-        transform-origin: 900px 900px;
-        will-change: transform;
-      }
-      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-dust {
-        position: absolute;
-        left: 0;
-        top: 0;
-        border-radius: 50%;
-        background: #ffe1a0;
-        box-shadow: 0 0 10px rgba(255, 194, 74, 0.8);
-        will-change: transform, opacity;
-      }
-      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-g-grain {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 1080px;
-        height: 1920px;
-        opacity: 0.06;
-      }
-      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-g-vig {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(ellipse 80% 62% at 50% 38%, rgba(18, 6, 26, 0) 58%, rgba(8, 2, 12, 0.7) 100%);
-      }
-      /* ---------------- camera ---------------- */
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-cam {
-        position: absolute;
-        inset: 0;
-        transform-origin: 540px 620px;
-        will-change: transform;
-      }
-      /* ---------------- belief cards ---------------- */
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-card {
         position: absolute;
-        left: 70px;
-        width: 940px;
         transform-origin: 50% 50%;
       }
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-card1 {
-        top: 250px;
-        height: 328px;
-      }
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-card2 {
-        top: 200px;
-        height: 300px;
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-top {
+        left: 90px;
+        top: 292px;
+        width: 900px;
+        height: 194px;
       }
       [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-card3 {
-        top: 150px;
-        height: 440px;
+        left: 90px;
+        top: 904px;
+        width: 900px;
+        height: 336px;
+      }
+      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-card1c {
+        left: 72px;
+        top: 524px;
+        width: 270px;
+        height: 205px;
+      }
+      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-card2c {
+        left: 690px;
+        top: 524px;
+        width: 320px;
+        height: 210px;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-cin {
         position: absolute;
@@ -125,50 +59,62 @@
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-tail {
         position: absolute;
-        left: 122px;
-        bottom: -24px;
-        width: 50px;
-        height: 50px;
+        left: 50px;
+        bottom: -20px;
+        width: 42px;
+        height: 42px;
         background: #221030;
-        border-right: 3px solid rgba(255, 95, 176, 0.5);
-        border-bottom: 3px solid rgba(255, 95, 176, 0.5);
+        border-right: 3px solid rgba(255, 95, 176, 0.55);
+        border-bottom: 3px solid rgba(255, 95, 176, 0.55);
         transform: rotate(45deg);
-        box-shadow: 18px 18px 40px rgba(0, 0, 0, 0.35);
+      }
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-tail-up {
+        top: -20px;
+        bottom: auto;
+        background: #2c1140;
+        border: none;
+        border-left: 3px solid rgba(255, 95, 176, 0.55);
+        border-top: 3px solid rgba(255, 95, 176, 0.55);
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-body {
         position: absolute;
         inset: 0;
-        border-radius: 34px;
-        background: linear-gradient(160deg, #2e1240 0%, #1e0d2b 100%);
-        border: 3px solid rgba(255, 95, 176, 0.5);
-        box-shadow:
-          0 40px 90px rgba(0, 0, 0, 0.55),
-          inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      }
-      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-sheenclip {
-        position: absolute;
-        inset: 0;
-        border-radius: 31px;
         overflow: hidden;
+        border-radius: 30px;
+        background: linear-gradient(160deg, #2e1240 0%, #1e0d2b 100%);
+        border: 3px solid rgba(255, 95, 176, 0.55);
+        box-shadow:
+          0 0 0 2px rgba(10, 3, 16, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-sheen {
         position: absolute;
         left: 0;
         top: -200px;
-        width: 220px;
-        height: 900px;
+        width: 200px;
+        height: 760px;
         background: linear-gradient(90deg, rgba(255, 245, 234, 0) 0%, rgba(255, 245, 234, 0.2) 50%, rgba(255, 245, 234, 0) 100%);
+        opacity: 0;
+      }
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-flash {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 60% 50%, rgba(255, 77, 94, 0.85) 0%, rgba(255, 77, 94, 0.25) 60%, rgba(255, 77, 94, 0.1) 100%);
+        mix-blend-mode: screen;
         opacity: 0;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-text {
         position: absolute;
         left: 0;
         right: 0;
-        top: 62px;
+        top: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        row-gap: 6px;
+        row-gap: 2px;
+      }
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-cmp .c4-old-beliefs-text {
+        top: 26px;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-row {
         display: flex;
@@ -189,22 +135,22 @@
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-t {
         grid-area: 1 / 1;
         color: #fff5ea;
-        text-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-tred {
         color: #ff4d5e;
-        text-shadow: 0 0 30px rgba(255, 77, 94, 0.55);
+        text-shadow: 0 0 26px rgba(255, 77, 94, 0.55);
         z-index: 2;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-tglow {
         color: #ff4d5e;
         text-shadow: none;
-        filter: blur(18px);
+        filter: blur(16px);
         opacity: 0;
         z-index: 1;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-big {
-        font-size: 150px;
+        font-size: 126px;
         line-height: 0.92;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-ul {
@@ -215,7 +161,7 @@
         height: 0.085em;
         border-radius: 999px;
         background: #ff4d5e;
-        box-shadow: 0 0 22px rgba(255, 77, 94, 0.85);
+        box-shadow: 0 0 18px rgba(255, 77, 94, 0.85);
         transform-origin: 0% 50%;
         z-index: 3;
       }
@@ -232,7 +178,7 @@
         margin-top: -0.75em;
         border-radius: 50%;
         border: 5px solid rgba(255, 77, 94, 0.9);
-        box-shadow: 0 0 24px rgba(255, 77, 94, 0.5);
+        box-shadow: 0 0 20px rgba(255, 77, 94, 0.5);
         opacity: 0;
         z-index: 0;
       }
@@ -240,9 +186,9 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 90px;
+        width: 80px;
         height: 6px;
-        margin-left: -45px;
+        margin-left: -40px;
         margin-top: -3px;
         border-radius: 3px;
         background: linear-gradient(90deg, rgba(255, 225, 160, 0), #ffe1a0 60%, #ffffff);
@@ -252,26 +198,43 @@
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-qo,
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-qc {
         position: absolute;
-        width: 84px;
-        height: 60px;
+        width: 64px;
+        height: 46px;
         overflow: visible;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-qo {
-        left: 30px;
-        top: -40px;
+        left: 26px;
+        top: -22px;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-qc {
-        right: 30px;
-        bottom: -30px;
+        right: 26px;
+        bottom: -20px;
+      }
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-qc-in {
+        right: 22px;
+        bottom: 14px;
+      }
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-cmp .c4-old-beliefs-qo,
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-cmp .c4-old-beliefs-qc {
+        width: 44px;
+        height: 32px;
+      }
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-cmp .c4-old-beliefs-qo {
+        left: 12px;
+        top: -15px;
+      }
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-cmp .c4-old-beliefs-qc {
+        right: 12px;
+        bottom: -13px;
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-chip {
         position: absolute;
-        left: 132px;
-        top: -25px;
+        left: 104px;
+        top: -22px;
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 8px 22px;
+        padding: 7px 22px;
         border-radius: 999px;
         border: 2px solid rgba(255, 95, 176, 0.75);
         background: #1f0c2c;
@@ -294,22 +257,19 @@
       }
       [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-echo {
         position: absolute;
-        left: 70px;
-        width: 940px;
-        border-radius: 34px;
+        border-radius: 30px;
         border: 3px solid rgba(255, 95, 176, 0.85);
-        box-shadow: 0 0 30px rgba(224, 33, 138, 0.45);
         opacity: 0;
         transform-origin: 50% 50%;
       }
+      /* red bloom confined to the lower band (x 70-1010, y 886-1246) */
       [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-bloom3 {
         position: absolute;
-        left: -40px;
-        top: -120px;
-        width: 1160px;
-        height: 980px;
-        border-radius: 50%;
-        background: radial-gradient(ellipse at 50% 50%, rgba(255, 77, 94, 0.95) 0%, rgba(224, 33, 138, 0.45) 38%, rgba(224, 33, 138, 0) 70%);
+        left: 70px;
+        top: 886px;
+        width: 940px;
+        height: 360px;
+        background: radial-gradient(closest-side, rgba(255, 77, 94, 0.95) 0%, rgba(224, 33, 138, 0.45) 55%, rgba(224, 33, 138, 0) 100%);
         opacity: 0;
       }
       [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-chains {
@@ -320,52 +280,22 @@
         height: 1920px;
         overflow: visible;
       }
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-lock {
+      [data-composition-id="c4-old-beliefs"] .c4-old-beliefs-lock {
         position: absolute;
-        left: 478px;
-        top: 806px;
-        width: 124px;
-        height: 160px;
+        width: 62px;
+        height: 80px;
         overflow: visible;
       }
-      /* ---------------- top fx ---------------- */
-      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-flash {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle farthest-corner at 540px 520px, rgba(255, 77, 94, 0.9) 0%, rgba(255, 77, 94, 0.35) 45%, rgba(120, 10, 40, 0.2) 100%);
-        opacity: 0;
-        mix-blend-mode: screen;
+      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-lockL {
+        left: 176px;
+        top: 590px;
+      }
+      [data-composition-id="c4-old-beliefs"] #c4-old-beliefs-lockR {
+        left: 818px;
+        top: 590px;
       }
     </style>
 
-    <!-- ===== Full-bleed ground ===== -->
-    <div id="c4-old-beliefs-ground" class="clip" data-start="0" data-duration="5.92" data-track-index="0">
-      <div class="c4-old-beliefs-g-radial"></div>
-      <div class="c4-old-beliefs-g-blob" id="c4-old-beliefs-gmag"></div>
-      <div class="c4-old-beliefs-g-blob" id="c4-old-beliefs-gred"></div>
-      <div class="c4-old-beliefs-g-blob" id="c4-old-beliefs-ggold"></div>
-      <svg id="c4-old-beliefs-grings" viewBox="0 0 1800 1800" aria-hidden="true">
-        <g fill="none" stroke="#ff5fb0">
-          <circle cx="900" cy="900" r="200" stroke-opacity="0.12" stroke-width="2" />
-          <circle cx="900" cy="900" r="330" stroke-opacity="0.1" stroke-width="2" stroke-dasharray="4 14" />
-          <circle cx="900" cy="900" r="470" stroke-opacity="0.11" stroke-width="2" />
-          <circle cx="900" cy="900" r="620" stroke-opacity="0.09" stroke-width="2" stroke-dasharray="40 22" />
-          <circle cx="900" cy="900" r="780" stroke-opacity="0.08" stroke-width="2" />
-          <circle cx="900" cy="900" r="890" stroke-opacity="0.07" stroke-width="2" stroke-dasharray="6 18" />
-        </g>
-      </svg>
-      <div id="c4-old-beliefs-dustbox"></div>
-      <svg class="c4-old-beliefs-g-grain" viewBox="0 0 1080 1920" aria-hidden="true">
-        <filter id="c4-old-beliefs-grainf" x="0" y="0" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="1080" height="1920" filter="url(#c4-old-beliefs-grainf)" />
-      </svg>
-      <div class="c4-old-beliefs-g-vig"></div>
-    </div>
-
-    <!-- ===== Scene ===== -->
     <div id="c4-old-beliefs-scene" class="clip" data-start="0" data-duration="5.92" data-track-index="1">
       <svg width="0" height="0" aria-hidden="true" style="position: absolute">
         <defs>
@@ -383,141 +313,170 @@
             <stop offset="1" stop-color="#2a1d36" />
           </linearGradient>
           <filter id="c4-old-beliefs-qglow" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="5" result="b" />
+            <feGaussianBlur stdDeviation="4" result="b" />
             <feMerge>
               <feMergeNode in="b" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <filter id="c4-old-beliefs-mb1" x="-10%" y="-40%" width="120%" height="180%">
-            <feGaussianBlur id="c4-old-beliefs-mb1-node" in="SourceGraphic" stdDeviation="0 0" />
-          </filter>
-          <filter id="c4-old-beliefs-mb2" x="-10%" y="-40%" width="120%" height="180%">
-            <feGaussianBlur id="c4-old-beliefs-mb2-node" in="SourceGraphic" stdDeviation="0 0" />
-          </filter>
+          <symbol id="c4-old-beliefs-q66" viewBox="0 0 84 60">
+            <g fill="url(#c4-old-beliefs-qgrad)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g>
+          </symbol>
+          <symbol id="c4-old-beliefs-q99" viewBox="0 0 84 60">
+            <g fill="url(#c4-old-beliefs-qgrad)" transform="rotate(180 42 30)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g>
+          </symbol>
         </defs>
       </svg>
 
-      <div id="c4-old-beliefs-cam">
-        <!-- echo ripples of each card's outline (behind the cards) -->
-        <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo1a" style="top: 250px; height: 328px"></div>
-        <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo1b" style="top: 250px; height: 328px"></div>
-        <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo2a" style="top: 200px; height: 300px"></div>
-        <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo2b" style="top: 200px; height: 300px"></div>
-        <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo3a" style="top: 150px; height: 440px"></div>
-        <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo3b" style="top: 150px; height: 440px"></div>
-        <div id="c4-old-beliefs-bloom3"></div>
+      <!-- echo ripples of the card outlines (each inside its own zone) -->
+      <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo1" style="left: 90px; top: 292px; width: 900px; height: 194px"></div>
+      <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo2" style="left: 90px; top: 292px; width: 900px; height: 194px"></div>
+      <div class="c4-old-beliefs-echo" id="c4-old-beliefs-echo3" style="left: 90px; top: 904px; width: 900px; height: 336px"></div>
+      <div id="c4-old-beliefs-bloom3"></div>
 
-        <!-- CARD 1 : MONEY HARD TO EARN. -->
-        <div class="c4-old-beliefs-card" id="c4-old-beliefs-card1">
-          <div class="c4-old-beliefs-cin" id="c4-old-beliefs-cin1">
-            <div class="c4-old-beliefs-tail"></div>
-            <div class="c4-old-beliefs-body">
-              <div class="c4-old-beliefs-sheenclip"><div class="c4-old-beliefs-sheen" id="c4-old-beliefs-sheen1"></div></div>
-              <div class="c4-old-beliefs-text">
-                <div class="c4-old-beliefs-row" style="font-size: 108px">
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-money"><span class="c4-old-beliefs-t">MONEY</span></span>
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-hard">
-                    <i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-hard-1"></i><i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-hard-2"></i>
-                    <span class="c4-old-beliefs-t c4-old-beliefs-tglow" id="c4-old-beliefs-gl-hard" data-layout-ignore aria-hidden="true">HARD</span>
-                    <span class="c4-old-beliefs-t c4-old-beliefs-tred" data-layout-allow-overlap>HARD</span>
-                    <i class="c4-old-beliefs-ul" id="c4-old-beliefs-ul-hard"></i>
-                  </span>
-                </div>
-                <div class="c4-old-beliefs-row" style="font-size: 108px">
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-to"><span class="c4-old-beliefs-t">TO</span></span>
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-earn"><span class="c4-old-beliefs-t">EARN.</span></span>
-                </div>
-              </div>
+      <!-- LEFT rail: belief 1, compact (lands when belief 2 starts) -->
+      <div class="c4-old-beliefs-card c4-old-beliefs-cmp" id="c4-old-beliefs-card1c">
+        <div class="c4-old-beliefs-cin" id="c4-old-beliefs-cin1c">
+          <div class="c4-old-beliefs-tail"></div>
+          <div class="c4-old-beliefs-body">
+            <div class="c4-old-beliefs-text">
+              <div class="c4-old-beliefs-row" style="font-size: 46px"><span class="c4-old-beliefs-w"><span class="c4-old-beliefs-t" data-layout-allow-overlap>MONEY</span></span></div>
+              <div class="c4-old-beliefs-row" style="font-size: 60px"><span class="c4-old-beliefs-w"><span class="c4-old-beliefs-t c4-old-beliefs-tred" data-layout-allow-overlap>HARD</span><i class="c4-old-beliefs-ul"></i></span></div>
+              <div class="c4-old-beliefs-row" style="font-size: 44px"><span class="c4-old-beliefs-w"><span class="c4-old-beliefs-t" data-layout-allow-overlap>TO EARN.</span></span></div>
             </div>
-            <svg class="c4-old-beliefs-qo" id="c4-old-beliefs-qo1" viewBox="0 0 84 60" aria-hidden="true"><g fill="url(#c4-old-beliefs-qgrad)" filter="url(#c4-old-beliefs-qglow)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g></svg>
-            <div class="c4-old-beliefs-chip" id="c4-old-beliefs-chip1"><i id="c4-old-beliefs-dot1"></i>HEARD AT HOME</div>
-            <svg class="c4-old-beliefs-qc" id="c4-old-beliefs-qc1" viewBox="0 0 84 60" aria-hidden="true"><g fill="url(#c4-old-beliefs-qgrad)" filter="url(#c4-old-beliefs-qglow)" transform="rotate(180 42 30)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g></svg>
           </div>
+          <svg class="c4-old-beliefs-qo" aria-hidden="true"><use href="#c4-old-beliefs-q66" /></svg>
+          <svg class="c4-old-beliefs-qc" aria-hidden="true"><use href="#c4-old-beliefs-q99" /></svg>
         </div>
-
-        <!-- CARD 2 : WANTING MORE IS SELFISH. -->
-        <div class="c4-old-beliefs-card" id="c4-old-beliefs-card2">
-          <div class="c4-old-beliefs-cin" id="c4-old-beliefs-cin2">
-            <div class="c4-old-beliefs-tail"></div>
-            <div class="c4-old-beliefs-body">
-              <div class="c4-old-beliefs-sheenclip"><div class="c4-old-beliefs-sheen" id="c4-old-beliefs-sheen2"></div></div>
-              <div class="c4-old-beliefs-text">
-                <div class="c4-old-beliefs-row" style="font-size: 94px">
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-wanting"><span class="c4-old-beliefs-t">WANTING</span></span>
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-more"><span class="c4-old-beliefs-t">MORE</span></span>
-                </div>
-                <div class="c4-old-beliefs-row" style="font-size: 94px">
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-is"><span class="c4-old-beliefs-t">IS</span></span>
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-selfish">
-                    <i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-selfish-1"></i><i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-selfish-2"></i>
-                    <span class="c4-old-beliefs-t c4-old-beliefs-tglow" id="c4-old-beliefs-gl-selfish" data-layout-ignore aria-hidden="true">SELFISH.</span>
-                    <span class="c4-old-beliefs-t c4-old-beliefs-tred" data-layout-allow-overlap>SELFISH.</span>
-                    <i class="c4-old-beliefs-ul" id="c4-old-beliefs-ul-selfish"></i>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <svg class="c4-old-beliefs-qo" id="c4-old-beliefs-qo2" viewBox="0 0 84 60" aria-hidden="true"><g fill="url(#c4-old-beliefs-qgrad)" filter="url(#c4-old-beliefs-qglow)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g></svg>
-            <div class="c4-old-beliefs-chip" id="c4-old-beliefs-chip2"><i id="c4-old-beliefs-dot2"></i>HEARD AT HOME</div>
-            <svg class="c4-old-beliefs-qc" id="c4-old-beliefs-qc2" viewBox="0 0 84 60" aria-hidden="true"><g fill="url(#c4-old-beliefs-qgrad)" filter="url(#c4-old-beliefs-qglow)" transform="rotate(180 42 30)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g></svg>
-          </div>
-        </div>
-
-        <!-- CARD 3 : PEOPLE LIKE US CAN NEVER BE WEALTHY. -->
-        <div class="c4-old-beliefs-card" id="c4-old-beliefs-card3">
-          <div class="c4-old-beliefs-cin" id="c4-old-beliefs-cin3">
-            <div class="c4-old-beliefs-tail"></div>
-            <div class="c4-old-beliefs-body">
-              <div class="c4-old-beliefs-sheenclip"><div class="c4-old-beliefs-sheen" id="c4-old-beliefs-sheen3"></div></div>
-              <div class="c4-old-beliefs-text">
-                <div class="c4-old-beliefs-row" style="font-size: 92px">
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-people"><span class="c4-old-beliefs-t">PEOPLE</span></span>
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-like"><span class="c4-old-beliefs-t">LIKE</span></span>
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-us"><span class="c4-old-beliefs-t">US</span></span>
-                </div>
-                <div class="c4-old-beliefs-row" style="font-size: 92px">
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-can"><span class="c4-old-beliefs-t">CAN</span></span>
-                  <span class="c4-old-beliefs-w c4-old-beliefs-big" id="c4-old-beliefs-w-never">
-                    <i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-never-1"></i><i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-never-2"></i><i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-never-3"></i>
-                    <span id="c4-old-beliefs-sparks"></span>
-                    <span class="c4-old-beliefs-t c4-old-beliefs-tglow" id="c4-old-beliefs-gl-never" data-layout-ignore aria-hidden="true">NEVER</span>
-                    <span class="c4-old-beliefs-t c4-old-beliefs-tred" data-layout-allow-overlap>NEVER</span>
-                    <i class="c4-old-beliefs-ul" id="c4-old-beliefs-ul-never"></i>
-                  </span>
-                </div>
-                <div class="c4-old-beliefs-row" style="font-size: 92px">
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-be"><span class="c4-old-beliefs-t">BE</span></span>
-                  <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-wealthy"><span class="c4-old-beliefs-t">WEALTHY.</span></span>
-                </div>
-              </div>
-            </div>
-            <svg class="c4-old-beliefs-qo" id="c4-old-beliefs-qo3" viewBox="0 0 84 60" aria-hidden="true"><g fill="url(#c4-old-beliefs-qgrad)" filter="url(#c4-old-beliefs-qglow)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g></svg>
-            <div class="c4-old-beliefs-chip" id="c4-old-beliefs-chip3"><i id="c4-old-beliefs-dot3"></i>HEARD AT HOME</div>
-            <svg class="c4-old-beliefs-qc" id="c4-old-beliefs-qc3" viewBox="0 0 84 60" aria-hidden="true"><g fill="url(#c4-old-beliefs-qgrad)" filter="url(#c4-old-beliefs-qglow)" transform="rotate(180 42 30)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g></svg>
-          </div>
-        </div>
-
-        <!-- heavy chains across the stack + padlock -->
-        <svg id="c4-old-beliefs-chains" viewBox="0 0 1080 1920" aria-hidden="true"><g id="c4-old-beliefs-chainA"></g><g id="c4-old-beliefs-chainB"></g></svg>
-        <svg id="c4-old-beliefs-lock" viewBox="0 0 124 160" aria-hidden="true">
-          <g id="c4-old-beliefs-shackle">
-            <path d="M28 82 L28 46 C28 22 43 8 62 8 C81 8 96 22 96 46 L96 82" fill="none" stroke="#1a0f22" stroke-width="22" stroke-linecap="round" />
-            <path d="M28 82 L28 46 C28 22 43 8 62 8 C81 8 96 22 96 46 L96 82" fill="none" stroke="url(#c4-old-beliefs-steel)" stroke-width="15" stroke-linecap="round" />
-          </g>
-          <rect x="6" y="70" width="112" height="86" rx="18" fill="url(#c4-old-beliefs-lockbody)" stroke="#a99bb5" stroke-width="4" />
-          <rect x="14" y="76" width="96" height="6" rx="3" fill="rgba(255,255,255,0.18)" />
-          <g filter="url(#c4-old-beliefs-qglow)" fill="#ff4d5e">
-            <circle cx="62" cy="106" r="11" />
-            <path d="M56 110 L68 110 L65 134 L59 134 Z" />
-          </g>
-        </svg>
       </div>
-    </div>
 
-    <!-- ===== Top FX ===== -->
-    <div id="c4-old-beliefs-fx" class="clip" data-start="0" data-duration="5.92" data-track-index="2">
-      <div id="c4-old-beliefs-flash"></div>
+      <!-- RIGHT rail: belief 2, compact (lands when belief 3 starts) -->
+      <div class="c4-old-beliefs-card c4-old-beliefs-cmp" id="c4-old-beliefs-card2c">
+        <div class="c4-old-beliefs-cin" id="c4-old-beliefs-cin2c">
+          <div class="c4-old-beliefs-tail" style="left: auto; right: 50px"></div>
+          <div class="c4-old-beliefs-body">
+            <div class="c4-old-beliefs-text">
+              <div class="c4-old-beliefs-row" style="font-size: 50px"><span class="c4-old-beliefs-w"><span class="c4-old-beliefs-t" data-layout-allow-overlap>WANTING</span></span></div>
+              <div class="c4-old-beliefs-row" style="font-size: 50px"><span class="c4-old-beliefs-w"><span class="c4-old-beliefs-t" data-layout-allow-overlap>MORE IS</span></span></div>
+              <div class="c4-old-beliefs-row" style="font-size: 54px"><span class="c4-old-beliefs-w"><span class="c4-old-beliefs-t c4-old-beliefs-tred" data-layout-allow-overlap>SELFISH.</span><i class="c4-old-beliefs-ul"></i></span></div>
+            </div>
+          </div>
+          <svg class="c4-old-beliefs-qo" aria-hidden="true"><use href="#c4-old-beliefs-q66" /></svg>
+          <svg class="c4-old-beliefs-qc" aria-hidden="true"><use href="#c4-old-beliefs-q99" /></svg>
+        </div>
+      </div>
+
+      <!-- TOP band: belief 1 as it is spoken -->
+      <div class="c4-old-beliefs-card c4-old-beliefs-top" id="c4-old-beliefs-card1">
+        <div class="c4-old-beliefs-cin" id="c4-old-beliefs-cin1">
+          <div class="c4-old-beliefs-tail"></div>
+          <div class="c4-old-beliefs-body">
+            <div class="c4-old-beliefs-sheen" id="c4-old-beliefs-sheen1"></div>
+            <div class="c4-old-beliefs-text">
+              <div class="c4-old-beliefs-row" style="font-size: 76px">
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-money"><span class="c4-old-beliefs-t">MONEY</span></span>
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-hard">
+                  <i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-hard-1"></i><i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-hard-2"></i>
+                  <span class="c4-old-beliefs-t c4-old-beliefs-tglow" id="c4-old-beliefs-gl-hard" data-layout-ignore aria-hidden="true">HARD</span>
+                  <span class="c4-old-beliefs-t c4-old-beliefs-tred" data-layout-allow-overlap>HARD</span>
+                  <i class="c4-old-beliefs-ul" id="c4-old-beliefs-ul-hard"></i>
+                </span>
+              </div>
+              <div class="c4-old-beliefs-row" style="font-size: 76px">
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-to"><span class="c4-old-beliefs-t">TO</span></span>
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-earn"><span class="c4-old-beliefs-t">EARN.</span></span>
+              </div>
+            </div>
+            <div class="c4-old-beliefs-flash" id="c4-old-beliefs-flash1"></div>
+          </div>
+          <svg class="c4-old-beliefs-qo" id="c4-old-beliefs-qo1" aria-hidden="true"><use href="#c4-old-beliefs-q66" /></svg>
+          <div class="c4-old-beliefs-chip" id="c4-old-beliefs-chip1"><i></i>HEARD AT HOME</div>
+          <svg class="c4-old-beliefs-qc" id="c4-old-beliefs-qc1" aria-hidden="true"><use href="#c4-old-beliefs-q99" /></svg>
+        </div>
+      </div>
+
+      <!-- TOP band: belief 2 as it is spoken -->
+      <div class="c4-old-beliefs-card c4-old-beliefs-top" id="c4-old-beliefs-card2">
+        <div class="c4-old-beliefs-cin" id="c4-old-beliefs-cin2">
+          <div class="c4-old-beliefs-tail" style="left: auto; right: 50px"></div>
+          <div class="c4-old-beliefs-body">
+            <div class="c4-old-beliefs-sheen" id="c4-old-beliefs-sheen2"></div>
+            <div class="c4-old-beliefs-text">
+              <div class="c4-old-beliefs-row" style="font-size: 76px">
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-wanting"><span class="c4-old-beliefs-t">WANTING</span></span>
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-more"><span class="c4-old-beliefs-t">MORE</span></span>
+              </div>
+              <div class="c4-old-beliefs-row" style="font-size: 76px">
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-is"><span class="c4-old-beliefs-t">IS</span></span>
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-selfish">
+                  <i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-selfish-1"></i><i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-selfish-2"></i>
+                  <span class="c4-old-beliefs-t c4-old-beliefs-tglow" id="c4-old-beliefs-gl-selfish" data-layout-ignore aria-hidden="true">SELFISH.</span>
+                  <span class="c4-old-beliefs-t c4-old-beliefs-tred" data-layout-allow-overlap>SELFISH.</span>
+                  <i class="c4-old-beliefs-ul" id="c4-old-beliefs-ul-selfish"></i>
+                </span>
+              </div>
+            </div>
+            <div class="c4-old-beliefs-flash" id="c4-old-beliefs-flash2"></div>
+          </div>
+          <svg class="c4-old-beliefs-qo" id="c4-old-beliefs-qo2" aria-hidden="true"><use href="#c4-old-beliefs-q66" /></svg>
+          <div class="c4-old-beliefs-chip" id="c4-old-beliefs-chip2"><i></i>HEARD AT HOME</div>
+          <svg class="c4-old-beliefs-qc" id="c4-old-beliefs-qc2" aria-hidden="true"><use href="#c4-old-beliefs-q99" /></svg>
+        </div>
+      </div>
+
+      <!-- LOWER + caption band: belief 3, the biggest -->
+      <div class="c4-old-beliefs-card" id="c4-old-beliefs-card3">
+        <div class="c4-old-beliefs-cin" id="c4-old-beliefs-cin3">
+          <div class="c4-old-beliefs-tail c4-old-beliefs-tail-up"></div>
+          <div class="c4-old-beliefs-body">
+            <div class="c4-old-beliefs-sheen" id="c4-old-beliefs-sheen3"></div>
+            <div class="c4-old-beliefs-text">
+              <div class="c4-old-beliefs-row" style="font-size: 80px">
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-people"><span class="c4-old-beliefs-t">PEOPLE</span></span>
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-like"><span class="c4-old-beliefs-t">LIKE</span></span>
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-us"><span class="c4-old-beliefs-t">US</span></span>
+              </div>
+              <div class="c4-old-beliefs-row" style="font-size: 80px">
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-can"><span class="c4-old-beliefs-t">CAN</span></span>
+                <span class="c4-old-beliefs-w c4-old-beliefs-big" id="c4-old-beliefs-w-never">
+                  <i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-never-1"></i><i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-never-2"></i><i class="c4-old-beliefs-ripple" id="c4-old-beliefs-rp-never-3"></i>
+                  <span id="c4-old-beliefs-sparks"></span>
+                  <span class="c4-old-beliefs-t c4-old-beliefs-tglow" id="c4-old-beliefs-gl-never" data-layout-ignore aria-hidden="true">NEVER</span>
+                  <span class="c4-old-beliefs-t c4-old-beliefs-tred" data-layout-allow-overlap>NEVER</span>
+                  <i class="c4-old-beliefs-ul" id="c4-old-beliefs-ul-never"></i>
+                </span>
+              </div>
+              <div class="c4-old-beliefs-row" style="font-size: 80px">
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-be"><span class="c4-old-beliefs-t">BE</span></span>
+                <span class="c4-old-beliefs-w" id="c4-old-beliefs-w-wealthy"><span class="c4-old-beliefs-t">WEALTHY.</span></span>
+              </div>
+            </div>
+            <div class="c4-old-beliefs-flash" id="c4-old-beliefs-flash3"></div>
+          </div>
+          <svg class="c4-old-beliefs-qo" id="c4-old-beliefs-qo3" aria-hidden="true"><use href="#c4-old-beliefs-q66" /></svg>
+          <div class="c4-old-beliefs-chip" id="c4-old-beliefs-chip3"><i></i>HEARD AT HOME</div>
+          <svg class="c4-old-beliefs-qc c4-old-beliefs-qc-in" id="c4-old-beliefs-qc3" aria-hidden="true"><use href="#c4-old-beliefs-q99" /></svg>
+        </div>
+      </div>
+
+      <!-- chains + padlocks across the two RAIL cards (never the face) -->
+      <svg id="c4-old-beliefs-chains" viewBox="0 0 1080 1920" aria-hidden="true"><g id="c4-old-beliefs-chainL1"></g><g id="c4-old-beliefs-chainL2"></g><g id="c4-old-beliefs-chainR1"></g><g id="c4-old-beliefs-chainR2"></g></svg>
+      <svg class="c4-old-beliefs-lock" id="c4-old-beliefs-lockL" viewBox="0 0 124 160" aria-hidden="true">
+        <g class="c4-old-beliefs-shackle" id="c4-old-beliefs-shackleL">
+          <path d="M28 82 L28 46 C28 22 43 8 62 8 C81 8 96 22 96 46 L96 82" fill="none" stroke="#1a0f22" stroke-width="22" stroke-linecap="round" />
+          <path d="M28 82 L28 46 C28 22 43 8 62 8 C81 8 96 22 96 46 L96 82" fill="none" stroke="url(#c4-old-beliefs-steel)" stroke-width="15" stroke-linecap="round" />
+        </g>
+        <rect x="6" y="70" width="112" height="86" rx="18" fill="url(#c4-old-beliefs-lockbody)" stroke="#a99bb5" stroke-width="5" />
+        <g filter="url(#c4-old-beliefs-qglow)" fill="#ff4d5e"><circle cx="62" cy="106" r="12" /><path d="M55 110 L69 110 L66 136 L58 136 Z" /></g>
+      </svg>
+      <svg class="c4-old-beliefs-lock" id="c4-old-beliefs-lockR" viewBox="0 0 124 160" aria-hidden="true">
+        <g class="c4-old-beliefs-shackle" id="c4-old-beliefs-shackleR">
+          <path d="M28 82 L28 46 C28 22 43 8 62 8 C81 8 96 22 96 46 L96 82" fill="none" stroke="#1a0f22" stroke-width="22" stroke-linecap="round" />
+          <path d="M28 82 L28 46 C28 22 43 8 62 8 C81 8 96 22 96 46 L96 82" fill="none" stroke="url(#c4-old-beliefs-steel)" stroke-width="15" stroke-linecap="round" />
+        </g>
+        <rect x="6" y="70" width="112" height="86" rx="18" fill="url(#c4-old-beliefs-lockbody)" stroke="#a99bb5" stroke-width="5" />
+        <g filter="url(#c4-old-beliefs-qglow)" fill="#ff4d5e"><circle cx="62" cy="106" r="12" /><path d="M55 110 L69 110 L66 136 L58 136 Z" /></g>
+      </svg>
     </div>
 
     <script>
@@ -540,72 +499,41 @@
           people: 3.62, like: 3.94, us: 4.18, can: 4.5, never: 4.74, be: 4.98, wealthy: 5.22
         };
         var LEAD = 0.03; // a word starts arriving a frame before its cue, so it reads ON the cue
-        // card beats (the rhythmic spine: one slam per belief, red hit inside each)
-        var CARD1 = 0.0, CARD2 = 1.62, CARD3 = 3.46;
+        var CARD1 = 0.0, CARD2 = 1.62, CARD3 = 3.46; // one card per belief: the rhythmic spine
         var HIT1 = 0.8, HIT2 = 2.78, HIT3 = 4.76; // red-word impact frames
 
-        var cam = $("cam");
-        var cin = [$("cin1"), $("cin2"), $("cin3")];
-        var dots = [$("dot1"), $("dot2"), $("dot3")];
-        var gmag = $("gmag"), ggold = $("ggold"), gred = $("gred"), grings = $("grings");
-        var mb1 = $("mb1-node"), mb2 = $("mb2-node");
+        var cin1 = $("cin1"), cin2 = $("cin2"), cin3 = $("cin3"), cin1c = $("cin1c"), cin2c = $("cin2c");
 
-        // ---- seeded gold dust ----
-        var dustBox = $("dustbox");
-        var dust = [];
-        for (var i = 0; i < 30; i++) {
-          var d = document.createElement("i");
-          d.className = ID + "-dust";
-          var size = 3 + Math.round(hash(i * 5.3 + 1) * 5);
-          d.style.width = size + "px";
-          d.style.height = size + "px";
-          dustBox.appendChild(d);
-          dust.push({
-            el: d,
-            x: 50 + hash(i * 3.1 + 2) * 980,
-            y: 160 + hash(i * 7.7 + 3) * 1560,
-            v: 12 + hash(i * 2.3 + 4) * 26,
-            sway: 6 + hash(i * 4.1 + 5) * 14,
-            f: 1.1 + hash(i * 6.7 + 6) * 2.2,
-            p: hash(i * 8.9 + 7) * 6.283
-          });
-        }
-
-        // ---- sparks inside NEVER (index-derived angles) ----
-        var sparkBox = $("sparks");
+        // ---- sparks inside NEVER (clipped by card 3's body) ----
         var sparks = [];
-        for (var s = 0; s < 14; s++) {
+        for (var s = 0; s < 12; s++) {
           var sp = document.createElement("i");
           sp.className = ID + "-spark";
-          sparkBox.appendChild(sp);
-          var ang = (s / 14) * 360 + (hash(s * 9.1) * 2 - 1) * 9;
-          sparks.push({ el: sp, a: ang, r: 230 + hash(s * 3.7) * 170 });
+          $("sparks").appendChild(sp);
+          sparks.push({ el: sp, a: (s / 12) * 360 + (hash(s * 9.1) * 2 - 1) * 9, r: 200 + hash(s * 3.7) * 160 });
         }
 
-        // ---- chain links along two crossing diagonals ----
+        // ---- chain links: an X across each rail card ----
         function buildChain(g, x1, y1, x2, y2) {
           var dx = x2 - x1, dy = y2 - y1;
           var len = Math.sqrt(dx * dx + dy * dy);
           var ang = (Math.atan2(dy, dx) * 180) / Math.PI;
-          var pitch = 42;
-          var n = Math.floor(len / pitch) + 1;
+          var n = Math.floor(len / 26) + 1;
           var links = [];
           for (var k = 0; k < n; k++) {
             var u = k / (n - 1);
-            var px = x1 + dx * u, py = y1 + dy * u;
             var outer = document.createElementNS(SVGNS, "g");
-            outer.setAttribute("transform", "translate(" + px.toFixed(1) + " " + py.toFixed(1) + ") rotate(" + ang.toFixed(2) + ")");
+            outer.setAttribute("transform", "translate(" + (x1 + dx * u).toFixed(1) + " " + (y1 + dy * u).toFixed(1) + ") rotate(" + ang.toFixed(2) + ")");
             var inner = document.createElementNS(SVGNS, "g");
             if (k % 2 === 0) {
               inner.innerHTML =
-                '<ellipse cx="0" cy="0" rx="27" ry="15" fill="none" stroke="#1a0f22" stroke-width="14"/>' +
-                '<ellipse cx="0" cy="0" rx="27" ry="15" fill="none" stroke="url(#' + ID + '-steel)" stroke-width="9"/>' +
-                '<path d="M-18 -11 Q0 -17 18 -11" fill="none" stroke="#fff5ea" stroke-opacity="0.75" stroke-width="2.5" stroke-linecap="round"/>';
+                '<ellipse cx="0" cy="0" rx="16" ry="9" fill="none" stroke="#1a0f22" stroke-width="9"/>' +
+                '<ellipse cx="0" cy="0" rx="16" ry="9" fill="none" stroke="url(#' + ID + '-steel)" stroke-width="5.5"/>' +
+                '<path d="M-10 -6.5 Q0 -10 10 -6.5" fill="none" stroke="#fff5ea" stroke-opacity="0.75" stroke-width="1.6" stroke-linecap="round"/>';
             } else {
               inner.innerHTML =
-                '<rect x="-29" y="-7" width="58" height="14" rx="7" fill="#1a0f22"/>' +
-                '<rect x="-27" y="-5" width="54" height="10" rx="5" fill="url(#' + ID + '-steel)"/>' +
-                '<rect x="-20" y="-4" width="40" height="2.5" rx="1.2" fill="#fff5ea" fill-opacity="0.7"/>';
+                '<rect x="-17" y="-4.5" width="34" height="9" rx="4.5" fill="#1a0f22"/>' +
+                '<rect x="-15.5" y="-3" width="31" height="6" rx="3" fill="url(#' + ID + '-steel)"/>';
             }
             outer.appendChild(inner);
             g.appendChild(outer);
@@ -613,65 +541,44 @@
           }
           return links;
         }
-        var chainA = buildChain($("chainA"), 92, 706, 988, 1062);
-        var chainB = buildChain($("chainB"), 988, 706, 92, 1062);
+        var chains = [
+          buildChain($("chainL1"), 84, 540, 330, 718),
+          buildChain($("chainL2"), 330, 540, 84, 718),
+          buildChain($("chainR1"), 702, 540, 996, 720),
+          buildChain($("chainR2"), 996, 540, 702, 720)
+        ];
 
         // ---- procedural rig: pure function of local time (seek-safe) ----
+        // Shake and push act on each card about its OWN centre, never on the frame or the footage.
         function win(t, at, dur) {
           if (t < at || t >= at + dur) return 0;
           var u = (t - at) / dur;
           return (1 - u) * (1 - u);
         }
-        function expoVel(t, at, dur) {
-          if (t < at || t >= at + dur) return 0;
-          return Math.pow(2, (-10 * (t - at)) / dur);
+        function shake(f, seed, e, ax, ay) {
+          return [(hash(f * 13.1 + seed) * 2 - 1) * ax * e, (hash(f * 7.3 + seed * 3) * 2 - 1) * ay * e, (hash(f * 3.9 + seed * 5) * 2 - 1) * e];
+        }
+        function setT(el, x, y, r, sc) {
+          el.style.transform = "translate3d(" + x.toFixed(2) + "px," + y.toFixed(2) + "px,0) rotate(" + r.toFixed(3) + "deg) scale(" + sc.toFixed(4) + ")";
         }
         function rig(t) {
-          var f = Math.floor(t / 0.04 + 1e-6); // one shake sample per frame (25 fps)
-          // camera shake: keyframed, finite windows on the red hits
-          var e1 = win(t, HIT1, 0.36), e2 = win(t, HIT2, 0.3), e3 = win(t, HIT3, 0.5);
-          var ax = 13 * e1 + 9 * e2 + 22 * e3;
-          var ay = 8 * e1 + 6 * e2 + 8 * e3;
-          var ar = 0.35 * e1 + 0.25 * e2 + 0.9 * e3;
-          var sx = (hash(f * 13.1 + 1) * 2 - 1) * ax;
-          var sy = (hash(f * 7.3 + 2) * 2 - 1) * ay;
-          var sr = (hash(f * 3.9 + 3) * 2 - 1) * ar;
-          // landing bumps when each card slams down
-          var bump = 7 * win(t, CARD1 + 0.12, 0.3) + 7 * win(t, CARD2 + 0.14, 0.3) + 9 * win(t, CARD3 + 0.12, 0.32);
-          var push = 1 + 0.02 * (t / DUR) + 0.008 * win(t, HIT3, 0.45);
-          var dx = Math.sin(t * 0.9) * 3 + sx;
-          var dy = Math.sin(t * 1.3 + 0.6) * 2 + sy + bump;
-          cam.style.transform = "translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px) rotate(" + sr.toFixed(3) + "deg) scale(" + push.toFixed(4) + ")";
-
-          // idle bob per card (starts after its landing) + vertical motion blur on the stacking drops
-          var b1 = t > 0.45 ? Math.sin((t - 0.45) * 2.4) * 3.5 : 0;
-          var b2 = t > 2.05 ? Math.sin((t - 2.05) * 2.1 + 1.1) * 3 : 0;
-          var b3 = t > 3.9 ? Math.sin((t - 3.9) * 2.6) * 3.5 : 0;
-          var m1 = 16 * expoVel(t, CARD2 - 0.04, 0.5) + 14 * expoVel(t, 3.38, 0.6);
-          var m2 = 16 * expoVel(t, 3.4, 0.6);
-          mb1.setAttribute("stdDeviation", "0 " + m1.toFixed(2));
-          mb2.setAttribute("stdDeviation", "0 " + m2.toFixed(2));
-          cin[0].style.filter = m1 > 0.15 ? "url(#" + ID + "-mb1)" : "none";
-          cin[1].style.filter = m2 > 0.15 ? "url(#" + ID + "-mb2)" : "none";
-          cin[0].style.transform = "translate3d(0," + b1.toFixed(2) + "px,0)";
-          cin[1].style.transform = "translate3d(0," + b2.toFixed(2) + "px,0)";
-          cin[2].style.transform = "translate3d(0," + b3.toFixed(2) + "px,0)";
-          for (var c = 0; c < 3; c++) {
-            dots[c].style.opacity = (0.55 + 0.45 * Math.sin(t * 5.2 + c * 1.7)).toFixed(3);
-          }
-
-          // ground drift (slower than foreground = depth)
-          gmag.style.transform = "translate3d(" + (Math.sin(t * 0.55) * 46).toFixed(2) + "px," + (Math.sin(t * 0.4 + 1) * 34).toFixed(2) + "px,0)";
-          ggold.style.transform = "scale(" + (1 + 0.08 * Math.sin(t * 1.7)).toFixed(4) + ")";
-          gred.style.transform = "scale(" + (1 + 0.05 * Math.sin(t * 3.1) + 0.12 * e3).toFixed(4) + ")";
-          grings.style.transform = "rotate(" + (t * 4.5).toFixed(2) + "deg) scale(" + (1 + 0.04 * e3 + 0.02 * e1).toFixed(4) + ")";
-          for (var k = 0; k < dust.length; k++) {
-            var q = dust[k];
-            var y = q.y - q.v * t;
-            var x = q.x + Math.sin(t * 0.8 + q.p) * q.sway;
-            q.el.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
-            q.el.style.opacity = (0.18 + 0.55 * Math.max(0, Math.sin(t * q.f + q.p))).toFixed(3);
-          }
+          var f = Math.floor(t / 0.04 + 1e-6); // one shake sample per frame (25 fps), finite windows only
+          var push = 1 + 0.01 * (t / DUR);
+          // top-band cards: bob only upward and shake biased upward so nothing dips toward the face zone
+          var s1 = shake(f, 1, win(t, HIT1, 0.36), 8, 4);
+          var b1 = t > 0.45 ? (Math.sin((t - 0.45) * 2.4) - 1) * 1.5 : 0;
+          setT(cin1, s1[0], b1 - Math.abs(s1[1]), s1[2] * 0.35, push);
+          var s2 = shake(f, 2, win(t, HIT2, 0.3), 6, 3);
+          var b2 = t > 2.05 ? (Math.sin((t - 2.05) * 2.1) - 1) * 1.5 : 0;
+          setT(cin2, s2[0], b2 - Math.abs(s2[1]), s2[2] * 0.25, push);
+          var s3 = shake(f, 3, win(t, HIT3, 0.5), 9, 4);
+          var b3 = t > 3.9 ? Math.sin((t - 3.9) * 2.6) * 1.5 : 0;
+          setT(cin3, s3[0], b3 + s3[1], s3[2] * 0.5, push);
+          // rail cards: idle bob + a small jolt when the chains clamp on "never"
+          var j = win(t, HIT3 + 0.04, 0.3);
+          var jl = shake(f, 4, j, 3, 2), jr = shake(f, 5, j, 3, 2);
+          setT(cin1c, jl[0], Math.sin(t * 2.2) * 2 + jl[1], 0, 1);
+          setT(cin2c, jr[0], Math.sin(t * 2.0 + 1.3) * 2 + jr[1], 0, 1);
         }
 
         var tl = gsap.timeline({ paused: true });
@@ -679,7 +586,7 @@
         rig(0);
         tl.fromTo(drv, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { rig(drv.t); } }, 0);
 
-        // ---- helpers ----
+        // ---- helpers (every from-state explicit; later same-property tweens never render early) ----
         var F0 = "blur(0px) brightness(1) saturate(1)";
         function show(el, at) {
           tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none" }, at);
@@ -687,9 +594,7 @@
         function unblur(el, at) {
           tl.set(el, { filter: "none" }, at);
         }
-        var NOIR = { immediateRender: false };
         function fade(el, at, peak, dur) {
-          // invisible from-state first, then a later fromTo that never renders early
           tl.fromTo(el, { opacity: 0 }, { opacity: peak, duration: 0.04, ease: "none" }, at);
           tl.fromTo(el, { opacity: peak }, { opacity: 0, duration: dur - 0.04, ease: "power2.in", immediateRender: false }, at + 0.04);
         }
@@ -697,15 +602,15 @@
           tl.fromTo($(id), { scale: 0.35 }, { scale: scaleTo, duration: 0.6, ease: "power2.out" }, at);
           fade($(id), at, 0.95, 0.6);
         }
-        function echo(id, at) {
-          tl.fromTo($(id), { scale: 1 }, { scale: 1.07, duration: 0.6, ease: "power2.out" }, at);
-          fade($(id), at, 0.85, 0.6);
+        function echo(id, at, sc) {
+          tl.fromTo($(id), { scale: 1 }, { scale: sc, duration: 0.55, ease: "power2.out" }, at);
+          fade($(id), at, 0.85, 0.55);
         }
         function sheen(id, at) {
-          tl.fromTo($(id), { x: -440, rotation: 16, opacity: 1 }, { x: 1180, rotation: 16, opacity: 1, duration: 0.62, ease: "power2.inOut" }, at);
+          tl.fromTo($(id), { x: -420, rotation: 16, opacity: 1 }, { x: 1150, rotation: 16, opacity: 1, duration: 0.62, ease: "power2.inOut" }, at);
         }
         function chip(n, at) {
-          tl.fromTo($("chip" + n), { opacity: 0, y: 16, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.8)" }, at);
+          tl.fromTo($("chip" + n), { opacity: 0, y: 12, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.8)" }, at);
           tl.fromTo($("qo" + n), { opacity: 0, scale: 0, rotation: -50 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, at - 0.03);
         }
         function closeQuote(n, at) {
@@ -716,40 +621,33 @@
           tl.fromTo($("gl-" + word), { opacity: glowPeak }, { opacity: glowHold, duration: 0.6, ease: "power2.out", immediateRender: false }, at + 0.12);
           tl.fromTo($("ul-" + word), { scaleX: 0 }, { scaleX: 1, duration: 0.32, ease: "power3.out" }, at + 0.2);
         }
-        var flashN = 0;
-        function flash(at, peak) {
-          tl.fromTo($("flash"), { opacity: 0 }, { opacity: peak, duration: 0.05, ease: "none", immediateRender: flashN === 0 }, at);
-          tl.fromTo($("flash"), { opacity: peak }, { opacity: 0, duration: 0.34, ease: "power2.out", immediateRender: false }, at + 0.05);
-          flashN++;
+        function flash(id, at, peak) {
+          tl.fromTo($(id), { opacity: 0 }, { opacity: peak, duration: 0.05, ease: "none" }, at);
+          tl.fromTo($(id), { opacity: peak }, { opacity: 0, duration: 0.34, ease: "power2.out", immediateRender: false }, at + 0.05);
         }
 
-        var card1 = $("card1"), card2 = $("card2"), card3 = $("card3");
-        gsap.set([card1, card2, card3], { transformOrigin: "50% 50%" });
+        var card1 = $("card1"), card2 = $("card2"), card3 = $("card3"), card1c = $("card1c"), card2c = $("card2c");
         gsap.set($("w-never"), { transformPerspective: 900 });
 
-        // ================= Scene 1 (0.0–1.7): card 1 slams in centre-high =================
-        tl.fromTo(card1, { opacity: 0, scale: 1.1, y: -24, filter: "blur(14px) brightness(1.25) saturate(1)" }, { opacity: 1, scale: 1, y: 0, filter: F0, duration: 0.38, ease: "power4.out" }, CARD1);
-        echo("echo1a", CARD1 + 0.14);
-        echo("echo1b", CARD1 + 0.26);
+        // ================= Scene 1 (0.0–1.7): belief 1 slams into the TOP band =================
+        tl.fromTo(card1, { opacity: 0, scale: 1.03, transformOrigin: "50% 50%", filter: "blur(12px) brightness(1.25) saturate(1)" }, { opacity: 1, scale: 1, transformOrigin: "50% 50%", filter: F0, duration: 0.38, ease: "power4.out" }, CARD1);
+        echo("echo1", CARD1 + 0.14, 1.03);
         chip(1, CARD1 + 0.16);
 
-        // "MONEY" — push-through slam (scale + blur)
+        // "MONEY" — push-through slam (scale + blur), clipped inside the card
         show($("w-money"), CUE.money - LEAD);
-        tl.fromTo($("w-money"), { scale: 1.5, filter: "blur(16px)" }, { scale: 1, filter: "blur(0px)", duration: 0.42, ease: "power4.out" }, CUE.money - LEAD);
+        tl.fromTo($("w-money"), { scale: 1.5, filter: "blur(14px)" }, { scale: 1, filter: "blur(0px)", duration: 0.42, ease: "power4.out" }, CUE.money - LEAD);
         unblur($("w-money"), CUE.money + 0.45);
-
-        // "HARD" — red, drops from above with overshoot, shake + flash on impact
+        // "HARD" — red, drops in from the card's top edge with overshoot; card-local shake + flash
         show($("w-hard"), CUE.hard - LEAD);
-        tl.fromTo($("w-hard"), { y: -120, scale: 1.6, rotation: -9 }, { y: 0, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, CUE.hard - LEAD);
-        // blur rides a non-overshooting ease (an overshoot would drive blur() negative = invalid)
+        tl.fromTo($("w-hard"), { y: -100, scale: 1.5, rotation: -9 }, { y: 0, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, CUE.hard - LEAD);
+        // blur rides a non-overshooting ease (an overshoot would drive blur() negative = invalid CSS)
         tl.fromTo($("w-hard"), { filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, CUE.hard - LEAD);
         unblur($("w-hard"), CUE.hard + 0.52);
         redHit("hard", HIT1, 0.95, 0.5);
-        ripple("rp-hard-1", HIT1, 2.6);
-        ripple("rp-hard-2", HIT1 + 0.1, 3.1);
-        flash(HIT1, 0.16);
-        tl.fromTo(gred, { opacity: 0 }, { opacity: 0.12, duration: 0.4, ease: "power2.out" }, HIT1);
-
+        ripple("rp-hard-1", HIT1, 2.2);
+        ripple("rp-hard-2", HIT1 + 0.1, 2.7);
+        flash("flash1", HIT1, 0.3);
         // "TO EARN." — side snaps from the right
         show($("w-to"), CUE.to - LEAD);
         tl.fromTo($("w-to"), { x: 80, filter: "blur(10px)" }, { x: 0, filter: "blur(0px)", duration: 0.34, ease: "expo.out" }, CUE.to - LEAD);
@@ -758,51 +656,56 @@
         tl.fromTo($("w-earn"), { x: 110, skewX: -14, filter: "blur(10px)" }, { x: 0, skewX: 0, filter: "blur(0px)", duration: 0.38, ease: "expo.out" }, CUE.earn - LEAD);
         unblur($("w-earn"), CUE.earn + 0.4);
         closeQuote(1, 1.4);
-        sheen("sheen1", 1.48);
+        sheen("sheen1", 1.46);
 
-        // ================= Scene 2 (1.7–3.5): card 1 sinks into the stack, card 2 drops in =================
-        tl.fromTo(card1, { y: 0, scale: 1 }, { y: 336, scale: 0.82, duration: 0.5, ease: "expo.out", immediateRender: false }, CARD2 - 0.04);
-        tl.fromTo(card1, { filter: F0 }, { filter: "blur(0px) brightness(0.72) saturate(0.85)", duration: 0.5, ease: "power2.out", immediateRender: false }, CARD2);
-        tl.fromTo(card2, { opacity: 0, y: -150, rotation: -4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.46, ease: "back.out(1.4)" }, CARD2);
+        // ================= Scene 2 (1.7–3.5): belief 1 folds into the LEFT rail, belief 2 takes the TOP band =================
+        // the top card collapses into its own bottom-left corner (stays inside the top band) ...
+        tl.fromTo(card1, { scale: 1, opacity: 1, transformOrigin: "0% 100%" }, { scale: 0.3, opacity: 0, transformOrigin: "0% 100%", duration: 0.3, ease: "power2.in", immediateRender: false }, CARD2 - 0.06);
+        // ... and its compact twin unfolds down the rail from that corner
+        tl.fromTo(card1c, { opacity: 0, scale: 0.3, transformOrigin: "0% 0%" }, { opacity: 1, scale: 1, transformOrigin: "0% 0%", duration: 0.45, ease: "back.out(1.2)" }, CARD2 + 0.12);
+        tl.fromTo(card1c, { filter: "blur(8px) brightness(1.3) saturate(1)" }, { filter: F0, duration: 0.32, ease: "power3.out" }, CARD2 + 0.12);
+        tl.fromTo(card1c, { filter: F0 }, { filter: "blur(0px) brightness(0.8) saturate(0.85)", duration: 0.5, ease: "power2.out", immediateRender: false }, CARD2 + 0.7);
+        // belief 2 grows in place with a tilt settle
+        tl.fromTo(card2, { opacity: 0, scale: 0.92, rotation: -1.2, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, rotation: 0, transformOrigin: "50% 50%", duration: 0.46, ease: "back.out(1.4)" }, CARD2);
         tl.fromTo(card2, { filter: "blur(12px) brightness(1.25) saturate(1)" }, { filter: F0, duration: 0.34, ease: "power3.out" }, CARD2);
-        echo("echo2a", CARD2 + 0.18);
-        echo("echo2b", CARD2 + 0.3);
+        echo("echo2", CARD2 + 0.18, 1.03);
         chip(2, CARD2 + 0.16);
 
-        // "WANTING" — heavy rise with a tilt
+        // "WANTING" — heavy rise with a tilt (rises in from the card's bottom edge)
         show($("w-wanting"), CUE.wanting - LEAD);
         tl.fromTo($("w-wanting"), { y: 70, rotation: 7, filter: "blur(10px)" }, { y: 0, rotation: 0, filter: "blur(0px)", duration: 0.45, ease: "circ.out" }, CUE.wanting - LEAD);
         unblur($("w-wanting"), CUE.wanting + 0.47);
-        // "MORE" — overshoot pop
+        // "MORE" — pop
         show($("w-more"), CUE.more - LEAD);
         tl.fromTo($("w-more"), { scale: 0.2 }, { scale: 1, duration: 0.4, ease: "back.out(1.4)" }, CUE.more - LEAD);
         // "IS" — snap from the left
         show($("w-is"), CUE.is - LEAD);
         tl.fromTo($("w-is"), { x: -70, filter: "blur(8px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, CUE.is - LEAD);
         unblur($("w-is"), CUE.is + 0.32);
-        // "SELFISH." — red scale slam, shake + flash
+        // "SELFISH." — red scale slam, card-local shake + flash
         show($("w-selfish"), CUE.selfish - LEAD);
-        tl.fromTo($("w-selfish"), { scale: 1.6, filter: "blur(18px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "power4.out" }, CUE.selfish - LEAD);
+        tl.fromTo($("w-selfish"), { scale: 1.6, filter: "blur(16px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "power4.out" }, CUE.selfish - LEAD);
         unblur($("w-selfish"), CUE.selfish + 0.47);
         redHit("selfish", HIT2, 0.95, 0.5);
-        ripple("rp-selfish-1", HIT2, 2.4);
-        ripple("rp-selfish-2", HIT2 + 0.1, 2.9);
-        flash(HIT2, 0.2);
-        tl.fromTo(gred, { opacity: 0.12 }, { opacity: 0.2, duration: 0.4, ease: "power2.out", immediateRender: false }, HIT2);
+        ripple("rp-selfish-1", HIT2, 2.1);
+        ripple("rp-selfish-2", HIT2 + 0.1, 2.6);
+        flash("flash2", HIT2, 0.32);
         closeQuote(2, 3.0);
-        sheen("sheen2", 3.06);
+        sheen("sheen2", 3.04);
 
-        // ================= Scene 3 (3.5–5.92): compact stack, card 3 slams in on top =================
-        tl.fromTo(card1, { y: 336, scale: 0.82, rotation: 0 }, { y: 561, scale: 0.58, rotation: -3, duration: 0.6, ease: "expo.out", immediateRender: false }, 3.38);
-        tl.fromTo(card1, { filter: "blur(0px) brightness(0.72) saturate(0.85)" }, { filter: "blur(0px) brightness(0.56) saturate(0.75)", duration: 0.5, ease: "power2.out", immediateRender: false }, 3.4);
-        tl.fromTo(card2, { y: 0, scale: 1, rotation: 0 }, { y: 435, scale: 0.64, rotation: 2.5, duration: 0.6, ease: "expo.out", immediateRender: false }, 3.4);
-        tl.fromTo(card2, { filter: F0 }, { filter: "blur(0px) brightness(0.72) saturate(0.85)", duration: 0.5, ease: "power2.out", immediateRender: false }, 3.44);
-        tl.fromTo(card3, { opacity: 0, scale: 1.1, filter: "blur(16px) brightness(1.3) saturate(1)" }, { opacity: 1, scale: 1, filter: F0, duration: 0.42, ease: "power4.out" }, CARD3);
-        echo("echo3a", CARD3 + 0.14);
-        echo("echo3b", CARD3 + 0.26);
+        // ================= Scene 3 (3.5–5.92): belief 2 folds into the RIGHT rail, belief 3 owns the lower band =================
+        tl.fromTo(card2, { scale: 1, opacity: 1, transformOrigin: "100% 100%" }, { scale: 0.3, opacity: 0, transformOrigin: "100% 100%", duration: 0.3, ease: "power2.in", immediateRender: false }, 3.36);
+        tl.fromTo(card2c, { opacity: 0, scale: 0.3, transformOrigin: "100% 0%" }, { opacity: 1, scale: 1, transformOrigin: "100% 0%", duration: 0.45, ease: "back.out(1.2)" }, 3.54);
+        tl.fromTo(card2c, { filter: "blur(8px) brightness(1.3) saturate(1)" }, { filter: F0, duration: 0.32, ease: "power3.out" }, 3.54);
+        tl.fromTo(card2c, { filter: F0 }, { filter: "blur(0px) brightness(0.8) saturate(0.85)", duration: 0.5, ease: "power2.out", immediateRender: false }, 4.1);
+        tl.fromTo(card1c, { filter: "blur(0px) brightness(0.8) saturate(0.85)" }, { filter: "blur(0px) brightness(0.66) saturate(0.75)", duration: 0.5, ease: "power2.out", immediateRender: false }, 3.6);
+        // belief 3 grows in place, biggest card of the scene
+        tl.fromTo(card3, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.3)" }, CARD3);
+        tl.fromTo(card3, { filter: "blur(14px) brightness(1.3) saturate(1)" }, { filter: F0, duration: 0.34, ease: "power3.out" }, CARD3);
+        echo("echo3", CARD3 + 0.16, 1.02);
         chip(3, CARD3 + 0.14);
 
-        // "PEOPLE LIKE US" — a triplet of drops, alternating tilt
+        // "PEOPLE LIKE US" — a triplet of drops from the card's top edge, alternating tilt
         [["people", -8], ["like", 8], ["us", -6]].forEach(function (p) {
           var el = $("w-" + p[0]);
           show(el, CUE[p[0]] - LEAD);
@@ -813,8 +716,7 @@
         show($("w-can"), CUE.can - LEAD);
         tl.fromTo($("w-can"), { x: -80, filter: "blur(10px)" }, { x: 0, filter: "blur(0px)", duration: 0.32, ease: "expo.out" }, CUE.can - LEAD);
         unblur($("w-can"), CUE.can + 0.34);
-
-        // "NEVER" — the biggest hit: tilt-down slam, flash, shake, bloom, sparks, ripples
+        // "NEVER" — the biggest hit: tilt-down slam, card flash, card shake, zone-confined bloom, sparks, ripples
         show($("w-never"), CUE.never - LEAD);
         tl.fromTo($("w-never"), { scale: 1.5, y: -40, rotationX: 62 }, { scale: 1, y: 0, rotationX: 0, duration: 0.5, ease: "back.out(1.4)" }, CUE.never - LEAD);
         tl.fromTo($("w-never"), { filter: "blur(22px)" }, { filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, CUE.never - LEAD);
@@ -823,42 +725,38 @@
         ripple("rp-never-1", HIT3, 1.5);
         ripple("rp-never-2", HIT3 + 0.09, 1.85);
         ripple("rp-never-3", HIT3 + 0.18, 2.2);
-        flash(HIT3, 0.42);
-        tl.fromTo(card3, { scale: 1.035 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, HIT3);
-        tl.fromTo($("bloom3"), { opacity: 0, scale: 0.85 }, { opacity: 0.45, scale: 1, duration: 0.28, ease: "power2.out" }, HIT3);
-        tl.fromTo($("bloom3"), { opacity: 0.45 }, { opacity: 0.3, duration: 0.7, ease: "power2.out", immediateRender: false }, HIT3 + 0.28);
-        tl.fromTo(gred, { opacity: 0.2 }, { opacity: 0.34, duration: 0.4, ease: "power2.out", immediateRender: false }, HIT3);
+        flash("flash3", HIT3, 0.45);
+        tl.fromTo(card3, { scale: 1.02 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, HIT3);
+        tl.fromTo($("bloom3"), { opacity: 0 }, { opacity: 0.55, duration: 0.28, ease: "power2.out" }, HIT3);
+        tl.fromTo($("bloom3"), { opacity: 0.55 }, { opacity: 0.32, duration: 0.7, ease: "power2.out", immediateRender: false }, HIT3 + 0.28);
         sparks.forEach(function (q, i) {
           var rad = (q.a * Math.PI) / 180;
           var at = HIT3 + 0.02 + (i % 3) * 0.015;
-          tl.fromTo(
-            q.el,
-            { x: 0, y: 0, rotation: q.a, scaleX: 0.3 },
-            { x: Math.cos(rad) * q.r, y: Math.sin(rad) * q.r * 0.7, rotation: q.a, scaleX: 1, duration: 0.55, ease: "power3.out" },
-            at
-          );
+          tl.fromTo(q.el, { x: 0, y: 0, rotation: q.a, scaleX: 0.3 }, { x: Math.cos(rad) * q.r, y: Math.sin(rad) * q.r * 0.6, rotation: q.a, scaleX: 1, duration: 0.55, ease: "power3.out" }, at);
           fade(q.el, at, 1, 0.55);
         });
-        // heavy chains draw across the stack, link by link
-        chainA.forEach(function (lk, i) {
-          tl.fromTo(lk, { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2.6)" }, HIT3 + 0.02 + i * 0.013);
-        });
-        chainB.forEach(function (lk, i) {
-          tl.fromTo(lk, { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2.6)" }, HIT3 + 0.1 + i * 0.013);
+        // heavy chains draw across BOTH rail cards, link by link, then the padlocks clamp
+        chains.forEach(function (links, c) {
+          links.forEach(function (lk, i) {
+            tl.fromTo(lk, { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2.6)" }, HIT3 + 0.02 + (c % 2) * 0.08 + i * 0.016);
+          });
         });
 
-        // "BE WEALTHY." — rises; the padlock clamps the chains shut
+        // "BE WEALTHY." — rises; the padlocks snap shut
         show($("w-be"), CUE.be - LEAD);
         tl.fromTo($("w-be"), { y: 56, filter: "blur(8px)" }, { y: 0, filter: "blur(0px)", duration: 0.38, ease: "circ.out" }, CUE.be - LEAD);
         unblur($("w-be"), CUE.be + 0.4);
         show($("w-wealthy"), CUE.wealthy - LEAD);
-        tl.fromTo($("w-wealthy"), { y: 56, scale: 1.14, filter: "blur(10px)", transformOrigin: "0% 60%" }, { y: 0, scale: 1, filter: "blur(0px)", duration: 0.42, ease: "circ.out" }, CUE.wealthy - LEAD);
+        tl.fromTo($("w-wealthy"), { y: 56, scale: 1.14, filter: "blur(10px)", transformOrigin: "0% 60%" }, { y: 0, scale: 1, filter: "blur(0px)", transformOrigin: "0% 60%", duration: 0.42, ease: "circ.out" }, CUE.wealthy - LEAD);
         unblur($("w-wealthy"), CUE.wealthy + 0.47);
-        tl.fromTo($("lock"), { scale: 0, rotation: -25, opacity: 0, transformOrigin: "50% 60%" }, { scale: 1, rotation: 0, opacity: 1, duration: 0.42, ease: "back.out(2)" }, 4.98);
-        tl.fromTo($("shackle"), { y: -22 }, { y: 0, duration: 0.14, ease: "power3.in" }, 5.2);
-        tl.fromTo($("lock"), { scale: 1.12 }, { scale: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, 5.34);
+        ["L", "R"].forEach(function (sd, k) {
+          var lock = $("lock" + sd);
+          tl.fromTo(lock, { scale: 0, rotation: k ? 25 : -25, opacity: 0, transformOrigin: "50% 60%" }, { scale: 1, rotation: 0, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 4.98 + k * 0.06);
+          tl.fromTo($("shackle" + sd), { y: -22 }, { y: 0, duration: 0.14, ease: "power3.in" }, 5.2 + k * 0.04);
+          tl.fromTo(lock, { scale: 1.12 }, { scale: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, 5.34 + k * 0.04);
+        });
         closeQuote(3, 5.38);
-        sheen("sheen3", 5.36);
+        sheen("sheen3", 5.34);
 
         window.__timelines = window.__timelines || {};
         window.__timelines[ID] = tl;

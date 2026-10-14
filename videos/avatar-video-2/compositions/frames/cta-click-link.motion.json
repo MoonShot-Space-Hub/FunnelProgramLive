@@ -2,6 +2,6 @@
   "scene": "cta-click-link",
   "duration_s": 1.28,
   "rules": ["spring-pop-entrance", "press-release-spring", "cursor-click-ripple", "sine-wave-loop", "particle-burst", "motion-blur-streak"],
-  "exit": { "vector": "final scene hold: chevrons bouncing downward (7px wave, 0.42s period); hand cursor finishing a slow drift down-right (~60 px over 0.4s, ends at the last frame); button glow breathing", "still_moving": true },
-  "entry": { "vector": "transparent overlay: offer chip springs in at t=0 (scale 0.35->1, y -30->0 on back.out(1.7), ~200 px/s downward); button rises from y+150 at t=0.12 (~1000 px/s upward, vertical blur 16->0)", "from_rest": false }
+  "exit": { "vector": "final scene hold, face zone clear: chevron stacks either side of the button bouncing downward (7px wave, 0.42s period); hand cursor finishing a small drift right (~40 px over 0.4s); button glow breathing", "still_moving": true },
+  "entry": { "vector": "transparent overlay: TOP-band offer chip springs in at t=0 (scale 0.35->1, y -30->0 on back.out(1.7)); LOWER-band button grows in place at 0.12 (scale 0.4->1, vertical blur 12->0); cursor enters from the right edge at 0.2", "from_rest": false }
 }

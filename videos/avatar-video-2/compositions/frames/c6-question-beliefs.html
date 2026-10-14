@@ -15,81 +15,15 @@
         height: 100%;
         overflow: hidden;
       }
-      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-ground,
+      /* v2: TRANSPARENT overlay over the speaker footage. Cards live in the LEFT rail, RIGHT rail and LOWER band;
+         the "?" lives in the TOP band; the magnifier travels only through rails + lower band.
+         Face zone x 360-670, y 500-870 is never drawn into. Caption band y 1030-1248 belongs to the host. */
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-scene {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
-      }
-      /* ---------------- ground (same system as c4) ---------------- */
-      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-ground {
-        background: #12061a;
-      }
-      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-g-radial {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle farthest-corner at 540px 620px, #2e1240 0%, #12061a 72%);
-      }
-      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-g-blob {
-        position: absolute;
-        border-radius: 50%;
-        will-change: transform;
-      }
-      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-gmag {
-        left: 90px;
-        top: 160px;
-        width: 900px;
-        height: 900px;
-        background: radial-gradient(circle, rgba(224, 33, 138, 1) 0%, rgba(224, 33, 138, 0.45) 36%, rgba(224, 33, 138, 0) 70%);
-        opacity: 0.3;
-      }
-      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-ggold {
-        left: 340px;
-        top: 350px;
-        width: 420px;
-        height: 420px;
-        background: radial-gradient(circle, rgba(255, 194, 74, 1) 0%, rgba(255, 194, 74, 0) 70%);
-        opacity: 0.16;
-      }
-      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-grings {
-        position: absolute;
-        left: -360px;
-        top: -280px;
-        width: 1800px;
-        height: 1800px;
-        transform-origin: 900px 900px;
-        will-change: transform;
-      }
-      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-dust {
-        position: absolute;
-        left: 0;
-        top: 0;
-        border-radius: 50%;
-        background: #ffe1a0;
-        box-shadow: 0 0 10px rgba(255, 194, 74, 0.8);
-        will-change: transform, opacity;
-      }
-      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-g-grain {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 1080px;
-        height: 1920px;
-        opacity: 0.06;
-      }
-      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-g-vig {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(ellipse 80% 62% at 50% 38%, rgba(18, 6, 26, 0) 58%, rgba(8, 2, 12, 0.7) 100%);
-      }
-      /* ---------------- camera ---------------- */
-      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-cam {
-        position: absolute;
-        inset: 0;
-        transform-origin: 540px 600px;
-        will-change: transform;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-fan {
         position: absolute;
@@ -98,11 +32,9 @@
         width: 1080px;
         height: 1920px;
       }
-      /* ---------------- the old belief cards (c4 cards, dusty) ---------------- */
+      /* ---------------- the old belief cards (c4's compact cards, aged) ---------------- */
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-card {
         position: absolute;
-        left: 70px;
-        width: 940px;
         transform-origin: 50% 50%;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-half {
@@ -111,20 +43,32 @@
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-tail {
         position: absolute;
-        left: 122px;
-        bottom: -24px;
-        width: 50px;
-        height: 50px;
+        left: 50px;
+        bottom: -18px;
+        width: 38px;
+        height: 38px;
         background: #2a1b2b;
-        border-right: 3px solid rgba(232, 200, 160, 0.34);
-        border-bottom: 3px solid rgba(232, 200, 160, 0.34);
+        border-right: 3px solid rgba(232, 200, 160, 0.4);
+        border-bottom: 3px solid rgba(232, 200, 160, 0.4);
         transform: rotate(45deg);
+      }
+      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-tail-r {
+        left: auto;
+        right: 50px;
+      }
+      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-tail-up {
+        top: -18px;
+        bottom: auto;
+        background: #3a2838;
+        border: none;
+        border-left: 3px solid rgba(232, 200, 160, 0.4);
+        border-top: 3px solid rgba(232, 200, 160, 0.4);
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-body {
         position: absolute;
         inset: 0;
-        border-radius: 34px;
-        border: 3px solid rgba(232, 200, 160, 0.34);
+        border-radius: 26px;
+        border: 3px solid rgba(232, 200, 160, 0.4);
         background-color: #2c1d2d;
         background-image:
           radial-gradient(circle at 12% 28%, rgba(240, 220, 190, 0.1) 0 3px, rgba(0, 0, 0, 0) 4px),
@@ -133,23 +77,24 @@
           radial-gradient(circle at 63% 83%, rgba(240, 220, 190, 0.1) 0 3px, rgba(0, 0, 0, 0) 4px),
           radial-gradient(circle at 78% 36%, rgba(240, 220, 190, 0.07) 0 2px, rgba(0, 0, 0, 0) 3px),
           radial-gradient(circle at 91% 66%, rgba(240, 220, 190, 0.09) 0 3px, rgba(0, 0, 0, 0) 4px),
-          radial-gradient(circle at 22% 52%, rgba(240, 220, 190, 0.06) 0 2px, rgba(0, 0, 0, 0) 3px),
-          radial-gradient(circle at 70% 58%, rgba(240, 220, 190, 0.06) 0 2px, rgba(0, 0, 0, 0) 3px),
           linear-gradient(160deg, #3d2a3a 0%, #271a29 100%);
         box-shadow:
-          0 30px 70px rgba(0, 0, 0, 0.55),
-          inset 0 0 70px rgba(12, 4, 10, 0.55),
+          0 0 0 2px rgba(10, 3, 16, 0.5),
+          inset 0 0 40px rgba(12, 4, 10, 0.55),
           inset 0 1px 0 rgba(255, 255, 255, 0.06);
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-text {
         position: absolute;
         left: 0;
         right: 0;
-        top: 62px;
+        top: 26px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        row-gap: 6px;
+        row-gap: 2px;
+      }
+      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-wide .c6-question-beliefs-text {
+        top: 18px;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-row {
         display: flex;
@@ -165,16 +110,12 @@
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-w {
         position: relative;
         display: inline-block;
-        color: #e9d8be;
-        text-shadow: 0 5px 18px rgba(0, 0, 0, 0.45);
+        color: #ecdcc3;
+        text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-red {
-        color: #d8676f;
-        text-shadow: 0 0 16px rgba(216, 103, 111, 0.25);
-      }
-      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-big {
-        font-size: 150px;
-        line-height: 0.92;
+        color: #e06f77;
+        text-shadow: 0 0 12px rgba(216, 103, 111, 0.25);
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-ul {
         position: absolute;
@@ -188,62 +129,35 @@
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qo,
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qc {
         position: absolute;
-        width: 84px;
-        height: 60px;
+        width: 44px;
+        height: 32px;
         overflow: visible;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qo {
-        left: 30px;
-        top: -40px;
+        left: 12px;
+        top: -15px;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qc {
-        right: 30px;
-        bottom: -30px;
+        right: 12px;
+        bottom: -13px;
       }
-      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-chip {
-        position: absolute;
-        left: 132px;
-        top: -25px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 8px 22px;
-        border-radius: 999px;
-        border: 2px solid rgba(232, 200, 160, 0.5);
-        background: #2a1b2b;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 30px;
-        line-height: 1.1;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: #d9bfa0;
-        white-space: nowrap;
-      }
-      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-chip i {
-        display: block;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #d9bfa0;
+      [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-wide .c6-question-beliefs-qc {
+        bottom: 8px;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-stamp {
         position: absolute;
-        right: 70px;
-        top: -46px;
-        padding: 4px 22px 2px;
-        border: 6px solid #f0dcb8;
-        border-radius: 12px;
+        right: 12px;
+        top: -19px;
+        padding: 3px 10px 1px;
+        border: 4px solid #f0dcb8;
+        border-radius: 8px;
         background: #2a1b2b;
         font-family: "Archivo Black", sans-serif;
         font-weight: 400;
-        font-size: 66px;
+        font-size: 30px;
         line-height: 1;
         letter-spacing: 0.06em;
         color: #f0dcb8;
-        -webkit-mask-image: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.55) 0 7%, #000 9%), radial-gradient(circle at 70% 75%, rgba(0, 0, 0, 0.6) 0 6%, #000 8%);
-        -webkit-mask-composite: source-in;
-        mask-composite: intersect;
         transform-origin: 50% 50%;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-crack {
@@ -256,65 +170,39 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 12px;
-        height: 12px;
-        margin-left: -6px;
-        margin-top: -6px;
+        width: 10px;
+        height: 10px;
+        margin-left: -5px;
+        margin-top: -5px;
         border-radius: 50%;
         background: radial-gradient(circle, #fff5ea 0%, rgba(255, 225, 160, 0.85) 45%, rgba(255, 225, 160, 0) 72%);
         opacity: 0;
       }
-      /* ---------------- dim halo behind the question mark ---------------- */
-      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-halo {
-        position: absolute;
-        left: 50px;
-        top: 60px;
-        width: 1000px;
-        height: 1000px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(14, 4, 20, 0.78) 0%, rgba(14, 4, 20, 0.5) 42%, rgba(14, 4, 20, 0) 70%);
-        opacity: 0;
-      }
-      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-qbloom {
-        position: absolute;
-        left: 150px;
-        top: 160px;
-        width: 800px;
-        height: 800px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(255, 194, 74, 0.95) 0%, rgba(255, 140, 40, 0.4) 34%, rgba(224, 33, 138, 0) 70%);
-        opacity: 0;
-      }
-      /* ---------------- magnifying glass ---------------- */
+      /* ---------------- magnifying glass (lens r 60) ---------------- */
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-mag {
         position: absolute;
         left: 0;
         top: 0;
-        width: 260px;
-        height: 260px;
+        width: 120px;
+        height: 120px;
         will-change: transform;
       }
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-magin {
         position: absolute;
         inset: 0;
-        transform-origin: 130px 130px;
+        transform-origin: 60px 60px;
       }
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-lens {
         position: absolute;
         left: 0;
         top: 0;
-        width: 260px;
-        height: 260px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         overflow: hidden;
-        background: rgba(40, 18, 56, 0.35);
+        background: rgba(40, 18, 56, 0.5);
       }
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-lensfan {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 1080px;
-        height: 1920px;
         transform-origin: 0 0;
         will-change: transform;
       }
@@ -323,53 +211,78 @@
         inset: 0;
         border-radius: 50%;
         background:
-          radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0) 26%),
-          radial-gradient(circle at 50% 50%, rgba(255, 225, 160, 0) 62%, rgba(255, 194, 74, 0.16) 86%, rgba(20, 6, 26, 0.45) 100%);
+          radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0) 28%),
+          radial-gradient(circle at 50% 50%, rgba(255, 225, 160, 0) 60%, rgba(255, 194, 74, 0.16) 86%, rgba(20, 6, 26, 0.45) 100%);
       }
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-magframe {
         position: absolute;
-        left: -20px;
-        top: -20px;
-        width: 420px;
-        height: 420px;
+        left: -90px;
+        top: -90px;
+        width: 300px;
+        height: 300px;
         overflow: visible;
       }
-      /* ---------------- the giant question mark ---------------- */
+      /* ---------------- TOP band: the giant gold "?" (clipped to the band) ---------------- */
+      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-qband {
+        position: absolute;
+        left: 65px;
+        top: 270px;
+        width: 950px;
+        height: 222px;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0px, #000 12px, #000 196px, rgba(0, 0, 0, 0) 222px);
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0px, #000 12px, #000 196px, rgba(0, 0, 0, 0) 222px);
+      }
+      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-scrim {
+        position: absolute;
+        left: 175px;
+        top: 0;
+        width: 600px;
+        height: 222px;
+        background: radial-gradient(closest-side, rgba(18, 6, 26, 0.82) 0%, rgba(18, 6, 26, 0.6) 55%, rgba(18, 6, 26, 0) 100%);
+        opacity: 0;
+      }
+      [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-qbloom {
+        position: absolute;
+        left: 255px;
+        top: 0;
+        width: 440px;
+        height: 222px;
+        background: radial-gradient(closest-side, rgba(255, 194, 74, 0.95) 0%, rgba(255, 140, 40, 0.4) 45%, rgba(255, 140, 40, 0) 100%);
+        opacity: 0;
+      }
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-q {
         position: absolute;
-        left: 350px;
-        top: 330px;
-        width: 400px;
-        height: 460px;
-        display: grid;
-        place-items: center;
+        left: 345px;
+        top: -14px;
+        width: 260px;
+        height: 250px;
         transform-origin: 50% 55%;
       }
       [data-composition-id="c6-question-beliefs"] #c6-question-beliefs-qfloat {
-        position: relative;
+        position: absolute;
+        inset: 0;
         display: grid;
         place-items: center;
-        width: 400px;
-        height: 460px;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-ql {
         grid-area: 1 / 1;
+        position: relative;
         font-family: "Archivo Black", sans-serif;
         font-weight: 400;
-        font-size: 420px;
+        font-size: 250px;
         line-height: 1;
         letter-spacing: -0.03em;
-        position: relative;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qglow {
         color: #ffc24a;
-        filter: blur(34px);
+        filter: blur(14px);
         opacity: 0;
         z-index: 1;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qdepth {
         color: #8a560c;
-        transform: translate(0px, 12px);
+        transform: translate(0px, 8px);
         z-index: 2;
       }
       [data-composition-id="c6-question-beliefs"] .c6-question-beliefs-qmain {
@@ -394,13 +307,13 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 360px;
-        height: 360px;
-        margin-left: -180px;
-        margin-top: -180px;
+        width: 220px;
+        height: 220px;
+        margin-left: -110px;
+        margin-top: -110px;
         border-radius: 50%;
-        border: 6px solid rgba(255, 194, 74, 0.9);
-        box-shadow: 0 0 30px rgba(255, 194, 74, 0.5);
+        border: 5px solid rgba(255, 194, 74, 0.9);
+        box-shadow: 0 0 20px rgba(255, 194, 74, 0.5);
         opacity: 0;
         z-index: 0;
       }
@@ -408,44 +321,17 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 100px;
-        height: 7px;
-        margin-left: -50px;
+        width: 80px;
+        height: 6px;
+        margin-left: -40px;
         margin-top: -3px;
-        border-radius: 4px;
+        border-radius: 3px;
         background: linear-gradient(90deg, rgba(255, 225, 160, 0), #ffe1a0 60%, #ffffff);
         opacity: 0;
         z-index: 0;
       }
     </style>
 
-    <!-- ===== Full-bleed ground ===== -->
-    <div id="c6-question-beliefs-ground" class="clip" data-start="0" data-duration="2.82" data-track-index="0">
-      <div class="c6-question-beliefs-g-radial"></div>
-      <div class="c6-question-beliefs-g-blob" id="c6-question-beliefs-gmag"></div>
-      <div class="c6-question-beliefs-g-blob" id="c6-question-beliefs-ggold"></div>
-      <svg id="c6-question-beliefs-grings" viewBox="0 0 1800 1800" aria-hidden="true">
-        <g fill="none" stroke="#ff5fb0">
-          <circle cx="900" cy="900" r="200" stroke-opacity="0.12" stroke-width="2" />
-          <circle cx="900" cy="900" r="330" stroke-opacity="0.1" stroke-width="2" stroke-dasharray="4 14" />
-          <circle cx="900" cy="900" r="470" stroke-opacity="0.11" stroke-width="2" />
-          <circle cx="900" cy="900" r="620" stroke-opacity="0.09" stroke-width="2" stroke-dasharray="40 22" />
-          <circle cx="900" cy="900" r="780" stroke-opacity="0.08" stroke-width="2" />
-          <circle cx="900" cy="900" r="890" stroke-opacity="0.07" stroke-width="2" stroke-dasharray="6 18" />
-        </g>
-      </svg>
-      <div id="c6-question-beliefs-dustbox"></div>
-      <svg class="c6-question-beliefs-g-grain" viewBox="0 0 1080 1920" aria-hidden="true">
-        <filter id="c6-question-beliefs-grainf" x="0" y="0" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="1080" height="1920" filter="url(#c6-question-beliefs-grainf)" />
-      </svg>
-      <div class="c6-question-beliefs-g-vig"></div>
-    </div>
-
-    <!-- ===== Scene ===== -->
     <div id="c6-question-beliefs-scene" class="clip" data-start="0" data-duration="2.82" data-track-index="1">
       <svg width="0" height="0" aria-hidden="true" style="position: absolute">
         <defs>
@@ -455,52 +341,55 @@
             <stop offset="0.7" stop-color="#b8801c" />
             <stop offset="1" stop-color="#ffe1a0" />
           </linearGradient>
-          <linearGradient id="c6-question-beliefs-handle" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#3a1850" />
-            <stop offset="0.5" stop-color="#5b2a78" />
+          <linearGradient id="c6-question-beliefs-handle" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5b2a78" />
             <stop offset="1" stop-color="#2a0f3a" />
           </linearGradient>
           <filter id="c6-question-beliefs-kglow" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="6" result="b" />
+            <feGaussianBlur stdDeviation="4" result="b" />
             <feMerge>
               <feMergeNode in="b" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
+          <symbol id="c6-question-beliefs-q66" viewBox="0 0 84 60">
+            <g fill="#a8507f"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g>
+          </symbol>
+          <symbol id="c6-question-beliefs-q99" viewBox="0 0 84 60">
+            <g fill="#a8507f" transform="rotate(180 42 30)"><circle cx="20" cy="40" r="17" /><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z" /><circle cx="62" cy="40" r="17" /><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z" /></g>
+          </symbol>
         </defs>
       </svg>
 
-      <div id="c6-question-beliefs-cam">
-        <div class="c6-question-beliefs-fan" id="c6-question-beliefs-fan"></div>
-        <div id="c6-question-beliefs-halo"></div>
-        <div id="c6-question-beliefs-qbloom"></div>
+      <div class="c6-question-beliefs-fan" id="c6-question-beliefs-fan"></div>
 
-        <!-- magnifying glass: lens shows a magnified copy of the fan -->
-        <div id="c6-question-beliefs-mag">
-          <div id="c6-question-beliefs-magin">
-            <div id="c6-question-beliefs-lens">
-              <div class="c6-question-beliefs-fan" id="c6-question-beliefs-lensfan" aria-hidden="true"></div>
-              <div class="c6-question-beliefs-glass"></div>
-            </div>
-            <svg id="c6-question-beliefs-magframe" viewBox="0 0 420 420" aria-hidden="true">
-              <g transform="translate(150 150)">
-                <!-- handle (down-right) -->
-                <g transform="rotate(45)">
-                  <rect x="128" y="-17" width="40" height="34" rx="6" fill="url(#c6-question-beliefs-rim)" />
-                  <rect x="164" y="-21" width="100" height="42" rx="21" fill="url(#c6-question-beliefs-handle)" stroke="#1a0826" stroke-width="3" />
-                  <rect x="172" y="-14" width="84" height="7" rx="3.5" fill="rgba(255,255,255,0.16)" />
-                </g>
-                <!-- rim -->
-                <circle cx="0" cy="0" r="138" fill="none" stroke="#1a0826" stroke-width="22" />
-                <circle cx="0" cy="0" r="137" fill="none" stroke="url(#c6-question-beliefs-rim)" stroke-width="15" filter="url(#c6-question-beliefs-kglow)" />
-                <circle cx="0" cy="0" r="128" fill="none" stroke="rgba(255,245,234,0.35)" stroke-width="2" />
-                <path d="M-96 -82 A126 126 0 0 1 -20 -125" fill="none" stroke="#fff5ea" stroke-width="5" stroke-linecap="round" stroke-opacity="0.85" />
-              </g>
-            </svg>
+      <!-- magnifying glass: the lens shows a magnified copy of the cards -->
+      <div id="c6-question-beliefs-mag">
+        <div id="c6-question-beliefs-magin">
+          <div id="c6-question-beliefs-lens">
+            <div class="c6-question-beliefs-fan" id="c6-question-beliefs-lensfan" aria-hidden="true"></div>
+            <div class="c6-question-beliefs-glass"></div>
           </div>
+          <svg id="c6-question-beliefs-magframe" viewBox="0 0 300 300" aria-hidden="true">
+            <g transform="translate(150 150)">
+              <g id="c6-question-beliefs-handlegrp" transform="rotate(20)">
+                <rect x="62" y="-10" width="20" height="20" rx="4" fill="url(#c6-question-beliefs-rim)" />
+                <rect x="79" y="-12" width="54" height="24" rx="12" fill="url(#c6-question-beliefs-handle)" stroke="#1a0826" stroke-width="2.5" />
+                <rect x="84" y="-8" width="44" height="4" rx="2" fill="rgba(255,255,255,0.16)" />
+              </g>
+              <circle cx="0" cy="0" r="65" fill="none" stroke="#1a0826" stroke-width="15" />
+              <circle cx="0" cy="0" r="64" fill="none" stroke="url(#c6-question-beliefs-rim)" stroke-width="10" filter="url(#c6-question-beliefs-kglow)" />
+              <circle cx="0" cy="0" r="58" fill="none" stroke="rgba(255,245,234,0.35)" stroke-width="1.5" />
+              <path d="M-45 -38 A59 59 0 0 1 -10 -58" fill="none" stroke="#fff5ea" stroke-width="3.5" stroke-linecap="round" stroke-opacity="0.85" />
+            </g>
+          </svg>
         </div>
+      </div>
 
-        <!-- giant gold question mark -->
+      <!-- TOP band: giant gold question mark on a band-confined scrim -->
+      <div id="c6-question-beliefs-qband">
+        <div id="c6-question-beliefs-scrim"></div>
+        <div id="c6-question-beliefs-qbloom"></div>
         <div id="c6-question-beliefs-q">
           <div id="c6-question-beliefs-qfloat">
             <i class="c6-question-beliefs-ring" id="c6-question-beliefs-ring1"></i><i class="c6-question-beliefs-ring" id="c6-question-beliefs-ring2"></i><i class="c6-question-beliefs-ring" id="c6-question-beliefs-ring3"></i>
@@ -534,22 +423,24 @@
         // ---- word cues (local seconds) ----
         var QUESTIONING = 1.14, OLD = 1.94, BELIEFS = 2.26;
 
-        // ---- the three belief cards from c4 (same copy + layout, aged) ----
+        // ---- the three belief cards from c4 (same compact layouts), placed in the rails + lower band ----
         var CARDS = [
-          { top: 536, h: 328, rows: [[108, [["MONEY"], ["HARD", "r"]]], [108, [["TO"], ["EARN."]]]],
-            crack: [[560, -6], [528, 62], [578, 120], [518, 186], [568, 248], [536, 334]],
-            br: [[[578, 120], [640, 150], [668, 206]], [[518, 186], [460, 214], [430, 262]]],
-            fan: { x: -170, y: -232, r: -8, s: 0.6 } },
-          { top: 550, h: 300, rows: [[94, [["WANTING"], ["MORE"]]], [94, [["IS"], ["SELFISH.", "r"]]]],
-            crack: [[430, -6], [470, 64], [418, 128], [476, 190], [438, 250], [462, 306]],
-            br: [[[470, 64], [530, 84], [566, 128]], [[476, 190], [410, 222], [380, 270]]],
-            fan: { x: 162, y: -22, r: 6, s: 0.6 } },
-          { top: 480, h: 440, rows: [[92, [["PEOPLE"], ["LIKE"], ["US"]]], [92, [["CAN"], ["NEVER", "rb"]]], [92, [["BE"], ["WEALTHY."]]]],
-            crack: [[600, -6], [558, 80], [612, 152], [548, 238], [598, 314], [564, 382], [590, 446]],
-            br: [[[612, 152], [680, 176], [712, 230]], [[548, 238], [484, 262], [452, 318]]],
-            fan: { x: -72, y: 205, r: -3, s: 0.62 } }
+          { l: 78, t: 560, w: 260, h: 205, tail: "", wide: false,
+            rows: [[46, [["MONEY"]]], [60, [["HARD", "r"]]], [44, [["TO EARN."]]]],
+            crack: [[150, -4], [132, 40], [156, 80], [126, 120], [150, 162], [134, 209]],
+            br: [[[156, 80], [190, 96], [204, 124]], [[126, 120], [96, 134], [84, 160]]],
+            fan: { r: -3 }, puff: { dist: 55, spread: 6.283, base: 0 } },
+          { l: 696, t: 556, w: 308, h: 210, tail: " " + P + "tail-r", wide: false,
+            rows: [[50, [["WANTING"]]], [50, [["MORE IS"]]], [54, [["SELFISH.", "r"]]]],
+            crack: [[146, -4], [166, 44], [138, 90], [170, 134], [144, 176], [156, 214]],
+            br: [[[166, 44], [200, 58], [214, 84]], [[170, 134], [136, 150], [120, 178]]],
+            fan: { r: 3 }, puff: { dist: 55, spread: 6.283, base: 0 } },
+          { l: 190, t: 886, w: 700, h: 128, tail: " " + P + "tail-up", wide: true,
+            rows: [[44, [["PEOPLE"], ["LIKE"], ["US"], ["CAN"]]], [44, [["NEVER", "r"], ["BE"], ["WEALTHY."]]]],
+            crack: [[196, -4], [176, 30], [204, 62], [170, 96], [190, 132]],
+            br: [[[204, 62], [238, 74], [256, 98]], [[176, 30], [146, 40], [132, 62]]],
+            fan: { r: -1 }, puff: { dist: 50, spread: 0.8, base: 0 } }
         ];
-        var QUOTE = '<g fill="#a8507f"><circle cx="20" cy="40" r="17"/><path d="M4 38 C4 19 13 7 33 1 L35 8 C22 13 17 22 18 31 Z"/><circle cx="62" cy="40" r="17"/><path d="M46 38 C46 19 55 7 75 1 L77 8 C64 13 59 22 60 31 Z"/></g>';
 
         function pts(list) {
           return list.map(function (p) { return p[0] + "," + p[1]; }).join(" ");
@@ -557,32 +448,30 @@
         function poly(c, side) {
           var a = c.crack, n = a.length, H = c.h, out = [];
           if (side === "a") {
-            out.push("-320px -320px", a[0][0] + "px -320px");
+            out.push("-120px -120px", a[0][0] + "px -120px");
             a.forEach(function (p) { out.push(p[0] + "px " + p[1] + "px"); });
-            out.push(a[n - 1][0] + "px " + (H + 320) + "px", "-320px " + (H + 320) + "px");
+            out.push(a[n - 1][0] + "px " + (H + 120) + "px", "-120px " + (H + 120) + "px");
           } else {
-            out.push(a[0][0] + "px -320px");
+            out.push(a[0][0] + "px -120px");
             a.forEach(function (p) { out.push(p[0] + "px " + p[1] + "px"); });
-            out.push(a[n - 1][0] + "px " + (H + 320) + "px", "1260px " + (H + 320) + "px", "1260px -320px");
+            out.push(a[n - 1][0] + "px " + (H + 120) + "px", (c.w + 120) + "px " + (H + 120) + "px", (c.w + 120) + "px -120px");
           }
           return "polygon(" + out.join(", ") + ")";
         }
-        // text attribute: the one real copy is allowed to overlap its clipped twin; every other copy is ignored by layout
+        // the one real copy may overlap its clipped twin; every other copy is ignored by layout
         function cardCopy(c, textAttr) {
           var rows = c.rows.map(function (r) {
             var words = r[1].map(function (w) {
-              var cls = P + "w" + (w[1] ? " " + P + "red" : "") + (w[1] === "rb" ? " " + P + "big" : "");
               var ul = w[1] ? '<i class="' + P + 'ul"></i>' : "";
-              return '<span class="' + cls + '" ' + textAttr + ">" + w[0] + ul + "</span>";
+              return '<span class="' + P + "w" + (w[1] ? " " + P + "red" : "") + '" ' + textAttr + ">" + w[0] + ul + "</span>";
             }).join("");
             return '<div class="' + P + 'row" style="font-size:' + r[0] + 'px">' + words + "</div>";
           }).join("");
           return (
-            '<div class="' + P + 'tail"></div>' +
+            '<div class="' + P + "tail" + c.tail + '"></div>' +
             '<div class="' + P + 'body"><div class="' + P + 'text">' + rows + "</div></div>" +
-            '<svg class="' + P + 'qo" viewBox="0 0 84 60" aria-hidden="true">' + QUOTE + "</svg>" +
-            '<div class="' + P + 'chip" ' + textAttr + "><i></i>HEARD AT HOME</div>" +
-            '<svg class="' + P + 'qc" viewBox="0 0 84 60" aria-hidden="true"><g transform="rotate(180 42 30)">' + QUOTE + "</g></svg>" +
+            '<svg class="' + P + 'qo" aria-hidden="true"><use href="#' + P + 'q66"/></svg>' +
+            '<svg class="' + P + 'qc" aria-hidden="true"><use href="#' + P + 'q99"/></svg>' +
             '<div class="' + P + 'stamp" ' + textAttr + ">OLD</div>"
           );
         }
@@ -593,20 +482,20 @@
             var attrA = isLens ? ign : "data-layout-allow-overlap";
             var crack = pts(c.crack);
             var br = c.br.map(function (b) {
-              return '<polyline class="' + P + "kb" + n + '" points="' + pts(b) + '" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#ffe1a0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>';
+              return '<polyline class="' + P + "kb" + n + '" points="' + pts(b) + '" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#ffe1a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>';
             }).join("");
             var puff = "";
-            for (var k = 0; k < 10; k++) {
+            for (var k = 0; k < 8; k++) {
               var cp = c.crack[1 + (k % (c.crack.length - 2))];
               puff += '<i class="' + P + "puffp " + P + "pf" + n + '" style="left:' + cp[0] + "px;top:" + cp[1] + 'px"></i>';
             }
             return (
-              '<div class="' + P + "card " + P + "c" + n + '" style="top:' + c.top + "px;height:" + c.h + 'px">' +
+              '<div class="' + P + "card " + P + "c" + n + (c.wide ? " " + P + "wide" : "") + '" style="left:' + c.l + "px;top:" + c.t + "px;width:" + c.w + "px;height:" + c.h + 'px">' +
               '<div class="' + P + "half " + P + "h" + n + 'a" style="clip-path:' + poly(c, "a") + '">' + cardCopy(c, attrA) + "</div>" +
               '<div class="' + P + "half " + P + "h" + n + 'b" style="clip-path:' + poly(c, "b") + '">' + cardCopy(c, ign) + "</div>" +
-              '<svg class="' + P + 'crack" width="940" height="' + c.h + '" viewBox="0 0 940 ' + c.h + '" aria-hidden="true">' +
-              '<polyline class="' + P + "kg" + n + '" points="' + crack + '" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#ffc24a" stroke-opacity="0.55" stroke-width="16" stroke-linejoin="round" filter="url(#' + P + 'kglow)"/>' +
-              '<polyline class="' + P + "k" + n + '" points="' + crack + '" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#fff5ea" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>' +
+              '<svg class="' + P + 'crack" width="' + c.w + '" height="' + c.h + '" viewBox="0 0 ' + c.w + " " + c.h + '" aria-hidden="true">' +
+              '<polyline class="' + P + "kg" + n + '" points="' + crack + '" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#ffc24a" stroke-opacity="0.55" stroke-width="10" stroke-linejoin="round" filter="url(#' + P + 'kglow)"/>' +
+              '<polyline class="' + P + "k" + n + '" points="' + crack + '" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#fff5ea" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>' +
               br + "</svg>" + puff + "</div>"
             );
           }).join("");
@@ -617,93 +506,57 @@
           return Array.prototype.slice.call(document.querySelectorAll("." + P + sel));
         };
 
-        // ---- seeded gold dust ----
-        var dustBox = $("dustbox");
-        var dust = [];
-        for (var i = 0; i < 30; i++) {
-          var d = document.createElement("i");
-          d.className = P + "dust";
-          var size = 3 + Math.round(hash(i * 5.3 + 11) * 5);
-          d.style.width = size + "px";
-          d.style.height = size + "px";
-          dustBox.appendChild(d);
-          dust.push({
-            el: d,
-            x: 50 + hash(i * 3.1 + 12) * 980,
-            y: 160 + hash(i * 7.7 + 13) * 1560,
-            v: 12 + hash(i * 2.3 + 14) * 26,
-            sway: 6 + hash(i * 4.1 + 15) * 14,
-            f: 1.1 + hash(i * 6.7 + 16) * 2.2,
-            p: hash(i * 8.9 + 17) * 6.283
-          });
-        }
-        // ---- sparks around the question mark (index-derived angles) ----
+        // ---- sparks around the "?" (index-derived angles, flattened to the band) ----
         var sparks = [];
         for (var s = 0; s < 12; s++) {
           var sp = document.createElement("i");
           sp.className = P + "spark";
           $("qsparks").appendChild(sp);
-          sparks.push({ el: sp, a: (s / 12) * 360 + 15 + (hash(s * 9.1 + 3) * 2 - 1) * 8, r: 250 + hash(s * 3.7 + 1) * 120 });
+          sparks.push({ el: sp, a: (s / 12) * 360 + 15 + (hash(s * 9.1 + 3) * 2 - 1) * 8, r: 190 + hash(s * 3.7 + 1) * 110 });
         }
 
-        // ---- magnifier path: Catmull-Rom through inspection stops, ending on NEVER ----
-        var LP = [[250, 452], [500, 442], [735, 712], [540, 896]];
-        var R = 130, MAG = 1.55, SWEEP_A = 0.12, SWEEP_B = 1.08;
-        function cr(p0, p1, p2, p3, u) {
-          var u2 = u * u, u3 = u2 * u;
-          return 0.5 * (2 * p1 + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u2 + (-p0 + 3 * p1 - 3 * p2 + p3) * u3);
+        // ---- magnifier route: LEFT rail -> rounded corner -> LOWER band -> rounded corner -> RIGHT rail.
+        //      Sampled once at build (deterministic); every lens position keeps the lens + handle out of the face zone.
+        var R = 60, MAG = 1.6, SWEEP_A = 0.08, SWEEP_B = 1.3;
+        var route = [];
+        (function () {
+          var k;
+          for (k = 0; k <= 20; k++) route.push([207, 600 + (290 * k) / 20]);
+          for (k = 1; k <= 12; k++) { var a = (Math.PI / 2) * (k / 12); route.push([267 - 60 * Math.cos(a), 890 + 60 * Math.sin(a)]); }
+          for (k = 1; k <= 30; k++) route.push([267 + (523 * k) / 30, 950]);
+          for (k = 1; k <= 12; k++) { var b = (Math.PI / 2) * (k / 12); route.push([790 + 60 * Math.sin(b), 890 + 60 * Math.cos(b)]); }
+          for (k = 1; k <= 16; k++) route.push([850, 890 - (220 * k) / 16]);
+        })();
+        var cum = [0];
+        for (var r = 1; r < route.length; r++) {
+          var ddx = route[r][0] - route[r - 1][0], ddy = route[r][1] - route[r - 1][1];
+          cum.push(cum[r - 1] + Math.sqrt(ddx * ddx + ddy * ddy));
         }
+        var TOTAL = cum[cum.length - 1];
         function lensAt(t) {
           var g = (t - SWEEP_A) / (SWEEP_B - SWEEP_A);
           g = g < 0 ? 0 : g > 1 ? 1 : g;
-          g = 0.5 - 0.5 * Math.cos(Math.PI * g); // ease in-out
-          var seg = Math.min(2, Math.floor(g * 3));
-          var u = g * 3 - seg;
-          var a = LP[Math.max(0, seg - 1)], b = LP[seg], c = LP[seg + 1], d = LP[Math.min(3, seg + 2)];
-          var x = cr(a[0], b[0], c[0], d[0], u), y = cr(a[1], b[1], c[1], d[1], u);
-          var hv = smooth((t - SWEEP_B) / 0.3);
-          x += Math.sin((t - SWEEP_B) * 2.4) * 7 * hv;
-          y += Math.sin((t - SWEEP_B) * 1.9 + 1.2) * 6 * hv;
-          return [x, y];
+          g = 0.5 - 0.5 * Math.cos(Math.PI * g);
+          var d = g * TOTAL, i = 1;
+          while (i < cum.length - 1 && cum[i] < d) i++;
+          var seg = cum[i] - cum[i - 1] || 1, u = (d - cum[i - 1]) / seg;
+          var x = route[i - 1][0] + (route[i][0] - route[i - 1][0]) * u;
+          var y = route[i - 1][1] + (route[i][1] - route[i - 1][1]) * u;
+          var hv = smooth((t - SWEEP_B) / 0.25);
+          return [x + Math.sin((t - SWEEP_B) * 2.4) * 5 * hv, y + Math.sin((t - SWEEP_B) * 1.9 + 1.2) * 5 * hv];
         }
 
-        var cam = $("cam"), mag = $("mag"), lensfan = $("lensfan"), qfloat = $("qfloat");
-        var gmag = $("gmag"), ggold = $("ggold"), grings = $("grings");
-        function win(t, at, dur) {
-          if (t < at || t >= at + dur) return 0;
-          var u = (t - at) / dur;
-          return (1 - u) * (1 - u);
-        }
+        var mag = $("mag"), lensfan = $("lensfan"), qfloat = $("qfloat"), qbloom = $("qbloom");
         function rig(t) {
-          var f = Math.floor(t / 0.04 + 1e-6);
-          // camera: slow push, drift, a landing bump for the "?", a small crunch when the cards split
-          var bump = 10 * win(t, QUESTIONING + 0.1, 0.34);
-          var e = win(t, BELIEFS + 0.02, 0.22);
-          var sx = (hash(f * 13.1 + 5) * 2 - 1) * 6 * e;
-          var sy = (hash(f * 7.3 + 6) * 2 - 1) * 4 * e;
-          var push = 1 + 0.03 * (t / DUR) + 0.012 * win(t, QUESTIONING + 0.1, 0.5);
-          cam.style.transform = "translate(" + (Math.sin(t * 1.1) * 3 + sx).toFixed(2) + "px," + (Math.sin(t * 1.5 + 0.4) * 2 + bump + sy).toFixed(2) + "px) scale(" + push.toFixed(4) + ")";
-
-          // magnifier + magnified copy (same camera space)
           var L = lensAt(t);
-          var tilt = Math.sin(t * 2.1) * 3 + (L[0] - 500) * 0.012;
+          var tilt = Math.sin(t * 2.1) * 1.5;
           mag.style.transform = "translate(" + (L[0] - R).toFixed(2) + "px," + (L[1] - R).toFixed(2) + "px) rotate(" + tilt.toFixed(2) + "deg)";
           // counter-rotate inside the tilted lens, then magnify about the lens centre
           lensfan.style.transform = "translate(" + R + "px," + R + "px) rotate(" + (-tilt).toFixed(2) + "deg) scale(" + MAG + ") translate(" + (-L[0]).toFixed(2) + "px," + (-L[1]).toFixed(2) + "px)";
-
-          // the "?" floats once it has landed
+          // the "?" floats once landed (inside the band)
           var fl = smooth((t - 1.6) / 0.4);
-          qfloat.style.transform = "translate3d(0," + (Math.sin((t - 1.6) * 2.6) * 7 * fl).toFixed(2) + "px,0) rotate(" + (Math.sin((t - 1.6) * 1.9) * 1.6 * fl).toFixed(2) + "deg)";
-
-          // ground drift
-          gmag.style.transform = "translate3d(" + (Math.sin(t * 0.55 + 2) * 46).toFixed(2) + "px," + (Math.sin(t * 0.4 + 3) * 34).toFixed(2) + "px,0)";
-          ggold.style.transform = "scale(" + (1 + 0.08 * Math.sin(t * 1.7) + 0.35 * smooth((t - QUESTIONING) / 0.4)).toFixed(4) + ")";
-          grings.style.transform = "rotate(" + (t * -4.5).toFixed(2) + "deg)";
-          for (var k = 0; k < dust.length; k++) {
-            var o = dust[k];
-            o.el.style.transform = "translate3d(" + (o.x + Math.sin(t * 0.8 + o.p) * o.sway).toFixed(1) + "px," + (o.y - o.v * t).toFixed(1) + "px,0)";
-            o.el.style.opacity = (0.18 + 0.55 * Math.max(0, Math.sin(t * o.f + o.p))).toFixed(3);
-          }
+          qfloat.style.transform = "translate3d(0," + (Math.sin((t - 1.6) * 2.6) * 4 * fl).toFixed(2) + "px,0) rotate(" + (Math.sin((t - 1.6) * 1.9) * 1.5 * fl).toFixed(2) + "deg)";
+          qbloom.style.transform = "scale(" + (1 + 0.05 * Math.sin(t * 2.3) * fl).toFixed(4) + ")";
         }
 
         var tl = gsap.timeline({ paused: true });
@@ -716,65 +569,77 @@
           tl.fromTo(el, { opacity: peak }, { opacity: 0, duration: dur - 0.04, ease: "power2.in", immediateRender: false }, at + 0.04);
         }
 
-        // ================= Scene 1 (0.0–1.1): the old cards fan out, stamped, inspected =================
+        // ================= Scene 1 (0.0–1.1): the old cards grow in place in their zones, stamped, inspected =================
         CARDS.forEach(function (c, i) {
           var n = i + 1, at = i * 0.07;
           var els = q("c" + n);
-          tl.fromTo(els, { x: 0, y: 40, scale: 0.3, rotation: c.fan.r * -1.5, opacity: 0, filter: "blur(10px)" }, { x: c.fan.x, y: c.fan.y, scale: c.fan.s, rotation: c.fan.r, opacity: 1, filter: "blur(0px)", duration: 0.62, ease: "expo.out" }, at);
-          tl.set(els, { filter: "none" }, at + 0.64);
+          tl.fromTo(els, { scale: 0.5, rotation: 0, opacity: 0, filter: "blur(10px) brightness(1)" }, { scale: 1, rotation: c.fan.r, opacity: 1, filter: "blur(0px) brightness(1)", duration: 0.6, ease: "expo.out" }, at);
         });
         q("stamp").forEach(function (el, j) {
-          var n = Math.floor(j / 2) % 3; // halves come in pairs per card, fan then lens copy
-          var at = 0.34 + n * 0.1;
-          tl.fromTo(el, { opacity: 0, scale: 1.9, rotation: -2 }, { opacity: 0.9, scale: 1, rotation: 9, duration: 0.3, ease: "power4.out", immediateRender: true }, at);
+          var n = Math.floor(j / 2) % 3; // halves come in pairs per card: fan copy first, then lens copy
+          tl.fromTo(el, { opacity: 0, scale: 1.4, rotation: -2 }, { opacity: 0.92, scale: 1, rotation: 8, duration: 0.28, ease: "power4.out" }, 0.34 + n * 0.1);
         });
-        tl.fromTo($("magin"), { scale: 0.4, opacity: 0, rotation: -30 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.45, ease: "back.out(1.7)" }, SWEEP_A);
+        tl.fromTo($("magin"), { scale: 0.4, opacity: 0, rotation: -30 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.42, ease: "back.out(1.7)" }, SWEEP_A);
 
-        // ================= Scene 2 (1.1–2.82): the "?" slams in; cracks; the beliefs split =================
+        // ================= Scene 2 (1.1–2.82): the "?" slams into the TOP band; cracks; the beliefs split =================
         var Q = $("q");
+        tl.fromTo($("scrim"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, QUESTIONING - 0.06);
         tl.fromTo(Q, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, QUESTIONING - 0.03);
-        tl.fromTo(Q, { scale: 2.1, rotation: -16, y: -40 }, { scale: 1, rotation: 0, y: 0, duration: 0.5, ease: "back.out(1.5)" }, QUESTIONING - 0.03);
+        tl.fromTo(Q, { scale: 2, rotation: -16, y: -30 }, { scale: 1, rotation: 0, y: 0, duration: 0.5, ease: "back.out(1.5)" }, QUESTIONING - 0.03);
         // blur on its own non-overshooting ease (back.out would push blur() negative = invalid CSS)
-        tl.fromTo(Q, { filter: "blur(22px)" }, { filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, QUESTIONING - 0.03);
-        tl.set(Q, { filter: "none" }, QUESTIONING + 0.5);
-        tl.fromTo($("halo"), { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, QUESTIONING);
-        tl.fromTo($("qbloom"), { opacity: 0, scale: 0.8 }, { opacity: 0.42, scale: 1, duration: 0.35, ease: "power2.out" }, QUESTIONING + 0.08);
-        tl.fromTo($("qbloom"), { opacity: 0.42 }, { opacity: 0.3, duration: 0.6, ease: "power2.out", immediateRender: false }, QUESTIONING + 0.43);
+        tl.fromTo(Q, { filter: "blur(18px)" }, { filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, QUESTIONING - 0.03);
+        tl.set(Q, { filter: "none" }, QUESTIONING + 0.36);
+        tl.fromTo(qbloom, { opacity: 0 }, { opacity: 0.45, duration: 0.3, ease: "power2.out" }, QUESTIONING + 0.08);
+        tl.fromTo(qbloom, { opacity: 0.45 }, { opacity: 0.3, duration: 0.6, ease: "power2.out", immediateRender: false }, QUESTIONING + 0.38);
         tl.fromTo($("qglow"), { opacity: 0 }, { opacity: 0.9, duration: 0.14, ease: "power2.out" }, QUESTIONING + 0.1);
         tl.fromTo($("qglow"), { opacity: 0.9 }, { opacity: 0.55, duration: 0.6, ease: "power2.out", immediateRender: false }, QUESTIONING + 0.24);
         ["ring1", "ring2", "ring3"].forEach(function (id, k) {
           var at = QUESTIONING + 0.1 + k * 0.1;
-          tl.fromTo($(id), { scale: 0.4 }, { scale: 1.7 + k * 0.35, duration: 0.6, ease: "power2.out" }, at);
+          tl.fromTo($(id), { scale: 0.5 }, { scale: 1.6 + k * 0.4, duration: 0.6, ease: "power2.out" }, at);
           fade($(id), at, 0.9, 0.6);
         });
         sparks.forEach(function (o, k) {
           var rad = (o.a * Math.PI) / 180, at = QUESTIONING + 0.1 + (k % 3) * 0.015;
-          tl.fromTo(o.el, { x: 0, y: 0, rotation: o.a, scaleX: 0.3 }, { x: Math.cos(rad) * o.r, y: Math.sin(rad) * o.r, rotation: o.a, scaleX: 1, duration: 0.55, ease: "power3.out" }, at);
+          tl.fromTo(o.el, { x: 0, y: 0, rotation: o.a, scaleX: 0.3 }, { x: Math.cos(rad) * o.r, y: Math.sin(rad) * o.r * 0.45, rotation: o.a, scaleX: 1, duration: 0.55, ease: "power3.out" }, at);
           fade(o.el, at, 1, 0.55);
+        });
+        // the cards step back a little so the "?" owns the moment
+        CARDS.forEach(function (c, i) {
+          tl.fromTo(q("c" + (i + 1)), { filter: "blur(0px) brightness(1)" }, { filter: "blur(0px) brightness(0.82)", duration: 0.35, ease: "power2.out", immediateRender: false }, QUESTIONING + 0.05);
         });
         // light sweep across the landed "?"
         tl.fromTo($("qsheen"), { backgroundPosition: "100% 0%" }, { backgroundPosition: "0% 0%", duration: 0.55, ease: "power2.inOut" }, 1.56);
 
         // "old" — crack lines draw across each card (svg-path-draw)
-        [2, 1, 3].forEach(function (n, k) {
+        [1, 3, 2].forEach(function (n, k) {
           var at = OLD - 0.03 + k * 0.06;
           tl.fromTo(q("k" + n), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.26, ease: "power2.out" }, at);
           tl.fromTo(q("kg" + n), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.26, ease: "power2.out" }, at);
           tl.fromTo(q("kb" + n), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.2, ease: "power2.out" }, at + 0.16);
         });
 
-        // "beliefs" — the cards split along the cracks, gold light leaks, dust puffs
-        [1, 2, 3].forEach(function (n, k) {
-          var at = BELIEFS - 0.02 + k * 0.03;
-          tl.fromTo(q("h" + n + "a"), { x: 0, y: 0, rotation: 0, transformOrigin: "15% 50%" }, { x: -12, y: 5, rotation: -1.8, duration: 0.42, ease: "expo.out" }, at);
-          tl.fromTo(q("h" + n + "b"), { x: 0, y: 0, rotation: 0, transformOrigin: "85% 50%" }, { x: 12, y: -5, rotation: 2.1, duration: 0.42, ease: "expo.out" }, at);
-          tl.fromTo(q("kg" + n), { attr: { "stroke-opacity": 0.55, "stroke-width": 16 } }, { attr: { "stroke-opacity": 0.95, "stroke-width": 26 }, duration: 0.3, ease: "power2.out" }, at);
-          var parts = q("pf" + n);
-          parts.forEach(function (el, j) {
-            var idx = j % 10;
-            var ang = hash(idx * 4.7 + n * 13.1) * 6.283;
-            var dist = 50 + hash(idx * 2.9 + n * 7.7) * 90;
-            tl.fromTo(el, { x: 0, y: 0, scale: 0.6 }, { x: Math.cos(ang) * dist, y: Math.sin(ang) * dist - 30, scale: 1.6 + hash(idx + n) * 1.4, duration: 0.6, ease: "power3.out" }, at + 0.02);
+        // "beliefs" — the cards split along the cracks, gold light leaks, dust puffs (kept inside each card's zone)
+        var SPLIT = [
+          { ax: -6, ay: 3, ar: -1.6, bx: 6, by: -3, br: 1.6 },
+          { ax: -6, ay: 3, ar: -1.6, bx: 6, by: -3, br: 1.6 },
+          { ax: -7, ay: 2, ar: -0.8, bx: 7, by: -2, br: 0.6 }
+        ];
+        CARDS.forEach(function (c, k) {
+          var n = k + 1, at = BELIEFS - 0.02 + k * 0.03, sp = SPLIT[k];
+          tl.fromTo(q("h" + n + "a"), { x: 0, y: 0, rotation: 0, transformOrigin: "15% 50%" }, { x: sp.ax, y: sp.ay, rotation: sp.ar, transformOrigin: "15% 50%", duration: 0.42, ease: "expo.out" }, at);
+          tl.fromTo(q("h" + n + "b"), { x: 0, y: 0, rotation: 0, transformOrigin: "85% 50%" }, { x: sp.bx, y: sp.by, rotation: sp.br, transformOrigin: "85% 50%", duration: 0.42, ease: "expo.out" }, at);
+          tl.fromTo(q("kg" + n), { attr: { "stroke-opacity": 0.55, "stroke-width": 10 } }, { attr: { "stroke-opacity": 0.95, "stroke-width": 16 }, duration: 0.3, ease: "power2.out" }, at);
+          q("pf" + n).forEach(function (el, j) {
+            var idx = j % 8;
+            var ang;
+            if (c.puff.spread > 6) {
+              ang = hash(idx * 4.7 + n * 13.1) * 6.283;
+            } else {
+              // card 3: puffs stay level (never rise toward the face zone)
+              ang = (idx % 2 ? Math.PI : 0) + (hash(idx * 4.7 + n * 13.1) * 2 - 1) * 0.35;
+            }
+            var dist = c.puff.dist * (0.5 + 0.5 * hash(idx * 2.9 + n * 7.7));
+            tl.fromTo(el, { x: 0, y: 0, scale: 0.6 }, { x: Math.cos(ang) * dist, y: Math.sin(ang) * dist * (c.wide ? 0.4 : 1), scale: 1.4 + hash(idx + n) * 1.2, duration: 0.6, ease: "power3.out" }, at + 0.02);
             fade(el, at + 0.02, 0.95, 0.6);
           });
         });

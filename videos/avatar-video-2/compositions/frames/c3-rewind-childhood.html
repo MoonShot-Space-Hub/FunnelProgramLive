@@ -7,106 +7,68 @@
 [data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
 [data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-fill { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
 [data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
-
-/* ---------- ground ---------- */
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-ground { z-index: 0; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-stage { z-index: 1; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-vhs { z-index: 2; pointer-events: none; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-base {
-  background-color: #12061A;
-  background-image: radial-gradient(circle farthest-corner at 540px 620px, #2E1240 0%, #12061A 72%);
-}
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-blob {
-  position: absolute; left: -160px; top: 120px; width: 900px; height: 900px; border-radius: 50%;
-  background: radial-gradient(circle closest-side, rgba(224,33,138,1) 0%, rgba(224,33,138,0.5) 42%, rgba(224,33,138,0.12) 76%, rgba(224,33,138,0) 100%);
-  opacity: 0.30;
-}
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-goldglow {
-  position: absolute; left: 330px; top: 350px; width: 420px; height: 420px; border-radius: 50%;
-  background: radial-gradient(circle closest-side, rgba(255,194,74,1) 0%, rgba(255,194,74,0.38) 46%, rgba(255,194,74,0) 100%);
-  opacity: 0.16;
-}
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-warm {
-  position: absolute; left: 40px; top: 420px; width: 1000px; height: 860px; border-radius: 50%;
-  background: radial-gradient(ellipse closest-side, rgba(255,194,74,0.85) 0%, rgba(255,160,60,0.32) 42%, rgba(224,33,138,0.10) 72%, rgba(224,33,138,0) 100%);
-  opacity: 0;
-}
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-lowglow {
-  position: absolute; left: -160px; top: 1300px; width: 1400px; height: 760px; border-radius: 50%;
-  background: radial-gradient(ellipse closest-side, rgba(46,18,64,0.95) 0%, rgba(46,18,64,0.35) 60%, rgba(46,18,64,0) 100%);
-}
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-rings { position: absolute; left: -260px; top: -80px; width: 1600px; height: 1400px; overflow: visible; opacity: 0.10; }
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-dust { position: absolute; left: 0; top: 0; display: block; border-radius: 50%; background: radial-gradient(circle closest-side, rgba(255,225,160,1) 0%, rgba(255,194,74,0.55) 45%, rgba(255,194,74,0) 100%); }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-grain { opacity: 0.06; }
-
-/* ---------- stage / camera ---------- */
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-cam { transform-origin: 660px 600px; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-dial { position: absolute; left: 130px; top: 150px; width: 820px; height: 820px; overflow: visible; transform-origin: 410px 410px; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-world { position: absolute; left: 0; top: 0; width: 1080px; height: 1200px; overflow: visible; }
 [data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-draw { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-/* speech bubbles */
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-bubble { position: absolute; left: 0; top: 0; overflow: visible; filter: drop-shadow(0 26px 34px rgba(0,0,0,0.55)); }
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-bubble svg { display: block; overflow: visible; }
-
-/* foreground OSD: ticker, chip, label, brackets */
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-fg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tickwrap { position: absolute; left: 270px; top: 454px; width: 540px; height: 212px; transform-origin: 270px 106px; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tickblur { position: absolute; left: 0; top: 0; width: 540px; height: 212px; }
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-ticker {
-  position: absolute; left: 0; top: 0; width: 540px; height: 212px; overflow: hidden;
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 16%, rgba(0,0,0,1) 84%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 16%, rgba(0,0,0,1) 84%, rgba(0,0,0,0) 100%);
+/* frame.md card (>= 0.85 opacity), shadows kept inside their zone */
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-card {
+  position: absolute; box-sizing: border-box; overflow: hidden; border-radius: 34px;
+  border: 3px solid rgba(255,95,176,0.40);
+  background: linear-gradient(160deg, rgba(46,18,64,0.95), rgba(30,13,43,0.95));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 10px rgba(0,0,0,0.42);
 }
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-stack { display: flex; flex-direction: column; width: 540px; }
+
+/* ---------- TOP band: VHS rewind card (x 90-990, y 284-480) ---------- */
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-top { left: 90px; top: 284px; width: 900px; height: 196px; transform-origin: 450px 98px; }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-topin { position: absolute; left: 0; top: 0; width: 900px; height: 196px; }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-topglow { position: absolute; left: 260px; top: -60px; width: 640px; height: 320px; border-radius: 50%; background: radial-gradient(ellipse closest-side, rgba(224,33,138,0.45) 0%, rgba(224,33,138,0.12) 60%, rgba(224,33,138,0) 100%); }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-scan {
+  position: absolute; left: 0; top: 0; width: 900px; height: 196px;
+  background-image: repeating-linear-gradient(0deg, rgba(10,3,16,0.6) 0px, rgba(10,3,16,0.6) 2px, rgba(10,3,16,0) 2px, rgba(10,3,16,0) 5px);
+  opacity: 0.3;
+}
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-band { position: absolute; left: 0; top: 0; width: 900px; height: 34px; overflow: visible; }
+
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-osd { position: absolute; left: 30px; top: 16px; height: 40px; display: flex; align-items: center; gap: 16px; transform-origin: 0px 20px; white-space: nowrap; }
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-osd svg { display: block; overflow: visible; }
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-osdtxt {
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 30px; line-height: 1;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #FFF5EA; text-shadow: 0 0 18px rgba(255,245,234,0.3);
+}
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-cassette { position: absolute; left: 30px; top: 70px; width: 240px; height: 104px; overflow: visible; }
+
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tickwrap { position: absolute; left: 300px; top: 8px; width: 570px; height: 150px; transform-origin: 285px 75px; }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tickblur { position: absolute; left: 0; top: 0; width: 570px; height: 150px; }
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-ticker {
+  position: absolute; left: 0; top: 0; width: 570px; height: 150px; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+}
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-stack { display: flex; flex-direction: column; width: 570px; }
 [data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-item {
-  height: 212px; display: flex; align-items: center; justify-content: center;
-  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 170px; line-height: 1;
+  height: 150px; display: flex; align-items: center; justify-content: center;
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 118px; line-height: 1;
   letter-spacing: -0.02em; font-variant-numeric: tabular-nums; white-space: nowrap;
 }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tkmain { color: #FFF5EA; text-shadow: 0 0 34px rgba(255,245,234,0.28); }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tkmain { color: #FFF5EA; text-shadow: 0 0 26px rgba(255,245,234,0.28); }
 [data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tkm { color: #FF5FB0; mix-blend-mode: screen; opacity: 0.75; }
 [data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tkc { color: #1FB5C9; mix-blend-mode: screen; opacity: 0.7; }
 [data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-tksheen {
-  position: absolute; left: 0; top: -40px; width: 150px; height: 300px;
+  position: absolute; left: 0; top: -30px; width: 120px; height: 210px;
   background: linear-gradient(100deg, rgba(255,245,234,0) 0%, rgba(255,245,234,0.55) 50%, rgba(255,245,234,0) 100%);
   mix-blend-mode: overlay;
 }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-scrub { position: absolute; left: 300px; top: 160px; width: 570px; height: 28px; overflow: visible; }
 
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-corner { position: absolute; left: 0; top: 0; width: 54px; height: 54px; border-color: rgba(255,245,234,0.72); border-style: solid; border-width: 0; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-cTL { left: 232px; top: 404px; border-top-width: 4px; border-left-width: 4px; border-top-left-radius: 10px; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-cTR { left: 794px; top: 404px; border-top-width: 4px; border-right-width: 4px; border-top-right-radius: 10px; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-cBL { left: 232px; top: 662px; border-bottom-width: 4px; border-left-width: 4px; border-bottom-left-radius: 10px; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-cBR { left: 794px; top: 662px; border-bottom-width: 4px; border-right-width: 4px; border-bottom-right-radius: 10px; }
-
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-chip {
-  position: absolute; left: 766px; top: 170px; width: 204px; height: 68px; border-radius: 999px;
-  border: 2px solid #FFC24A; background: rgba(255,194,74,0.10); overflow: hidden;
-  box-shadow: 0 0 30px rgba(255,194,74,0.35), 0 16px 34px rgba(0,0,0,0.45);
+/* ---------- RIGHT rail: bubbles (y 510-690) + memory card (x 692-1008, y 716-1012) ---------- */
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-vig { left: 692px; top: 716px; width: 316px; height: 296px; transform-origin: 158px 148px; }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-world { position: absolute; left: -3px; top: -3px; width: 316px; height: 296px; overflow: visible; }
+[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-vigscan {
+  position: absolute; left: 0; top: 0; width: 316px; height: 296px;
+  background-image: repeating-linear-gradient(0deg, rgba(10,3,16,0.5) 0px, rgba(10,3,16,0.5) 2px, rgba(10,3,16,0) 2px, rgba(10,3,16,0) 5px);
+  opacity: 0.18;
 }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-chipsheen {
-  position: absolute; left: 0; top: -10px; width: 70px; height: 90px;
-  background: linear-gradient(100deg, rgba(255,245,234,0) 0%, rgba(255,245,234,0.6) 50%, rgba(255,245,234,0) 100%);
-}
-
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-osd { position: absolute; left: 90px; top: 172px; height: 64px; display: flex; align-items: center; gap: 22px; transform-origin: 0px 32px; white-space: nowrap; }
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-osd svg { display: block; overflow: visible; }
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-osdtxt {
-  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 40px; line-height: 1;
-  letter-spacing: 0.14em; text-transform: uppercase; color: #FFF5EA;
-  text-shadow: 0 0 22px rgba(255,245,234,0.35);
-}
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-playtxt { color: #FFF5EA; }
-
-/* ---------- VHS overlay ---------- */
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-scan {
-  background-image: repeating-linear-gradient(0deg, rgba(10,3,16,0.55) 0px, rgba(10,3,16,0.55) 2px, rgba(10,3,16,0) 2px, rgba(10,3,16,0) 6px);
-  opacity: 0.22;
-}
-[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-band { position: absolute; left: 0; top: 0; width: 1080px; height: 60px; overflow: visible; }
-[data-composition-id="c3-rewind-childhood"] #c3-rewind-childhood-vig {
-  background: radial-gradient(ellipse farthest-corner at 540px 700px, rgba(18,6,26,0) 55%, rgba(18,6,26,0.55) 100%);
-}
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-bubble { position: absolute; left: 0; top: 0; overflow: visible; filter: drop-shadow(0 6px 6px rgba(0,0,0,0.45)); }
+[data-composition-id="c3-rewind-childhood"] .c3-rewind-childhood-bubble svg { display: block; overflow: visible; }
 </style>
 
 <div id="root" data-composition-id="c3-rewind-childhood" data-start="0" data-duration="2.1" data-width="1080" data-height="1920">
@@ -115,66 +77,88 @@
       <filter id="c3-rewind-childhood-vblur" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB">
         <feGaussianBlur id="c3-rewind-childhood-vblur-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur>
       </filter>
-      <filter id="c3-rewind-childhood-soft" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="18"></feGaussianBlur>
-      </filter>
       <filter id="c3-rewind-childhood-glowf" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b"></feGaussianBlur>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"></feGaussianBlur>
         <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
-      </filter>
-      <filter id="c3-rewind-childhood-grainf" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" stitchTiles="stitch"></feTurbulence>
-        <feColorMatrix type="saturate" values="0"></feColorMatrix>
       </filter>
     </defs>
   </svg>
 
-  <!-- ground: full-bleed, lowest track -->
-  <div id="c3-rewind-childhood-ground" class="clip c3-rewind-childhood-layer" data-start="0" data-duration="2.1" data-track-index="0">
-    <div id="c3-rewind-childhood-base" class="c3-rewind-childhood-fill"></div>
-    <div id="c3-rewind-childhood-blob"></div>
-    <div id="c3-rewind-childhood-lowglow"></div>
-    <svg id="c3-rewind-childhood-rings" viewBox="0 0 1600 1400" aria-hidden="true">
-      <g id="c3-rewind-childhood-ringsrot"></g>
-    </svg>
-    <div id="c3-rewind-childhood-warm"></div>
-    <div id="c3-rewind-childhood-goldglow"></div>
-    <div id="c3-rewind-childhood-dusts" class="c3-rewind-childhood-fill"></div>
-    <svg id="c3-rewind-childhood-grain" class="c3-rewind-childhood-fill" width="1080" height="1920" aria-hidden="true">
-      <rect x="0" y="0" width="1080" height="1920" filter="url(#c3-rewind-childhood-grainf)"></rect>
-    </svg>
-  </div>
-
-  <!-- stage: content inside x60-1020 / y120-1120 -->
+  <!-- transparent overlay: only cards in the TOP band and the RIGHT rail; the face zone stays clear -->
   <div id="c3-rewind-childhood-stage" class="clip c3-rewind-childhood-layer" data-start="0" data-duration="2.1" data-track-index="1">
-    <div id="c3-rewind-childhood-cam" class="c3-rewind-childhood-fill">
-      <div id="c3-rewind-childhood-jit" class="c3-rewind-childhood-fill">
 
-        <!-- rewind dial (spins backward with the year counter) -->
-        <svg id="c3-rewind-childhood-dial" viewBox="0 0 820 820" aria-hidden="true">
+    <!-- TOP band: VHS rewind card -->
+    <div id="c3-rewind-childhood-top" class="c3-rewind-childhood-card">
+      <div id="c3-rewind-childhood-topglow"></div>
+      <div id="c3-rewind-childhood-topin">
+        <svg id="c3-rewind-childhood-cassette" viewBox="0 0 240 104" aria-hidden="true">
           <defs>
-            <radialGradient id="c3-rewind-childhood-dialcore" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stop-color="#E0218A" stop-opacity="0.22"></stop>
-              <stop offset="0.6" stop-color="#E0218A" stop-opacity="0.06"></stop>
-              <stop offset="1" stop-color="#E0218A" stop-opacity="0"></stop>
-            </radialGradient>
+            <clipPath id="c3-rewind-childhood-cwin"><rect x="50" y="40" width="140" height="46" rx="23"></rect></clipPath>
           </defs>
-          <circle cx="410" cy="410" r="400" fill="url(#c3-rewind-childhood-dialcore)"></circle>
-          <circle cx="410" cy="410" r="392" fill="none" stroke="#FF5FB0" stroke-opacity="0.32" stroke-width="2"></circle>
-          <g id="c3-rewind-childhood-ticks"></g>
-          <circle cx="410" cy="410" r="318" fill="none" stroke="#FFE1A0" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="3 14"></circle>
-          <g id="c3-rewind-childhood-dialhub">
-          <g id="c3-rewind-childhood-ghosts"></g>
-          <g id="c3-rewind-childhood-hand">
-            <line x1="410" y1="410" x2="410" y2="62" stroke="#FFE1A0" stroke-width="5" stroke-linecap="round" filter="url(#c3-rewind-childhood-glowf)"></line>
-            <circle cx="410" cy="62" r="9" fill="#FFC24A" filter="url(#c3-rewind-childhood-glowf)"></circle>
+          <rect x="2" y="2" width="236" height="100" rx="14" fill="#2E1240" stroke="#FF5FB0" stroke-opacity="0.55" stroke-width="2.5"></rect>
+          <rect x="16" y="10" width="208" height="22" rx="5" fill="#FFE1A0" fill-opacity="0.9"></rect>
+          <path d="M 28 18 L 150 18 M 28 25 L 118 25" stroke="#E0218A" stroke-width="3" stroke-linecap="round"></path>
+          <circle cx="206" cy="21" r="6" fill="#E0218A"></circle>
+          <rect x="50" y="40" width="140" height="46" rx="23" fill="#12061A" stroke="#FFE1A0" stroke-opacity="0.45" stroke-width="2"></rect>
+          <g clip-path="url(#c3-rewind-childhood-cwin)">
+            <circle id="c3-rewind-childhood-packL" cx="82" cy="63" r="13" fill="#3A1A30" stroke="#FFC24A" stroke-opacity="0.35" stroke-width="1.5"></circle>
+            <circle id="c3-rewind-childhood-packR" cx="158" cy="63" r="26" fill="#3A1A30" stroke="#FFC24A" stroke-opacity="0.35" stroke-width="1.5"></circle>
           </g>
-          <circle cx="410" cy="410" r="14" fill="#2E1240" stroke="#FFE1A0" stroke-opacity="0.6" stroke-width="3"></circle>
+          <g id="c3-rewind-childhood-reelL"></g>
+          <g id="c3-rewind-childhood-reelR"></g>
+          <path d="M 70 102 L 80 90 L 160 90 L 170 102" fill="#1E0D2B" stroke="#FF5FB0" stroke-opacity="0.4" stroke-width="2"></path>
+          <circle cx="14" cy="90" r="3" fill="#FFE1A0" fill-opacity="0.6"></circle>
+          <circle cx="226" cy="90" r="3" fill="#FFE1A0" fill-opacity="0.6"></circle>
+        </svg>
+
+        <div id="c3-rewind-childhood-tickwrap">
+          <div id="c3-rewind-childhood-tickblur" style="filter: url(#c3-rewind-childhood-vblur)">
+            <div id="c3-rewind-childhood-tkc" class="c3-rewind-childhood-ticker" data-layout-ignore aria-hidden="true"><div id="c3-rewind-childhood-stc" class="c3-rewind-childhood-stack"></div></div>
+            <div id="c3-rewind-childhood-tkm" class="c3-rewind-childhood-ticker" data-layout-ignore aria-hidden="true"><div id="c3-rewind-childhood-stm" class="c3-rewind-childhood-stack"></div></div>
+            <div id="c3-rewind-childhood-tkmain" class="c3-rewind-childhood-ticker" data-layout-allow-overlap><div id="c3-rewind-childhood-st" class="c3-rewind-childhood-stack"></div><div id="c3-rewind-childhood-tksheen"></div></div>
+          </div>
+        </div>
+
+        <svg id="c3-rewind-childhood-scrub" viewBox="0 0 570 28" aria-hidden="true">
+          <line x1="20" y1="16" x2="550" y2="16" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"></line>
+          <g id="c3-rewind-childhood-sticks"></g>
+          <line id="c3-rewind-childhood-sgold" x1="550" y1="16" x2="550" y2="16" stroke="#FFC24A" stroke-opacity="0.9" stroke-width="4" stroke-linecap="round"></line>
+          <g id="c3-rewind-childhood-shead">
+            <rect id="c3-rewind-childhood-strail" x="0" y="11" width="1" height="10" rx="5" fill="#FFC24A" fill-opacity="0.3"></rect>
+            <circle cx="0" cy="16" r="8" fill="#FFC24A" stroke="#FFF5EA" stroke-width="2.5" filter="url(#c3-rewind-childhood-glowf)"></circle>
           </g>
         </svg>
 
-        <!-- the childhood scene (draws in on Scene 2) -->
-        <svg id="c3-rewind-childhood-world" viewBox="0 0 1080 1200" aria-hidden="true">
+        <div id="c3-rewind-childhood-rew" class="c3-rewind-childhood-osd">
+          <div id="c3-rewind-childhood-rewin" class="c3-rewind-childhood-osd" style="position: relative; left: 0; top: 0;">
+            <svg width="50" height="30" viewBox="0 0 50 30" aria-hidden="true">
+              <path d="M 24 2 L 24 28 L 2 15 Z" fill="#FFF5EA" stroke="#FFF5EA" stroke-width="2.5" stroke-linejoin="round"></path>
+              <path d="M 48 2 L 48 28 L 26 15 Z" fill="#FFF5EA" stroke="#FFF5EA" stroke-width="2.5" stroke-linejoin="round"></path>
+            </svg>
+            <span class="c3-rewind-childhood-osdtxt">REWIND</span>
+          </div>
+        </div>
+        <div id="c3-rewind-childhood-play" class="c3-rewind-childhood-osd">
+          <svg width="28" height="30" viewBox="0 0 28 30" aria-hidden="true">
+            <path d="M 2 2 L 2 28 L 26 15 Z" fill="#FFC24A" stroke="#FFC24A" stroke-width="2.5" stroke-linejoin="round"></path>
+          </svg>
+          <span class="c3-rewind-childhood-osdtxt">PLAY</span>
+        </div>
+
+        <div id="c3-rewind-childhood-scan"></div>
+        <svg id="c3-rewind-childhood-band0" class="c3-rewind-childhood-band" viewBox="0 0 900 34" aria-hidden="true"></svg>
+        <svg id="c3-rewind-childhood-band1" class="c3-rewind-childhood-band" viewBox="0 0 900 34" aria-hidden="true"></svg>
+      </div>
+    </div>
+
+    <!-- RIGHT rail: the grown-ups' "..." bubbles, then the memory card -->
+    <div id="c3-rewind-childhood-b1" class="c3-rewind-childhood-bubble"></div>
+    <div id="c3-rewind-childhood-b2" class="c3-rewind-childhood-bubble"></div>
+    <div id="c3-rewind-childhood-b3" class="c3-rewind-childhood-bubble"></div>
+
+    <div id="c3-rewind-childhood-vig" class="c3-rewind-childhood-card">
+      <svg id="c3-rewind-childhood-world" viewBox="0 0 316 296" aria-hidden="true">
+
           <defs>
             <radialGradient id="c3-rewind-childhood-wing" cx="0.5" cy="0.5" r="0.6">
               <stop offset="0" stop-color="#FFF5EA"></stop>
@@ -218,7 +202,10 @@
             </linearGradient>
           </defs>
 
-          <!-- moon + floor glow -->
+          
+        <g id="c3-rewind-childhood-push">
+          <g transform="translate(-28.56 -104.4) scale(0.36)">
+<!-- moon + floor glow -->
           <g id="c3-rewind-childhood-moon" opacity="0">
             <circle cx="186" cy="392" r="92" fill="url(#c3-rewind-childhood-moong)"></circle>
             <path d="M 210 352 A 44 44 0 1 0 214 432 A 36 36 0 1 1 210 352 Z" fill="#FFE1A0" fill-opacity="0.92"></path>
@@ -254,26 +241,12 @@
               <path d="M 381 896 L 381 1036" stroke="#FFE1A0" stroke-width="4" stroke-linecap="round"></path>
               <path id="c3-rewind-childhood-doorspill" d="M 372 1040 L 392 1040 L 460 1100 L 340 1100 Z" fill="url(#c3-rewind-childhood-spill)"></path>
             </g>
-            <path id="c3-rewind-childhood-hline" class="c3-rewind-childhood-draw" d="M 96 748 L 345 518 L 594 748 M 130 748 L 130 1040 M 560 748 L 560 1040 M 440 610 L 440 566 L 480 566 L 480 646" stroke="#FFE1A0" stroke-opacity="0.9" stroke-width="4"></path>
-          </g>
-
-          <!-- tape scrubber (Scene 1): the playhead rewinds with the counter; its track becomes the horizon -->
-          <g id="c3-rewind-childhood-scrub">
-            <line x1="150" y1="1040" x2="930" y2="1040" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"></line>
-            <g id="c3-rewind-childhood-scrubfx">
-              <g id="c3-rewind-childhood-sticks"></g>
-              <line id="c3-rewind-childhood-sgold" x1="930" y1="1040" x2="930" y2="1040" stroke="#FFC24A" stroke-opacity="0.85" stroke-width="5" stroke-linecap="round"></line>
-              <g id="c3-rewind-childhood-shead">
-                <rect x="-40" y="1034" width="40" height="12" rx="6" fill="#FFC24A" fill-opacity="0.25" id="c3-rewind-childhood-strail"></rect>
-                <line x1="0" y1="1004" x2="0" y2="1076" stroke="#FFE1A0" stroke-width="4" stroke-linecap="round" filter="url(#c3-rewind-childhood-glowf)"></line>
-                <circle cx="0" cy="1040" r="13" fill="#FFC24A" stroke="#FFF5EA" stroke-width="3" filter="url(#c3-rewind-childhood-glowf)"></circle>
-              </g>
-            </g>
+            <path id="c3-rewind-childhood-hline" class="c3-rewind-childhood-draw" d="M 96 748 L 345 518 L 594 748 M 130 748 L 130 1040 M 560 748 L 560 1040 M 440 610 L 440 566 L 480 566 L 480 646" stroke="#FFE1A0" stroke-opacity="0.9" stroke-width="9"></path>
           </g>
 
           <!-- horizon -->
-          <path id="c3-rewind-childhood-floorL" class="c3-rewind-childhood-draw" d="M 540 1040 L 70 1040" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="3"></path>
-          <path id="c3-rewind-childhood-floorR" class="c3-rewind-childhood-draw" d="M 540 1040 L 1010 1040" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="3"></path>
+          <path id="c3-rewind-childhood-floorL" class="c3-rewind-childhood-draw" d="M 540 1040 L 70 1040" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="6"></path>
+          <path id="c3-rewind-childhood-floorR" class="c3-rewind-childhood-draw" d="M 540 1040 L 1010 1040" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="6"></path>
 
           <!-- adults -->
           <g transform="translate(700 1040)">
@@ -285,7 +258,7 @@
               <ellipse cx="0" cy="-440" rx="26" ry="31" fill="url(#c3-rewind-childhood-figg)"></ellipse>
               <circle cx="0" cy="-476" r="15" fill="#22102E"></circle>
             </g>
-            <path id="c3-rewind-childhood-aAline" class="c3-rewind-childhood-draw" d="M -9 -410 L -9 -398 C -20 -394 -40 -392 -50 -384 C -60 -376 -62 -360 -62 -340 C -62 -300 -60 -262 -58 -232 C -57 -222 -48 -222 -47 -232 C -46 -262 -44 -290 -40 -310 C -38 -280 -52 -170 -60 -90 C -66 -40 -72 -14 -76 0 L 78 0 C 72 -16 66 -44 60 -92 C 52 -170 38 -280 40 -310 C 44 -290 46 -262 47 -232 C 48 -222 57 -222 58 -232 C 60 -262 62 -300 62 -340 C 62 -360 60 -376 50 -384 C 40 -392 20 -394 9 -398 L 9 -410 M 0 -471 A 26 31 0 1 0 0.1 -471 M -12 -478 A 15 15 0 1 1 12 -478" stroke="url(#c3-rewind-childhood-rim)" stroke-width="3.5"></path>
+            <path id="c3-rewind-childhood-aAline" class="c3-rewind-childhood-draw" d="M -9 -410 L -9 -398 C -20 -394 -40 -392 -50 -384 C -60 -376 -62 -360 -62 -340 C -62 -300 -60 -262 -58 -232 C -57 -222 -48 -222 -47 -232 C -46 -262 -44 -290 -40 -310 C -38 -280 -52 -170 -60 -90 C -66 -40 -72 -14 -76 0 L 78 0 C 72 -16 66 -44 60 -92 C 52 -170 38 -280 40 -310 C 44 -290 46 -262 47 -232 C 48 -222 57 -222 58 -232 C 60 -262 62 -300 62 -340 C 62 -360 60 -376 50 -384 C 40 -392 20 -394 9 -398 L 9 -410 M 0 -471 A 26 31 0 1 0 0.1 -471 M -12 -478 A 15 15 0 1 1 12 -478" stroke="url(#c3-rewind-childhood-rim)" stroke-width="8"></path>
           </g>
           <g transform="translate(872 1040)">
             <g id="c3-rewind-childhood-aBfill" opacity="0">
@@ -295,7 +268,7 @@
               <ellipse cx="0" cy="-470" rx="28" ry="32" fill="url(#c3-rewind-childhood-figg)"></ellipse>
               <path d="M -28 -476 C -28 -506 28 -510 29 -478 C 18 -490 -10 -492 -28 -476 Z" fill="#22102E"></path>
             </g>
-            <path id="c3-rewind-childhood-aBline" class="c3-rewind-childhood-draw" d="M -10 -440 L -10 -428 C -24 -424 -48 -422 -62 -414 C -74 -406 -78 -390 -78 -370 L -80 -250 C -80 -236 -66 -236 -66 -250 L -64 -360 C -62 -330 -56 -290 -50 -258 L -48 -10 C -48 -2 -44 0 -36 0 L -10 0 C -6 0 -4 -4 -4 -12 L -4 -190 L 4 -190 L 4 -12 C 4 -4 6 0 10 0 L 36 0 C 44 0 48 -2 48 -10 L 50 -258 C 56 -290 62 -330 64 -360 L 66 -250 C 66 -236 80 -236 80 -250 L 78 -370 C 78 -390 74 -406 62 -414 C 48 -422 24 -424 10 -428 L 10 -440 M 0 -502 A 28 32 0 1 0 0.1 -502" stroke="url(#c3-rewind-childhood-rim)" stroke-width="3.5"></path>
+            <path id="c3-rewind-childhood-aBline" class="c3-rewind-childhood-draw" d="M -10 -440 L -10 -428 C -24 -424 -48 -422 -62 -414 C -74 -406 -78 -390 -78 -370 L -80 -250 C -80 -236 -66 -236 -66 -250 L -64 -360 C -62 -330 -56 -290 -50 -258 L -48 -10 C -48 -2 -44 0 -36 0 L -10 0 C -6 0 -4 -4 -4 -12 L -4 -190 L 4 -190 L 4 -12 C 4 -4 6 0 10 0 L 36 0 C 44 0 48 -2 48 -10 L 50 -258 C 56 -290 62 -330 64 -360 L 66 -250 C 66 -236 80 -236 80 -250 L 78 -370 C 78 -390 74 -406 62 -414 C 48 -422 24 -424 10 -428 L 10 -440 M 0 -502 A 28 32 0 1 0 0.1 -502" stroke="url(#c3-rewind-childhood-rim)" stroke-width="8"></path>
           </g>
 
           <!-- child (foreground) -->
@@ -314,60 +287,15 @@
                   <circle cx="-22" cy="-238" r="5" fill="#E0218A"></circle>
                 </g>
               </g>
-              <path id="c3-rewind-childhood-kidline" class="c3-rewind-childhood-draw" d="M -14 -80 L -14 -4 C -14 0 -10 2 -4 2 L -4 -80 M 4 -80 L 4 2 C 10 2 14 0 14 -4 L 14 -80 M -6 -196 C -18 -194 -26 -186 -28 -174 L -46 -86 C -30 -78 30 -78 46 -86 L 28 -174 C 26 -186 18 -194 6 -196 M 24 -178 C 40 -192 54 -206 62 -222 C 65 -228 71 -226 69 -219 C 62 -200 46 -180 30 -164 M -6.5 -249.5 A 27 27 0 1 0 0 -251" stroke="url(#c3-rewind-childhood-rim)" stroke-width="3"></path>
+              <path id="c3-rewind-childhood-kidline" class="c3-rewind-childhood-draw" d="M -14 -80 L -14 -4 C -14 0 -10 2 -4 2 L -4 -80 M 4 -80 L 4 2 C 10 2 14 0 14 -4 L 14 -80 M -6 -196 C -18 -194 -26 -186 -28 -174 L -46 -86 C -30 -78 30 -78 46 -86 L 28 -174 C 26 -186 18 -194 6 -196 M 24 -178 C 40 -192 54 -206 62 -222 C 65 -228 71 -226 69 -219 C 62 -200 46 -180 30 -164 M -6.5 -249.5 A 27 27 0 1 0 0 -251" stroke="url(#c3-rewind-childhood-rim)" stroke-width="7"></path>
             </g>
           </g>
-        </svg>
-
-        <!-- speech bubbles ("..." only; the words arrive next frame) -->
-        <div id="c3-rewind-childhood-b1" class="c3-rewind-childhood-bubble"></div>
-        <div id="c3-rewind-childhood-b2" class="c3-rewind-childhood-bubble"></div>
-        <div id="c3-rewind-childhood-b3" class="c3-rewind-childhood-bubble"></div>
-      </div>
+        
+          </g>
+        </g>
+      </svg>
+      <div id="c3-rewind-childhood-vigscan"></div>
     </div>
-
-    <!-- foreground OSD (not pushed by the camera) -->
-    <div id="c3-rewind-childhood-fg">
-      <div id="c3-rewind-childhood-cTL" class="c3-rewind-childhood-corner"></div>
-      <div id="c3-rewind-childhood-cTR" class="c3-rewind-childhood-corner"></div>
-      <div id="c3-rewind-childhood-cBL" class="c3-rewind-childhood-corner"></div>
-      <div id="c3-rewind-childhood-cBR" class="c3-rewind-childhood-corner"></div>
-
-      <div id="c3-rewind-childhood-chip"><span id="c3-rewind-childhood-chipsheen"></span></div>
-
-      <div id="c3-rewind-childhood-tickwrap">
-        <div id="c3-rewind-childhood-tickblur" style="filter: url(#c3-rewind-childhood-vblur)">
-          <div id="c3-rewind-childhood-tkc" class="c3-rewind-childhood-ticker" data-layout-ignore aria-hidden="true"><div id="c3-rewind-childhood-stc" class="c3-rewind-childhood-stack"></div></div>
-          <div id="c3-rewind-childhood-tkm" class="c3-rewind-childhood-ticker" data-layout-ignore aria-hidden="true"><div id="c3-rewind-childhood-stm" class="c3-rewind-childhood-stack"></div></div>
-          <div id="c3-rewind-childhood-tkmain" class="c3-rewind-childhood-ticker" data-layout-allow-overlap><div id="c3-rewind-childhood-st" class="c3-rewind-childhood-stack"></div><div id="c3-rewind-childhood-tksheen"></div></div>
-        </div>
-      </div>
-
-      <div id="c3-rewind-childhood-rew" class="c3-rewind-childhood-osd">
-        <div id="c3-rewind-childhood-rewin" class="c3-rewind-childhood-osd" style="position: relative; left: 0; top: 0;">
-          <svg width="74" height="44" viewBox="0 0 74 44" aria-hidden="true">
-            <path d="M 35 2 L 35 42 L 3 22 Z" fill="#FFF5EA" stroke="#FFF5EA" stroke-width="3" stroke-linejoin="round"></path>
-            <path d="M 71 2 L 71 42 L 39 22 Z" fill="#FFF5EA" stroke="#FFF5EA" stroke-width="3" stroke-linejoin="round"></path>
-          </svg>
-          <span class="c3-rewind-childhood-osdtxt">REWIND</span>
-        </div>
-      </div>
-      <div id="c3-rewind-childhood-play" class="c3-rewind-childhood-osd">
-        <svg width="40" height="44" viewBox="0 0 40 44" aria-hidden="true">
-          <path d="M 3 2 L 3 42 L 37 22 Z" fill="#FFC24A" stroke="#FFC24A" stroke-width="3" stroke-linejoin="round"></path>
-        </svg>
-        <span id="c3-rewind-childhood-playtxt" class="c3-rewind-childhood-osdtxt">PLAY</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- VHS overlay: scanlines, tracking bands, vignette -->
-  <div id="c3-rewind-childhood-vhs" class="clip c3-rewind-childhood-layer" data-start="0" data-duration="2.1" data-track-index="2">
-    <div id="c3-rewind-childhood-scan" class="c3-rewind-childhood-fill"></div>
-    <svg id="c3-rewind-childhood-band0" class="c3-rewind-childhood-band" viewBox="0 0 1080 60" aria-hidden="true"></svg>
-    <svg id="c3-rewind-childhood-band1" class="c3-rewind-childhood-band" viewBox="0 0 1080 60" aria-hidden="true"></svg>
-    <svg id="c3-rewind-childhood-band2" class="c3-rewind-childhood-band" viewBox="0 0 1080 60" aria-hidden="true"></svg>
-    <div id="c3-rewind-childhood-vig" class="c3-rewind-childhood-fill"></div>
   </div>
 </div>
 
@@ -395,62 +323,35 @@
   function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
   function seg(t, a, d) { return clamp01((t - a) / d); }
   var P2O = gsap.parseEase("power2.out");
-  var P3O = gsap.parseEase("power3.out");
-  var P2IO = gsap.parseEase("power2.inOut");
   var BACK2 = gsap.parseEase("back.out(2)");
   var TAU = Math.PI * 2;
   var R = rng(19980311);
 
   var tl = gsap.timeline({ paused: true });
 
-  // ======================= BUILD: ground rings =======================
-  var ringsRot = el("ringsrot");
-  [[240, "4 10"], [360, "2 18"], [490, "26 14"], [640, "3 12"], [800, "40 22"]].forEach(function (r, i) {
-    svgEl("circle", { cx: 800, cy: 700, r: r[0], fill: "none", stroke: "#FF5FB0", "stroke-width": i % 2 ? 2 : 3, "stroke-dasharray": r[1] }, ringsRot);
-  });
-
-  // ======================= BUILD: gold dust =======================
-  var DUST = [];
-  var dustHost = el("dusts");
-  for (var di = 0; di < 30; di++) {
-    var dx = 60 + R() * 960, dy = 130 + R() * 1500, ds = 4 + R() * 9;
-    var dn = document.createElement("i");
-    dn.className = ID + "-dust";
-    dn.style.width = ds.toFixed(1) + "px";
-    dn.style.height = ds.toFixed(1) + "px";
-    dn.style.opacity = "0";
-    dustHost.appendChild(dn);
-    DUST.push({ n: dn, x: dx, y: dy, sp: 10 + R() * 26, ph: R() * TAU, fq: 2 + R() * 4, base: 0.25 + R() * 0.5, sway: 4 + R() * 10 });
+  // ======================= BUILD: cassette reels =======================
+  function reel(host, cx, cy) {
+    svgEl("circle", { cx: cx, cy: cy, r: 11, fill: "#FFF5EA", "fill-opacity": 0.92 }, host);
+    svgEl("circle", { cx: cx, cy: cy, r: 5, fill: "#2E1240" }, host);
+    for (var k = 0; k < 6; k++) {
+      var a = (k / 6) * TAU;
+      svgEl("line", { x1: (cx + 5 * Math.cos(a)).toFixed(2), y1: (cy + 5 * Math.sin(a)).toFixed(2), x2: (cx + 10 * Math.cos(a)).toFixed(2), y2: (cy + 10 * Math.sin(a)).toFixed(2), stroke: "#2E1240", "stroke-width": 2.2, "stroke-linecap": "round" }, host);
+    }
   }
+  var reelL = el("reelL"), reelR = el("reelR"), packL = el("packL"), packR = el("packR");
+  reel(reelL, 82, 63);
+  reel(reelR, 158, 63);
 
-  // ======================= BUILD: dial ticks + ghost hands =======================
-  var ticks = el("ticks");
-  for (var k = 0; k < 72; k++) {
-    var a = (k / 72) * TAU, long = k % 6 === 0;
-    var r0 = long ? 340 : 360, r1 = 380;
-    svgEl("line", {
-      x1: (410 + r0 * Math.sin(a)).toFixed(1), y1: (410 - r0 * Math.cos(a)).toFixed(1),
-      x2: (410 + r1 * Math.sin(a)).toFixed(1), y2: (410 - r1 * Math.cos(a)).toFixed(1),
-      stroke: long ? "#FFE1A0" : "#FF5FB0", "stroke-opacity": long ? 0.55 : 0.35, "stroke-width": long ? 4 : 2, "stroke-linecap": "round"
-    }, ticks);
-  }
-  var GHOSTS = [];
-  var ghostHost = el("ghosts");
-  for (var g = 0; g < 6; g++) {
-    GHOSTS.push(svgEl("line", { x1: 410, y1: 410, x2: 410, y2: 70, stroke: "#FFE1A0", "stroke-width": 4, "stroke-linecap": "round", opacity: 0 }, ghostHost));
-  }
-
-  // ======================= BUILD: scrubber ticks (one per year, 1998 left -> 2026 right) =======================
+  // ======================= BUILD: scrubber ticks (1998 left -> 2026 right) =======================
   var sticks = el("sticks");
   for (var yi = 0; yi <= 28; yi++) {
-    var yr = 1998 + yi, big = yr % 5 === 0;
-    var sx = 150 + yi * (780 / 28);
-    svgEl("line", { x1: sx.toFixed(1), y1: big ? 1012 : 1024, x2: sx.toFixed(1), y2: 1040, stroke: big ? "#FFE1A0" : "#FF5FB0", "stroke-opacity": big ? 0.75 : 0.5, "stroke-width": big ? 3 : 2, "stroke-linecap": "round" }, sticks);
+    var yr = 1998 + yi, big = yr % 5 === 0, sx = 20 + yi * (530 / 28);
+    svgEl("line", { x1: sx.toFixed(1), y1: big ? 2 : 8, x2: sx.toFixed(1), y2: 16, stroke: big ? "#FFE1A0" : "#FF5FB0", "stroke-opacity": big ? 0.75 : 0.5, "stroke-width": big ? 2.5 : 1.6, "stroke-linecap": "round" }, sticks);
   }
 
   // ======================= BUILD: year ticker stacks =======================
-  // Reverse-order stack (1998 on top ... 2026 at the bottom) so the strip rolls DOWN as the years rewind.
-  var YEARS = 28, ITEM_H = 212;
+  // Reverse-order stack (1998 top ... 2026 bottom) so the strip rolls DOWN as the years rewind.
+  var YEARS = 28, ITEM_H = 150;
   ["st", "stm", "stc"].forEach(function (sid) {
     var host = el(sid);
     for (var y = 1998; y <= 2026; y++) {
@@ -460,8 +361,7 @@
       host.appendChild(it);
     }
   });
-  var stMain = el("st"), stM = el("stm"), stC = el("stc");
-  var tkM = el("tkm"), tkC = el("tkc");
+  var stMain = el("st"), stM = el("stm"), stC = el("stc"), tkM = el("tkm"), tkC = el("tkc");
   // vertical-spring-ticker: three additive back.out springs (12 + 12 + 4 years), the last a casino land.
   var SPRINGS = [
     { at: 0.04, dur: 0.40, k: 12, e: gsap.parseEase("back.out(1.4)") },
@@ -470,250 +370,189 @@
   ];
   function springSum(t) {
     var s = 0;
-    for (var i = 0; i < SPRINGS.length; i++) {
-      var sp = SPRINGS[i];
-      s += sp.k * sp.e(seg(t, sp.at, sp.dur));
-    }
+    for (var i = 0; i < SPRINGS.length; i++) s += SPRINGS[i].k * SPRINGS[i].e(seg(t, SPRINGS[i].at, SPRINGS[i].dur));
     return s;
   }
   var vblurNode = el("vblur-node");
 
-  // ======================= BUILD: speech bubbles =======================
+  // ======================= BUILD: speech bubbles (right rail, above the memory card) =======================
   function bubblePath(w, h, r, tb, tx, ty) {
-    // rounded rect (0,0)-(w,h) with a tail leaving the bottom edge at tb..tb+34 toward (tx,ty)
     return "M " + r + " 0 L " + (w - r) + " 0 Q " + w + " 0 " + w + " " + r + " L " + w + " " + (h - r) +
-      " Q " + w + " " + h + " " + (w - r) + " " + h + " L " + (tb + 34) + " " + h + " Q " + (tb + 26) + " " + (h + 14) + " " + tx + " " + ty +
-      " Q " + (tb + 6) + " " + (h + 12) + " " + tb + " " + h + " L " + r + " " + h + " Q 0 " + h + " 0 " + (h - r) + " L 0 " + r + " Q 0 0 " + r + " 0 Z";
+      " Q " + w + " " + h + " " + (w - r) + " " + h + " L " + (tb + 26) + " " + h + " Q " + (tb + 20) + " " + (h + 10) + " " + tx + " " + ty +
+      " Q " + (tb + 5) + " " + (h + 9) + " " + tb + " " + h + " L " + r + " " + h + " Q 0 " + h + " 0 " + (h - r) + " L 0 " + r + " Q 0 0 " + r + " 0 Z";
   }
+  // global boxes: b1 x700-850 y612-684, b2 x858-1008 y598-670, b3 x772-932 y510-584 (all x >= 700)
   var BUB = [
-    { id: "b1", cx: 480, cy: 462, w: 232, h: 116, tb: 150, tx: 236, ty: 178, at: 1.08, rot: -9 },
-    { id: "b2", cx: 884, cy: 432, w: 232, h: 116, tb: 84, tx: 106, ty: 170, at: 1.18, rot: 8 },
-    { id: "b3", cx: 630, cy: 306, w: 252, h: 124, tb: 128, tx: 190, ty: 186, at: 1.28, rot: -6 }
+    { id: "b1", x: 700, y: 612, w: 150, h: 72, tb: 92, tx: 134, ty: 94, at: 1.08, rot: -8 },
+    { id: "b2", x: 858, y: 598, w: 150, h: 72, tb: 70, tx: 104, ty: 94, at: 1.18, rot: 7 },
+    { id: "b3", x: 772, y: 510, w: 160, h: 74, tb: 64, tx: 92, ty: 96, at: 1.28, rot: -5 }
   ];
   var DOTS = [];
   BUB.forEach(function (b, bi) {
     var host = el(b.id);
-    var left = b.cx - b.w / 2, top = b.cy - b.h / 2;
-    host.style.left = left + "px";
-    host.style.top = top + "px";
+    host.style.left = b.x + "px";
+    host.style.top = b.y + "px";
     host.style.width = b.w + "px";
     host.style.height = b.h + "px";
     host.style.transformOrigin = b.tx + "px " + b.ty + "px";
     var gid = ID + "-bg" + bi;
-    var svg = '<svg width="' + b.w + '" height="' + b.h + '" viewBox="0 0 ' + b.w + " " + b.h + '" aria-hidden="true">' +
+    host.innerHTML = '<svg width="' + b.w + '" height="' + b.h + '" viewBox="0 0 ' + b.w + " " + b.h + '" aria-hidden="true">' +
       '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#2E1240" stop-opacity="0.97"/><stop offset="1" stop-color="#1E0D2B" stop-opacity="0.97"/></linearGradient></defs>' +
-      '<path d="' + bubblePath(b.w, b.h, 40, b.tb, b.tx, b.ty) + '" fill="url(#' + gid + ')" stroke="#FF5FB0" stroke-opacity="0.55" stroke-width="3" stroke-linejoin="round"/>' +
-      '<path d="M 40 4 L ' + (b.w - 40) + ' 4" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>' +
+      '<path d="' + bubblePath(b.w, b.h, 28, b.tb, b.tx, b.ty) + '" fill="url(#' + gid + ')" stroke="#FF5FB0" stroke-opacity="0.6" stroke-width="2.5" stroke-linejoin="round"/>' +
+      '<path d="M 28 3.5 L ' + (b.w - 28) + ' 3.5" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>' +
       '<g class="' + ID + '-dots"></g></svg>';
-    host.innerHTML = svg;
     var dg = host.querySelector("." + ID + "-dots");
     for (var j = 0; j < 3; j++) {
-      var c = svgEl("circle", { cx: (b.w / 2 + (j - 1) * 46).toFixed(1), cy: (b.h / 2).toFixed(1), r: 11, fill: "#FFF5EA" }, dg);
-      DOTS.push({ n: c, b: bi, j: j, at: b.at, cy: b.h / 2 });
+      var c = svgEl("circle", { cx: (b.w / 2 + (j - 1) * 32).toFixed(1), cy: (b.h / 2).toFixed(1), r: 8, fill: "#FFF5EA" }, dg);
+      DOTS.push({ n: c, j: j, at: b.at, cy: b.h / 2 });
     }
   });
 
-  // ======================= BUILD: VHS tracking bands =======================
+  // ======================= BUILD: VHS tracking bands (inside the top card only) =======================
   var BANDS = [];
-  for (var bnd = 0; bnd < 3; bnd++) {
+  for (var bnd = 0; bnd < 2; bnd++) {
     var bs = el("band" + bnd);
-    svgEl("rect", { x: 0, y: 0, width: 1080, height: 2, fill: "#FFF5EA", "fill-opacity": 0.55 }, bs);
-    for (var q = 0; q < 34; q++) {
-      var w = 18 + R() * 150, h = 2 + R() * 5;
-      svgEl("rect", { x: (R() * 1080).toFixed(1), y: (4 + R() * 46).toFixed(1), width: w.toFixed(1), height: h.toFixed(1), fill: q % 5 === 0 ? "#FF5FB0" : "#FFF5EA", "fill-opacity": (0.15 + R() * 0.45).toFixed(2) }, bs);
+    svgEl("rect", { x: 0, y: 0, width: 900, height: 2, fill: "#FFF5EA", "fill-opacity": 0.5 }, bs);
+    for (var q = 0; q < 26; q++) {
+      svgEl("rect", { x: (R() * 900).toFixed(1), y: (4 + R() * 26).toFixed(1), width: (16 + R() * 120).toFixed(1), height: (2 + R() * 4).toFixed(1), fill: q % 5 === 0 ? "#FF5FB0" : "#FFF5EA", "fill-opacity": (0.12 + R() * 0.4).toFixed(2) }, bs);
     }
-    BANDS.push({ n: bs, y0: 200 + bnd * 690, sp: 900 + bnd * 260, sc: 0.8 + bnd * 0.5 });
+    BANDS.push({ n: bs, y0: 30 + bnd * 120, sp: 420 + bnd * 170 });
   }
 
   // ======================= MASTER CLOCK (pure function of t) =======================
-  var dial = el("dial"), dialHand = el("hand"), jit = el("jit"), fg = el("fg"), rewIn = el("rewin");
+  var topin = el("topin"), rewIn = el("rewin"), scan = el("scan");
   var shead = el("shead"), sgold = el("sgold"), strail = el("strail");
-  var warmEl = el("warm"), scan = el("scan"), wg = [el("wg1"), el("wg2"), el("wg3")], kid = el("kid"), ringsR = el("ringsrot");
+  var kid = el("kid"), push = el("push"), wg = [el("wg1"), el("wg2"), el("wg3")];
   var SCENE2 = 0.9;
 
   function render(t) {
-    // ---- ground ambience
-    ringsR.setAttribute("transform", "rotate(" + (-4 - 9 * t).toFixed(3) + " 800 700)");
-    for (var i = 0; i < DUST.length; i++) {
-      var d = DUST[i];
-      var tw = 0.55 + 0.45 * Math.sin(d.ph + t * d.fq);
-      d.n.style.opacity = (d.base * tw * P2O(seg(t, 0, 0.5))).toFixed(3);
-      d.n.style.transform = "translate(" + (d.x + d.sway * Math.sin(d.ph + t * 1.3)).toFixed(1) + "px," + (d.y - d.sp * t).toFixed(1) + "px)";
-    }
-
-    // ---- year ticker: additive springs -> translateY, velocity -> vertical blur
+    // ---- year ticker: additive springs -> translateY; velocity -> vertical blur
     var S = springSum(t);
-    var v = (S - springSum(t - 0.02)) / 0.02; // years per second (analytic, seek-safe)
+    var v = (S - springSum(t - 0.02)) / 0.02;
     var ty = -(YEARS - S) * ITEM_H;
     stMain.style.transform = "translateY(" + ty.toFixed(2) + "px)";
     stM.style.transform = "translateY(" + ty.toFixed(2) + "px)";
     stC.style.transform = "translateY(" + ty.toFixed(2) + "px)";
-    var sig = Math.min(18, Math.abs(v) * ITEM_H * 0.0016);
-    vblurNode.setAttribute("stdDeviation", "0 " + sig.toFixed(2));
+    vblurNode.setAttribute("stdDeviation", "0 " + Math.min(14, Math.abs(v) * ITEM_H * 0.0016).toFixed(2));
 
-    // ---- RGB split + tape jitter (frame-hashed, decays as the rewind lands)
+    // ---- RGB split + tape jitter, confined to the card contents
     var f = Math.floor(t * 25 + 0.001);
     var env = 1 - P2O(seg(t, 0.78, 0.22));
-    var spl = env * (4 + 7 * hash(f)) + Math.min(10, Math.abs(v) * 0.08) * env;
-    tkM.style.transform = "translate(" + (-spl).toFixed(2) + "px," + (env * (hash(f + 7) - 0.5) * 4).toFixed(2) + "px)";
-    tkC.style.transform = "translate(" + spl.toFixed(2) + "px," + (env * (hash(f + 3) - 0.5) * 4).toFixed(2) + "px)";
+    var spl = env * (3 + 5 * hash(f)) + Math.min(8, Math.abs(v) * 0.06) * env;
+    tkM.style.transform = "translate(" + (-spl).toFixed(2) + "px," + (env * (hash(f + 7) - 0.5) * 3).toFixed(2) + "px)";
+    tkC.style.transform = "translate(" + spl.toFixed(2) + "px," + (env * (hash(f + 3) - 0.5) * 3).toFixed(2) + "px)";
     tkM.style.opacity = (0.75 * env).toFixed(3);
     tkC.style.opacity = (0.7 * env).toFixed(3);
     var jenv = 1 - P2O(seg(t, 0.8, 0.35));
-    var jx = jenv * (hash(f + 19) - 0.5) * 7 + (hash(f + 41) > 0.86 ? jenv * 9 : 0);
-    jit.style.transform = "translateX(" + jx.toFixed(2) + "px)";
-    fg.style.transform = "translateX(" + (jx * 0.6).toFixed(2) + "px)";
+    topin.style.transform = "translateX(" + (jenv * (hash(f + 19) - 0.5) * 5 + (hash(f + 41) > 0.86 ? jenv * 6 : 0)).toFixed(2) + "px)";
 
-    // ---- scrubber playhead rides the same spring sum (right = 2026, left = 1998)
-    var px = 150 + (YEARS - S) * (780 / YEARS);
+    // ---- cassette: reels spin backward with the counter, tape winds onto the left pack; PLAY turns them forward
+    var play = Math.max(0, t - 1.0);
+    var ang = -S * 55 + 140 * play;
+    reelL.setAttribute("transform", "rotate(" + ang.toFixed(2) + " 82 63)");
+    reelR.setAttribute("transform", "rotate(" + ang.toFixed(2) + " 158 63)");
+    packL.setAttribute("r", (13 + 13 * (S / YEARS)).toFixed(2));
+    packR.setAttribute("r", (26 - 13 * (S / YEARS)).toFixed(2));
+
+    // ---- scrubber playhead rides the same spring sum, then plays forward
+    var px = 20 + (YEARS - S) * (530 / YEARS) + 18 * play;
     shead.setAttribute("transform", "translate(" + px.toFixed(2) + " 0)");
     sgold.setAttribute("x1", px.toFixed(2));
-    var trail = Math.min(150, Math.abs(v) * 780 / YEARS * 0.05);
-    strail.setAttribute("x", "0");
-    strail.setAttribute("width", Math.max(0.01, trail).toFixed(2));
+    strail.setAttribute("width", Math.max(0.01, Math.min(110, Math.abs(v) * 530 / YEARS * 0.04)).toFixed(2));
 
-    // ---- dial spins backward, coupled to the counter (30 deg per year), with ghost trail
-    var ang = -S * 30;
-    dialHand.setAttribute("transform", "rotate(" + ang.toFixed(2) + " 410 410)");
-    ticks.setAttribute("transform", "rotate(" + (-S * 6).toFixed(2) + " 410 410)");
-    var spread = Math.min(16, Math.abs(v) * 0.5);
-    for (var gi = 0; gi < GHOSTS.length; gi++) {
-      GHOSTS[gi].setAttribute("transform", "rotate(" + (ang + spread * (gi + 1)).toFixed(2) + " 410 410)");
-      GHOSTS[gi].setAttribute("opacity", (spread > 0.6 ? (0.42 / (gi + 1)) * Math.min(1, spread / 6) : 0).toFixed(3));
-    }
+    // ---- REWIND blink (6 frames on, 3 off) while rewinding
+    rewIn.style.opacity = t < SCENE2 ? ((f % 9) < 6 ? "1" : "0.2") : "1";
 
-    // ---- REWIND blink (VCR OSD: 6 frames on, 3 off) while rewinding
-    if (t < SCENE2) rewIn.style.opacity = (f % 9) < 6 ? "1" : "0.18";
-    else rewIn.style.opacity = "1";
-
-    // ---- VHS tracking bands roll down; strong in Scene 1, a faint memory haze after
+    // ---- VHS bands roll inside the card; calm to a faint haze after the landing
     var benv = 0.15 + 0.85 * (1 - P2O(seg(t, 0.82, 0.4)));
     for (var b = 0; b < BANDS.length; b++) {
       var B = BANDS[b];
-      var by = ((B.y0 + B.sp * t) % 2100) - 120;
-      B.n.style.transform = "translate(" + ((hash(f + b * 13) - 0.5) * 30 * benv).toFixed(1) + "px," + by.toFixed(1) + "px) scaleY(" + B.sc.toFixed(2) + ")";
-      B.n.style.opacity = (benv * (0.55 + 0.35 * hash(f * 3 + b))).toFixed(3);
+      B.n.style.transform = "translate(" + ((hash(f + b * 13) - 0.5) * 24 * benv).toFixed(1) + "px," + (((B.y0 + B.sp * t) % 240) - 34).toFixed(1) + "px)";
+      B.n.style.opacity = (benv * (0.5 + 0.4 * hash(f * 3 + b))).toFixed(3);
     }
-    scan.style.opacity = (0.12 + 0.12 * benv).toFixed(3);
+    scan.style.opacity = (0.16 + 0.16 * benv).toFixed(3);
 
     // ---- bubble dots: a travelling "typing" wave
-    for (var di2 = 0; di2 < DOTS.length; di2++) {
-      var D = DOTS[di2];
+    for (var d = 0; d < DOTS.length; d++) {
+      var D = DOTS[d];
       var on = seg(t, D.at + 0.18, 0.2);
       var w = Math.sin(TAU * 2.4 * (t - D.at) - D.j * 1.1);
-      var lift = on * Math.max(0, w) * 9;
-      D.n.setAttribute("cy", (D.cy - lift).toFixed(2));
-      D.n.setAttribute("opacity", (on > 0 ? 0.45 + 0.55 * on * (0.55 + 0.45 * Math.max(0, w)) : 0.45).toFixed(3));
+      D.n.setAttribute("cy", (D.cy - on * Math.max(0, w) * 7).toFixed(2));
+      D.n.setAttribute("opacity", (0.45 + 0.55 * on * (0.55 + 0.45 * Math.max(0, w))).toFixed(3));
     }
 
-    // ---- child grows on "growing"@1.40 and "up"@1.72 (scale steps with overshoot)
+    // ---- child grows on "growing"@1.40 and "up"@1.72
     var ks = 1 + 0.09 * BACK2(seg(t, 1.40, 0.3)) + 0.09 * BACK2(seg(t, 1.72, 0.3));
     kid.setAttribute("transform", "scale(" + ks.toFixed(4) + ")");
 
-    // ---- house light breathes from "growing"@1.40 (sine-wave-loop, phase 0 at start)
+    // ---- house light breathes from 1.40 (sine-wave-loop, phase 0 at start)
     var ph = Math.max(0, t - 1.40) * (TAU / 1.4);
-    var breathe = t > 1.40 ? Math.sin(ph) : 0;
-    for (var w2 = 0; w2 < wg.length; w2++) {
-      var s2 = 1 + 0.07 * Math.sin(ph + w2 * 0.9) * (t > 1.40 ? 1 : 0);
-      wg[w2].setAttribute("transform", "translate(" + wg[w2].getAttribute("cx") + " " + wg[w2].getAttribute("cy") + ") scale(" + s2.toFixed(4) + ") translate(" + (-wg[w2].getAttribute("cx")) + " " + (-wg[w2].getAttribute("cy")) + ")");
+    for (var k = 0; k < wg.length; k++) {
+      var cx = +wg[k].getAttribute("cx"), cy = +wg[k].getAttribute("cy");
+      var s2 = 1 + (t > 1.40 ? 0.08 * Math.sin(ph + k * 0.9) : 0);
+      wg[k].setAttribute("transform", "translate(" + cx + " " + cy + ") scale(" + s2.toFixed(4) + ") translate(" + (-cx) + " " + (-cy) + ")");
     }
-    warmEl.style.transform = "scale(" + (1 + 0.025 * breathe).toFixed(4) + ")";
+
+    // ---- slow push inside the memory card, about the card's own centre
+    var pz = 1 + 0.05 * clamp01((t - 0.95) / 1.15);
+    push.setAttribute("transform", "translate(158 148) scale(" + pz.toFixed(4) + ") translate(-158 -148)");
   }
   render(0);
   var clock = { t: 0 };
   tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { render(clock.t); } }, 0);
 
-  // ======================= CAMERA + PARALLAX =======================
-  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.015, duration: SCENE2, ease: "power1.inOut" }, 0);
-  tl.fromTo(el("cam"), { scale: 1.015 }, { scale: 1.065, duration: DUR - SCENE2, ease: "power1.in", immediateRender: false }, SCENE2);
-  tl.fromTo(el("blob"), { x: -40, y: -10 }, { x: 70, y: 60, duration: DUR, ease: "sine.inOut" }, 0);
-  tl.fromTo(el("goldglow"), { scale: 0.9 }, { scale: 1.12, duration: DUR, ease: "sine.inOut" }, 0);
+  // ======================= SCENE 1 (0.0-0.9): rewind card grows in place =======================
+  tl.fromTo(el("top"), { scale: 0.94, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo(el("cassette"), { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power4.out" }, 0.06);
+  tl.fromTo(el("scrub"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.08);
+  tl.fromTo(el("rew"), { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.02);
+  tl.fromTo(el("topglow"), { opacity: 0.5, scale: 0.9 }, { opacity: 1, scale: 1.08, duration: DUR, ease: "sine.inOut" }, 0);
+  // landing: digits warm to gold + light sweep
+  tl.fromTo(el("tkmain"), { color: "#FFF5EA", textShadow: "0 0 26px rgba(255,245,234,0.28)" }, { color: "#FFC24A", textShadow: "0 0 30px rgba(255,194,74,0.6)", duration: 0.22, ease: "power1.out" }, 0.72);
+  tl.fromTo(el("tksheen"), { x: -160, opacity: 1 }, { x: 640, duration: 0.32, ease: "power1.inOut" }, 0.86);
+  tl.fromTo(el("tickwrap"), { scale: 1 }, { scale: 1.06, duration: 0.12, ease: "power2.out" }, 0.86);
+  tl.fromTo(el("tickwrap"), { scale: 1.06 }, { scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, 0.98);
 
-  // ======================= SCENE 1 (0.0-0.9): rewind =======================
-  // counter + viewfinder settle in from frame 0 (hero visible immediately)
-  tl.fromTo(el("tickwrap"), { scale: 1.12, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 0);
-  tl.fromTo(el("dial"), { scale: 0.86, opacity: 0, rotation: 24 }, { scale: 1, opacity: 0.9, rotation: 0, duration: 0.6, ease: "expo.out" }, 0);
-  var CORN = [
-    { id: "cTL", ix: -36, iy: -30, fx: -148, fy: -104 },
-    { id: "cTR", ix: 36, iy: -30, fx: 148, fy: -104 },
-    { id: "cBL", ix: -36, iy: 30, fx: -148, fy: 396 },
-    { id: "cBR", ix: 36, iy: 30, fx: 148, fy: 396 }
-  ];
-  CORN.forEach(function (c, i) {
-    tl.fromTo(el(c.id), { x: c.ix, y: c.iy, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.42, ease: "back.out(1.7)" }, 0.02 + i * 0.03);
-  });
-  tl.fromTo(el("rew"), { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.02);
-  tl.fromTo(el("scrub"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.04);
-  // landing: digits warm to gold + light sweep right after the casino land
-  tl.fromTo(el("tkmain"), { color: "#FFF5EA", textShadow: "0 0 34px rgba(255,245,234,0.28)" }, { color: "#FFC24A", textShadow: "0 0 40px rgba(255,194,74,0.55)", duration: 0.22, ease: "power1.out" }, 0.72);
-  tl.fromTo(el("tksheen"), { x: -180, opacity: 1 }, { x: 600, duration: 0.3, ease: "power1.inOut" }, 0.6);
-  tl.fromTo(el("tksheen"), { opacity: 1 }, { opacity: 0, duration: 0.05, ease: "none", immediateRender: false }, 0.88);
-
-  // ======================= SCENE 2 (0.9-2.1): counter -> chip, childhood draws in =======================
-  // counter shrinks up into the chip (blur peaks mid-flight)
-  tl.fromTo(el("tickwrap"), { x: 0, y: 0, scale: 1 }, { x: 328, y: -350, scale: 0.25, duration: 0.3, ease: "power3.inOut", immediateRender: false }, SCENE2);
-  tl.fromTo(el("tickwrap"), { filter: "blur(0px)" }, { filter: "blur(5px)", duration: 0.15, ease: "power2.in" }, SCENE2);
-  tl.fromTo(el("tickwrap"), { filter: "blur(5px)" }, { filter: "blur(0px)", duration: 0.15, ease: "power2.out", immediateRender: false }, SCENE2 + 0.15);
-  tl.fromTo(el("chip"), { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, SCENE2 + 0.2);
-  tl.fromTo(el("chipsheen"), { x: -90 }, { x: 260, duration: 0.4, ease: "power1.inOut" }, SCENE2 + 0.42);
-  // OSD: REWIND zoom-through swaps to PLAY
-  tl.fromTo(el("rew"), { scale: 1, filter: "blur(0px)" }, { scale: 1.2, filter: "blur(10px)", duration: 0.12, ease: "power3.in", immediateRender: false }, SCENE2);
+  // ======================= SCENE 2 (0.9-2.1): PLAY, memory card + bubbles in the right rail =======================
+  // OSD zoom-through REWIND -> PLAY (inside the card)
+  tl.fromTo(el("rew"), { scale: 1, filter: "blur(0px)" }, { scale: 1.2, filter: "blur(8px)", duration: 0.12, ease: "power3.in", immediateRender: false }, SCENE2);
   tl.fromTo(el("rew"), { opacity: 1 }, { opacity: 0.15, duration: 0.12, ease: "none", immediateRender: false }, SCENE2);
   tl.set(el("rew"), { opacity: 0 }, SCENE2 + 0.12);
-  tl.fromTo(el("play"), { scale: 0.75, opacity: 0, filter: "blur(10px)" }, { scale: 0.75, opacity: 0, filter: "blur(10px)", duration: 0.01 }, 0);
-  tl.fromTo(el("play"), { scale: 0.75, opacity: 0.15, filter: "blur(10px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out", immediateRender: false }, SCENE2 + 0.12);
-  // viewfinder brackets reframe from the counter to the memory
-  CORN.forEach(function (c, i) {
-    tl.fromTo(el(c.id), { x: 0, y: 0 }, { x: c.fx, y: c.fy, duration: 0.5, ease: "expo.inOut", immediateRender: false }, SCENE2 + 0.02 + i * 0.02);
-  });
-  // dial recedes into a faint halo behind the scene
-  tl.fromTo(el("dial"), { opacity: 0.9, scale: 1 }, { opacity: 0.2, scale: 1.3, duration: 0.6, ease: "power2.out", immediateRender: false }, SCENE2);
-  // scrubber ticks + playhead dissolve; the track stays as the horizon
-  tl.fromTo(el("scrubfx"), { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, SCENE2 + 0.02);
-  tl.fromTo(el("dialhub"), { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, SCENE2 + 0.05);
-  // warm light floods in
-  tl.fromTo(el("warm"), { opacity: 0 }, { opacity: 0.42, duration: 0.6, ease: "power2.out" }, SCENE2 + 0.05);
-  tl.fromTo(el("goldglow"), { opacity: 0.16 }, { opacity: 0.3, duration: 0.6, ease: "power2.out" }, SCENE2 + 0.05);
+  tl.set(el("play"), { opacity: 0, scale: 0.75 }, 0);
+  tl.fromTo(el("play"), { scale: 0.75, opacity: 0.15, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out", immediateRender: false }, SCENE2 + 0.12);
 
-  // svg-path-draw: horizon, house, adults, child (stagger ~75%), then fills
-  function prepDraw(node, pad) {
-    var L = node.getTotalLength() * (pad || 1.04);
+  // memory card grows in place in the right rail
+  tl.fromTo(el("vig"), { scale: 0.88, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.42, ease: "power3.out" }, 0.92);
+  function prepDraw(node) {
+    var L = node.getTotalLength() * 1.04;
     node.style.strokeDasharray = L.toFixed(1);
     node.style.strokeDashoffset = L.toFixed(1);
     return L;
   }
-  var DRAWS = [
-    { id: "floorL", at: 0.90, dur: 0.45 },
-    { id: "floorR", at: 0.90, dur: 0.45 },
-    { id: "hline", at: 0.92, dur: 0.5 },
-    { id: "aAline", at: 0.95, dur: 0.42 },
-    { id: "aBline", at: 1.00, dur: 0.42 },
-    { id: "kidline", at: 1.06, dur: 0.38 }
-  ];
-  DRAWS.forEach(function (d) {
+  [
+    { id: "floorL", at: 0.94, dur: 0.45 }, { id: "floorR", at: 0.94, dur: 0.45 },
+    { id: "hline", at: 0.96, dur: 0.5 }, { id: "aAline", at: 0.98, dur: 0.42 },
+    { id: "aBline", at: 1.02, dur: 0.42 }, { id: "kidline", at: 1.08, dur: 0.38 }
+  ].forEach(function (d) {
     var n = el(d.id), L = prepDraw(n);
     tl.fromTo(n, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: d.dur, ease: "power2.out" }, d.at);
   });
-  tl.fromTo(el("hfill"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 1.12);
+  tl.fromTo(el("hfill"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 1.14);
   tl.fromTo(el("aAfill"), { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.1);
   tl.fromTo(el("aBfill"), { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.14);
   tl.fromTo(el("kidfill"), { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.2);
   tl.fromTo(el("kidshadow"), { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.2);
   tl.fromTo(el("moon"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.0);
   tl.fromTo(el("floorglow"), { opacity: 0 }, { opacity: 0.85, duration: 0.5, ease: "power2.out" }, 1.0);
-  // windows light up (flash, then hold) — light sweep on landing
   tl.fromTo(el("wins"), { opacity: 0 }, { opacity: 1, duration: 0.16, ease: "power2.out" }, 1.22);
   tl.fromTo(el("wglows"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 1.22);
-  tl.fromTo(el("wglows"), { opacity: 1 }, { opacity: 0.78, duration: 0.3, ease: "power2.out", immediateRender: false }, 1.42);
+  tl.fromTo(el("wglows"), { opacity: 1 }, { opacity: 0.8, duration: 0.3, ease: "power2.out", immediateRender: false }, 1.42);
   tl.fromTo(el("doorspill"), { opacity: 0.4, scaleX: 0.4, transformOrigin: "50% 0%" }, { opacity: 1, scaleX: 1, transformOrigin: "50% 0%", duration: 0.5, ease: "power3.out" }, 1.26);
 
-  // speech bubbles pop from the grown-ups on "heard"@1.08 (spring-pop, origin at the tail)
-  BUB.forEach(function (b) {
-    tl.fromTo(el(b.id), { scale: 0, opacity: 0, rotation: b.rot }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, b.at);
-  });
-  // gentle float on the bubbles after they land (finite, sine)
+  // bubbles pop from the grown-ups on "heard"@1.08 (origin at the tail tip), then float gently
   BUB.forEach(function (b, i) {
-    tl.fromTo(el(b.id), { y: 0 }, { y: -6 - i * 2, duration: 0.6 + i * 0.08, ease: "sine.inOut", immediateRender: false }, b.at + 0.5);
+    tl.fromTo(el(b.id), { scale: 0, opacity: 0, rotation: b.rot }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, b.at);
+    tl.fromTo(el(b.id), { y: 0 }, { y: -4 - i, duration: 0.6 + i * 0.08, ease: "sine.inOut", immediateRender: false }, b.at + 0.5);
   });
 
   window.__timelines = window.__timelines || {};
