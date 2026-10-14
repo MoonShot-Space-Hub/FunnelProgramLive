@@ -255,14 +255,28 @@
             <path id="c3-rewind-childhood-hline" class="c3-rewind-childhood-draw" d="M 96 748 L 345 518 L 594 748 M 130 748 L 130 1040 M 560 748 L 560 1040 M 440 610 L 440 566 L 480 566 L 480 646" stroke="#FFE1A0" stroke-opacity="0.9" stroke-width="4"></path>
           </g>
 
+          <!-- tape scrubber (Scene 1): the playhead rewinds with the counter; its track becomes the horizon -->
+          <g id="c3-rewind-childhood-scrub">
+            <line x1="150" y1="1040" x2="930" y2="1040" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"></line>
+            <g id="c3-rewind-childhood-scrubfx">
+              <g id="c3-rewind-childhood-sticks"></g>
+              <line id="c3-rewind-childhood-sgold" x1="930" y1="1040" x2="930" y2="1040" stroke="#FFC24A" stroke-opacity="0.85" stroke-width="5" stroke-linecap="round"></line>
+              <g id="c3-rewind-childhood-shead">
+                <rect x="-40" y="1034" width="40" height="12" rx="6" fill="#FFC24A" fill-opacity="0.25" id="c3-rewind-childhood-strail"></rect>
+                <line x1="0" y1="1004" x2="0" y2="1076" stroke="#FFE1A0" stroke-width="4" stroke-linecap="round" filter="url(#c3-rewind-childhood-glowf)"></line>
+                <circle cx="0" cy="1040" r="13" fill="#FFC24A" stroke="#FFF5EA" stroke-width="3" filter="url(#c3-rewind-childhood-glowf)"></circle>
+              </g>
+            </g>
+          </g>
+
           <!-- horizon -->
           <path id="c3-rewind-childhood-floorL" class="c3-rewind-childhood-draw" d="M 540 1040 L 70 1040" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="3"></path>
           <path id="c3-rewind-childhood-floorR" class="c3-rewind-childhood-draw" d="M 540 1040 L 1010 1040" stroke="#FF5FB0" stroke-opacity="0.45" stroke-width="3"></path>
 
           <!-- adults -->
           <g transform="translate(700 1040)">
-            <ellipse cx="4" cy="2" rx="86" ry="11" fill="#000" fill-opacity="0.45"></ellipse>
             <g id="c3-rewind-childhood-aAfill" opacity="0">
+              <ellipse cx="4" cy="2" rx="86" ry="11" fill="#000" fill-opacity="0.45"></ellipse>
               <path d="M -9 -410 L -9 -398 C -20 -394 -40 -392 -50 -384 C -60 -376 -62 -360 -62 -340 C -62 -300 -60 -262 -58 -232 C -57 -222 -48 -222 -47 -232 C -46 -262 -44 -290 -40 -310 C -38 -280 -52 -170 -60 -90 C -66 -40 -72 -14 -76 0 L 78 0 C 72 -16 66 -44 60 -92 C 52 -170 38 -280 40 -310 C 44 -290 46 -262 47 -232 C 48 -222 57 -222 58 -232 C 60 -262 62 -300 62 -340 C 62 -360 60 -376 50 -384 C 40 -392 20 -394 9 -398 L 9 -410 Z" fill="url(#c3-rewind-childhood-figg)"></path>
               <path d="M -44 -386 C -10 -360 30 -300 48 -226 C 56 -190 58 -150 60 -100 L 66 -60 C 50 -130 36 -200 6 -262 C -14 -304 -34 -340 -50 -372 Z" fill="url(#c3-rewind-childhood-drape)"></path>
               <path d="M -70 -20 C -24 -12 26 -12 74 -20" fill="none" stroke="#FFC24A" stroke-opacity="0.7" stroke-width="4"></path>
@@ -272,8 +286,8 @@
             <path id="c3-rewind-childhood-aAline" class="c3-rewind-childhood-draw" d="M -9 -410 L -9 -398 C -20 -394 -40 -392 -50 -384 C -60 -376 -62 -360 -62 -340 C -62 -300 -60 -262 -58 -232 C -57 -222 -48 -222 -47 -232 C -46 -262 -44 -290 -40 -310 C -38 -280 -52 -170 -60 -90 C -66 -40 -72 -14 -76 0 L 78 0 C 72 -16 66 -44 60 -92 C 52 -170 38 -280 40 -310 C 44 -290 46 -262 47 -232 C 48 -222 57 -222 58 -232 C 60 -262 62 -300 62 -340 C 62 -360 60 -376 50 -384 C 40 -392 20 -394 9 -398 L 9 -410 M 0 -471 A 26 31 0 1 0 0.1 -471 M -12 -478 A 15 15 0 1 1 12 -478" stroke="url(#c3-rewind-childhood-rim)" stroke-width="3.5"></path>
           </g>
           <g transform="translate(872 1040)">
-            <ellipse cx="0" cy="2" rx="92" ry="11" fill="#000" fill-opacity="0.45"></ellipse>
             <g id="c3-rewind-childhood-aBfill" opacity="0">
+              <ellipse cx="0" cy="2" rx="92" ry="11" fill="#000" fill-opacity="0.45"></ellipse>
               <path d="M -10 -440 L -10 -428 C -24 -424 -48 -422 -62 -414 C -74 -406 -78 -390 -78 -370 L -80 -250 C -80 -236 -66 -236 -66 -250 L -64 -360 C -62 -330 -56 -290 -50 -258 L -48 -10 C -48 -2 -44 0 -36 0 L -10 0 C -6 0 -4 -4 -4 -12 L -4 -190 L 4 -190 L 4 -12 C 4 -4 6 0 10 0 L 36 0 C 44 0 48 -2 48 -10 L 50 -258 C 56 -290 62 -330 64 -360 L 66 -250 C 66 -236 80 -236 80 -250 L 78 -370 C 78 -390 74 -406 62 -414 C 48 -422 24 -424 10 -428 L 10 -440 Z" fill="url(#c3-rewind-childhood-figg)"></path>
               <path d="M -10 -428 L 0 -380 L 10 -428 Z" fill="#FFE1A0" fill-opacity="0.18"></path>
               <ellipse cx="0" cy="-470" rx="28" ry="32" fill="url(#c3-rewind-childhood-figg)"></ellipse>
@@ -284,7 +298,7 @@
 
           <!-- child (foreground) -->
           <g transform="translate(585 1096)">
-            <ellipse cx="0" cy="2" rx="58" ry="9" fill="#000" fill-opacity="0.5"></ellipse>
+            <ellipse id="c3-rewind-childhood-kidshadow" cx="0" cy="2" rx="58" ry="9" fill="#000" fill-opacity="0.5" opacity="0"></ellipse>
             <g id="c3-rewind-childhood-kid">
               <g id="c3-rewind-childhood-kidfill" opacity="0">
                 <path d="M -14 -80 L -14 -4 C -14 0 -10 2 -4 2 L -4 -80 Z M 4 -80 L 4 2 C 10 2 14 0 14 -4 L 14 -80 Z" fill="url(#c3-rewind-childhood-figg)"></path>
@@ -424,6 +438,14 @@
     GHOSTS.push(svgEl("line", { x1: 410, y1: 410, x2: 410, y2: 70, stroke: "#FFE1A0", "stroke-width": 4, "stroke-linecap": "round", opacity: 0 }, ghostHost));
   }
 
+  // ======================= BUILD: scrubber ticks (one per year, 1998 left -> 2026 right) =======================
+  var sticks = el("sticks");
+  for (var yi = 0; yi <= 28; yi++) {
+    var yr = 1998 + yi, big = yr % 5 === 0;
+    var sx = 150 + yi * (780 / 28);
+    svgEl("line", { x1: sx.toFixed(1), y1: big ? 1012 : 1024, x2: sx.toFixed(1), y2: 1040, stroke: big ? "#FFE1A0" : "#FF5FB0", "stroke-opacity": big ? 0.75 : 0.5, "stroke-width": big ? 3 : 2, "stroke-linecap": "round" }, sticks);
+  }
+
   // ======================= BUILD: year ticker stacks =======================
   // Reverse-order stack (1998 on top ... 2026 at the bottom) so the strip rolls DOWN as the years rewind.
   var YEARS = 28, ITEM_H = 212;
@@ -462,9 +484,9 @@
       " Q " + (tb + 6) + " " + (h + 12) + " " + tb + " " + h + " L " + r + " " + h + " Q 0 " + h + " 0 " + (h - r) + " L 0 " + r + " Q 0 0 " + r + " 0 Z";
   }
   var BUB = [
-    { id: "b1", cx: 480, cy: 462, w: 232, h: 116, tb: 148, tx: 214, ty: 172, at: 1.08, rot: -9 },
-    { id: "b2", cx: 884, cy: 420, w: 232, h: 116, tb: 84, tx: 110, ty: 176, at: 1.18, rot: 8 },
-    { id: "b3", cx: 668, cy: 300, w: 252, h: 124, tb: 122, tx: 176, ty: 184, at: 1.28, rot: -6 }
+    { id: "b1", cx: 480, cy: 462, w: 232, h: 116, tb: 150, tx: 236, ty: 178, at: 1.08, rot: -9 },
+    { id: "b2", cx: 884, cy: 432, w: 232, h: 116, tb: 84, tx: 106, ty: 170, at: 1.18, rot: 8 },
+    { id: "b3", cx: 640, cy: 306, w: 252, h: 124, tb: 128, tx: 190, ty: 186, at: 1.28, rot: -6 }
   ];
   var DOTS = [];
   BUB.forEach(function (b, bi) {
@@ -503,7 +525,8 @@
 
   // ======================= MASTER CLOCK (pure function of t) =======================
   var dial = el("dial"), dialHand = el("hand"), jit = el("jit"), fg = el("fg"), rewIn = el("rewin");
-  var scan = el("scan"), wg = [el("wg1"), el("wg2"), el("wg3")], kid = el("kid"), ringsR = el("ringsrot");
+  var shead = el("shead"), sgold = el("sgold"), strail = el("strail");
+  var warmEl = el("warm"), scan = el("scan"), wg = [el("wg1"), el("wg2"), el("wg3")], kid = el("kid"), ringsR = el("ringsrot");
   var SCENE2 = 0.9;
 
   function render(t) {
@@ -538,6 +561,14 @@
     var jx = jenv * (hash(f + 19) - 0.5) * 7 + (hash(f + 41) > 0.86 ? jenv * 9 : 0);
     jit.style.transform = "translateX(" + jx.toFixed(2) + "px)";
     fg.style.transform = "translateX(" + (jx * 0.6).toFixed(2) + "px)";
+
+    // ---- scrubber playhead rides the same spring sum (right = 2026, left = 1998)
+    var px = 150 + (YEARS - S) * (780 / YEARS);
+    shead.setAttribute("transform", "translate(" + px.toFixed(2) + " 0)");
+    sgold.setAttribute("x1", px.toFixed(2));
+    var trail = Math.min(150, Math.abs(v) * 780 / YEARS * 0.05);
+    strail.setAttribute("x", "0");
+    strail.setAttribute("width", Math.max(0.01, trail).toFixed(2));
 
     // ---- dial spins backward, coupled to the counter (30 deg per year), with ghost trail
     var ang = -S * 30;
@@ -584,7 +615,7 @@
       var s2 = 1 + 0.07 * Math.sin(ph + w2 * 0.9) * (t > 1.40 ? 1 : 0);
       wg[w2].setAttribute("transform", "translate(" + wg[w2].getAttribute("cx") + " " + wg[w2].getAttribute("cy") + ") scale(" + s2.toFixed(4) + ") translate(" + (-wg[w2].getAttribute("cx")) + " " + (-wg[w2].getAttribute("cy")) + ")");
     }
-    el("warm").style.transform = "scale(" + (1 + 0.025 * breathe).toFixed(4) + ")";
+    warmEl.style.transform = "scale(" + (1 + 0.025 * breathe).toFixed(4) + ")";
   }
   render(0);
   var clock = { t: 0 };
@@ -610,9 +641,11 @@
     tl.fromTo(el(c.id), { x: c.ix, y: c.iy, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.42, ease: "back.out(1.7)" }, 0.02 + i * 0.03);
   });
   tl.fromTo(el("rew"), { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.02);
+  tl.fromTo(el("scrub"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.04);
   // landing: digits warm to gold + light sweep right after the casino land
   tl.fromTo(el("tkmain"), { color: "#FFF5EA", textShadow: "0 0 34px rgba(255,245,234,0.28)" }, { color: "#FFC24A", textShadow: "0 0 40px rgba(255,194,74,0.55)", duration: 0.22, ease: "power1.out" }, 0.72);
-  tl.fromTo(el("tksheen"), { x: -180 }, { x: 600, duration: 0.36, ease: "power1.inOut" }, 0.74);
+  tl.fromTo(el("tksheen"), { x: -180, opacity: 1 }, { x: 600, duration: 0.3, ease: "power1.inOut" }, 0.6);
+  tl.fromTo(el("tksheen"), { opacity: 1 }, { opacity: 0, duration: 0.05, ease: "none", immediateRender: false }, 0.88);
 
   // ======================= SCENE 2 (0.9-2.1): counter -> chip, childhood draws in =======================
   // counter shrinks up into the chip (blur peaks mid-flight)
@@ -633,6 +666,8 @@
   });
   // dial recedes into a faint halo behind the scene
   tl.fromTo(el("dial"), { opacity: 0.9, scale: 1 }, { opacity: 0.2, scale: 1.3, duration: 0.6, ease: "power2.out", immediateRender: false }, SCENE2);
+  // scrubber ticks + playhead dissolve; the track stays as the horizon
+  tl.fromTo(el("scrubfx"), { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, SCENE2 + 0.02);
   // warm light floods in
   tl.fromTo(el("warm"), { opacity: 0 }, { opacity: 0.42, duration: 0.6, ease: "power2.out" }, SCENE2 + 0.05);
   tl.fromTo(el("goldglow"), { opacity: 0.16 }, { opacity: 0.3, duration: 0.6, ease: "power2.out" }, SCENE2 + 0.05);
@@ -660,6 +695,7 @@
   tl.fromTo(el("aAfill"), { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.1);
   tl.fromTo(el("aBfill"), { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.14);
   tl.fromTo(el("kidfill"), { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.2);
+  tl.fromTo(el("kidshadow"), { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.2);
   tl.fromTo(el("moon"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.0);
   tl.fromTo(el("floorglow"), { opacity: 0 }, { opacity: 0.85, duration: 0.5, ease: "power2.out" }, 1.0);
   // windows light up (flash, then hold) — light sweep on landing

@@ -452,8 +452,8 @@
   /* stamp */
   [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-stamp {
     position: absolute;
-    left: 525px;
-    top: -75px;
+    left: 538px;
+    top: -52px;
     width: 230px;
     height: 230px;
   }
@@ -492,8 +492,8 @@
   }
   [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-shock {
     position: absolute;
-    left: 640px;
-    top: 40px;
+    left: 653px;
+    top: 63px;
     width: 0;
     height: 0;
   }
@@ -509,8 +509,8 @@
   }
   [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-burst {
     position: absolute;
-    left: 640px;
-    top: 40px;
+    left: 653px;
+    top: 63px;
     width: 0;
     height: 0;
   }
@@ -976,6 +976,8 @@
   });
   tl.fromTo(el("loopcore"), { scale: 1, opacity: 1 }, { scale: 0.4, opacity: 0, duration: 0.3, ease: "power2.in", immediateRender: false }, CUE.change);
   burst(shards, CUE.change + 0.06, 0.7, 700, 0.35);
+  // the spent ring's faint track dissolves once the gold stairs take over
+  tl.fromTo(el("loop"), { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power1.out", immediateRender: false }, CUE.change + 0.3);
 
   // the segment re-forms as a gold staircase (draw + staggered rises)
   tl.fromTo(outline, { strokeDashoffset: OUT_LEN }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, CUE.change + 0.14);
@@ -1004,7 +1006,7 @@
     }
   }
   climbUpdate();
-  tl.fromTo(climbP, { p: 0 }, { p: 1, duration: CUE.created - CUE.habits + 0.02, ease: "sine.inOut", onUpdate: climbUpdate }, CUE.habits);
+  tl.fromTo(climbP, { p: 0 }, { p: 1, duration: CUE.created - CUE.habits + 0.02, ease: "sine.inOut", immediateRender: false, onUpdate: climbUpdate }, CUE.habits);
 
   tl.fromTo(el("chipflip"), { rotationX: 0 }, { rotationX: 180, duration: 0.55, ease: "back.out(1.4)" }, CUE.habits - 0.04);
   tl.to(el("chipflip"), { scale: 1.12, duration: 0.18, ease: "power2.out" }, CUE.habits - 0.04);
@@ -1027,13 +1029,13 @@
   tl.fromTo(el("frontsweep"), { x: -260, opacity: 0 }, { x: 760, opacity: 1, duration: 0.6, ease: "power1.inOut" }, CUE.something - 0.05);
   tl.to(el("frontsweep"), { opacity: 0, duration: 0.12, ease: "power1.in" }, CUE.something + 0.43);
   // anticipation: the page corner lifts before the flip
-  tl.fromTo(el("front"), { rotationX: 0 }, { rotationX: 9, duration: 0.42, ease: "sine.inOut" }, CUE.you2 - 0.02);
+  tl.fromTo(el("front"), { rotationX: 0 }, { rotationX: -7, duration: 0.42, ease: "sine.inOut" }, CUE.you2 - 0.02);
   // "begin": the page flips over the binding (rotateX in perspective) to reveal TODAY
-  tl.to(el("front"), { rotationX: -104, y: -30, duration: 0.36, ease: "power2.in" }, CUE.begin);
+  tl.to(el("front"), { rotationX: 100, y: -40, duration: 0.36, ease: "power2.in" }, CUE.begin);
   tl.fromTo(el("frontshade"), { opacity: 0 }, { opacity: 0.55, duration: 0.36, ease: "power2.in", immediateRender: false }, CUE.begin);
   tl.fromTo(el("todaypage"), { filter: "brightness(0.55)" }, { filter: "brightness(1)", duration: 0.4, ease: "power2.out" }, CUE.begin + 0.1);
-  tl.fromTo(el("today"), { scale: 0.72, opacity: 0, letterSpacing: "0.18em", filter: "blur(12px)" },
-    { scale: 1, opacity: 1, letterSpacing: "-0.03em", filter: "blur(0px)", duration: 0.42, ease: "expo.out" }, CUE.begin + 0.2);
+  tl.fromTo(el("today"), { scale: 0.72, scaleX: 1.18, opacity: 0, y: 26, filter: "blur(12px)" },
+    { scale: 1, scaleX: 1, opacity: 1, y: 0, filter: "blur(0px)", duration: 0.42, ease: "expo.out" }, CUE.begin + 0.2);
   tl.fromTo(el("todayglow"), { opacity: 0, scale: 0.8 }, { opacity: 0.75, scale: 1, duration: 0.5, ease: "power2.out" }, CUE.begin + 0.24);
 
   // "today": DAY 1 stamp slams on the corner, shockwave + gold burst, tracker ticks

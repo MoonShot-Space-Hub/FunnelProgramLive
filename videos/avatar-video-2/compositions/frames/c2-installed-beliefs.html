@@ -1,0 +1,457 @@
+<template>
+<style>
+#root {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FFF5EA; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- ground ---------- */
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-ground { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-base {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background-color: #12061A;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #2E1240 0%, #12061A 72%);
+}
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-blob {
+  position: absolute; left: 380px; top: 180px; width: 940px; height: 940px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(224,33,138,1) 0%, rgba(224,33,138,0.5) 42%, rgba(224,33,138,0.14) 74%, rgba(224,33,138,0) 100%);
+  opacity: 0.3;
+}
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-goldglow {
+  position: absolute; left: 310px; top: 290px; width: 440px; height: 440px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255,194,74,1) 0%, rgba(255,194,74,0.4) 45%, rgba(255,194,74,0) 100%);
+  opacity: 0.1;
+}
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-grid { position: absolute; left: -120px; top: -120px; width: 1320px; height: 2160px; opacity: 0.1; overflow: visible; }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-dust { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-dot { position: absolute; left: 0; top: 0; display: block; border-radius: 50%; background: radial-gradient(circle closest-side, #FFF3C8 0%, #FFC24A 45%, rgba(255,194,74,0) 100%); }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-grain { position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0.06; }
+
+/* ---------- camera + shake ---------- */
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-shake,
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 600px; }
+
+/* streams */
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-bits { position: absolute; left: 0; top: 0; width: 1080px; height: 1200px; }
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-bit { position: absolute; left: 0; top: 0; display: block; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 2px; opacity: 0; }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-words { position: absolute; left: 0; top: 0; width: 1080px; height: 1200px; }
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-word { position: absolute; left: 0; top: 0; opacity: 0; }
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-wchip {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+  padding: 10px 18px 9px; border-radius: 12px; border: 2px solid rgba(255,77,94,0.75);
+  background: rgba(40,8,24,0.86); box-shadow: 0 0 22px rgba(255,77,94,0.35);
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 33px; line-height: 1; letter-spacing: 0;
+  color: #FF6B79; white-space: nowrap;
+}
+
+/* head */
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-headwrap { position: absolute; left: 230px; top: 255px; width: 560px; height: 640px; transform-origin: 300px 300px; }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-head {
+  position: absolute; left: 0; top: 0; width: 560px; height: 640px; overflow: visible;
+  -webkit-mask-image: linear-gradient(180deg, #000 0px, #000 540px, rgba(0,0,0,0) 640px);
+  mask-image: linear-gradient(180deg, #000 0px, #000 540px, rgba(0,0,0,0) 640px);
+}
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-ring { position: absolute; display: block; border-radius: 50%; box-sizing: border-box; opacity: 0; }
+
+/* coin + padlock */
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-coin { position: absolute; left: 435px; top: 415px; width: 170px; height: 170px; opacity: 0; filter: drop-shadow(0 12px 18px rgba(0,0,0,0.5)); }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-coin svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-coinglow {
+  position: absolute; left: 330px; top: 310px; width: 380px; height: 380px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(circle closest-side, rgba(255,225,160,0.95) 0%, rgba(255,194,74,0.45) 40%, rgba(255,194,74,0) 100%);
+}
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-lock { position: absolute; left: 420px; top: 330px; width: 200px; height: 260px; transform-origin: 100px 190px; opacity: 0; }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-locksvg { position: absolute; left: 0; top: 0; width: 200px; height: 260px; overflow: visible; filter: drop-shadow(0 16px 20px rgba(0,0,0,0.55)); }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-flash {
+  position: absolute; left: 270px; top: 270px; width: 500px; height: 500px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(circle closest-side, rgba(255,255,255,1) 0%, rgba(255,225,160,0.7) 30%, rgba(255,194,74,0) 100%);
+}
+
+/* readout card */
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-card {
+  position: absolute; left: 150px; top: 944px; width: 780px; height: 140px; box-sizing: border-box; overflow: hidden;
+  border-radius: 28px; border: 3px solid rgba(255,95,176,0.40);
+  background: linear-gradient(160deg, rgba(46,18,64,0.96), rgba(30,13,43,0.96));
+  box-shadow: 0 30px 70px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.08);
+  transform-origin: 50% 50%;
+}
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-lbl { position: absolute; left: 34px; top: 24px; width: 540px; height: 44px; overflow: hidden; }
+[data-composition-id="c2-installed-beliefs"] .c2-installed-beliefs-line {
+  position: absolute; left: 0; top: 0; height: 44px; line-height: 44px; white-space: nowrap;
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 32px; letter-spacing: 0.04em;
+}
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-la { color: #FFF5EA; }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-lb { color: #FFC24A; text-shadow: 0 0 22px rgba(255,194,74,0.5); opacity: 0; }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-pct {
+  position: absolute; right: 34px; top: 24px; height: 44px; line-height: 44px;
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 36px; color: #FFC24A; text-align: right;
+  text-shadow: 0 0 20px rgba(255,194,74,0.45);
+}
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-track { position: absolute; left: 34px; right: 34px; top: 88px; height: 22px; border-radius: 11px; background: #12061A; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0,0,0,0.6); }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-fill {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 11px;
+  background: linear-gradient(90deg, #B8801C 0%, #FFC24A 70%, #FFE1A0 100%);
+  transform: scaleX(0); transform-origin: left center;
+}
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-ticks { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="c2-installed-beliefs"] #c2-installed-beliefs-cardsheen {
+  position: absolute; left: 0; top: -30%; width: 200px; height: 160%;
+  background: linear-gradient(100deg, rgba(255,245,234,0) 0%, rgba(255,245,234,0.22) 50%, rgba(255,245,234,0) 100%);
+}
+</style>
+
+<div id="root" data-composition-id="c2-installed-beliefs" data-start="0" data-duration="2.44" data-width="1080" data-height="1920">
+  <svg class="c2-installed-beliefs-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="c2-installed-beliefs-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="23" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+      <filter id="c2-installed-beliefs-mb0" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="c2-installed-beliefs-mb0n" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="c2-installed-beliefs-mb1" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="c2-installed-beliefs-mb1n" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="c2-installed-beliefs-mb2" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="c2-installed-beliefs-mb2n" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="c2-installed-beliefs-mb3" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="c2-installed-beliefs-mb3n" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="c2-installed-beliefs-mb4" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="c2-installed-beliefs-mb4n" stdDeviation="0 0"></feGaussianBlur></filter>
+      <radialGradient id="c2-installed-beliefs-coinface" cx="0.38" cy="0.32" r="0.78">
+        <stop offset="0" stop-color="#FFF6D6"></stop>
+        <stop offset="0.32" stop-color="#FFE1A0"></stop>
+        <stop offset="0.68" stop-color="#FFC24A"></stop>
+        <stop offset="1" stop-color="#B8801C"></stop>
+      </radialGradient>
+      <linearGradient id="c2-installed-beliefs-coinrim" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFE9B8"></stop>
+        <stop offset="0.5" stop-color="#D99A2B"></stop>
+        <stop offset="1" stop-color="#7A4E0C"></stop>
+      </linearGradient>
+      <linearGradient id="c2-installed-beliefs-lockbody" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFE9B8"></stop>
+        <stop offset="0.35" stop-color="#FFC24A"></stop>
+        <stop offset="1" stop-color="#B8801C"></stop>
+      </linearGradient>
+      <linearGradient id="c2-installed-beliefs-shackle" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#B8801C"></stop>
+        <stop offset="0.45" stop-color="#FFF0C8"></stop>
+        <stop offset="1" stop-color="#B8801C"></stop>
+      </linearGradient>
+      <radialGradient id="c2-installed-beliefs-headfill" cx="300" cy="230" r="420" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#2E1240"></stop>
+        <stop offset="1" stop-color="#1E0D2B"></stop>
+      </radialGradient>
+      <radialGradient id="c2-installed-beliefs-brain" cx="290" cy="245" r="230" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FF5FB0" stop-opacity="0.95"></stop>
+        <stop offset="0.45" stop-color="#E0218A" stop-opacity="0.55"></stop>
+        <stop offset="1" stop-color="#E0218A" stop-opacity="0"></stop>
+      </radialGradient>
+      <clipPath id="c2-installed-beliefs-headclip"><path d="M150 640 C150 590 140 560 120 530 C60 470 40 360 70 270 C110 140 230 70 340 80 C440 90 500 160 505 240 C507 265 505 280 512 295 C530 330 552 360 556 380 C558 392 548 400 530 402 C528 412 534 420 532 430 C540 438 538 448 528 452 C536 460 534 472 522 478 C520 500 520 520 500 535 C470 550 430 555 410 565 C400 590 405 620 410 640 Z"></path></clipPath>
+      <symbol id="c2-installed-beliefs-coinsym" viewBox="-50 -50 100 100">
+        <circle r="48" fill="url(#c2-installed-beliefs-coinrim)"></circle>
+        <circle r="42" fill="url(#c2-installed-beliefs-coinface)"></circle>
+        <circle r="34" fill="none" stroke="#B8801C" stroke-width="2.6" opacity="0.75"></circle>
+        <circle cx="-0.8" cy="-1" r="34" fill="none" stroke="#FFF6D6" stroke-width="1.4" opacity="0.85"></circle>
+        <path d="M0 -19 L4.7 -6.47 L18.07 -5.87 L7.61 2.47 L11.17 15.37 L0 8 L-11.17 15.37 L-7.61 2.47 L-18.07 -5.87 L-4.7 -6.47 Z" fill="#E6A136" stroke="#FFF0C8" stroke-width="1.6" stroke-linejoin="round"></path>
+        <ellipse cx="-17" cy="-22" rx="11" ry="4.6" fill="#FFFFFF" opacity="0.85" transform="rotate(-35 -17 -22)"></ellipse>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track -->
+  <div id="c2-installed-beliefs-ground" class="clip" data-start="0" data-duration="2.44" data-track-index="0">
+    <div class="c2-installed-beliefs-base"></div>
+    <div id="c2-installed-beliefs-blob"></div>
+    <div id="c2-installed-beliefs-goldglow"></div>
+    <svg id="c2-installed-beliefs-grid" viewBox="0 0 1320 2160" aria-hidden="true"><g id="c2-installed-beliefs-gridg" stroke="#FF5FB0" stroke-width="1.5"></g></svg>
+    <div id="c2-installed-beliefs-dust"></div>
+    <svg id="c2-installed-beliefs-grain" width="1080" height="1920" aria-hidden="true"><rect width="1080" height="1920" filter="url(#c2-installed-beliefs-grainf)"></rect></svg>
+  </div>
+
+  <div id="c2-installed-beliefs-shake">
+    <div id="c2-installed-beliefs-cam">
+      <!-- streams fly in BEHIND the skull, so they vanish into the back of the head -->
+      <div id="c2-installed-beliefs-bits"></div>
+      <div id="c2-installed-beliefs-words">
+        <div class="c2-installed-beliefs-word" id="c2-installed-beliefs-w0" style="filter:url(#c2-installed-beliefs-mb0)"><div class="c2-installed-beliefs-wchip" data-layout-allow-overlap>MONEY IS HARD</div></div>
+        <div class="c2-installed-beliefs-word" id="c2-installed-beliefs-w1" style="filter:url(#c2-installed-beliefs-mb1)"><div class="c2-installed-beliefs-wchip" data-layout-allow-overlap>SAVE, DON'T SPEND</div></div>
+        <div class="c2-installed-beliefs-word" id="c2-installed-beliefs-w2" style="filter:url(#c2-installed-beliefs-mb2)"><div class="c2-installed-beliefs-wchip" data-layout-allow-overlap>NOT FOR US</div></div>
+        <div class="c2-installed-beliefs-word" id="c2-installed-beliefs-w3" style="filter:url(#c2-installed-beliefs-mb3)"><div class="c2-installed-beliefs-wchip" data-layout-allow-overlap>BE CAREFUL</div></div>
+        <div class="c2-installed-beliefs-word" id="c2-installed-beliefs-w4" style="filter:url(#c2-installed-beliefs-mb4)"><div class="c2-installed-beliefs-wchip" data-layout-allow-overlap>RICH = GREEDY</div></div>
+      </div>
+
+      <div id="c2-installed-beliefs-headwrap">
+        <svg id="c2-installed-beliefs-head" viewBox="0 0 560 640" aria-hidden="true">
+          <path id="c2-installed-beliefs-hfill" d="M150 640 C150 590 140 560 120 530 C60 470 40 360 70 270 C110 140 230 70 340 80 C440 90 500 160 505 240 C507 265 505 280 512 295 C530 330 552 360 556 380 C558 392 548 400 530 402 C528 412 534 420 532 430 C540 438 538 448 528 452 C536 460 534 472 522 478 C520 500 520 520 500 535 C470 550 430 555 410 565 C400 590 405 620 410 640 Z" fill="url(#c2-installed-beliefs-headfill)"></path>
+          <g clip-path="url(#c2-installed-beliefs-headclip)">
+            <circle id="c2-installed-beliefs-brainglow" cx="290" cy="245" r="230" fill="url(#c2-installed-beliefs-brain)" opacity="0"></circle>
+            <g id="c2-installed-beliefs-circ" fill="none" stroke="#FF5FB0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+              <path d="M290 250 L290 170 L240 130 L180 130"></path>
+              <path d="M290 250 L370 250 L410 210 L455 210"></path>
+              <path d="M290 250 L210 250 L170 290 L115 290"></path>
+              <path d="M290 250 L290 330 L340 372 L405 372"></path>
+              <path d="M290 250 L230 190 L150 190"></path>
+              <path d="M290 250 L350 190 L350 140 L405 118"></path>
+              <path d="M290 250 L240 310 L240 360 L185 382"></path>
+              <path d="M290 250 L360 310 L445 310"></path>
+            </g>
+            <g id="c2-installed-beliefs-cnodes" fill="#FFE1A0"></g>
+          </g>
+          <path id="c2-installed-beliefs-hglow" d="M150 640 C150 590 140 560 120 530 C60 470 40 360 70 270 C110 140 230 70 340 80 C440 90 500 160 505 240 C507 265 505 280 512 295 C530 330 552 360 556 380 C558 392 548 400 530 402 C528 412 534 420 532 430 C540 438 538 448 528 452 C536 460 534 472 522 478 C520 500 520 520 500 535 C470 550 430 555 410 565 C400 590 405 620 410 640" fill="none" stroke="#E0218A" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="0.32"></path>
+          <path id="c2-installed-beliefs-hline" d="M150 640 C150 590 140 560 120 530 C60 470 40 360 70 270 C110 140 230 70 340 80 C440 90 500 160 505 240 C507 265 505 280 512 295 C530 330 552 360 556 380 C558 392 548 400 530 402 C528 412 534 420 532 430 C540 438 538 448 528 452 C536 460 534 472 522 478 C520 500 520 520 500 535 C470 550 430 555 410 565 C400 590 405 620 410 640" fill="none" stroke="#FF5FB0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+
+      <div id="c2-installed-beliefs-rings"></div>
+      <div id="c2-installed-beliefs-coinglow"></div>
+      <div id="c2-installed-beliefs-coin"><svg viewBox="-50 -50 100 100" aria-hidden="true"><use href="#c2-installed-beliefs-coinsym" x="-50" y="-50" width="100" height="100"></use></svg></div>
+      <div id="c2-installed-beliefs-flash"></div>
+      <div class="c2-installed-beliefs-ring" id="c2-installed-beliefs-ripple" style="left:370px;top:380px;width:300px;height:300px;border:6px solid #FFC24A;box-shadow:0 0 30px rgba(255,194,74,0.7)"></div>
+      <div id="c2-installed-beliefs-lock">
+        <svg id="c2-installed-beliefs-locksvg" viewBox="0 0 200 260" aria-hidden="true">
+          <g id="c2-installed-beliefs-shk">
+            <path d="M48 140 V82 C48 46 72 22 100 22 C128 22 152 46 152 82 V140" fill="none" stroke="#7A4E0C" stroke-width="30" stroke-linecap="round"></path>
+            <path d="M48 140 V82 C48 46 72 22 100 22 C128 22 152 46 152 82 V140" fill="none" stroke="url(#c2-installed-beliefs-shackle)" stroke-width="22" stroke-linecap="round"></path>
+          </g>
+          <rect x="18" y="122" width="164" height="132" rx="26" fill="#7A4E0C"></rect>
+          <rect x="22" y="126" width="156" height="124" rx="23" fill="url(#c2-installed-beliefs-lockbody)"></rect>
+          <rect x="34" y="136" width="132" height="10" rx="5" fill="#FFF6D6" opacity="0.55"></rect>
+          <circle cx="100" cy="182" r="17" fill="#3A1F05"></circle>
+          <path d="M92 190 L108 190 L104 222 L96 222 Z" fill="#3A1F05"></path>
+          <clipPath id="c2-installed-beliefs-bodyclip"><rect x="22" y="126" width="156" height="124" rx="23"></rect></clipPath>
+          <g clip-path="url(#c2-installed-beliefs-bodyclip)"><rect id="c2-installed-beliefs-locksheen" x="-80" y="120" width="50" height="140" fill="#FFFFFF" opacity="0.4" transform="skewX(-20)"></rect></g>
+        </svg>
+      </div>
+
+      <div id="c2-installed-beliefs-card">
+        <div class="c2-installed-beliefs-lbl">
+          <div class="c2-installed-beliefs-line" id="c2-installed-beliefs-la">LEARNING<span id="c2-installed-beliefs-dots">...</span></div>
+          <div class="c2-installed-beliefs-line" id="c2-installed-beliefs-lb">BELIEFS INSTALLED</div>
+        </div>
+        <div id="c2-installed-beliefs-pct">0%</div>
+        <div id="c2-installed-beliefs-track">
+          <div id="c2-installed-beliefs-fill"></div>
+          <svg id="c2-installed-beliefs-ticks" viewBox="0 0 706 22" preserveAspectRatio="none" aria-hidden="true"><g id="c2-installed-beliefs-tickg" stroke="#12061A" stroke-width="3" opacity="0.55"></g></svg>
+        </div>
+        <div id="c2-installed-beliefs-cardsheen"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var ID = "c2-installed-beliefs";
+  var P = ID + "-";
+  var DUR = 2.44;
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var TAU = Math.PI * 2;
+  function el(n) { return document.getElementById(P + n); }
+  function prand(n) { var x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function smooth(v) { v = clamp01(v); return v * v * (3 - 2 * v); }
+  function f1(v) { return v.toFixed(1); }
+  var i;
+
+  // ---------- ground: grid + dust ----------
+  var gridG = el("gridg");
+  for (i = 0; i <= 11; i++) { var vl = document.createElementNS(SVGNS, "line"); vl.setAttribute("x1", i * 120); vl.setAttribute("x2", i * 120); vl.setAttribute("y1", 0); vl.setAttribute("y2", 2160); gridG.appendChild(vl); }
+  for (i = 0; i <= 18; i++) { var hl = document.createElementNS(SVGNS, "line"); hl.setAttribute("y1", i * 120); hl.setAttribute("y2", i * 120); hl.setAttribute("x1", 0); hl.setAttribute("x2", 1320); gridG.appendChild(hl); }
+  var dust = [];
+  for (i = 0; i < 28; i++) {
+    var d = document.createElement("i");
+    d.className = P + "dot";
+    var ds = 4 + prand(i * 3 + 41) * 8;
+    d.style.width = f1(ds) + "px"; d.style.height = f1(ds) + "px";
+    d.style.marginLeft = f1(-ds / 2) + "px"; d.style.marginTop = f1(-ds / 2) + "px";
+    el("dust").appendChild(d);
+    dust.push({ el: d, x: prand(i * 5 + 42) * 1080, y: 80 + prand(i * 7 + 43) * 1800, v: 18 + prand(i * 11 + 44) * 40, ph: prand(i * 13 + 45) * TAU, tw: 2 + prand(i * 17 + 46) * 5, base: 0.25 + prand(i * 19 + 47) * 0.55 });
+  }
+
+  // ---------- belief words: quadratic flight paths into the back of the skull ----------
+  // [startX, startY, ctrlX, ctrlY, endX, endY, launch, flight]
+  var WP = [
+    [-320, 120, 445, 10, 430, 540, 0.0, 0.8],
+    [-340, 330, 575, 45, 430, 600, 0.14, 0.8],
+    [-300, 560, 285, 350, 430, 620, 0.3, 0.8],
+    [-300, 900, 295, 710, 430, 660, 0.46, 0.8],
+    [-320, 260, 405, 250, 430, 580, 0.6, 0.8]
+  ];
+  var words = WP.map(function (w, k) { return { el: el("w" + k), blur: el("mb" + k + "n"), w: w }; });
+  function qpt(w, u) {
+    var a = 1 - u;
+    return [a * a * w[0] + 2 * a * u * w[2] + u * u * w[4], a * a * w[1] + 2 * a * u * w[3] + u * u * w[5]];
+  }
+  function qdt(w, u) {
+    return [2 * (1 - u) * (w[2] - w[0]) + 2 * u * (w[4] - w[2]), 2 * (1 - u) * (w[3] - w[1]) + 2 * u * (w[5] - w[3])];
+  }
+  // progress along path: fast entry, readable hover at mid-flight, fast swoop into the head
+  var HOV = 0.82;
+  function wu(x) { return x + HOV * Math.sin(TAU * x) / TAU; }
+  function wdu(x) { return 1 + HOV * Math.cos(TAU * x); }
+  function bu(x) { return x * x * (1.6 - 0.6 * x); }
+
+  // data bits stream along the same five paths
+  var bits = [];
+  for (i = 0; i < 30; i++) {
+    var b = document.createElement("i");
+    b.className = P + "bit";
+    b.style.background = i % 4 === 0 ? "#FFC24A" : "#FF5FB0";
+    b.style.boxShadow = i % 4 === 0 ? "0 0 10px #FFC24A" : "0 0 10px #E0218A";
+    el("bits").appendChild(b);
+    bits.push({ el: b, w: WP[i % 5], t0: 0.0 + i * 0.038, dur: 0.5 + prand(i * 7 + 3) * 0.2, off: (prand(i * 11 + 5) - 0.5) * 40 });
+  }
+
+  // absorption pulse rings at the back of the head (one per word)
+  var ringsEl = el("rings"), pulses = [];
+  WP.forEach(function (w, k) {
+    var r = document.createElement("i");
+    r.className = P + "ring";
+    var rp = qpt(w, 0.84);
+    r.style.left = f1(rp[0] - 50) + "px"; r.style.top = f1(rp[1] - 50) + "px"; r.style.width = "100px"; r.style.height = "100px";
+    r.style.border = "4px solid #FF5FB0"; r.style.boxShadow = "0 0 18px rgba(224,33,138,0.8)";
+    ringsEl.appendChild(r);
+    pulses.push({ el: r, at: w[6] + w[7] * 0.8 });
+  });
+
+  // circuit node dots at trace ends
+  var circPaths = el("circ").querySelectorAll("path"), cnodes = [];
+  for (i = 0; i < circPaths.length; i++) {
+    var len = circPaths[i].getTotalLength();
+    circPaths[i].style.strokeDasharray = f1(len + 2);
+    circPaths[i].style.strokeDashoffset = f1(len + 2);
+    var end = circPaths[i].getPointAtLength(len);
+    var cn = document.createElementNS(SVGNS, "circle");
+    cn.setAttribute("cx", f1(end.x)); cn.setAttribute("cy", f1(end.y)); cn.setAttribute("r", "7");
+    cn.setAttribute("opacity", "0");
+    el("cnodes").appendChild(cn);
+    cnodes.push({ c: cn, len: len, p: circPaths[i] });
+  }
+
+  // progress-track ticks every 5%
+  var tickG = el("tickg");
+  for (i = 1; i < 20; i++) { var tk = document.createElementNS(SVGNS, "line"); tk.setAttribute("x1", f1(i * 706 / 20)); tk.setAttribute("x2", f1(i * 706 / 20)); tk.setAttribute("y1", 0); tk.setAttribute("y2", 22); tickG.appendChild(tk); }
+
+  var tl = gsap.timeline({ paused: true });
+
+  // ---------- AMBIENT: one finite clock ----------
+  var blob = el("blob"), gold = el("goldglow"), dotsEl = el("dots"), shake = el("shake"), brain = el("brainglow"), coinGlow = el("coinglow"), headWrap = el("headwrap");
+  var amb = { t: 0 };
+  var SLAM = 2.12;
+  function applyAmbient() {
+    var t = amb.t, k;
+    blob.style.transform = "translate(" + f1(-36 * t) + "px," + f1(24 * Math.sin(t * 1.1)) + "px)";
+    gold.style.opacity = (0.1 + 0.18 * smooth((t - 1.4) / 0.5) + 0.03 * Math.sin(t * 2.6)).toFixed(3);
+    gridG.setAttribute("transform", "translate(" + f1(-14 * t) + "," + f1(-22 * t) + ")");
+    for (k = 0; k < dust.length; k++) {
+      var dd = dust[k];
+      dd.el.style.transform = "translate(" + f1(dd.x + 10 * Math.sin(dd.ph + t * 1.3)) + "px," + f1(dd.y - dd.v * t) + "px)";
+      dd.el.style.opacity = (dd.base * (0.55 + 0.45 * Math.sin(dd.ph + t * dd.tw))).toFixed(3);
+    }
+    // head: gentle float
+    headWrap.style.transform = "translateY(" + f1(4 * Math.sin(t * 2.2)) + "px)";
+    // words in flight (motion blur follows path speed)
+    for (k = 0; k < words.length; k++) {
+      var wd = words[k], w = wd.w;
+      var x = (t - w[6]) / w[7];
+      if (x <= 0 || x >= 1) { wd.el.style.opacity = "0"; wd.blur.setAttribute("stdDeviation", "0 0"); continue; }
+      var u = wu(x), pt = qpt(w, u), dv = qdt(w, u), sp = wdu(x) / w[7];
+      var vx = dv[0] * sp, vy = dv[1] * sp, speed = Math.sqrt(vx * vx + vy * vy);
+      var ang = Math.atan2(vy, vx) * 180 / Math.PI * 0.45;
+      var sc = 1 - 0.35 * smooth((u - 0.6) / 0.4);
+      wd.el.style.transform = "translate(" + f1(pt[0]) + "px," + f1(pt[1]) + "px) rotate(" + f1(ang) + "deg) scale(" + sc.toFixed(3) + ")";
+      wd.el.style.opacity = (smooth(x / 0.12) * (1 - smooth((u - 0.86) / 0.14))).toFixed(3);
+      var bl = Math.min(9, Math.max(0, speed - 500) / 220);
+      wd.blur.setAttribute("stdDeviation", (bl * Math.abs(Math.cos(ang * Math.PI / 180))).toFixed(2) + " " + (bl * 0.25).toFixed(2));
+    }
+    // data bits
+    for (k = 0; k < bits.length; k++) {
+      var bt = bits[k], bx = (t - bt.t0) / bt.dur;
+      if (bx <= 0 || bx >= 1) { bt.el.style.opacity = "0"; continue; }
+      var bp = qpt(bt.w, bu(bx));
+      bt.el.style.transform = "translate(" + f1(bp[0]) + "px," + f1(bp[1] + bt.off * (1 - bx)) + "px) rotate(45deg)";
+      bt.el.style.opacity = (smooth(bx / 0.15) * (1 - smooth((bx - 0.8) / 0.2)) * 0.9).toFixed(3);
+    }
+    // absorption pulses
+    for (k = 0; k < pulses.length; k++) {
+      var pl = pulses[k], pt2 = (t - pl.at) / 0.4;
+      if (pt2 <= 0 || pt2 >= 1) { pl.el.style.opacity = "0"; continue; }
+      pl.el.style.transform = "scale(" + (0.3 + 1.5 * (1 - Math.pow(1 - pt2, 3))).toFixed(3) + ")";
+      pl.el.style.opacity = (0.9 * (1 - pt2)).toFixed(3);
+    }
+    // LEARNING dots tick
+    var nd = Math.floor(t * 7) % 4;
+    dotsEl.textContent = nd === 0 ? "   " : nd === 1 ? ".  " : nd === 2 ? ".. " : "...";
+    // brain glow: dim pulse per absorbed word, then full on "believe"
+    var pulse = 0;
+    for (k = 0; k < pulses.length; k++) pulse += 0.22 * Math.exp(-Math.pow((t - pulses[k].at - 0.06) / 0.1, 2));
+    var bg = Math.min(1, pulse + 0.85 * smooth((t - 1.32) / 0.45) + 0.12 * Math.sin((t - 1.32) * 5) * smooth((t - 1.8) / 0.2));
+    brain.setAttribute("opacity", bg.toFixed(3));
+    coinGlow.style.opacity = (0.45 * smooth((t - 1.5) / 0.35) * (0.9 + 0.1 * Math.sin(t * 6))).toFixed(3);
+    // impact shake: decaying, pure function of t
+    var st = t - SLAM;
+    if (st > 0) {
+      var amp = 14 * Math.exp(-11 * st);
+      shake.style.transform = "translate(" + f1(amp * Math.sin(st * 70)) + "px," + f1(amp * 0.7 * Math.sin(st * 53 + 1)) + "px)";
+    } else shake.style.transform = "translate(0px,0px)";
+  }
+  applyAmbient();
+  tl.fromTo(amb, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: applyAmbient }, 0);
+
+  // camera push
+  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.04, duration: DUR, ease: "power1.inOut" }, 0);
+
+  // ---------- SCENE 1 (0.0-1.2): head outline draws over a panel fill; beliefs stream in ----------
+  var hline = el("hline"), hglow = el("hglow"), HL = hline.getTotalLength() * 1.02;
+  hline.style.strokeDasharray = f1(HL); hglow.style.strokeDasharray = f1(HL);
+  tl.fromTo(el("hfill"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0);
+  tl.fromTo(headWrap, { scale: 0.9, x: 40 }, { scale: 1, x: 0, duration: 0.7, ease: "expo.out" }, 0);
+  tl.fromTo(hline, { strokeDashoffset: HL }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 0.02);
+  tl.fromTo(hglow, { strokeDashoffset: HL }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 0.02);
+
+  // readout card rises in and starts "LEARNING..."
+  tl.fromTo(el("card"), { y: 60, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 0.16);
+
+  // progress: slow creep while learning, then a fast fill on "believe" @1.32
+  var fill = el("fill"), pctEl = el("pct"), prog = { p: 0 };
+  function writeProg() {
+    fill.style.transform = "scaleX(" + prog.p.toFixed(4) + ")";
+    pctEl.textContent = Math.round(prog.p * 100) + "%";
+  }
+  writeProg();
+  tl.fromTo(prog, { p: 0 }, { p: 0.24, duration: 1.0, ease: "none", onUpdate: writeProg }, 0.3);
+  tl.fromTo(prog, { p: 0.24 }, { p: 1, duration: 0.5, ease: "power3.inOut", onUpdate: writeProg, immediateRender: false }, 1.32);
+
+  // circuits light up as the beliefs install
+  cnodes.forEach(function (cn, k) {
+    tl.fromTo(cn.p, { strokeDashoffset: cn.len + 2 }, { strokeDashoffset: 0, duration: 0.36, ease: "power2.out" }, 1.34 + k * 0.035);
+    tl.fromTo(cn.c, { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: 0.12, ease: "none" }, 1.6 + k * 0.035);
+  });
+
+  // ---------- SCENE 2 (1.2-2.44): installed 100%, coin rises, padlock slams on "money" ----------
+  tl.fromTo(el("la"), { y: 0, opacity: 1 }, { y: -44, opacity: 0, duration: 0.22, ease: "power2.in" }, 1.3);
+  tl.fromTo(el("lb"), { y: 44, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "expo.out" }, 1.42);
+  tl.fromTo(el("card"), { boxShadow: "0 30px 70px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0px rgba(255,194,74,0)" },
+    { boxShadow: "0 30px 70px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 46px rgba(255,194,74,0.55)", duration: 0.3, ease: "power2.out" }, 1.8);
+  tl.fromTo(el("card"), { borderColor: "rgba(255,95,176,0.40)" }, { borderColor: "rgba(255,194,74,0.85)", duration: 0.2, ease: "none" }, 1.8);
+  tl.fromTo(el("cardsheen"), { x: -240 }, { x: 900, duration: 0.45, ease: "power1.inOut" }, 1.84);
+
+  // gold coin rises to the centre of the brain
+  tl.fromTo(el("coin"), { y: 260, scale: 0.35, opacity: 0, rotationY: -160, transformPerspective: 700 },
+    { y: 0, scale: 1, opacity: 1, rotationY: 0, duration: 0.5, ease: "back.out(1.6)" }, 1.46);
+
+  // padlock slams down (kinetic-beat-slam: scale + blur, power4.out), shackle snaps shut on impact
+  tl.fromTo(el("lock"), { scale: 2.5, y: -120, opacity: 0, filter: "blur(14px)" }, { scale: 1, y: 0, opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power3.in" }, 1.96);
+  tl.set(el("lock"), { filter: "none" }, 2.12);
+  tl.fromTo(el("lock"), { scaleX: 1, scaleY: 1 }, { scaleX: 1.08, scaleY: 0.9, duration: 0.05, ease: "power2.out", immediateRender: false }, SLAM);
+  tl.to(el("lock"), { scaleX: 1, scaleY: 1, duration: 0.26, ease: "back.out(3)" }, SLAM + 0.05);
+  tl.fromTo(el("shk"), { y: -34 }, { y: 0, duration: 0.07, ease: "power4.in" }, SLAM - 0.02);
+  tl.fromTo(el("flash"), { scale: 0.5, opacity: 0 }, { scale: 1.1, opacity: 0.9, duration: 0.05, ease: "none" }, SLAM + 0.03);
+  tl.to(el("flash"), { scale: 1.4, opacity: 0, duration: 0.26, ease: "power2.out" }, SLAM + 0.08);
+  tl.fromTo(el("ripple"), { scale: 0.35, opacity: 0 }, { scale: 0.5, opacity: 1, duration: 0.04, ease: "none" }, SLAM + 0.03);
+  tl.to(el("ripple"), { scale: 2.3, opacity: 0, duration: 0.3, ease: "power2.out" }, SLAM + 0.07);
+  tl.fromTo(el("coin"), { scale: 1 }, { scale: 0.9, duration: 0.08, ease: "power2.out", immediateRender: false }, SLAM);
+  tl.fromTo(el("locksheen"), { attr: { x: -40 } }, { attr: { x: 300 }, duration: 0.24, ease: "power1.inOut" }, SLAM + 0.08);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
