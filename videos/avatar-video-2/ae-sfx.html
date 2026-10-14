@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: transparent;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* A-roll inside a non-timed camera wrapper for punch-ins (face centre ≈ 500, 660) */
+      #cam {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transform-origin: 500px 660px;
+        will-change: transform, filter;
+      }
+      #a-roll {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* cutaway wrappers (non-timed) around each sub-composition host */
+      .bw {
+        position: absolute;
+        inset: 0;
+        z-index: 40;
+        pointer-events: none;
+        will-change: opacity, filter;
+      }
+      .bw > div[data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* black gradient behind the captions */
+      #cap-gradient {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1040px;
+        z-index: 30;
+        pointer-events: none;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0.84) 30%,
+          rgba(0, 0, 0, 0.76) 55%,
+          rgba(0, 0, 0, 0.68) 66%,
+          rgba(0, 0, 0, 0.44) 82%,
+          rgba(0, 0, 0, 0.16) 92%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+
+      /* captions: y 1030–1248, inside Instagram's Reels safe zone (bottom 35% kept clear) */
+      #captions {
+        position: absolute;
+        left: 0;
+        top: 1030px;
+        width: 100%;
+        height: 218px;
+        z-index: 60;
+        pointer-events: none;
+      }
+      .cg {
+        position: absolute;
+        left: 75px;
+        right: 75px;
+        top: 0;
+        height: 218px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: baseline;
+        justify-content: center;
+        column-gap: 22px;
+        row-gap: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .cw {
+        position: relative;
+        display: inline-block;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+        font-size: 74px;
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+        color: #fff5ea;
+        text-shadow:
+          0 4px 18px rgba(0, 0, 0, 0.6),
+          0 2px 3px rgba(0, 0, 0, 0.7);
+        transform-origin: 50% 70%;
+        isolation: isolate;
+        --mk: 0;
+      }
+      .cw.em {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-size: 96px;
+        letter-spacing: -0.03em;
+        color: #ffc24a;
+        text-shadow:
+          0 0 38px rgba(255, 194, 74, 0.5),
+          0 4px 16px rgba(0, 0, 0, 0.65);
+      }
+      .cw.em.red {
+        color: #ff4d5e;
+        text-shadow:
+          0 0 38px rgba(255, 77, 94, 0.45),
+          0 4px 16px rgba(0, 0, 0, 0.65);
+      }
+      .cw.em::after {
+        content: "";
+        position: absolute;
+        left: -6px;
+        right: -6px;
+        bottom: 14px;
+        height: 22px;
+        border-radius: 6px;
+        background: rgba(224, 33, 138, 0.8);
+        transform-origin: 0% 50%;
+        transform: scaleX(var(--mk));
+        z-index: -1;
+      }
+      .cw.em.long {
+        font-size: 80px;
+      }
+      .cw.em.red::after {
+        background: rgba(70, 8, 30, 0.85);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="ae-sfx"
+      data-start="0"
+      data-duration="43.32"
+      data-fps="25"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- A-roll -->
+      <div id="cam">
+        <video
+          id="a-roll"
+          class="clip"
+          src="assets/avatar-video-2.mp4"
+          playsinline
+          data-has-audio="true"
+          data-start="0"
+          data-duration="43.32"
+          data-track-index="0"
+          data-volume="0"
+        ></video>
+      </div>
+
+
+      <!-- Audio: original score at -15 dB (data-volume 0.178) + sound design 5 dB lower to match
+           (voice stays on the A-roll) -->
+      <!-- SFX_BEGIN -->
+      <!-- c1 in -->
+      <audio id="sfx-01" src="assets/sfx/whoosh.mp3" data-start="0.44" data-duration="0.57" data-track-index="10" data-volume="0.073" data-audio-group="sfx"></audio>
+      <!-- coin rain on money -->
+      <audio id="sfx-02" src="assets/sfx/sparkle.mp3" data-start="1.24" data-duration="1.8" data-track-index="11" data-volume="0.034" data-audio-group="sfx"></audio>
+      <!-- MONEY IS EVERYWHERE chip -->
+      <audio id="sfx-03" src="assets/sfx/pop.mp3" data-start="1.79" data-duration="0.72" data-track-index="9" data-volume="0.098" data-audio-group="sfx"></audio>
+      <!-- c1 out -->
+      <audio id="sfx-04" src="assets/sfx/whoosh-short.mp3" data-start="2.14" data-duration="0.57" data-track-index="10" data-volume="0.067" data-audio-group="sfx"></audio>
+      <!-- c2 in -->
+      <audio id="sfx-05" src="assets/sfx/whoosh.mp3" data-start="6.64" data-duration="0.57" data-track-index="11" data-volume="0.073" data-audio-group="sfx"></audio>
+      <!-- progress bar -->
+      <audio id="sfx-06" src="assets/sfx/click-soft.mp3" data-start="8.06" data-duration="0.37" data-track-index="9" data-volume="0.092" data-audio-group="sfx"></audio>
+      <!-- padlock slams -->
+      <audio id="sfx-07" src="assets/sfx/impact-bass-1.mp3" data-start="8.72" data-duration="2.12" data-track-index="10" data-volume="0.024" data-audio-group="sfx"></audio>
+      <!-- c2 out -->
+      <audio id="sfx-08" src="assets/sfx/whoosh-short.mp3" data-start="8.9" data-duration="0.57" data-track-index="11" data-volume="0.067" data-audio-group="sfx"></audio>
+      <!-- c3 in -->
+      <audio id="sfx-09" src="assets/sfx/whoosh.mp3" data-start="10.78" data-duration="0.57" data-track-index="9" data-volume="0.073" data-audio-group="sfx"></audio>
+      <!-- rewind -->
+      <audio id="sfx-10" src="assets/sfx/glitch-2.mp3" data-start="10.78" data-duration="0.7" data-media-start="0.9" data-track-index="10" data-volume="0.016" data-audio-group="sfx"></audio>
+      <!-- speech bubbles -->
+      <audio id="sfx-11" src="assets/sfx/pop.mp3" data-start="11.95" data-duration="0.72" data-track-index="11" data-volume="0.092" data-audio-group="sfx"></audio>
+      <!-- c4 in -->
+      <audio id="sfx-12" src="assets/sfx/whoosh-short.mp3" data-start="12.98" data-duration="0.57" data-track-index="9" data-volume="0.067" data-audio-group="sfx"></audio>
+      <!-- HARD -->
+      <audio id="sfx-13" src="assets/sfx/impact-bass-1.mp3" data-start="13.76" data-duration="2.12" data-track-index="10" data-volume="0.022" data-audio-group="sfx"></audio>
+      <!-- card 2 -->
+      <audio id="sfx-14" src="assets/sfx/whoosh-short.mp3" data-start="14.72" data-duration="0.57" data-track-index="11" data-volume="0.061" data-audio-group="sfx"></audio>
+      <!-- SELFISH -->
+      <audio id="sfx-15" src="assets/sfx/impact-bass-1.mp3" data-start="15.76" data-duration="2.12" data-track-index="9" data-volume="0.022" data-audio-group="sfx"></audio>
+      <!-- card 3 -->
+      <audio id="sfx-16" src="assets/sfx/whoosh-short.mp3" data-start="16.56" data-duration="0.57" data-track-index="10" data-volume="0.061" data-audio-group="sfx"></audio>
+      <!-- NEVER -->
+      <audio id="sfx-17" src="assets/sfx/impact-bass-1.mp3" data-start="17.76" data-duration="2.12" data-track-index="11" data-volume="0.028" data-audio-group="sfx"></audio>
+      <!-- NEVER glitch -->
+      <audio id="sfx-18" src="assets/sfx/glitch-2.mp3" data-start="17.56" data-duration="0.6" data-media-start="0.9" data-track-index="9" data-volume="0.012" data-audio-group="sfx"></audio>
+      <!-- c4 out -->
+      <audio id="sfx-19" src="assets/sfx/whoosh-short.mp3" data-start="18.72" data-duration="0.57" data-track-index="10" data-volume="0.067" data-audio-group="sfx"></audio>
+      <!-- c5 in -->
+      <audio id="sfx-20" src="assets/sfx/whoosh.mp3" data-start="21.08" data-duration="0.57" data-track-index="11" data-volume="0.073" data-audio-group="sfx"></audio>
+      <!-- strings pull -->
+      <audio id="sfx-21" src="assets/sfx/whoosh-short.mp3" data-start="22.16" data-duration="0.57" data-track-index="9" data-volume="0.061" data-audio-group="sfx"></audio>
+      <!-- glint on realizing -->
+      <audio id="sfx-22" src="assets/sfx/sparkle.mp3" data-start="23.96" data-duration="1.8" data-track-index="10" data-volume="0.028" data-audio-group="sfx"></audio>
+      <!-- c5 out -->
+      <audio id="sfx-23" src="assets/sfx/whoosh-short.mp3" data-start="24.6" data-duration="0.57" data-track-index="11" data-volume="0.067" data-audio-group="sfx"></audio>
+      <!-- c6 in -->
+      <audio id="sfx-24" src="assets/sfx/whoosh.mp3" data-start="28.98" data-duration="0.57" data-track-index="9" data-volume="0.073" data-audio-group="sfx"></audio>
+      <!-- question mark -->
+      <audio id="sfx-25" src="assets/sfx/impact-bass-1.mp3" data-start="30.16" data-duration="2.12" data-track-index="10" data-volume="0.024" data-audio-group="sfx"></audio>
+      <!-- cracks -->
+      <audio id="sfx-26" src="assets/sfx/click-soft.mp3" data-start="31.02" data-duration="0.37" data-track-index="11" data-volume="0.092" data-audio-group="sfx"></audio>
+      <!-- cards split -->
+      <audio id="sfx-27" src="assets/sfx/click-soft.mp3" data-start="31.34" data-duration="0.37" data-track-index="9" data-volume="0.092" data-audio-group="sfx"></audio>
+      <!-- c7 in -->
+      <audio id="sfx-28" src="assets/sfx/whoosh-short.mp3" data-start="31.8" data-duration="0.57" data-track-index="10" data-volume="0.067" data-audio-group="sfx"></audio>
+      <!-- loop snaps open -->
+      <audio id="sfx-29" src="assets/sfx/whoosh-short.mp3" data-start="32.32" data-duration="0.57" data-track-index="11" data-volume="0.061" data-audio-group="sfx"></audio>
+      <!-- step 1 -->
+      <audio id="sfx-30" src="assets/sfx/click-soft.mp3" data-start="32.94" data-duration="0.37" data-track-index="9" data-volume="0.086" data-audio-group="sfx"></audio>
+      <!-- step 2 -->
+      <audio id="sfx-31" src="assets/sfx/click-soft.mp3" data-start="33.14" data-duration="0.37" data-track-index="10" data-volume="0.086" data-audio-group="sfx"></audio>
+      <!-- NEW HABITS chip -->
+      <audio id="sfx-32" src="assets/sfx/pop.mp3" data-start="33.23" data-duration="0.72" data-track-index="11" data-volume="0.092" data-audio-group="sfx"></audio>
+      <!-- calendar flips -->
+      <audio id="sfx-33" src="assets/sfx/whoosh-short.mp3" data-start="35.52" data-duration="0.57" data-track-index="9" data-volume="0.061" data-audio-group="sfx"></audio>
+      <!-- DAY 1 stamp -->
+      <audio id="sfx-34" src="assets/sfx/impact-bass-1.mp3" data-start="36.0" data-duration="2.12" data-track-index="10" data-volume="0.024" data-audio-group="sfx"></audio>
+      <!-- gold burst -->
+      <audio id="sfx-35" src="assets/sfx/sparkle.mp3" data-start="36.04" data-duration="1.8" data-track-index="11" data-volume="0.034" data-audio-group="sfx"></audio>
+      <!-- c7 out -->
+      <audio id="sfx-36" src="assets/sfx/whoosh-short.mp3" data-start="36.2" data-duration="0.57" data-track-index="9" data-volume="0.067" data-audio-group="sfx"></audio>
+      <!-- c8 in -->
+      <audio id="sfx-37" src="assets/sfx/whoosh.mp3" data-start="39.78" data-duration="0.57" data-track-index="10" data-volume="0.073" data-audio-group="sfx"></audio>
+      <!-- FREE stamp -->
+      <audio id="sfx-38" src="assets/sfx/impact-bass-1.mp3" data-start="40.64" data-duration="2.12" data-track-index="11" data-volume="0.024" data-audio-group="sfx"></audio>
+      <!-- FREE burst -->
+      <audio id="sfx-39" src="assets/sfx/sparkle.mp3" data-start="40.68" data-duration="1.8" data-track-index="9" data-volume="0.031" data-audio-group="sfx"></audio>
+      <!-- clock sweep -->
+      <audio id="sfx-40" src="assets/sfx/click-soft.mp3" data-start="41.1" data-duration="0.37" data-track-index="10" data-volume="0.086" data-audio-group="sfx"></audio>
+      <!-- c8 out -->
+      <audio id="sfx-41" src="assets/sfx/whoosh-short.mp3" data-start="41.8" data-duration="0.57" data-track-index="11" data-volume="0.067" data-audio-group="sfx"></audio>
+      <!-- CLICK THE LINK BELOW button -->
+      <audio id="sfx-42" src="assets/sfx/pop.mp3" data-start="42.03" data-duration="0.72" data-track-index="9" data-volume="0.098" data-audio-group="sfx"></audio>
+      <!-- button tap -->
+      <audio id="sfx-43" src="assets/sfx/click-soft.mp3" data-start="42.62" data-duration="0.37" data-track-index="10" data-volume="0.104" data-audio-group="sfx"></audio>
+      <!-- chevrons -->
+      <audio id="sfx-44" src="assets/sfx/sparkle.mp3" data-start="42.86" data-duration="0.46" data-track-index="11" data-volume="0.028" data-audio-group="sfx"></audio>
+      <!-- SFX_END -->
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // ------------------------------------------------------------------ speaker camera
+      // [t0, t1, scale0, scale1, ease]: wide (1.00-1.05) and punched (1.08-1.12) shots alternate at
+      // sentence boundaries. Max 1.12 keeps her face inside the face zone the overlays avoid.
+      const CAM = [
+        [0.0, 2.48, 1.0, 1.04, "sine.inOut"],
+        [2.48, 6.8, 1.1, 1.12, "sine.out"],
+        [6.8, 9.28, 1.0, 1.03, "sine.out"],
+        [9.28, 11.04, 1.1, 1.12, "sine.out"],
+        [11.04, 19.04, 1.0, 1.04, "sine.inOut"],
+        [19.04, 21.36, 1.1, 1.12, "sine.out"],
+        [21.36, 25.04, 1.0, 1.03, "sine.out"],
+        [25.04, 29.2, 1.08, 1.12, "sine.inOut"],
+        [29.2, 36.72, 1.0, 1.05, "sine.inOut"],
+        [36.72, 40.0, 1.1, 1.12, "sine.out"],
+        [40.0, 43.32, 1.0, 1.04, "sine.out"],
+      ];
+      CAM.forEach(([t0, t1, s0, s1, ease], i) => {
+        tl.fromTo("#cam", { scale: s0 }, { scale: s1, duration: t1 - t0, ease, immediateRender: i === 0 }, t0);
+      });
+
+      window.__timelines["ae-sfx"] = tl;
+    </script>
+  </body>
+</html>

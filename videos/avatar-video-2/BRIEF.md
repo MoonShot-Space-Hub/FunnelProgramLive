@@ -45,6 +45,15 @@ in this, I want only animation."
   x 65–1015, y 270–1248). Captions moved to y 1030–1248; transitions are fades, not full-frame
   zooms or wipes.
 
+## Revision 3
+
+- "Background music is too loud, make it -20 dB more": the music bed drops another 20 dB, from
+  -15 dB to -35 dB (data-volume 0.0178). The SFX are unchanged. A -20 dB alternative was delivered
+  too, since "-20 dB more" can also be read as "make it -20 dB".
+- The user asked for an editable timeline: tools/ae/build_avatar_video_2_timeline.jsx builds an
+  After Effects comp with one layer per scene, per caption and per sound effect, the music on its
+  own layer, and editable text captions (tools/ae/cut_timeline_clips.py cuts the clips).
+
 ## Notes
 
 - Render at 25 fps to match the source.
