@@ -1,0 +1,5 @@
+# HyperFrames render outputs and local working state (regenerable)
+renders/
+.hyperframes/
+node_modules/
+.DS_Store
