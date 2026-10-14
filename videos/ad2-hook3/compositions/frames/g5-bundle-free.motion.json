@@ -1,0 +1,21 @@
+{
+  "scene": "g5-bundle-free",
+  "duration_s": 7.62,
+  "rules": [
+    "split-tilt-cards",
+    "spring-pop-entrance",
+    "svg-path-draw",
+    "motion-blur-streak",
+    "ambient-glow-bloom",
+    "kinetic-beat-slam",
+    "particle-burst"
+  ],
+  "exit": {
+    "vector": "radial outward camera push-in (scale +0.0052/s about 540,620): ~2.5 px/s at stage edges; tied bundle floats vertically (sine, 3 px amp, 3.2 s period) <= 6 px/s; FREE stamp at rest (elastic settle done by 7.52 s), glow breathing in place; marigold petals still drifting down ~150 px/s but faded to opacity 0 exactly at the last frame",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "~0 px/s at frame 0: camera push only (~2.5 px/s at stage edges) + ambient bokeh drift; hero card enters from the left at 0.10 s (x -300 -> 0, rotateY 40 -> 8 deg, expo.out: ~2080 px/s initial, at rest by ~1.1 s) with matching horizontal motion blur",
+    "from_rest": true
+  }
+}

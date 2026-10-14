@@ -1,0 +1,21 @@
+{
+  "scene": "cta-book-seat",
+  "duration_s": 8.01,
+  "rules": [
+    "spring-pop-entrance",
+    "sine-wave-loop",
+    "ambient-glow-bloom",
+    "motion-blur-streak",
+    "press-release-spring",
+    "cursor-click-ripple",
+    "particle-burst"
+  ],
+  "exit": {
+    "vector": "final scene, holds to the end: chip, badge, button at rest; hand cursor at rest on the button's right end (settled 7.90 s); toran strands sway +-2.4 deg (~9 px/s at the bell tips) and leaves +-3.5 deg; chevrons bounce down 5 px on a 0.8 s wave (<= 40 px/s); gold sparkles mid-flight outward ~75-160 px/s (drag-decaying, opacity ~0.8) at the last frame",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "transparent overlay, ~0 px/s at frame 0; toran drops from y -210 at 0.04 s (back.out(1.5), ~1260 px/s downward initial, lands ~0.8 s) while the top scrim fades in",
+    "from_rest": true
+  }
+}
