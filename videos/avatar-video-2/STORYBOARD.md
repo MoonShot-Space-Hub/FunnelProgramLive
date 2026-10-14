@@ -8,6 +8,11 @@ mode: autonomous
 ---
 
 <!--
+REVISION 2: every frame below is now a TRANSPARENT OVERLAY over the speaker, laid out in the zones of
+frame.md "Canvas and layout (v2)": the face zone x 360–670, y 500–870 is never covered and all
+content stays inside Instagram's Reels safe area x 65–1015, y 270–1248. The positions written in the
+scene descriptions below are from the first (full-screen) version; the zones win.
+
 Host (index.html): A-roll assets/avatar-video-2.mp4 plays underneath the whole 43.32 s with punch-in
 zooms. Cutaways mount at their global windows and are zoom-blurred in/out by the host. English
 captions + black gradient sit on top in y 1150–1480 for the whole video (suppressed during

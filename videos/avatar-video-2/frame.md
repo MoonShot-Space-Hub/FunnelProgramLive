@@ -7,12 +7,30 @@ coach's saree, gold for money and for the moment of truth, red only for limiting
 feels like a polished After Effects edit: layered depth, confident entrances with overshoot,
 motion blur on speed, light sweeps on landings, everything breathing.
 
-## Canvas
+## Canvas and layout (v2: face-safe overlays, Instagram Reels safe zones)
+
+The user's rules: **an animation may never cover the coach's face**, and every graphic follows
+**Instagram's Reels safe-zone guidance** (Meta: keep the top 14%, bottom 35% and 6% of each side
+free of text, logos and key elements, because the Reels UI covers them).
 
 - 1080 × 1920 portrait, 25 fps. Scene roots use `width:100%; height:100%`.
-- **Stage (all scene content): x 60–1020, y 120–1120.** Anchor the hero high (y ≈ 300–700).
-- **Caption band y 1150–1480 is reserved** for the host's captions. Nothing important there.
-- **y 1480–1920**: background ground/glow/pattern only (platform UI covers it).
+- **Every scene is a TRANSPARENT overlay** over the speaker footage: no full-bleed ground, no
+  full-frame vignette. The footage stays visible everywhere outside the cards.
+- **Instagram safe area:** all text, cards, icons and key elements inside **x 65–1015, y 270–1248**.
+- **FACE ZONE, never covered** — not by cards, glows, particles, strings, motion trails or entrances
+  passing through: **x 360–670, y 500–870** (her face spans x≈395–635, y≈570–825 across the clip;
+  the zone includes hair and the host's punch-ins up to 1.12×).
+- **Overlay zones** (put content only here):
+  - TOP band: x 65–1015, y 270–490 (the hero line / headline visual)
+  - LEFT rail: x 65–345, y 500–1020
+  - RIGHT rail: x 685–1015, y 500–1020
+  - LOWER band: x 65–1015, y 880–1020 (below her chin)
+- **Caption band y 1030–1248 is host-owned** (captions), except during c4-old-beliefs, which
+  replaces the captions and may use it.
+- **Legibility over footage:** every text sits on a card (frame.md card at ≥0.85 opacity) or a
+  soft dark scrim confined to its zone. Glows stay inside the zones.
+- Entrances come from the canvas edges or grow in place inside a zone; nothing travels across the
+  face zone. The host fades each overlay in and out (0.22 s); scenes still need no exit animation.
 
 ## Palette
 
@@ -43,7 +61,7 @@ One accent per moment: gold is the focal colour; red appears only on the limitin
 No currency glyphs (no ₹ $ €) — money is coins, notes and gold light. No emoji. No arrow/triangle
 glyphs from fonts: draw icons as inline SVG.
 
-## Ground (every cutaway: a full-duration `class="clip"` layer at the lowest track)
+## Ground (v1 full-screen cutaways only; v2 overlays have NO ground — use card fills instead)
 
 - Fill `#12061A` + radial gradient centred (540, 620): `#2E1240` → `#12061A` at 72%.
 - One magenta glow blob (`#E0218A`, ~900px, blurred, opacity ~0.30) drifting slowly; one gold glow
