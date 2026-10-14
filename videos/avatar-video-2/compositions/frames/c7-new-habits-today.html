@@ -1,0 +1,1059 @@
+<template id="c7-new-habits-today-template">
+<style>
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-abs {
+    position: absolute;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  /* ---------------- ground ---------------- */
+  [data-composition-id="c7-new-habits-today"] .c7-base {
+    position: absolute;
+    inset: 0;
+    background-color: #12061a;
+    background-image: radial-gradient(1100px circle at 540px 620px, #2e1240 0%, #12061a 72%);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-blob {
+    position: absolute;
+    left: -150px;
+    top: -60px;
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(224, 33, 138, 0.9) 0%, rgba(224, 33, 138, 0.35) 38%, rgba(224, 33, 138, 0) 70%);
+    opacity: 0.3;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-redtint {
+    position: absolute;
+    left: 40px;
+    top: 60px;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 77, 94, 0.55) 0%, rgba(255, 77, 94, 0.18) 40%, rgba(255, 77, 94, 0) 70%);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-goldglow {
+    position: absolute;
+    left: 330px;
+    top: 350px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 225, 160, 1) 0%, rgba(255, 194, 74, 0.6) 35%, rgba(255, 194, 74, 0) 70%);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-dawn {
+    position: absolute;
+    left: -240px;
+    top: -110px;
+    width: 1560px;
+    height: 1560px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 225, 160, 0.9) 0%, rgba(255, 194, 74, 0.45) 30%, rgba(255, 160, 60, 0.12) 52%, rgba(255, 160, 60, 0) 68%);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-rings {
+    position: absolute;
+    left: -260px;
+    top: -180px;
+    width: 1600px;
+    height: 1600px;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-dust {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1080px;
+    height: 1920px;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    background: #ffe1a0;
+    box-shadow: 0 0 10px 2px rgba(255, 194, 74, 0.65);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-grain {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.06;
+  }
+  /* ---------------- stage ---------------- */
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-cam {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1080px;
+    height: 1920px;
+    transform-origin: 540px 620px;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-rays {
+    position: absolute;
+    left: -160px;
+    top: -60px;
+    width: 1400px;
+    height: 1400px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 194, 74, 0) 0deg 8deg, rgba(255, 210, 120, 0.5) 11deg 13deg, rgba(255, 194, 74, 0) 16deg 24deg);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 8%, rgba(0, 0, 0, 0.5) 30%, transparent 62%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 8%, rgba(0, 0, 0, 0.5) 30%, transparent 62%);
+  }
+  /* loop */
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-loop {
+    position: absolute;
+    left: 240px;
+    top: 260px;
+    width: 600px;
+    height: 600px;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-loopspin {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 600px;
+    height: 600px;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-node {
+    position: absolute;
+    width: 116px;
+    height: 116px;
+    margin-left: -58px;
+    margin-top: -58px;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-nodein {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, #3a1640 0%, #1e0d2b 75%);
+    border: 4px solid rgba(255, 77, 94, 0.9);
+    box-shadow: 0 0 26px rgba(255, 77, 94, 0.45), 0 14px 30px rgba(0, 0, 0, 0.5);
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-nodein svg {
+    position: absolute;
+    left: 22px;
+    top: 22px;
+    width: 64px;
+    height: 64px;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-loopcore {
+    position: absolute;
+    left: 150px;
+    top: 210px;
+    width: 300px;
+    height: 180px;
+    text-align: center;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-loopword {
+    position: absolute;
+    left: 0;
+    top: 112px;
+    width: 300px;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 34px;
+    letter-spacing: 0.28em;
+    color: #ff4d5e;
+    text-shadow: 0 0 22px rgba(255, 77, 94, 0.5);
+  }
+  /* staircase */
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-stair {
+    position: absolute;
+    left: 240px;
+    top: 380px;
+    width: 600px;
+    height: 440px;
+    transform-origin: 300px 220px;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-stairglow {
+    position: absolute;
+    left: -100px;
+    top: -60px;
+    width: 800px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 60% 55%, rgba(255, 194, 74, 0.55) 0%, rgba(255, 194, 74, 0.15) 40%, rgba(255, 194, 74, 0) 68%);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-stairsvg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 600px;
+    height: 440px;
+    overflow: visible;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-steplabel {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 26px;
+    fill: #2e1240;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-sparkfield {
+    position: absolute;
+    left: 600px;
+    top: -74px;
+    width: 0;
+    height: 0;
+  }
+  /* chip (3D flip) */
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-chippos {
+    position: absolute;
+    left: 360px;
+    top: 186px;
+    width: 360px;
+    height: 68px;
+    perspective: 700px;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-chipflip {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-chipface {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 62px;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-chip-red {
+    color: #ff4d5e;
+    border: 3px solid #ff4d5e;
+    background: rgba(40, 8, 22, 0.92);
+    box-shadow: 0 0 24px rgba(255, 77, 94, 0.35);
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-chip-gold {
+    color: #ffc24a;
+    border: 3px solid #ffc24a;
+    background: rgba(48, 26, 14, 0.94);
+    box-shadow: 0 0 30px rgba(255, 194, 74, 0.45);
+    text-shadow: 0 0 18px rgba(255, 194, 74, 0.5);
+    transform: rotateX(180deg);
+  }
+  /* calendar */
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-calpersp {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1080px;
+    height: 1920px;
+    perspective: 1500px;
+    perspective-origin: 540px 600px;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-cal {
+    position: absolute;
+    left: 210px;
+    top: 380px;
+    width: 660px;
+    height: 580px;
+    transform-style: preserve-3d;
+    transform-origin: 330px 290px;
+    perspective: 1300px;
+    perspective-origin: 330px -40px;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-sheet {
+    position: absolute;
+    border-radius: 34px;
+    background: linear-gradient(160deg, #2a1038, #1a0b26);
+    border: 3px solid rgba(255, 95, 176, 0.25);
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 660px;
+    height: 580px;
+    border-radius: 34px;
+    overflow: hidden;
+    background: linear-gradient(160deg, rgba(46, 18, 64, 0.98), rgba(30, 13, 43, 0.98));
+    border: 3px solid rgba(255, 95, 176, 0.4);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-head {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 660px;
+    height: 120px;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-headtext {
+    position: absolute;
+    left: 0;
+    top: 52px;
+    width: 660px;
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.3em;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-hole {
+    position: absolute;
+    top: 18px;
+    width: 30px;
+    height: 30px;
+    margin-left: -15px;
+    border-radius: 50%;
+    background: #12061a;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.7);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-front {
+    transform-origin: 330px 0px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-fronthead {
+    background: linear-gradient(180deg, #c81c7c, #9c1462);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-fronthead .c7-headtext {
+    color: #fff5ea;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-date {
+    position: absolute;
+    left: 0;
+    top: 150px;
+    width: 660px;
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 250px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: rgba(255, 245, 234, 0.82);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-month {
+    position: absolute;
+    left: 0;
+    top: 420px;
+    width: 660px;
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 400;
+    font-size: 44px;
+    letter-spacing: 0.4em;
+    color: #a99bb5;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-frontshade {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: 0;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-todayhead {
+    background: linear-gradient(180deg, #ffd27a, #f0a92e);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-todayhead .c7-headtext {
+    color: #2e1240;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-todaywarm {
+    position: absolute;
+    left: 30px;
+    top: 120px;
+    width: 600px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255, 194, 74, 0.32) 0%, rgba(255, 194, 74, 0.08) 45%, rgba(255, 194, 74, 0) 70%);
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-todayword {
+    position: absolute;
+    left: 0;
+    top: 186px;
+    width: 660px;
+    text-align: center;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-size: 148px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #ffc24a;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-today {
+    text-shadow: 0 0 40px rgba(255, 194, 74, 0.5);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-todayglow {
+    color: #ffe1a0;
+    filter: blur(22px);
+    opacity: 0;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-track {
+    position: absolute;
+    left: 92px;
+    top: 412px;
+    width: 476px;
+    height: 58px;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-box {
+    position: absolute;
+    top: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    border: 3px solid rgba(255, 194, 74, 0.45);
+    background: rgba(255, 194, 74, 0.05);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-box0fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(160deg, #ffe1a0, #ffc24a 60%, #e09a22);
+    box-shadow: 0 0 26px rgba(255, 194, 74, 0.7);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-check {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 56px;
+    height: 56px;
+    overflow: visible;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-sweep {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 220px;
+    height: 680px;
+    background: linear-gradient(105deg, rgba(255, 245, 234, 0) 0%, rgba(255, 245, 234, 0.42) 50%, rgba(255, 245, 234, 0) 100%);
+    opacity: 0;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-ringsvg {
+    position: absolute;
+    left: 0;
+    top: -60px;
+    width: 660px;
+    height: 120px;
+    overflow: visible;
+  }
+  /* stamp */
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-stamp {
+    position: absolute;
+    left: 525px;
+    top: -75px;
+    width: 230px;
+    height: 230px;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-stampdisc {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 32%, #4a1d3c 0%, #2a0f2e 70%);
+    border: 7px solid #ffc24a;
+    box-shadow: 0 0 0 5px rgba(42, 15, 46, 0.95), 0 0 0 9px rgba(255, 194, 74, 0.75), 0 0 50px rgba(255, 194, 74, 0.55), 0 18px 40px rgba(0, 0, 0, 0.55);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-stampday {
+    position: absolute;
+    left: 0;
+    top: 46px;
+    width: 230px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    font-size: 34px;
+    letter-spacing: 0.16em;
+    color: #ffe1a0;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-stampone {
+    position: absolute;
+    left: 0;
+    top: 78px;
+    width: 230px;
+    text-align: center;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-size: 116px;
+    line-height: 1;
+    color: #ffc24a;
+    text-shadow: 0 0 30px rgba(255, 194, 74, 0.6);
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-shock {
+    position: absolute;
+    left: 640px;
+    top: 40px;
+    width: 0;
+    height: 0;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-shockring {
+    position: absolute;
+    left: -130px;
+    top: -130px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 6px solid #ffd27a;
+    opacity: 0;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-burst {
+    position: absolute;
+    left: 640px;
+    top: 40px;
+    width: 0;
+    height: 0;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-shardfield {
+    position: absolute;
+    left: 300px;
+    top: 300px;
+    width: 0;
+    height: 0;
+  }
+  [data-composition-id="c7-new-habits-today"] .c7-part {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  [data-composition-id="c7-new-habits-today"] #c7-new-habits-today-flash {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1080px;
+    height: 1920px;
+    background: radial-gradient(900px circle at 760px 450px, rgba(255, 225, 160, 0.9), rgba(255, 194, 74, 0) 70%);
+    opacity: 0;
+  }
+</style>
+
+<div id="root" data-composition-id="c7-new-habits-today" data-start="0" data-duration="4.58" data-width="1080" data-height="1920">
+  <svg class="c7-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="c7-new-habits-today-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="71" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+      <linearGradient id="c7-new-habits-today-redgrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FF4D5E"></stop>
+        <stop offset="0.6" stop-color="#E0218A"></stop>
+        <stop offset="1" stop-color="#FF4D5E"></stop>
+      </linearGradient>
+      <linearGradient id="c7-new-habits-today-goldgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFE1A0"></stop>
+        <stop offset="0.45" stop-color="#FFC24A"></stop>
+        <stop offset="1" stop-color="#C9871E"></stop>
+      </linearGradient>
+      <linearGradient id="c7-new-habits-today-ringgrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#B8801C"></stop>
+        <stop offset="0.35" stop-color="#FFE1A0"></stop>
+        <stop offset="0.7" stop-color="#FFC24A"></stop>
+        <stop offset="1" stop-color="#9A6514"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ===== ground: full-bleed, lowest track ===== -->
+  <div id="c7-new-habits-today-ground" class="clip c7-layer" data-start="0" data-duration="4.58" data-track-index="0">
+    <div class="c7-base"></div>
+    <div id="c7-new-habits-today-blob"></div>
+    <div id="c7-new-habits-today-redtint"></div>
+    <div id="c7-new-habits-today-dawn"></div>
+    <div id="c7-new-habits-today-goldglow"></div>
+    <svg id="c7-new-habits-today-rings" viewBox="-800 -800 1600 1600" width="1600" height="1600" aria-hidden="true">
+      <g fill="none" stroke="#FF5FB0" stroke-opacity="0.1" stroke-width="2">
+        <circle r="200" stroke-dasharray="6 14"></circle>
+        <circle r="330"></circle>
+        <circle r="460" stroke-dasharray="40 22"></circle>
+        <circle r="600"></circle>
+        <circle r="750" stroke-dasharray="4 18"></circle>
+      </g>
+    </svg>
+    <div id="c7-new-habits-today-dust"></div>
+    <svg id="c7-new-habits-today-grain" width="1080" height="1920" aria-hidden="true"><rect width="1080" height="1920" filter="url(#c7-new-habits-today-grainf)"></rect></svg>
+  </div>
+
+  <!-- ===== stage: content inside x60-1020 / y120-1120 ===== -->
+  <div id="c7-new-habits-today-stage" class="clip c7-layer" data-start="0" data-duration="4.58" data-track-index="1">
+    <div id="c7-new-habits-today-cam">
+      <div id="c7-new-habits-today-rays"></div>
+
+      <!-- old habit loop -->
+      <div id="c7-new-habits-today-loop">
+        <div id="c7-new-habits-today-loopspin">
+          <svg width="600" height="600" viewBox="0 0 600 600" aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible">
+            <circle cx="300" cy="300" r="230" fill="none" stroke="#FF4D5E" stroke-opacity="0.14" stroke-width="30"></circle>
+            <path id="c7-new-habits-today-arc" d="" fill="none" stroke="url(#c7-new-habits-today-redgrad)" stroke-width="30" stroke-linecap="round"></path>
+            <polygon id="c7-new-habits-today-arrowhead" points="" fill="#FF4D5E"></polygon>
+          </svg>
+          <div id="c7-new-habits-today-n0" class="c7-node" style="left:300px;top:70px">
+            <div id="c7-new-habits-today-n0r" class="c7-nodein">
+              <svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="#FF4D5E" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22 L42 11 L46 22"></path>
+                <rect x="8" y="22" width="48" height="32" rx="7"></rect>
+                <rect x="38" y="32" width="18" height="12" rx="5"></rect>
+                <circle cx="44" cy="38" r="1.6" fill="#FF4D5E"></circle>
+              </svg>
+            </div>
+          </div>
+          <div id="c7-new-habits-today-n1" class="c7-node" style="left:499px;top:415px">
+            <div id="c7-new-habits-today-n1r" class="c7-nodein">
+              <svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="#FF4D5E" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="14" y="12" width="10" height="18" rx="5"></rect>
+                <rect x="24" y="10" width="10" height="20" rx="5"></rect>
+                <rect x="34" y="11" width="10" height="19" rx="5"></rect>
+                <rect x="44" y="14" width="9" height="16" rx="4.5"></rect>
+                <path d="M14 26 L14 42 C14 50 20 56 30 56 L40 56 C48 56 53 50 53 42 L53 26"></path>
+                <path d="M14 34 C20 32 27 34 30 40"></path>
+              </svg>
+            </div>
+          </div>
+          <div id="c7-new-habits-today-n2" class="c7-node" style="left:101px;top:415px">
+            <div id="c7-new-habits-today-n2r" class="c7-nodein">
+              <svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="#FF4D5E" stroke-width="4.5" stroke-linejoin="round">
+                <polygon points="22.6,7.5 41.4,7.5 54.5,20.6 54.5,39.4 41.4,52.5 22.6,52.5 9.5,39.4 9.5,20.6" transform="translate(0 2)"></polygon>
+                <rect x="18" y="27" width="28" height="10" rx="2" fill="#FF4D5E" stroke="none"></rect>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div id="c7-new-habits-today-loopcore">
+          <svg width="300" height="110" viewBox="0 0 300 110" aria-hidden="true" style="position:absolute;left:0;top:0">
+            <path id="c7-new-habits-today-inf" d="M150 55 C130 25 92 25 92 55 C92 85 130 85 150 55 C170 25 208 25 208 55 C208 85 170 85 150 55 Z" fill="none" stroke="#FF4D5E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"></path>
+          </svg>
+          <div id="c7-new-habits-today-loopword">REPEAT</div>
+        </div>
+        <div id="c7-new-habits-today-shardfield"></div>
+      </div>
+
+      <!-- new habits staircase -->
+      <div id="c7-new-habits-today-stair">
+        <div id="c7-new-habits-today-stairglow"></div>
+        <svg id="c7-new-habits-today-stairsvg" viewBox="0 0 600 440" aria-hidden="true">
+          <g id="c7-new-habits-today-steps"></g>
+          <path id="c7-new-habits-today-outline" d="" fill="none" stroke="#FFE1A0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"></path>
+          <path id="c7-new-habits-today-climb" d="" fill="none" stroke="#FFF5EA" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"></path>
+          <g id="c7-new-habits-today-climbhead" opacity="0">
+            <polygon points="30,0 -14,-22 -6,0 -14,22" fill="#FFF5EA"></polygon>
+          </g>
+        </svg>
+        <div id="c7-new-habits-today-sparkfield"></div>
+      </div>
+
+      <!-- chip: OLD HABITS flips to NEW HABITS -->
+      <div id="c7-new-habits-today-chippos">
+        <div id="c7-new-habits-today-chipflip">
+          <div class="c7-chipface c7-chip-red" data-layout-allow-overlap>OLD HABITS</div>
+          <div class="c7-chipface c7-chip-gold" data-layout-allow-overlap>NEW HABITS</div>
+        </div>
+      </div>
+
+      <!-- tear-off calendar -->
+      <div id="c7-new-habits-today-calpersp">
+        <div id="c7-new-habits-today-cal">
+          <div class="c7-sheet" style="left:22px;top:30px;width:616px;height:572px;opacity:0.7"></div>
+          <div class="c7-sheet" style="left:11px;top:15px;width:638px;height:576px;opacity:0.85"></div>
+          <!-- page underneath: TODAY -->
+          <div id="c7-new-habits-today-todaypage" class="c7-page">
+            <div id="c7-new-habits-today-todayhead" class="c7-head">
+              <div class="c7-hole" style="left:200px"></div>
+              <div class="c7-hole" style="left:460px"></div>
+              <div class="c7-headtext" data-layout-allow-overlap>WEEK 01</div>
+            </div>
+            <div id="c7-new-habits-today-todaywarm"></div>
+            <div id="c7-new-habits-today-todayglow" class="c7-todayword" data-layout-ignore aria-hidden="true">TODAY</div>
+            <div id="c7-new-habits-today-today" class="c7-todayword" data-layout-allow-overlap>TODAY</div>
+            <div id="c7-new-habits-today-track">
+              <div class="c7-box" style="left:0px">
+                <div id="c7-new-habits-today-box0fill"></div>
+                <svg id="c7-new-habits-today-check" viewBox="0 0 56 56" aria-hidden="true">
+                  <path id="c7-new-habits-today-checkpath" d="M14 29 L24 39 L43 18" fill="none" stroke="#2E1240" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <div class="c7-box" style="left:70px"></div>
+              <div class="c7-box" style="left:140px"></div>
+              <div class="c7-box" style="left:210px"></div>
+              <div class="c7-box" style="left:280px"></div>
+              <div class="c7-box" style="left:350px"></div>
+              <div class="c7-box" style="left:420px"></div>
+            </div>
+            <div id="c7-new-habits-today-todaysweep" class="c7-sweep"></div>
+          </div>
+          <!-- front page: SOMEDAY / DEC 31 -->
+          <div id="c7-new-habits-today-front" class="c7-page">
+            <div id="c7-new-habits-today-fronthead" class="c7-head">
+              <div class="c7-hole" style="left:200px"></div>
+              <div class="c7-hole" style="left:460px"></div>
+              <div class="c7-headtext" data-layout-allow-overlap>SOMEDAY</div>
+            </div>
+            <div id="c7-new-habits-today-date" data-layout-allow-overlap>31</div>
+            <div id="c7-new-habits-today-month" data-layout-allow-overlap>DEC</div>
+            <div id="c7-new-habits-today-frontsweep" class="c7-sweep"></div>
+            <div id="c7-new-habits-today-frontshade"></div>
+          </div>
+          <!-- binding rings -->
+          <svg id="c7-new-habits-today-ringsvg" viewBox="0 0 660 120" aria-hidden="true">
+            <g fill="none" stroke-linecap="round">
+              <path d="M200 92 C200 40 200 28 200 22 C200 6 222 6 222 22 L222 60" stroke="#5A3A12" stroke-width="12" transform="translate(-11 0)"></path>
+              <path d="M200 92 C200 40 200 28 200 22 C200 6 222 6 222 22 L222 60" stroke="url(#c7-new-habits-today-ringgrad)" stroke-width="9" transform="translate(-11 0)"></path>
+              <path d="M460 92 C460 40 460 28 460 22 C460 6 482 6 482 22 L482 60" stroke="#5A3A12" stroke-width="12" transform="translate(-11 0)"></path>
+              <path d="M460 92 C460 40 460 28 460 22 C460 6 482 6 482 22 L482 60" stroke="url(#c7-new-habits-today-ringgrad)" stroke-width="9" transform="translate(-11 0)"></path>
+            </g>
+          </svg>
+          <div id="c7-new-habits-today-shock">
+            <div id="c7-new-habits-today-sh0" class="c7-shockring"></div>
+            <div id="c7-new-habits-today-sh1" class="c7-shockring"></div>
+          </div>
+          <div id="c7-new-habits-today-burst"></div>
+          <div id="c7-new-habits-today-stamp">
+            <div id="c7-new-habits-today-stampdisc"></div>
+            <div id="c7-new-habits-today-stampday" data-layout-allow-overlap>DAY</div>
+            <div id="c7-new-habits-today-stampone" data-layout-allow-overlap>1</div>
+          </div>
+        </div>
+      </div>
+      <div id="c7-new-habits-today-flash"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var P = "c7-new-habits-today-";
+  var DUR = 4.58;
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(n) { return document.getElementById(P + n); }
+  function clamp01(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function prand(n) { var x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+  function smooth(a, b, x) { var t = clamp01((x - a) / (b - a)); return t * t * (3 - 2 * t); }
+
+  // ONE onset grid: the voiceover word cues (local seconds)
+  var CUE = { you: 0.16, can: 0.32, change: 0.56, habits: 0.96, theyve: 1.44, created: 1.84, and: 2.40, thats: 2.64, something: 2.96, you2: 3.36, can2: 3.60, begin: 3.76, today: 4.16 };
+
+  var tl = gsap.timeline({ paused: true });
+
+  // =================== GROUND (built once, deterministic) ===================
+  var dustWrap = el("dust");
+  var dust = [];
+  for (var i = 0; i < 30; i++) {
+    var d = document.createElement("div");
+    d.className = "c7-dot";
+    var sz = 3 + prand(i * 3 + 1) * 6;
+    d.style.width = sz.toFixed(1) + "px";
+    d.style.height = sz.toFixed(1) + "px";
+    dustWrap.appendChild(d);
+    dust.push({
+      el: d,
+      x: 40 + prand(i * 5 + 2) * 1000,
+      y: 120 + prand(i * 7 + 3) * 1700,
+      sp: 16 + prand(i * 11 + 4) * 42,
+      sway: 6 + prand(i * 13 + 5) * 16,
+      ph: prand(i * 17 + 6) * Math.PI * 2,
+      fr: 1.4 + prand(i * 19 + 7) * 2.6,
+      base: 0.35 + prand(i * 23 + 8) * 0.5
+    });
+  }
+
+  // =================== LOOP GEOMETRY (measured) ===================
+  var R = 230, CX = 300, CY = 300;
+  function pt(a) { var r = a * Math.PI / 180; return [CX + R * Math.cos(r), CY + R * Math.sin(r)]; }
+  var A0 = 295, A1 = 245 + 360; // clockwise arc, gap at the top node
+  var s0 = pt(A0), s1 = pt(A1);
+  var arc = el("arc");
+  arc.setAttribute("d", "M " + s0[0].toFixed(2) + " " + s0[1].toFixed(2) + " A " + R + " " + R + " 0 1 1 " + s1[0].toFixed(2) + " " + s1[1].toFixed(2));
+  var ARC_LEN = arc.getTotalLength();
+  arc.style.strokeDasharray = ARC_LEN + " " + ARC_LEN;
+  arc.style.strokeDashoffset = "0";
+  (function () {
+    var r = A1 * Math.PI / 180;
+    var dx = -Math.sin(r), dy = Math.cos(r);   // clockwise tangent
+    var nx = -dy, ny = dx;
+    var tip = [s1[0] + dx * 46, s1[1] + dy * 46];
+    var b1 = [s1[0] + nx * 36 - dx * 6, s1[1] + ny * 36 - dy * 6];
+    var b2 = [s1[0] - nx * 36 - dx * 6, s1[1] - ny * 36 - dy * 6];
+    el("arrowhead").setAttribute("points", [tip, b1, b2].map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "));
+  })();
+  var INF = el("inf");
+  var INF_LEN = INF.getTotalLength();
+  INF.style.strokeDasharray = (INF_LEN * 0.32).toFixed(1) + " " + (INF_LEN * 0.18).toFixed(1);
+
+  // =================== STAIRCASE GEOMETRY ===================
+  var STEP_W = 108, STEP_GAP = 15, H0 = 100, HSTEP = 80, BASE = 440;
+  var stepsG = el("steps");
+  var stepBase = [], stepLit = [], stepCap = [], stepLab = [];
+  var tops = [];
+  for (var s = 0; s < 5; s++) {
+    var x = s * (STEP_W + STEP_GAP);
+    var h = H0 + HSTEP * s;
+    var top = BASE - h;
+    tops.push({ x: x, top: top });
+    var g = document.createElementNS(SVGNS, "g");
+    g.setAttribute("id", P + "step" + s);
+    var rb = document.createElementNS(SVGNS, "rect");
+    rb.setAttribute("x", x); rb.setAttribute("y", top); rb.setAttribute("width", STEP_W); rb.setAttribute("height", h);
+    rb.setAttribute("rx", 12); rb.setAttribute("fill", "rgba(255,194,74,0.14)");
+    rb.setAttribute("stroke", "rgba(255,194,74,0.55)"); rb.setAttribute("stroke-width", "3");
+    var rl = document.createElementNS(SVGNS, "rect");
+    rl.setAttribute("x", x); rl.setAttribute("y", top); rl.setAttribute("width", STEP_W); rl.setAttribute("height", h);
+    rl.setAttribute("rx", 12); rl.setAttribute("fill", "url(#" + P + "goldgrad)"); rl.setAttribute("opacity", "0");
+    var cap = document.createElementNS(SVGNS, "rect");
+    cap.setAttribute("x", x + 10); cap.setAttribute("y", top + 7); cap.setAttribute("width", STEP_W - 20); cap.setAttribute("height", 6);
+    cap.setAttribute("rx", 3); cap.setAttribute("fill", "#FFF5EA"); cap.setAttribute("opacity", "0");
+    var lab = document.createElementNS(SVGNS, "text");
+    lab.setAttribute("x", x + STEP_W / 2); lab.setAttribute("y", BASE - 22); lab.setAttribute("text-anchor", "middle");
+    lab.setAttribute("class", "c7-steplabel"); lab.setAttribute("opacity", "0");
+    lab.textContent = "0" + (s + 1);
+    g.appendChild(rb); g.appendChild(rl); g.appendChild(cap); g.appendChild(lab);
+    stepsG.appendChild(g);
+    stepBase.push(g); stepLit.push(rl); stepCap.push(cap); stepLab.push(lab);
+  }
+  // silhouette outline (the old ring's segment re-forming as stairs)
+  var od = "M 0 " + BASE;
+  tops.forEach(function (t) { od += " V " + t.top + " H " + (t.x + STEP_W); });
+  od += " V " + BASE;
+  var outline = el("outline");
+  outline.setAttribute("d", od);
+  var OUT_LEN = outline.getTotalLength();
+  outline.style.strokeDasharray = OUT_LEN + " " + OUT_LEN;
+  outline.style.strokeDashoffset = String(OUT_LEN);
+  // climbing arrow: rounded stepped path above the step tops
+  var pts = [[14, tops[0].top - 34]];
+  for (var k = 1; k < 5; k++) {
+    pts.push([tops[k].x - 4, tops[k - 1].top - 34]);
+    pts.push([tops[k].x - 4, tops[k].top - 34]);
+  }
+  pts.push([tops[4].x + 70, tops[4].top - 34]);
+  pts.push([600, -74]);
+  function rounded(P2, r) {
+    var dd = "M " + P2[0][0] + " " + P2[0][1];
+    for (var q = 1; q < P2.length - 1; q++) {
+      var a = P2[q - 1], b = P2[q], c = P2[q + 1];
+      var l1 = Math.hypot(b[0] - a[0], b[1] - a[1]), l2 = Math.hypot(c[0] - b[0], c[1] - b[1]);
+      var rr = Math.min(r, l1 / 2, l2 / 2);
+      var p1 = [b[0] - (b[0] - a[0]) / l1 * rr, b[1] - (b[1] - a[1]) / l1 * rr];
+      var p2 = [b[0] + (c[0] - b[0]) / l2 * rr, b[1] + (c[1] - b[1]) / l2 * rr];
+      dd += " L " + p1[0].toFixed(1) + " " + p1[1].toFixed(1) + " Q " + b[0] + " " + b[1] + " " + p2[0].toFixed(1) + " " + p2[1].toFixed(1);
+    }
+    var z = P2[P2.length - 1];
+    return dd + " L " + z[0] + " " + z[1];
+  }
+  var climb = el("climb");
+  climb.setAttribute("d", rounded(pts, 16));
+  var CLIMB_LEN = climb.getTotalLength();
+  climb.style.strokeDasharray = CLIMB_LEN + " " + CLIMB_LEN;
+  climb.style.strokeDashoffset = String(CLIMB_LEN);
+  var climbHead = el("climbhead");
+  // arc-length at which the tip arrives over each step (sampled once at setup)
+  var stepAt = [];
+  (function () {
+    var N = 240, si = 0;
+    for (var n = 0; n <= N && si < 5; n++) {
+      var L = CLIMB_LEN * n / N;
+      var p = climb.getPointAtLength(L);
+      while (si < 5 && p.x >= tops[si].x + 6 && p.y <= tops[si].top - 20) { stepAt.push(L); si++; }
+    }
+    while (stepAt.length < 5) stepAt.push(CLIMB_LEN);
+  })();
+
+  // check mark draw
+  var check = el("checkpath");
+  var CHECK_LEN = check.getTotalLength();
+  check.style.strokeDasharray = CHECK_LEN + " " + CHECK_LEN;
+  check.style.strokeDashoffset = String(CHECK_LEN);
+
+  // =================== PARTICLE POOLS (index-seeded) ===================
+  function makePool(field, n, seed, cfg) {
+    var parts = [];
+    for (var j = 0; j < n; j++) {
+      var e = document.createElement("div");
+      e.className = "c7-part";
+      var size = cfg.smin + prand(seed + j * 3 + 1) * (cfg.smax - cfg.smin);
+      var chip = cfg.chips && j % 3 === 0;
+      e.style.width = size.toFixed(1) + "px";
+      e.style.height = (chip ? size * 0.55 : size).toFixed(1) + "px";
+      e.style.borderRadius = chip ? "2px" : "50%";
+      var col = cfg.colors[j % cfg.colors.length];
+      e.style.background = col;
+      e.style.boxShadow = "0 0 " + (size * 1.2).toFixed(0) + "px " + col;
+      e.style.marginLeft = (-size / 2).toFixed(1) + "px";
+      e.style.marginTop = (-size / 2).toFixed(1) + "px";
+      field.appendChild(e);
+      var ang = cfg.radial ? prand(seed + j * 5 + 2) * Math.PI * 2 : -Math.PI / 2 + (prand(seed + j * 5 + 2) * 2 - 1) * cfg.cone;
+      var spd = cfg.vmin + prand(seed + j * 7 + 3) * (cfg.vmax - cfg.vmin);
+      var ox = 0, oy = 0;
+      if (cfg.ring) { ox = Math.cos(ang) * cfg.ring; oy = Math.sin(ang) * cfg.ring; }
+      parts.push({ el: e, ox: ox, oy: oy, vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd, spin: (prand(seed + j * 11 + 4) * 2 - 1) * 540 });
+    }
+    return parts;
+  }
+  function burst(parts, at, flight, G, fadeFrac) {
+    var drive = { T: 0 };
+    tl.fromTo(drive, { T: 0 }, {
+      T: 1, duration: flight, ease: "none", immediateRender: false,
+      onUpdate: function () {
+        var t = drive.T * flight;
+        var fade = Math.min(1, (1 - drive.T) / fadeFrac);
+        var pop = Math.min(1, drive.T / 0.06);
+        for (var q = 0; q < parts.length; q++) {
+          var p = parts[q];
+          var x = p.ox + p.vx * t, y = p.oy + p.vy * t + 0.5 * G * t * t;
+          p.el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + (p.spin * t).toFixed(0) + "deg)";
+          p.el.style.opacity = drive.T === 0 || drive.T === 1 ? "0" : String(fade * pop);
+        }
+      }
+    }, at);
+  }
+  var shards = makePool(el("shardfield"), 16, 400, { smin: 7, smax: 15, colors: ["#FF4D5E", "#E0218A", "#FF5FB0"], radial: true, ring: 230, vmin: 260, vmax: 560, chips: true });
+  var sparks = makePool(el("sparkfield"), 16, 900, { smin: 5, smax: 10, colors: ["#FFE1A0", "#FFC24A", "#FFF5EA"], radial: true, vmin: 160, vmax: 420 });
+  var stampBurst = makePool(el("burst"), 28, 1500, { smin: 6, smax: 15, colors: ["#FFC24A", "#FFE1A0", "#FFF5EA", "#FFC24A"], radial: true, ring: 70, vmin: 420, vmax: 980, chips: true });
+
+  // =================== AMBIENT (one finite driver, pure function of t) ===================
+  var blob = el("blob"), ringsSvg = el("rings"), loopSpin = el("loopspin"), rays = el("rays"), stairGlow = el("stairglow");
+  var nodeIn = [el("n0r"), el("n1r"), el("n2r")];
+  var amb = { t: 0 };
+  function ambient(t) {
+    var w = smooth(0, DUR, t); // warmth grows across the scene
+    for (var q = 0; q < dust.length; q++) {
+      var p = dust[q];
+      var yy = p.y - p.sp * t * (1 + 0.6 * w);
+      var xx = p.x + Math.sin(t * 0.9 + p.ph) * p.sway;
+      var tw = 0.55 + 0.45 * Math.sin(p.fr * t + p.ph);
+      p.el.style.transform = "translate(" + xx.toFixed(1) + "px," + yy.toFixed(1) + "px)";
+      p.el.style.opacity = (p.base * tw * (0.55 + 0.75 * w)).toFixed(3);
+    }
+    blob.style.transform = "translate(" + (Math.sin(t * 0.5) * 60 + t * 18).toFixed(1) + "px," + (Math.cos(t * 0.4) * 40 + t * 10).toFixed(1) + "px) scale(" + (1 + 0.04 * Math.sin(t * 0.8)).toFixed(3) + ")";
+    ringsSvg.style.transform = "rotate(" + (t * 5).toFixed(2) + "deg)";
+    var ang = t * 52; // the old loop keeps cycling
+    loopSpin.style.transform = "rotate(" + ang.toFixed(2) + "deg)";
+    for (var n = 0; n < 3; n++) nodeIn[n].style.transform = "rotate(" + (-ang).toFixed(2) + "deg)";
+    INF.style.strokeDashoffset = (-t * 160).toFixed(1);
+    rays.style.transform = "rotate(" + (t * 7).toFixed(2) + "deg)";
+    stairGlow.style.transform = "scale(" + (1 + 0.05 * Math.sin(t * 2.2)).toFixed(3) + ")";
+  }
+  ambient(0);
+  tl.fromTo(amb, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { ambient(amb.t); } }, 0);
+
+  // camera push 1.00 -> 1.045
+  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.045, duration: DUR, ease: "sine.inOut" }, 0);
+
+  // warmth: red stuck-tint drains on "change", gold light grows to the end
+  tl.fromTo(el("redtint"), { opacity: 0.32 }, { opacity: 0, duration: 0.7, ease: "power2.out" }, CUE.change);
+  tl.fromTo(el("goldglow"), { opacity: 0.1, scale: 0.8 }, { opacity: 0.28, scale: 1.25, duration: 1.4, ease: "power2.out" }, CUE.change);
+  tl.to(el("goldglow"), { opacity: 0.55, scale: 2.4, y: 120, duration: 1.9, ease: "power2.inOut" }, 2.5);
+  tl.fromTo(el("dawn"), { opacity: 0 }, { opacity: 0.1, duration: 1.6, ease: "sine.inOut" }, 0.9);
+  tl.to(el("dawn"), { opacity: 0.2, duration: 1.2, ease: "sine.inOut" }, 2.6);
+  tl.to(el("dawn"), { opacity: 0.34, duration: 0.5, ease: "power2.out" }, CUE.today);
+  tl.fromTo(el("rays"), { opacity: 0, scale: 0.7 }, { opacity: 0.32, scale: 1, duration: 1.0, ease: "power2.out" }, 3.2);
+  tl.to(el("rays"), { opacity: 0.6, scale: 1.08, duration: 0.4, ease: "power2.out" }, CUE.today);
+
+  // =================== SCENE 1: the loop ===================
+  tl.fromTo(el("loop"), { scale: 0.55, opacity: 0, rotation: -40 },
+    { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, 0);
+  tl.fromTo(el("loop"), { filter: "blur(16px)" }, { filter: "blur(0px)", duration: 0.4, ease: "power2.out" }, 0);
+  // chip: OLD HABITS springs in
+  tl.fromTo(el("chipflip"), { scale: 0, opacity: 0, y: 24 },
+    { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.7)" }, CUE.can - 0.12);
+
+  // "change": the loop snaps open, ring unravels (reverse draw), icons scatter
+  tl.to(el("loop"), { scale: 1.07, duration: 0.1, ease: "power2.out" }, CUE.change);
+  tl.to(el("loop"), { scale: 0.92, duration: 0.4, ease: "power2.in" }, CUE.change + 0.1);
+  tl.fromTo(arc, { strokeDashoffset: 0 }, { strokeDashoffset: ARC_LEN, duration: 0.46, ease: "power2.in" }, CUE.change + 0.04);
+  tl.fromTo(el("arrowhead"), { opacity: 1 }, { opacity: 0, duration: 0.12, ease: "power1.out" }, CUE.change);
+  [["n0", 0, -1], ["n1", 0.87, 0.5], ["n2", -0.87, 0.5]].forEach(function (nd, idx) {
+    tl.fromTo(el(nd[0]), { x: 0, y: 0, scale: 1, opacity: 1, filter: "blur(0px)" },
+      { x: nd[1] * 190, y: nd[2] * 190, scale: 0.2, opacity: 0, filter: "blur(10px)", duration: 0.42, ease: "power3.in", immediateRender: false }, CUE.change + 0.03 * idx);
+  });
+  tl.fromTo(el("loopcore"), { scale: 1, opacity: 1 }, { scale: 0.4, opacity: 0, duration: 0.3, ease: "power2.in", immediateRender: false }, CUE.change);
+  burst(shards, CUE.change + 0.06, 0.7, 700, 0.35);
+
+  // the segment re-forms as a gold staircase (draw + staggered rises)
+  tl.fromTo(outline, { strokeDashoffset: OUT_LEN }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, CUE.change + 0.14);
+  stepBase.forEach(function (g, idx) {
+    tl.fromTo(g, { scaleY: 0, transformOrigin: "50% 100%" },
+      { scaleY: 1, duration: 0.5, ease: "back.out(1.5)" }, CUE.change + 0.16 + idx * 0.07);
+  });
+  tl.fromTo(el("stairglow"), { opacity: 0 }, { opacity: 0.55, duration: 0.6, ease: "power2.out" }, CUE.change + 0.2);
+
+  // "habits": arrow climbs, steps light one by one as the tip reaches them; chip flips to NEW HABITS
+  var climbP = { p: 0 };
+  function climbUpdate() {
+    var L = climbP.p * CLIMB_LEN;
+    climb.style.strokeDashoffset = (CLIMB_LEN - L).toFixed(1);
+    var a = climb.getPointAtLength(L), b = climb.getPointAtLength(Math.max(0, L - 3));
+    var deg = Math.atan2(a.y - b.y, a.x - b.x) * 180 / Math.PI;
+    if (L < 3) deg = 0;
+    climbHead.setAttribute("transform", "translate(" + a.x.toFixed(1) + " " + a.y.toFixed(1) + ") rotate(" + deg.toFixed(1) + ")");
+    climbHead.setAttribute("opacity", climbP.p > 0 ? "1" : "0");
+    for (var q = 0; q < 5; q++) {
+      var lit = clamp01((L - stepAt[q] + 30) / 60);
+      stepLit[q].setAttribute("opacity", lit.toFixed(3));
+      stepLab[q].setAttribute("opacity", lit.toFixed(3));
+      var flash = clamp01((L - stepAt[q] + 30) / 30) * (1 - clamp01((L - stepAt[q] - 40) / 140));
+      stepCap[q].setAttribute("opacity", (0.35 * lit + 0.65 * flash).toFixed(3));
+    }
+  }
+  climbUpdate();
+  tl.fromTo(climbP, { p: 0 }, { p: 1, duration: CUE.created - CUE.habits + 0.02, ease: "sine.inOut", onUpdate: climbUpdate }, CUE.habits);
+
+  tl.fromTo(el("chipflip"), { rotationX: 0 }, { rotationX: 180, duration: 0.55, ease: "back.out(1.4)" }, CUE.habits - 0.04);
+  tl.to(el("chipflip"), { scale: 1.12, duration: 0.18, ease: "power2.out" }, CUE.habits - 0.04);
+  tl.to(el("chipflip"), { scale: 1, duration: 0.4, ease: "power3.out" }, CUE.habits + 0.14);
+
+  // "created": the arrow tops out, spark burst and a sheen across the staircase
+  burst(sparks, CUE.created + 0.02, 0.6, 120, 0.4);
+  tl.to(el("stairglow"), { opacity: 0.95, duration: 0.3, ease: "power2.out" }, CUE.created);
+  tl.to(el("stairglow"), { opacity: 0.6, duration: 0.4, ease: "power2.inOut" }, CUE.created + 0.3);
+
+  // =================== SCENE 2: staircase rises to a header; calendar drops ===================
+  tl.to(el("stair"), { x: -225, y: -364, scale: 0.36, duration: 0.55, ease: "expo.inOut" }, CUE.and);
+  tl.fromTo(el("stair"), { filter: "blur(0px)" }, { filter: "blur(5px)", duration: 0.25, ease: "power2.in", immediateRender: false }, CUE.and);
+  tl.to(el("stair"), { filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, CUE.and + 0.25);
+  tl.fromTo(el("chippos"), { x: 0, y: 0 }, { x: 165, y: 18, duration: 0.55, ease: "expo.inOut" }, CUE.and + 0.04);
+
+  tl.fromTo(el("cal"), { y: -1150, rotationX: 38, rotation: -7, opacity: 1 },
+    { y: 0, rotationX: 0, rotation: 0, duration: 0.62, ease: "back.out(1.25)" }, CUE.and + 0.1);
+  tl.fromTo(el("cal"), { filter: "blur(18px)" }, { filter: "blur(0px)", duration: 0.46, ease: "power2.out" }, CUE.and + 0.1);
+  tl.fromTo(el("frontsweep"), { x: -260, opacity: 0 }, { x: 760, opacity: 1, duration: 0.6, ease: "power1.inOut" }, CUE.something - 0.05);
+  tl.to(el("frontsweep"), { opacity: 0, duration: 0.12, ease: "power1.in" }, CUE.something + 0.43);
+  // anticipation: the page corner lifts before the flip
+  tl.fromTo(el("front"), { rotationX: 0 }, { rotationX: 9, duration: 0.42, ease: "sine.inOut" }, CUE.you2 - 0.02);
+  // "begin": the page flips over the binding (rotateX in perspective) to reveal TODAY
+  tl.to(el("front"), { rotationX: -104, y: -30, duration: 0.36, ease: "power2.in" }, CUE.begin);
+  tl.fromTo(el("frontshade"), { opacity: 0 }, { opacity: 0.55, duration: 0.36, ease: "power2.in", immediateRender: false }, CUE.begin);
+  tl.fromTo(el("todaypage"), { filter: "brightness(0.55)" }, { filter: "brightness(1)", duration: 0.4, ease: "power2.out" }, CUE.begin + 0.1);
+  tl.fromTo(el("today"), { scale: 0.72, opacity: 0, letterSpacing: "0.18em", filter: "blur(12px)" },
+    { scale: 1, opacity: 1, letterSpacing: "-0.03em", filter: "blur(0px)", duration: 0.42, ease: "expo.out" }, CUE.begin + 0.2);
+  tl.fromTo(el("todayglow"), { opacity: 0, scale: 0.8 }, { opacity: 0.75, scale: 1, duration: 0.5, ease: "power2.out" }, CUE.begin + 0.24);
+
+  // "today": DAY 1 stamp slams on the corner, shockwave + gold burst, tracker ticks
+  tl.fromTo(el("stamp"), { scale: 2.7, rotation: -42, opacity: 0, filter: "blur(16px)" },
+    { scale: 1, rotation: -12, opacity: 1, filter: "blur(0px)", duration: 0.26, ease: "power4.out" }, CUE.today - 0.08);
+  tl.fromTo(el("cal"), { x: 0 }, { x: -6, duration: 0.05, ease: "power2.out", immediateRender: false }, CUE.today + 0.02);
+  tl.to(el("cal"), { y: 12, duration: 0.06, ease: "power2.out" }, CUE.today + 0.02);
+  tl.to(el("cal"), { x: 0, y: 0, duration: 0.34, ease: "back.out(2)" }, CUE.today + 0.08);
+  tl.fromTo(el("sh0"), { scale: 0.6, opacity: 0.95 }, { scale: 2.2, opacity: 0, duration: 0.42, ease: "power2.out", immediateRender: false }, CUE.today + 0.02);
+  tl.fromTo(el("sh1"), { scale: 0.5, opacity: 0.7 }, { scale: 1.6, opacity: 0, duration: 0.36, ease: "power2.out", immediateRender: false }, CUE.today + 0.08);
+  burst(stampBurst, CUE.today + 0.02, 0.4, 260, 0.3);
+  tl.fromTo(el("flash"), { opacity: 0 }, { opacity: 0.55, duration: 0.06, ease: "none", immediateRender: false }, CUE.today + 0.02);
+  tl.to(el("flash"), { opacity: 0.12, duration: 0.3, ease: "power2.out" }, CUE.today + 0.08);
+  tl.fromTo(el("box0fill"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "back.out(2.2)" }, CUE.today + 0.06);
+  tl.fromTo(check, { strokeDashoffset: CHECK_LEN }, { strokeDashoffset: 0, duration: 0.2, ease: "power2.out" }, CUE.today + 0.16);
+  tl.fromTo(el("todaysweep"), { x: -260, opacity: 0 }, { x: 760, opacity: 1, duration: 0.36, ease: "power1.inOut" }, CUE.today + 0.08);
+  tl.to(el("todayglow"), { opacity: 1, duration: 0.3, ease: "power2.out" }, CUE.today + 0.04);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["c7-new-habits-today"] = tl;
+})();
+</script>
+</template>
