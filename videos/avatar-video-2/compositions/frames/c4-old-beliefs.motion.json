@@ -2,12 +2,13 @@
   "scene": "c4-old-beliefs",
   "duration_s": 5.92,
   "rules": ["kinetic-beat-slam", "spring-pop-entrance", "motion-blur-streak", "ambient-glow-bloom"],
+  "layout": "v2 transparent overlay: belief cards in TOP band (y 292-486), LEFT rail (x 72-342, y 524-729), RIGHT rail (x 690-1010, y 524-734), LOWER+caption band (x 90-990, y 904-1240); face zone x 360-670 y 500-870 never drawn into",
   "exit": {
-    "vector": "camera slow push (scale +0.0034/s) with sine drift ~5 px/s; card-3 light sweep still crossing left-to-right (~2600 px/s, inside the card); card idle bobs ~8 px/s vertical; gold dust rising 12-38 px/s",
+    "vector": "card 3 light sweep still crossing left-to-right inside the card (~2500 px/s); per-card idle bob 2-4 px/s and per-card push (scale +0.0017/s about each card's own centre); chains and padlocks at rest",
     "still_moving": true
   },
   "entry": {
-    "vector": "card 1 slams in centre-high: scale 1.10 -> 1.00 with downward settle (~250 px/s at frame 0, power4.out) plus blur 14px -> 0 and opacity ramp",
+    "vector": "belief card 1 grows in place in the TOP band: scale 1.03 -> 1.00 about its centre, blur 12px -> 0, opacity ramp (power4.out); no travel",
     "from_rest": false
   }
 }
