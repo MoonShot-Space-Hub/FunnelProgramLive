@@ -1,0 +1,13 @@
+{
+  "scene": "g4-step-one",
+  "duration_s": 5.32,
+  "rules": ["kinetic-beat-slam", "stat-bars-and-fills", "spring-pop-entrance", "svg-icon-enrichment", "svg-path-draw", "motion-blur-streak"],
+  "exit": {
+    "vector": "camera push-in continuing (scale +0.0075/s about 540,620, ~4 px/s at stage edges) with -1.9 px/s upward drift; badge dashed ring spinning 26 deg/s (~73 px/s tangential at r160); cards and tiles at rest (last row sweep ends 5.25s); tile tip dots pulsing (sine), dash rings flowing 30 px/s; bokeh drifts 2-22 px amplitude",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "stage empty at frame 0 (STEP 1 badge scale-slams 2.4 -> 1 from 0.12s); only the camera push (+0.0075 scale/s) and the ground ambience (rangoli rotating 2.6 deg/s, bokeh drift) are moving",
+    "from_rest": false
+  }
+}

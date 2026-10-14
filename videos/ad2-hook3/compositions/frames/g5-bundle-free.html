@@ -1,0 +1,744 @@
+<template>
+<style>
+#root {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FFF4E0; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- ground ---------- */
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-ground { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-base {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background-color: #1A0509;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #4A0A14 0%, #1A0509 72%);
+}
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-blob {
+  position: absolute; left: -320px; top: 520px; width: 1040px; height: 1040px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(200,16,46,1) 0%, rgba(200,16,46,0.55) 40%, rgba(200,16,46,0.15) 72%, rgba(200,16,46,0) 100%);
+  opacity: 0.35;
+}
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-goldglow {
+  position: absolute; left: 200px; top: 260px; width: 680px; height: 680px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255,201,60,1) 0%, rgba(255,201,60,0.4) 45%, rgba(255,201,60,0) 100%);
+  opacity: 0.18;
+}
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-rangoli { position: absolute; left: -160px; top: -80px; width: 1400px; height: 1400px; opacity: 0.14; overflow: visible; }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-bokeh { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-bk { position: absolute; display: block; border-radius: 50%; }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-grain { position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0.06; }
+
+/* ---------- camera rig ---------- */
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-shake, [data-composition-id="g5-bundle-free"] #g5-bundle-free-cam, [data-composition-id="g5-bundle-free"] #g5-bundle-free-rig, [data-composition-id="g5-bundle-free"] #g5-bundle-free-stack, [data-composition-id="g5-bundle-free"] #g5-bundle-free-float { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 620px; }
+
+/* ---------- cards ---------- */
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-slot { position: absolute; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-card { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 50% 50%; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-mbw { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-face {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; box-sizing: border-box;
+  border-radius: 34px; overflow: hidden;
+  background: linear-gradient(160deg, rgba(74,10,20,0.96), rgba(26,5,9,0.96));
+  border: 3px solid rgba(255,159,28,0.45);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-shadow-r { box-shadow: 26px 40px 90px rgba(0,0,0,0.55); }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-shadow-l { box-shadow: -26px 40px 90px rgba(0,0,0,0.55); }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-inner { position: absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border-radius: 26px; border: 1.5px solid rgba(255,201,60,0.3); }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-bandhani {
+  position: absolute; right: -12px; top: -12px; width: 240px; height: 240px; opacity: 0.08;
+  background-image: radial-gradient(circle, #FFC93C 0 2.6px, rgba(255,201,60,0) 3.2px);
+  background-size: 20px 20px;
+  -webkit-mask-image: radial-gradient(circle at 100% 0%, #000 0%, rgba(0,0,0,0) 72%);
+  mask-image: radial-gradient(circle at 100% 0%, #000 0%, rgba(0,0,0,0) 72%);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-sheen {
+  position: absolute; left: 0; top: -30%; width: 300px; height: 160%;
+  background: linear-gradient(100deg, rgba(255,244,224,0) 0%, rgba(255,244,224,0.2) 50%, rgba(255,244,224,0) 100%);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-tile {
+  position: absolute; width: 132px; height: 132px; border-radius: 30px; box-sizing: border-box;
+  background: radial-gradient(circle at 35% 28%, rgba(200,16,46,0.6) 0%, rgba(74,10,20,0.92) 72%);
+  border: 2px solid rgba(255,159,28,0.6);
+  box-shadow: inset 0 0 26px rgba(255,159,28,0.2), 0 10px 24px rgba(0,0,0,0.4);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-tile svg { position: absolute; left: 18px; top: 18px; width: 92px; height: 92px; overflow: visible; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-ch { display: inline-block; }
+
+/* card A: masterclass */
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-chipA {
+  position: absolute; left: 206px; top: 46px; height: 54px; padding: 0 24px 0 16px; box-sizing: border-box;
+  display: flex; align-items: center; gap: 12px;
+  border-radius: 999px; border: 2px solid #FF9F1C; background: rgba(255,159,28,0.1);
+  font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 30px; letter-spacing: 0.06em;
+  color: #FF9F1C; white-space: nowrap; transform-origin: 0% 50%;
+}
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-chipA svg { width: 28px; height: 28px; }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-bar { position: absolute; left: 206px; top: 126px; width: 560px; height: 10px; border-radius: 5px; background: rgba(255,244,224,0.14); }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-barfill {
+  position: absolute; left: 0; top: 0; width: 560px; height: 10px; border-radius: 5px; transform-origin: 0% 50%;
+  background: linear-gradient(90deg, #FF9F1C 0%, #FFC93C 100%); box-shadow: 0 0 14px rgba(255,159,28,0.6);
+}
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-knob {
+  position: absolute; left: -12px; top: -7px; width: 24px; height: 24px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFF4E0 0%, #FFC93C 55%, #FF9F1C 100%);
+  box-shadow: 0 0 16px rgba(255,201,60,0.85);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-tc { position: absolute; top: 150px; font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 28px; color: rgba(255,244,224,0.62); white-space: nowrap; }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-titleA {
+  position: absolute; left: 44px; top: 230px; white-space: nowrap;
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 88px; line-height: 1; letter-spacing: -0.03em;
+  color: #FFF4E0; text-shadow: 0 0 40px rgba(255,159,28,0.35), 0 4px 0 rgba(0,0,0,0.3);
+}
+
+/* cards B / C */
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-hd {
+  position: absolute; left: 204px; top: 28px; white-space: nowrap;
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 84px; line-height: 1; letter-spacing: -0.03em;
+  color: #FF9F1C; text-shadow: 0 0 40px rgba(255,159,28,0.5);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-sub {
+  position: absolute; left: 208px; top: 126px; white-space: nowrap;
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 36px; line-height: 1; letter-spacing: 0.14em;
+  color: #FFF4E0;
+}
+
+/* glow behind card A */
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-aglow {
+  position: absolute; left: -40px; top: -20px; width: 1160px; height: 800px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255,159,28,0.9) 0%, rgba(200,16,46,0.35) 55%, rgba(200,16,46,0) 100%);
+  opacity: 0;
+}
+
+/* mirror-work sparkles */
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-mirror {
+  position: absolute; border-radius: 50%; box-sizing: border-box;
+  background: radial-gradient(circle at 38% 34%, #FFF4E0 0%, #FFE7A0 18%, #FFC93C 52%, #C98A12 100%);
+  border: 3px solid #C8102E;
+  box-shadow: 0 0 0 2px rgba(255,201,60,0.55), 0 0 18px rgba(255,201,60,0.55);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-glint {
+  position: absolute; left: 22%; top: 18%; width: 34%; height: 22%; border-radius: 50%;
+  background: #FFFFFF; transform: rotate(-30deg);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-star { position: absolute; width: 64px; height: 64px; overflow: visible; }
+
+/* plus badges */
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-plus {
+  position: absolute; width: 92px; height: 92px; border-radius: 50%; box-sizing: border-box;
+  background: radial-gradient(circle at 35% 30%, #FFE7A0 0%, #FFC93C 42%, #FF9F1C 100%);
+  border: 4px solid #4A0A14;
+  box-shadow: 0 0 0 3px rgba(255,201,60,0.6), 0 0 34px rgba(255,159,28,0.65), 0 10px 22px rgba(0,0,0,0.45);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-plus-h { position: absolute; left: 19px; top: 36px; width: 46px; height: 12px; border-radius: 6px; background: #4A0A14; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-plus-v { position: absolute; left: 36px; top: 19px; width: 12px; height: 46px; border-radius: 6px; background: #4A0A14; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-pring { position: absolute; width: 92px; height: 92px; border-radius: 50%; box-sizing: border-box; border: 4px solid #FFC93C; opacity: 0; }
+
+/* ribbon */
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-ribbon { position: absolute; left: 900px; top: 184px; width: 40px; height: 870px; transform-origin: 50% 0%; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-rband {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 4px; overflow: hidden;
+  background: linear-gradient(90deg, #B8730A 0%, #FFC93C 24%, #FFE7A0 46%, #FFC93C 64%, #D99511 100%);
+  box-shadow: 0 0 20px rgba(255,201,60,0.45), 8px 0 16px rgba(0,0,0,0.35);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-stitch { position: absolute; top: 0; bottom: 0; width: 2px; background: repeating-linear-gradient(180deg, rgba(74,10,20,0.55) 0 9px, rgba(74,10,20,0) 9px 17px); }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-rgloss { position: absolute; left: 0; top: 0; width: 100%; height: 200px; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%); }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-tail {
+  position: absolute; top: 1036px; width: 40px; height: 62px; transform-origin: 50% 0%;
+  background: linear-gradient(90deg, #B8730A 0%, #FFC93C 30%, #FFE7A0 50%, #D99511 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 74%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 74%, 0 100%);
+}
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-bow { position: absolute; left: 835px; top: 128px; width: 170px; height: 120px; overflow: visible; filter: drop-shadow(0 8px 12px rgba(0,0,0,0.45)); }
+
+/* ---------- scene 3: dim, stamp, burst ---------- */
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-dim {
+  position: absolute; left: -80px; top: -80px; width: 1240px; height: 2080px; opacity: 0;
+  background: radial-gradient(ellipse 620px 760px at 620px 700px, rgba(26,5,9,0.36) 0%, rgba(26,5,9,0.6) 100%);
+}
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-sglow { position: absolute; left: 40px; top: 120px; width: 1000px; height: 1000px; opacity: 0; }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-sglowcore {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255,159,28,1) 0%, rgba(255,159,28,0.5) 34%, rgba(200,16,46,0.25) 64%, rgba(200,16,46,0) 100%);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-origin { position: absolute; left: 540px; top: 620px; width: 0; height: 0; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-petal {
+  position: absolute; left: 0; top: 0; display: block; opacity: 0;
+  border-radius: 60% 60% 45% 45% / 80% 80% 32% 32%;
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-spark { position: absolute; left: 0; top: 0; display: block; height: 5px; border-radius: 3px; opacity: 0; background: #FFE7A0; box-shadow: 0 0 10px #FFC93C; transform-origin: 0% 50%; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-ray { position: absolute; left: 0; top: -3px; display: block; width: 96px; height: 6px; border-radius: 3px; opacity: 0; transform-origin: 0% 50%; background: linear-gradient(90deg, rgba(255,201,60,0), #FFC93C 40%, #FFF4E0 100%); }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-shock { position: absolute; left: 340px; top: 420px; width: 400px; height: 400px; border-radius: 50%; box-sizing: border-box; border: 7px solid #FFC93C; box-shadow: 0 0 34px rgba(255,201,60,0.7), inset 0 0 26px rgba(255,159,28,0.5); opacity: 0; }
+
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-stamp { position: absolute; left: 200px; top: 470px; width: 680px; height: 300px; transform-origin: 50% 50%; opacity: 0; }
+[data-composition-id="g5-bundle-free"] #g5-bundle-free-thump { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 50% 50%; }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-sframe {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; box-sizing: border-box; border-radius: 46px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(74,10,20,0.92) 0%, rgba(40,6,12,0.94) 100%);
+  border: 8px solid #FFC93C;
+  box-shadow: 0 0 46px rgba(255,201,60,0.55), inset 0 0 30px rgba(255,159,28,0.25), 0 30px 60px rgba(0,0,0,0.5);
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-sdash { position: absolute; left: 18px; top: 18px; right: 18px; bottom: 18px; border-radius: 32px; border: 3px dashed rgba(255,201,60,0.6); }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-stxt {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center; padding-top: 18px; box-sizing: border-box;
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 220px; line-height: 1; letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-soutline { color: #FFC93C; -webkit-text-stroke: 16px #FFC93C; text-shadow: 0 0 34px rgba(255,201,60,0.75); }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-smain { color: #FF9F1C; text-shadow: 0 6px 0 #A50D26, 0 0 40px rgba(255,159,28,0.5); }
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-sshine {
+  color: rgba(255,255,255,0);
+  background-image: linear-gradient(105deg, rgba(255,250,235,0) 0%, rgba(255,250,235,0) 42%, rgba(255,250,235,0.95) 50%, rgba(255,250,235,0) 58%, rgba(255,250,235,0) 100%);
+  background-size: 300% 100%; background-repeat: no-repeat; background-position: 100% 50%;
+  -webkit-background-clip: text; background-clip: text;
+}
+[data-composition-id="g5-bundle-free"] .g5-bundle-free-sstar { position: absolute; top: 120px; width: 60px; height: 60px; overflow: visible; }
+</style>
+
+<div id="root" data-composition-id="g5-bundle-free" data-start="0" data-duration="7.62" data-width="1080" data-height="1920">
+  <svg class="g5-bundle-free-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="g5-bundle-free-mbA" x="-35%" y="-60%" width="170%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur id="g5-bundle-free-mbA-n" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="g5-bundle-free-mbB" x="-35%" y="-80%" width="170%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="g5-bundle-free-mbB-n" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="g5-bundle-free-mbC" x="-35%" y="-80%" width="170%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="g5-bundle-free-mbC-n" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <filter id="g5-bundle-free-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+      <linearGradient id="g5-bundle-free-bowgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFE7A0"></stop><stop offset="0.45" stop-color="#FFC93C"></stop><stop offset="1" stop-color="#D99511"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track -->
+  <div id="g5-bundle-free-ground" class="clip" data-start="0" data-duration="7.62" data-track-index="0">
+    <div class="g5-bundle-free-base"></div>
+    <div id="g5-bundle-free-blob"></div>
+    <div id="g5-bundle-free-goldglow"></div>
+    <svg id="g5-bundle-free-rangoli" viewBox="-700 -700 1400 1400" aria-hidden="true">
+      <g id="g5-bundle-free-rg-outer" fill="none">
+        <circle r="660" stroke="#C8102E" stroke-width="4"></circle>
+        <circle r="628" stroke="#FFC93C" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"></circle>
+        <g id="g5-bundle-free-rg-petals"></g>
+        <g id="g5-bundle-free-rg-dots" fill="#FFC93C" stroke="none"></g>
+      </g>
+      <g id="g5-bundle-free-rg-inner" fill="none">
+        <circle r="410" stroke="#FFC93C" stroke-width="2.5"></circle>
+        <g id="g5-bundle-free-rg-lotus"></g>
+        <circle r="262" stroke="#C8102E" stroke-width="3" stroke-dasharray="14 10"></circle>
+        <circle r="214" stroke="#FFC93C" stroke-width="2"></circle>
+      </g>
+    </svg>
+    <div id="g5-bundle-free-bokeh"></div>
+    <svg id="g5-bundle-free-grain" width="1080" height="1920" aria-hidden="true"><rect width="1080" height="1920" filter="url(#g5-bundle-free-grainf)"></rect></svg>
+  </div>
+
+  <div id="g5-bundle-free-shake">
+    <div id="g5-bundle-free-cam">
+      <div id="g5-bundle-free-rig">
+        <div id="g5-bundle-free-stack">
+          <div id="g5-bundle-free-float">
+            <div id="g5-bundle-free-aglow"></div>
+
+            <!-- mirror-work sparkles around the hero card (positions are world coords) -->
+            <div id="g5-bundle-free-mirrors"></div>
+            <svg class="g5-bundle-free-star" id="g5-bundle-free-star0" style="left:268px;top:142px" viewBox="-32 -32 64 64"><path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFF4E0"></path><circle r="5" fill="#FFFFFF"></circle></svg>
+            <svg class="g5-bundle-free-star" id="g5-bundle-free-star1" style="left:946px;top:350px" viewBox="-32 -32 64 64"><path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFE7A0"></path><circle r="5" fill="#FFFFFF"></circle></svg>
+            <svg class="g5-bundle-free-star" id="g5-bundle-free-star2" style="left:62px;top:300px" viewBox="-32 -32 64 64"><path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFF4E0"></path><circle r="5" fill="#FFFFFF"></circle></svg>
+            <svg class="g5-bundle-free-star" id="g5-bundle-free-star3" style="left:520px;top:120px" viewBox="-32 -32 64 64"><path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFE7A0"></path><circle r="5" fill="#FFFFFF"></circle></svg>
+
+            <!-- card A: MASTERCLASS -->
+            <div class="g5-bundle-free-slot" id="g5-bundle-free-slotA" style="left:104px;top:190px;width:872px;height:380px">
+              <div class="g5-bundle-free-card" id="g5-bundle-free-cardA">
+                <div class="g5-bundle-free-mbw" id="g5-bundle-free-mbwA">
+                  <div class="g5-bundle-free-face g5-bundle-free-shadow-r">
+                    <div class="g5-bundle-free-bandhani"></div>
+                    <div class="g5-bundle-free-inner"></div>
+                    <div class="g5-bundle-free-tile" id="g5-bundle-free-tileA" style="left:40px;top:40px">
+                      <svg viewBox="0 0 96 96" aria-hidden="true">
+                        <rect x="6" y="12" width="84" height="58" rx="10" fill="rgba(255,159,28,0.12)" stroke="#FF9F1C" stroke-width="6"></rect>
+                        <path d="M39 27 L62 41 L39 55 Z" fill="#FFC93C" stroke="#FFC93C" stroke-width="3" stroke-linejoin="round"></path>
+                        <path d="M32 86 H64 M48 71 V86" fill="none" stroke="#FF9F1C" stroke-width="6" stroke-linecap="round"></path>
+                      </svg>
+                    </div>
+                    <div id="g5-bundle-free-chipA">
+                      <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="11" fill="none" stroke="#FF9F1C" stroke-width="3"></circle><path d="M14 7.5 V14 L18.5 17" fill="none" stroke="#FFC93C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                      <span>1 HOUR</span>
+                    </div>
+                    <div id="g5-bundle-free-bar"><div id="g5-bundle-free-barfill"></div><div id="g5-bundle-free-knob"></div></div>
+                    <div class="g5-bundle-free-tc" id="g5-bundle-free-tc0" style="left:206px">00:00</div>
+                    <div class="g5-bundle-free-tc" id="g5-bundle-free-tc1" style="left:672px">60:00</div>
+                    <div id="g5-bundle-free-titleA" class="g5-bundle-free-split">MASTERCLASS</div>
+                    <div class="g5-bundle-free-sheen" id="g5-bundle-free-sheenA"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- card B: RISK MANAGEMENT -->
+            <div class="g5-bundle-free-slot" id="g5-bundle-free-slotB" style="left:116px;top:610px;width:872px;height:200px">
+              <div class="g5-bundle-free-card" id="g5-bundle-free-cardB">
+                <div class="g5-bundle-free-mbw" id="g5-bundle-free-mbwB">
+                  <div class="g5-bundle-free-face g5-bundle-free-shadow-l">
+                    <div class="g5-bundle-free-bandhani"></div>
+                    <div class="g5-bundle-free-inner"></div>
+                    <div class="g5-bundle-free-tile" id="g5-bundle-free-tileB" style="left:34px;top:34px">
+                      <svg viewBox="0 0 96 96" aria-hidden="true">
+                        <path id="g5-bundle-free-shieldO" d="M48 7 L81 19 V45 C81 66 67 80 48 89 C29 80 15 66 15 45 V19 Z" fill="rgba(255,159,28,0.12)" stroke="#FF9F1C" stroke-width="6" stroke-linejoin="round"></path>
+                        <path id="g5-bundle-free-shieldC" d="M32 48 L44 60 L65 37" fill="none" stroke="#FFC93C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <div class="g5-bundle-free-hd g5-bundle-free-split" id="g5-bundle-free-hdB">RISK</div>
+                    <div class="g5-bundle-free-sub g5-bundle-free-split" id="g5-bundle-free-subB">MANAGEMENT</div>
+                    <div class="g5-bundle-free-sheen" id="g5-bundle-free-sheenB"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- card C: MIND MANAGEMENT -->
+            <div class="g5-bundle-free-slot" id="g5-bundle-free-slotC" style="left:92px;top:850px;width:872px;height:200px">
+              <div class="g5-bundle-free-card" id="g5-bundle-free-cardC">
+                <div class="g5-bundle-free-mbw" id="g5-bundle-free-mbwC">
+                  <div class="g5-bundle-free-face g5-bundle-free-shadow-r">
+                    <div class="g5-bundle-free-bandhani"></div>
+                    <div class="g5-bundle-free-inner"></div>
+                    <div class="g5-bundle-free-tile" id="g5-bundle-free-tileC" style="left:34px;top:34px">
+                      <svg viewBox="0 0 96 96" aria-hidden="true">
+                        <path id="g5-bundle-free-lotus0" d="M48 18 C59 30 61 47 48 66 C35 47 37 30 48 18 Z" fill="rgba(255,159,28,0.14)" stroke="#FF9F1C" stroke-width="5" stroke-linejoin="round"></path>
+                        <path id="g5-bundle-free-lotus1" d="M48 66 C33 63 20 52 15 35 C31 37 42 47 48 66 Z" fill="rgba(255,159,28,0.1)" stroke="#FF9F1C" stroke-width="5" stroke-linejoin="round"></path>
+                        <path id="g5-bundle-free-lotus2" d="M48 66 C63 63 76 52 81 35 C65 37 54 47 48 66 Z" fill="rgba(255,159,28,0.1)" stroke="#FF9F1C" stroke-width="5" stroke-linejoin="round"></path>
+                        <path id="g5-bundle-free-lotus3" d="M14 76 C28 70 38 69 48 70 C58 69 68 70 82 76" fill="none" stroke="#FFC93C" stroke-width="5" stroke-linecap="round"></path>
+                        <circle id="g5-bundle-free-lotus4" cx="48" cy="8" r="4.5" fill="#FFC93C"></circle>
+                      </svg>
+                    </div>
+                    <div class="g5-bundle-free-hd g5-bundle-free-split" id="g5-bundle-free-hdC">MIND</div>
+                    <div class="g5-bundle-free-sub g5-bundle-free-split" id="g5-bundle-free-subC">MANAGEMENT</div>
+                    <div class="g5-bundle-free-sheen" id="g5-bundle-free-sheenC"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- plus badges on the seams -->
+            <div class="g5-bundle-free-pring" id="g5-bundle-free-pring1" style="left:494px;top:544px"></div>
+            <div class="g5-bundle-free-plus" id="g5-bundle-free-plus1" style="left:494px;top:544px"><div class="g5-bundle-free-plus-h"></div><div class="g5-bundle-free-plus-v"></div></div>
+            <div class="g5-bundle-free-pring" id="g5-bundle-free-pring2" style="left:494px;top:784px"></div>
+            <div class="g5-bundle-free-plus" id="g5-bundle-free-plus2" style="left:494px;top:784px"><div class="g5-bundle-free-plus-h"></div><div class="g5-bundle-free-plus-v"></div></div>
+
+            <!-- gold bundle ribbon -->
+            <div class="g5-bundle-free-tail" id="g5-bundle-free-tail1" style="left:894px"></div>
+            <div class="g5-bundle-free-tail" id="g5-bundle-free-tail2" style="left:906px"></div>
+            <div id="g5-bundle-free-ribbon">
+              <div class="g5-bundle-free-rband">
+                <div class="g5-bundle-free-stitch" style="left:6px"></div>
+                <div class="g5-bundle-free-stitch" style="right:6px"></div>
+                <div id="g5-bundle-free-rgloss"></div>
+              </div>
+            </div>
+            <svg id="g5-bundle-free-bow" viewBox="0 0 170 120" aria-hidden="true">
+              <path d="M80 70 L60 112 L73 106 L79 118 L92 74 Z" fill="url(#g5-bundle-free-bowgrad)" stroke="#B8730A" stroke-width="2.5" stroke-linejoin="round"></path>
+              <path d="M90 70 L110 112 L97 106 L91 118 L78 74 Z" fill="url(#g5-bundle-free-bowgrad)" stroke="#B8730A" stroke-width="2.5" stroke-linejoin="round"></path>
+              <path d="M85 60 C62 22 22 10 12 38 C5 62 40 80 85 60 Z" fill="url(#g5-bundle-free-bowgrad)" stroke="#B8730A" stroke-width="2.5" stroke-linejoin="round"></path>
+              <path d="M85 60 C108 22 148 10 158 38 C165 62 130 80 85 60 Z" fill="url(#g5-bundle-free-bowgrad)" stroke="#B8730A" stroke-width="2.5" stroke-linejoin="round"></path>
+              <path d="M80 58 C62 38 38 30 26 42 M90 58 C108 38 132 30 144 42" fill="none" stroke="#B8730A" stroke-width="2.5" stroke-linecap="round" opacity="0.7"></path>
+              <rect x="71" y="45" width="28" height="30" rx="10" fill="url(#g5-bundle-free-bowgrad)" stroke="#B8730A" stroke-width="2.5"></rect>
+              <ellipse cx="80" cy="54" rx="5" ry="3.5" fill="#FFFFFF" opacity="0.75"></ellipse>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- scene 3 layers (camera-relative, not part of the dimmed stack) -->
+      <div id="g5-bundle-free-dim"></div>
+      <div id="g5-bundle-free-sglow"><div id="g5-bundle-free-sglowcore"></div></div>
+      <div class="g5-bundle-free-origin" id="g5-bundle-free-rays"></div>
+      <div class="g5-bundle-free-origin" id="g5-bundle-free-petalsBack"></div>
+      <div id="g5-bundle-free-shock"></div>
+      <div id="g5-bundle-free-stamp">
+        <div id="g5-bundle-free-thump">
+          <div class="g5-bundle-free-sframe"></div>
+          <div class="g5-bundle-free-sdash"></div>
+          <svg class="g5-bundle-free-sstar" style="left:-30px" viewBox="-32 -32 64 64" aria-hidden="true"><path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFC93C" stroke="#4A0A14" stroke-width="2"></path></svg>
+          <svg class="g5-bundle-free-sstar" style="right:-30px" viewBox="-32 -32 64 64" aria-hidden="true"><path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFC93C" stroke="#4A0A14" stroke-width="2"></path></svg>
+          <div class="g5-bundle-free-stxt g5-bundle-free-soutline" data-layout-ignore aria-hidden="true">FREE</div>
+          <div class="g5-bundle-free-stxt g5-bundle-free-smain" id="g5-bundle-free-stampword" data-layout-allow-overlap>FREE</div>
+          <div class="g5-bundle-free-stxt g5-bundle-free-sshine" id="g5-bundle-free-sshine" data-layout-ignore aria-hidden="true">FREE</div>
+        </div>
+      </div>
+      <svg class="g5-bundle-free-star" id="g5-bundle-free-star4" style="left:798px;top:434px" viewBox="-32 -32 64 64" aria-hidden="true"><path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFF4E0"></path><circle r="5" fill="#FFFFFF"></circle></svg>
+      <svg class="g5-bundle-free-star" id="g5-bundle-free-star5" style="left:214px;top:742px" viewBox="-32 -32 64 64" aria-hidden="true"><path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFE7A0"></path><circle r="5" fill="#FFFFFF"></circle></svg>
+      <div class="g5-bundle-free-origin" id="g5-bundle-free-sparks"></div>
+      <div class="g5-bundle-free-origin" id="g5-bundle-free-petalsFront"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var ID = "g5-bundle-free";
+  var P = ID + "-";
+  var DUR = 7.62;
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(n) { return document.getElementById(P + n); }
+  function prand(n) { var x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function smooth(v) { v = clamp01(v); return v * v * (3 - 2 * v); }
+
+  // ---------- setup (deterministic, runs once) ----------
+  // split headline text into per-character spans
+  var splits = document.querySelectorAll("#" + P + "titleA, #" + P + "hdB, #" + P + "subB, #" + P + "hdC, #" + P + "subC");
+  for (var s = 0; s < splits.length; s++) {
+    var txt = splits[s].textContent;
+    splits[s].textContent = "";
+    for (var c = 0; c < txt.length; c++) {
+      var sp = document.createElement("span");
+      sp.className = P + "ch";
+      sp.textContent = txt.charAt(c);
+      splits[s].appendChild(sp);
+    }
+  }
+  function chars(n) { return el(n).querySelectorAll("." + P + "ch"); }
+
+  // rangoli ring: petals, dots, inner lotus
+  var rgp = el("rg-petals"), rgd = el("rg-dots"), rgl = el("rg-lotus");
+  for (var i = 0; i < 32; i++) {
+    var p = document.createElementNS(SVGNS, "path");
+    p.setAttribute("d", "M0 -600 C30 -570 30 -528 0 -496 C-30 -528 -30 -570 0 -600 Z");
+    p.setAttribute("stroke", i % 2 ? "#FFC93C" : "#C8102E");
+    p.setAttribute("stroke-width", "3");
+    p.setAttribute("transform", "rotate(" + (i * 11.25) + ")");
+    rgp.appendChild(p);
+  }
+  for (i = 0; i < 48; i++) {
+    var a = i * Math.PI * 2 / 48;
+    var d = document.createElementNS(SVGNS, "circle");
+    d.setAttribute("cx", (470 * Math.cos(a)).toFixed(2));
+    d.setAttribute("cy", (470 * Math.sin(a)).toFixed(2));
+    d.setAttribute("r", i % 3 === 0 ? "8" : "5");
+    rgd.appendChild(d);
+  }
+  for (i = 0; i < 16; i++) {
+    var lp = document.createElementNS(SVGNS, "path");
+    lp.setAttribute("d", "M0 -400 C58 -360 70 -300 0 -270 C-70 -300 -58 -360 0 -400 Z");
+    lp.setAttribute("stroke", "#C8102E");
+    lp.setAttribute("stroke-width", "3");
+    lp.setAttribute("transform", "rotate(" + (i * 22.5) + ")");
+    rgl.appendChild(lp);
+  }
+
+  // string-light bokeh (seeded)
+  var bokehBox = el("bokeh");
+  var BK_COL = ["255,201,60", "255,159,28", "255,231,160", "255,201,60", "229,0,125"];
+  var bokeh = [];
+  for (i = 0; i < 30; i++) {
+    var b = document.createElement("i");
+    b.className = P + "bk";
+    var size = 22 + prand(i * 3 + 1) * 110;
+    var col = BK_COL[i % 7 === 6 ? 4 : i % 4];
+    b.style.left = (prand(i * 3 + 2) * 1080 - size / 2).toFixed(1) + "px";
+    b.style.top = (prand(i * 5 + 7) * 1600 - size / 2).toFixed(1) + "px";
+    b.style.width = size.toFixed(1) + "px";
+    b.style.height = size.toFixed(1) + "px";
+    b.style.background = "radial-gradient(circle closest-side, rgba(" + col + ",0.9) 0%, rgba(" + col + ",0.45) 55%, rgba(" + col + ",0) 100%)";
+    bokehBox.appendChild(b);
+    bokeh.push({ el: b, base: 0.1 + prand(i * 11 + 3) * 0.32, ph: prand(i * 13 + 5) * 6.283, sp: 0.8 + prand(i * 17 + 2) * 2.2, dx: 6 + prand(i * 19 + 4) * 16, dy: 10 + prand(i * 23 + 1) * 26 });
+  }
+
+  // mirror-work dots around card A (world coords: [x, y, size])
+  var MIRRORS = [[180,156,28],[400,146,22],[620,154,26],[770,144,20],[88,256,24],[88,410,30],[92,532,20],[998,300,26],[1000,450,22],[994,548,18]];
+  var mirrorBox = el("mirrors");
+  var mirrors = [];
+  for (i = 0; i < MIRRORS.length; i++) {
+    var m = MIRRORS[i];
+    var md = document.createElement("div");
+    md.className = P + "mirror";
+    md.style.left = (m[0] - m[2] / 2) + "px";
+    md.style.top = (m[1] - m[2] / 2) + "px";
+    md.style.width = m[2] + "px";
+    md.style.height = m[2] + "px";
+    var g = document.createElement("i");
+    g.className = P + "glint";
+    md.appendChild(g);
+    mirrorBox.appendChild(md);
+    mirrors.push({ el: md, glint: g, ph: prand(i * 7 + 1) * 6.283 });
+  }
+
+  // marigold petals (back + front layers) and gold sparks
+  var PET_COL = [["#FFC93C", "#FF9F1C"], ["#FF9F1C", "#E0700E"], ["#FFE7A0", "#FFC93C"], ["#FF9F1C", "#C8102E"]];
+  var petals = [];
+  for (i = 0; i < 36; i++) {
+    var front = i >= 30;
+    var pe = document.createElement("i");
+    pe.className = P + "petal";
+    var w = (front ? 34 : 14) + prand(i * 3 + 1) * (front ? 22 : 20);
+    var h = w * 0.66;
+    var pc = PET_COL[i % 4];
+    pe.style.width = w.toFixed(1) + "px";
+    pe.style.height = h.toFixed(1) + "px";
+    pe.style.marginLeft = (-w / 2).toFixed(1) + "px";
+    pe.style.marginTop = (-h / 2).toFixed(1) + "px";
+    pe.style.background = "linear-gradient(180deg, " + pc[0] + " 0%, " + pc[1] + " 100%)";
+    if (front) pe.style.filter = "blur(3px)";
+    (front ? el("petalsFront") : el("petalsBack")).appendChild(pe);
+    var ang = front
+      ? (i % 2 ? 0.25 : Math.PI - 0.25) + (prand(i * 5 + 2) * 2 - 1) * 0.5
+      : -Math.PI / 2 + (prand(i * 5 + 2) * 2 - 1) * 2.3;
+    var spd = (front ? 900 : 650) + prand(i * 7 + 3) * 850;
+    petals.push({
+      el: pe, front: front,
+      vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd,
+      k: 3.3 + prand(i * 13 + 5) * 1.3,
+      rot0: prand(i * 17 + 9) * 360, spin: (prand(i * 11 + 4) * 2 - 1) * 520,
+      ph: prand(i * 19 + 6) * 6.283, fl: 5 + prand(i * 23 + 8) * 5
+    });
+  }
+  var sparks = [];
+  for (i = 0; i < 18; i++) {
+    var sk = document.createElement("i");
+    sk.className = P + "spark";
+    el("sparks").appendChild(sk);
+    var sa = i * Math.PI * 2 / 18 + (prand(i * 29 + 3) - 0.5) * 0.3;
+    sparks.push({ el: sk, a: sa, v: 1100 + prand(i * 31 + 7) * 800 });
+  }
+  var rays = [];
+  for (i = 0; i < 14; i++) {
+    var ry = document.createElement("i");
+    ry.className = P + "ray";
+    el("rays").appendChild(ry);
+    rays.push({ el: ry, a: i * 360 / 14 + 6, r0: 210 + prand(i * 37 + 1) * 60 });
+  }
+
+  var tl = gsap.timeline({ paused: true });
+
+  // ---------- AMBIENT: one finite clock (pure function of t) ----------
+  var slotA = el("slotA"), slotB = el("slotB"), slotC = el("slotC"), floatEl = el("float");
+  var amb = { t: 0 };
+  function bobEnv(t, a, b) { return smooth((t - a) / 0.6) * (1 - smooth((t - b) / 0.5)); }
+  function applyAmbient() {
+    var t = amb.t, j;
+    for (j = 0; j < bokeh.length; j++) {
+      var k = bokeh[j];
+      var tw = 0.62 + 0.38 * Math.sin(k.ph + t * k.sp);
+      k.el.style.opacity = (k.base * tw).toFixed(3);
+      k.el.style.transform = "translate(" + (k.dx * Math.sin(k.ph + t * 0.5)).toFixed(2) + "px," + (-k.dy * t / DUR * 2 + 4 * Math.cos(k.ph + t * 0.4)).toFixed(2) + "px)";
+    }
+    for (j = 0; j < mirrors.length; j++) {
+      mirrors[j].glint.style.opacity = (0.45 + 0.55 * Math.max(0, Math.sin(mirrors[j].ph + t * 3.1))).toFixed(3);
+    }
+    // counter-phase idle bob after each card docks; damped once the ribbon ties the bundle
+    var w = Math.sin(t * 2 * Math.PI / 2.6);
+    slotA.style.transform = "translate(0px," + (-2.5 * w * bobEnv(t, 1.15, 4.9)).toFixed(2) + "px)";
+    slotB.style.transform = "translate(0px," + (2.5 * w * bobEnv(t, 3.4, 4.9)).toFixed(2) + "px)";
+    slotC.style.transform = "translate(0px," + (-2.5 * w * bobEnv(t, 4.55, 4.9)).toFixed(2) + "px)";
+    // the tied bundle floats as one
+    floatEl.style.transform = "translate(0px," + (-3 * Math.sin((t - 5.3) * 2 * Math.PI / 3.2) * smooth((t - 5.3) / 0.6)).toFixed(2) + "px)";
+  }
+  applyAmbient();
+  tl.fromTo(amb, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: applyAmbient }, 0);
+
+  tl.fromTo(el("rangoli"), { rotation: 0 }, { rotation: 16, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(el("rg-inner"), { rotation: 0, svgOrigin: "0 0" }, { rotation: -30, svgOrigin: "0 0", duration: DUR, ease: "none" }, 0);
+  tl.fromTo(el("blob"), { x: -40, y: -20 }, { x: 70, y: 50, duration: DUR, ease: "sine.inOut" }, 0);
+  tl.fromTo(el("goldglow"), { scale: 0.92 }, { scale: 1.12, duration: DUR, ease: "sine.inOut" }, 0);
+
+  // ---------- CAMERA ----------
+  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.04, duration: DUR, ease: "none" }, 0);
+  // rig: Scene 1 frames the hero card low-centre; the camera follows the bundle up as it grows
+  tl.fromTo(el("rig"), { y: 220 }, { y: 0, duration: 2.4, ease: "power3.inOut" }, 2.1);
+
+  // motion-blur helper: blur proxy shares the move's window + ease (expo.out => blur ~ velocity)
+  function motionBlur(wrapId, nodeId, from, at, dur, ease, axis) {
+    var wrap = el(wrapId), node = el(nodeId), pr = { b: from };
+    function write() {
+      if (pr.b < 0.25 || pr.b >= from) { wrap.style.filter = "none"; node.setAttribute("stdDeviation", "0 0"); return; }
+      wrap.style.filter = "url(#" + P + nodeId.replace("-n", "") + ")";
+      node.setAttribute("stdDeviation", axis === "y" ? "0 " + pr.b.toFixed(2) : pr.b.toFixed(2) + " 0");
+    }
+    tl.fromTo(pr, { b: from }, { b: 0, duration: dur, ease: ease, onUpdate: write }, at);
+    return write;
+  }
+
+  // ---------- SCENE 1 (0.0-2.0): hero card tilts in, light sweep, sparkles ----------
+  // split-tilt entry: from its own side, rotateY TILT+OVERSHOOT settling to TILT
+  tl.fromTo(el("cardA"),
+    { x: -300, rotationY: 40, rotationX: 10, rotation: -5, z: -260, opacity: 0, transformPerspective: 1600 },
+    { x: 0, rotationY: 8, rotationX: 0, rotation: 0, z: 0, opacity: 1, transformPerspective: 1600, duration: 1.0, ease: "expo.out" }, 0.1);
+  var wA = motionBlur("mbwA", "mbA-n", 34, 0.1, 1.0, "expo.out", "x");
+  wA();
+  // glow blooms behind the hero, resolving with its settle (ambient-glow-bloom)
+  tl.fromTo(el("aglow"), { opacity: 0, scale: 0.82 }, { opacity: 0.3, scale: 1, duration: 0.9, ease: "power2.out" }, 0.12);
+  tl.fromTo(el("aglow"), { opacity: 0.3 }, { opacity: 0, duration: 1.0, ease: "power1.inOut", immediateRender: false }, 2.3);
+
+  tl.fromTo(el("tileA"), { scale: 0, rotation: -20, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.34);
+  tl.fromTo(chars("titleA"),
+    { opacity: 0, y: 46, rotationX: -80, transformPerspective: 600 },
+    { opacity: 1, y: 0, rotationX: 0, transformPerspective: 600, duration: 0.55, ease: "power4.out", stagger: 0.03 }, 0.4);
+  tl.fromTo(el("chipA"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 0.62);
+  tl.fromTo([el("bar"), el("tc0"), el("tc1")], { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.05 }, 0.7);
+  // the scrubber fills to the end on "everything"
+  tl.fromTo(el("barfill"), { scaleX: 0 }, { scaleX: 1, duration: 1.05, ease: "power2.inOut" }, 0.78);
+  tl.fromTo(el("knob"), { x: 0 }, { x: 560, duration: 1.05, ease: "power2.inOut" }, 0.78);
+  // light sweep after the landing
+  tl.fromTo(el("sheenA"), { x: -420 }, { x: 1300, duration: 0.75, ease: "power1.inOut" }, 1.02);
+
+  // "everything" 1.52: mirror-work dots pop around the card, star glints flash
+  var mOrder = [2, 1, 3, 0, 7, 4, 8, 5, 9, 6];
+  for (i = 0; i < mOrder.length; i++) {
+    tl.fromTo(mirrors[mOrder[i]].el, { scale: 0, rotation: -120, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 1.48 + i * 0.035);
+  }
+  [[0, 1.54], [1, 1.64], [2, 1.74], [3, 1.86]].forEach(function (sg) {
+    var st = el("star" + sg[0]);
+    tl.fromTo(st, { scale: 0, rotation: 0, opacity: 0 }, { scale: 1, rotation: 45, opacity: 1, duration: 0.16, ease: "power2.out" }, sg[1]);
+    tl.to(st, { scale: 0, rotation: 90, opacity: 0, duration: 0.3, ease: "power2.in" }, sg[1] + 0.16);
+  });
+
+  // ---------- SCENE 2 (2.0-5.4): + / RISK / + / MIND dock into a fanned, ribboned bundle ----------
+  tl.fromTo(el("plus1"), { scale: 0, rotation: -120, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 2.14);
+  tl.fromTo(el("pring1"), { scale: 0.6, opacity: 0 }, { scale: 0.8, opacity: 0.9, duration: 0.05, ease: "none" }, 2.22);
+  tl.to(el("pring1"), { scale: 2.3, opacity: 0, duration: 0.5, ease: "power2.out" }, 2.27);
+
+  // RISK MANAGEMENT slides in from the right (opposing tilt), horizontal motion blur
+  tl.fromTo(el("cardB"),
+    { x: 760, rotationY: -36, rotation: 7, opacity: 0, transformPerspective: 1600 },
+    { x: 0, rotationY: -8, rotation: 2.5, opacity: 1, transformPerspective: 1600, duration: 0.85, ease: "expo.out" }, 2.64);
+  var wB = motionBlur("mbwB", "mbB-n", 40, 2.64, 0.85, "expo.out", "x");
+  wB();
+  tl.fromTo(el("tileB"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, 2.8);
+  tl.fromTo(chars("hdB"), { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out", stagger: 0.04 }, 2.74);
+  tl.fromTo(chars("subB"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.36, ease: "power3.out", stagger: 0.022 }, 2.9);
+  var shO = el("shieldO"), shC = el("shieldC");
+  var SHO = shO.getTotalLength(), SHC = shC.getTotalLength();
+  shO.style.strokeDasharray = SHO; shC.style.strokeDasharray = SHC;
+  tl.fromTo(shO, { strokeDashoffset: SHO }, { strokeDashoffset: 0, duration: 0.55, ease: "power2.inOut" }, 2.84);
+  tl.fromTo(shC, { strokeDashoffset: SHC }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 3.24);
+  // the + locks with a quarter turn when RISK docks
+  tl.fromTo(el("plus1"), { rotation: 0 }, { rotation: 90, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 3.0);
+  tl.fromTo(el("sheenB"), { x: -420 }, { x: 1300, duration: 0.7, ease: "power1.inOut" }, 3.26);
+
+  tl.fromTo(el("plus2"), { scale: 0, rotation: -120, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 3.5);
+  tl.fromTo(el("pring2"), { scale: 0.6, opacity: 0 }, { scale: 0.8, opacity: 0.9, duration: 0.05, ease: "none" }, 3.58);
+  tl.to(el("pring2"), { scale: 2.3, opacity: 0, duration: 0.5, ease: "power2.out" }, 3.63);
+
+  // MIND MANAGEMENT slides in from the left
+  tl.fromTo(el("cardC"),
+    { x: -760, rotationY: 36, rotation: -7, opacity: 0, transformPerspective: 1600 },
+    { x: 0, rotationY: 8, rotation: -1.5, opacity: 1, transformPerspective: 1600, duration: 0.85, ease: "expo.out" }, 3.76);
+  var wC = motionBlur("mbwC", "mbC-n", 40, 3.76, 0.85, "expo.out", "x");
+  wC();
+  tl.fromTo(el("tileC"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, 3.92);
+  tl.fromTo(chars("hdC"), { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out", stagger: 0.04 }, 3.86);
+  tl.fromTo(chars("subC"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.36, ease: "power3.out", stagger: 0.022 }, 4.08);
+  var lot = [el("lotus0"), el("lotus1"), el("lotus2"), el("lotus3")];
+  lot.forEach(function (lp, li) {
+    var L = lp.getTotalLength();
+    lp.style.strokeDasharray = L;
+    tl.fromTo(lp, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.inOut" }, 3.96 + li * 0.07);
+  });
+  tl.fromTo(el("lotus4"), { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(2.5)" }, 4.26);
+  tl.fromTo(el("plus2"), { rotation: 0 }, { rotation: 90, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 4.12);
+  tl.fromTo(el("sheenC"), { x: -420 }, { x: 1300, duration: 0.7, ease: "power1.inOut" }, 4.4);
+
+  // the stack fans out
+  tl.fromTo(el("cardA"), { rotation: 0 }, { rotation: -2, duration: 0.7, ease: "power2.inOut", immediateRender: false }, 4.3);
+
+  // gold ribbon wraps the bundle top -> bottom, tails drop, bow pops, the bundle cinches
+  tl.fromTo(el("ribbon"), { scaleY: 0 }, { scaleY: 1, duration: 0.7, ease: "power3.inOut" }, 4.55);
+  tl.fromTo(el("tail1"), { rotation: 16, scaleY: 0 }, { rotation: 16, scaleY: 1, duration: 0.45, ease: "back.out(2)" }, 5.12);
+  tl.fromTo(el("tail2"), { rotation: -16, scaleY: 0 }, { rotation: -16, scaleY: 1, duration: 0.45, ease: "back.out(2)" }, 5.16);
+  tl.fromTo(el("bow"), { scale: 0, rotation: -30, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, opacity: 1, transformOrigin: "50% 50%", duration: 0.55, ease: "back.out(2.2)" }, 5.06);
+  tl.fromTo(el("stack"), { scaleX: 1 }, { scaleX: 0.982, duration: 0.1, ease: "power2.in" }, 5.08);
+  tl.to(el("stack"), { scaleX: 1, duration: 0.5, ease: "back.out(2.5)" }, 5.18);
+  tl.fromTo(el("rgloss"), { y: -220 }, { y: 900, duration: 0.65, ease: "power1.inOut" }, 5.3);
+  // one light pass across the tied bundle
+  tl.fromTo(el("sheenA"), { x: -420 }, { x: 1300, duration: 0.7, ease: "power1.inOut", immediateRender: false }, 5.36);
+  tl.fromTo(el("sheenB"), { x: -420 }, { x: 1300, duration: 0.7, ease: "power1.inOut", immediateRender: false }, 5.44);
+  tl.fromTo(el("sheenC"), { x: -420 }, { x: 1300, duration: 0.7, ease: "power1.inOut", immediateRender: false }, 5.52);
+
+  // ---------- SCENE 3 (5.4-7.62): stack dims, FREE stamp slams with a marigold burst ----------
+  tl.fromTo(el("dim"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 6.1);
+  tl.to(el("stack"), { scale: 0.95, duration: 0.7, ease: "power2.out" }, 6.1);
+  // glow anticipates, then blooms on the impact
+  tl.fromTo(el("sglow"), { opacity: 0, scale: 0.78 }, { opacity: 0.12, scale: 0.84, duration: 0.55, ease: "power1.in" }, 6.3);
+  tl.to(el("sglow"), { opacity: 0.42, scale: 1, duration: 0.45, ease: "power2.out" }, 6.9);
+  var sgc = el("sglowcore"), brth = { p: 0 };
+  tl.fromTo(brth, { p: 0 }, {
+    p: Math.PI * 2 * 0.25, duration: DUR - 7.36, ease: "none",
+    onUpdate: function () { var s = Math.sin(brth.p); sgc.style.opacity = (1 - 0.08 * s).toFixed(3); sgc.style.transform = "scale(" + (1 + 0.025 * s).toFixed(4) + ")"; }
+  }, 7.36);
+
+  // kinetic slam: scale + blur resolve on a hard power4 attack, landing on "free"
+  tl.fromTo(el("stamp"),
+    { scale: 2.5, rotation: -20, opacity: 0, filter: "blur(16px)" },
+    { scale: 1, rotation: -8, opacity: 1, filter: "blur(0px)", duration: 0.42, ease: "power4.out" }, 6.78);
+  // impact squash -> overshoot settle
+  tl.fromTo(el("thump"), { scale: 0.9 }, { scale: 1, duration: 0.6, ease: "elastic.out(1.1, 0.42)" }, 6.92);
+  tl.fromTo(el("shock"), { scale: 0.4, opacity: 0 }, { scale: 0.5, opacity: 0.95, duration: 0.04, ease: "none" }, 6.9);
+  tl.to(el("shock"), { scale: 2.3, opacity: 0, duration: 0.6, ease: "power2.out" }, 6.94);
+  // the dimmed stack recoils from the hit
+  tl.to(el("stack"), { scale: 0.93, duration: 0.07, ease: "power2.out" }, 6.92);
+  tl.to(el("stack"), { scale: 0.95, duration: 0.45, ease: "back.out(2)" }, 6.99);
+  // light sweep through the letters once it has landed
+  tl.fromTo(el("sshine"), { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%", duration: 0.5, ease: "none" }, 7.16);
+  [[4, 7.2], [5, 7.32]].forEach(function (sg) {
+    var st = el("star" + sg[0]);
+    tl.fromTo(st, { scale: 0, rotation: 0, opacity: 0 }, { scale: 1, rotation: 45, opacity: 1, duration: 0.16, ease: "power2.out" }, sg[1]);
+    tl.to(st, { scale: 0, rotation: 90, opacity: 0, duration: 0.28, ease: "power2.in" }, sg[1] + 0.16);
+  });
+
+  // camera shake on impact (decaying, pure function of time)
+  var shakeEl = el("shake"), shk = { T: 0 }, SHK = 0.45;
+  function writeShake() {
+    var tt = shk.T * SHK;
+    if (shk.T <= 0 || shk.T >= 1) { shakeEl.style.transform = "translate(0px,0px)"; return; }
+    var amp = 15 * Math.exp(-7 * tt);
+    shakeEl.style.transform = "translate(" + (amp * Math.sin(2 * Math.PI * 11 * tt)).toFixed(2) + "px," + (0.8 * amp * Math.sin(2 * Math.PI * 13 * tt)).toFixed(2) + "px) rotate(" + (0.035 * amp * Math.sin(2 * Math.PI * 9 * tt)).toFixed(3) + "deg)";
+  }
+  writeShake();
+  tl.fromTo(shk, { T: 0 }, { T: 1, duration: SHK, ease: "none", onUpdate: writeShake }, 6.92);
+
+  // marigold-petal burst: drag + gravity ballistic, seeded, driver ease "none"
+  var BURST = 6.92, FLIGHT = DUR - BURST, G = 620;
+  var drv = { T: 0 };
+  function writeBurst() {
+    var T = drv.T, t = T * FLIGHT, j;
+    var fade = T <= 0 ? 0 : 1 - smooth((T - 0.55) / 0.45);
+    for (j = 0; j < petals.length; j++) {
+      var q = petals[j];
+      var e = 1 - Math.exp(-q.k * t);
+      var x = q.vx * e / q.k + 14 * Math.sin(4 * t + q.ph) * (1 - Math.exp(-2 * t));
+      var y = q.vy * e / q.k + (G / q.k) * (t - e / q.k);
+      var rot = q.rot0 + q.spin * e / q.k + 40 * t;
+      var fl = 0.3 + 0.7 * Math.abs(Math.cos(q.fl * t + q.ph));
+      var sc = q.front ? 1 + 0.6 * T : 1;
+      q.el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + rot.toFixed(1) + "deg) scale(" + (sc * fl).toFixed(3) + "," + sc.toFixed(3) + ")";
+      q.el.style.opacity = fade.toFixed(3);
+    }
+    var sf = T <= 0 ? 0 : 1 - smooth((T - 0.25) / 0.5);
+    for (j = 0; j < sparks.length; j++) {
+      var sp2 = sparks[j];
+      var vNow = sp2.v * Math.exp(-7 * t);
+      var dist = sp2.v * (1 - Math.exp(-7 * t)) / 7 + 120;
+      var len = 10 + vNow * 0.05;
+      sp2.el.style.width = len.toFixed(1) + "px";
+      sp2.el.style.transform = "rotate(" + (sp2.a * 180 / Math.PI).toFixed(2) + "deg) translate(" + dist.toFixed(1) + "px,-2.5px)";
+      sp2.el.style.opacity = sf.toFixed(3);
+    }
+    var rp = clamp01(t / 0.38);
+    var re = 1 - Math.pow(1 - rp, 3);
+    for (j = 0; j < rays.length; j++) {
+      var r = rays[j];
+      r.el.style.transform = "rotate(" + r.a + "deg) translate(" + (r.r0 + 230 * re).toFixed(1) + "px,0px) scale(" + (1 - rp).toFixed(3) + ",1)";
+      r.el.style.opacity = (T <= 0 ? 0 : 1 - rp).toFixed(3);
+    }
+  }
+  writeBurst();
+  tl.fromTo(drv, { T: 0 }, { T: 1, duration: FLIGHT, ease: "none", onUpdate: writeBurst }, BURST);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

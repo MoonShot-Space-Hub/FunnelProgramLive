@@ -1,0 +1,13 @@
+{
+  "scene": "g2-trends-change",
+  "duration_s": 4.76,
+  "rules": ["svg-path-draw", "chart-scrub-readout", "spring-pop-entrance", "motion-blur-streak"],
+  "exit": {
+    "vector": "camera push-in continuing (scale +0.0084/s about 540,620, ~5 px/s at stage edges) with -1.7 px/s upward drift; trend line fully settled on SIDEWAYS (last point lands 4.66s); SIDEWAYS chip settled (back.out ends 4.67s); chip sheen reaches 0 px/s at 4.76s (power2.inOut); dancer sways +/-3 deg; bokeh drifts 2-22 px amplitude",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "chart card rising at frame 0: y +46 -> 0 over 0.65s expo.out (~490 px/s upward), scale 0.965 -> 1 (+0.37 scale/s), opacity 0.3 -> 1; plus camera push +0.0084 scale/s",
+    "from_rest": false
+  }
+}

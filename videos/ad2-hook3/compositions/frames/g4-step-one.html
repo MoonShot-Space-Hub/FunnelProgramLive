@@ -1,0 +1,525 @@
+<template>
+<style>
+[data-composition-id="g4-step-one"] {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FFF4E0; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="g4-step-one"] .g4-step-one-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+[data-composition-id="g4-step-one"] .g4-step-one-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+
+/* ---------- ground ---------- */
+[data-composition-id="g4-step-one"] .g4-step-one-base {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background-color: #1A0509;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #4A0A14 0%, #1A0509 72%);
+}
+[data-composition-id="g4-step-one"] #g4-step-one-blob {
+  position: absolute; left: 340px; top: 980px; width: 1040px; height: 1040px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(200,16,46,1) 0%, rgba(200,16,46,0.55) 40%, rgba(200,16,46,0) 100%);
+  opacity: 0.35;
+}
+[data-composition-id="g4-step-one"] #g4-step-one-goldglow {
+  position: absolute; left: 160px; top: -90px; width: 760px; height: 760px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255,201,60,1) 0%, rgba(255,201,60,0.4) 45%, rgba(255,201,60,0) 100%);
+  opacity: 0.18;
+}
+[data-composition-id="g4-step-one"] #g4-step-one-rangoli { position: absolute; left: -60px; top: 20px; width: 1200px; height: 1200px; opacity: 0.14; overflow: visible; }
+[data-composition-id="g4-step-one"] #g4-step-one-rangoli2 { position: absolute; left: 120px; top: 1300px; width: 840px; height: 840px; opacity: 0.11; overflow: visible; }
+[data-composition-id="g4-step-one"] #g4-step-one-wires { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+[data-composition-id="g4-step-one"] #g4-step-one-lights { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+[data-composition-id="g4-step-one"] .g4-step-one-bk { position: absolute; display: block; border-radius: 50%; }
+[data-composition-id="g4-step-one"] #g4-step-one-grain { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: 0.06; }
+
+/* ---------- stage / camera ---------- */
+[data-composition-id="g4-step-one"] #g4-step-one-cam { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 540px 620px; }
+
+/* STEP 1 badge */
+[data-composition-id="g4-step-one"] #g4-step-one-shock { position: absolute; left: 290px; top: 120px; width: 500px; height: 340px; overflow: visible; }
+[data-composition-id="g4-step-one"] #g4-step-one-badgecmp,
+[data-composition-id="g4-step-one"] #g4-step-one-badgeslam,
+[data-composition-id="g4-step-one"] #g4-step-one-badgebeat { position: absolute; width: 340px; height: 340px; transform-origin: 50% 50%; }
+[data-composition-id="g4-step-one"] #g4-step-one-badgecmp { left: 370px; top: 122px; }
+[data-composition-id="g4-step-one"] #g4-step-one-badgeslam,
+[data-composition-id="g4-step-one"] #g4-step-one-badgebeat { left: 0; top: 0; }
+[data-composition-id="g4-step-one"] #g4-step-one-ring { position: absolute; left: 0; top: 0; width: 340px; height: 340px; overflow: visible; }
+[data-composition-id="g4-step-one"] #g4-step-one-core {
+  position: absolute; left: 45px; top: 45px; width: 250px; height: 250px; border-radius: 50%; overflow: hidden;
+  box-sizing: border-box; border: 5px solid #FF9F1C;
+  background: radial-gradient(circle at 50% 38%, #6A1222 0%, #4A0A14 55%, #2A0610 100%);
+  box-shadow: 0 0 50px rgba(255,159,28,0.45), inset 0 0 40px rgba(255,159,28,0.18);
+}
+[data-composition-id="g4-step-one"] .g4-step-one-corestack {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+[data-composition-id="g4-step-one"] .g4-step-one-steplbl {
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 36px; line-height: 1;
+  letter-spacing: 0.3em; padding-left: 0.3em; color: #FF9F1C; margin-top: 8px;
+}
+[data-composition-id="g4-step-one"] .g4-step-one-num {
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 168px; line-height: 0.9;
+  letter-spacing: -0.03em; color: #FFF4E0; text-shadow: 0 0 40px rgba(255,159,28,0.5);
+}
+[data-composition-id="g4-step-one"] #g4-step-one-coresheen {
+  position: absolute; left: 0; top: -20px; width: 130px; height: 290px;
+  background: linear-gradient(100deg, rgba(255,240,200,0) 0%, rgba(255,240,200,0.4) 50%, rgba(255,240,200,0) 100%);
+}
+
+/* checklist cards */
+[data-composition-id="g4-step-one"] #g4-step-one-cardscmp { position: absolute; left: 60px; top: 470px; width: 960px; height: 410px; transform-origin: 50% 0%; }
+[data-composition-id="g4-step-one"] .g4-step-one-cin { position: absolute; width: 465px; height: 190px; transform-origin: 50% 50%; }
+[data-composition-id="g4-step-one"] .g4-step-one-card {
+  position: absolute; left: 0; top: 0; width: 465px; height: 190px; box-sizing: border-box; border-radius: 34px; overflow: hidden;
+  border: 3px solid rgba(255,159,28,0.45);
+  background: linear-gradient(160deg, rgba(74,10,20,0.95), rgba(26,5,9,0.95));
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55);
+}
+[data-composition-id="g4-step-one"] .g4-step-one-innerline { position: absolute; left: 9px; top: 9px; right: 9px; bottom: 9px; border-radius: 26px; border: 1px solid rgba(255,201,60,0.2); }
+[data-composition-id="g4-step-one"] .g4-step-one-bandhani {
+  position: absolute; right: 0; bottom: 0; width: 200px; height: 140px; opacity: 0.08;
+  background-image: radial-gradient(circle, rgba(255,201,60,1) 2px, rgba(255,201,60,0) 2.8px); background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%);
+  mask-image: radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%);
+}
+[data-composition-id="g4-step-one"] .g4-step-one-icon { position: absolute; left: 26px; top: 24px; width: 78px; height: 78px; box-sizing: border-box; border-radius: 22px; border: 2px solid; }
+[data-composition-id="g4-step-one"] .g4-step-one-icon svg { position: absolute; left: -2px; top: -2px; width: 78px; height: 78px; overflow: visible; }
+[data-composition-id="g4-step-one"] .g4-step-one-icon svg path,
+[data-composition-id="g4-step-one"] .g4-step-one-icon svg circle { fill: none; stroke: currentColor; stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+[data-composition-id="g4-step-one"] .g4-step-one-icon svg .g4-step-one-solid { fill: currentColor; stroke: none; }
+[data-composition-id="g4-step-one"] .g4-step-one-green { color: #2BD27A; border-color: rgba(43,210,122,0.55); background: rgba(43,210,122,0.12); }
+[data-composition-id="g4-step-one"] .g4-step-one-mari { color: #FF9F1C; border-color: rgba(255,159,28,0.55); background: rgba(255,159,28,0.12); }
+[data-composition-id="g4-step-one"] .g4-step-one-red { color: #FF3B4E; border-color: rgba(255,59,78,0.55); background: rgba(255,59,78,0.12); }
+[data-composition-id="g4-step-one"] .g4-step-one-gold { color: #FFC93C; border-color: rgba(255,201,60,0.55); background: rgba(255,201,60,0.12); }
+[data-composition-id="g4-step-one"] .g4-step-one-idx {
+  position: absolute; left: 124px; top: 36px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 28px; line-height: 1;
+  letter-spacing: 0.1em; color: #FF9F1C;
+}
+[data-composition-id="g4-step-one"] .g4-step-one-check { position: absolute; right: 24px; top: 22px; width: 62px; height: 62px; overflow: visible; }
+[data-composition-id="g4-step-one"] .g4-step-one-label {
+  position: absolute; left: 28px; bottom: 24px; white-space: nowrap;
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 48px; line-height: 1;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #FFF4E0;
+}
+[data-composition-id="g4-step-one"] .g4-step-one-sweep {
+  position: absolute; left: 0; top: -20px; width: 240px; height: 240px;
+  background: linear-gradient(105deg, rgba(255,201,60,0) 20%, rgba(255,201,60,0.28) 50%, rgba(255,201,60,0) 80%);
+}
+[data-composition-id="g4-step-one"] .g4-step-one-glow {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; box-sizing: border-box; border-radius: 34px;
+  border: 3px solid #FFC93C; box-shadow: 0 0 46px rgba(255,201,60,0.5), inset 0 0 40px rgba(255,201,60,0.14); opacity: 0;
+}
+
+/* trend tiles */
+[data-composition-id="g4-step-one"] #g4-step-one-tiles { position: absolute; left: 60px; top: 884px; width: 960px; height: 200px; }
+[data-composition-id="g4-step-one"] .g4-step-one-tin { position: absolute; top: 0; width: 290px; height: 200px; transform-origin: 50% 60%; }
+[data-composition-id="g4-step-one"] .g4-step-one-tbump { position: absolute; left: 0; top: 0; width: 290px; height: 200px; transform-origin: 50% 50%; }
+[data-composition-id="g4-step-one"] .g4-step-one-tile {
+  position: absolute; left: 0; top: 0; width: 290px; height: 200px; box-sizing: border-box; border-radius: 30px; overflow: hidden;
+  border: 3px solid rgba(255,159,28,0.45);
+  background: linear-gradient(160deg, rgba(74,10,20,0.95), rgba(26,5,9,0.95));
+  box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+}
+[data-composition-id="g4-step-one"] .g4-step-one-tring { position: absolute; left: -8px; top: -8px; width: 306px; height: 216px; box-sizing: border-box; border-radius: 36px; border: 3px solid; opacity: 0; }
+[data-composition-id="g4-step-one"] .g4-step-one-ticon { position: absolute; left: 85px; top: 10px; width: 120px; height: 120px; overflow: visible; }
+[data-composition-id="g4-step-one"] .g4-step-one-ticon .g4-step-one-tl { fill: none; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+[data-composition-id="g4-step-one"] .g4-step-one-tlabel {
+  position: absolute; left: 0; width: 290px; bottom: 22px; text-align: center; white-space: nowrap;
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 30px; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase;
+}
+[data-composition-id="g4-step-one"] .g4-step-one-tsweep {
+  position: absolute; left: 0; top: -20px; width: 160px; height: 240px;
+  background: linear-gradient(105deg, rgba(255,201,60,0) 20%, rgba(255,201,60,0.3) 50%, rgba(255,201,60,0) 80%);
+}
+</style>
+
+<div id="root" data-composition-id="g4-step-one" data-start="0" data-duration="5.32" data-width="1080" data-height="1920">
+  <svg class="g4-step-one-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="g4-step-one-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="47" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+      <filter id="g4-step-one-streak" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="g4-step-one-streakblur" in="SourceGraphic" stdDeviation="24 0"></feGaussianBlur>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track, covers all 1920px -->
+  <div id="g4-step-one-ground" class="clip g4-step-one-layer" data-start="0" data-duration="5.32" data-track-index="0">
+    <div class="g4-step-one-base"></div>
+    <div id="g4-step-one-blob"></div>
+    <div id="g4-step-one-goldglow"></div>
+    <svg id="g4-step-one-rangoli" viewBox="-600 -600 1200 1200" width="1200" height="1200" aria-hidden="true"></svg>
+    <svg id="g4-step-one-rangoli2" viewBox="-420 -420 840 840" width="840" height="840" aria-hidden="true"></svg>
+    <svg id="g4-step-one-wires" viewBox="0 0 1080 1920" width="1080" height="1920" aria-hidden="true">
+      <path d="M-40 60 Q540 280 1120 80" fill="none" stroke="rgba(255,201,60,0.22)" stroke-width="2"></path>
+      <path d="M-40 1540 Q540 1790 1120 1550" fill="none" stroke="rgba(255,201,60,0.2)" stroke-width="2"></path>
+    </svg>
+    <div id="g4-step-one-lights"></div>
+    <svg id="g4-step-one-grain" width="1080" height="1920" aria-hidden="true"><rect width="1080" height="1920" filter="url(#g4-step-one-grainf)"></rect></svg>
+  </div>
+
+  <!-- stage: all content inside x60-1020 / y120-1120 -->
+  <div id="g4-step-one-stage" class="clip g4-step-one-layer" data-start="0" data-duration="5.32" data-track-index="1">
+    <div id="g4-step-one-cam">
+      <svg id="g4-step-one-shock" viewBox="-250 -170 500 340" width="500" height="340" aria-hidden="true">
+        <circle id="g4-step-one-sh0" cx="0" cy="0" r="120" fill="none" stroke="#FF9F1C" stroke-width="6" opacity="0"></circle>
+        <circle id="g4-step-one-sh1" cx="0" cy="0" r="120" fill="none" stroke="#FFC93C" stroke-width="4" opacity="0"></circle>
+      </svg>
+
+      <div id="g4-step-one-badgecmp">
+        <div id="g4-step-one-badgeslam">
+          <div id="g4-step-one-badgebeat">
+            <svg id="g4-step-one-ring" viewBox="-170 -170 340 340" width="340" height="340" aria-hidden="true"></svg>
+            <div id="g4-step-one-core">
+              <div class="g4-step-one-corestack"><div class="g4-step-one-steplbl">STEP</div><div class="g4-step-one-num">1</div></div>
+              <div id="g4-step-one-coresheen"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="g4-step-one-cardscmp">
+        <!-- ENTRY -->
+        <div id="g4-step-one-c0" class="g4-step-one-cin" style="left:0px;top:0px;">
+          <div class="g4-step-one-card">
+            <div class="g4-step-one-innerline"></div><div class="g4-step-one-bandhani"></div>
+            <div class="g4-step-one-icon g4-step-one-green"><svg viewBox="0 0 78 78" aria-hidden="true"><path d="M48 16 H62 V62 H48"></path><g id="g4-step-one-ic0"><path d="M12 39 H44"></path><path d="M32 27 L44 39 L32 51"></path></g></svg></div>
+            <div class="g4-step-one-idx">01</div>
+            <svg class="g4-step-one-check" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="27" fill="none" stroke="rgba(255,201,60,0.35)" stroke-width="3"></circle><circle id="g4-step-one-cf0" cx="31" cy="31" r="27" fill="#FFC93C"></circle><path id="g4-step-one-ck0" d="M18 32 L27 41 L44 22" fill="none" stroke="#1A0509" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <div class="g4-step-one-label">ENTRY</div>
+            <div id="g4-step-one-sw0" class="g4-step-one-sweep"></div>
+            <div id="g4-step-one-gl0" class="g4-step-one-glow"></div>
+          </div>
+        </div>
+        <!-- EXIT -->
+        <div id="g4-step-one-c1" class="g4-step-one-cin" style="left:495px;top:0px;">
+          <div class="g4-step-one-card">
+            <div class="g4-step-one-innerline"></div><div class="g4-step-one-bandhani"></div>
+            <div class="g4-step-one-icon g4-step-one-mari"><svg viewBox="0 0 78 78" aria-hidden="true"><path d="M30 16 H16 V62 H30"></path><g id="g4-step-one-ic1"><path d="M30 39 H62"></path><path d="M50 27 L62 39 L50 51"></path></g></svg></div>
+            <div class="g4-step-one-idx">02</div>
+            <svg class="g4-step-one-check" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="27" fill="none" stroke="rgba(255,201,60,0.35)" stroke-width="3"></circle><circle id="g4-step-one-cf1" cx="31" cy="31" r="27" fill="#FFC93C"></circle><path id="g4-step-one-ck1" d="M18 32 L27 41 L44 22" fill="none" stroke="#1A0509" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <div class="g4-step-one-label">EXIT</div>
+            <div id="g4-step-one-sw1" class="g4-step-one-sweep"></div>
+            <div id="g4-step-one-gl1" class="g4-step-one-glow"></div>
+          </div>
+        </div>
+        <!-- STOP LOSS -->
+        <div id="g4-step-one-c2" class="g4-step-one-cin" style="left:0px;top:220px;">
+          <div class="g4-step-one-card">
+            <div class="g4-step-one-innerline"></div><div class="g4-step-one-bandhani"></div>
+            <div class="g4-step-one-icon g4-step-one-red"><svg viewBox="0 0 78 78" aria-hidden="true"><g id="g4-step-one-ic2"><path d="M39 12 L62 20 V38 Q62 56 39 66 Q16 56 16 38 V20 Z"></path><path d="M28 39 H50"></path></g></svg></div>
+            <div class="g4-step-one-idx">03</div>
+            <svg class="g4-step-one-check" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="27" fill="none" stroke="rgba(255,201,60,0.35)" stroke-width="3"></circle><circle id="g4-step-one-cf2" cx="31" cy="31" r="27" fill="#FFC93C"></circle><path id="g4-step-one-ck2" d="M18 32 L27 41 L44 22" fill="none" stroke="#1A0509" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <div class="g4-step-one-label">STOP LOSS</div>
+            <div id="g4-step-one-sw2" class="g4-step-one-sweep"></div>
+            <div id="g4-step-one-gl2" class="g4-step-one-glow"></div>
+          </div>
+        </div>
+        <!-- TARGET -->
+        <div id="g4-step-one-c3" class="g4-step-one-cin" style="left:495px;top:220px;">
+          <div class="g4-step-one-card">
+            <div class="g4-step-one-innerline"></div><div class="g4-step-one-bandhani"></div>
+            <div class="g4-step-one-icon g4-step-one-gold"><svg viewBox="0 0 78 78" aria-hidden="true"><circle cx="39" cy="39" r="25"></circle><circle cx="39" cy="39" r="14"></circle><circle id="g4-step-one-ic3" class="g4-step-one-solid" cx="39" cy="39" r="5.5"></circle></svg></div>
+            <div class="g4-step-one-idx">04</div>
+            <svg class="g4-step-one-check" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="27" fill="none" stroke="rgba(255,201,60,0.35)" stroke-width="3"></circle><circle id="g4-step-one-cf3" cx="31" cy="31" r="27" fill="#FFC93C"></circle><path id="g4-step-one-ck3" d="M18 32 L27 41 L44 22" fill="none" stroke="#1A0509" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <div class="g4-step-one-label">TARGET</div>
+            <div id="g4-step-one-sw3" class="g4-step-one-sweep"></div>
+            <div id="g4-step-one-gl3" class="g4-step-one-glow"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="g4-step-one-tiles">
+        <!-- UPTREND -->
+        <div id="g4-step-one-t0" class="g4-step-one-tin" style="left:0px;">
+          <div id="g4-step-one-tb0" class="g4-step-one-tbump">
+            <div id="g4-step-one-tr0" class="g4-step-one-tring" style="border-color:#2BD27A;box-shadow:0 0 30px rgba(43,210,122,0.5);"></div>
+            <div class="g4-step-one-tile">
+              <svg class="g4-step-one-ticon" viewBox="0 0 120 120" aria-hidden="true">
+                <circle id="g4-step-one-to0" cx="60" cy="60" r="48" fill="rgba(43,210,122,0.1)" stroke="#2BD27A" stroke-width="5" transform="rotate(-90 60 60)"></circle>
+                <circle id="g4-step-one-tf0" cx="60" cy="60" r="40" fill="none" stroke="#2BD27A" stroke-width="2" stroke-dasharray="3 7" opacity="0.5"></circle>
+                <path id="g4-step-one-tl0" class="g4-step-one-tl" d="M28 84 L46 64 L60 74 L86 40" stroke="#2BD27A"></path>
+                <path id="g4-step-one-th0" class="g4-step-one-tl" d="M72 40 L86 40 L86 54" stroke="#2BD27A"></path>
+                <circle id="g4-step-one-tq0" cx="86" cy="40" r="11" fill="none" stroke="#2BD27A" stroke-width="2.5" opacity="0"></circle>
+                <circle id="g4-step-one-tp0" cx="86" cy="40" r="5" fill="#FFF4E0" opacity="0"></circle>
+              </svg>
+              <div class="g4-step-one-tlabel" style="color:#2BD27A;text-shadow:0 0 22px rgba(43,210,122,0.5);">UPTREND</div>
+              <div id="g4-step-one-ts0" class="g4-step-one-tsweep"></div>
+            </div>
+          </div>
+        </div>
+        <!-- DOWNTREND -->
+        <div id="g4-step-one-t1" class="g4-step-one-tin" style="left:335px;">
+          <div id="g4-step-one-tb1" class="g4-step-one-tbump">
+            <div id="g4-step-one-tr1" class="g4-step-one-tring" style="border-color:#FF3B4E;box-shadow:0 0 30px rgba(255,59,78,0.5);"></div>
+            <div class="g4-step-one-tile">
+              <svg class="g4-step-one-ticon" viewBox="0 0 120 120" aria-hidden="true">
+                <circle id="g4-step-one-to1" cx="60" cy="60" r="48" fill="rgba(255,59,78,0.1)" stroke="#FF3B4E" stroke-width="5" transform="rotate(-90 60 60)"></circle>
+                <circle id="g4-step-one-tf1" cx="60" cy="60" r="40" fill="none" stroke="#FF3B4E" stroke-width="2" stroke-dasharray="3 7" opacity="0.5"></circle>
+                <path id="g4-step-one-tl1" class="g4-step-one-tl" d="M28 38 L46 58 L60 48 L86 82" stroke="#FF3B4E"></path>
+                <path id="g4-step-one-th1" class="g4-step-one-tl" d="M86 68 L86 82 L72 82" stroke="#FF3B4E"></path>
+                <circle id="g4-step-one-tq1" cx="86" cy="82" r="11" fill="none" stroke="#FF3B4E" stroke-width="2.5" opacity="0"></circle>
+                <circle id="g4-step-one-tp1" cx="86" cy="82" r="5" fill="#FFF4E0" opacity="0"></circle>
+              </svg>
+              <div class="g4-step-one-tlabel" style="color:#FF3B4E;text-shadow:0 0 22px rgba(255,59,78,0.5);">DOWNTREND</div>
+              <div id="g4-step-one-ts1" class="g4-step-one-tsweep"></div>
+            </div>
+          </div>
+        </div>
+        <!-- SIDEWAYS -->
+        <div id="g4-step-one-t2" class="g4-step-one-tin" style="left:670px;">
+          <div id="g4-step-one-tb2" class="g4-step-one-tbump">
+            <div id="g4-step-one-tr2" class="g4-step-one-tring" style="border-color:#FFC93C;box-shadow:0 0 30px rgba(255,201,60,0.5);"></div>
+            <div class="g4-step-one-tile">
+              <svg class="g4-step-one-ticon" viewBox="0 0 120 120" aria-hidden="true">
+                <circle id="g4-step-one-to2" cx="60" cy="60" r="48" fill="rgba(255,201,60,0.1)" stroke="#FFC93C" stroke-width="5" transform="rotate(-90 60 60)"></circle>
+                <circle id="g4-step-one-tf2" cx="60" cy="60" r="40" fill="none" stroke="#FFC93C" stroke-width="2" stroke-dasharray="3 7" opacity="0.5"></circle>
+                <path id="g4-step-one-tl2" class="g4-step-one-tl" d="M24 60 L36 51 L50 67 L64 53 L78 60 L92 60" stroke="#FFC93C"></path>
+                <path id="g4-step-one-th2" class="g4-step-one-tl" d="M82 50 L92 60 L82 70" stroke="#FFC93C"></path>
+                <circle id="g4-step-one-tq2" cx="92" cy="60" r="11" fill="none" stroke="#FFC93C" stroke-width="2.5" opacity="0"></circle>
+                <circle id="g4-step-one-tp2" cx="92" cy="60" r="5" fill="#FFF4E0" opacity="0"></circle>
+              </svg>
+              <div class="g4-step-one-tlabel" style="color:#FFC93C;text-shadow:0 0 22px rgba(255,201,60,0.5);">SIDEWAYS</div>
+              <div id="g4-step-one-ts2" class="g4-step-one-tsweep"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var P = "g4-step-one-";
+  var DUR = 5.32;
+  function el(n) { return document.getElementById(P + n); }
+  function clamp01(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var q = Math.imul(a ^ (a >>> 15), 1 | a);
+      q = (q + Math.imul(q ^ (q >>> 7), 61 | q)) ^ q;
+      return ((q ^ (q >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  var rnd = mulberry32(44017);
+  var E_P2 = gsap.parseEase("power2.out");
+  var E_EXPO = gsap.parseEase("expo.out");
+  var tl = gsap.timeline({ paused: true });
+
+  // ONE onset array (the voiceover cues) drives every hit, accent and chrome pulse
+  var BEAT = { step: 0.12, entry: 0.76, exit: 1.08, stop: 1.56, target: 2.12, up: 2.76, down: 3.56, side: 4.36, trend: 4.68 };
+  var LAND = [0.98, 1.28, 1.82, 2.40];            // where each card's slam settles
+  var TILE = [BEAT.up - 0.04, BEAT.down - 0.04, BEAT.side - 0.04];
+
+  // ======================= GROUND (built once, deterministic) =======================
+  function petal(r1, r2, w, deg) {
+    var m = (r1 + r2) / 2;
+    return '<path transform="rotate(' + deg + ')" d="M0 ' + (-r1).toFixed(1) + ' Q' + w.toFixed(1) + ' ' + (-m).toFixed(1) + ' 0 ' + (-r2).toFixed(1) + ' Q' + (-w).toFixed(1) + ' ' + (-m).toFixed(1) + ' 0 ' + (-r1).toFixed(1) + 'Z"></path>';
+  }
+  function ringOf(n, r, rad) {
+    var s = "";
+    for (var k = 0; k < n; k++) {
+      var a = (k / n) * Math.PI * 2;
+      s += '<circle cx="' + (Math.cos(a) * r).toFixed(1) + '" cy="' + (Math.sin(a) * r).toFixed(1) + '" r="' + rad.toFixed(1) + '"></circle>';
+    }
+    return s;
+  }
+  function rangoli(R, gold, red, sw) {
+    var s = '<g fill="none" stroke="' + red + '" stroke-width="' + sw + '">';
+    s += '<circle r="' + (R * 0.28).toFixed(1) + '"></circle><circle r="' + (R * 0.54).toFixed(1) + '"></circle><circle r="' + (R * 0.79).toFixed(1) + '"></circle>';
+    for (var k = 0; k < 12; k++) s += petal(R * 0.3, R * 0.52, R * 0.07, k * 30);
+    s += '</g><g fill="none" stroke="' + gold + '" stroke-width="' + (sw * 0.85) + '">';
+    for (k = 0; k < 24; k++) s += petal(R * 0.56, R * 0.77, R * 0.045, k * 15 + 7.5);
+    s += '<circle r="' + (R * 0.97).toFixed(1) + '"></circle></g>';
+    s += '<g fill="' + gold + '">' + ringOf(48, R * 0.87, R * 0.013) + '</g>';
+    s += '<g fill="none" stroke="' + red + '" stroke-width="' + (sw * 0.85) + '">' + ringOf(36, R * 0.97, R * 0.045) + '</g>';
+    s += '<g fill="' + gold + '">';
+    for (k = 0; k < 8; k++) s += petal(R * 0.04, R * 0.22, R * 0.05, k * 45);
+    s += '</g>';
+    return s;
+  }
+  el("rangoli").innerHTML = rangoli(560, "#FFC93C", "#C8102E", 3);
+  el("rangoli2").innerHTML = rangoli(400, "#FFC93C", "#C8102E", 3);
+
+  // the badge's spinning dashed mandala ring
+  var ringS = '<g id="' + P + 'ringspin">';
+  ringS += '<circle r="160" fill="none" stroke="#FF9F1C" stroke-width="4" stroke-dasharray="16 11"></circle>';
+  ringS += '<g fill="#FFC93C">' + ringOf(36, 146, 3.2) + '</g>';
+  ringS += '<g fill="none" stroke="#C8102E" stroke-width="3">';
+  for (var pk = 0; pk < 16; pk++) ringS += petal(122, 140, 7, pk * 22.5 + 11.25);
+  ringS += '</g></g>';
+  el("ring").innerHTML = ringS;
+
+  // string lights on two wires + loose bokeh
+  var lightsHost = el("lights");
+  var LIGHTS = [];
+  function qb(p0, p1, p2, k) { var u = 1 - k; return u * u * p0 + 2 * u * k * p1 + k * k * p2; }
+  function addLight(x, y, d, rgb, base, kind) {
+    var n = document.createElement("i");
+    n.className = P + "bk";
+    var g = kind === "bulb"
+      ? "radial-gradient(circle closest-side, rgba(255,246,220,0.95) 0%, rgba(" + rgb + ",0.75) 22%, rgba(" + rgb + ",0.22) 55%, rgba(" + rgb + ",0) 100%)"
+      : "radial-gradient(circle closest-side, rgba(" + rgb + ",0.32) 0%, rgba(" + rgb + ",0.4) 74%, rgba(" + rgb + ",0.62) 88%, rgba(" + rgb + ",0) 100%)";
+    n.style.cssText = "left:" + (x - d / 2).toFixed(1) + "px;top:" + (y - d / 2).toFixed(1) + "px;width:" + d.toFixed(1) + "px;height:" + d.toFixed(1) + "px;background:" + g + ";opacity:" + base.toFixed(3) + ";";
+    lightsHost.appendChild(n);
+    LIGHTS.push({ n: n, base: base, amp: kind === "bulb" ? 2 + rnd() * 2 : 8 + rnd() * 14, ph: rnd() * 6.283, sp: 0.35 + rnd() * 0.5, tw: kind === "bulb" ? 2.2 + rnd() * 3.2 : 0.8 + rnd() * 1.2 });
+  }
+  var BULB_RGB = ["255,201,60", "255,159,28", "255,201,60", "255,226,150"];
+  var k;
+  for (k = 0; k < 15; k++) { var u = (k + 0.5) / 15; addLight(qb(-40, 540, 1120, u), qb(60, 280, 80, u) + 8, 46 + rnd() * 26, BULB_RGB[k % 4], 0.5 + rnd() * 0.35, "bulb"); }
+  for (k = 0; k < 13; k++) { var u2 = (k + 0.5) / 13; addLight(qb(-40, 540, 1120, u2), qb(1540, 1790, 1550, u2) + 8, 52 + rnd() * 30, BULB_RGB[(k + 1) % 4], 0.45 + rnd() * 0.35, "bulb"); }
+  var BOKEH_RGB = ["255,201,60", "255,159,28", "200,16,46", "255,201,60", "229,0,125"];
+  for (k = 0; k < 20; k++) { addLight(30 + rnd() * 1020, 60 + rnd() * 1820, 60 + rnd() * 110, BOKEH_RGB[k % 5], 0.07 + rnd() * 0.15, "disc"); }
+
+  // ======================= DOM refs =======================
+  var cam = el("cam"), ringSpin = el("ringspin"), core = el("core"), badgeBeat = el("badgebeat");
+  var sh = [el("sh0"), el("sh1")];
+  var c1 = el("c1"), streakBlur = el("streakblur");
+  var gl = [el("gl0"), el("gl1"), el("gl2"), el("gl3")];
+  var ic0 = el("ic0"), ic1 = el("ic1"), ic2 = el("ic2"), ic3 = el("ic3");
+  var tb = [el("tb0"), el("tb1"), el("tb2")], tr = [el("tr0"), el("tr1"), el("tr2")];
+  var tf = [el("tf0"), el("tf1"), el("tf2")], tq = [el("tq0"), el("tq1"), el("tq2")], tp = [el("tp0"), el("tp1"), el("tp2")];
+  var TIP = [[86, 40], [86, 82], [92, 60]];
+  var rang1 = el("rangoli"), rang2 = el("rangoli2"), blob = el("blob"), goldGlow = el("goldglow");
+
+  function pulse(t, T, decay) { var dt = t - T; if (dt < 0) return 0; var att = clamp01(dt / 0.06); return att * Math.exp(-Math.max(0, dt - 0.06) * decay); }
+
+  // ======================= THE ONE PER-FRAME APPLIER (pure function of t) =======================
+  function render(t) {
+    var i, q;
+    // camera: slow push 1.00 -> 1.04 + a kick on every hit
+    var kick = 0.016 * pulse(t, 0.3, 6);
+    for (i = 0; i < 4; i++) kick += 0.009 * pulse(t, LAND[i] - 0.06, 7);
+    for (i = 0; i < 3; i++) kick += 0.006 * pulse(t, TILE[i] + 0.2, 7);
+    cam.style.transform = "translate(0px," + (-10 * (t / DUR)).toFixed(2) + "px) scale(" + (1 + 0.04 * (t / DUR) + kick).toFixed(5) + ")";
+
+    // badge: ring spin (a whoosh on the slam that settles into a steady turn) + beat pulses
+    var spin = 26 * t + (t > BEAT.step ? 140 * (1 - Math.exp(-(t - BEAT.step) * 4.2)) : 0);
+    var rb = 0;
+    for (i = 0; i < 4; i++) rb += 0.05 * pulse(t, LAND[i], 6);
+    rb += 0.06 * pulse(t, BEAT.trend, 5);
+    ringSpin.setAttribute("transform", "rotate(" + spin.toFixed(2) + ") scale(" + (1 + rb).toFixed(4) + ")");
+    var bb = 0;
+    for (i = 0; i < 4; i++) bb += 0.025 * pulse(t, LAND[i], 7);
+    bb += 0.04 * pulse(t, BEAT.trend, 6);
+    badgeBeat.style.transform = "scale(" + (1 + bb).toFixed(4) + ")";
+    var glowA = 0.45 + 0.4 * pulse(t, 0.3, 3) + 0.35 * pulse(t, BEAT.trend, 3.5);
+    for (i = 0; i < 4; i++) glowA += 0.15 * pulse(t, LAND[i], 5);
+    core.style.boxShadow = "0 0 " + (50 + 30 * (glowA - 0.45)).toFixed(1) + "px rgba(255,159,28," + Math.min(0.95, glowA).toFixed(3) + "), inset 0 0 40px rgba(255,159,28,0.18)";
+    // slam shockwaves
+    var SHK = [0.28, 0.38];
+    for (q = 0; q < 2; q++) {
+      var sp = (t - SHK[q]) / 0.7;
+      if (sp >= 0 && sp < 1) {
+        sh[q].setAttribute("r", (125 + 115 * E_P2(sp)).toFixed(1));
+        sh[q].setAttribute("stroke-width", (7 * (1 - sp) + 1).toFixed(2));
+        sh[q].style.opacity = (0.85 * Math.pow(1 - sp, 1.3)).toFixed(3);
+      } else sh[q].style.opacity = "0";
+    }
+
+    // EXIT card: directional streak blur on the same window + ease as its side snap
+    var ep = clamp01((t - BEAT.exit) / 0.42);
+    var eb = (t < BEAT.exit || ep >= 1) ? 0 : 24 * (1 - E_EXPO(ep));
+    if (eb > 0.2) { streakBlur.setAttribute("stdDeviation", eb.toFixed(2) + " 0"); c1.style.filter = "url(#" + P + "streak)"; }
+    else c1.style.filter = "none";
+
+    // card border flashes on landing + the final "trend" accent
+    for (i = 0; i < 4; i++) gl[i].style.opacity = (0.95 * pulse(t, LAND[i] - 0.04, 3.2) + 0.5 * pulse(t, BEAT.trend + i * 0.04, 4)).toFixed(3);
+
+    // card icons wake up after landing (svg-icon-enrichment: nudge / pulse)
+    var a0 = t > LAND[0] ? Math.sin((t - LAND[0]) * 7) * 3.5 * Math.min(1, (t - LAND[0]) * 3) : 0;
+    ic0.setAttribute("transform", "translate(" + a0.toFixed(2) + " 0)");
+    var a1 = t > LAND[1] ? Math.sin((t - LAND[1]) * 7) * 3.5 * Math.min(1, (t - LAND[1]) * 3) : 0;
+    ic1.setAttribute("transform", "translate(" + a1.toFixed(2) + " 0)");
+    var s2 = t > LAND[2] ? 1 + 0.06 * Math.sin((t - LAND[2]) * 6) * Math.min(1, (t - LAND[2]) * 3) : 1;
+    ic2.setAttribute("transform", "translate(39 39) scale(" + s2.toFixed(4) + ") translate(-39 -39)");
+    var s3 = t > LAND[3] ? 1 + 0.35 * Math.abs(Math.sin((t - LAND[3]) * 4.5)) : 1;
+    ic3.setAttribute("transform", "translate(39 39) scale(" + s3.toFixed(4) + ") translate(-39 -39)");
+
+    // trend tiles: pulse ring + bump on the cue; tip pulse + dash flow (svg-icon-enrichment)
+    for (i = 0; i < 3; i++) {
+      var T0 = TILE[i];
+      var rp = (t - (T0 + 0.18)) / 0.6;
+      if (rp >= 0 && rp < 1) {
+        tr[i].style.opacity = (0.95 * Math.pow(1 - rp, 1.2)).toFixed(3);
+        tr[i].style.transform = "scale(" + (1 + 0.05 * E_P2(rp)).toFixed(4) + ")";
+      } else tr[i].style.opacity = "0";
+      var bump = 0.045 * pulse(t, T0 + 0.18, 6) + 0.035 * pulse(t, BEAT.trend + i * 0.06, 6);
+      tb[i].style.transform = "scale(" + (1 + bump).toFixed(4) + ")";
+      var en = t - (T0 + 0.62);
+      var tipOp = clamp01(en / 0.12);
+      var ph = en * 7.5;
+      var sD = 1 + Math.sin(ph) * 0.16, sR = 1 + Math.sin(ph + Math.PI / 2) * 0.1;
+      var cx = TIP[i][0], cy = TIP[i][1];
+      tp[i].style.opacity = tipOp.toFixed(3);
+      tp[i].setAttribute("transform", "translate(" + cx + " " + cy + ") scale(" + sD.toFixed(4) + ") translate(" + (-cx) + " " + (-cy) + ")");
+      tq[i].style.opacity = (tipOp * (0.5 + 0.35 * Math.sin(ph))).toFixed(3);
+      tq[i].setAttribute("transform", "translate(" + cx + " " + cy + ") scale(" + sR.toFixed(4) + ") translate(" + (-cx) + " " + (-cy) + ")");
+      tf[i].style.strokeDashoffset = (-Math.max(0, t - T0) * 30).toFixed(2);
+    }
+
+    // ground ambience: drifting, twinkling string-light bokeh; rotating rangoli
+    for (i = 0; i < LIGHTS.length; i++) {
+      var Lg = LIGHTS[i];
+      var lx = Lg.amp * Math.sin(Lg.ph + t * Lg.sp), ly = Lg.amp * 0.7 * Math.cos(Lg.ph * 1.3 + t * Lg.sp * 0.8);
+      Lg.n.style.transform = "translate(" + lx.toFixed(2) + "px," + ly.toFixed(2) + "px)";
+      Lg.n.style.opacity = (Lg.base * (0.62 + 0.38 * Math.sin(Lg.ph * 2 + t * Lg.tw))).toFixed(3);
+    }
+    rang1.style.transform = "rotate(" + (2.6 * t).toFixed(3) + "deg)";
+    rang2.style.transform = "rotate(" + (-3.4 * t).toFixed(3) + "deg)";
+    blob.style.transform = "translate(" + (-30 * Math.sin(t * 0.5)).toFixed(2) + "px," + (-16 * t).toFixed(2) + "px)";
+    goldGlow.style.transform = "scale(" + (0.94 + 0.08 * Math.sin(t * 0.9) + 0.1 * pulse(t, 0.3, 3)).toFixed(4) + ")";
+  }
+  render(0);
+  var clock = { t: 0 };
+  tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { render(clock.t); } }, 0);
+
+  // svg-path-draw helper: measured length, dashoffset len -> 0
+  function draw(node, at, dur) {
+    var L = node.getTotalLength() * 1.02;
+    node.style.strokeDasharray = L.toFixed(2);
+    node.style.strokeDashoffset = L.toFixed(2);
+    tl.fromTo(node, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+  }
+
+  // ======================= SCENE 1 (0.0-2.4): STEP 1 slams, four rule cards slam in on their cues =======================
+  // "step"@0.12 — scale-slam with depth blur
+  tl.fromTo(el("badgeslam"), { scale: 2.4, opacity: 0, filter: "blur(18px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power4.out" }, BEAT.step);
+  tl.fromTo(el("coresheen"), { x: -160 }, { x: 290, duration: 0.6, ease: "power2.inOut" }, 0.62);
+
+  // kinetic-beat-slam: a DIFFERENT entrance per card, each on its own cue
+  tl.fromTo(el("c0"), { scale: 1.45, opacity: 0, filter: "blur(16px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power4.out" }, BEAT.entry);
+  tl.fromTo(el("c1"), { x: 380, opacity: 0 }, { x: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, BEAT.exit);
+  tl.fromTo(el("c2"), { y: 120, rotation: 7, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 0.5, ease: "circ.out" }, BEAT.stop);
+  tl.fromTo(el("c3"), { y: -150, scale: 1.18, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, BEAT.target);
+
+  // each card: the check fills + draws itself right after landing, then a gold sweep
+  for (k = 0; k < 4; k++) {
+    tl.fromTo(el("cf" + k), { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, LAND[k] + 0.02);
+    draw(el("ck" + k), LAND[k] + 0.12, 0.28);
+    tl.fromTo(el("sw" + k), { x: -260 }, { x: 500, duration: 0.6, ease: "power2.inOut" }, LAND[k] + 0.22);
+  }
+
+  // ======================= SCENE 2 (2.4-5.32): cards compact, the three trend tiles spring in =======================
+  tl.fromTo(el("cardscmp"), { scale: 1, y: 0 }, { scale: 0.82, y: -6, duration: 0.52, ease: "power3.inOut" }, 2.4);
+  tl.fromTo(el("badgecmp"), { scale: 1, y: 0 }, { scale: 0.9, y: -6, duration: 0.52, ease: "power3.inOut" }, 2.4);
+  for (k = 0; k < 3; k++) {
+    var T0 = TILE[k];
+    tl.fromTo(el("t" + k), { scale: 0.3, y: 50, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, T0);
+    draw(el("to" + k), T0 + 0.08, 0.4);   // outline first
+    draw(el("tl" + k), T0 + 0.24, 0.36);  // then the inner trend line
+    draw(el("th" + k), T0 + 0.52, 0.16);  // then the arrowhead
+    tl.fromTo(el("tf" + k), { opacity: 0 }, { opacity: 0.5, duration: 0.3, ease: "power1.out" }, T0 + 0.3);
+  }
+  // "trend"@4.68 — one gold sweep runs across the row
+  for (k = 0; k < 3; k++) tl.fromTo(el("ts" + k), { x: -180 }, { x: 330, duration: 0.45, ease: "power2.inOut" }, BEAT.trend + k * 0.06);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["g4-step-one"] = tl;
+})();
+</script>
+</template>

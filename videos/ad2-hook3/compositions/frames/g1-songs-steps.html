@@ -1,0 +1,603 @@
+<template>
+<style>
+[data-composition-id="g1-songs-steps"] {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; color: #FFF4E0; font-family: "Montserrat", sans-serif;
+}
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-fill { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+/* ---------- ground ---------- */
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-ground { z-index: 0; isolation: isolate; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-stage { z-index: 1; isolation: isolate; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-base {
+  background-color: #1A0509;
+  background-image: radial-gradient(circle farthest-corner at 540px 620px, #4A0A14 0%, #1A0509 72%);
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-blob {
+  position: absolute; left: 360px; top: 380px; width: 900px; height: 900px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(200,16,46,1) 0%, rgba(200,16,46,0.55) 40%, rgba(200,16,46,0.14) 74%, rgba(200,16,46,0) 100%);
+  opacity: 0.35;
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-goldglow {
+  position: absolute; left: 220px; top: 420px; width: 640px; height: 640px; border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255,201,60,1) 0%, rgba(255,201,60,0.4) 45%, rgba(255,201,60,0) 100%);
+  opacity: 0.18;
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-lowglow {
+  position: absolute; left: -140px; top: 1280px; width: 1360px; height: 760px; border-radius: 50%;
+  background: radial-gradient(ellipse closest-side, rgba(74,10,20,0.9) 0%, rgba(74,10,20,0.35) 60%, rgba(74,10,20,0) 100%);
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-mandala { position: absolute; left: 0px; top: 195px; width: 1080px; height: 1080px; opacity: 0.14; overflow: visible; }
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-bokeh { position: absolute; display: block; border-radius: 50%; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-grain { opacity: 0.06; }
+
+/* ---------- stage ---------- */
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-cam { transform-origin: 540px 640px; }
+
+/* card */
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-card {
+  position: absolute; left: 110px; top: 150px; width: 860px; height: 250px; border-radius: 34px;
+  background: linear-gradient(160deg, rgba(74,10,20,0.95), rgba(26,5,9,0.95));
+  border: 3px solid rgba(255,159,28,0.45);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55);
+  overflow: hidden;
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-cardline { position: absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border-radius: 26px; border: 1px solid rgba(255,201,60,0.28); }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-bandhani {
+  position: absolute; right: -10px; top: -10px; width: 240px; height: 150px; opacity: 0.08;
+  background-image: radial-gradient(circle, #FFC93C 2.6px, rgba(255,201,60,0) 3.2px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 72%);
+  mask-image: radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 72%);
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-cardflash { position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 31px; box-shadow: inset 0 0 0 3px rgba(255,201,60,0.95), inset 0 0 50px rgba(255,159,28,0.45); opacity: 0; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-cardsheen {
+  position: absolute; left: 0; top: -40px; width: 160px; height: 330px;
+  background: linear-gradient(100deg, rgba(255,244,224,0) 0%, rgba(255,244,224,0.16) 50%, rgba(255,244,224,0) 100%);
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-vinyl { position: absolute; left: 30px; top: 27px; width: 190px; height: 190px; overflow: visible; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-info { position: absolute; left: 252px; top: 34px; width: 470px; height: 190px; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-label {
+  position: absolute; left: 4px; top: 4px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 26px;
+  letter-spacing: 0.14em; color: #FF9F1C; white-space: nowrap; line-height: 1;
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-labeldot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #FF3B4E; margin-right: 12px; vertical-align: 2px; box-shadow: 0 0 12px rgba(255,59,78,0.8); }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-ticker { position: absolute; left: 0; top: 52px; width: 470px; height: 116px; overflow: hidden; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-stackblur { position: absolute; left: 0; top: 0; width: 470px; filter: url(#g1-songs-steps-tblur); }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-stack { display: flex; flex-direction: column; width: 470px; }
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-item {
+  height: 116px; display: flex; align-items: center; justify-content: flex-start; padding-left: 2px;
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 96px; line-height: 1; letter-spacing: -0.03em;
+  color: #FFF4E0; white-space: nowrap;
+}
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-num { color: #FF9F1C; margin-left: 26px; text-shadow: 0 0 40px rgba(255,159,28,0.5); }
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-wait { display: inline-block; width: 22px; height: 22px; border-radius: 50%; background: #FF9F1C; margin-right: 20px; opacity: 0.8; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-eq { position: absolute; right: 38px; top: 96px; width: 100px; height: 96px; }
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-bar {
+  position: absolute; bottom: 0; width: 10px; height: 96px; border-radius: 5px; transform-origin: 50% 100%;
+  background: linear-gradient(to top, #C8102E, #FF9F1C 60%, #FFC93C);
+}
+
+/* chip */
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-chipwrap { position: absolute; left: 0; top: 432px; width: 1080px; height: 80px; text-align: center; z-index: 30; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-chip {
+  position: relative; display: inline-block; overflow: hidden;
+  padding: 17px calc(38px - 0.14em) 17px 38px; border-radius: 999px;
+  background: #FF9F1C; border: 3px solid #FFF4E0;
+  box-shadow: 0 0 0 6px rgba(255,159,28,0.22), 0 0 44px rgba(255,159,28,0.6), 0 18px 40px rgba(0,0,0,0.5);
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 40px; line-height: 1;
+  letter-spacing: 0.14em; color: #1A0509; white-space: nowrap;
+}
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-chipsheen {
+  position: absolute; left: 0; top: -20px; width: 90px; height: 120px;
+  background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+}
+
+/* footprints + guides */
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-feetwrap { position: absolute; left: 100px; top: 470px; width: 880px; height: 540px; transform-origin: 440px 265px; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-feet { position: absolute; left: 0; top: 0; width: 880px; height: 540px; overflow: visible; }
+[data-composition-id="g1-songs-steps"] .g1-songs-steps-guide { fill: none; stroke: #FFC93C; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 0.4; }
+
+/* waveform */
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-wave { position: absolute; left: 0; top: 520px; width: 1080px; height: 500px; overflow: visible; z-index: 20; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-tagwrap { position: absolute; left: 0; top: 916px; width: 1080px; height: 64px; text-align: center; z-index: 25; }
+[data-composition-id="g1-songs-steps"] #g1-songs-steps-tag {
+  display: inline-block; padding: 12px calc(30px - 0.14em) 12px 30px; border-radius: 999px; border: 2px solid #FF9F1C;
+  background: rgba(26,5,9,0.85); font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 34px; line-height: 1;
+  letter-spacing: 0.14em; color: #FFC93C; white-space: nowrap; box-shadow: 0 0 30px rgba(255,159,28,0.35);
+}
+</style>
+
+<div id="root" data-composition-id="g1-songs-steps" data-start="0" data-duration="4.2" data-width="1080" data-height="1920">
+  <svg class="g1-songs-steps-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="g1-songs-steps-tblur" x="-5%" y="-40%" width="110%" height="180%" color-interpolation-filters="sRGB">
+        <feGaussianBlur id="g1-songs-steps-tblur-node" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur>
+      </filter>
+      <filter id="g1-songs-steps-footglow" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"></feGaussianBlur>
+        <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+      </filter>
+      <filter id="g1-songs-steps-wglow" x="-10%" y="-60%" width="120%" height="220%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="9"></feGaussianBlur>
+      </filter>
+      <filter id="g1-songs-steps-grainf" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="13" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ground: full-bleed, lowest track, covers all 1920px -->
+  <div id="g1-songs-steps-ground" class="clip g1-songs-steps-layer" data-start="0" data-duration="4.2" data-track-index="0">
+    <div id="g1-songs-steps-base" class="g1-songs-steps-fill"></div>
+    <div id="g1-songs-steps-blob"></div>
+    <div id="g1-songs-steps-lowglow"></div>
+    <svg id="g1-songs-steps-mandala" viewBox="0 0 1080 1080" aria-hidden="true"><g id="g1-songs-steps-mandrot"></g></svg>
+    <div id="g1-songs-steps-goldglow"></div>
+    <div id="g1-songs-steps-bokehs" class="g1-songs-steps-fill"></div>
+    <svg id="g1-songs-steps-grain" class="g1-songs-steps-fill" width="1080" height="1920" aria-hidden="true">
+      <rect x="0" y="0" width="1080" height="1920" filter="url(#g1-songs-steps-grainf)"></rect>
+    </svg>
+  </div>
+
+  <!-- stage: all content inside x60-1020 / y120-1120 -->
+  <div id="g1-songs-steps-stage" class="clip g1-songs-steps-layer" data-start="0" data-duration="4.2" data-track-index="1">
+    <div id="g1-songs-steps-cam" class="g1-songs-steps-fill">
+
+      <div id="g1-songs-steps-feetwrap">
+        <svg id="g1-songs-steps-feet" viewBox="100 470 880 540" aria-hidden="true">
+          <path id="g1-songs-steps-gcircle" class="g1-songs-steps-guide"></path>
+          <path id="g1-songs-steps-gzig" class="g1-songs-steps-guide"></path>
+          <path id="g1-songs-steps-gspin" class="g1-songs-steps-guide"></path>
+          <circle id="g1-songs-steps-ripple" cx="540" cy="735" r="60" fill="none" stroke="#FF9F1C" stroke-width="4" opacity="0"></circle>
+          <g id="g1-songs-steps-footgroup" fill="#FFF4E0" filter="url(#g1-songs-steps-footglow)"></g>
+        </svg>
+      </div>
+
+      <svg id="g1-songs-steps-wave" viewBox="0 520 1080 500" aria-hidden="true">
+        <defs>
+          <linearGradient id="g1-songs-steps-wgrad" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="980" y2="0">
+            <stop offset="0" stop-color="#C8102E"></stop>
+            <stop offset="0.3" stop-color="#FF9F1C"></stop>
+            <stop offset="0.5" stop-color="#FFC93C"></stop>
+            <stop offset="0.7" stop-color="#FF9F1C"></stop>
+            <stop offset="1" stop-color="#C8102E"></stop>
+          </linearGradient>
+          <radialGradient id="g1-songs-steps-cometg"><stop offset="0" stop-color="#FFC93C" stop-opacity="0.9"></stop><stop offset="1" stop-color="#FF9F1C" stop-opacity="0"></stop></radialGradient>
+        </defs>
+        <g id="g1-songs-steps-wgroup">
+          <path id="g1-songs-steps-wglowpath" fill="none" stroke="#FF9F1C" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" filter="url(#g1-songs-steps-wglow)" opacity="0.4"></path>
+          <path id="g1-songs-steps-wpath" fill="none" stroke="url(#g1-songs-steps-wgrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path id="g1-songs-steps-wsweep" fill="none" stroke="#FFF4E0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0"></path>
+          <g id="g1-songs-steps-wdots"></g>
+        </g>
+        <g id="g1-songs-steps-comet" opacity="0">
+          <circle cx="0" cy="0" r="30" fill="url(#g1-songs-steps-cometg)"></circle>
+          <circle cx="0" cy="0" r="7" fill="#FFF4E0"></circle>
+        </g>
+        <g id="g1-songs-steps-dandiyas"></g>
+      </svg>
+
+      <div id="g1-songs-steps-card">
+        <div id="g1-songs-steps-bandhani"></div>
+        <div id="g1-songs-steps-cardline"></div>
+        <svg id="g1-songs-steps-vinyl" viewBox="0 0 190 190" aria-hidden="true">
+          <defs>
+            <radialGradient id="g1-songs-steps-discg" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="#2A0A10"></stop>
+              <stop offset="0.85" stop-color="#140306"></stop>
+              <stop offset="1" stop-color="#0A0103"></stop>
+            </radialGradient>
+            <linearGradient id="g1-songs-steps-shine" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#FFF4E0" stop-opacity="0"></stop>
+              <stop offset="0.45" stop-color="#FFF4E0" stop-opacity="0.16"></stop>
+              <stop offset="0.55" stop-color="#FFF4E0" stop-opacity="0"></stop>
+              <stop offset="0.9" stop-color="#FFF4E0" stop-opacity="0.08"></stop>
+              <stop offset="1" stop-color="#FFF4E0" stop-opacity="0"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="95" cy="95" r="92" fill="url(#g1-songs-steps-discg)" stroke="#FF9F1C" stroke-opacity="0.5" stroke-width="2"></circle>
+          <g id="g1-songs-steps-grooves" fill="none" stroke="#FFF4E0" stroke-opacity="0.09" stroke-width="1"></g>
+          <g id="g1-songs-steps-disc">
+            <circle cx="95" cy="95" r="38" fill="#C8102E"></circle>
+            <circle cx="95" cy="95" r="38" fill="none" stroke="#FFC93C" stroke-width="2.5"></circle>
+            <circle cx="95" cy="95" r="31" fill="none" stroke="#FFC93C" stroke-width="1" stroke-dasharray="3 4" stroke-opacity="0.8"></circle>
+            <path d="M 101 76 L 101 103 C 101 109 95 113 89 112 C 83 111 81 106 84 102 C 87 98 93 98 96 100 L 96 80 L 110 77 L 110 84 Z" fill="#FFC93C"></path>
+            <circle cx="95" cy="131" r="3.2" fill="#FFF4E0"></circle>
+            <circle cx="95" cy="95" r="3.6" fill="#1A0509"></circle>
+          </g>
+          <circle cx="95" cy="95" r="90" fill="url(#g1-songs-steps-shine)"></circle>
+        </svg>
+        <div id="g1-songs-steps-info">
+          <div id="g1-songs-steps-label"><span id="g1-songs-steps-labeldot"></span>NOW PLAYING</div>
+          <div id="g1-songs-steps-ticker">
+            <div id="g1-songs-steps-stackblur">
+              <div id="g1-songs-steps-stack">
+                <div class="g1-songs-steps-item"><span class="g1-songs-steps-wait"></span><span class="g1-songs-steps-wait"></span><span class="g1-songs-steps-wait"></span></div>
+                <div class="g1-songs-steps-item">SONG<span class="g1-songs-steps-num">1</span></div>
+                <div class="g1-songs-steps-item">SONG<span class="g1-songs-steps-num">2</span></div>
+                <div class="g1-songs-steps-item">SONG<span class="g1-songs-steps-num">3</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="g1-songs-steps-eq"></div>
+        <div id="g1-songs-steps-cardsheen"></div>
+        <div id="g1-songs-steps-cardflash"></div>
+      </div>
+
+      <div id="g1-songs-steps-chipwrap">
+        <div id="g1-songs-steps-chip">NEW STEPS<span id="g1-songs-steps-chipsheen"></span></div>
+      </div>
+
+      <div id="g1-songs-steps-tagwrap"><div id="g1-songs-steps-tag">6/8</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var DUR = 4.2;
+  var ID = "g1-songs-steps";
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(name) { return document.getElementById(ID + "-" + name); }
+  function svgEl(tag, attrs, parent) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function rng(seed) {
+    return function () {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function seg(t, a, d) { return clamp01((t - a) / d); }
+  function lerp(a, b, p) { return a + (b - a) * p; }
+  var P3O = gsap.parseEase("power3.out"), P2O = gsap.parseEase("power2.out"), P4O = gsap.parseEase("power4.out");
+  var P3IO = gsap.parseEase("power3.inOut"), SIO = gsap.parseEase("sine.inOut");
+  var BACK2 = gsap.parseEase("back.out(2)");
+  var TAU = Math.PI * 2;
+  var R = rng(5381);
+  var tl = gsap.timeline({ paused: true });
+
+  // ======================= BUILD: ground =======================
+  (function () {
+    var host = el("mandrot"), c = 540, d = "", N = 20;
+    svgEl("circle", { cx: c, cy: c, r: 500, fill: "none", stroke: "#FFC93C", "stroke-width": 3 }, host);
+    svgEl("circle", { cx: c, cy: c, r: 360, fill: "none", stroke: "#C8102E", "stroke-width": 4 }, host);
+    for (var k = 0; k < N; k++) {
+      var a0 = (k / N) * TAU, a1 = ((k + 1) / N) * TAU, am = (a0 + a1) / 2;
+      if (k === 0) d += "M " + (c + 370 * Math.cos(a0)).toFixed(1) + " " + (c + 370 * Math.sin(a0)).toFixed(1);
+      d += " Q " + (c + 520 * Math.cos(am)).toFixed(1) + " " + (c + 520 * Math.sin(am)).toFixed(1) + " " + (c + 370 * Math.cos(a1)).toFixed(1) + " " + (c + 370 * Math.sin(a1)).toFixed(1);
+      svgEl("circle", { cx: (c + 425 * Math.cos(am)).toFixed(1), cy: (c + 425 * Math.sin(am)).toFixed(1), r: 6, fill: "#FFC93C" }, host);
+    }
+    svgEl("path", { d: d, fill: "none", stroke: "#FF9F1C", "stroke-width": 3 }, host);
+    var d2 = "";
+    for (var j = 0; j <= 40; j++) {
+      var a = (j / 40) * TAU, rr = j % 2 ? 250 : 320;
+      d2 += (j ? " L " : "M ") + (c + rr * Math.cos(a)).toFixed(1) + " " + (c + rr * Math.sin(a)).toFixed(1);
+    }
+    svgEl("path", { d: d2, fill: "none", stroke: "#FFC93C", "stroke-width": 2.5 }, host);
+  })();
+  var BOKEH = [];
+  (function () {
+    var host = el("bokehs");
+    var COLS = ["255,201,60", "255,159,28", "255,244,224", "229,0,125", "255,201,60"];
+    for (var i = 0; i < 28; i++) {
+      var top = i < 18;
+      var x = 30 + R() * 1020, y = top ? 90 + R() * 980 : 1080 + R() * 800;
+      var s = 30 + R() * 100, col = COLS[Math.floor(R() * COLS.length)];
+      var n = document.createElement("i");
+      n.className = ID + "-bokeh";
+      n.style.left = (x - s / 2).toFixed(1) + "px"; n.style.top = (y - s / 2).toFixed(1) + "px";
+      n.style.width = s.toFixed(1) + "px"; n.style.height = s.toFixed(1) + "px";
+      n.style.background = "radial-gradient(circle closest-side, rgba(" + col + ",0.5) 0%, rgba(" + col + ",0.55) 66%, rgba(" + col + ",0.85) 84%, rgba(" + col + ",0) 100%)";
+      host.appendChild(n);
+      BOKEH.push({ n: n, base: (top ? 0.14 : 0.08) + R() * 0.16, amp: 6 + R() * 14, ph: R() * TAU, fq: 1.3 + R() * 2.2 });
+    }
+  })();
+
+  // ======================= BUILD: vinyl grooves + eq =======================
+  (function () {
+    var g = el("grooves");
+    for (var r = 46; r <= 86; r += 5) svgEl("circle", { cx: 95, cy: 95, r: r }, g);
+  })();
+  var BARS = [];
+  (function () {
+    var host = el("eq");
+    for (var b = 0; b < 6; b++) {
+      var n = document.createElement("i");
+      n.className = ID + "-bar";
+      n.style.left = (b * 18) + "px";
+      host.appendChild(n);
+      BARS.push({ n: n, f: 7 + b * 1.7 + (b % 2) * 2.3, ph: b * 1.3 });
+    }
+  })();
+
+  // ======================= BUILD: footprints (16 steps) + three layouts =======================
+  var CX = 540, CY = 735, NF = 16;
+  var SOLE = "M -3 -24 C 8 -26 15 -16 14 -4 C 13 6 9 10 9 18 C 9 30 4 35 -1 35 C -7 35 -11 30 -10 20 C -9 10 -13 4 -14 -6 C -15 -18 -11 -23 -3 -24 Z";
+  var TOES = [[-9, -33, 5.6], [-1, -36.5, 4.2], [6, -34.5, 3.7], [11.5, -30.5, 3.2], [15.5, -24.5, 2.8]];
+  var FEET = [];
+  (function () {
+    var host = el("footgroup");
+    for (var i = 0; i < NF; i++) {
+      var outer = svgEl("g", { opacity: 0 }, host);
+      var inner = svgEl("g", { transform: i % 2 ? "" : "scale(-1 1)" }, outer);
+      svgEl("path", { d: SOLE }, inner);
+      for (var k = 0; k < TOES.length; k++) svgEl("circle", { cx: TOES[k][0], cy: TOES[k][1], r: TOES[k][2] }, inner);
+      FEET.push({ g: outer });
+    }
+  })();
+  function rotFromDir(dx, dy) { return Math.atan2(dx, -dy) * 180 / Math.PI; }
+  function placeAlong(pts, offset) {
+    // distribute NF steps along a polyline by arc length, alternating left/right of travel
+    var cum = [0];
+    for (var i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+    var total = cum[cum.length - 1], out = [];
+    for (var s = 0; s < NF; s++) {
+      var target = total * (s + 0.5) / NF, j = 1;
+      while (j < pts.length - 1 && cum[j] < target) j++;
+      var segLen = cum[j] - cum[j - 1] || 1, u = (target - cum[j - 1]) / segLen;
+      var x = lerp(pts[j - 1][0], pts[j][0], u), y = lerp(pts[j - 1][1], pts[j][1], u);
+      var dx = pts[j][0] - pts[j - 1][0], dy = pts[j][1] - pts[j - 1][1], L = Math.hypot(dx, dy) || 1;
+      var nx = -dy / L, ny = dx / L, side = s % 2 ? 1 : -1;
+      out.push({ x: x + nx * offset * side, y: y + ny * offset * side, r: rotFromDir(dx, dy) });
+    }
+    return out;
+  }
+  function pathD(pts) { return pts.map(function (p, i) { return (i ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" "); }
+  var circlePts = [];
+  for (var ci = 0; ci <= 96; ci++) { var ca = -Math.PI / 2 - (ci / 96) * TAU; circlePts.push([CX + 178 * Math.cos(ca), CY + 178 * Math.sin(ca)]); }
+  var zigPts = [[180, 640], [360, 840], [540, 640], [720, 840], [900, 640]];
+  var spinPts = [];
+  for (var si = 0; si <= 120; si++) { var su = si / 120; var sa = Math.PI + su * 3.5 * Math.PI; var sr = 22 + 160 * su; spinPts.push([CX + sr * Math.cos(sa), CY + sr * Math.sin(sa)]); }
+  var LAYOUTS = [placeAlong(circlePts, 15), placeAlong(zigPts, 17), placeAlong(spinPts, 13)];
+  // unwrap rotations so each re-form turns the short way
+  for (var li = 1; li < LAYOUTS.length; li++) {
+    for (var fi = 0; fi < NF; fi++) {
+      var prev = LAYOUTS[li - 1][fi].r, cur = LAYOUTS[li][fi].r;
+      while (cur - prev > 180) cur -= 360;
+      while (cur - prev < -180) cur += 360;
+      LAYOUTS[li][fi].r = cur;
+    }
+  }
+  el("gcircle").setAttribute("d", pathD(circlePts));
+  el("gzig").setAttribute("d", pathD(zigPts));
+  el("gspin").setAttribute("d", pathD(spinPts));
+
+  // ======================= BUILD: rhythm waveform (6/8 accents) =======================
+  var WX0 = 100, WX1 = 980, WCY = 770, WAMP = 116, NP = 12, PW = (WX1 - WX0) / NP;
+  var ACC = [1, 0.42, 0.58, 0.82, 0.42, 0.58];
+  function accentOf(k) { return ACC[((k - 1) % 6 + 6) % 6]; }
+  (function () {
+    var d = "";
+    for (var x = WX0; x <= WX1 + 0.01; x += 4) {
+      var k = Math.min(NP - 1, Math.floor((x - WX0) / PW));
+      var env = Math.min(1, (x - WX0) / (PW * 0.5), (WX1 - x) / (PW * 0.5));
+      var y = WCY - WAMP * accentOf(k) * env * Math.sin(TAU * (x - WX0) / PW);
+      d += (x === WX0 ? "M " : " L ") + x.toFixed(1) + " " + y.toFixed(1);
+    }
+    el("wpath").setAttribute("d", d);
+    el("wglowpath").setAttribute("d", d);
+    el("wsweep").setAttribute("d", d);
+  })();
+  var WDOTS = [];
+  var DRAW_AT = 2.3, DRAW_DUR = 1.25;
+  function headTime(x) { // when the sine.inOut draw head reaches x
+    var f = (x - WX0) / (WX1 - WX0);
+    return DRAW_AT + DRAW_DUR * Math.acos(1 - 2 * f) / Math.PI;
+  }
+  (function () {
+    var host = el("wdots");
+    for (var k = 0; k < NP; k++) {
+      var px = WX0 + PW * (k + 0.25), py = WCY - WAMP * accentOf(k);
+      WDOTS.push({ n: svgEl("circle", { cx: px.toFixed(1), cy: py.toFixed(1), r: 0, fill: "#FFF4E0" }, host), on: headTime(px), acc: accentOf(k) });
+    }
+  })();
+  // 6/8 beat grid: eighth = 0.2s; accents on 1 (strong) and 4 (medium); strong downbeat lands on "rhythm" @3.66
+  var BEATS = [];
+  for (var bb = 0; bb < 9; bb++) BEATS.push({ t: 2.46 + 0.2 * bb, lv: [0.3, 0.07, 0.07, 0.18, 0.07, 0.07][bb % 6] });
+  var ACCENT_TIMES = [3.06, 3.66];
+  var DANDIYAS = [];
+  (function () {
+    var host = el("dandiyas");
+    [1, 4, 7, 10].forEach(function (k, j) {
+      var px = WX0 + PW * (k + 0.25), py = WCY - WAMP * accentOf(k) - 40;
+      var g = svgEl("g", { transform: "translate(" + px.toFixed(1) + " " + py.toFixed(1) + ") scale(0)" }, host);
+      var sticks = [];
+      [-1, 1].forEach(function (side) {
+        var sg = svgEl("g", {}, g);
+        svgEl("path", { d: "M " + (side * 30) + " 46 L " + (side * -10) + " -30", stroke: "#FFC93C", "stroke-width": 6, "stroke-linecap": "round" }, sg);
+        svgEl("path", { d: "M " + (side * 30) + " 46 L " + (side * -10) + " -30", stroke: "#C8102E", "stroke-width": 6, "stroke-dasharray": "5 6", "stroke-linecap": "butt" }, sg);
+        svgEl("circle", { cx: side * -10, cy: -30, r: 4.5, fill: "#FFF4E0" }, sg);
+        svgEl("path", { d: "M " + (side * 30) + " 46 l " + (side * 4) + " 14 M " + (side * 30) + " 46 l " + (side * -3) + " 15", stroke: "#E5007D", "stroke-width": 2.4, "stroke-linecap": "round" }, sg);
+        sticks.push({ g: sg, side: side });
+      });
+      var spark = svgEl("g", { opacity: 0 }, g);
+      for (var r = 0; r < 8; r++) {
+        var a = (r / 8) * TAU + 0.2;
+        svgEl("line", { x1: (Math.cos(a) * 10).toFixed(2), y1: (Math.sin(a) * 10).toFixed(2), x2: (Math.cos(a) * 26).toFixed(2), y2: (Math.sin(a) * 26).toFixed(2), stroke: r % 2 ? "#FFF4E0" : "#FFC93C", "stroke-width": 3, "stroke-linecap": "round" }, spark);
+      }
+      svgEl("circle", { cx: 0, cy: 0, r: 7, fill: "#FFF4E0" }, spark);
+      var on = headTime(px);
+      var clicks = [on + 0.08];
+      ACCENT_TIMES.forEach(function (ta) { if (ta > on + 0.2) clicks.push(ta); });
+      DANDIYAS.push({ g: g, sticks: sticks, spark: spark, x: px, y: py, on: on, clicks: clicks });
+    });
+  })();
+
+  // ======================= MASTER CLOCK (pure function of t) =======================
+  var TICKS = [0.06, 0.58, 1.10], STEP_DUR = 0.6, ITEM_H = 116;
+  var BOUNCE = [gsap.parseEase("back.out(1.8)"), gsap.parseEase("back.out(1.8)"), gsap.parseEase("back.out(2.3)")];
+  function tickerPos(t) { var s = 0; for (var i = 0; i < TICKS.length; i++) s += BOUNCE[i](seg(t, TICKS[i], STEP_DUR)); return s; }
+  var stack = el("stack"), tblur = el("tblur-node"), disc = el("disc"), cardFlash = el("cardflash"), mandRot = el("mandrot");
+  var footGroup = el("footgroup"), ripple = el("ripple"), wgroup = el("wgroup"), wglow = el("wglowpath"), wsweep = el("wsweep"), comet = el("comet"), wpath = el("wpath");
+  var WAVE_L = 0, SWEEP_L = 0;
+  var ARRIVE_AT = 0.1, REFORM = [0.58, 1.10], REFORM_DUR = 0.38, FLASH_T = 1.42;
+  var COL_A = [255, 244, 224], COL_F = [255, 159, 28], COL_S = [255, 196, 120];
+  function mix(a, b, p) { return "rgb(" + Math.round(lerp(a[0], b[0], p)) + "," + Math.round(lerp(a[1], b[1], p)) + "," + Math.round(lerp(a[2], b[2], p)) + ")"; }
+  function beatAmp(t) {
+    var amp = 0;
+    for (var i = 0; i < BEATS.length; i++) { var dt = t - BEATS[i].t; if (dt >= 0) amp = BEATS[i].lv * Math.exp(-dt / 0.11); }
+    return amp;
+  }
+  function clickClose(dt) { if (dt < 0) return 0; if (dt < 0.06) { var u = dt / 0.06; return u * u; } return Math.exp(-(dt - 0.06) / 0.09); }
+
+  function render(t) {
+    // ground ambience
+    mandRot.setAttribute("transform", "rotate(" + (5 * t).toFixed(3) + " 540 540)");
+    for (var i = 0; i < BOKEH.length; i++) {
+      var b = BOKEH[i];
+      b.n.style.opacity = (b.base * (0.7 + 0.3 * Math.sin(b.ph + t * b.fq))).toFixed(3);
+      b.n.style.transform = "translate(" + (b.amp * Math.sin(b.ph + t * 0.55)).toFixed(2) + "px," + (b.amp * 0.7 * Math.cos(b.ph * 1.3 + t * 0.4) - 9 * t).toFixed(2) + "px)";
+    }
+    // slot-machine ticker: additive back.out springs + velocity-matched vertical blur
+    var pos = tickerPos(t), vel = Math.abs(pos - tickerPos(t - 1 / 60)) * ITEM_H;
+    stack.style.transform = "translateY(" + (-pos * ITEM_H).toFixed(2) + "px)";
+    tblur.setAttribute("stdDeviation", "0 " + Math.min(14, vel * 0.55).toFixed(2));
+    // vinyl spins, kicking forward on each tick; card rim flashes on each tick
+    var spin = 95 * t, flash = 0;
+    for (var k = 0; k < TICKS.length; k++) {
+      spin += 80 * P3O(seg(t, TICKS[k], 0.5));
+      var dtk = t - TICKS[k] - 0.1;
+      if (dtk >= 0) flash = Math.max(flash, Math.exp(-dtk / 0.22));
+    }
+    disc.setAttribute("transform", "rotate(" + spin.toFixed(2) + " 95 95)");
+    cardFlash.style.opacity = (0.75 * flash).toFixed(3);
+    // eq bars: free-running before the beat grid, accent-driven after it
+    var ba = beatAmp(t);
+    for (var q = 0; q < BARS.length; q++) {
+      var B = BARS[q];
+      var h = 0.18 + 0.5 * Math.abs(Math.sin(t * B.f + B.ph)) * (0.7 + 0.3 * Math.sin(t * 3.1 + q)) + ba * 1.6 * (q % 3 === 0 ? 1 : 0.6) + flash * 0.25;
+      B.n.style.transform = "scaleY(" + Math.min(1, h).toFixed(3) + ")";
+    }
+
+    // footprints: waterfall arrival (binary opacity) -> re-form to zig-zag -> re-form to spin
+    var flashP = t >= FLASH_T ? Math.exp(-(t - FLASH_T) / 0.25) : 0;
+    var settle = P2O(seg(t, FLASH_T, 0.5));
+    var fbase = [lerp(COL_A[0], COL_S[0], settle), lerp(COL_A[1], COL_S[1], settle), lerp(COL_A[2], COL_S[2], settle)];
+    footGroup.setAttribute("fill", mix(fbase, COL_F, Math.min(1, flashP * 1.15)));
+    for (var f = 0; f < NF; f++) {
+      var F = FEET[f];
+      var ta = ARRIVE_AT + f * 0.022;
+      if (t < ta) { F.g.setAttribute("opacity", "0"); continue; }
+      var travel = f < 4 ? 78 : f < 12 ? 52 : 40, wdur = f < 4 ? 0.19 : 0.15;
+      var dy = travel * (1 - P4O(seg(t, ta, wdur)));
+      var A = LAYOUTS[0][f], x = A.x, y = A.y, r = A.r, lift = 0, sc = 1, op = 1;
+      for (var m = 0; m < REFORM.length; m++) {
+        var p = seg(t, REFORM[m] + f * 0.008, REFORM_DUR);
+        if (p <= 0) break;
+        var e = P3IO(p), Bm = LAYOUTS[m + 1][f], Am = LAYOUTS[m][f];
+        x = lerp(Am.x, Bm.x, e); y = lerp(Am.y, Bm.y, e); r = lerp(Am.r, Bm.r, e);
+        var arc = Math.sin(Math.PI * p);
+        lift = 26 * arc; sc = 1 - 0.14 * arc; op = 1 - 0.5 * arc;
+      }
+      // "steps" flash: per-foot scale bump rippling outward from the centre
+      var dist = Math.hypot(x - CX, y - CY);
+      var fb = t >= FLASH_T + dist * 0.0006 ? Math.exp(-(t - FLASH_T - dist * 0.0006) / 0.18) : 0;
+      sc *= 1 + 0.22 * fb;
+      F.g.setAttribute("opacity", op.toFixed(3));
+      F.g.setAttribute("transform", "translate(" + x.toFixed(2) + " " + (y + dy - lift).toFixed(2) + ") rotate(" + r.toFixed(2) + ") scale(" + (sc * 1.08).toFixed(4) + ")");
+    }
+    var rp = seg(t, FLASH_T, 0.7);
+    ripple.setAttribute("r", (60 + 260 * P2O(rp)).toFixed(1));
+    ripple.setAttribute("opacity", (rp > 0 && rp < 1 ? 0.85 * (1 - rp) : 0).toFixed(3));
+
+    // rhythm waveform: comet rides the draw head; 6/8 pulse; dots land as the head passes
+    var dp = SIO(seg(t, DRAW_AT, DRAW_DUR));
+    if (t > DRAW_AT && dp < 1) {
+      var pt = wpath.getPointAtLength(WAVE_L * dp);
+      comet.setAttribute("transform", "translate(" + pt.x.toFixed(1) + " " + pt.y.toFixed(1) + ")");
+      comet.setAttribute("opacity", Math.min(1, (t - DRAW_AT) * 8).toFixed(3));
+    } else {
+      comet.setAttribute("opacity", "0");
+    }
+    var lockFlash = t >= 3.66 ? Math.exp(-(t - 3.66) / 0.3) : 0;
+    var sy = 1 + ba * 1.15;
+    wgroup.setAttribute("transform", "translate(0 " + WCY + ") scale(1 " + sy.toFixed(4) + ") translate(0 " + (-WCY) + ")");
+    wglow.setAttribute("opacity", Math.min(0.95, 0.38 + ba * 1.4 + lockFlash * 0.5).toFixed(3));
+    var sp = seg(t, 3.66, 0.5);
+    wsweep.style.strokeDashoffset = (SWEEP_L + 140 - (SWEEP_L + 280) * sp).toFixed(1);
+    wsweep.setAttribute("opacity", (sp > 0 && sp < 1 ? 0.95 * Math.sin(Math.PI * sp) : 0).toFixed(3));
+    for (var w = 0; w < WDOTS.length; w++) {
+      var D = WDOTS[w];
+      var dpop = BACK2(seg(t, D.on, 0.3));
+      D.n.setAttribute("r", (dpop * (3 + 3 * D.acc) * (1 + ba * 2.2 * D.acc)).toFixed(2));
+    }
+    // dandiya pairs pop in at their peaks and click on arrival + on the accent beats
+    for (var j = 0; j < DANDIYAS.length; j++) {
+      var Dd = DANDIYAS[j];
+      var pop = BACK2(seg(t, Dd.on, 0.34));
+      Dd.g.setAttribute("transform", "translate(" + Dd.x.toFixed(1) + " " + Dd.y.toFixed(1) + ") scale(" + Math.max(0.0001, pop * 1.05).toFixed(4) + ")");
+      var close = 0, last = -1;
+      for (var c = 0; c < Dd.clicks.length; c++) { var dtc = t - Dd.clicks[c]; close = Math.max(close, clickClose(dtc)); if (dtc >= 0) last = dtc; }
+      var open = 26 * (1 - close);
+      Dd.sticks[0].g.setAttribute("transform", "rotate(" + (-open).toFixed(2) + " -30 46)");
+      Dd.sticks[1].g.setAttribute("transform", "rotate(" + open.toFixed(2) + " 30 46)");
+      var sk = last >= 0.04 ? (last - 0.04) / 0.34 : -1;
+      if (sk >= 0 && sk < 1) {
+        Dd.spark.setAttribute("opacity", (1 - sk * sk).toFixed(3));
+        Dd.spark.setAttribute("transform", "translate(0 -16) scale(" + (0.5 + 1.1 * P2O(sk)).toFixed(3) + ")");
+      } else {
+        Dd.spark.setAttribute("opacity", "0");
+      }
+    }
+  }
+
+  // ======================= SCENE 3 setup: measured path draw =======================
+  WAVE_L = wpath.getTotalLength();
+  SWEEP_L = WAVE_L;
+  [wpath, wglow].forEach(function (p) { p.style.strokeDasharray = (WAVE_L * 1.02).toFixed(1); p.style.strokeDashoffset = (WAVE_L * 1.02).toFixed(1); });
+  wsweep.style.strokeDasharray = "140 " + (WAVE_L + 400).toFixed(1);
+  render(0);
+  var clock = { t: 0 };
+  tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { render(clock.t); } }, 0);
+
+  // ======================= CAMERA + ambient =======================
+  tl.fromTo(el("cam"), { scale: 1 }, { scale: 1.04, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(el("blob"), { x: 30, y: -20 }, { x: -60, y: 40, duration: DUR, ease: "sine.inOut" }, 0);
+  tl.fromTo(el("goldglow"), { scale: 0.9 }, { scale: 1.1, duration: DUR, ease: "sine.inOut" }, 0);
+
+  // ======================= SCENE 1 (0.0-1.4): card + ticker, footprints re-form per song =======================
+  tl.fromTo(el("card"), { y: 60, scale: 0.94, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, 0);
+  tl.fromTo(el("vinyl"), { scale: 0.5, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.7)" }, 0.04);
+  tl.fromTo(el("label"), { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "expo.out" }, 0.1);
+  tl.fromTo(el("eq"), { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.45, ease: "expo.out", transformOrigin: "50% 100%" }, 0.14);
+  tl.fromTo(el("cardsheen"), { x: -200 }, { x: 980, duration: 0.7, ease: "power1.inOut" }, 0.42);
+  // guides: each layout's path draws on its song tick; the previous one dims away
+  var guides = [el("gcircle"), el("gzig"), el("gspin")], GT = [0.1, 0.58, 1.1];
+  guides.forEach(function (g, i) {
+    var L = g.getTotalLength() * 1.02;
+    g.style.strokeDasharray = L.toFixed(1);
+    g.style.strokeDashoffset = L.toFixed(1);
+    tl.fromTo(g, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, GT[i]);
+    if (i < guides.length - 1) tl.fromTo(g, { opacity: 1 }, { opacity: 0, duration: 0.25, ease: "power1.out", immediateRender: false }, GT[i + 1]);
+  });
+
+  // ======================= SCENE 2 (1.4-2.3): "steps" — chip springs in =======================
+  tl.fromTo(el("chip"), { scale: 0, opacity: 0, rotation: -8, y: 24 }, { scale: 1, opacity: 1, rotation: 0, y: 0, duration: 0.55, ease: "back.out(1.6)" }, FLASH_T);
+  tl.fromTo(el("chipsheen"), { x: -140 }, { x: 460, duration: 0.45, ease: "power1.inOut" }, FLASH_T + 0.42);
+
+  // ======================= SCENE 3 (2.3-4.2): rack focus to the rhythm waveform =======================
+  var feetWrap = el("feetwrap"), fwb = { v: 0 };
+  tl.fromTo(feetWrap, { scale: 1, opacity: 1 }, { scale: 0.9, opacity: 0.34, duration: 0.6, ease: "power2.out" }, 2.3);
+  tl.fromTo(fwb, { v: 0 }, { v: 5, duration: 0.6, ease: "power2.out", onUpdate: function () { feetWrap.style.filter = fwb.v > 0.05 ? "blur(" + fwb.v.toFixed(2) + "px)" : "none"; } }, 2.3);
+  tl.fromTo(wpath, { strokeDashoffset: WAVE_L * 1.02 }, { strokeDashoffset: 0, duration: DRAW_DUR, ease: "sine.inOut" }, DRAW_AT);
+  tl.fromTo(wglow, { strokeDashoffset: WAVE_L * 1.02 }, { strokeDashoffset: 0, duration: DRAW_DUR, ease: "sine.inOut" }, DRAW_AT);
+  // "rhythm" @3.66: the 6/8 tag locks in under the wave
+  tl.fromTo(el("tag"), { scale: 0, opacity: 0, y: 16 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.7)" }, 3.66);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["g1-songs-steps"] = tl;
+})();
+</script>
+</template>
