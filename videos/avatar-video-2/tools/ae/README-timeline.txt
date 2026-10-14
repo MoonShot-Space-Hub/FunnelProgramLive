@@ -11,7 +11,8 @@ HOW TO OPEN IT
 2. Copy your original video (Avatar_Video_1080p_1_1.mp4) into footage/.
    (If you skip this, the script asks you to pick the video.)
 3. Optional, for the editable text captions: install the two fonts in fonts/
-   (double-click each .ttf > Install), then restart After Effects.
+   (double-click each .ttf > Install), then restart After Effects. If the font is not installed,
+   the script says so at the end and the editable text captions use a substitute font.
 4. In After Effects: File > Scripts > Run Script File... > build_avatar_video_2_timeline.jsx
 5. The comp "Avatar Video 2 - Timeline" opens: 1080 x 1920, 25 fps, 43.32 s.
 

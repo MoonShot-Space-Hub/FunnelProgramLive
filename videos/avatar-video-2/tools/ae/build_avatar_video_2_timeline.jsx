@@ -36,6 +36,7 @@
     }
     var missing = [], seenMissing = {};
     function noteMissing(rel) { if (!seenMissing[rel]) { seenMissing[rel] = true; missing.push(rel); } }
+    var FONT_PS = "Montserrat-Black", fontMissing = false;
 
     // ---- footage first, so cancelling leaves the project untouched
     var footFile = firstExisting(["footage/Avatar_Video_1080p_1_1.mp4", "footage/avatar-video-2.mp4"]);
@@ -87,7 +88,7 @@
         mo.audio.audioLevels.setValue([MUSIC_DB, MUSIC_DB]);
         mo.audioEnabled = false;
         mo.outPoint = DUR;
-    }
+    } else noteMissing("audio/music-original.mp3");
     var musicStem = kit("audio/music-voice-ducked.wav");
     if (musicStem.exists) {
         var mu = comp.layers.add(importFile(musicStem));
@@ -137,7 +138,7 @@
     } else noteMissing("layers/caption-gradient.png");
 
     // ---- 3./4. animation and caption clips: colour clip + hidden luma matte directly above it
-    var addClip = function (clip, label, parent) {
+    var addClip = function (clip, label, parent, nextStart) {
         var fill = kit(clip.file + "_fill.mp4"), matte = kit(clip.file + "_matte.mp4");
         if (!fill.exists || !matte.exists) { noteMissing(clip.file + "_fill.mp4 / _matte.mp4"); return null; }
         var F = comp.layers.add(importFile(fill, parent));
@@ -149,32 +150,54 @@
         M.name = clip.name + " (matte)";
         M.startTime = clip.start;
         if (M.hasAudio) M.audioEnabled = false;
+        // neighbouring clips are slices of one render and share their join frame: end this pair
+        // where the next one starts, so that frame is composited only once
+        if (nextStart !== null && nextStart > clip.start && nextStart < F.outPoint - FRAME / 2) {
+            F.outPoint = nextStart;
+            M.outPoint = nextStart;
+        }
         if (typeof F.setTrackMatte === "function") F.setTrackMatte(M, TrackMatteType.LUMA);   // AE 23.0+
         else F.trackMatteType = TrackMatteType.LUMA;   // AE 2022: uses the layer directly above (M)
         M.enabled = false;   // hide the matte's own pixels; the matte still applies
         M.shy = true;
         return F;
     };
-    for (var a = 0; a < ANIMS.length; a++) addClip(ANIMS[a], 9, animBin);
-    for (var q = 0; q < CAPS.length; q++) addClip(CAPS[q], 2, capBin);
+    for (var a = 0; a < ANIMS.length; a++) addClip(ANIMS[a], 9, animBin, a + 1 < ANIMS.length ? ANIMS[a + 1].start : null);
+    for (var q = 0; q < CAPS.length; q++) addClip(CAPS[q], 2, capBin, q + 1 < CAPS.length ? CAPS[q + 1].start : null);
 
     // ---- 5. editable text captions (precomp, switched off)
     var tc = proj.items.addComp("Editable captions (text)", 1080, 1920, 1, DUR, FPS);
     tc.parentFolder = bin;
+    try {
+        if (app.fonts && typeof app.fonts.getFontsByPostScriptName === "function") {   // AE 24.0+
+            var fl = app.fonts.getFontsByPostScriptName(FONT_PS), realFont = false;
+            for (var fi = 0; fi < fl.length; fi++) if (!fl[fi].isSubstitute) realFont = true;
+            if (!realFont) fontMissing = true;
+        }
+    } catch (fe) {}
     for (var t = CAPS.length - 1; t >= 0; t--) {
         var cap = CAPS[t];
-        var T = tc.layers.addBoxText([930, 218], cap.text);
+        var T = tc.layers.addBoxText([930, 330], cap.text);   // room for 3 lines; centring uses the text bounds
         T.name = cap.name;
         var srcProp = T.property("Source Text");
         var doc = srcProp.value;
         doc.resetCharStyle();
+        try { doc.resetParagraphStyle(); } catch (psErr) {}
+        doc.text = cap.text;
         doc.fontSize = 74;
+        doc.tracking = -15;   // = the clips' CSS letter-spacing -0.015em
         doc.applyFill = true;
         doc.fillColor = [1, 0.96, 0.918];
         doc.applyStroke = false;
         doc.justification = ParagraphJustification.CENTER_JUSTIFY;
-        try { doc.font = "Montserrat-Black"; } catch (fontErr) {}
+        try { doc.autoHyphenate = false; } catch (hyErr) {}   // AE 24.0+
+        try { doc.font = FONT_PS; } catch (fontErr) { fontMissing = true; }
         srcProp.setValue(doc);
+        try {
+            var nd = srcProp.value;
+            if (nd.font !== FONT_PS) fontMissing = true;                         // AE 22/23 keep the old font
+            if (nd.fontObject && nd.fontObject.isSubstitute) fontMissing = true; // AE 24.0+ substitutes
+        } catch (fontReadErr) {}
         T.inPoint = cap.start;
         T.outPoint = cap.end;
         var r = T.sourceRectAtTime(cap.start, false);
@@ -199,7 +222,8 @@
     // ---- 6. scene markers
     for (var m = 0; m < ANIMS.length; m++) {
         var mv = new MarkerValue(ANIMS[m].name);
-        mv.duration = ANIMS[m].end - ANIMS[m].start;
+        var mEnd = (m + 1 < ANIMS.length) ? Math.min(ANIMS[m].end, ANIMS[m + 1].start) : ANIMS[m].end;
+        mv.duration = mEnd - ANIMS[m].start;
         comp.markerProperty.setValueAtTime(ANIMS[m].start, mv);
     }
 
@@ -212,7 +236,10 @@
         return;
     }
     app.endUndoGroup();
-    alert(missing.length
+    var fontNote = fontMissing
+        ? "\n\nMontserrat Black is not installed, so the editable text captions (precomp, switched off) use a substitute font. The caption clips are not affected. To fix it, install fonts/Montserrat-Black.ttf, restart After Effects and run the script again in a new project."
+        : "";
+    alert((missing.length
         ? "Built \"Avatar Video 2 - Timeline\", but these kit files were not found in\n" + root.fsName + "\nand their layers were skipped:\n- " + missing.join("\n- ")
-        : "Built \"Avatar Video 2 - Timeline\".\nMatte layers are shy (hidden in the timeline); click the shy switch to show them.");
+        : "Built \"Avatar Video 2 - Timeline\".\nMatte layers are shy (hidden in the timeline); click the shy switch to show them.") + fontNote);
 })();
