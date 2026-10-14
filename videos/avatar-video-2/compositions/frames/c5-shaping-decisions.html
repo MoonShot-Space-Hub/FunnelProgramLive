@@ -42,8 +42,8 @@
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-figwrap { position: absolute; left: -3px; top: -3px; width: 320px; height: 728px; transform-origin: 116px 708px; filter: drop-shadow(0 0 16px rgba(255,245,234,0.25)); }
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-figsvg { display: block; overflow: visible; }
 
-/* marionette cross control (bar box = global x 700-1000, y 284-460; centre 850,372) */
-[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-barwrap { position: absolute; left: 7px; top: -3px; width: 300px; height: 176px; }
+/* marionette cross control (bar box = global x 700-1000, y 310-486; centre 850,398) */
+[data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-barwrap { position: absolute; left: 7px; top: 23px; width: 300px; height: 176px; }
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-bar { position: absolute; left: 0; top: 0; width: 300px; height: 176px; transform-origin: 150px 88px; }
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-stick { position: absolute; left: 144px; top: 20px; width: 12px; height: 134px; border-radius: 6px; background: linear-gradient(90deg, #B89A70 0%, #FFF5EA 45%, #C9A878 100%); }
 [data-composition-id="c5-shaping-decisions"] #c5-shaping-decisions-ring { position: absolute; left: 139px; top: 150px; width: 22px; height: 22px; border-radius: 50%; border: 4px solid #FFE1A0; box-sizing: border-box; }
@@ -338,7 +338,7 @@
   }
   // string i: 0 = CAN'T -> left hand, 1 = SELFISH (ring under the stick) -> head, 2 = NEVER -> right hand
   var STR_AT = [0.40, 0.30, 0.48], STR_DUR = 0.34;
-  var BAR_CX = 850, BAR_CY = 372;
+  var BAR_CX = 850, BAR_CY = 398;
   var BAR_L = [[-76, 50], [0, 82], [76, 50]];
   var GLINTS = [
     { s: 0, at: 1.74, dur: 0.55 }, { s: 1, at: 1.90, dur: 0.55 }, { s: 2, at: 2.06, dur: 0.55 },
@@ -377,10 +377,10 @@
   }
   function barState(t) {
     var B = {};
-    B.y = -230 * (1 - BK13(seg(t, 0.04, 0.5))) - 14 * bump(seg(t, 1.45, 0.4)) - 10 * bump(seg(t, 2.70, 0.35)) + 2 * Math.sin(t * 1.7);
+    B.y = -230 * (1 - BK13(seg(t, 0.04, 0.5))) - 8 * bump(seg(t, 1.45, 0.4)) - 6 * bump(seg(t, 2.70, 0.35)) + 2 * Math.sin(t * 1.7);
     B.x = kf(t, [[0, 0], [1.02, 0], [1.40, 8, P2IO], [1.45, 8], [1.75, -10, BK16], [2.70, -10], [3.0, -16, BK18], [3.6, -16]]) + 2 * Math.sin(t * 1.3);
-    var dangle = t > 0.5 ? 6 * Math.exp(-(t - 0.5) * 3.2) * Math.sin((t - 0.5) * 12) : 0;
-    B.r = dangle + kf(t, [[0, 0], [1.45, 0], [1.80, -12, BK22], [2.70, -9, SIO], [3.0, -16, BK2], [3.6, -12, SIO]]) + 1 * Math.sin(t * 2.0);
+    var dangle = t > 0.5 ? 5 * Math.exp(-(t - 0.5) * 3.2) * Math.sin((t - 0.5) * 12) : 0;
+    B.r = dangle + kf(t, [[0, 0], [1.45, 0], [1.80, -9, BK22], [2.70, -7, SIO], [3.0, -12, BK2], [3.6, -9, SIO]]) + 1 * Math.sin(t * 2.0);
     return B;
   }
   function anchor(B, i) {
