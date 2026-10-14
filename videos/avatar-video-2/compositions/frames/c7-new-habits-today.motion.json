@@ -1,0 +1,13 @@
+{
+  "scene": "c7-new-habits-today",
+  "duration_s": 4.58,
+  "rules": ["svg-path-draw", "stat-bars-and-fills", "spring-pop-entrance", "particle-burst", "kinetic-beat-slam", "ambient-glow-bloom"],
+  "exit": {
+    "vector": "calendar settling from the DAY 1 slam (back.out recoil ends exactly at 4.58); camera push 1.00->1.045 easing to ~0 px/s (sine.inOut); gold rays rotating 7 deg/s (~85 px/s at r700), ground rings 5 deg/s; gold dust rising 26-93 px/s and twinkling; stamp burst particles in their last frames, fading to 0; TODAY sheen crossing the page at the end of its pass; gold light at peak",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "red habit loop pops in from scale 0.55 / rotation -40deg / blur 16px (back.out, ~0.5s), ring spinning 52 deg/s (~210 px/s tangential at r230); chip springs in from 0.20s; dust drifting up 16-58 px/s, magenta blob drifting ~25 px/s",
+    "from_rest": false
+  }
+}

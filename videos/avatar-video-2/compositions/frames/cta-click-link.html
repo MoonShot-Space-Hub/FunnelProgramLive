@@ -1,0 +1,297 @@
+<template>
+<style>
+#root {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: hidden; background: transparent; color: #FFF5EA; font-family: "Montserrat", sans-serif;
+  pointer-events: none;
+}
+[data-composition-id="cta-click-link"] .cta-click-link-defs { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- top band (y 120-440): readability scrim + offer chip ---------- */
+[data-composition-id="cta-click-link"] #cta-click-link-scrim {
+  position: absolute; left: -10px; top: 80px; width: 1100px; height: 370px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(18,6,26,0.62) 0%, rgba(18,6,26,0.38) 55%, rgba(18,6,26,0) 100%);
+}
+[data-composition-id="cta-click-link"] #cta-click-link-chipglow {
+  position: absolute; left: 140px; top: 175px; width: 800px; height: 180px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(255,194,74,0.7) 0%, rgba(224,33,138,0.3) 55%, rgba(224,33,138,0) 100%);
+}
+[data-composition-id="cta-click-link"] .cta-click-link-row { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; align-items: center; }
+[data-composition-id="cta-click-link"] #cta-click-link-chip {
+  position: relative; height: 92px; padding: 0 38px 0 14px; box-sizing: border-box;
+  display: flex; align-items: center; gap: 20px; overflow: hidden; white-space: nowrap;
+  border-radius: 999px; border: 3px solid #FFC24A;
+  background: rgba(18,6,26,0.8);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 30px rgba(255,194,74,0.35);
+  transform-origin: 50% 50%;
+}
+[data-composition-id="cta-click-link"] #cta-click-link-free {
+  display: block; height: 64px; line-height: 66px; padding: 0 22px; border-radius: 999px;
+  background: linear-gradient(180deg, #FFE1A0 0%, #FFC24A 100%);
+  box-shadow: inset 0 -4px 0 rgba(184,128,28,0.6), 0 0 18px rgba(255,194,74,0.45);
+  font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 36px; letter-spacing: -0.01em; color: #2E1240;
+}
+[data-composition-id="cta-click-link"] #cta-click-link-chiptxt {
+  display: block; font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 36px; letter-spacing: 0.14em; color: #FFF5EA;
+}
+[data-composition-id="cta-click-link"] .cta-click-link-sheen {
+  position: absolute; left: 0; top: -40%; width: 200px; height: 180%;
+  background: linear-gradient(100deg, rgba(255,245,234,0) 0%, rgba(255,245,234,0.34) 50%, rgba(255,245,234,0) 100%);
+}
+[data-composition-id="cta-click-link"] .cta-click-link-tw { position: absolute; display: block; overflow: visible; opacity: 0; }
+
+/* ---------- torso band (y 860-1120): button, cursor, chevrons ---------- */
+[data-composition-id="cta-click-link"] #cta-click-link-bscrim {
+  position: absolute; left: 30px; top: 860px; width: 1020px; height: 260px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(18,6,26,0.55) 0%, rgba(18,6,26,0.3) 60%, rgba(18,6,26,0) 100%);
+}
+[data-composition-id="cta-click-link"] #cta-click-link-btnglow {
+  position: absolute; left: 50px; top: 870px; width: 980px; height: 240px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(224,33,138,0.85) 0%, rgba(255,194,74,0.35) 55%, rgba(255,194,74,0) 100%);
+}
+[data-composition-id="cta-click-link"] #cta-click-link-burst {
+  position: absolute; left: 90px; top: 870px; width: 900px; height: 240px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(255,225,160,0.95) 0%, rgba(255,194,74,0.55) 40%, rgba(224,33,138,0) 100%);
+}
+[data-composition-id="cta-click-link"] #cta-click-link-pulse { position: absolute; left: 100px; top: 900px; width: 880px; height: 120px; border-radius: 999px; box-sizing: border-box; border: 4px solid #FFC24A; box-shadow: 0 0 24px rgba(255,194,74,0.6); opacity: 0; }
+[data-composition-id="cta-click-link"] #cta-click-link-btnwrap { position: absolute; left: 100px; top: 900px; width: 880px; height: 120px; transform-origin: 50% 50%; opacity: 0; }
+[data-composition-id="cta-click-link"] #cta-click-link-btnmb, [data-composition-id="cta-click-link"] #cta-click-link-btn { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 50% 50%; }
+[data-composition-id="cta-click-link"] .cta-click-link-btnface {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; box-sizing: border-box; overflow: hidden;
+  border-radius: 999px; border: 4px solid #FFC24A;
+  background: linear-gradient(90deg, #A80F64 0%, #E0218A 42%, #EC4F5A 76%, #F08A2E 100%);
+  box-shadow: 0 0 44px rgba(224,33,138,0.55), 0 18px 40px rgba(0,0,0,0.5);
+}
+[data-composition-id="cta-click-link"] .cta-click-link-btnhi { position: absolute; left: 34px; right: 34px; top: 8px; height: 38px; border-radius: 999px; background: linear-gradient(180deg, rgba(255,245,234,0.3), rgba(255,245,234,0)); }
+[data-composition-id="cta-click-link"] .cta-click-link-btnlabel {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center; padding-top: 3px; box-sizing: border-box;
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 53px; letter-spacing: 0.03em; color: #FFF5EA; white-space: nowrap;
+  text-shadow: 0 3px 0 rgba(46,18,64,0.6), 0 0 18px rgba(46,18,64,0.45);
+}
+[data-composition-id="cta-click-link"] .cta-click-link-chev { position: absolute; left: 490px; width: 100px; height: 30px; opacity: 0; }
+[data-composition-id="cta-click-link"] .cta-click-link-chev svg { position: absolute; left: 0; top: 0; width: 100px; height: 30px; overflow: visible; filter: drop-shadow(0 0 8px rgba(255,194,74,0.8)); }
+[data-composition-id="cta-click-link"] .cta-click-link-ripple { position: absolute; left: 753px; top: 935px; width: 90px; height: 90px; border-radius: 50%; box-sizing: border-box; border: 4px solid #FFF5EA; box-shadow: 0 0 18px rgba(255,194,74,0.8); opacity: 0; }
+[data-composition-id="cta-click-link"] #cta-click-link-hand { position: absolute; left: 759px; top: 977px; width: 96px; height: 116px; overflow: visible; transform-origin: 39px 3px; opacity: 0; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.45)); }
+[data-composition-id="cta-click-link"] .cta-click-link-origin { position: absolute; left: 540px; top: 960px; width: 0; height: 0; }
+[data-composition-id="cta-click-link"] .cta-click-link-spk { position: absolute; left: 0; top: 0; display: block; opacity: 0; }
+</style>
+
+<div id="root" data-composition-id="cta-click-link" data-start="0" data-duration="1.28" data-width="1080" data-height="1920">
+  <svg class="cta-click-link-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="cta-click-link-mb" x="-20%" y="-80%" width="140%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur id="cta-click-link-mb-n" in="SourceGraphic" stdDeviation="0 0"></feGaussianBlur></filter>
+      <symbol id="cta-click-link-star" viewBox="-32 -32 64 64">
+        <path d="M0 -30 C3 -6 6 -3 30 0 C6 3 3 6 0 30 C-3 6 -6 3 -30 0 C-6 -3 -3 -6 0 -30 Z" fill="#FFE1A0"></path>
+        <circle r="5" fill="#FFFFFF"></circle>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- top band -->
+  <div id="cta-click-link-scrim"></div>
+  <div id="cta-click-link-chipglow"></div>
+  <div id="cta-click-link-twinkles"></div>
+  <div class="cta-click-link-row" style="top:219px;height:92px">
+    <div id="cta-click-link-chip">
+      <span id="cta-click-link-free">FREE</span>
+      <span id="cta-click-link-chiptxt">1-HOUR TRAINING</span>
+      <div class="cta-click-link-sheen" id="cta-click-link-chipsheen"></div>
+    </div>
+  </div>
+
+  <!-- torso band -->
+  <div id="cta-click-link-bscrim"></div>
+  <div id="cta-click-link-btnglow"></div>
+  <div id="cta-click-link-burst"></div>
+  <div id="cta-click-link-pulse"></div>
+  <div id="cta-click-link-btnwrap">
+    <div id="cta-click-link-btnmb">
+      <div id="cta-click-link-btn">
+        <div class="cta-click-link-btnface">
+          <div class="cta-click-link-btnhi"></div>
+          <div class="cta-click-link-btnlabel">CLICK THE LINK BELOW</div>
+          <div class="cta-click-link-sheen" id="cta-click-link-btnsheen"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-click-link-chev" id="cta-click-link-chev0" style="top:1034px"><svg viewBox="0 0 100 30" aria-hidden="true"><path d="M10 6 L50 24 L90 6" fill="none" stroke="#2E1240" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 6 L50 24 L90 6" fill="none" stroke="#FFC24A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+  <div class="cta-click-link-chev" id="cta-click-link-chev1" style="top:1056px"><svg viewBox="0 0 100 30" aria-hidden="true"><path d="M10 6 L50 24 L90 6" fill="none" stroke="#2E1240" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 6 L50 24 L90 6" fill="none" stroke="#FFC24A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+  <div class="cta-click-link-chev" id="cta-click-link-chev2" style="top:1078px"><svg viewBox="0 0 100 30" aria-hidden="true"><path d="M10 6 L50 24 L90 6" fill="none" stroke="#2E1240" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 6 L50 24 L90 6" fill="none" stroke="#FFC24A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+  <div class="cta-click-link-ripple" id="cta-click-link-rip0"></div>
+  <div class="cta-click-link-ripple" id="cta-click-link-rip1"></div>
+  <div class="cta-click-link-ripple" id="cta-click-link-rip2"></div>
+  <div class="cta-click-link-origin" id="cta-click-link-sparks"></div>
+  <svg id="cta-click-link-hand" viewBox="0 0 100 120" aria-hidden="true">
+    <g fill="#2E1240" stroke="#2E1240" stroke-width="9" stroke-linejoin="round">
+      <rect x="31" y="3" width="20" height="62" rx="10"></rect>
+      <rect x="50" y="38" width="18" height="36" rx="9"></rect>
+      <rect x="66" y="42" width="17" height="34" rx="8.5"></rect>
+      <rect x="81" y="48" width="15" height="30" rx="7.5"></rect>
+      <path d="M31 58 H96 V88 C96 106 84 117 66 117 H50 C38 117 28 110 22 100 L8 76 C4 69 7 62 13 61 C18 60 22 63 25 67 L31 76 Z"></path>
+    </g>
+    <g fill="#FFF5EA">
+      <rect x="31" y="3" width="20" height="62" rx="10"></rect>
+      <rect x="50" y="38" width="18" height="36" rx="9"></rect>
+      <rect x="66" y="42" width="17" height="34" rx="8.5"></rect>
+      <rect x="81" y="48" width="15" height="30" rx="7.5"></rect>
+      <path d="M31 58 H96 V88 C96 106 84 117 66 117 H50 C38 117 28 110 22 100 L8 76 C4 69 7 62 13 61 C18 60 22 63 25 67 L31 76 Z"></path>
+    </g>
+    <path d="M50 54 V68 M66 58 V70 M81 62 V72" fill="none" stroke="rgba(46,18,64,0.35)" stroke-width="2.5" stroke-linecap="round"></path>
+    <path d="M35 12 C38 8 44 8 47 12" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="3" stroke-linecap="round"></path>
+  </svg>
+</div>
+
+<script>
+(function () {
+  var ID = "cta-click-link";
+  var P = ID + "-";
+  var DUR = 1.28;
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var TAU = Math.PI * 2;
+  function el(n) { return document.getElementById(P + n); }
+  function prand(n) { var x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function smooth(v) { v = clamp01(v); return v * v * (3 - 2 * v); }
+  function f1(v) { return v.toFixed(1); }
+  function starNode(size) {
+    var s = document.createElementNS(SVGNS, "svg");
+    s.setAttribute("viewBox", "-32 -32 64 64");
+    s.setAttribute("width", f1(size)); s.setAttribute("height", f1(size));
+    var u = document.createElementNS(SVGNS, "use");
+    u.setAttribute("href", "#" + P + "star");
+    u.setAttribute("x", "-32"); u.setAttribute("y", "-32"); u.setAttribute("width", "64"); u.setAttribute("height", "64");
+    s.appendChild(u);
+    return s;
+  }
+  var i;
+
+  // twinkle stars flanking the chip (top band only): [x, y, size]
+  var TW = [[150, 228, 34], [118, 300, 20], [930, 232, 30], [968, 304, 22], [210, 168, 16], [880, 160, 18]];
+  var twinkles = [];
+  for (i = 0; i < TW.length; i++) {
+    var tn = starNode(TW[i][2]);
+    tn.setAttribute("class", P + "tw");
+    tn.style.left = f1(TW[i][0] - TW[i][2] / 2) + "px"; tn.style.top = f1(TW[i][1] - TW[i][2] / 2) + "px";
+    el("twinkles").appendChild(tn);
+    twinkles.push({ el: tn, at: 0.14 + i * 0.05, ph: prand(i * 7 + 3) * TAU, sp: 7 + prand(i * 11 + 1) * 5 });
+  }
+
+  // gold sparkle pool off the button rim on release
+  var sparks = [];
+  for (i = 0; i < 22; i++) {
+    var star = i % 3 !== 2;
+    var a = i / 22 * TAU + (prand(i * 5 + 1) - 0.5) * 0.25;
+    var ox = Math.cos(a) * 440, oy = Math.sin(a) * 62;
+    var nx = Math.cos(a) / 440, ny = Math.sin(a) / 62, nl = Math.sqrt(nx * nx + ny * ny);
+    nx /= nl; ny /= nl;
+    var spd = 260 + prand(i * 7 + 2) * 300;
+    var size = star ? 20 + prand(i * 11 + 3) * 18 : 7 + prand(i * 11 + 3) * 4;
+    var node;
+    if (star) node = starNode(size);
+    else {
+      node = document.createElement("i");
+      node.style.width = f1(size) + "px"; node.style.height = f1(size) + "px";
+      node.style.borderRadius = "50%"; node.style.background = "#FFE1A0"; node.style.boxShadow = "0 0 12px #FFC24A";
+    }
+    node.setAttribute("class", P + "spk");
+    node.style.marginLeft = f1(-size / 2) + "px"; node.style.marginTop = f1(-size / 2) + "px";
+    el("sparks").appendChild(node);
+    // keep the burst inside the torso band (never up into the face band)
+    sparks.push({ el: node, ox: ox, oy: oy, vx: nx * spd, vy: ny * spd * (ny < 0 ? 0.25 : 0.55), k: 5 + prand(i * 13 + 4) * 1.5, spin: (prand(i * 17 + 5) * 2 - 1) * 260, star: star });
+  }
+
+  var tl = gsap.timeline({ paused: true });
+
+  // ---------- AMBIENT: one finite clock ----------
+  var chevIn = [el("chev0").firstElementChild, el("chev1").firstElementChild, el("chev2").firstElementChild];
+  var chipGlow = el("chipglow"), btnGlow = el("btnglow");
+  var CLICK = 0.6, RELEASE = 0.7, BELOW = 0.84;
+  var amb = { t: 0 };
+  function applyAmbient() {
+    var t = amb.t, k;
+    for (k = 0; k < twinkles.length; k++) {
+      var tw = twinkles[k], on = smooth((t - tw.at) / 0.18);
+      var s = on * (0.75 + 0.25 * Math.sin(tw.ph + t * tw.sp));
+      tw.el.style.opacity = (on * (0.55 + 0.45 * Math.sin(tw.ph + t * tw.sp))).toFixed(3);
+      tw.el.style.transform = "scale(" + s.toFixed(3) + ") rotate(" + f1(t * 90 + k * 20) + "deg)";
+    }
+    chipGlow.style.opacity = (smooth((t - 0.1) / 0.35) * (0.3 + 0.05 * Math.sin(t * 5))).toFixed(3);
+    var bgl = smooth((t - 0.14) / 0.4) * 0.26 + 0.18 * Math.exp(-Math.pow((t - (RELEASE + 0.1)) / 0.16, 2)) + 0.03 * Math.sin(t * 6) * smooth((t - 0.5) / 0.2);
+    btnGlow.style.opacity = Math.min(0.45, Math.max(0, bgl)).toFixed(3);
+    // chevrons: downward bounce wave, top -> bottom
+    var env = smooth((t - (BELOW + 0.06)) / 0.14);
+    for (k = 0; k < chevIn.length; k++) {
+      var w = Math.max(0, Math.sin(TAU * (t - BELOW - 0.06) / 0.42 - k * 0.9));
+      chevIn[k].style.transform = "translate(0px," + f1(7 * w * env) + "px)";
+      chevIn[k].style.opacity = (1 - env * (1 - (0.5 + 0.5 * w))).toFixed(3);
+    }
+  }
+  applyAmbient();
+  tl.fromTo(amb, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: applyAmbient }, 0);
+
+  // ---------- 0.00: offer chip springs in at the top, with a sheen ----------
+  tl.fromTo(el("scrim"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0);
+  tl.fromTo(el("chip"), { scale: 0.35, y: -30, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, 0);
+  tl.fromTo(el("free"), { scale: 0, rotation: -14 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.2)" }, 0.08);
+  tl.fromTo(el("chiptxt"), { opacity: 0, x: -26 }, { opacity: 1, x: 0, duration: 0.36, ease: "expo.out" }, 0.1);
+  tl.fromTo(el("chipsheen"), { x: -240 }, { x: 820, duration: 0.5, ease: "power1.inOut" }, 0.4);
+
+  // ---------- "click" @0.12: button springs up into the torso band (vertical motion blur) ----------
+  tl.fromTo(el("bscrim"), { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 0.12);
+  tl.fromTo(el("btnwrap"), { y: 150, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.42, ease: "back.out(1.6)" }, 0.12);
+  var mbw = el("btnmb"), mbn = el("mb-n"), mbp = { b: 16 };
+  function writeMB() {
+    if (mbp.b < 0.25) { mbw.style.filter = "none"; mbn.setAttribute("stdDeviation", "0 0"); return; }
+    mbw.style.filter = "url(#" + P + "mb)";
+    mbn.setAttribute("stdDeviation", "0 " + mbp.b.toFixed(2));
+  }
+  writeMB();
+  tl.fromTo(mbp, { b: 16 }, { b: 0, duration: 0.28, ease: "power2.out", onUpdate: writeMB }, 0.12);
+
+  // ---------- cursor glides in, taps on "link" @0.60 (cursor-click-ripple + press-release-spring) ----------
+  tl.fromTo(el("hand"), { x: 240, y: 200, rotation: 16, opacity: 0 }, { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.36, ease: "power3.out" }, 0.2);
+  tl.fromTo(el("hand"), { scale: 1 }, { scale: 0.84, duration: 0.08, ease: "power2.in", immediateRender: false }, CLICK);
+  tl.to(el("hand"), { scale: 1, duration: 0.12, ease: "power2.out" }, CLICK + 0.08);
+  tl.fromTo(el("btn"), { scale: 1 }, { scale: 0.92, duration: RELEASE - CLICK, ease: "power1.in" }, CLICK);
+  tl.to(el("btn"), { scale: 1, duration: 0.5, ease: "back.out(2.2)" }, RELEASE);
+  [0, 1, 2].forEach(function (k) {
+    var r = el("rip" + k), at = CLICK + 0.03 + k * 0.08;
+    tl.fromTo(r, { scale: 0.2, opacity: 0 }, { scale: 0.45, opacity: 0.95, duration: 0.04, ease: "none" }, at);
+    tl.to(r, { scale: 2.8, opacity: 0, duration: 0.5, ease: "power2.out" }, at + 0.04);
+  });
+  tl.fromTo(el("burst"), { scale: 0.9, opacity: 0 }, { scale: 1.25, opacity: 0.8, duration: 0.3, ease: "power2.out" }, RELEASE);
+  tl.to(el("burst"), { opacity: 0, duration: 0.28, ease: "power2.in" }, RELEASE + 0.3);
+  tl.fromTo(el("pulse"), { scaleX: 1, scaleY: 1, opacity: 0 }, { scaleX: 1.01, scaleY: 1.04, opacity: 0.95, duration: 0.04, ease: "none" }, RELEASE);
+  tl.to(el("pulse"), { scaleX: 1.08, scaleY: 1.4, opacity: 0, duration: 0.45, ease: "power2.out" }, RELEASE + 0.04);
+  tl.fromTo(el("btnsheen"), { x: -240 }, { x: 1000, duration: 0.45, ease: "power1.inOut" }, RELEASE + 0.04);
+  // the hand eases slightly off the label after the tap (still in frame at the end)
+  tl.to(el("hand"), { x: 56, y: 26, rotation: -6, duration: 0.4, ease: "power2.inOut" }, 0.86);
+
+  // sparkle burst off the button rim on the release
+  var SPARK_AT = RELEASE + 0.02, FLIGHT = 0.5, drv = { T: 0 };
+  function writeSparks() {
+    var T = drv.T, t = T * FLIGHT;
+    var op = T <= 0 ? 0 : smooth(T / 0.08) * (1 - smooth((T - 0.35) / 0.65));
+    for (var k = 0; k < sparks.length; k++) {
+      var q = sparks[k], e = 1 - Math.exp(-q.k * t);
+      var x = q.ox + q.vx * e / q.k, y = q.oy + q.vy * e / q.k + 60 * t * t;
+      var sc = q.star ? 0.4 + 0.6 * smooth(T / 0.15) : 1;
+      q.el.style.transform = "translate(" + f1(x) + "px," + f1(y) + "px) rotate(" + f1(q.spin * t) + "deg) scale(" + sc.toFixed(3) + ")";
+      q.el.style.opacity = op.toFixed(3);
+    }
+  }
+  writeSparks();
+  tl.fromTo(drv, { T: 0 }, { T: 1, duration: FLIGHT, ease: "none", onUpdate: writeSparks }, SPARK_AT);
+
+  // ---------- "below" @0.84: chevrons drop in, then bounce to the end ----------
+  [0, 1, 2].forEach(function (k) {
+    tl.fromTo(el("chev" + k), { opacity: 0, y: -16, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.24, ease: "back.out(2)" }, BELOW + k * 0.05);
+  });
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

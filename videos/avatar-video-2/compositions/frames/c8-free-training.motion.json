@@ -1,0 +1,13 @@
+{
+  "scene": "c8-free-training",
+  "duration_s": 2.2,
+  "rules": ["split-tilt-cards", "kinetic-beat-slam", "svg-path-draw", "ambient-glow-bloom", "particle-burst", "spring-pop-entrance"],
+  "exit": {
+    "vector": "card idle float (y sine 6px amp, <=16 px/s; rotateY sway +-1.2deg); camera push 1.00->1.04 easing to ~0 px/s; second play-button pulse ring expanding; gold glow still growing slightly (until 2.28); dust rising 18-64 px/s, ground rings rotating -6 deg/s; FREE stamp, 60:00 readout and gold underline at rest",
+    "still_moving": true
+  },
+  "entry": {
+    "vector": "training card tilting in from x+300 / z-260 / rotateY -46deg / rotateX 14deg with blur 16px, moving leftward ~1250 px/s at frame 0 (power3.out over 0.72s) and settling to rotateY -5deg; dust and blob drifting",
+    "from_rest": false
+  }
+}
