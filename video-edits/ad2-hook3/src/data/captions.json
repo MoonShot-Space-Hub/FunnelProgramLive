@@ -1,0 +1,1537 @@
+[
+ {
+  "start": 0.05,
+  "end": 2.4,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "CAN",
+      "style": "n",
+      "at": 0.05
+     },
+     {
+      "text": "WE",
+      "style": "n",
+      "at": 0.24
+     },
+     {
+      "text": "COMPARE",
+      "style": "n",
+      "at": 0.46
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "TRADING",
+      "style": "k",
+      "at": 0.86
+     },
+     {
+      "text": "WITH",
+      "style": "n",
+      "at": 1.35
+     },
+     {
+      "text": "GARBA?",
+      "style": "a",
+      "at": 1.69
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 2.5,
+  "end": 3.85,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "IF",
+      "style": "n",
+      "at": 2.5
+     },
+     {
+      "text": "YOU'VE",
+      "style": "n",
+      "at": 2.61
+     },
+     {
+      "text": "EVER",
+      "style": "n",
+      "at": 2.79
+     },
+     {
+      "text": "PLAYED",
+      "style": "n",
+      "at": 3.02
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "GARBA",
+      "style": "a",
+      "at": 3.19
+     },
+     {
+      "text": "IN",
+      "style": "n",
+      "at": 3.41
+     },
+     {
+      "text": "NAVRATRI",
+      "style": "k",
+      "at": 3.5
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 3.85,
+  "end": 4.64,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "YOU",
+      "style": "n",
+      "at": 3.85
+     },
+     {
+      "text": "MUST",
+      "style": "n",
+      "at": 4.03
+     },
+     {
+      "text": "HAVE",
+      "style": "n",
+      "at": 4.19
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "NOTICED...",
+      "style": "n",
+      "at": 4.3
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 4.64,
+  "end": 6.4,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "DIFFERENT",
+      "style": "n",
+      "at": 4.64
+     },
+     {
+      "text": "SONGS,",
+      "style": "n",
+      "at": 5.12
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "DIFFERENT",
+      "style": "n",
+      "at": 5.4
+     },
+     {
+      "text": "STEPS",
+      "style": "k",
+      "at": 5.88
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 6.4,
+  "end": 7.64,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "START",
+      "style": "n",
+      "at": 6.4
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "INSTANTLY",
+      "style": "a",
+      "at": 6.86
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 7.64,
+  "end": 8.6,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "BECAUSE",
+      "style": "n",
+      "at": 7.64
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "EVERY",
+      "style": "n",
+      "at": 8.04
+     },
+     {
+      "text": "SONG",
+      "style": "n",
+      "at": 8.28
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 8.6,
+  "end": 9.7,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "HAS",
+      "style": "n",
+      "at": 8.6
+     },
+     {
+      "text": "ITS",
+      "style": "n",
+      "at": 8.85
+     },
+     {
+      "text": "OWN",
+      "style": "n",
+      "at": 9.06
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "RHYTHM",
+      "style": "a",
+      "at": 9.22
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 9.7,
+  "end": 10.6,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "IN",
+      "style": "n",
+      "at": 9.7
+     },
+     {
+      "text": "THE",
+      "style": "n",
+      "at": 9.93
+     },
+     {
+      "text": "SAME",
+      "style": "n",
+      "at": 10.14
+     },
+     {
+      "text": "WAY,",
+      "style": "n",
+      "at": 10.32
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 10.6,
+  "end": 12.1,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "IN",
+      "style": "n",
+      "at": 10.6
+     },
+     {
+      "text": "OUR",
+      "style": "n",
+      "at": 10.79
+     },
+     {
+      "text": "MARKET",
+      "style": "n",
+      "at": 10.94
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "TRENDS",
+      "style": "k",
+      "at": 11.22
+     },
+     {
+      "text": "CHANGE",
+      "style": "k",
+      "at": 11.55
+     },
+     {
+      "text": "TOO",
+      "style": "n",
+      "at": 11.73
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 12.1,
+  "end": 13.45,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "UPTREND",
+      "style": "g",
+      "at": 12.1
+     },
+     {
+      "text": "\u279c",
+      "style": "n",
+      "at": 12.66
+     },
+     {
+      "text": "DOWNTREND",
+      "style": "r",
+      "at": 12.8
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 13.45,
+  "end": 14.2,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "DOWNTREND",
+      "style": "r",
+      "at": 13.45
+     },
+     {
+      "text": "\u279c",
+      "style": "n",
+      "at": 13.81
+     },
+     {
+      "text": "SIDEWAYS",
+      "style": "k",
+      "at": 13.9
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 14.2,
+  "end": 15.5,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "AND",
+      "style": "n",
+      "at": 14.2
+     },
+     {
+      "text": "IF",
+      "style": "n",
+      "at": 14.5
+     },
+     {
+      "text": "YOUR",
+      "style": "n",
+      "at": 14.62
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "STRATEGY,",
+      "style": "k",
+      "at": 14.83
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 15.5,
+  "end": 16.4,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "YOUR",
+      "style": "n",
+      "at": 15.5
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "STEPS",
+      "style": "k",
+      "at": 15.87
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 16.4,
+  "end": 17.56,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "DON'T",
+      "style": "n",
+      "at": 16.4
+     },
+     {
+      "text": "CHANGE...",
+      "style": "n",
+      "at": 16.85
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 17.56,
+  "end": 18.34,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "YOU'LL",
+      "style": "n",
+      "at": 17.56
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "STRUGGLE,",
+      "style": "a",
+      "at": 17.9
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 18.34,
+  "end": 19.3,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "YOU'LL",
+      "style": "n",
+      "at": 18.34
+     },
+     {
+      "text": "FACE",
+      "style": "n",
+      "at": 18.6
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "LOSSES!",
+      "style": "r",
+      "at": 18.88
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 19.4,
+  "end": 20.9,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "THAT'S",
+      "style": "n",
+      "at": 19.4
+     },
+     {
+      "text": "WHY",
+      "style": "n",
+      "at": 19.7
+     },
+     {
+      "text": "A",
+      "style": "n",
+      "at": 19.84
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "SYSTEMATIC",
+      "style": "k",
+      "at": 19.92
+     },
+     {
+      "text": "APPROACH",
+      "style": "k",
+      "at": 20.34
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 20.9,
+  "end": 21.98,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "IS",
+      "style": "n",
+      "at": 20.9
+     },
+     {
+      "text": "SO",
+      "style": "n",
+      "at": 21.17
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "IMPORTANT",
+      "style": "a",
+      "at": 21.34
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 21.98,
+  "end": 22.9,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "SO",
+      "style": "n",
+      "at": 21.98
+     },
+     {
+      "text": "IF",
+      "style": "n",
+      "at": 22.19
+     },
+     {
+      "text": "YOU",
+      "style": "n",
+      "at": 22.29
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "WANT",
+      "style": "n",
+      "at": 22.43
+     },
+     {
+      "text": "TO",
+      "style": "n",
+      "at": 22.64
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 22.9,
+  "end": 24.42,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "LEARN",
+      "style": "n",
+      "at": 22.9
+     },
+     {
+      "text": "THIS",
+      "style": "n",
+      "at": 23.11
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "SYSTEMATIC",
+      "style": "k",
+      "at": 23.37
+     },
+     {
+      "text": "APPROACH",
+      "style": "k",
+      "at": 23.83
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 24.42,
+  "end": 27.04,
+  "mode": "graphic",
+  "lines": []
+ },
+ {
+  "start": 27.04,
+  "end": 28.0,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "THEN,",
+      "style": "n",
+      "at": 27.04
+     },
+     {
+      "text": "WHAT",
+      "style": "n",
+      "at": 27.34
+     },
+     {
+      "text": "IS",
+      "style": "n",
+      "at": 27.55
+     },
+     {
+      "text": "AN",
+      "style": "n",
+      "at": 27.62
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "UPTREND?",
+      "style": "g",
+      "at": 27.69
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 28.0,
+  "end": 28.9,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "A",
+      "style": "n",
+      "at": 28.0
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "DOWNTREND?",
+      "style": "r",
+      "at": 28.13
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 28.9,
+  "end": 29.82,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "A",
+      "style": "n",
+      "at": 28.9
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "SIDEWAYS",
+      "style": "k",
+      "at": 29.01
+     },
+     {
+      "text": "TREND?",
+      "style": "n",
+      "at": 29.4
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 29.82,
+  "end": 30.6,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "IDENTIFYING",
+      "style": "n",
+      "at": 29.82
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "THIS",
+      "style": "n",
+      "at": 30.33
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 30.6,
+  "end": 31.52,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "IS",
+      "style": "n",
+      "at": 30.6
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "CRUCIAL",
+      "style": "a",
+      "at": 30.89
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 31.52,
+  "end": 32.5,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "AND",
+      "style": "n",
+      "at": 31.52
+     },
+     {
+      "text": "ACCORDINGLY,",
+      "style": "n",
+      "at": 31.76
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 32.5,
+  "end": 33.94,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "WE",
+      "style": "n",
+      "at": 32.5
+     },
+     {
+      "text": "IMPLEMENT",
+      "style": "n",
+      "at": 32.76
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "OUR",
+      "style": "n",
+      "at": 33.25
+     },
+     {
+      "text": "SYSTEM",
+      "style": "k",
+      "at": 33.48
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 33.94,
+  "end": 35.28,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "I'M",
+      "style": "n",
+      "at": 33.94
+     },
+     {
+      "text": "TEACHING",
+      "style": "n",
+      "at": 34.16
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "ALL",
+      "style": "n",
+      "at": 34.51
+     },
+     {
+      "text": "OF",
+      "style": "n",
+      "at": 34.7
+     },
+     {
+      "text": "THIS",
+      "style": "n",
+      "at": 34.87
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 35.28,
+  "end": 36.44,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "IN",
+      "style": "n",
+      "at": 35.28
+     },
+     {
+      "text": "A",
+      "style": "n",
+      "at": 35.41
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "FREE",
+      "style": "k",
+      "at": 35.49
+     },
+     {
+      "text": "MASTERCLASS",
+      "style": "a",
+      "at": 35.8
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 36.44,
+  "end": 37.5,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "IN",
+      "style": "n",
+      "at": 36.44
+     },
+     {
+      "text": "THIS",
+      "style": "n",
+      "at": 36.61
+     },
+     {
+      "text": "ONE",
+      "style": "n",
+      "at": 36.8
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "MASTERCLASS",
+      "style": "n",
+      "at": 36.97
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 37.5,
+  "end": 38.52,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "YOU'LL",
+      "style": "n",
+      "at": 37.5
+     },
+     {
+      "text": "LEARN",
+      "style": "n",
+      "at": 37.79
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "EVERYTHING",
+      "style": "k",
+      "at": 38.04
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 38.52,
+  "end": 39.9,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "PLUS",
+      "style": "n",
+      "at": 38.52
+     },
+     {
+      "text": "YOUR",
+      "style": "n",
+      "at": 38.81
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "RISK",
+      "style": "k",
+      "at": 39.08
+     },
+     {
+      "text": "MANAGEMENT",
+      "style": "n",
+      "at": 39.34
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 39.9,
+  "end": 41.36,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "AND",
+      "style": "n",
+      "at": 39.9
+     },
+     {
+      "text": "YOUR",
+      "style": "n",
+      "at": 40.18
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "MIND",
+      "style": "a",
+      "at": 40.4
+     },
+     {
+      "text": "MANAGEMENT",
+      "style": "n",
+      "at": 40.63
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 41.36,
+  "end": 42.1,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "HOW",
+      "style": "n",
+      "at": 41.36
+     },
+     {
+      "text": "TO",
+      "style": "n",
+      "at": 41.6
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "HANDLE",
+      "style": "n",
+      "at": 41.7
+     },
+     {
+      "text": "IT",
+      "style": "n",
+      "at": 41.9
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 42.1,
+  "end": 42.92,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "YOU'LL",
+      "style": "n",
+      "at": 42.1
+     },
+     {
+      "text": "LEARN",
+      "style": "n",
+      "at": 42.32
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "THAT",
+      "style": "n",
+      "at": 42.51
+     },
+     {
+      "text": "TOO",
+      "style": "n",
+      "at": 42.68
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 42.92,
+  "end": 43.88,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "AND",
+      "style": "n",
+      "at": 42.92
+     },
+     {
+      "text": "IT'S",
+      "style": "n",
+      "at": 43.2
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "ABSOLUTELY",
+      "style": "n",
+      "at": 43.34
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 43.88,
+  "end": 44.3,
+  "mode": "graphic",
+  "lines": []
+ },
+ {
+  "start": 44.3,
+  "end": 45.1,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "SO",
+      "style": "n",
+      "at": 44.3
+     },
+     {
+      "text": "CLICK",
+      "style": "n",
+      "at": 44.44
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "ON",
+      "style": "n",
+      "at": 44.67
+     },
+     {
+      "text": "THE",
+      "style": "n",
+      "at": 44.79
+     },
+     {
+      "text": "LINK",
+      "style": "n",
+      "at": 44.89
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 45.1,
+  "end": 45.65,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "AND",
+      "style": "n",
+      "at": 45.1
+     },
+     {
+      "text": "CHECK",
+      "style": "n",
+      "at": 45.2
+     },
+     {
+      "text": "OUT",
+      "style": "n",
+      "at": 45.36
+     },
+     {
+      "text": "THIS",
+      "style": "n",
+      "at": 45.51
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 45.65,
+  "end": 46.85,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "1-HOUR",
+      "style": "k",
+      "at": 45.65
+     },
+     {
+      "text": "MASTERCLASS",
+      "style": "a",
+      "at": 46.02
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 46.85,
+  "end": 47.52,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "WHERE",
+      "style": "n",
+      "at": 46.85
+     },
+     {
+      "text": "YOU",
+      "style": "n",
+      "at": 47.08
+     },
+     {
+      "text": "LEARN",
+      "style": "n",
+      "at": 47.24
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 47.52,
+  "end": 48.5,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "THE",
+      "style": "n",
+      "at": 47.52
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "STEP-BY-STEP",
+      "style": "k",
+      "at": 47.76
+     },
+     {
+      "text": "PROCESS",
+      "style": "n",
+      "at": 48.21
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 48.5,
+  "end": 50.41,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "TO",
+      "style": "n",
+      "at": 48.5
+     },
+     {
+      "text": "BECOME",
+      "style": "n",
+      "at": 48.66
+     },
+     {
+      "text": "A",
+      "style": "n",
+      "at": 49.1
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "SYSTEMATIC",
+      "style": "k",
+      "at": 49.2
+     },
+     {
+      "text": "TRADER",
+      "style": "k",
+      "at": 49.71
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 50.41,
+  "end": 51.28,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "SO",
+      "style": "n",
+      "at": 50.41
+     },
+     {
+      "text": "CLICK",
+      "style": "n",
+      "at": 50.7
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "THE",
+      "style": "n",
+      "at": 50.91
+     },
+     {
+      "text": "LINK",
+      "style": "n",
+      "at": 51.04
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "start": 51.28,
+  "end": 52.37,
+  "mode": "caption",
+  "lines": [
+   {
+    "kind": "lead",
+    "words": [
+     {
+      "text": "&",
+      "style": "n",
+      "at": 51.28
+     },
+     {
+      "text": "BOOK",
+      "style": "n",
+      "at": 51.39
+     },
+     {
+      "text": "YOUR",
+      "style": "n",
+      "at": 51.5
+     },
+     {
+      "text": "SEAT",
+      "style": "n",
+      "at": 51.71
+     }
+    ]
+   },
+   {
+    "kind": "punch",
+    "words": [
+     {
+      "text": "RIGHT",
+      "style": "n",
+      "at": 51.82
+     },
+     {
+      "text": "NOW!",
+      "style": "k",
+      "at": 51.94
+     }
+    ]
+   }
+  ]
+ }
+]

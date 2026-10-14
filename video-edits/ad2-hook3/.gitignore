@@ -1,0 +1,13 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Keep only the final deliverables from out/.
+out/*
+!out/ad2_hook3_final.mp4
+!out/ad2_hook3_english.srt
+
+# Large source media (see README: Rebuilding)
+public/input.mp4
+public/audio/

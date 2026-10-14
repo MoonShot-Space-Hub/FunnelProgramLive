@@ -1,0 +1,373 @@
+{
+ "fps": 60,
+ "durationSec": 52.366,
+ "zooms": [
+  [
+   0.0,
+   1.06
+  ],
+  [
+   2.4,
+   1.14
+  ],
+  [
+   3.85,
+   1.04
+  ],
+  [
+   9.7,
+   1.0
+  ],
+  [
+   10.6,
+   1.12
+  ],
+  [
+   14.2,
+   1.04
+  ],
+  [
+   15.5,
+   1.12
+  ],
+  [
+   16.4,
+   1.2
+  ],
+  [
+   21.98,
+   1.06
+  ],
+  [
+   22.9,
+   1.14
+  ],
+  [
+   27.04,
+   1.0
+  ],
+  [
+   28.0,
+   1.08
+  ],
+  [
+   28.9,
+   1.16
+  ],
+  [
+   31.52,
+   1.04
+  ],
+  [
+   32.5,
+   1.12
+  ],
+  [
+   36.44,
+   1.0
+  ],
+  [
+   37.5,
+   1.12
+  ],
+  [
+   41.36,
+   1.04
+  ],
+  [
+   42.1,
+   1.12
+  ],
+  [
+   42.92,
+   1.04
+  ],
+  [
+   43.9,
+   1.08
+  ],
+  [
+   44.3,
+   1.0
+  ],
+  [
+   45.1,
+   1.08
+  ],
+  [
+   46.85,
+   1.0
+  ],
+  [
+   47.52,
+   1.14
+  ],
+  [
+   50.41,
+   1.0
+  ],
+  [
+   51.28,
+   1.1
+  ]
+ ],
+ "brolls": [
+  {
+   "id": "vs",
+   "type": "vs",
+   "start": 0.3,
+   "end": 2.4,
+   "enter": "zoom",
+   "images": [
+    "laptop_chart.jpg",
+    "garba_gujarat.jpg"
+   ],
+   "labels": [
+    "TRADING",
+    "GARBA"
+   ],
+   "second": 0.75,
+   "badge": "VS"
+  },
+  {
+   "id": "garba",
+   "type": "card",
+   "start": 4.7,
+   "end": 6.4,
+   "enter": "whip",
+   "image": "garba_playing.jpg"
+  },
+  {
+   "id": "dandiya",
+   "type": "card",
+   "start": 6.4,
+   "end": 7.64,
+   "enter": "whip",
+   "image": "dandiya.jpg"
+  },
+  {
+   "id": "rhythm",
+   "type": "card",
+   "start": 7.64,
+   "end": 9.7,
+   "enter": "flip",
+   "image": "drum.jpg",
+   "beatPulse": true
+  },
+  {
+   "id": "trends",
+   "type": "trends",
+   "start": 12.1,
+   "end": 14.2,
+   "enter": "circle",
+   "image": "chart_red.jpg",
+   "up": [
+    12.12,
+    12.6
+   ],
+   "down": [
+    12.6,
+    13.4
+   ],
+   "side": [
+    13.85,
+    14.18
+   ]
+  },
+  {
+   "id": "loss",
+   "type": "card",
+   "start": 17.56,
+   "end": 19.35,
+   "enter": "slam",
+   "image": "chart_fall.jpg",
+   "impact": 18.75,
+   "tint": "red"
+  },
+  {
+   "id": "system",
+   "type": "card",
+   "start": 19.4,
+   "end": 21.98,
+   "enter": "zoom",
+   "image": "chess_hand.jpg"
+  },
+  {
+   "id": "checklist",
+   "type": "checklist",
+   "start": 24.42,
+   "end": 27.04,
+   "enter": "circle",
+   "title": 24.45,
+   "items": [
+    [
+     "ENTRY",
+     25.0,
+     "entry"
+    ],
+    [
+     "EXIT",
+     25.45,
+     "exit"
+    ],
+    [
+     "STOP LOSS",
+     25.95,
+     "stop"
+    ],
+    [
+     "TARGET",
+     26.45,
+     "target"
+    ]
+   ]
+  },
+  {
+   "id": "target",
+   "type": "card",
+   "start": 29.82,
+   "end": 31.52,
+   "enter": "zoom",
+   "image": "dartboard.jpg",
+   "reticle": true
+  },
+  {
+   "id": "masterclass",
+   "type": "card",
+   "start": 33.94,
+   "end": 36.44,
+   "enter": "flip",
+   "image": "laptop_desk.jpg",
+   "ribbon": 35.3
+  },
+  {
+   "id": "riskmind",
+   "type": "vs",
+   "start": 38.52,
+   "end": 41.36,
+   "enter": "whip",
+   "images": [
+    "chess_board.jpg",
+    "meditation.jpg"
+   ],
+   "labels": [
+    "RISK",
+    "MIND"
+   ],
+   "second": 39.95,
+   "badge": "+"
+  },
+  {
+   "id": "onehour",
+   "type": "card",
+   "start": 45.65,
+   "end": 47.52,
+   "enter": "whip",
+   "image": "phone_trading.jpg",
+   "clock": true
+  },
+  {
+   "id": "trader",
+   "type": "card",
+   "start": 48.5,
+   "end": 50.41,
+   "enter": "circle",
+   "image": "climb_success.jpg"
+  }
+ ],
+ "overlays": [
+  {
+   "type": "free",
+   "start": 43.88,
+   "end": 45.1
+  },
+  {
+   "type": "cta",
+   "start": 50.41,
+   "end": 52.366,
+   "click": 51.32
+  }
+ ],
+ "stickers": [
+  {
+   "emoji": "💃",
+   "start": 2.62,
+   "end": 4.62,
+   "x": 190,
+   "y": 470,
+   "rot": -10
+  },
+  {
+   "emoji": "🪔",
+   "start": 3.1,
+   "end": 4.62,
+   "x": 890,
+   "y": 520,
+   "rot": 8
+  },
+  {
+   "emoji": "📈",
+   "start": 10.7,
+   "end": 12.05,
+   "x": 190,
+   "y": 470,
+   "rot": -8
+  },
+  {
+   "emoji": "📉",
+   "start": 11.1,
+   "end": 12.05,
+   "x": 890,
+   "y": 500,
+   "rot": 8
+  },
+  {
+   "emoji": "🤔",
+   "start": 16.45,
+   "end": 17.5,
+   "x": 880,
+   "y": 470,
+   "rot": 10
+  },
+  {
+   "emoji": "📈",
+   "start": 27.3,
+   "end": 29.78,
+   "x": 180,
+   "y": 450,
+   "rot": -8
+  },
+  {
+   "emoji": "📉",
+   "start": 28.1,
+   "end": 29.78,
+   "x": 900,
+   "y": 470,
+   "rot": 8
+  },
+  {
+   "emoji": "↔️",
+   "start": 28.95,
+   "end": 29.78,
+   "x": 190,
+   "y": 640,
+   "rot": 0
+  },
+  {
+   "emoji": "🎓",
+   "start": 36.6,
+   "end": 38.45,
+   "x": 890,
+   "y": 470,
+   "rot": 10
+  },
+  {
+   "emoji": "🧠",
+   "start": 41.45,
+   "end": 42.9,
+   "x": 190,
+   "y": 470,
+   "rot": -10
+  }
+ ]
+}
