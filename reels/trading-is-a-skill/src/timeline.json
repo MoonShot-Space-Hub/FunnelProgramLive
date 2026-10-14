@@ -1,0 +1,560 @@
+{
+ "duration": 37.478,
+ "lines": [
+  {
+   "id": "surgery",
+   "text": "You wouldn't watch one surgery video and start operating on somebody.",
+   "start": 0.15,
+   "end": 4.161,
+   "words": [
+    {
+     "text": "You",
+     "start": 0.201,
+     "end": 0.301
+    },
+    {
+     "text": "wouldn't",
+     "start": 0.351,
+     "end": 0.526
+    },
+    {
+     "text": "watch",
+     "start": 0.576,
+     "end": 0.901
+    },
+    {
+     "text": "one",
+     "start": 0.976,
+     "end": 1.176
+    },
+    {
+     "text": "surgery",
+     "start": 1.251,
+     "end": 1.676
+    },
+    {
+     "text": "video",
+     "start": 1.726,
+     "end": 2.201
+    },
+    {
+     "text": "and",
+     "start": 2.276,
+     "end": 2.351
+    },
+    {
+     "text": "start",
+     "start": 2.401,
+     "end": 2.651
+    },
+    {
+     "text": "operating",
+     "start": 2.726,
+     "end": 3.176
+    },
+    {
+     "text": "on",
+     "start": 3.226,
+     "end": 3.376
+    },
+    {
+     "text": "somebody.",
+     "start": 3.451,
+     "end": 4.011
+    }
+   ]
+  },
+  {
+   "id": "plane",
+   "text": "You wouldn't read one article and try to fly a plane.",
+   "start": 4.511,
+   "end": 7.605,
+   "words": [
+    {
+     "text": "You",
+     "start": 4.58,
+     "end": 4.655
+    },
+    {
+     "text": "wouldn't",
+     "start": 4.705,
+     "end": 4.88
+    },
+    {
+     "text": "read",
+     "start": 4.93,
+     "end": 5.18
+    },
+    {
+     "text": "one",
+     "start": 5.23,
+     "end": 5.43
+    },
+    {
+     "text": "article",
+     "start": 5.48,
+     "end": 6.08
+    },
+    {
+     "text": "and",
+     "start": 6.155,
+     "end": 6.23
+    },
+    {
+     "text": "try",
+     "start": 6.28,
+     "end": 6.48
+    },
+    {
+     "text": "to",
+     "start": 6.505,
+     "end": 6.555
+    },
+    {
+     "text": "fly",
+     "start": 6.63,
+     "end": 6.905
+    },
+    {
+     "text": "a",
+     "start": 6.93,
+     "end": 6.955
+    },
+    {
+     "text": "plane.",
+     "start": 7.005,
+     "end": 7.455
+    }
+   ]
+  },
+  {
+   "id": "youtube",
+   "text": "But people watch three YouTube videos,",
+   "start": 8.005,
+   "end": 10.029,
+   "words": [
+    {
+     "text": "But",
+     "start": 8.046,
+     "end": 8.146
+    },
+    {
+     "text": "people",
+     "start": 8.196,
+     "end": 8.471
+    },
+    {
+     "text": "watch",
+     "start": 8.521,
+     "end": 8.771
+    },
+    {
+     "text": "three",
+     "start": 8.871,
+     "end": 9.096
+    },
+    {
+     "text": "YouTube",
+     "start": 9.146,
+     "end": 9.446
+    },
+    {
+     "text": "videos,",
+     "start": 9.496,
+     "end": 9.989
+    }
+   ]
+  },
+  {
+   "id": "account",
+   "text": "and start operating their trading account.",
+   "start": 10.479,
+   "end": 12.686,
+   "words": [
+    {
+     "text": "and",
+     "start": 10.545,
+     "end": 10.62
+    },
+    {
+     "text": "start",
+     "start": 10.67,
+     "end": 10.945
+    },
+    {
+     "text": "operating",
+     "start": 11.02,
+     "end": 11.47
+    },
+    {
+     "text": "their",
+     "start": 11.52,
+     "end": 11.67
+    },
+    {
+     "text": "trading",
+     "start": 11.72,
+     "end": 11.995
+    },
+    {
+     "text": "account.",
+     "start": 12.045,
+     "end": 12.506
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "text": "Why?",
+   "start": 13.186,
+   "end": 13.868,
+   "words": [
+    {
+     "text": "Why?",
+     "start": 13.273,
+     "end": 13.698
+    }
+   ]
+  },
+  {
+   "id": "skill",
+   "text": "Trading is also a skill.",
+   "start": 14.418,
+   "end": 16.017,
+   "words": [
+    {
+     "text": "Trading",
+     "start": 14.505,
+     "end": 14.88
+    },
+    {
+     "text": "is",
+     "start": 14.93,
+     "end": 15.005
+    },
+    {
+     "text": "also",
+     "start": 15.03,
+     "end": 15.305
+    },
+    {
+     "text": "a",
+     "start": 15.33,
+     "end": 15.355
+    },
+    {
+     "text": "skill.",
+     "start": 15.43,
+     "end": 15.847
+    }
+   ]
+  },
+  {
+   "id": "requires",
+   "text": "And every real skill requires:",
+   "start": 16.317,
+   "end": 18.064,
+   "words": [
+    {
+     "text": "And",
+     "start": 16.383,
+     "end": 16.458
+    },
+    {
+     "text": "every",
+     "start": 16.508,
+     "end": 16.758
+    },
+    {
+     "text": "real",
+     "start": 16.808,
+     "end": 17.033
+    },
+    {
+     "text": "skill",
+     "start": 17.083,
+     "end": 17.333
+    },
+    {
+     "text": "requires:",
+     "start": 17.383,
+     "end": 18.024
+    }
+   ]
+  },
+  {
+   "id": "education",
+   "text": "Education.",
+   "start": 18.364,
+   "end": 19.441,
+   "words": [
+    {
+     "text": "Education.",
+     "start": 18.429,
+     "end": 19.281
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "text": "Practice.",
+   "start": 19.691,
+   "end": 20.577,
+   "words": [
+    {
+     "text": "Practice.",
+     "start": 19.753,
+     "end": 20.417
+    }
+   ]
+  },
+  {
+   "id": "rules",
+   "text": "Rules.",
+   "start": 20.827,
+   "end": 21.679,
+   "words": [
+    {
+     "text": "Rules.",
+     "start": 20.938,
+     "end": 21.509
+    }
+   ]
+  },
+  {
+   "id": "overnight",
+   "text": "You don't need to learn everything overnight.",
+   "start": 22.179,
+   "end": 24.579,
+   "words": [
+    {
+     "text": "You",
+     "start": 22.245,
+     "end": 22.32
+    },
+    {
+     "text": "don't",
+     "start": 22.345,
+     "end": 22.495
+    },
+    {
+     "text": "need",
+     "start": 22.52,
+     "end": 22.67
+    },
+    {
+     "text": "to",
+     "start": 22.72,
+     "end": 22.795
+    },
+    {
+     "text": "learn",
+     "start": 22.845,
+     "end": 23.195
+    },
+    {
+     "text": "everything",
+     "start": 23.27,
+     "end": 23.745
+    },
+    {
+     "text": "overnight.",
+     "start": 23.795,
+     "end": 24.419
+    }
+   ]
+  },
+  {
+   "id": "shortcut",
+   "text": "But you do need to stop treating a professional skill like a shortcut.",
+   "start": 24.829,
+   "end": 28.509,
+   "words": [
+    {
+     "text": "But",
+     "start": 24.873,
+     "end": 24.973
+    },
+    {
+     "text": "you",
+     "start": 25.023,
+     "end": 25.098
+    },
+    {
+     "text": "do",
+     "start": 25.173,
+     "end": 25.298
+    },
+    {
+     "text": "need",
+     "start": 25.348,
+     "end": 25.498
+    },
+    {
+     "text": "to",
+     "start": 25.523,
+     "end": 25.598
+    },
+    {
+     "text": "stop",
+     "start": 25.648,
+     "end": 25.948
+    },
+    {
+     "text": "treating",
+     "start": 26.023,
+     "end": 26.348
+    },
+    {
+     "text": "a",
+     "start": 26.373,
+     "end": 26.398
+    },
+    {
+     "text": "professional",
+     "start": 26.448,
+     "end": 26.998
+    },
+    {
+     "text": "skill",
+     "start": 27.073,
+     "end": 27.473
+    },
+    {
+     "text": "like",
+     "start": 27.523,
+     "end": 27.673
+    },
+    {
+     "text": "a",
+     "start": 27.698,
+     "end": 27.748
+    },
+    {
+     "text": "shortcut.",
+     "start": 27.823,
+     "end": 28.349
+    }
+   ]
+  },
+  {
+   "id": "cta1",
+   "text": "If you want a structured place to begin,",
+   "start": 29.109,
+   "end": 31.071,
+   "words": [
+    {
+     "text": "If",
+     "start": 29.175,
+     "end": 29.25
+    },
+    {
+     "text": "you",
+     "start": 29.3,
+     "end": 29.375
+    },
+    {
+     "text": "want",
+     "start": 29.425,
+     "end": 29.625
+    },
+    {
+     "text": "a",
+     "start": 29.65,
+     "end": 29.675
+    },
+    {
+     "text": "structured",
+     "start": 29.725,
+     "end": 30.175
+    },
+    {
+     "text": "place",
+     "start": 30.225,
+     "end": 30.5
+    },
+    {
+     "text": "to",
+     "start": 30.55,
+     "end": 30.6
+    },
+    {
+     "text": "begin,",
+     "start": 30.625,
+     "end": 31.051
+    }
+   ]
+  },
+  {
+   "id": "cta2",
+   "text": "watch my free one-hour ABCT With AI Masterclass.",
+   "start": 31.221,
+   "end": 35.144,
+   "words": [
+    {
+     "text": "watch",
+     "start": 31.268,
+     "end": 31.543
+    },
+    {
+     "text": "my",
+     "start": 31.593,
+     "end": 31.768
+    },
+    {
+     "text": "free",
+     "start": 31.843,
+     "end": 32.018
+    },
+    {
+     "text": "one-hour",
+     "start": 32.068,
+     "end": 32.543
+    },
+    {
+     "text": "ABCT",
+     "start": 32.618,
+     "end": 33.468
+    },
+    {
+     "text": "With",
+     "start": 33.518,
+     "end": 33.643
+    },
+    {
+     "text": "AI",
+     "start": 33.718,
+     "end": 34.143
+    },
+    {
+     "text": "Masterclass.",
+     "start": 34.193,
+     "end": 34.954
+    }
+   ]
+  },
+  {
+   "id": "cta3",
+   "text": "Link is below.",
+   "start": 35.394,
+   "end": 36.578,
+   "words": [
+    {
+     "text": "Link",
+     "start": 35.484,
+     "end": 35.734
+    },
+    {
+     "text": "is",
+     "start": 35.784,
+     "end": 35.884
+    },
+    {
+     "text": "below.",
+     "start": 35.934,
+     "end": 36.418
+    }
+   ]
+  }
+ ]
+}
