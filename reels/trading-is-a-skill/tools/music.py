@@ -20,7 +20,7 @@ SR = 44100
 BPM = 96
 BEAT = 60 / BPM
 BAR = 4 * BEAT
-END = 39.0  # video length in seconds
+END = 39.0  # video length in seconds; replaced by timeline.json's duration in main()
 RNG = np.random.default_rng(7)
 
 
@@ -339,9 +339,11 @@ def duck(music, vo, depth_db=7.0):
 
 
 def main():
+    global END
     reel = sys.argv[1]
     with open(os.path.join(reel, "src", "timeline.json")) as f:
         timeline = json.load(f)
+    END = timeline["duration"]
     vo, vo_sr = sf.read(os.path.join(reel, "public", "vo_master.wav"))
     vo = signal.resample_poly(vo, SR, vo_sr)
     vo = np.pad(vo, (0, max(0, int(END * SR) - len(vo))))[: int(END * SR)]

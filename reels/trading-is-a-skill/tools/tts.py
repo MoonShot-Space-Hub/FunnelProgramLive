@@ -15,28 +15,12 @@ import numpy as np
 import soundfile as sf
 from kokoro_onnx import Kokoro
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from script import END_HOLD, SCRIPT  # noqa: E402
+
 SPEED = 1.08
 LEAD_IN = 0.15
 TAIL = 0.9
-
-# (id, text shown in captions, pause after the line in seconds)
-SCRIPT = [
-    ("surgery", "You wouldn't watch one surgery video and start operating on somebody.", 0.35),
-    ("plane", "You wouldn't read one article and try to fly a plane.", 0.40),
-    ("youtube", "But people watch three YouTube videos,", 0.45),
-    ("account", "and start operating their trading account.", 0.50),
-    ("why", "Why?", 0.55),
-    ("skill", "Trading is also a skill.", 0.30),
-    ("requires", "And every real skill requires:", 0.30),
-    ("education", "Education.", 0.25),
-    ("practice", "Practice.", 0.25),
-    ("rules", "Rules.", 0.50),
-    ("overnight", "You don't need to learn everything overnight.", 0.25),
-    ("shortcut", "But you do need to stop treating a professional skill like a shortcut.", 0.60),
-    ("cta1", "If you want a structured place to begin,", 0.15),
-    ("cta2", "watch my free one-hour ABCT With AI Masterclass.", 0.25),
-    ("cta3", "Link is below.", 0.0),
-]
 
 # Words espeak gets wrong, as Kokoro phonemes
 PHONEMES = {
@@ -109,7 +93,8 @@ def main():
     sf.write(os.path.join(out, "public", "vo.wav"), audio, sr)
     total = len(audio) / sr
     with open(os.path.join(out, "src", "timeline.json"), "w") as f:
-        json.dump({"duration": round(total, 3), "lines": lines}, f, indent=1, ensure_ascii=False)
+        video = round(lines[-1]["end"] + END_HOLD, 3)
+        json.dump({"duration": video, "lines": lines}, f, indent=1, ensure_ascii=False)
     print(f"total {total:.2f}s")
 
 

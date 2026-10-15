@@ -18,7 +18,8 @@ export const wordAt = (id: string, prefix: string): number => {
   return w.start;
 };
 
-export const VIDEO_SECONDS = 39;
+// Video length: last word plus the end-card hold (written by tools/tts.py or tools/align.py).
+export const VIDEO_SECONDS = timeline.duration;
 
 // Each scene cuts in just before its first line is spoken (on the whoosh).
 const CUT_LEAD = 0.1;

@@ -5,9 +5,9 @@ set -euo pipefail
 PY=${1:-python3}
 cd "$(dirname "$0")/.."
 
-# Clean up the TTS voice: trim rumble, even out level, catch onset spikes.
+# Light voice polish: trim rumble, a touch of presence, even out level, catch peaks.
 ffmpeg -hide_banner -loglevel error -y -i public/vo.wav -af \
-  "highpass=f=75,equalizer=f=3200:t=q:w=1.2:g=2.5,acompressor=threshold=-20dB:ratio=3.5:attack=4:release=90:makeup=5dB,alimiter=limit=0.9:attack=2:release=40" \
+  "highpass=f=70,equalizer=f=3200:t=q:w=1.2:g=1.5,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120:makeup=3dB,alimiter=limit=0.9:attack=2:release=40" \
   -ar 44100 public/vo_master.wav
 
 "$PY" -I tools/music.py .
