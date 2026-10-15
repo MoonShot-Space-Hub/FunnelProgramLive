@@ -9,3 +9,5 @@ out
 # Rebuilt by tools/build_audio.sh
 public/vo_master.wav
 public/music.wav
+
+__pycache__/
