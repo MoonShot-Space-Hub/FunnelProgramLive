@@ -5,9 +5,13 @@ set -euo pipefail
 PY=${1:-python3}
 cd "$(dirname "$0")/.."
 
+# Bring any take to about -19 LUFS first so the music balance doesn't depend on it.
+VO_LUFS=$(ffmpeg -hide_banner -i public/vo.wav -af ebur128 -f null - 2>&1 | awk '/^ +I:/{v=$2} END{print v}')
+VO_GAIN=$(awk -v i="$VO_LUFS" 'BEGIN{printf "%.2f", -19 - i}')
+
 # Light voice polish: trim rumble, a touch of presence, even out level, catch peaks.
 ffmpeg -hide_banner -loglevel error -y -i public/vo.wav -af \
-  "highpass=f=70,equalizer=f=3200:t=q:w=1.2:g=1.5,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120:makeup=3dB,alimiter=limit=0.9:attack=2:release=40" \
+  "aformat=sample_fmts=flt,volume=${VO_GAIN}dB,highpass=f=70,equalizer=f=3200:t=q:w=1.2:g=1.5,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120:makeup=3dB,alimiter=limit=0.9:attack=2:release=40" \
   -ar 44100 public/vo_master.wav
 
 "$PY" -I tools/music.py .

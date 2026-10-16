@@ -1,6 +1,6 @@
 # Reel: "Trading is a skill" (ABCT With AI Masterclass CTA)
 
-Faceless 9:16 reel (1080×1920, 30 fps, ~36 s) built from this script:
+Faceless 9:16 reel (1080×1920, 30 fps, 36 s) built from this script (voiced in Hinglish, captioned in English):
 
 > You wouldn't watch one surgery video and start operating on somebody.
 > You wouldn't read one article and try to fly a plane.
@@ -19,7 +19,7 @@ Faceless 9:16 reel (1080×1920, 30 fps, ~36 s) built from this script:
 
 ## What's in it (all copyright-free)
 
-- **Voiceover**: Vishal Malkan's ElevenLabs voice (`voice/vishal-elevenlabs.mp3`). `tools/align.py` force-aligns the script to the recording with PocketSphinx, so captions, cuts and music hits land on the spoken words. `tools/tts.py` (Kokoro TTS) is still there as a fallback voice.
+- **Voiceover**: the Hinglish ElevenLabs take "VISHAL ABCT OFFER FOR FREEDOM" (`voice/vishal-abct-offer-for-freedom.mp3`). Captions stay in English and are timed line by line to the take (`voice/vishal-abct-offer-for-freedom.lines.json`). The English keywords spoken in it (operating, education, practice, rules, one-hour, ABCT, with, masterclass, link) are pinned to the exact moment they're said, using Parakeet ASR anchors, so the visuals hit on them. Earlier takes: `voice/vishal-elevenlabs.mp3` is an English read that also says "CTA" aloud before the call to action, timed with `tools/align.py`; Kokoro TTS is in `tools/tts.py`.
 - **Captions**: burned-in, word-by-word, with the active word in yellow and key words in green. Kept inside the Reels/Shorts safe zone.
 - **B-roll**: original motion graphics drawn in code: an ECG "surgery course", a "how to fly a plane" article, 3 YouTube-style videos, a crashing trading account, "WHY?", a skill unlock, the Education / Practice / Rules pillars, a staircase for "overnight", a SHORTCUT sign getting banned, and the masterclass end card with a "Link is below" button.
 - **Music + SFX**: an original score synthesized in `tools/music.py`: a tense intro with a ticking clock, a riser into a hard cut and an impact on "Why?", then an Am–F–C–G groove that lifts for the CTA. There are whooshes on the cuts and chimes on Education / Practice / Rules, and the music ducks under the voice.
@@ -30,8 +30,11 @@ Faceless 9:16 reel (1080×1920, 30 fps, ~36 s) built from this script:
 
 ```bash
 npm i
-# voice: align a recorded/ElevenLabs voiceover to the script (pip install pocketsphinx)
-python tools/align.py voice/vishal-elevenlabs.mp3 .
+# voice (current, Hinglish take): line spans + saved keyword anchors -> timeline
+python tools/time_lines.py voice/vishal-abct-offer-for-freedom.mp3 . voice/vishal-abct-offer-for-freedom.lines.json
+#   (add a sherpa-onnx Parakeet model dir as a 4th argument to re-detect the anchors)
+# ...or a take that reads the English script word for word (pip install pocketsphinx)
+# python tools/align.py voice/vishal-elevenlabs.mp3 .
 # ...or synthesize one with Kokoro instead (needs kokoro-onnx + model files)
 # python tools/patch_model.py kokoro-v1.0.onnx kokoro-timed.onnx
 # python tools/tts.py kokoro-timed.onnx voices-v1.0.bin .
