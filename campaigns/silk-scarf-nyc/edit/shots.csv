@@ -1,0 +1,11 @@
+shot,scene,file,in_sec,frames,transition,grade,notes
+S1A,1,S1A.mp4,0.50,60,cut,,Model 1 medium-wide tracking walk with slow push-in [TC 00:00-02:12 SS:FF@24]
+S1B,1,S1B.mp4,0.50,36,cut,,Model 1 close walking portrait - cut on her stride [TC 02:12-04:00 SS:FF@24]
+S2A,2,S2A.mp4,0.50,52,cut,,Model 1 breeze lifts the loose scarf end - knot stays put [TC 04:00-06:04 SS:FF@24]
+S2B,2,S2B.mp4,0.50,44,cut,,Slow-motion silk macro - sheen / print / striped border [TC 06:04-08:00 SS:FF@24]
+S3A,3,S3A.mp4,0.50,54,cut,,Model 2 medium shot at cafe window - touches the scarf [TC 08:00-10:06 SS:FF@24]
+S3B,3,S3B.mp4,0.50,42,cut,,Model 2 hands adjust the knot then fabric settles [TC 10:06-12:00 SS:FF@24]
+S4A,4,S4A.mp4,0.50,54,cut,,Model 3 medium close-up - adjusts drape and turns slightly [TC 12:00-14:06 SS:FF@24]
+S4B,4,S4B.mp4,0.50,42,cut,,Model 3 reflection in boutique glass [TC 14:06-16:00 SS:FF@24]
+S5A,5,S5A.mp4,0.50,48,cut,,Model 1 walks past camera and turns - scarf trails [TC 16:00-18:00 SS:FF@24]
+S5B,5,S5B.mp4,0.40,48,cut,,Model 1 scarf close-up hero + end card [TC 18:00-20:00 SS:FF@24]
